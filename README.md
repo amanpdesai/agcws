@@ -1,4 +1,4 @@
-# agcws — Agentic Goal-Conditioned Workload Synthesis
+# Agentic Goal-Conditioned Workload Synthesis
 
 Given RTL, a legal stimulus interface, and a target dynamic-power profile, an agent synthesizes semantically valid workloads toward that behavior. Targets may be scalar, compositional, or coarse temporal.
 
