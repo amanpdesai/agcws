@@ -4,6 +4,13 @@
 
 Inspect `internal_power`, rise/fall power, leakage, capacitance, and cell coverage by D3. If incomplete, report synthesis-weighted switching power.
 
+**Initial inspection (2026-08-30).** Candidate Sky130 HD typical-corner Liberty:
+`/opt/eda/ChipSTA/test/sky130hd/sky130_fd_sc_hd__tt_025C_1v80.lib`. It is 12.8 MB
+and contains 2,477 `internal_power`, 2,477 `rise_power`, 2,477 `fall_power`,
+429 `cell_leakage_power`, and 4,406 `capacitance` occurrences. This is promising
+but does not close R-01: coverage must still be compared with the synthesized
+netlist cell histogram, and the path must be supplied through `AGCWS_LIBERTY`.
+
 ## R-02 — Activity annotation coverage — H
 
 Report annotated-net and annotated-capacitance fractions. Preserve hierarchy, use rank correlation, or gate-level simulate finalists if coverage is poor.

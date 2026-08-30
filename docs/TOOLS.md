@@ -22,7 +22,7 @@ ultimately pinned in the container image.
 | Verilator | RTL simulation and VCD/FST tracing | Set by `AGCWS_VERILATOR` | Container image/version |
 | Yosys | RTL synthesis/mapping | Set by `AGCWS_YOSYS` | Container image/version |
 | OpenSTA (`sta`) | synthesis-level timing/power report | Set by `AGCWS_OPENSTA` | Container image/version |
-| Liberty library | cell power/timing characterization | To select | Store path/checksum in provenance; do not assume completeness |
+| Liberty library | cell power/timing characterization | Set by `AGCWS_LIBERTY`; initial candidate is the local Sky130 HD TT library | Store path/checksum in provenance; do not assume completeness |
 | Icarus Verilog | small smoke tests | `/usr/bin/iverilog` | Optional fallback, not power oracle |
 
 ## Source dependencies to pin as submodules

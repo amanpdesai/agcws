@@ -7,5 +7,4 @@ from agcws.nodes.activity import ActivityArtifact
 def evaluate_power(command: list[str], netlist: NetlistArtifact, activity: ActivityArtifact, output_dir: Path) -> tuple[CommandResult, PowerProfile]:
     """Run OpenSTA for one candidate against a cached netlist."""
     output_dir.mkdir(parents=True, exist_ok=True)
-    result = run_command(command, cwd=output_dir)
     raise NotImplementedError("OpenSTA report parsing is required before producing a valid PowerProfile")
