@@ -19,9 +19,9 @@ ultimately pinned in the container image.
 
 | Tool | Role | Current state | Reproducibility plan |
 |---|---|---|---|
-| Verilator | RTL simulation and VCD/FST tracing | `/opt/eda/bin/verilator` | Container image/version |
-| Yosys | RTL synthesis/mapping | `/opt/eda/bin/yosys` | Container image/version |
-| OpenSTA (`sta`) | synthesis-level timing/power report | `/opt/eda/bin/sta` | Container image/version |
+| Verilator | RTL simulation and VCD/FST tracing | Set by `AGCWS_VERILATOR` | Container image/version |
+| Yosys | RTL synthesis/mapping | Set by `AGCWS_YOSYS` | Container image/version |
+| OpenSTA (`sta`) | synthesis-level timing/power report | Set by `AGCWS_OPENSTA` | Container image/version |
 | Liberty library | cell power/timing characterization | To select | Store path/checksum in provenance; do not assume completeness |
 | Icarus Verilog | small smoke tests | `/usr/bin/iverilog` | Optional fallback, not power oracle |
 

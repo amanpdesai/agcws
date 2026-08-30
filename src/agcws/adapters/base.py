@@ -27,6 +27,7 @@ class DesignAdapter(ABC):
     name: str
     workload_schema: dict
     regions: list[str] | None = None
+    useful_work_floor: float = 0.0
 
     @abstractmethod
     def validate_schema(self, workload: dict) -> Validity: ...
@@ -40,6 +41,6 @@ class DesignAdapter(ABC):
     def validate_result(self, result: SimResult) -> Validity:
         if not result.terminated or not result.assertions_ok or not result.outputs_ok:
             return Validity(False, ValidityStage.FUNCTIONAL, "simulation did not complete legally")
-        if result.useful_work <= 0:
-            return Validity(False, ValidityStage.USEFUL_WORK, "useful-work floor not met")
+        if result.useful_work < self.useful_work_floor:
+            return Validity(False, ValidityStage.USEFUL_WORK, f"useful work {result.useful_work} < floor {self.useful_work_floor}")
         return Validity(True)

@@ -1,11 +1,16 @@
 from agcws.adapters.aes import AESAdapter
 from agcws.adapters.base import ValidityStage
-from agcws.nodes.validation import validate_workload
+from agcws.nodes.validation import validate_static, validate_workload
+from agcws.adapters.base import SimResult
 
 def test_aes_protocol_requires_configuration():
-    result = validate_workload(AESAdapter(), {"operations": [{"op": "encrypt"}]})
+    result = validate_static(AESAdapter(), {"operations": [{"op": "encrypt"}]})
     assert result.stage is ValidityStage.PROTOCOL
 
 def test_aes_accepts_configured_workload():
-    result = validate_workload(AESAdapter(), {"operations": [{"op": "configure"}, {"op": "encrypt"}]})
+    result = validate_static(AESAdapter(), {"operations": [{"op": "configure"}, {"op": "encrypt"}]})
     assert result.valid
+
+def test_useful_work_floor_is_hard_gate():
+    result = validate_workload(AESAdapter(), {"operations": [{"op": "configure"}]}, SimResult(True, True, True, 1))
+    assert not result.valid and result.stage is ValidityStage.USEFUL_WORK

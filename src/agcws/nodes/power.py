@@ -11,7 +11,3 @@ class PowerProfile:
     valid: bool = False
     fidelity: Literal["activity", "synthesis"] = "activity"
     provenance: dict[str, str] | None = None
-
-def target_error(profile: PowerProfile, target: float) -> float:
-    """Scalar normalized error; goal-specific losses belong in goals/loss.py."""
-    return abs(profile.mean_power - target)
