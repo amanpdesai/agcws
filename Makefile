@@ -5,8 +5,14 @@ VENV_PYTHON ?= $(VENV)/bin/python
 SYNTH_DIR ?= out/aes-core-synthesis
 WORKLOAD ?= experiments/workloads/aes_min_scored.json
 EVAL_DIR ?= out/aes-evaluation
+BASELINE_DIR ?= out/aes-baseline-matrix
+P_MIN ?= 128.726293
+P_MAX ?= 130.431250
+BUDGET ?= 200
+SEEDS ?= 0
+TARGETS ?= 0.10 0.25 0.50 0.75 0.90
 
-.PHONY: test lint dev-install inspect-liberty check-liberty-coverage synth-aes evaluate-aes determinism plot-activity temporal-search compositional-search check-axi-dma-rtl run-axi-dma-rd-smoke run-axi-dma-wr-smoke run-axi-dma-workload run-axi-memory-smoke verify container-smoke
+.PHONY: test lint dev-install inspect-liberty check-liberty-coverage synth-aes evaluate-aes determinism plot-activity temporal-search compositional-search baseline-matrix check-axi-dma-rtl run-axi-dma-rd-smoke run-axi-dma-wr-smoke run-axi-dma-workload run-axi-memory-smoke verify container-smoke
 test:
 	$(VENV_PYTHON) -m pytest -q
 dev-install:
@@ -32,6 +38,10 @@ temporal-search:
 	PYTHONPATH=src $(PYTHON) scripts/run_aes_temporal_search.py "$(SYNTH_DIR)"
 compositional-search:
 	PYTHONPATH=src $(PYTHON) scripts/run_aes_compositional_search.py "$(SYNTH_DIR)"
+baseline-matrix:
+	AGCWS_SEARCH_BUDGET=$(BUDGET) AGCWS_SEARCH_SEEDS="$(SEEDS)" \
+	AGCWS_SEARCH_TARGETS="$(TARGETS)" bash scripts/run_aes_baseline_matrix.sh \
+		"$(SYNTH_DIR)" "$(P_MIN)" "$(P_MAX)" "$(BASELINE_DIR)"
 check-axi-dma-rtl:
 	bash scripts/check_axi_dma_rtl.sh
 run-axi-dma-rd-smoke:
