@@ -37,3 +37,11 @@ def test_makefile_exposes_dual_pdk_liberty_inspection():
     body = "\n".join(target)
     assert "AGCWS_LIBERTY" in body
     assert "AGCWS_LIBERTY_NANGATE45" in body
+
+
+def test_makefile_ibex_tasks_are_selectable_and_reproducible():
+    text = Path("Makefile").read_text()
+    assert "IBEX_CORE" in text
+    assert "--core \"$(IBEX_CORE)\"" in text
+    assert "IBEX_SOURCES" in text
+    assert "--top \"$(IBEX_TOP)\"" in text
