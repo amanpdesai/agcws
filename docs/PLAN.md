@@ -12,7 +12,7 @@ Build one design vertically before widening: AES first, `axi_dma` second, Ibex t
 | 3 | AES DSL, validator, runner | D5 | DONE |
 | 4 | Random envelope/calibration corpus; apply the pre-registered ε rule, freeze the AES useful-work floor, and record measured values in `DECISIONS.md` | D6 | DONE |
 | 5 | Non-LLM scalar loop (G2) | D7 | DONE |
-| 6 | Agent policy | D9 | DONE |
+| 6 | Agent policy | D9 | WIP |
 | 7 | `axi_dma`, then Ibex | D13 | WIP |
 | 8 | Mutation/evolutionary/hybrid baselines | D12 | WIP |
 | 9 | Compositional/temporal targets (G4) | D16 | WIP |
@@ -41,6 +41,10 @@ Slice 8 currently exposes random, mutation, evolutionary, and hybrid policies
 through the common proposal-counted AES runner. Slice 10 has deterministic AUC,
 solve-rate, censoring, and corpus-aggregation utilities; full multi-seed
 comparative runs and figures remain outstanding.
+
+Slice 6 has the common offline-agent and Vertex policy interfaces plus the
+frozen generic prompt; Vertex credentials/model billing and a comparative
+agent run remain unverified.
 
 Slice 9 has executable AES temporal and compositional search drivers using the
 activity oracle, with per-cycle/windowed profiles and provenance; finalist
