@@ -29,8 +29,8 @@ def main() -> None:
         nonlocal trial_index
         trial_dir = args.out / "evaluations" / f"trial-{trial_index:05d}"
         trial_index += 1
-        result = evaluate(workload_path := _write_workload(args.out, trial_index, workload),
-                          args.synthesis_dir, trial_dir)
+        workload_path = _write_workload(args.out, trial_index, workload)
+        result = evaluate(workload_path, args.synthesis_dir, trial_dir)
         activity = result["activity"]
         return PowerProfile(mean_power=result["mean_power"], peak_power=result["mean_power"],
                             windowed=activity["window_toggles"], useful_work=result["useful_work"],

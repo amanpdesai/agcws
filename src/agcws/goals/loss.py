@@ -2,8 +2,6 @@
 from __future__ import annotations
 
 import math
-from collections.abc import Sequence
-
 from agcws.goals.schema import CompositionalGoal, ScalarGoal, TemporalGoal
 from agcws.nodes.power import PowerProfile
 

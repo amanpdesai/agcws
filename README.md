@@ -18,6 +18,10 @@ OpenTitan AES (register/data), verilog-axi `axi_dma` (descriptors), and Ibex (in
 
 The pinned CHIA commit and tool/model provenance are recorded in results and `docs/DECISIONS.md`. Large waveform artifacts are ignored.
 
+Every push runs the Python contract suite and a Docker build/smoke test. The
+container includes the open EDA flow and copied Liberty inputs; cloud
+credentials and optional LLM integrations are exercised only in experiments.
+
 ## License
 
 BSD 3-Clause, matching CHIA.
