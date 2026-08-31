@@ -43,7 +43,8 @@ def main() -> None:
             json.dumps(inputs, indent=2, sort_keys=True) + "\n"
         )
 
-    task = store.run("evaluate", inputs, action)
+    task = store.run("evaluate", inputs, action,
+                     required_outputs=("result.json", "activity.json"))
     result_path = task.output_dir / "result.json"
     if not result_path.exists():
         raise RuntimeError(f"task completed without result: {result_path}")

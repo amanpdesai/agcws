@@ -51,6 +51,8 @@ class TaskStore:
         name: str,
         inputs: dict[str, Any],
         action: Callable[[Path], None],
+        *,
+        required_outputs: tuple[str, ...] = (),
     ) -> TaskResult:
         key = task_key(name, inputs)
         output_dir = self.root / name / key
@@ -61,7 +63,9 @@ class TaskStore:
                 stored = json.loads(manifest.read_text())
             except json.JSONDecodeError:
                 stored = None
-            if stored == complete:
+            outputs_exist = all((output_dir / relative).is_file()
+                                for relative in required_outputs)
+            if stored == complete and outputs_exist:
                 return TaskResult(name, key, output_dir, manifest, True)
 
         output_dir.mkdir(parents=True, exist_ok=True)
@@ -73,6 +77,12 @@ class TaskStore:
             sort_keys=True,
         ) + "\n")
         action(output_dir)
+        missing = [relative for relative in required_outputs
+                   if not (output_dir / relative).is_file()]
+        if missing:
+            raise FileNotFoundError(
+                f"task did not produce required outputs: {', '.join(missing)}"
+            )
         temporary = manifest.with_suffix(".json.tmp")
         temporary.write_text(json.dumps(complete, indent=2, sort_keys=True) + "\n")
         temporary.replace(manifest)
