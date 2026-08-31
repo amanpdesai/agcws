@@ -6,7 +6,7 @@ multi-design factorial study has not yet been completed.
 
 ## Verified infrastructure
 
-- `make verify`: 161 tests passed, one skipped; Ruff clean.
+- `make verify`: 166 tests passed, one skipped; Ruff clean.
 - `make research-smoke`: passed.
 - `make container-smoke`: passed, including FuseSoC/Ibex source preparation
   and deterministic workload compilation.
@@ -14,6 +14,16 @@ multi-design factorial study has not yet been completed.
   leakage, capacitance, and clock-gating characterization.
 - AES cross-PDK corpus: 10 shared workloads, Spearman rank agreement about
   `1.0`; see `out/aes-pdk-rank-20260831/corpus-validation.json`.
+
+## Preliminary AXI-DMA activity calibration
+
+The corrected coupled-harness calibration combines three random seeds and is
+stored at `out/axi-dma-calibration-corrected-3seed.json`: 48 valid proposals,
+16 distinct activity values, and an observed activity range of
+`19.67403066–19.80286242` total transitions per clock edge. Workloads are
+non-overlapping, in-bounds, and satisfy the 4,096-byte useful-work floor.
+These are activity-proxy bounds, not synthesis-level power bounds; they are
+not yet used to claim a completed DMA comparative study.
 
 ## Preliminary AES scalar study
 

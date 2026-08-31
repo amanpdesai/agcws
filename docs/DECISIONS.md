@@ -346,6 +346,24 @@ duplicate-definition errors and obscures whether the selected closure itself is
 **Consequence.** The core frontend boundary is now verified, while no mapped
 Ibex power result is claimed until synthesis and mapping are completed.
 
+## 2026-08-31 — Corrected coupled-DMA activity calibration bounds
+
+**Finding.** The first random calibration was invalid as an envelope because
+the generator emitted one fixed workload. A second version also exposed
+out-of-bounds and overlapping descriptors in the coupled 64-KiB RAM oracle.
+The corrected generator uses varied lengths and distinct in-bounds pages.
+Three seeds and 48 valid proposals produced 16 distinct activity values with
+bounds `19.674030658250675` to `19.80286241920591` transitions per clock edge.
+**Decision.** Retain these bounds in `out/axi-dma-calibration-corrected-3seed.json`
+as preliminary activity calibration only; do not present them as OpenSTA power.
+**Rationale.** A responsive, valid workload space is required before a DMA
+search matrix can be interpreted. Recording the generator failures prevents
+the stale one-point corpus from entering the study.
+**Rejected.** Reusing the fixed-workload corpus; dropping functional failures;
+using placeholder `[0,1]` bounds in comparative results.
+**Consequence.** The DMA matrix must be rerun with these measured bounds and
+additional seeds before comparative conclusions are drawn.
+
 ## 2026-08-31 — Upstream coupled-DMA test is optional reference verification
 
 **Finding.** The pinned `verilog-axi` upstream MyHDL test passes when its Icarus

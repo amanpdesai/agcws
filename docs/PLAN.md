@@ -82,6 +82,13 @@ probe has not produced a completed mapped netlist; Ibex gate-level power is
 therefore unsupported. Vertex-backed comparative runs remain blocked on
 project/model/billing configuration outside the repository.
 
+The corrected coupled-DMA calibration now covers three random seeds and 48
+valid proposals, with 16 distinct activity values and measured bounds
+`19.67403066–19.80286242`; the machine-readable aggregate is
+`out/axi-dma-calibration-corrected-3seed.json`. This is calibration evidence
+only. The DMA multi-policy matrix still needs to use these recorded bounds and
+complete its multi-seed run before it can support comparative claims.
+
 Slice 9 has executable AES temporal and compositional search drivers using the
 activity oracle, achieved-profile target selection, per-cycle/windowed profiles,
 and provenance; the full G4 target study remains. Slice 11 has a rebuildable
