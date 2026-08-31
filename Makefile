@@ -25,7 +25,7 @@ IBEX_CORE ?= lowrisc:ibex:ibex_simple_system
 IBEX_SOURCES ?= $(AGCWS_ARTIFACT_ROOT)/ibex-sources/sources.json
 IBEX_TOP ?= ibex_top
 
-.PHONY: test lint dev-install analysis-install verification-install chia-install chia-smoke chia-node-smoke upstream-dma-reference research-smoke audit-reproducibility vertex-preflight verify-artifact inspect-liberty inspect-liberties check-liberty-coverage synth-aes evaluate-aes determinism plot-activity plot-search-curves random-corpus temporal-corpus temporal-search compositional-search baseline-matrix cross-pdk run-aes-pdk-corpus validate-aes-pdk-corpus validate-finalists cross-pdk-dma axi-dma-search validate-axi-dma-finalists check-axi-dma-rtl run-axi-dma-rd-smoke run-axi-dma-wr-smoke run-axi-dma-workload run-axi-dma-coupled run-axi-memory-smoke compile-ibex resolve-ibex-sources probe-ibex-synthesis check-ibex-rtl run-ibex verify-ibex verify container-smoke
+.PHONY: test lint dev-install analysis-install verification-install chia-install chia-smoke chia-node-smoke upstream-dma-reference research-smoke audit-reproducibility vertex-preflight verify-artifact inspect-liberty inspect-liberties check-liberty-coverage synth-aes evaluate-aes determinism plot-activity plot-search-curves random-corpus temporal-corpus temporal-search compositional-search baseline-matrix cross-pdk run-aes-pdk-corpus validate-aes-pdk-corpus validate-finalists cross-pdk-dma axi-dma-search validate-axi-dma-finalists check-axi-dma-rtl run-axi-dma-rd-smoke run-axi-dma-wr-smoke run-axi-dma-workload run-axi-dma-coupled run-axi-memory-smoke compile-ibex resolve-ibex-sources probe-ibex-synthesis synthesize-ibex-core check-ibex-rtl run-ibex verify-ibex verify container-smoke
 test:
 	$(VENV_PYTHON) -m pytest -q
 dev-install:
@@ -125,6 +125,9 @@ resolve-ibex-sources:
 	PYTHONPATH=src $(VENV_PYTHON) scripts/resolve_ibex_sources.py --core "$(IBEX_CORE)" --out "$${AGCWS_ARTIFACT_ROOT:-out}/ibex-sources"
 probe-ibex-synthesis:
 	PYTHONPATH=src $(VENV_PYTHON) scripts/probe_ibex_synthesis.py "$(IBEX_SOURCES)" --top "$(IBEX_TOP)" --out "$${AGCWS_ARTIFACT_ROOT:-out}/ibex-synthesis-probe"
+synthesize-ibex-core:
+	@test "$(IBEX_TOP)" = "ibex_core" || (echo "use IBEX_TOP=ibex_core for this target" >&2; exit 2)
+	PYTHONPATH=src $(VENV_PYTHON) scripts/probe_ibex_synthesis.py "$(IBEX_SOURCES)" --top "$(IBEX_TOP)" --map --out "$${AGCWS_ARTIFACT_ROOT:-out}/ibex-core-synthesis"
 check-ibex-rtl: resolve-ibex-sources
 	PYTHONPATH=src $(VENV_PYTHON) scripts/check_ibex_verilator.py "$${AGCWS_ARTIFACT_ROOT:-out}/ibex-sources/sources.json"
 run-ibex:

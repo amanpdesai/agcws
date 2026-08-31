@@ -26,6 +26,11 @@ def main() -> None:
     parser.add_argument("sources", type=Path, default=Path("out/ibex-sources-top/sources.json"), nargs="?")
     parser.add_argument("--out", type=Path, default=Path("out/ibex-synthesis-probe"))
     parser.add_argument("--top", default="ibex_top")
+    parser.add_argument("--map", action="store_true",
+                        help="continue through Yosys mapping and write mapped.v")
+    parser.add_argument("--liberty", type=Path,
+                        default=Path(os.environ.get("AGCWS_LIBERTY",
+                            "third_party/liberty/sky130hd/sky130_fd_sc_hd__tt_025C_1v80.lib")))
     args = parser.parse_args()
     manifest = json.loads(args.sources.read_text())
     repository_root = Path(__file__).resolve().parents[1]
@@ -73,6 +78,10 @@ def main() -> None:
     read = (f"plugin -i {plugin}; read_slang --top {args.top} -D SYNTHESIS "
             + " ".join(f"-I {path}" for path in include_dirs)
             + " " + " ".join(source_paths))
+    if args.map:
+        read += (f"; hierarchy -top {args.top}; proc; opt; techmap; opt; "
+                 f"dfflibmap -liberty {args.liberty}; abc -liberty {args.liberty}; "
+                 f"clean; write_verilog -noattr -noexpr {args.out / 'mapped.v'}")
     args.out.mkdir(parents=True, exist_ok=True)
     # Keep frontend diagnostics in the artifact.  ``-Q`` hides the Slang error
     # location and turns a reproducibility failure into an opaque exit code.
@@ -83,6 +92,7 @@ def main() -> None:
         "source_count": len(source_paths), "original_source_paths": original_paths,
         "resolved_source_paths": source_paths, "command": [yosys, "-p", read],
         "returncode": result.returncode,
+        "map": args.map, "liberty": str(args.liberty) if args.map else None,
     }, indent=2, sort_keys=True) + "\n")
     print(json.dumps({"out": str(args.out), "returncode": result.returncode,
                       "sources": len(source_paths)}, sort_keys=True))
