@@ -24,7 +24,9 @@ def main() -> None:
     parser.add_argument("synthesis_dir", type=Path)
     parser.add_argument("--policy", choices=("random", "mutation", "evolutionary", "offline-agent", "vertex"), default="random")
     parser.add_argument("--target", type=float, default=0.5)
-    parser.add_argument("--epsilon", type=float, default=0.10)
+    # Keep the CLI default aligned with the pre-registered primary endpoint.
+    # Sensitivity values must be selected explicitly.
+    parser.add_argument("--epsilon", type=float, default=0.05)
     parser.add_argument("--p-min", type=float, required=True)
     parser.add_argument("--p-max", type=float, required=True)
     parser.add_argument("--budget", type=int, default=200)
