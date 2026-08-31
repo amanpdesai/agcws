@@ -108,6 +108,9 @@ def extract_activity(command: list[str], waveform: Path, output_dir: Path, *, cl
         raise FileNotFoundError(f"activity command did not produce waveform: {waveform}")
     activity = parse_vcd(waveform, clock_name, windows)
     (output_dir / "activity.json").write_text(json.dumps(activity, indent=2, sort_keys=True) + "\n")
-    return result, ActivityArtifact(output_dir / "activity.saif",
+    activity_file = output_dir / "activity.saif"
+    if not activity_file.is_file():
+        raise FileNotFoundError(f"activity command did not produce SAIF: {activity_file}")
+    return result, ActivityArtifact(activity_file,
                                    per_cycle_toggles=tuple(activity["per_cycle_toggles"]),
                                    window_toggles=tuple(activity["window_toggles"]))

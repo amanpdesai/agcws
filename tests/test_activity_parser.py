@@ -8,6 +8,13 @@ def test_extract_activity_requires_waveform(tmp_path: Path):
     with pytest.raises(FileNotFoundError, match="did not produce waveform"):
         extract_activity(["true"], tmp_path / "missing.vcd", tmp_path / "activity")
 
+
+def test_extract_activity_requires_saif(tmp_path: Path):
+    waveform = tmp_path / "activity.vcd"
+    waveform.write_text("$enddefinitions $end\n#0\n")
+    with pytest.raises(FileNotFoundError, match="did not produce SAIF"):
+        extract_activity(["true"], waveform, tmp_path / "activity")
+
 def test_parse_smoke_vcd():
     result = parse(Path("out/aes-core-smoke/activity.vcd"), windows=8)
     assert result["clock_edges"] > 0
