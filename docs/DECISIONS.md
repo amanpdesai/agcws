@@ -259,6 +259,21 @@ different operating regimes; their disagreement is scientifically meaningful.
 **Consequence.** Future claims require larger, preregistered corpora and must
 separate activity-shape agreement from mapped-power rank agreement.
 
+## 2026-08-31 — Twenty-workload cross-PDK rank validation
+
+**Finding.** The reproducible 20-workload AES corpus produced Sky130 mean-power
+values from 0.0215984602–0.0215986948 W and Nangate45 values from
+0.0050142030–0.0050142985 W. The workload ordering agreed with Spearman
+`rho = 1.0`; deterministic bootstrap resampling produced a CI numerically
+equal to 1.0.
+**Decision.** Record this as expanded diagnostic evidence, while retaining the
+earlier temporal-corpus disagreement. Cross-PDK agreement is corpus-dependent
+and is not treated as a universal transfer claim.
+**Rationale.** A larger random corpus tests rank robustness without erasing the
+different behavior observed for hand-shaped temporal schedules.
+**Consequence.** Reports must identify corpus class and PDK; mapped-power rank
+agreement remains separate from library-independent RTL activity agreement.
+
 ## 2026-08-31 — Activity oracle is the compositional inner loop
 
 **Decision.** Compositional search computes region shares from deterministic
