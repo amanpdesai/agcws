@@ -41,14 +41,19 @@ def main() -> int:
         transfer_dir = out_dir / f"transfer-{index:03d}"
         transfer_dir.mkdir(parents=True, exist_ok=True)
         args = ["+ADDR=" + str(transfer["src"]), "+LEN=" + str(transfer["length"])]
+        artifacts = {}
         for direction, script in (("read", "run_axi_dma_rd_smoke.sh"), ("write", "run_axi_dma_wr_smoke.sh")):
             result = subprocess.run(["bash", str(root / "scripts" / script), str(transfer_dir / direction), *args],
                                     capture_output=True, text=True, check=False)
             if result.returncode:
                 raise SystemExit(result.stderr or result.stdout)
+            waveform = transfer_dir / direction / "activity.vcd"
+            artifacts[direction] = {"path": str(waveform.relative_to(out_dir)),
+                                    "sha256": sha256(waveform), "bytes": waveform.stat().st_size}
         records.append({"index": index, "src": transfer["src"], "dst": transfer["dst"],
                         "length": transfer["length"], "status": "simulated",
-                        "terminated": True, "assertions_ok": True, "outputs_ok": True})
+                        "terminated": True, "assertions_ok": True, "outputs_ok": True,
+                        "artifacts": artifacts})
     simulation = {"terminated": True, "assertions_ok": True, "outputs_ok": True,
                   "useful_work": useful_work, "transfer_count": len(records)}
     provenance = {

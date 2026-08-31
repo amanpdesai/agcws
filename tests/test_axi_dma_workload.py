@@ -21,6 +21,11 @@ def test_axi_dma_workload_drives_both_channels(tmp_path: Path):
     assert len(manifest["provenance"]["rtl_commit"]) == 40
     assert manifest["provenance"]["workload_sha256"]
     assert manifest["provenance"]["tools"]["iverilog"]
+    for direction in ("read", "write"):
+        artifact = manifest["transfers"][0]["artifacts"][direction]
+        assert len(artifact["sha256"]) == 64
+        assert artifact["bytes"] > 0
+        assert (tmp_path / "out" / artifact["path"]).is_file()
 
 
 def test_axi_dma_workload_enforces_useful_work_floor(tmp_path: Path):
