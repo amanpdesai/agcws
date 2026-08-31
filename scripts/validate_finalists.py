@@ -6,7 +6,10 @@ import argparse
 import json
 from pathlib import Path
 
-from scripts.evaluate_aes_workload import evaluate
+try:
+    from scripts.evaluate_aes_workload import evaluate
+except ModuleNotFoundError:  # direct execution: scripts/ is on sys.path
+    from evaluate_aes_workload import evaluate
 
 
 def select_finalists(trials_path: Path, top_k: int) -> list[dict]:
