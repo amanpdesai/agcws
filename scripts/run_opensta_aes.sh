@@ -3,14 +3,14 @@ set -euo pipefail
 
 repo_root=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
 cd "$repo_root"
-if [[ $# -lt 2 || $# -gt 3 ]]; then
-  echo "usage: $0 SYNTHESIS_DIR WAVEFORM.vcd [OUTPUT_DIR]" >&2
+if [[ $# -lt 2 || $# -gt 4 ]]; then
+  echo "usage: $0 SYNTHESIS_DIR WAVEFORM.vcd [OUTPUT_DIR] [LIBERTY]" >&2
   exit 2
 fi
 synth_dir=$1
 waveform=$2
 out_dir=${3:-"$synth_dir/power"}
-liberty=${AGCWS_LIBERTY:-third_party/liberty/sky130hd/sky130_fd_sc_hd__tt_025C_1v80.lib}
+liberty=${4:-${AGCWS_LIBERTY:-third_party/liberty/sky130hd/sky130_fd_sc_hd__tt_025C_1v80.lib}}
 mkdir -p "$out_dir"
 
 cat > "$out_dir/power.tcl" <<EOF
