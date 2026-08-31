@@ -45,6 +45,20 @@ TileLink packages plus generated lifecycle constants. The manifest is an
 auditable first-pass compile set; the harness command must still select the
 configuration-specific generated packages and remove unrelated primitive
 implementations before treating lint as a pass.
+
+## Ibex source closure
+
+Resolve the pinned Ibex simple-system dependency graph through FuseSoC and
+write a content-hashed SystemVerilog manifest:
+
+```bash
+make chia-install
+make resolve-ibex-sources
+```
+
+The output is `out/ibex-sources/sources.json`. It is the input inventory for
+the upcoming Ibex synthesis flow; the script fails if FuseSoC references a
+missing source instead of silently producing a partial design.
 ## AES synthesis
 
 Generate the cached AES core netlist against the configured Liberty file:
