@@ -9,7 +9,7 @@ from agcws.policies.base import SearchPolicy
 class TemporalRandomSearch(SearchPolicy):
     name = "temporal-random"
 
-    def __init__(self, seed: int = 0, blocks: int = 8):
+    def __init__(self, seed: int = 0, blocks: int = 24):
         self.rng = random.Random(seed)
         self.blocks = blocks
 

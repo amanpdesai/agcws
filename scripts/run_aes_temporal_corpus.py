@@ -39,7 +39,7 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("synthesis_dir", type=Path)
     parser.add_argument("--out", type=Path, default=Path("out/aes-temporal-corpus"))
-    parser.add_argument("--blocks", type=int, default=8)
+    parser.add_argument("--blocks", type=int, default=24)
     args = parser.parse_args()
     args.out.mkdir(parents=True, exist_ok=True)
     manifest = args.synthesis_dir / "manifest.json"
