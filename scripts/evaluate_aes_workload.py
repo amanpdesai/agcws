@@ -42,6 +42,11 @@ def evaluate(workload_path: Path, synthesis_dir: Path, output_dir: Path) -> dict
         "mean_power": profile.mean_power,
         "fidelity": profile.fidelity,
         "activity": json.loads((output_dir / "activity.json").read_text()),
+        "provenance": {
+            "synthesis_manifest": str((synthesis_dir / "manifest.json").resolve()),
+            "power_report": str((output_dir / "opensta/power.rpt").resolve()),
+            "liberty": json.loads((synthesis_dir / "manifest.json").read_text()).get("liberty"),
+        },
     }
     (output_dir / "result.json").write_text(json.dumps(result, indent=2, sort_keys=True) + "\n")
     return result
