@@ -14,7 +14,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libboost-serialization-dev libboost-iostreams-dev libboost-regex-dev \
     libboost-thread-dev libgtest-dev libfl-dev libtomlplusplus-dev libmimalloc-dev \
     libelf-dev libelf1 \
-    wget graphviz ca-certificates \
+    wget graphviz ca-certificates gtkwave \
     && rm -rf /var/lib/apt/lists/*
 
 RUN wget -q https://raw.githubusercontent.com/davidkebo/cudd/main/cudd_versions/cudd-3.0.0.tar.gz \

@@ -11,6 +11,7 @@ ibex_root=${AGCWS_IBEX_ROOT:-third_party/ibex}
 sim=${AGCWS_IBEX_SIM:-$ibex_root/build/lowrisc_ibex_ibex_simple_system_0/sim-verilator/Vibex_simple_system}
 gcc=${AGCWS_RISCV_GCC:-riscv64-unknown-elf-gcc}
 objcopy=${AGCWS_RISCV_OBJCOPY:-riscv64-unknown-elf-objcopy}
+fst2vcd=${AGCWS_FST2VCD:-fst2vcd}
 
 mkdir -p "$out_dir"
 PYTHONPATH=src "${AGCWS_PYTHON:-python3}" scripts/compile_ibex_workload.py \
@@ -30,4 +31,23 @@ test -s "$out_dir/ibex_simple_system_pcount.csv"
 test -s "$out_dir/sim.fst"
 test -f "$out_dir/ibex_simple_system.log"
 test -f "$out_dir/trace_core_00000000.log"
+
+# FuseSoC's Ibex target emits FST.  Convert it to the repository-standard VCD
+# when the converter is installed (the production container supplies it).
+# Keeping this conditional preserves the lightweight simulator smoke path on
+# hosts that only need functional execution.
+if command -v "$fst2vcd" >/dev/null 2>&1; then
+  # Debian's fst2vcd emits to stdout unless -o is supplied.
+  "$fst2vcd" -o "$out_dir/activity.vcd" "$out_dir/sim.fst"
+  test -s "$out_dir/activity.vcd"
+  PYTHONPATH=src "${AGCWS_PYTHON:-python3}" - "$out_dir/activity.vcd" <<'PY'
+import sys
+from pathlib import Path
+from agcws.nodes.activity import parse_vcd
+
+path = Path(sys.argv[1])
+activity = parse_vcd(path, clock_name="clk_i", windows=16)
+(path.parent / "activity.json").write_text(__import__("json").dumps(activity, indent=2, sort_keys=True) + "\n")
+PY
+fi
 echo "AGCWS_IBEX_WORKLOAD_OK"
