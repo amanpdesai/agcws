@@ -12,7 +12,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 import ray
 
-from flows.chia_nodes import activity_node, simulate_node
+from flows.chia_nodes import activity_node, power_node, simulate_node
 
 
 VCD = """$timescale 1ns $end
@@ -49,10 +49,22 @@ def main() -> None:
             simulation = ray.get(simulate_node.chia_remote(command, str(root)))
             activity = ray.get(activity_node.chia_remote(
                 simulation["waveform"], str(root / "activity.json"), windows=2))
+            (root / "mapped.v").write_text("module top; endmodule\n")
+            (root / "cells.lib").write_text("library(test) {}\n")
+            (root / "manifest.json").write_text("{}\n")
+            (root / "activity.saif").write_text("(SAIFILE)\n")
+            power = ray.get(power_node.chia_remote(
+                ["bash", "-lc", "printf 'Total Power = 1.25e-03\\n' > power.rpt"],
+                str(root / "mapped.v"), str(root / "cells.lib"),
+                str(root / "manifest.json"), str(root / "activity.saif"),
+                str(root / "power"),
+            ))
         finally:
             ray.shutdown()
     if activity["clock_edges"] != 2 or activity["total_transitions"] != 6:
         raise RuntimeError(f"unexpected CHIA activity result: {activity}")
+    if power["mean_power"] != 0.00125 or power["fidelity"] != "synthesis":
+        raise RuntimeError(f"unexpected CHIA power result: {power}")
     print("AGCWS_CHIA_NODES_SMOKE_OK")
 
 
