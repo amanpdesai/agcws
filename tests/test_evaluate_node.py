@@ -39,6 +39,18 @@ def test_evaluate_power_parses_report(tmp_path):
     assert len(profile.provenance["activity_sha256"]) == 64
 
 
+def test_evaluate_power_preserves_annotation_fraction(tmp_path):
+    output = tmp_path / "run"
+    output.mkdir()
+    (output / "power.rpt").write_text(
+        "Total Power = 1.25e-03\nVCD 25\nUnannotated 75\n"
+    )
+    _, profile = evaluate_power(["true"], *artifacts(tmp_path), output)
+    assert profile.provenance["annotated_pins"] == "25"
+    assert profile.provenance["unannotated_pins"] == "75"
+    assert float(profile.provenance["annotation_fraction"]) == pytest.approx(0.25)
+
+
 def test_command_timeout_returns_structured_result(tmp_path):
     from agcws.nodes.commands import run_command
     result = run_command(["sh", "-c", "sleep 1"], cwd=tmp_path, timeout_s=0.01)
