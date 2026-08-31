@@ -88,13 +88,15 @@ def main() -> int:
                                     "total_transitions": activity["total_transitions"],
                                     "clock_edges": activity["clock_edges"]}
         records.append({"index": index, "src": transfer["src"], "dst": transfer["dst"],
-                        "length": transfer["length"], "status": "simulated",
+                        "length": transfer["length"], "status": "channel_rtl_smoke",
                         "terminated": True, "assertions_ok": True, "outputs_ok": True,
                         "memory_model": model_copy(transfer), "artifacts": artifacts})
     simulation = {"terminated": True, "assertions_ok": True, "outputs_ok": True,
                   "useful_work": useful_work, "transfer_count": len(records)}
     provenance = {
         "adapter": adapter.name,
+        "simulation_backend": "independent_channel_rtl_plus_python_memory_model",
+        "coupled_axi_dma_top": False,
         "workload_sha256": sha256(workload_path),
         "tools": toolchain_record({
             "iverilog": ("iverilog", ("-V",)),

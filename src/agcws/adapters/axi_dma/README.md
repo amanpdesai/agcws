@@ -21,3 +21,8 @@ This is intentionally not yet a coupled memory-copy model: read and write
 channels are validated independently with deterministic models. Functional
 source-to-destination copying and full `axi_dma` top-level power evaluation
 remain the next harness milestone.
+
+Manifests mark this boundary explicitly with
+`simulation_backend=independent_channel_rtl_plus_python_memory_model` and
+`coupled_axi_dma_top=false`; these results must not be used as coupled-DMA
+claims.
