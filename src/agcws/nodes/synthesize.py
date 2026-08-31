@@ -26,8 +26,15 @@ def synthesize_once(command: list[str], output_dir: Path, liberty: Path, design_
         raise ValueError("design_fingerprint is required for safe synthesis caching")
     inputs = {"command": command, "design_fingerprint": design_fingerprint, "liberty_sha256": liberty_digest(liberty)}
     netlist = output_dir / "mapped.v"
-    if (manifest.exists() and netlist.is_file()
-            and json.loads(manifest.read_text()).get("inputs") == inputs):
+    cached_inputs = None
+    if manifest.exists() and netlist.is_file():
+        try:
+            cached_inputs = json.loads(manifest.read_text()).get("inputs")
+        except (OSError, json.JSONDecodeError):
+            # Interrupted writes or hand-edited artifacts are cache misses;
+            # synthesis must be able to repair them on the next invocation.
+            cached_inputs = None
+    if cached_inputs == inputs:
         return CommandResult(command, 0, "cached synthesis\n", ""), NetlistArtifact(output_dir / "mapped.v", liberty, manifest)
     result = run_command(command, cwd=output_dir)
     if result.returncode == 0:
