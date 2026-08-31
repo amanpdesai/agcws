@@ -24,30 +24,31 @@ Record non-obvious choices in `DECISIONS.md`, unknowns in `RISKS.md`, and never 
 
 Evidence checkpoint (2026-08-31): the image-only container smoke passes, the
 AES scalar matrix has completed for five targets and four policies at 200
-proposals, and temporal/compositional activity-loop smokes pass in the same
-container. These are infrastructure and one-seed baseline results; they are
-not the final multi-seed statistical study.
+proposals for two seeds, and achieved-profile temporal/compositional searches
+plus finalist OpenSTA validation have executed. These remain preliminary
+results; they are not the final multi-design statistical study.
 
-Slice 7 currently has deterministic DMA channel harnesses, payload checks,
+Slice 7 currently has deterministic DMA channel harnesses, a coupled
+source-to-destination memory-copy harness with VCD/activity provenance,
 workload validation, useful-work gating, and provenance. It also has a
 deterministic Ibex JSON-to-ELF compiler and upstream simple-system Verilator
-runner. The remaining DMA work is a coupled memory-copy model and
-synthesis/evaluation integration before both adapters are experiment-ready.
+runner. Synthesis/evaluation integration remains before both adapters are
+experiment-ready.
 The pinned upstream coupled-DMA reference test now passes through the isolated
 `make upstream-dma-reference` target; it is a protocol oracle, not the project
 runtime, and does not change this milestone's status.
 
 Slice 8 currently exposes random, mutation, evolutionary, and hybrid policies
 through the common proposal-counted AES runner. Slice 10 has deterministic AUC,
-solve-rate, censoring, and corpus-aggregation utilities; full multi-seed
-comparative runs and figures remain outstanding.
+solve-rate, censoring, validity/cost metrics, and multi-root corpus aggregation;
+multi-design runs and figures remain outstanding.
 
 Slice 6 has the common offline-agent and Vertex policy interfaces plus the
 frozen generic prompt; Vertex credentials/model billing and a comparative
 agent run remain unverified.
 
 Slice 9 has executable AES temporal and compositional search drivers using the
-activity oracle, with per-cycle/windowed profiles and provenance; finalist
-validation and the G4 end-to-end target study remain. Slice 11 has a rebuildable
+activity oracle, achieved-profile target selection, per-cycle/windowed profiles,
+and provenance; the full G4 target study remains. Slice 11 has a rebuildable
 Docker image and container smoke test; upstream extraction and PR preparation
 remain.

@@ -43,9 +43,9 @@ docker run --rm agcws:dev bash scripts/container_smoke.sh
 ## Designs
 
 OpenTitan AES (register/data) is runnable. The verilog-axi `axi_dma` adapter
-(descriptors) has deterministic read/write channel harnesses and a
-workload-driven runtime path; coupled source-to-destination copying and
-top-level DMA power evaluation remain in progress. Ibex (instruction stream)
+(descriptors) has deterministic read/write harnesses plus a coupled
+source-to-destination memory-copy harness with waveform/activity provenance;
+top-level DMA synthesis/power evaluation remains in progress. Ibex (instruction stream)
 now has a deterministic JSON-to-ELF compiler and upstream simple-system
 Verilator runner that collects retirement counters and FST traces.
 
