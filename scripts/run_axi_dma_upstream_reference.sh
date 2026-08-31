@@ -6,21 +6,26 @@ tmp_dir=$(mktemp -d "${TMPDIR:-/tmp}/agcws-verilog-axi.XXXXXX")
 trap 'rm -rf "$tmp_dir"' EXIT
 output_dir=${1:-}
 python_bin=${AGCWS_PYTHON:-.venv/bin/python}
+if [[ "$python_bin" != /* ]]; then
+  python_bin="$repo_root/$python_bin"
+fi
+iverilog_vpi_bin=$(command -v "${AGCWS_IVERILOG_VPI:-iverilog-vpi}")
+myhdl_dir=$(realpath "${AGCWS_MYHDL_DIR:-${repo_root}/.venv/share/myhdl/cosimulation/icarus}")
 
 # The upstream testbench expects ../rtl relative to its working directory and
 # loads MyHDL's VPI module by name. Keep both build products isolated from the
 # pinned submodule and the project tree.
 cp -a "$repo_root/third_party/verilog-axi" "$tmp_dir/verilog-axi"
-(cd "$tmp_dir" && iverilog-vpi \
+(cd "$tmp_dir" && "$iverilog_vpi_bin" \
   -o myhdl.vpi \
-  "$repo_root/.venv/share/myhdl/cosimulation/icarus/myhdl.c" \
-  "$repo_root/.venv/share/myhdl/cosimulation/icarus/myhdl_table.c" \
+  "$myhdl_dir/myhdl.c" \
+  "$myhdl_dir/myhdl_table.c" \
   >/dev/null)
 
 (cd "$tmp_dir/verilog-axi/tb" && \
   IVERILOG_VPI_MODULE_PATH="$tmp_dir" \
   PYTHONPATH="$tmp_dir/verilog-axi/tb" \
-  "$repo_root/.venv/bin/python" test_axi_dma_32_32.py \
+  "$python_bin" test_axi_dma_32_32.py \
   > "$tmp_dir/upstream.log")
 
 grep -q '^Running test' "$tmp_dir/upstream.log"
