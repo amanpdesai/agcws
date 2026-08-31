@@ -7,3 +7,11 @@ def test_adapter_registry_exposes_all_declared_designs():
         AxiDmaAdapter.name: AxiDmaAdapter,
         IbexAdapter.name: IbexAdapter,
     }
+from pathlib import Path
+
+
+def test_non_aes_adapter_contracts_document_harness_boundary():
+    for name in ("axi_dma", "ibex"):
+        readme = Path("src/agcws/adapters") / name / "README.md"
+        assert readme.is_file()
+        assert "harness" in readme.read_text().lower()
