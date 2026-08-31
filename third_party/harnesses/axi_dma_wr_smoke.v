@@ -12,13 +12,18 @@ module agcws_axi_dma_wr_smoke;
   wire awlock; wire [3:0] awcache; wire [2:0] awprot; wire awvalid; reg awready=1;
   wire [DW-1:0] wdata; wire [SW-1:0] wstrb; wire wlast,wvalid; reg wready=1;
   reg [IW-1:0] bid=0; reg [1:0] bresp=0; reg bvalid=0; wire bready;
-  integer sent=0, written=0, cfg_addr=16'h0200, cfg_len=64; reg aw_seen=0;
+  integer sent=0, written=0, w_seen=0, cfg_addr=16'h0200, cfg_len=64; reg aw_seen=0;
 
   always @(posedge clk) begin
     if (rst) begin dvalid<=0; enable<=0; sent<=0; tvalid<=0; tlast<=0; end
     else if (!enable) enable<=1;
     else if (!dvalid && !sent && dready) begin daddr<=cfg_addr; dlen<=cfg_len; dtag<=8'ha5; dvalid<=1; sent<=1; end
     else begin dvalid<=0; end
+  end
+  always @(posedge clk) if (!rst && wvalid && wready) begin
+    if (wdata !== (32'h1000 + w_seen))
+      $fatal(1, "DMA write payload mismatch beat=%0d data=%h", w_seen, wdata);
+    w_seen = w_seen + 1;
   end
   always @(posedge clk) begin
     if (rst) begin tvalid<=0; tlast<=0; tdata<=0; end

@@ -18,7 +18,7 @@ module agcws_axi_dma_rd_smoke;
   wire [2:0] arprot; wire arvalid; reg arready=1;
   reg [IW-1:0] rid=0; reg [DW-1:0] rdata=0; reg [1:0] rresp=0;
   reg rlast=0, rvalid=0; wire rready;
-  integer beats_left=0, submitted=0, received=0, cfg_addr=16'h0100, cfg_len=64;
+  integer beats_left=0, submitted=0, received=0, stream_seen=0, cfg_addr=16'h0100, cfg_len=64;
 
   always @(posedge clk) begin
     if (rst) begin
@@ -35,6 +35,11 @@ module agcws_axi_dma_rd_smoke;
         rvalid <= 1; rdata <= {24'h0, received[7:0]}; rlast <= (beats_left == 1);
       end
     end
+  end
+  always @(posedge clk) if (!rst && stream_valid && stream_ready) begin
+    if (stream_data !== (stream_seen[7:0]))
+      $fatal(1, "DMA read payload mismatch beat=%0d data=%h", stream_seen, stream_data);
+    stream_seen = stream_seen + 1;
   end
 
   always @(posedge clk) begin
