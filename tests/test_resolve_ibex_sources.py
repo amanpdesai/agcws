@@ -1,4 +1,5 @@
 from pathlib import Path
+import pytest
 
 from scripts.resolve_ibex_sources import resolve_manifest
 
@@ -21,3 +22,14 @@ def test_resolve_manifest_filters_and_hashes_sv(tmp_path: Path):
     assert result[0]["bytes"] == source.stat().st_size
     assert len(result[0]["sha256"]) == 64
     assert include_dirs == [str(source.parent.resolve())]
+
+
+def test_resolve_manifest_fails_on_missing_source(tmp_path: Path):
+    manifest = tmp_path / "manifest.yml"
+    manifest.write_text(
+        "files:\n"
+        "  - file_type: systemVerilogSource\n"
+        "    name: missing/core.sv\n"
+    )
+    with pytest.raises(FileNotFoundError, match="FuseSoC source is missing"):
+        resolve_manifest(manifest)
