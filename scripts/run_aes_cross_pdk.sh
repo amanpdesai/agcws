@@ -35,6 +35,8 @@ done
 python3 - "$out_dir/comparison.json" "$out_dir" "$waveform" "$sky_lib" "$nangate_lib" <<'PY'
 import hashlib
 import json
+import os
+import subprocess
 import sys
 from pathlib import Path
 
@@ -50,9 +52,24 @@ def power(name):
     raise ValueError(f"no total power in {name} report")
 def sha(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+def tool_version(command, *args):
+    try:
+        return subprocess.check_output([command, *args], text=True,
+                                       stderr=subprocess.STDOUT).splitlines()[0]
+    except (OSError, subprocess.CalledProcessError) as exc:
+        return f"unavailable: {exc}"
 
 Path(output).write_text(json.dumps({
     "waveform": {"path": waveform_path.name, "sha256": sha(waveform_path)},
+    "tools": {
+        "yosys": tool_version(os.environ.get("AGCWS_YOSYS", "yosys"), "-V"),
+        "opensta": tool_version(os.environ.get("AGCWS_OPENSTA", "sta"), "-version"),
+        "slang_plugin": {
+            "path": os.environ.get("AGCWS_SLANG_PLUGIN", ""),
+            "sha256": sha(os.environ["AGCWS_SLANG_PLUGIN"])
+            if os.environ.get("AGCWS_SLANG_PLUGIN") else None,
+        },
+    },
     "pdks": {
         "sky130hd": {"liberty": sky_lib, "liberty_sha256": sha(sky_lib), "total_power_w": power("sky130hd")},
         "nangate45": {"liberty": nangate_lib, "liberty_sha256": sha(nangate_lib), "total_power_w": power("nangate45")},
