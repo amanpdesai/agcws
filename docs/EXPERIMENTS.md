@@ -16,7 +16,7 @@ Log best-so-far error at every index 1..N. Report simulations executed as a seco
 
 ## Tolerance and calibration
 
-Primary tolerances are ε_s=0.05 normalized envelope units, ε_c=0.05 region-share error, and ε_t=0.10 temporal NRMSE. Report ε_s sensitivity at 0.02 and 0.10. Scalar q is normalized against each design's non-idle [P_min,P_max].
+Primary tolerances are ε_s=0.10 normalized envelope units, ε_c=0.05 region-share error, and ε_t=0.10 temporal NRMSE. The initial 0.05 calibration and permitted adjustment are recorded in `DECISIONS.md`; 0.02 and 0.05 remain sensitivity analyses. Scalar q is normalized against each design's non-idle [P_min,P_max].
 
 After Slice 4, on AES only, let r be the median-over-five-seeds fraction of five scalar targets solved by random search within ε_s in ≤20 evaluations. If r>0.6, adjust once to 0.02; if r<0.1, adjust once to 0.10; otherwise retain 0.05. Apply the resulting value globally and record r before comparative runs. If 0.02 still gives r>0.6, G3 fails and profile arms become primary.
 
@@ -29,7 +29,7 @@ Unsolved runs are retained with evaluations-to-target=N (right-censored) and rep
 - A workload must pass, in order: **SCHEMA → PROTOCOL → FUNCTIONAL → USEFUL WORK**. Failure short-circuits later stages; invalid workloads receive no power score and never enter the scored archive.
 - Schema is JSON Schema draft 2020-12, with bounded numeric parameters, known keys/operations, and per-design operation caps.
 - Protocol legality is design-specific and pure. Functional validity requires termination, no assertions, no monitored X/Z after reset, and design-specific correctness.
-- Provisional Slice-4 useful-work floors: AES ≥16 blocks; `axi_dma` ≥4096 completed bytes; Ibex ≥10,000 retired instructions. Freeze these from the random corpus at Slice 4 and record them in `DECISIONS.md`. The floor is a hard gate, not a penalty.
+- Slice-4 useful-work floor: AES ≥21 blocks, derived as the floor of the inclusive 10th percentile of the 10-workload valid calibration corpus. The other design floors remain provisional until their corpora exist. The floor is a hard gate, not a penalty.
 
 ## Prompt/model freeze
 

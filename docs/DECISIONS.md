@@ -38,6 +38,28 @@ entropy, lifecycle, key-manager, and alert plumbing.
 **Rejected.** Counting only simulated candidates; wall-clock equalization.  
 **Consequence.** N remains provisional until Slice 4 runtime calibration.
 
+## 2026-08-31 — Freeze AES scalar epsilon at 0.10
+
+**Decision.** AES ε_s is frozen at 0.10 normalized envelope units. The initial
+0.05 run solved 0/25 target-seed cells within 20 proposals; the one permitted
+0.10 re-evaluation also solved 0/25. No further adjustment is permitted.
+**Rationale.** This follows the preregistered rule without per-design or
+post-hoc difficulty fitting.
+**Rejected.** Additional loosening, per-target retuning, or dropping unsolved
+cells.
+**Consequence.** Unsolved runs remain right-censored at the budget; ε=0.10 is
+used for subsequent comparative runs, with 0.02 and 0.05 as sensitivities.
+
+## 2026-08-31 — Freeze AES useful-work floor at 21 blocks
+
+**Decision.** Scored AES workloads must complete at least 21 blocks, the floor
+of the inclusive 10th percentile of the 10-valid-workload calibration corpus.
+**Rationale.** The hard floor prevents low-power results from being idle
+solutions while remaining grounded in observed workload support.
+**Rejected.** A zero-work threshold or selecting the floor after comparison.
+**Consequence.** The 16-block workload remains a harness test, not a scored
+experiment workload.
+
 ## 2026-08-30 — Pre-declared tolerance calibration
 
 **Decision.** ε_s=0.05, ε_c=0.05, ε_t=0.10, with at most one AES-derived global scalar adjustment using the rule in `EXPERIMENTS.md`.  

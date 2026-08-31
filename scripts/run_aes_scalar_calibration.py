@@ -19,6 +19,7 @@ def main() -> None:
     parser.add_argument("synthesis_dir", type=Path)
     parser.add_argument("--out", type=Path, default=Path("out/aes-scalar-calibration"))
     parser.add_argument("--seeds", type=int, default=5)
+    parser.add_argument("--seed-start", type=int, default=0)
     parser.add_argument("--budget", type=int, default=20)
     parser.add_argument("--epsilon", type=float, default=0.05)
     args = parser.parse_args()
@@ -29,7 +30,7 @@ def main() -> None:
     adapter = AESAdapter()
     targets = [0.10, 0.25, 0.50, 0.75, 0.90]
     results = []
-    for seed in range(args.seeds):
+    for seed in range(args.seed_start, args.seed_start + args.seeds):
         for target in targets:
             run_dir = args.out / f"seed-{seed}" / f"target-{target:.2f}"
             run_dir.mkdir(parents=True, exist_ok=True)
@@ -59,7 +60,7 @@ def main() -> None:
             cell_summary.write_text(json.dumps(cell, indent=2, sort_keys=True) + "\n")
             results.append(cell)
     solved_fraction = sum(item["solved"] for item in results) / len(results)
-    report = {"targets": targets, "seeds": args.seeds, "budget": args.budget,
+    report = {"targets": targets, "seed_start": args.seed_start, "seeds": args.seeds, "budget": args.budget,
               "epsilon": args.epsilon, "p_min": p_min, "p_max": p_max,
               "solved_fraction": solved_fraction, "runs": results}
     args.out.mkdir(parents=True, exist_ok=True)

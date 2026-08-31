@@ -86,6 +86,7 @@ PYTHONPATH=src python3 scripts/run_aes_scalar_calibration.py \
 
 The calibration is resumable: completed seed/target cells are marked with a
 local `summary.json` and skipped on subsequent invocations.
+Independent seed ranges may be run in parallel with separate output roots.
 
 Simulator compilation is shared through `AGCWS_SIM_BUILD_DIR` by default, while
 each task retains isolated waveform, activity, and result artifacts.
