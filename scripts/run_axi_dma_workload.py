@@ -21,6 +21,21 @@ def sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
+def rtl_provenance(path: Path) -> dict[str, str]:
+    """Identify a checkout or a Docker-copied RTL tree without guessing."""
+    try:
+        commit = subprocess.check_output(
+            ["git", "-C", str(path), "rev-parse", "HEAD"], text=True,
+            stderr=subprocess.DEVNULL).strip()
+        return {"rtl_commit": commit, "rtl_identity": "git_commit"}
+    except (OSError, subprocess.CalledProcessError):
+        digest = hashlib.sha256()
+        for source in sorted(path.glob("rtl/*.v")):
+            digest.update(source.relative_to(path).as_posix().encode())
+            digest.update(source.read_bytes())
+        return {"rtl_tree_sha256": digest.hexdigest(), "rtl_identity": "copied_tree"}
+
+
 def model_copy(transfer: dict) -> dict:
     """Model the deterministic byte copy represented by one DMA descriptor."""
     length = int(transfer["length"])
@@ -80,15 +95,13 @@ def main() -> int:
                   "useful_work": useful_work, "transfer_count": len(records)}
     provenance = {
         "adapter": adapter.name,
-        "rtl_commit": subprocess.check_output(
-            ["git", "-C", str(root / "third_party/verilog-axi"), "rev-parse", "HEAD"], text=True
-        ).strip(),
         "workload_sha256": sha256(workload_path),
         "tools": toolchain_record({
             "iverilog": ("iverilog", ("-V",)),
             "vvp": ("vvp", ("-V",)),
         }),
     }
+    provenance.update(rtl_provenance(root / "third_party/verilog-axi"))
     (out_dir / "workload_manifest.json").write_text(json.dumps(
         {"workload": workload, "transfers": records, "simulation": simulation,
          "provenance": provenance}, indent=2
