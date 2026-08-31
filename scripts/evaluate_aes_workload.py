@@ -15,6 +15,7 @@ sys.path.insert(0, str(ROOT / "src"))
 from agcws.adapters.aes import AESAdapter
 from agcws.nodes.power import parse_opensta_power_file
 from agcws.nodes.validation import validate_static
+from agcws.adapters.base import SimResult
 from agcws.provenance import input_record, toolchain_record
 from agcws import config
 
@@ -35,6 +36,13 @@ def evaluate(workload_path: Path, synthesis_dir: Path, output_dir: Path) -> dict
     match = re.search(r"AES_CORE_WORKLOAD_DONE blocks=(\d+)", log)
     if not match:
         raise RuntimeError("simulation log has no completed-work marker")
+    completed_blocks = int(match.group(1))
+    runtime_validity = AESAdapter().validate_result(
+        SimResult(terminated=True, assertions_ok=True, outputs_ok=True,
+                  useful_work=completed_blocks)
+    )
+    if not runtime_validity.valid:
+        raise ValueError(f"invalid simulated workload at {runtime_validity.stage.value}: {runtime_validity.reason}")
     subprocess.run(
         ["bash", "scripts/run_opensta_aes.sh", str(synthesis_dir),
          str(output_dir / "activity.vcd"), str(output_dir / "opensta")],
@@ -43,7 +51,7 @@ def evaluate(workload_path: Path, synthesis_dir: Path, output_dir: Path) -> dict
     profile = parse_opensta_power_file(output_dir / "opensta/power.rpt")
     result = {
         "valid": True,
-        "useful_work": int(match.group(1)),
+        "useful_work": completed_blocks,
         "mean_power": profile.mean_power,
         "fidelity": profile.fidelity,
         "activity": json.loads((output_dir / "activity.json").read_text()),
