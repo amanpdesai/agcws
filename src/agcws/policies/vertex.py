@@ -31,8 +31,8 @@ def parse_candidates(text: str, n: int) -> list[dict]:
         candidates = json.loads(text)
     except json.JSONDecodeError as exc:
         raise ValueError("agent response is not valid JSON") from exc
-    if not isinstance(candidates, list) or len(candidates) > n:
-        raise ValueError(f"agent response must be a JSON list of at most {n} candidates")
+    if not isinstance(candidates, list) or len(candidates) != n:
+        raise ValueError(f"agent response must be a JSON list of exactly {n} candidates")
     if not all(isinstance(candidate, dict) for candidate in candidates):
         raise ValueError("every candidate must be a JSON object")
     return candidates
