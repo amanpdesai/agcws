@@ -94,3 +94,19 @@ library choice.
 `/opt/eda` paths.
 **Consequence.** Reports distinguish per-cycle toggle activity from OpenSTA
 synthesis-level power and include cross-library rank agreement.
+
+## 2026-08-31 — Initial cross-PDK result treated as a diagnostic
+
+**Finding.** The four-workload AES temporal corpus produced opposite mean-power
+ordering under the two libraries (`Spearman rho = -1.0`). Sky130 and Nangate45
+therefore cannot be treated as interchangeable absolute or ranking oracles from
+this sample.
+**Decision.** Preserve both results, report the disagreement, and expand the
+corpus before making any cross-PDK robustness claim. Per-cycle toggle activity
+remains the library-independent temporal signal; OpenSTA power remains a
+library-specific validation measurement.
+**Rejected.** Selecting whichever PDK agrees with the desired narrative or
+silently pooling the two power scales.
+**Consequence.** Cross-PDK rank agreement is a reported diagnostic and not an
+assumed success criterion; the experiment must distinguish activity-profile
+agreement from mapped-power agreement.
