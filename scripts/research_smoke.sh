@@ -45,10 +45,15 @@ from pathlib import Path
 root = Path(sys.argv[1])
 activity = json.loads((root / "activity.json").read_text())
 power = json.loads((root / "result.json").read_text())
-required_activity = ("per_cycle_toggles", "window_toggles", "clock_edges")
+required_activity = ("per_cycle_toggles", "window_toggles", "normalized_windows",
+                     "waveform_sha256", "clock_edges")
 missing = [key for key in required_activity if key not in activity]
 if missing:
     raise SystemExit(f"activity missing required fields: {missing}")
+if len(activity["waveform_sha256"]) != 64:
+    raise SystemExit("activity waveform_sha256 is not a SHA-256 digest")
+if len(activity["normalized_windows"]) != len(activity["window_toggles"]):
+    raise SystemExit("normalized activity profile length does not match windows")
 if not power.get("valid") or power.get("useful_work", 0) <= 0:
     raise SystemExit("evaluation did not produce a valid useful-work result")
 for profile in ("temporal", "compositional"):
