@@ -27,6 +27,16 @@ PYTHONPATH=src "$python_bin" scripts/check_aes_determinism.py \
   "$artifact_root/evaluation/activity.json" \
   --out "$artifact_root/activity.png" >/dev/null
 
+# Exercise both profile goal classes through the same activity oracle. Keep the
+# smoke budget intentionally small; comparative runs use their own declared
+# budgets and output roots.
+PYTHONPATH=src "$python_bin" scripts/run_aes_temporal_search.py \
+  "$synthesis_dir" --budget "${AGCWS_PROFILE_SMOKE_BUDGET:-8}" --seed 0 \
+  --out "$artifact_root/temporal" >/dev/null
+PYTHONPATH=src "$python_bin" scripts/run_aes_compositional_search.py \
+  "$synthesis_dir" --budget "${AGCWS_PROFILE_SMOKE_BUDGET:-8}" --seed 0 \
+  --out "$artifact_root/compositional" >/dev/null
+
 "$python_bin" - "$artifact_root/evaluation" <<'PY'
 import json
 import sys
@@ -41,5 +51,9 @@ if missing:
     raise SystemExit(f"activity missing required fields: {missing}")
 if not power.get("valid") or power.get("useful_work", 0) <= 0:
     raise SystemExit("evaluation did not produce a valid useful-work result")
+for profile in ("temporal", "compositional"):
+    summary = json.loads((root.parent / profile / "summary.json").read_text())
+    if summary.get("valid_trials", 0) <= 0 or summary.get("simulations", 0) <= 0:
+        raise SystemExit(f"{profile} smoke did not produce valid simulations")
 print("AGCWS_RESEARCH_SMOKE_OK")
 PY
