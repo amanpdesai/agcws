@@ -10,7 +10,9 @@ Under active development (2026-08-29 → 2026-09-20). The AES oracle and
 bounded search path are runnable; DMA/Ibex adapters and comparative studies
 remain in progress.
 
-See `docs/ARCHITECTURE.md` and `docs/PLAN.md`.
+See `docs/ARCHITECTURE.md` and `docs/PLAN.md`. The current evidence and claim
+boundaries are summarized in [`docs/RESULTS.md`](docs/RESULTS.md), and the
+report-ready structure is in [`docs/REPORT.md`](docs/REPORT.md).
 
 Install the optional plotting dependency with `make analysis-install` before
 running `make plot-activity` in a fresh environment.
