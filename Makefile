@@ -12,7 +12,7 @@ BUDGET ?= 200
 SEEDS ?= 0
 TARGETS ?= 0.10 0.25 0.50 0.75 0.90
 
-.PHONY: test lint dev-install chia-install inspect-liberty check-liberty-coverage synth-aes evaluate-aes determinism plot-activity temporal-search compositional-search baseline-matrix check-axi-dma-rtl run-axi-dma-rd-smoke run-axi-dma-wr-smoke run-axi-dma-workload run-axi-memory-smoke verify container-smoke
+.PHONY: test lint dev-install chia-install chia-smoke inspect-liberty check-liberty-coverage synth-aes evaluate-aes determinism plot-activity temporal-search compositional-search baseline-matrix check-axi-dma-rtl run-axi-dma-rd-smoke run-axi-dma-wr-smoke run-axi-dma-workload run-axi-memory-smoke verify container-smoke
 test:
 	$(VENV_PYTHON) -m pytest -q
 dev-install:
@@ -22,6 +22,8 @@ dev-install:
 chia-install:
 	$(VENV_PYTHON) -m pip install -e '.[chia]'
 	$(VENV_PYTHON) -m pip install -e tools/chia
+chia-smoke:
+	$(VENV_PYTHON) scripts/chia_smoke.py
 lint:
 	$(VENV_PYTHON) -m ruff check --select E9,F src scripts tests
 inspect-liberty:

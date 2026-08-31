@@ -66,6 +66,9 @@ For local CHIA development, run `make chia-install` after `make dev-install`.
 This installs the pinned checkout and its Ray/Vertex dependencies into the
 project virtual environment; the lightweight default development install does
 not pull those large runtime dependencies.
+Run `make chia-smoke` to verify the installed CHIA package, CLI import path, and
+local Ray task execution. This is the local acceptance check; the upstream stock
+case and Vertex billing confirmation remain environment-specific Slice-1 gates.
 The primary Sky130 file is the default; Nangate45 is used for finalist
 cross-checks. `scripts/aes_sources.py` emits the current OpenTitan AES RTL set.
 `scripts/lint_aes_core.sh` is the first executable RTL acceptance check.
