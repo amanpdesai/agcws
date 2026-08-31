@@ -102,8 +102,10 @@ def main() -> None:
     parser.add_argument("workload", type=Path)
     parser.add_argument("synthesis_dir", type=Path)
     parser.add_argument("--out", type=Path, default=Path("out/aes-evaluation"))
+    parser.add_argument("--allow-invalid", action="store_true")
     args = parser.parse_args()
-    print(json.dumps(evaluate(args.workload, args.synthesis_dir, args.out), indent=2))
+    print(json.dumps(evaluate(args.workload, args.synthesis_dir, args.out,
+                              allow_invalid=args.allow_invalid), indent=2))
 
 
 if __name__ == "__main__":

@@ -35,14 +35,18 @@ def main() -> None:
         trial_dir = args.out / f"trial-{index:04d}"
         subprocess.run([
             sys.executable, "scripts/evaluate_aes_workload.py", str(workload_path),
-            str(args.synthesis_dir), "--out", str(trial_dir),
+            str(args.synthesis_dir), "--out", str(trial_dir), "--allow-invalid",
         ], check=True)
         result = json.loads((trial_dir / "result.json").read_text())
         records.append({"index": index, "seed": args.seed, "workload": workload, **result})
-    powers = [float(record["mean_power"]) for record in records]
+    valid_records = [record for record in records if record.get("valid")]
+    if not valid_records:
+        raise RuntimeError("random corpus contains no valid non-idle workloads")
+    powers = [float(record["mean_power"]) for record in valid_records]
     (args.out / "corpus.jsonl").write_text("\n".join(json.dumps(record, sort_keys=True) for record in records) + "\n")
     (args.out / "summary.json").write_text(json.dumps({
-        "count": len(records), "seed": args.seed,
+        "count": len(records), "valid_count": len(valid_records),
+        "invalid_count": len(records) - len(valid_records), "seed": args.seed,
         "p_min": min(powers), "p_max": max(powers),
         "mean": sum(powers) / len(powers),
     }, indent=2) + "\n")
