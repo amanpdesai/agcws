@@ -27,4 +27,8 @@ iverilog -g2012 -s agcws_axi_memory_model_smoke \
 (cd out/container-memory-smoke && vvp memory.vvp >/dev/null)
 PYTHONPATH=src python3 scripts/run_axi_dma_workload.py \
   experiments/workloads/axi_dma_smoke.json out/container-axi-dma-smoke >/dev/null
+mkdir -p out/container-ibex-smoke
+PYTHONPATH=src python3 scripts/compile_ibex_workload.py \
+  experiments/workloads/ibex_smoke.json out/container-ibex-smoke/ibex_smoke.elf
+test -s out/container-ibex-smoke/ibex_smoke.elf
 echo "AGCWS_CONTAINER_SMOKE_OK"
