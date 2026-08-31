@@ -36,6 +36,7 @@ def main() -> None:
     # FuseSoC's generated source list does not always carry include-only files.
     include_dir_paths.update({
         repository_root / "third_party/ibex/vendor/lowrisc_ip/ip/prim/rtl",
+        repository_root / "third_party/ibex/vendor/lowrisc_ip/dv/sv/dv_utils",
         repository_root / "third_party/ibex/build/lowrisc_ibex_ibex_top_0.1/lint-verilator/src/lowrisc_prim_util_memload_0/rtl",
     })
     include_dirs = sorted(str(path) for path in include_dir_paths if path.is_dir())

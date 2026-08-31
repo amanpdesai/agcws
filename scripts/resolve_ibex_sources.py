@@ -70,6 +70,13 @@ def add_toplevel_fallback(root: Path, top: str, sources: list[dict[str, str | in
             return
 
 
+def add_include_root(path: Path, include_dirs: list[str]) -> None:
+    """Record an optional include-only directory without requiring its files."""
+    resolved = path.resolve()
+    if resolved.is_dir() and str(resolved) not in include_dirs:
+        include_dirs.append(str(resolved))
+
+
 def add_declared_fileset(core_file: Path, fileset: str, sources: list[dict[str, str | int]],
                          include_dirs: list[str]) -> None:
     """Add direct files from an Ibex core fileset omitted by a lint target."""
@@ -135,6 +142,7 @@ def main() -> None:
         for core_file in ("ibex_pkg.core", "ibex_core.core", "ibex_top.core"):
             add_declared_fileset(root / core_file, "files_rtl", sources, include_dirs)
     add_toplevel_fallback(root, top, sources, include_dirs)
+    add_include_root(root / "vendor/lowrisc_ip/dv/sv/dv_utils", include_dirs)
     require_toplevel(sources, top)
     args.out.mkdir(parents=True, exist_ok=True)
     output = args.out / "sources.json"

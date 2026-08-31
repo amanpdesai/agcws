@@ -3,7 +3,7 @@ import pytest
 
 from scripts.resolve_ibex_sources import (add_declared_fileset, find_eda_manifest,
                                           require_toplevel, resolve_manifest)
-from scripts.resolve_ibex_sources import add_toplevel_fallback
+from scripts.resolve_ibex_sources import add_include_root, add_toplevel_fallback
 
 
 def test_resolve_manifest_filters_and_hashes_sv(tmp_path: Path):
@@ -64,6 +64,14 @@ def test_add_toplevel_fallback_adds_checked_out_top(tmp_path: Path):
     add_toplevel_fallback(tmp_path, "ibex_top", sources, includes)
     assert sources[0]["path"] == str(top.resolve())
     assert includes == [str(top.parent.resolve())]
+
+
+def test_add_include_root_records_existing_include_only_directory(tmp_path: Path):
+    include_dir = tmp_path / "include"
+    include_dir.mkdir()
+    includes = []
+    add_include_root(include_dir, includes)
+    assert includes == [str(include_dir.resolve())]
 
 
 def test_find_eda_manifest_selects_core_manifest(tmp_path: Path):
