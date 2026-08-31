@@ -49,14 +49,14 @@ paired sign-flip p-values, Holm adjustment, and matched-pairs rank-biserial
 effect sizes for these comparisons. Bootstrap confidence intervals are
 provided by `agcws.analysis.aggregate`.
 
-Current preliminary source: `out/aes-analysis-6seed/aggregate.json`, covering
-AES scalar targets, five policies, and six seeds per cell. It is not the final
-factorial result.
+Current AES scalar source: `out/aes-analysis-10seed/aggregate.json`, covering
+AES scalar targets, five policies, and exactly ten seeds per cell. It is still
+not the final multi-design factorial result.
 
 ## 5. Figures
 
 The current reproducible convergence figure is
-`out/aes-analysis-6seed/seed5-convergence.png`. Final figures must be generated
+`out/aes-analysis-10seed/convergence.png`. Final figures must be generated
 with `make analyze-baseline` (or an equivalent recorded command) from the
 complete declared corpus, and must include scalar convergence, temporal
 profiles, compositional attribution, cross-PDK agreement, and validity/cost
