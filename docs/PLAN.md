@@ -7,7 +7,7 @@ Build one design vertically before widening: AES first, `axi_dma` second, Ibex t
 | Slice | Work | By | Status |
 |---:|---|---|---|
 | 0 | Repo skeleton, docs, container | D2 | DONE |
-| 1 | CHIA stock case and Vertex billing | D3 | TODO |
+| 1 | CHIA stock case and Vertex billing | D3 | WIP |
 | 2 | AES power oracle (G1) | D3 | DONE |
 | 3 | AES DSL, validator, runner | D5 | DONE |
 | 4 | Random envelope/calibration corpus; apply the pre-registered ε rule, freeze the AES useful-work floor, and record measured values in `DECISIONS.md` | D6 | DONE |
@@ -22,7 +22,10 @@ Build one design vertically before widening: AES first, `axi_dma` second, Ibex t
 
 Record non-obvious choices in `DECISIONS.md`, unknowns in `RISKS.md`, and never commit waveform artifacts.
 
-Evidence checkpoint (2026-08-31): the image-only container smoke passes, the
+Evidence checkpoint (2026-08-31): the pinned CHIA framework smoke and CHIA
+node-DAG smoke both pass (`AGCWS_CHIA_SMOKE_OK` and
+`AGCWS_CHIA_NODES_SMOKE_OK`) at commit `d78ad77e4ce7b11523bf15a253a258c0f8795673`.
+Vertex billing remains unverified, so Slice 1 is still WIP. The image-only container smoke passes, the
 AES scalar matrix has completed for five targets and four policies at 200
 proposals for two seeds, and achieved-profile temporal/compositional searches
 plus finalist OpenSTA validation have executed. These remain preliminary
