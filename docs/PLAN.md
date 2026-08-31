@@ -14,9 +14,9 @@ Build one design vertically before widening: AES first, `axi_dma` second, Ibex t
 | 5 | Non-LLM scalar loop (G2) | D7 | DONE |
 | 6 | Agent policy | D9 | DONE |
 | 7 | `axi_dma`, then Ibex | D13 | WIP |
-| 8 | Mutation/evolutionary/hybrid baselines | D12 | TODO |
+| 8 | Mutation/evolutionary/hybrid baselines | D12 | WIP |
 | 9 | Compositional/temporal targets (G4) | D16 | TODO |
-| 10 | Statistics and figures | D21 | TODO |
+| 10 | Statistics and figures | D21 | WIP |
 | 11 | Container and upstream PR prep | D21 | TODO |
 | 12 | Four-page report | D23 | TODO |
 
@@ -26,3 +26,8 @@ Slice 7 currently has deterministic DMA channel harnesses, payload checks,
 workload validation, useful-work gating, and provenance. The remaining DMA
 work is a coupled memory-copy model and synthesis/evaluation integration before
 the Ibex adapter is expanded.
+
+Slice 8 currently exposes random, mutation, evolutionary, and hybrid policies
+through the common proposal-counted AES runner. Slice 10 has deterministic AUC,
+solve-rate, censoring, and corpus-aggregation utilities; full multi-seed
+comparative runs and figures remain outstanding.
