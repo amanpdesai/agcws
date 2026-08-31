@@ -3,6 +3,7 @@ set -euo pipefail
 
 repo_root=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
 cd "$repo_root"
+source scripts/load_env.sh
 if [[ $# -lt 1 || $# -gt 2 ]]; then
   echo "usage: $0 WAVEFORM.vcd [OUTPUT_DIR]" >&2
   exit 2
@@ -15,7 +16,8 @@ mkdir -p "$out_dir"
 
 for name in sky130hd nangate45; do
   if [[ "$name" == sky130hd ]]; then lib=$sky_lib; else lib=$nangate_lib; fi
-  AGCWS_LIBERTY="$lib" bash scripts/synthesize_aes_core.sh "$out_dir/$name-synthesis"
+  AGCWS_LIBERTY="$lib" AGCWS_SLANG_PLUGIN="${AGCWS_SLANG_PLUGIN:-}" \
+    bash scripts/synthesize_aes_core.sh "$out_dir/$name-synthesis"
   bash scripts/run_opensta_aes.sh "$out_dir/$name-synthesis" "$waveform" \
     "$out_dir/$name-power" "$lib"
 done

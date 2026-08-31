@@ -14,9 +14,10 @@ Sky130 and Nangate45 Liberty files and the OpenTitan RTL submodule are copied
 into the image. Build-time network access is required for the OpenSTA source;
 the commit is pinned so the resulting tool is reproducible.
 
-The Slang Yosys frontend is intentionally optional. Local runs can provide it
-with `AGCWS_SLANG_PLUGIN`; container builds use the compatibility frontend until
-a compatible plugin is added to the image.
+The full OpenTitan AES synthesis source requires a Yosys-compatible Slang
+frontend. Set `AGCWS_SLANG_PLUGIN` to an explicitly verified plugin on the host;
+the compatibility frontend is retained only for reduced/simple sources and is
+not treated as a successful AES fallback.
 
 Run the basic image check with:
 
