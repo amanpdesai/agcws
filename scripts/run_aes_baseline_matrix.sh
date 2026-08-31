@@ -19,12 +19,13 @@ target=${AGCWS_SEARCH_TARGET:-0.5}
 epsilon=${AGCWS_SEARCH_EPSILON:-0.05}
 targets=${AGCWS_SEARCH_TARGETS:-$target}
 calibration=${AGCWS_CALIBRATION:-}
+policies=${AGCWS_SEARCH_POLICIES:-"random mutation evolutionary one-shot-agent offline-hybrid"}
 export PYTHONPATH="$repo_root/src${PYTHONPATH:+:$PYTHONPATH}"
 
 for target_value in $targets; do
   target_dir="$output_dir/target-$target_value"
   for seed in $seeds; do
-    for policy in random mutation evolutionary one-shot-agent offline-hybrid; do
+    for policy in $policies; do
       run_dir="$target_dir/seed-$seed/$policy"
       search_args=("$synthesis_dir" --policy "$policy" \
         --fidelity activity --target "$target_value" --epsilon "$epsilon" \
