@@ -12,6 +12,9 @@ def summarize(activity: dict) -> dict:
     windows = [int(value) for value in activity.get("window_toggles", [])]
     if not cycles:
         raise ValueError("activity has no per_cycle_toggles")
+    normalized = activity.get("normalized_windows")
+    if normalized is None:
+        normalized = [value / max(windows) for value in windows] if windows and max(windows) else []
     return {
         "clock_edges": int(activity.get("clock_edges", len(cycles))),
         "total_transitions": int(activity.get("total_transitions", sum(cycles))),
@@ -19,7 +22,7 @@ def summarize(activity: dict) -> dict:
         "per_cycle_peak": max(cycles),
         "window_count": len(windows),
         "window_toggles": windows,
-        "window_normalized": [value / max(windows) for value in windows] if windows and max(windows) else [],
+        "window_normalized": [float(value) for value in normalized],
     }
 
 

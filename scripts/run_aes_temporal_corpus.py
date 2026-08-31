@@ -63,13 +63,12 @@ def main() -> None:
                          required_outputs=("result.json", "activity.json"))
         result = json.loads((task.output_dir / "result.json").read_text())
         activity = result["activity"]
-        peak = max(activity["window_toggles"] or [1])
         records.append({"name": name, "workload": workload, "task_key": task.key,
                         "cached": task.cached, "useful_work": result["useful_work"],
                         "mean_power": result["mean_power"],
                         "per_cycle_toggles": activity["per_cycle_toggles"],
                         "window_toggles": activity["window_toggles"],
-                        "normalized_windows": [v / peak for v in activity["window_toggles"]]})
+                        "normalized_windows": activity["normalized_windows"]})
     (args.out / "corpus.jsonl").write_text("\n".join(json.dumps(r, sort_keys=True) for r in records) + "\n")
     (args.out / "summary.json").write_text(json.dumps({"blocks": args.blocks,
         "schedules": [r["name"] for r in records], "record_count": len(records)}, indent=2) + "\n")
