@@ -20,7 +20,7 @@ from agcws.nodes.power import PowerProfile
 from agcws import config
 from agcws.provenance import file_sha256, toolchain_record
 from agcws.policies import (EvolutionarySearch, HybridSearch, MutationSearch,
-                            OfflineAgent, RandomSearch, VertexAgent)
+                            OfflineAgent, OneShotAgent, RandomSearch, VertexAgent)
 from evaluate_aes_workload import evaluate
 
 
@@ -28,7 +28,7 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("synthesis_dir", type=Path)
     parser.add_argument("--policy", choices=("random", "mutation", "evolutionary",
-                                              "offline-agent", "offline-hybrid", "vertex"),
+                                              "offline-agent", "one-shot-agent", "offline-hybrid", "vertex"),
                         default="random")
     parser.add_argument("--target", type=float, default=0.5)
     # Keep the CLI default aligned with the pre-registered primary endpoint.
@@ -59,7 +59,8 @@ def main() -> None:
     if args.p_min is None or args.p_max is None:
         parser.error("provide --calibration or both --p-min and --p-max")
     policies = {"random": RandomSearch, "mutation": MutationSearch,
-                "evolutionary": EvolutionarySearch, "offline-agent": OfflineAgent}
+                "evolutionary": EvolutionarySearch, "offline-agent": OfflineAgent,
+                "one-shot-agent": OneShotAgent}
     if args.policy == "vertex":
         if not args.model or not args.project:
             parser.error("vertex policy requires --model/AGCWS_GEMINI_MODEL and --project/AGCWS_GCP_PROJECT")

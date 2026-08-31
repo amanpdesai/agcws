@@ -52,3 +52,18 @@ class OfflineAgent(AgentPolicy):
         prompt = Path(__file__).resolve().parents[3] / "prompts/agent_system_v1.txt"
         super().__init__(propose, model="offline-deterministic",
                          prompt_hash=prompt_hash(prompt))
+
+
+class OneShotAgent(OfflineAgent):
+    """Reuse one deterministic proposal batch without observing history."""
+
+    name = "one-shot-agent"
+
+    def __init__(self, seed: int = 0):
+        super().__init__(seed)
+        self._batch: list[dict] | None = None
+
+    def propose(self, adapter, goal, history, n: int) -> list[dict]:
+        if self._batch is None:
+            self._batch = super().propose(adapter, goal, [], max(n, 8))
+        return [self._batch[index % len(self._batch)] for index in range(n)]

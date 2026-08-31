@@ -24,7 +24,7 @@ export PYTHONPATH="$repo_root/src${PYTHONPATH:+:$PYTHONPATH}"
 for target_value in $targets; do
   target_dir="$output_dir/target-$target_value"
   for seed in $seeds; do
-    for policy in random mutation evolutionary offline-hybrid; do
+    for policy in random mutation evolutionary one-shot-agent offline-hybrid; do
       run_dir="$target_dir/seed-$seed/$policy"
       search_args=("$synthesis_dir" --policy "$policy" \
         --fidelity activity --target "$target_value" --epsilon "$epsilon" \
