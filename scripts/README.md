@@ -39,6 +39,20 @@ Generate a deterministic convergence figure from completed runs:
 make plot-search-curves BASELINE_DIR=out/aes-baseline-matrix
 ```
 
+To produce both the aggregate statistics and convergence figure in one
+reproducible step, use:
+
+```bash
+make analyze-baseline \
+  BASELINE_DIR=out/aes-baseline-matrix-complete \
+  ANALYSIS_DIR=out/final-analysis
+```
+
+This command preserves right-censored runs and writes `aggregate.json`,
+`convergence.png`, and its machine-readable plot summary below
+`ANALYSIS_DIR`. It does not infer that the input is a complete factorial
+study; the experiment manifest and plan remain authoritative for that claim.
+
 Validate a completed AES corpus against both pre-built PDK netlists. The
 corpus must contain `trial-*/workload.json`; each report root must contain the
 matching `trial-*/power.rpt`. The command fails closed if a workload or either
