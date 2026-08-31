@@ -11,6 +11,10 @@ def test_makefile_exposes_core_tasks():
     assert "verify-artifact" in verify_body
     assert "DMA_POLICIES" in text
     assert 'DMA_SEARCH_DIR' in text
+    assert 'DMA_P_MIN' in text
+    assert 'DMA_P_MAX' in text
+    assert '--p-min "$(DMA_P_MIN)"' in text
+    assert '--p-max "$(DMA_P_MAX)"' in text
     assert '--budget "$(BUDGET)"' in text
     assert "plot-search-curves:" in text
 

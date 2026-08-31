@@ -13,6 +13,8 @@ CROSS_PDK_DIR ?= out/aes-cross-pdk
 DMA_CROSS_PDK_DIR ?= out/axi-dma-cross-pdk
 DMA_POLICIES ?= random,mutation,evolutionary,one-shot-agent,offline-hybrid
 DMA_SEARCH_DIR ?= out/axi-dma-search
+DMA_P_MIN ?= 19.674030658250675
+DMA_P_MAX ?= 19.80286241920591
 FINALIST_TRIALS ?= $(BASELINE_DIR)/target-0.50/seed-0/random/trials.jsonl
 WAVEFORM ?= $(EVAL_DIR)/activity.vcd
 DMA_WAVEFORM ?= out/axi-dma-coupled/activity.vcd
@@ -104,7 +106,7 @@ cross-pdk-dma:
 	@test -f "$(DMA_WAVEFORM)" || (echo "missing DMA_WAVEFORM=$(DMA_WAVEFORM)" >&2; exit 1)
 	bash scripts/run_axi_dma_cross_pdk.sh "$(DMA_WAVEFORM)" "$(DMA_CROSS_PDK_DIR)"
 axi-dma-search:
-	PYTHONPATH=src $(VENV_PYTHON) scripts/run_axi_dma_search.py --policies "$(DMA_POLICIES)" --budget "$(BUDGET)" --p-min 0 --p-max 1 --out "$(DMA_SEARCH_DIR)"
+	PYTHONPATH=src $(VENV_PYTHON) scripts/run_axi_dma_search.py --policies "$(DMA_POLICIES)" --budget "$(BUDGET)" --p-min "$(DMA_P_MIN)" --p-max "$(DMA_P_MAX)" --out "$(DMA_SEARCH_DIR)"
 aggregate-axi-dma-calibration:
 	PYTHONPATH=src $(VENV_PYTHON) scripts/aggregate_axi_dma_calibration.py $(DMA_CALIBRATION_ROOTS) --out "$${AGCWS_ARTIFACT_ROOT:-out}/axi-dma-calibration.json"
 validate-axi-dma-finalists:
