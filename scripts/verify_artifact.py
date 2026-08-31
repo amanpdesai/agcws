@@ -16,6 +16,33 @@ def sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
+def verify_activity(root: Path) -> None:
+    """Validate the structural invariants of a persisted activity artifact."""
+    activity_path = root / "activity.json"
+    if not activity_path.is_file():
+        return
+    activity = json.loads(activity_path.read_text())
+    cycles = activity.get("per_cycle_toggles")
+    windows = activity.get("window_toggles")
+    normalized = activity.get("normalized_windows")
+    if not isinstance(cycles, list) or not isinstance(windows, list):
+        return  # legacy non-AES artifacts may carry a minimal activity record
+    if not isinstance(normalized, list) or len(normalized) != len(windows):
+        raise ValueError("activity normalized profile does not match windows")
+    if any(float(value) < 0 for value in cycles + windows):
+        raise ValueError("activity toggle counts cannot be negative")
+    peak = max(windows, default=0)
+    expected = [0.0 for _ in windows] if peak == 0 else [float(v) / peak for v in windows]
+    if normalized != expected:
+        raise ValueError("activity normalized profile is inconsistent with windows")
+    digest = activity.get("waveform_sha256")
+    waveform = root / str(activity.get("vcd", "activity.vcd"))
+    if not isinstance(digest, str) or len(digest) != 64:
+        raise ValueError("activity has no valid waveform SHA-256")
+    if waveform.is_file() and sha256(waveform) != digest:
+        raise ValueError("activity waveform SHA-256 mismatch")
+
+
 def verify(root: Path) -> dict:
     result_path = root / "result.json"
     if not result_path.is_file():
@@ -51,6 +78,8 @@ def verify(root: Path) -> dict:
         if "bytes" in record and path.stat().st_size != record["bytes"]:
             raise ValueError(f"byte-count mismatch for {name}")
         checked += 1
+
+    verify_activity(root)
 
     return {"artifact": str(root), "valid": True, "inputs_checked": checked}
 
