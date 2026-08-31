@@ -1,77 +1,21 @@
 #!/usr/bin/env python3
-"""Extract transition counts and clock-bucketed activity from a VCD."""
+"""Extract transition counts and clock-bucketed activity from a VCD.
+
+The implementation lives in :mod:`agcws.nodes.activity`; keeping this command
+as a thin wrapper ensures scripts and CHIA nodes produce identical artifacts.
+"""
 from __future__ import annotations
+
 import argparse
 import json
-import re
-from bisect import bisect_right
-from collections import defaultdict
 from pathlib import Path
 
-VAR_RE = re.compile(r"\$var\s+\S+\s+(\d+)\s+(\S+)\s+(.+?)\s+\$end")
+from agcws.nodes.activity import parse_vcd
+
 
 def parse(path: Path, clock_name: str = "clk_i", windows: int = 16) -> dict:
-    ids: dict[str, tuple[str, int]] = {}
-    clock_ids: set[str] = set()
-    values: dict[str, str] = {}
-    transitions: defaultdict[str, int] = defaultdict(int)
-    per_time: defaultdict[int, int] = defaultdict(int)
-    clock_edges: list[int] = []
-    time = 0
-    in_header = True
-    for line in path.read_text(errors="replace").splitlines():
-        match = VAR_RE.search(line) if in_header else None
-        if match:
-            width, identifier, name = int(match.group(1)), match.group(2), match.group(3)
-            ids[identifier] = (name, width)
-            if name.split()[-1] == clock_name:
-                clock_ids.add(identifier)
-            continue
-        if line.startswith("$enddefinitions"):
-            in_header = False
-            continue
-        if line.startswith("#"):
-            time = int(line[1:])
-            continue
-        if not line or line[0] in "$ ":
-            continue
-        identifier: str
-        value: str
-        if line[0] in "01xXzZ":
-            value, identifier = line[0], line[1:]
-        elif line[0] == "b":
-            value, identifier = line.split(maxsplit=1)
-        else:
-            continue
-        old = values.get(identifier)
-        if old is not None and old != value:
-            name = ids.get(identifier, (identifier, 1))[0]
-            transitions[name] += 1
-            per_time[time] += 1
-        values[identifier] = value
-        if identifier in clock_ids and old == "0" and value == "1":
-            clock_edges.append(time)
-    if not clock_edges:
-        clock_edges = sorted(per_time)
-    per_cycle = [0] * max(0, len(clock_edges))
-    for timestamp, count in per_time.items():
-        cycle = bisect_right(clock_edges, timestamp) - 1
-        if cycle >= 0:
-            per_cycle[cycle] += count
-    buckets = [0] * min(windows, max(1, len(clock_edges)))
-    if clock_edges:
-        edge_set = {edge: index for index, edge in enumerate(clock_edges)}
-        for timestamp, count in per_time.items():
-            prior = [edge for edge in edge_set if edge <= timestamp]
-            if prior:
-                index = edge_set[max(prior)] * len(buckets) // len(clock_edges)
-                buckets[min(index, len(buckets) - 1)] += count
-    # Keep reports portable: absolute artifact paths make identical runs look
-    # different when stored in separate task directories.
-    return {"vcd": path.name, "clock": clock_name, "clock_edges": len(clock_edges),
-            "total_transitions": sum(transitions.values()),
-            "signal_transitions": dict(sorted(transitions.items())),
-            "per_cycle_toggles": per_cycle, "window_toggles": buckets}
+    """Compatibility wrapper for callers of the historical script API."""
+    return parse_vcd(path, clock_name, windows)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
