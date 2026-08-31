@@ -47,6 +47,11 @@ bash scripts/run_aes_baseline_matrix.sh out/aes-core-synthesis-final4 \
   128.726293 130.431250 out/aes-baselines
 ```
 
+Long matrices can resume without redoing complete cells. Set
+`AGCWS_RESUME=1`; a cell is reused only when both `summary.json` exists and
+`trials.jsonl` contains exactly the declared proposal budget. Incomplete cells
+are rerun, preserving the same proposal-counted budget for every policy.
+
 Set `AGCWS_PYTHON` when the host uses a specific virtual environment; the
 driver also exports the repository `src/` path for direct checkouts.
 `AGCWS_SEARCH_TARGET` and `AGCWS_SEARCH_EPSILON` select the scalar target and

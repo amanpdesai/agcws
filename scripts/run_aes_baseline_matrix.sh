@@ -20,6 +20,7 @@ epsilon=${AGCWS_SEARCH_EPSILON:-0.05}
 targets=${AGCWS_SEARCH_TARGETS:-$target}
 calibration=${AGCWS_CALIBRATION:-}
 policies=${AGCWS_SEARCH_POLICIES:-"random mutation evolutionary one-shot-agent offline-hybrid"}
+resume=${AGCWS_RESUME:-0}
 export PYTHONPATH="$repo_root/src${PYTHONPATH:+:$PYTHONPATH}"
 
 for target_value in $targets; do
@@ -27,6 +28,14 @@ for target_value in $targets; do
   for seed in $seeds; do
     for policy in $policies; do
       run_dir="$target_dir/seed-$seed/$policy"
+      if [[ "$resume" == "1" && -f "$run_dir/summary.json" && -f "$run_dir/trials.jsonl" ]]; then
+        completed=$(wc -l < "$run_dir/trials.jsonl")
+        if [[ "$completed" -eq "$budget" ]]; then
+          echo "resuming: keeping complete $run_dir ($completed proposals)"
+          continue
+        fi
+        echo "resuming: rerunning incomplete $run_dir ($completed/$budget proposals)" >&2
+      fi
       search_args=("$synthesis_dir" --policy "$policy" \
         --fidelity activity --target "$target_value" --epsilon "$epsilon" \
         --budget "$budget" --seed "$seed" --out "$run_dir")
