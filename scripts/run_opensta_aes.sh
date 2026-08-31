@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+repo_root=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
+cd "$repo_root"
+if [[ $# -lt 2 || $# -gt 3 ]]; then
+  echo "usage: $0 SYNTHESIS_DIR WAVEFORM.vcd [OUTPUT_DIR]" >&2
+  exit 2
+fi
+synth_dir=$1
+waveform=$2
+out_dir=${3:-"$synth_dir/power"}
+liberty=${AGCWS_LIBERTY:-third_party/liberty/sky130hd/sky130_fd_sc_hd__tt_025C_1v80.lib}
+mkdir -p "$out_dir"
+
+cat > "$out_dir/power.tcl" <<EOF
+read_liberty $liberty
+read_verilog $synth_dir/mapped.v
+link_design aes_cipher_core
+create_clock -name clk_i -period 10 [get_ports clk_i]
+read_vcd -scope aes_core_smoke/dut $waveform
+report_power
+EOF
+"${AGCWS_OPENSTA:-sta}" -exit "$out_dir/power.tcl" > "$out_dir/power.rpt" 2>&1
+echo "OPENSTA_DONE report=$out_dir/power.rpt"
