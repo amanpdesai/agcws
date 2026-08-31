@@ -6,9 +6,11 @@ proposal boundary, making the LLM provider replaceable and testable offline.
 from __future__ import annotations
 
 from collections.abc import Callable
+from pathlib import Path
 from typing import Any
 
 from agcws.policies.base import SearchPolicy
+from agcws.policies.prompt import prompt_hash
 
 
 class AgentPolicy(SearchPolicy):
@@ -46,4 +48,6 @@ class OfflineAgent(AgentPolicy):
                 ]})
             return candidates
 
-        super().__init__(propose, model="offline-deterministic")
+        prompt = Path(__file__).resolve().parents[3] / "prompts/agent_system_v1.txt"
+        super().__init__(propose, model="offline-deterministic",
+                         prompt_hash=prompt_hash(prompt))

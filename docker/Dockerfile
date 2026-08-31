@@ -42,6 +42,7 @@ COPY src /opt/agcws/src
 COPY scripts /opt/agcws/scripts
 COPY experiments /opt/agcws/experiments
 COPY flows /opt/agcws/flows
+COPY prompts /opt/agcws/prompts
 COPY third_party/liberty /opt/agcws/third_party/liberty
 COPY third_party/opentitan /opt/agcws/third_party/opentitan
 WORKDIR /opt/agcws
