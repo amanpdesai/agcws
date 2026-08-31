@@ -184,3 +184,18 @@ that temporal profile rankings transfer across libraries.
 different operating regimes; their disagreement is scientifically meaningful.
 **Consequence.** Future claims require larger, preregistered corpora and must
 separate activity-shape agreement from mapped-power rank agreement.
+
+## 2026-08-31 — Upstream coupled-DMA test is optional reference verification
+
+**Finding.** The pinned `verilog-axi` upstream MyHDL test passes when its Icarus
+VPI module is built from both checked-in MyHDL sources. The test exercises a
+coupled AXI RAM model and validates read/write behavior.
+**Decision.** Expose it as `make upstream-dma-reference`, running from an
+isolated temporary checkout. Keep it separate from the AGCWS runtime and retain
+the project-owned independent channel harness until a native coupled workload
+runner is implemented.
+**Rationale.** This gives a reproducible upstream protocol oracle without
+making MyHDL/VPI a hidden dependency of search experiments or contaminating the
+pinned submodule with generated artifacts.
+**Consequence.** Passing the reference test does not close the AGCWS coupled
+DMA milestone or authorize coupled-DMA power claims.

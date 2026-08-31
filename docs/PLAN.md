@@ -26,6 +26,9 @@ Slice 7 currently has deterministic DMA channel harnesses, payload checks,
 workload validation, useful-work gating, and provenance. The remaining DMA
 work is a coupled memory-copy model and synthesis/evaluation integration before
 the Ibex adapter is expanded.
+The pinned upstream coupled-DMA reference test now passes through the isolated
+`make upstream-dma-reference` target; it is a protocol oracle, not the project
+runtime, and does not change this milestone's status.
 
 Slice 8 currently exposes random, mutation, evolutionary, and hybrid policies
 through the common proposal-counted AES runner. Slice 10 has deterministic AUC,
