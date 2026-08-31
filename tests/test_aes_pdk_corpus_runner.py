@@ -28,7 +28,11 @@ def test_pdk_manifest_records_all_input_digests(tmp_path: Path, monkeypatch):
     nangate_lib = tmp_path / "nangate.lib"
     sky_lib.write_text("sky\n")
     nangate_lib.write_text("nangate\n")
-    monkeypatch.setattr("scripts.write_aes_pdk_manifest.version", lambda *args: "test-tool")
+    commands = []
+    monkeypatch.setattr("scripts.write_aes_pdk_manifest.version",
+                        lambda command, *args: commands.append((command, args)) or "test-tool")
+    monkeypatch.setenv("AGCWS_OPENSTA", "/custom/sta")
+    monkeypatch.setenv("AGCWS_YOSYS", "/custom/yosys")
 
     output = tmp_path / "run-manifest.json"
     result = write(output, corpus.parent, synth_dirs[0], synth_dirs[1], sky_lib, nangate_lib)
@@ -36,5 +40,7 @@ def test_pdk_manifest_records_all_input_digests(tmp_path: Path, monkeypatch):
     assert result["workload_sha256"] == [digest(corpus / "workload.json")]
     assert result["waveform_sha256"] == [digest(corpus / "activity.vcd")]
     assert result["tools"] == {"opensta": "test-tool", "yosys": "test-tool"}
+    assert commands == [("/custom/sta", ("-version",)),
+                        ("/custom/yosys", ("-V",))]
     assert result["synthesis"]["sky130hd"]["netlist_sha256"] == digest(synth_dirs[0] / "mapped.v")
     assert result["synthesis"]["nangate45"]["liberty_sha256"] == digest(nangate_lib)

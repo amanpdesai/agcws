@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import subprocess
 from pathlib import Path
 
@@ -44,8 +45,8 @@ def write(output: Path, corpus: Path, sky_synth: Path, nangate_synth: Path,
         "corpus": str(corpus), "workloads": len(workloads),
         "workload_sha256": [digest(path) for path in workloads],
         "waveform_sha256": [digest(path.parent / "activity.vcd") for path in workloads],
-        "tools": {"opensta": version("sta", "-version"),
-                  "yosys": version("yosys", "-V")},
+        "tools": {"opensta": version(os.environ.get("AGCWS_OPENSTA", "sta"), "-version"),
+                  "yosys": version(os.environ.get("AGCWS_YOSYS", "yosys"), "-V")},
         "synthesis": {"sky130hd": synthesis_record(sky_synth, sky_lib),
                       "nangate45": synthesis_record(nangate_synth, nangate_lib)},
     }
