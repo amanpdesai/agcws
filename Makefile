@@ -1,12 +1,18 @@
 .DEFAULT_GOAL := test
 PYTHON ?= python3
+VENV ?= .venv
+VENV_PYTHON ?= $(VENV)/bin/python
 SYNTH_DIR ?= out/aes-core-synthesis
 WORKLOAD ?= experiments/workloads/aes_min_scored.json
 EVAL_DIR ?= out/aes-evaluation
 
-.PHONY: test lint inspect-liberty check-liberty-coverage synth-aes evaluate-aes determinism plot-activity temporal-search container-smoke
+.PHONY: test lint dev-install inspect-liberty check-liberty-coverage synth-aes evaluate-aes determinism plot-activity temporal-search container-smoke
 test:
 	$(PYTHON) -m pytest -q
+dev-install:
+	$(PYTHON) -m venv $(VENV)
+	$(VENV_PYTHON) -m pip install --upgrade pip
+	$(VENV_PYTHON) -m pip install -e '.[dev]'
 lint:
 	$(PYTHON) -m ruff check --select E9,F src scripts tests
 inspect-liberty:

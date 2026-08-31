@@ -19,12 +19,21 @@ it for full OpenTitan AES synthesis. Host runs may override
 `AGCWS_SLANG_PLUGIN` with an explicitly verified compatible plugin; the
 compatibility frontend is retained only for reduced/simple sources.
 
+For a host development environment, use the repository-local virtualenv:
+
+```bash
+make dev-install
+make test PYTHON=.venv/bin/python
+make lint PYTHON=.venv/bin/python
+```
+
 Run the basic image check with:
 
 ```bash
 docker build -f docker/Dockerfile -t agcws:dev .
 docker run --rm agcws:dev python -c \
   'import os; from pathlib import Path; print(Path(os.environ["AGCWS_LIBERTY"]).exists())'
+```
 
 The canonical toolchain smoke test is:
 
