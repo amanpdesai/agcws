@@ -1,7 +1,7 @@
 import json
 from pathlib import Path
 
-from flows.chia_nodes import activity_node
+from flows.chia_nodes import activity_node, power_node
 
 
 def test_activity_node_writes_cycle_and_window_artifact(tmp_path: Path):
@@ -25,3 +25,20 @@ def test_activity_node_writes_cycle_and_window_artifact(tmp_path: Path):
                       "total_transitions": 6}
     assert len(activity["per_cycle_toggles"]) == 2
     assert len(activity["window_toggles"]) == 2
+
+
+def test_power_node_returns_strict_profile(tmp_path: Path):
+    (tmp_path / "mapped.v").write_text("module top; endmodule\n")
+    (tmp_path / "cells.lib").write_text("library(test) {}\n")
+    (tmp_path / "manifest.json").write_text("{}\n")
+    (tmp_path / "activity.saif").write_text("(SAIFILE)\n")
+    output = tmp_path / "power"
+    result = power_node(
+        ["bash", "-lc", "printf 'Total Power = 1.25e-03\\n' > power.rpt"],
+        str(tmp_path / "mapped.v"), str(tmp_path / "cells.lib"),
+        str(tmp_path / "manifest.json"), str(tmp_path / "activity.saif"),
+        str(output),
+    )
+    assert result["valid"]
+    assert result["fidelity"] == "synthesis"
+    assert result["mean_power"] == 0.00125
