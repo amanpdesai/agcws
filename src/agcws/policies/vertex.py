@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+import hashlib
 from dataclasses import asdict, is_dataclass
 from typing import Any, Callable
 
@@ -49,7 +50,8 @@ class VertexAgent(AgentPolicy):
             payload = build_payload(adapter, goal, history, n, system_prompt)
             return parse_candidates(generate(model, payload), n)
 
-        super().__init__(propose, model=model)
+        digest = hashlib.sha256(system_prompt.encode()).hexdigest()
+        super().__init__(propose, model=model, prompt_hash=digest)
 
     @classmethod
     def from_vertex(cls, system_prompt: str, *, model: str, project: str, location: str = "global"):
