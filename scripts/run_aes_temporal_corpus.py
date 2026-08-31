@@ -20,7 +20,8 @@ def schedule_workload(name: str, blocks: int = 8) -> dict:
         "low_high_low": [0, 80, 0, 80, 0, 80, 0],
         "high_low_high": [80, 0, 80, 0, 80, 0, 80],
         "burst": [0] * (blocks - 1),
-        "ramp": [10 * index for index in range(blocks - 1)],
+        # Keep the total idle interval below run_aes_workload's 10k-cycle cap.
+        "ramp": [5 * index for index in range(blocks - 1)],
     }
     if name not in schedules:
         raise ValueError(f"unknown schedule: {name}")
@@ -39,7 +40,7 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("synthesis_dir", type=Path)
     parser.add_argument("--out", type=Path, default=Path("out/aes-temporal-corpus"))
-    parser.add_argument("--blocks", type=int, default=24)
+    parser.add_argument("--blocks", type=int, default=48)
     args = parser.parse_args()
     args.out.mkdir(parents=True, exist_ok=True)
     manifest = args.synthesis_dir / "manifest.json"

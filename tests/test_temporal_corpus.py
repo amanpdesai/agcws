@@ -28,3 +28,8 @@ def test_temporal_corpus_requires_cached_evaluation_outputs():
     from pathlib import Path
     text = Path("scripts/run_aes_temporal_corpus.py").read_text()
     assert 'required_outputs=("result.json", "activity.json")' in text
+
+
+def test_temporal_corpus_ramp_respects_idle_cap():
+    workload = schedule_workload("ramp", 48)
+    assert sum(op.get("cycles", 0) for op in workload["operations"]) <= 10000
