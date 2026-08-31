@@ -23,6 +23,12 @@ def idle_cycles(workload: dict) -> int:
         raise ValueError("idle cycles must be in [0,10000]")
     return total
 
+def data_pattern(workload: dict) -> int:
+    value = int(workload.get("data_pattern", 0))
+    if value not in range(4):
+        raise ValueError("data_pattern must be in [0,3]")
+    return value
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("workload", type=Path)
@@ -31,9 +37,10 @@ def main() -> None:
     workload = json.loads(args.workload.read_text())
     blocks = block_count(workload)
     idle = idle_cycles(workload)
+    pattern = data_pattern(workload)
     args.out.mkdir(parents=True, exist_ok=True)
     (args.out / "workload.json").write_text(json.dumps(workload, indent=2, sort_keys=True) + "\n")
-    subprocess.run(["bash", "scripts/run_aes_core_smoke.sh", str(args.out), str(blocks), str(idle)], check=True)
+    subprocess.run(["bash", "scripts/run_aes_core_smoke.sh", str(args.out), str(blocks), str(idle), str(pattern)], check=True)
 
 if __name__ == "__main__":
     main()

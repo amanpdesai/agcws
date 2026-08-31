@@ -16,7 +16,7 @@ class RandomSearch(SearchPolicy):
         candidates = []
         for _ in range(n):
             blocks = self.rng.randint(16, 64)
-            candidates.append({"operations": [
+            candidates.append({"data_pattern": self.rng.randrange(4), "operations": [
                 {"op": "configure", "key_len": self.rng.choice([128, 192, 256])},
                 {"op": self.rng.choice(["encrypt", "decrypt"]), "blocks": blocks},
                 {"op": "idle", "cycles": self.rng.randint(0, 200)},

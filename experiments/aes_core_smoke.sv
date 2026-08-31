@@ -47,11 +47,23 @@ module aes_core_smoke;
   initial begin
     static int blocks = 1;
     static int idle_cycles = 0;
+    static int pattern = 0;
     static int completed = 0;
+    logic [127:0] expected_state;
     void'($value$plusargs("BLOCKS=%d", blocks));
     void'($value$plusargs("IDLE=%d", idle_cycles));
+    void'($value$plusargs("PATTERN=%d", pattern));
     if (blocks < 1 || blocks > 256 || idle_cycles < 0 || idle_cycles > 10000)
       $fatal(1, "BLOCKS must be in [1,256] and IDLE must be in [0,10000]");
+    if (pattern < 0 || pattern > 3) $fatal(1, "PATTERN must be in [0,3]");
+    state_init_i[0] = '0;
+    state_init_i[0][0][0] = pattern * 8'h55;
+    case (pattern)
+      0: expected_state = 128'h2e593bd42bfa2c4b344c8ae9ca88ef66;
+      1: expected_state = 128'h1796cbe53fe192d3a1a4209cde7688a2;
+      2: expected_state = 128'hbaf3c3c5ffe3d92315f2ee90bd726332;
+      default: expected_state = 128'h4b1567a5e2477d1a0ece964feb3230db;
+    endcase
     $dumpfile("activity.vcd");
     $dumpvars(0, aes_core_smoke);
     repeat (4) @(posedge clk_i);
@@ -64,8 +76,9 @@ module aes_core_smoke;
           completed++;
           // OpenTitan stores the AES state as [row][column][byte], so this is
           // the NIST zero-key/zero-block vector in packed SV display order.
-          if (state_o[0] !== 128'h2e593bd42bfa2c4b344c8ae9ca88ef66)
-            $fatal(1, "unexpected AES-128 result at block %0d: %h", block, state_o[0]);
+      if (state_o[0] !== expected_state)
+        $fatal(1, "unexpected AES-128 result at block %0d: %h", block, state_o[0]);
+      if (block == 0) $display("AES_CORE_BLOCK_DONE pattern=%0d state=%h", pattern, state_o[0]);
         end
         begin
           cfg_valid_i = 1'b1;
