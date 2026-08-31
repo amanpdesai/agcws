@@ -4,7 +4,13 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 from pathlib import Path
+
+# Keep this script runnable as documented from the repository root, without
+# requiring callers to know the src-layout import detail.
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "src"))
 
 from agcws.experiments.calibration import calibration_record
 
