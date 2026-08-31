@@ -18,15 +18,17 @@ RUN wget -q https://raw.githubusercontent.com/davidkebo/cudd/main/cudd_versions/
     -O /tmp/cudd-3.0.0.tar.gz && \
     tar -xzf /tmp/cudd-3.0.0.tar.gz -C /tmp && \
     cd /tmp/cudd-3.0.0 && ./configure --prefix=/tmp/cudd-install && \
-    make --jobs 2 && make install && \
-    git clone --no-checkout "$OPENSTA_REPO" /tmp/OpenSTA && \
+    make --jobs 2 && make install
+
+RUN git clone --no-checkout "$OPENSTA_REPO" /tmp/OpenSTA && \
     git -C /tmp/OpenSTA checkout --detach "$OPENSTA_REF" && \
     cmake -S /tmp/OpenSTA -B /tmp/OpenSTA/build -DCMAKE_BUILD_TYPE=Release \
       -DCUDD_DIR=/tmp/cudd-install -DBUILD_TESTS=OFF && \
     cmake --build /tmp/OpenSTA/build --parallel 2 && \
     install -Dm755 /tmp/OpenSTA/build/sta /usr/local/bin/sta && \
-    rm -rf /tmp/OpenSTA && \
-    git clone --recursive --no-checkout "$SV_ELAB_REPO" /tmp/sv-elab && \
+    rm -rf /tmp/OpenSTA
+
+RUN git clone --recursive --no-checkout "$SV_ELAB_REPO" /tmp/sv-elab && \
     git -C /tmp/sv-elab checkout --detach "$SV_ELAB_REF" && \
     git -C /tmp/sv-elab submodule update --init --recursive && \
     cmake -S /tmp/sv-elab -B /tmp/sv-elab/build -DCMAKE_BUILD_TYPE=Release && \
