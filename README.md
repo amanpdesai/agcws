@@ -39,7 +39,7 @@ For paired-PDK validation, use the checked-in corpus runner after synthesis:
 make run-aes-pdk-corpus \
   CORPUS_DIR=out/aes-random-corpus \
   CROSS_PDK_DIR=out/aes-cross-pdk \
-  ARTIFACT_ROOT=out/aes-pdk-validation
+  AGCWS_ARTIFACT_ROOT=out/aes-pdk-validation
 ```
 
 The runner emits OpenSTA reports, rank-agreement results, and a
