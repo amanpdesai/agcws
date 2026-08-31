@@ -16,6 +16,9 @@ except ImportError:
         return decorate
 
 from agcws.nodes.activity import parse_vcd
+from agcws.nodes.activity import ActivityArtifact
+from agcws.nodes.evaluate import evaluate_power
+from agcws.nodes.synthesize import NetlistArtifact
 from agcws.nodes.simulate import run_simulator
 
 
@@ -39,3 +42,22 @@ def activity_node(waveform: str, output_file: str, clock_name: str = "clk_i",
     output.write_text(json.dumps(activity, indent=2, sort_keys=True) + "\n")
     return {"activity": str(output), "clock_edges": activity["clock_edges"],
             "total_transitions": activity["total_transitions"]}
+
+
+@ChiaFunction()
+def power_node(command: list[str], netlist: str, liberty: str, manifest: str,
+               activity: str, output_dir: str) -> dict:
+    """Run strict OpenSTA evaluation and return a serializable power profile."""
+    _, profile = evaluate_power(
+        command,
+        NetlistArtifact(Path(netlist), Path(liberty), Path(manifest)),
+        ActivityArtifact(Path(activity)),
+        Path(output_dir),
+    )
+    return {
+        "mean_power": profile.mean_power,
+        "peak_power": profile.peak_power,
+        "fidelity": profile.fidelity,
+        "valid": profile.valid,
+        "provenance": profile.provenance,
+    }
