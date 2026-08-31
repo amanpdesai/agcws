@@ -32,6 +32,7 @@ def test_axi_dma_workload_drives_both_channels(tmp_path: Path):
         assert artifact["total_transitions"] > 0
         assert (tmp_path / "out" / artifact["activity_path"]).is_file()
     assert load_sim_result(tmp_path / "out/workload_manifest.json").useful_work == 4096
+    assert manifest["transfers"][0]["length"] == 1024
 
 
 def test_axi_dma_workload_enforces_useful_work_floor(tmp_path: Path):
