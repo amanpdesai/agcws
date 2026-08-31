@@ -57,7 +57,8 @@ commercial PDKs, commercial power tools, and FPGA toolchains are out of scope.
 ## Setup acceptance checks
 
 The Slice-1 setup is ready when CHIA imports, Ray starts, Docker runs a worker,
-and one stock CHIA case completes. Slice 2 additionally requires a Verilator
+and one stock CHIA case completes. The container smoke includes the local
+CHIA/Ray task check as well as the EDA checks. Slice 2 additionally requires a Verilator
 trace, Yosys mapped netlist, Liberty inspection, and OpenSTA power report.
 
 The checked-in Liberty inputs are inspected with `scripts/inspect_liberty.py`.
