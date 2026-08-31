@@ -21,6 +21,11 @@ includes the package, core, and top RTL. The corrected closure reaches Slang
 elaboration but still fails there; that remaining failure is tracked separately
 and is not converted into a synthesis result.
 
+On 2026-08-31, the corrected closure was tested with Slang's default mode,
+`--single-unit`, `--compat all`, and both options together. All four reached
+the same `Design elaboration failed` result, so compilation-unit and generic
+compatibility flags are not sufficient to resolve the remaining issue.
+
 ## 2026-08-31 — Ibex synthesis probe remains unclaimed at gate level
 
 **Finding.** FuseSoC source closure resolution and simple-system simulation are
