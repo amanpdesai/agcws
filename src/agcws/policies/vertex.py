@@ -57,6 +57,7 @@ class VertexAgent(AgentPolicy):
         self.last_usage: dict[str, int] = {"tokens_in": 0, "tokens_out": 0}
 
         def propose(adapter, goal, history, n):
+            self.last_usage = {"tokens_in": 0, "tokens_out": 0}
             payload = build_payload(adapter, goal, history, n, system_prompt)
             generated = generate(model, payload)
             if isinstance(generated, tuple):

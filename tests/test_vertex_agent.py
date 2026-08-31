@@ -27,6 +27,23 @@ def test_vertex_records_injected_usage_metadata():
     assert agent.last_usage == {"tokens_in": 12, "tokens_out": 7}
 
 
+def test_vertex_clears_usage_before_malformed_batch():
+    calls = 0
+
+    def generate(*_):
+        nonlocal calls
+        calls += 1
+        if calls == 1:
+            return ('[{"operations": []}]', {"tokens_in": 12, "tokens_out": 7})
+        return "not-json"
+
+    agent = VertexAgent(generate, "system", model="fake")
+    agent.propose(None, ScalarGoal(0.5), [], 1)
+    with pytest.raises(ValueError):
+        agent.propose(None, ScalarGoal(0.5), [], 1)
+    assert agent.last_usage == {"tokens_in": 0, "tokens_out": 0}
+
+
 def test_vertex_boundary_rejects_non_json():
     with pytest.raises(ValueError, match="valid JSON"):
         parse_candidates("not-json", 2)
