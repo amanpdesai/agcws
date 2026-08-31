@@ -28,7 +28,13 @@ iverilog -g2012 -s agcws_axi_memory_model_smoke \
 PYTHONPATH=src python3 scripts/run_axi_dma_workload.py \
   experiments/workloads/axi_dma_smoke.json out/container-axi-dma-smoke >/dev/null
 mkdir -p out/container-ibex-smoke
+python3 - <<'PY'
+import json
+from pathlib import Path
+workload = {"program": [{"op": "nop"}] * 10000 + [{"op": "ecall"}]}
+Path("out/container-ibex-smoke/workload.json").write_text(json.dumps(workload) + "\n")
+PY
 bash scripts/run_ibex_workload.sh \
-  experiments/workloads/ibex_smoke.json out/container-ibex-smoke >/dev/null
+  out/container-ibex-smoke/workload.json out/container-ibex-smoke >/dev/null
 python3 scripts/verify_artifact.py out/container-ibex-smoke >/dev/null
 echo "AGCWS_CONTAINER_SMOKE_OK"

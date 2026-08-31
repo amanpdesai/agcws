@@ -14,7 +14,10 @@ objcopy=${AGCWS_RISCV_OBJCOPY:-riscv64-unknown-elf-objcopy}
 fst2vcd=${AGCWS_FST2VCD:-fst2vcd}
 
 mkdir -p "$out_dir"
-cp "$workload" "$out_dir/workload.json"
+workload_abs=$(cd "$(dirname "$workload")" && pwd)/$(basename "$workload")
+if [[ "$workload_abs" != "$(cd "$out_dir" && pwd)/workload.json" ]]; then
+  cp "$workload" "$out_dir/workload.json"
+fi
 PYTHONPATH=src "${AGCWS_PYTHON:-python3}" scripts/compile_ibex_workload.py \
   "$workload" "$out_dir/workload.elf" --gcc "$gcc" --objcopy "$objcopy"
 
@@ -24,9 +27,9 @@ if [[ ! -x "$sim" ]]; then
 fi
 
 sim_dir=$(cd "$(dirname "$sim")" && pwd)
-workload_abs=$(cd "$(dirname "$out_dir/workload.elf")" && pwd)/$(basename "$out_dir/workload.elf")
+elf_abs=$(cd "$(dirname "$out_dir/workload.elf")" && pwd)/$(basename "$out_dir/workload.elf")
 (cd "$out_dir" && "$sim_dir/Vibex_simple_system" \
-  --meminit=ram,"$workload_abs" -t > simulator.stdout 2>&1)
+  --meminit=ram,"$elf_abs" -t > simulator.stdout 2>&1)
 
 test -s "$out_dir/ibex_simple_system_pcount.csv"
 test -s "$out_dir/sim.fst"

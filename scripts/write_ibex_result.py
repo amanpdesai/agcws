@@ -10,6 +10,8 @@ from pathlib import Path
 
 from agcws.provenance import input_record, toolchain_record
 
+USEFUL_WORK_FLOOR = 10_000
+
 
 def main() -> None:
     parser = argparse.ArgumentParser()
@@ -27,7 +29,8 @@ def main() -> None:
               else args.artifact / "sim.fst",
               "performance_counters": args.artifact / "ibex_simple_system_pcount.csv"}
     (args.artifact / "result.json").write_text(json.dumps({
-        "valid": useful_work > 0,
+        "valid": useful_work >= USEFUL_WORK_FLOOR,
+        "useful_work_floor": USEFUL_WORK_FLOOR,
         "useful_work": useful_work,
         "counters": counters,
         "provenance": {
