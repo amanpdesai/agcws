@@ -24,6 +24,7 @@ ultimately pinned in the container image.
 | OpenSTA (`sta`) | synthesis-level timing/power report | Set by `AGCWS_OPENSTA` | Container image/version |
 | Liberty library | cell power/timing characterization | Copied into `third_party/liberty/`; selected by `AGCWS_LIBERTY` | Store path/checksum in provenance; inspect before claims |
 | Icarus Verilog | small smoke tests | `/usr/bin/iverilog` | Optional fallback, not power oracle |
+| Matplotlib | deterministic activity figures | Optional analysis extra | Install with `make analysis-install` |
 
 ## Source dependencies to pin as submodules
 

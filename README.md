@@ -12,6 +12,9 @@ remain in progress.
 
 See `docs/ARCHITECTURE.md` and `docs/PLAN.md`.
 
+Install the optional plotting dependency with `make analysis-install` before
+running `make plot-activity` in a fresh environment.
+
 ## Common tasks
 
 The Makefile is a thin operator surface over the reproducible scripts:
