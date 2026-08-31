@@ -69,6 +69,8 @@ RUN python -m pip install --upgrade pip && \
 RUN python -m pip install -e '.[analysis,verification]'
 
 ENV PYTHONUNBUFFERED=1 \
+    VENV_PYTHON=python \
+    MPLCONFIGDIR=/tmp/matplotlib \
     AGCWS_VERILATOR=/usr/bin/verilator \
     AGCWS_YOSYS=/usr/bin/yosys \
     AGCWS_OPENSTA=/usr/local/bin/sta \
