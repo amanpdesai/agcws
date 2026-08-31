@@ -41,3 +41,14 @@ def test_find_eda_manifest_selects_core_manifest(tmp_path: Path):
     manifest = expected / "ibex_top_0.1.eda.yml"
     manifest.write_text("files: []\n")
     assert find_eda_manifest(tmp_path, "lowrisc:ibex:ibex_top") == manifest
+
+
+def test_find_eda_manifest_prefers_lint_when_simulation_manifest_exists(tmp_path: Path):
+    lint = tmp_path / "lint-verilator" / "ibex_top_0.1.eda.yml"
+    sim = tmp_path / "sim-verilator" / "ibex_top_0.1.eda.yml"
+    lint.parent.mkdir()
+    sim.parent.mkdir()
+    lint.write_text("files: []\n")
+    sim.write_text("files: []\n")
+
+    assert find_eda_manifest(tmp_path, "lowrisc:ibex:ibex_top") == lint

@@ -44,12 +44,22 @@ def resolve_manifest(manifest: Path) -> tuple[list[dict[str, str | int]], list[s
 
 
 def find_eda_manifest(build_root: Path, core_id: str) -> Path:
-    """Find the unique EDA manifest emitted for a FuseSoC core ID."""
+    """Find the lint EDA manifest emitted for a FuseSoC core ID.
+
+    FuseSoC may emit manifests for both lint and simulation setup.  The lint
+    manifest is the source-of-truth closure for synthesis and fingerprinting.
+    """
     leaf = core_id.split(":")[-1]
-    matches = sorted(build_root.glob(f"**/{leaf}_*.eda.yml"))
+    # FuseSoC prefixes generated filenames with vendor and library, e.g.
+    # ``lowrisc_ibex_ibex_simple_system_0.eda.yml``.
+    matches = sorted(build_root.glob(f"**/*{leaf}_*.eda.yml"))
+    lint_matches = [path for path in matches if path.parent.name == "lint-verilator"]
+    if len(lint_matches) == 1:
+        return lint_matches[0]
     if len(matches) != 1:
         raise FileNotFoundError(
-            f"expected one EDA manifest for {core_id}, found {len(matches)}"
+            f"expected one lint EDA manifest for {core_id}, found "
+            f"{len(lint_matches)} among {len(matches)} manifests"
         )
     return matches[0]
 
