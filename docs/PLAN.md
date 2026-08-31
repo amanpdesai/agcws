@@ -30,10 +30,11 @@ results; they are not the final multi-design statistical study.
 
 Slice 7 currently has deterministic DMA channel harnesses, a coupled
 source-to-destination memory-copy harness with VCD/activity provenance,
-workload validation, useful-work gating, and provenance. It also has a
+workload validation, useful-work gating, provenance, and Sky130/Nangate45
+synthesis/OpenSTA validation. It also has a
 deterministic Ibex JSON-to-ELF compiler and upstream simple-system Verilator
-runner. Synthesis/evaluation integration remains before both adapters are
-experiment-ready.
+runner. Comparative DMA workload runs and full Ibex synthesis/power integration
+remain before the widened experiment is complete.
 The pinned upstream coupled-DMA reference test now passes through the isolated
 `make upstream-dma-reference` target; it is a protocol oracle, not the project
 runtime, and does not change this milestone's status.

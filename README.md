@@ -47,7 +47,8 @@ docker run --rm agcws:dev bash scripts/container_smoke.sh
 OpenTitan AES (register/data) is runnable. The verilog-axi `axi_dma` adapter
 (descriptors) has deterministic read/write harnesses plus a coupled
 source-to-destination memory-copy harness with waveform/activity provenance;
-top-level DMA synthesis/power evaluation remains in progress. Ibex (instruction stream)
+top-level DMA synthesis/power evaluation now works for Sky130 and Nangate45;
+comparative DMA search studies remain in progress. Ibex (instruction stream)
 now has a deterministic JSON-to-ELF compiler and upstream simple-system
 Verilator runner that collects retirement counters and FST traces.
 
@@ -56,8 +57,8 @@ Verilator runner that collects retirement counters and FST traces.
 The pinned CHIA commit and tool/model provenance are recorded in results and `docs/DECISIONS.md`. Large waveform artifacts are ignored.
 
 Verification is available locally through the Python contract suite, Makefile
-smoke targets, and Docker build/smoke test. GitHub Actions is intentionally not
-used. The container includes the open EDA flow and copied Liberty inputs; cloud
+smoke targets, and Docker build/smoke test. The container includes the open EDA
+flow and copied Liberty inputs; cloud
 credentials and optional LLM integrations are exercised only in experiments.
 It also includes the `riscv64-unknown-elf` compiler/binutils pair, FuseSoC,
 and the native dependencies needed to build and run the pinned Ibex simulator.
