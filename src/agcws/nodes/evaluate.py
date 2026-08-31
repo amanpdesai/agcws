@@ -10,6 +10,8 @@ def evaluate_power(command: list[str], netlist: NetlistArtifact, activity: Activ
     result = run_command(command, cwd=output_dir)
     report = output_dir / "power.rpt"
     if result.returncode != 0:
-        return result, PowerProfile(0.0, 0.0, valid=False, fidelity="synthesis")
+        raise RuntimeError(f"OpenSTA failed with exit code {result.returncode}: {result.stderr.strip()}")
+    if not report.is_file():
+        raise FileNotFoundError(f"OpenSTA did not produce expected report: {report}")
     profile = parse_opensta_power_file(report, provenance={"report": str(report), "fidelity": "synthesis"})
     return result, profile
