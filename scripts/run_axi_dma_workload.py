@@ -86,8 +86,10 @@ def main() -> int:
             artifacts[direction] = {"path": str(waveform.relative_to(out_dir)),
                                     "sha256": sha256(waveform), "bytes": waveform.stat().st_size,
                                     "activity_path": str((transfer_dir / direction / "activity.json").relative_to(out_dir)),
+                                    "waveform_sha256": activity["waveform_sha256"],
                                     "total_transitions": activity["total_transitions"],
-                                    "clock_edges": activity["clock_edges"]}
+                                    "clock_edges": activity["clock_edges"],
+                                    "normalized_windows": activity["normalized_windows"]}
         records.append({"index": index, "src": transfer["src"], "dst": transfer["dst"],
                         "length": transfer["length"], "status": "channel_rtl_smoke",
                         "terminated": True, "assertions_ok": True, "outputs_ok": True,
