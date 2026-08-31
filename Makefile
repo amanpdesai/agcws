@@ -9,8 +9,10 @@ BASELINE_DIR ?= out/aes-baseline-matrix
 CORPUS_DIR ?= out/aes-random-corpus
 TEMPORAL_CORPUS_DIR ?= out/aes-temporal-corpus
 CROSS_PDK_DIR ?= out/aes-cross-pdk
+DMA_CROSS_PDK_DIR ?= out/axi-dma-cross-pdk
 FINALIST_TRIALS ?= $(BASELINE_DIR)/target-0.50/seed-0/random/trials.jsonl
 WAVEFORM ?= $(EVAL_DIR)/activity.vcd
+DMA_WAVEFORM ?= out/axi-dma-coupled/activity.vcd
 P_MIN ?= 128.726293
 P_MAX ?= 130.431250
 CALIBRATION ?= experiments/calibration/aes_activity_calibration.json
@@ -71,7 +73,8 @@ baseline-matrix:
 cross-pdk:
 	bash scripts/run_aes_cross_pdk.sh "$(WAVEFORM)" "$(CROSS_PDK_DIR)"
 cross-pdk-dma:
-	bash scripts/run_axi_dma_cross_pdk.sh "$(WAVEFORM)" "$${AGCWS_ARTIFACT_ROOT:-out}/axi-dma-cross-pdk"
+	@test -f "$(DMA_WAVEFORM)" || (echo "missing DMA_WAVEFORM=$(DMA_WAVEFORM)" >&2; exit 1)
+	bash scripts/run_axi_dma_cross_pdk.sh "$(DMA_WAVEFORM)" "$(DMA_CROSS_PDK_DIR)"
 axi-dma-search:
 	PYTHONPATH=src $(VENV_PYTHON) scripts/run_axi_dma_search.py --p-min 0 --p-max 1
 validate-axi-dma-finalists:
