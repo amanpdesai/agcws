@@ -64,7 +64,7 @@ WORKDIR /opt/agcws
 RUN python -m pip install --upgrade pip && \
     python -m pip install fusesoc && \
     python -m pip install -e /opt/chia
-RUN python -m pip install -e '.[analysis]'
+RUN python -m pip install -e '.[analysis,verification]'
 
 ENV PYTHONUNBUFFERED=1 \
     AGCWS_VERILATOR=/usr/bin/verilator \
