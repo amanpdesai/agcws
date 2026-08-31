@@ -64,7 +64,9 @@ def main() -> None:
             per_cycle_toggles=activity["per_cycle_toggles"],
             windowed=activity["window_toggles"],
             useful_work=float(match.group(1)), valid=True, fidelity="activity",
-            provenance={"oracle": "verilator-vcd", "workload_sha256": file_sha256(workload_path),
+            provenance={"oracle": "verilator-vcd",
+                        "metric": "total_transitions_per_clock_edge",
+                        "workload_sha256": file_sha256(workload_path),
                         "activity_sha256": file_sha256(trial_dir / "activity.json"),
                         "tools": toolchain_record({
                             "verilator": (config.VERILATOR, ("--version",)),

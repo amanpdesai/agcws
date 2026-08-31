@@ -56,9 +56,10 @@ def main() -> None:
                             fidelity="activity", provenance={
                                 "activity": "activity.json",
                                 "workload_sha256": file_sha256(workload_path),
-                                "activity_sha256": file_sha256(trial_dir / "activity.json"),
-                                "oracle": "verilator-vcd",
-                                "tools": toolchain_record({
+                            "activity_sha256": file_sha256(trial_dir / "activity.json"),
+                            "oracle": "verilator-vcd",
+                            "metric": "total_transitions_per_clock_edge",
+                            "tools": toolchain_record({
                                     "verilator": (config.VERILATOR, ("--version",)),
                                 }),
                             })
