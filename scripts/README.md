@@ -174,3 +174,9 @@ Run and validate the functional Ibex artifact:
 make run-ibex
 make verify-ibex IBEX_ARTIFACT=out/ibex
 ```
+
+Run the remote CHIA simulation-to-activity acceptance DAG:
+
+```bash
+make chia-node-smoke
+```
