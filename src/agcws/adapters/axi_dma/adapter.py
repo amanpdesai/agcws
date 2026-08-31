@@ -24,7 +24,6 @@ class AxiDmaAdapter(DesignAdapter):
         return Validity(True)
 
     def validate_protocol(self, workload: dict) -> Validity:
-        active = 0
         for transfer in workload["transfers"]:
             for field in ("src", "dst", "length"):
                 if not isinstance(transfer.get(field), int):
@@ -35,8 +34,8 @@ class AxiDmaAdapter(DesignAdapter):
                 return Validity(False, ValidityStage.PROTOCOL, "addresses must be data-width aligned")
             if (transfer["src"] & 0xfff) + transfer["length"] > 0x1000:
                 return Validity(False, ValidityStage.PROTOCOL, "transfer crosses an AXI 4KB boundary")
-            active += 1
-            if active > self.channel_depth:
+            outstanding = transfer.get("outstanding", 1)
+            if not isinstance(outstanding, int) or outstanding < 1 or outstanding > self.channel_depth:
                 return Validity(False, ValidityStage.PROTOCOL, "channel depth exceeded")
         return Validity(True)
 

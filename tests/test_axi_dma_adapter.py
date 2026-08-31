@@ -20,3 +20,14 @@ def test_axi_dma_rejects_unaligned_address():
 def test_axi_dma_rejects_four_kilobyte_crossing():
     result = AxiDmaAdapter().validate_protocol({"transfers": [transfer(src=0x1ff8, length=16)]})
     assert result.stage is ValidityStage.PROTOCOL
+
+
+def test_axi_dma_allows_many_sequential_descriptors():
+    result = AxiDmaAdapter().validate_protocol({"transfers": [transfer(src=i * 0x1000, dst=0x2000, length=4096)
+                                                                  for i in range(9)]})
+    assert result.valid
+
+
+def test_axi_dma_rejects_true_outstanding_depth_overflow():
+    result = AxiDmaAdapter().validate_protocol({"transfers": [transfer(outstanding=9)]})
+    assert result.stage is ValidityStage.PROTOCOL
