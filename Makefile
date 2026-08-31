@@ -22,7 +22,7 @@ BUDGET ?= 200
 SEEDS ?= 0
 TARGETS ?= 0.10 0.25 0.50 0.75 0.90
 
-.PHONY: test lint dev-install analysis-install verification-install chia-install chia-smoke upstream-dma-reference research-smoke verify-artifact inspect-liberty check-liberty-coverage synth-aes evaluate-aes determinism plot-activity random-corpus temporal-corpus temporal-search compositional-search baseline-matrix cross-pdk validate-finalists cross-pdk-dma axi-dma-search validate-axi-dma-finalists check-axi-dma-rtl run-axi-dma-rd-smoke run-axi-dma-wr-smoke run-axi-dma-workload run-axi-dma-coupled run-axi-memory-smoke compile-ibex resolve-ibex-sources run-ibex verify container-smoke
+.PHONY: test lint dev-install analysis-install verification-install chia-install chia-smoke upstream-dma-reference research-smoke verify-artifact inspect-liberty check-liberty-coverage synth-aes evaluate-aes determinism plot-activity plot-search-curves random-corpus temporal-corpus temporal-search compositional-search baseline-matrix cross-pdk validate-finalists cross-pdk-dma axi-dma-search validate-axi-dma-finalists check-axi-dma-rtl run-axi-dma-rd-smoke run-axi-dma-wr-smoke run-axi-dma-workload run-axi-dma-coupled run-axi-memory-smoke compile-ibex resolve-ibex-sources run-ibex verify container-smoke
 test:
 	$(VENV_PYTHON) -m pytest -q
 dev-install:
@@ -60,6 +60,8 @@ determinism:
 	PYTHONPATH=src $(VENV_PYTHON) scripts/check_aes_determinism.py "$(WORKLOAD)" "$(SYNTH_DIR)" --out "$${AGCWS_ARTIFACT_ROOT:-out}/aes-determinism"
 plot-activity:
 	$(VENV_PYTHON) analysis/plot_activity.py "$(EVAL_DIR)/activity.json" --out "$${AGCWS_ARTIFACT_ROOT:-out}/figures/activity.png"
+plot-search-curves:
+	$(VENV_PYTHON) analysis/plot_search_curves.py "$(BASELINE_DIR)" --out "$${AGCWS_ARTIFACT_ROOT:-out}/figures/search-curves.png"
 random-corpus:
 	PYTHONPATH=src $(VENV_PYTHON) scripts/run_aes_random_corpus.py "$(SYNTH_DIR)" --out "$(CORPUS_DIR)"
 temporal-corpus:

@@ -33,6 +33,12 @@ Each search directory contains `summary.json` with the pre-registered
 best-so-far AUC, solve status, right-censored evaluations-to-target, policy,
 design, and seed. The aggregator groups by policy and canonical design name.
 
+Generate a deterministic convergence figure from completed runs:
+
+```bash
+make plot-search-curves BASELINE_DIR=out/aes-baseline-matrix
+```
+
 Run the declared local baseline matrix (override `AGCWS_SEARCH_BUDGET` and
 space-separated `AGCWS_SEARCH_SEEDS` as needed):
 
