@@ -39,6 +39,19 @@ Generate a deterministic convergence figure from completed runs:
 make plot-search-curves BASELINE_DIR=out/aes-baseline-matrix
 ```
 
+Validate a completed AES corpus against both pre-built PDK netlists. The
+corpus must contain `trial-*/workload.json`; each report root must contain the
+matching `trial-*/power.rpt`. The command fails closed if a workload or either
+PDK report is missing, and records paired power ranges plus Spearman rank
+agreement:
+
+Invoke the script directly with the two report roots:
+
+```bash
+python3 scripts/validate_aes_pdk_corpus.py CORPUS SKY_REPORTS NANGATE_REPORTS \
+  --out out/aes-pdk-corpus-validation.json
+```
+
 Run the declared local baseline matrix (override `AGCWS_SEARCH_BUDGET` and
 space-separated `AGCWS_SEARCH_SEEDS` as needed):
 
