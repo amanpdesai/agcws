@@ -110,3 +110,16 @@ silently pooling the two power scales.
 **Consequence.** Cross-PDK rank agreement is a reported diagnostic and not an
 assumed success criterion; the experiment must distinguish activity-profile
 agreement from mapped-power agreement.
+
+## 2026-08-31 — Cross-PDK agreement is reported by corpus class
+
+**Finding.** The identical 10-workload AES random corpus (seed 17) produced
+`Spearman rho = 1.0` between Sky130 and Nangate45 mean-power ordering, while
+the four-workload temporal schedule corpus produced `rho = -1.0`.
+**Decision.** Report corpus-class-specific agreement and retain both datasets.
+Do not average the coefficients or present the random-corpus result as proof
+that temporal profile rankings transfer across libraries.
+**Rationale.** Random workloads and hand-shaped temporal schedules probe
+different operating regimes; their disagreement is scientifically meaningful.
+**Consequence.** Future claims require larger, preregistered corpora and must
+separate activity-shape agreement from mapped-power rank agreement.
