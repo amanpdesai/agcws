@@ -21,8 +21,11 @@ def test_activity_node_writes_cycle_and_window_artifact(tmp_path: Path):
     result = activity_node(str(waveform), str(output), windows=2)
 
     activity = json.loads(output.read_text())
-    assert result == {"activity": str(output), "clock_edges": 2,
-                      "total_transitions": 6}
+    assert result["activity"] == str(output)
+    assert result["clock_edges"] == 2
+    assert result["total_transitions"] == 6
+    assert result["normalized_windows"] == [1.0, 0.5]
+    assert len(result["waveform_sha256"]) == 64
     assert len(activity["per_cycle_toggles"]) == 2
     assert len(activity["window_toggles"]) == 2
 

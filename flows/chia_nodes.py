@@ -41,7 +41,9 @@ def activity_node(waveform: str, output_file: str, clock_name: str = "clk_i",
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(activity, indent=2, sort_keys=True) + "\n")
     return {"activity": str(output), "clock_edges": activity["clock_edges"],
-            "total_transitions": activity["total_transitions"]}
+            "total_transitions": activity["total_transitions"],
+            "normalized_windows": activity["normalized_windows"],
+            "waveform_sha256": activity["waveform_sha256"]}
 
 
 @ChiaFunction()
