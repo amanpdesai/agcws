@@ -55,19 +55,25 @@ class TaskStore:
         key = task_key(name, inputs)
         output_dir = self.root / name / key
         manifest = output_dir / "task.json"
+        complete = {"name": name, "key": key, "inputs": inputs, "status": "complete"}
         if manifest.exists():
             try:
                 stored = json.loads(manifest.read_text())
             except json.JSONDecodeError:
                 stored = None
-            if stored == {"name": name, "key": key, "inputs": inputs, "status": "complete"}:
+            if stored == complete:
                 return TaskResult(name, key, output_dir, manifest, True)
 
         output_dir.mkdir(parents=True, exist_ok=True)
-        action(output_dir)
+        # A crashed/interrupted action must never look resumable.  The running
+        # marker is also useful when inspecting a task directory after failure.
         manifest.write_text(json.dumps(
-            {"name": name, "key": key, "inputs": inputs, "status": "complete"},
+            {"name": name, "key": key, "inputs": inputs, "status": "running"},
             indent=2,
             sort_keys=True,
         ) + "\n")
+        action(output_dir)
+        temporary = manifest.with_suffix(".json.tmp")
+        temporary.write_text(json.dumps(complete, indent=2, sort_keys=True) + "\n")
+        temporary.replace(manifest)
         return TaskResult(name, key, output_dir, manifest, False)
