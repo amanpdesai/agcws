@@ -29,6 +29,7 @@ def test_parse_smoke_vcd():
     assert len(result["window_toggles"]) == 8
     assert len(result["per_cycle_toggles"]) == result["clock_edges"]
     assert sum(result["per_cycle_toggles"]) == result["total_transitions"]
+    assert len(result["waveform_sha256"]) == 64
 
 
 def test_region_attribution_keeps_unmatched_and_ambiguous_signals_visible():

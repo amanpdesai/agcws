@@ -5,6 +5,7 @@ from collections import defaultdict
 from bisect import bisect_right
 import json
 import re
+from agcws.provenance import file_sha256
 from agcws.nodes.commands import CommandResult, run_command
 
 _VAR_RE = re.compile(r"\$var\s+\S+\s+(\d+)\s+(\S+)\s+(.+?)\s+\$end")
@@ -15,6 +16,7 @@ class ActivityArtifact:
     annotation_fraction: float | None = None
     per_cycle_toggles: tuple[int, ...] = ()
     window_toggles: tuple[int, ...] = ()
+    waveform_sha256: str | None = None
 
 def windowize(values: Sequence[int], windows: int) -> tuple[int, ...]:
     """Aggregate per-cycle toggles into deterministic coarse windows."""
@@ -96,7 +98,8 @@ def parse_vcd(path: Path, clock_name: str = "clk_i", windows: int = 16) -> dict:
         cycle = bisect_right(edges, timestamp) - 1
         if cycle >= 0:
             buckets[min(cycle * bucket_count // max(1, len(edges)), bucket_count - 1)] += count
-    return {"vcd": path.name, "clock": clock_name, "clock_edges": len(edges),
+    return {"vcd": path.name, "waveform_sha256": file_sha256(path),
+            "clock": clock_name, "clock_edges": len(edges),
             "total_transitions": sum(transitions.values()),
             "signal_transitions": dict(sorted(transitions.items())),
             "per_cycle_toggles": per_cycle, "window_toggles": buckets}
@@ -117,4 +120,5 @@ def extract_activity(command: list[str], waveform: Path, output_dir: Path, *, cl
         raise FileNotFoundError(f"activity command did not produce SAIF: {activity_file}")
     return result, ActivityArtifact(activity_file,
                                    per_cycle_toggles=tuple(activity["per_cycle_toggles"]),
-                                   window_toggles=tuple(activity["window_toggles"]))
+                                   window_toggles=tuple(activity["window_toggles"]),
+                                   waveform_sha256=activity["waveform_sha256"])
