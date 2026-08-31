@@ -4,6 +4,9 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
+import subprocess
+import sys
 from pathlib import Path
 
 from agcws.adapters.aes import AESAdapter
@@ -11,7 +14,9 @@ from agcws.experiments.runner import run_search
 from agcws.goals.schema import CompositionalGoal
 from agcws.nodes.power import PowerProfile
 from agcws.policies.random_search import RandomSearch
-from evaluate_aes_workload import evaluate
+from agcws import config
+from agcws.nodes.activity import attribute_regions
+from agcws.provenance import file_sha256, toolchain_record
 
 
 def main() -> None:
@@ -36,13 +41,34 @@ def main() -> None:
         trial_index += 1
         workload_path.parent.mkdir(parents=True, exist_ok=True)
         workload_path.write_text(json.dumps(workload, indent=2, sort_keys=True) + "\n")
-        result = evaluate(workload_path, args.synthesis_dir, trial_dir)
-        activity = result["activity"]
+        completed = subprocess.run(
+            [sys.executable, "scripts/run_aes_workload.py", str(workload_path),
+             "--out", str(trial_dir)], check=False, capture_output=True, text=True,
+        )
+        if completed.returncode:
+            detail = (completed.stderr or completed.stdout).strip()
+            raise RuntimeError(
+                f"activity simulation failed with exit code {completed.returncode}: {detail}"
+            )
+        log = (trial_dir / "run.log").read_text()
+        match = re.search(r"AES_CORE_WORKLOAD_DONE blocks=(\d+)", log)
+        if not match:
+            raise RuntimeError("simulation log has no completed-work marker")
+        activity = json.loads((trial_dir / "activity.json").read_text())
+        edges = max(1, int(activity["clock_edges"]))
         return PowerProfile(
-            mean_power=result["mean_power"], peak_power=result["mean_power"],
-            by_region=result["by_region"], per_cycle_toggles=activity["per_cycle_toggles"],
-            windowed=activity["window_toggles"], useful_work=result["useful_work"],
-            valid=True, fidelity="activity", provenance=result["provenance"],
+            mean_power=float(activity["total_transitions"]) / edges,
+            peak_power=float(max(activity["per_cycle_toggles"] or [0])),
+            by_region=attribute_regions(activity["signal_transitions"],
+                                         adapter.activity_region_prefixes),
+            per_cycle_toggles=activity["per_cycle_toggles"],
+            windowed=activity["window_toggles"],
+            useful_work=float(match.group(1)), valid=True, fidelity="activity",
+            provenance={"oracle": "verilator-vcd", "workload_sha256": file_sha256(workload_path),
+                        "activity_sha256": file_sha256(trial_dir / "activity.json"),
+                        "tools": toolchain_record({
+                            "verilator": (config.VERILATOR, ("--version",)),
+                        })},
         )
 
     trials = run_search(adapter, RandomSearch(args.seed), goal, evaluator,
