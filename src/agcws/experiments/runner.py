@@ -50,7 +50,13 @@ def run_search(
     proposal_index = 0
     while proposal_index < budget:
         requested = min(batch_size, budget - proposal_index)
-        candidates = policy.propose(adapter, goal, trials, requested)
+        try:
+            candidates = policy.propose(adapter, goal, trials, requested)
+        except (TypeError, ValueError):
+            # A malformed agent response is a failed proposal batch, not a
+            # reason to terminate the experiment. Empty slots are materialized
+            # below and consume the full requested budget.
+            candidates = []
         # Missing candidates consume their requested slots just like malformed
         # LLM output; this is the primary fairness unit.
         for slot in range(requested):

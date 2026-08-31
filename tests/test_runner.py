@@ -3,6 +3,7 @@ from agcws.experiments.runner import run_search
 from agcws.goals import ScalarGoal
 from agcws.nodes.power import PowerProfile
 from agcws.policies.random_search import RandomSearch
+from agcws.policies.agent import AgentPolicy
 
 
 def test_runner_counts_requested_slots_and_writes_curve(tmp_path):
@@ -25,3 +26,18 @@ def test_runner_applies_runtime_useful_work_gate():
     assert trials[0].validity.stage.value == "USEFUL_WORK"
     assert trials[0].profile is not None
     assert trials[0].loss is None
+
+
+def test_runner_records_malformed_batch_as_consumed_schema_slots():
+    policy = AgentPolicy(lambda *_: (_ for _ in ()).throw(ValueError("bad JSON")))
+    calls = []
+
+    def evaluate(workload):
+        calls.append(workload)
+        return PowerProfile(1.0, 1.0, useful_work=24, valid=True)
+
+    trials = run_search(AESAdapter(), policy, ScalarGoal(0.5), evaluate,
+                        budget=3, batch_size=3, p_min=0.0, p_max=2.0)
+    assert len(trials) == 3
+    assert not calls
+    assert all(trial.validity.stage.value == "SCHEMA" for trial in trials)
