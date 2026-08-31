@@ -54,6 +54,22 @@ def require_toplevel(sources: list[dict[str, str | int]], top: str) -> None:
         )
 
 
+def add_toplevel_fallback(root: Path, top: str, sources: list[dict[str, str | int]],
+                          include_dirs: list[str]) -> None:
+    """Add a checked-out top RTL file when a generated lint closure omits it."""
+    if any(f"module {top}" in Path(str(item["path"])).read_text(errors="ignore")
+           for item in sources):
+        return
+    candidates = [root / "rtl" / f"{top}.sv", root / "rtl" / f"{top}.v"]
+    for path in candidates:
+        if path.is_file():
+            sources.append({"path": str(path.resolve()), "sha256": sha256(path),
+                            "bytes": path.stat().st_size})
+            if str(path.parent.resolve()) not in include_dirs:
+                include_dirs.append(str(path.parent.resolve()))
+            return
+
+
 def add_declared_fileset(core_file: Path, fileset: str, sources: list[dict[str, str | int]],
                          include_dirs: list[str]) -> None:
     """Add direct files from an Ibex core fileset omitted by a lint target."""
@@ -118,6 +134,7 @@ def main() -> None:
                for item in sources):
         for core_file in ("ibex_pkg.core", "ibex_core.core", "ibex_top.core"):
             add_declared_fileset(root / core_file, "files_rtl", sources, include_dirs)
+    add_toplevel_fallback(root, top, sources, include_dirs)
     require_toplevel(sources, top)
     args.out.mkdir(parents=True, exist_ok=True)
     output = args.out / "sources.json"
