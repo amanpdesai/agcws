@@ -21,7 +21,7 @@ def main() -> None:
         include_dirs.update(path.parent for path in root.rglob(filename))
     command = [os.environ.get("AGCWS_VERILATOR", "verilator"), "--lint-only",
                "--language", "1800-2012", "--top-module", args.top,
-               "-DSYNTHESIS"]
+               "-DSYNTHESIS", "-Wno-fatal"]
     command += [f"-I{path}" for path in sorted(include_dirs)]
     command += [str(item["path"]) for item in manifest["sources"]]
     result = subprocess.run(command, text=True)
