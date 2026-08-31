@@ -112,8 +112,10 @@ def run_search(
             for trial in trials
         ) + "\n")
         (output_dir / "best_so_far.json").write_text(json.dumps({"error": curve}) + "\n")
-        (output_dir / "summary.json").write_text(json.dumps(
-            summarize_run(curve, goal.tolerance, budget=budget),
-            indent=2, sort_keys=True,
-        ) + "\n")
+        summary = summarize_run(curve, goal.tolerance, budget=budget)
+        summary.update({"policy": policy.name, "design": design or adapter.name,
+                        "seed": seed})
+        (output_dir / "summary.json").write_text(
+            json.dumps(summary, indent=2, sort_keys=True) + "\n"
+        )
     return trials

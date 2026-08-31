@@ -16,6 +16,9 @@ def test_runner_counts_requested_slots_and_writes_curve(tmp_path):
     assert len(__import__("json").loads((tmp_path / "best_so_far.json").read_text())["error"]) == 5
     summary = __import__("json").loads((tmp_path / "summary.json").read_text())
     assert summary["budget"] == 5
+    assert summary["policy"] == "random"
+    assert summary["design"] == AESAdapter.name
+    assert summary["seed"] == 0
     assert "auc_best_so_far" in summary
 
 
