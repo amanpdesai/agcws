@@ -77,6 +77,14 @@ def add_include_root(path: Path, include_dirs: list[str]) -> None:
         include_dirs.append(str(resolved))
 
 
+def add_include_file_dirs(root: Path, filenames: tuple[str, ...],
+                          include_dirs: list[str]) -> None:
+    """Add every generated directory containing an include-only file."""
+    for filename in filenames:
+        for path in root.rglob(filename):
+            add_include_root(path.parent, include_dirs)
+
+
 def add_declared_fileset(core_file: Path, fileset: str, sources: list[dict[str, str | int]],
                          include_dirs: list[str]) -> None:
     """Add direct files from an Ibex core fileset omitted by a lint target."""
@@ -143,6 +151,7 @@ def main() -> None:
             add_declared_fileset(root / core_file, "files_rtl", sources, include_dirs)
     add_toplevel_fallback(root, top, sources, include_dirs)
     add_include_root(root / "vendor/lowrisc_ip/dv/sv/dv_utils", include_dirs)
+    add_include_file_dirs(root, ("prim_util_memload.svh", "dv_fcov_macros.svh"), include_dirs)
     require_toplevel(sources, top)
     args.out.mkdir(parents=True, exist_ok=True)
     output = args.out / "sources.json"

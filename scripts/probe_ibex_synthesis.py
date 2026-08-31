@@ -39,6 +39,9 @@ def main() -> None:
         repository_root / "third_party/ibex/vendor/lowrisc_ip/dv/sv/dv_utils",
         repository_root / "third_party/ibex/build/lowrisc_ibex_ibex_top_0.1/lint-verilator/src/lowrisc_prim_util_memload_0/rtl",
     })
+    for filename in ("prim_util_memload.svh", "dv_fcov_macros.svh"):
+        include_dir_paths.update(path.parent for path in
+                                 (repository_root / "third_party/ibex").rglob(filename))
     include_dirs = sorted(str(path) for path in include_dir_paths if path.is_dir())
     yosys = os.environ.get("AGCWS_YOSYS", "yosys")
     plugin = os.environ.get("AGCWS_SLANG_PLUGIN", "")
