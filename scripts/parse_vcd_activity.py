@@ -8,7 +8,13 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 from pathlib import Path
+
+# The command is also called from shell-based simulator harnesses, where the
+# package may not be installed in the active interpreter.
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "src"))
 
 from agcws.nodes.activity import parse_vcd
 
