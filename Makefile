@@ -33,7 +33,7 @@ upstream-dma-reference:
 	$(VENV_PYTHON) -m pip install -e '.[verification]'
 	bash scripts/run_axi_dma_upstream_reference.sh "$${AGCWS_ARTIFACT_ROOT:-out}/axi-dma-upstream-reference"
 research-smoke:
-	bash scripts/research_smoke.sh "$(SYNTH_DIR)" "$${AGCWS_ARTIFACT_ROOT:-out/research-smoke}"
+	AGCWS_PYTHON=$(VENV_PYTHON) bash scripts/research_smoke.sh "$(SYNTH_DIR)" "$${AGCWS_ARTIFACT_ROOT:-out/research-smoke}"
 verify-artifact:
 	$(VENV_PYTHON) scripts/verify_artifact.py "$${AGCWS_ARTIFACT:-$(EVAL_DIR)}"
 lint:
