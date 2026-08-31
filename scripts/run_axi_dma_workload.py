@@ -3,10 +3,20 @@ from __future__ import annotations
 
 import json
 import subprocess
+import hashlib
 import sys
 from pathlib import Path
 
 from agcws.adapters.axi_dma.adapter import AxiDmaAdapter
+from agcws.provenance import toolchain_record
+
+
+def sha256(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as stream:
+        for block in iter(lambda: stream.read(1024 * 1024), b""):
+            digest.update(block)
+    return digest.hexdigest()
 
 
 def main() -> int:
@@ -41,8 +51,20 @@ def main() -> int:
                         "terminated": True, "assertions_ok": True, "outputs_ok": True})
     simulation = {"terminated": True, "assertions_ok": True, "outputs_ok": True,
                   "useful_work": useful_work, "transfer_count": len(records)}
+    provenance = {
+        "adapter": adapter.name,
+        "rtl_commit": subprocess.check_output(
+            ["git", "-C", str(root / "third_party/verilog-axi"), "rev-parse", "HEAD"], text=True
+        ).strip(),
+        "workload_sha256": sha256(workload_path),
+        "tools": toolchain_record({
+            "iverilog": ("iverilog", ("-V",)),
+            "vvp": ("vvp", ("-V",)),
+        }),
+    }
     (out_dir / "workload_manifest.json").write_text(json.dumps(
-        {"workload": workload, "transfers": records, "simulation": simulation}, indent=2
+        {"workload": workload, "transfers": records, "simulation": simulation,
+         "provenance": provenance}, indent=2
     ) + "\n")
     print(f"AGCWS_AXI_DMA_WORKLOAD_OK transfers={len(records)}")
     return 0

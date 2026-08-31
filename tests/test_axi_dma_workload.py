@@ -18,6 +18,9 @@ def test_axi_dma_workload_drives_both_channels(tmp_path: Path):
     manifest = json.loads((tmp_path / "out/workload_manifest.json").read_text())
     assert manifest["simulation"]["useful_work"] == 4096
     assert manifest["simulation"]["outputs_ok"]
+    assert len(manifest["provenance"]["rtl_commit"]) == 40
+    assert manifest["provenance"]["workload_sha256"]
+    assert manifest["provenance"]["tools"]["iverilog"]
 
 
 def test_axi_dma_workload_enforces_useful_work_floor(tmp_path: Path):
