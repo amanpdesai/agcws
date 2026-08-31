@@ -20,6 +20,13 @@ def test_opensta_result_declares_power_metric():
     assert '"power_metric": "opensta_total_power_w"' in text
 
 
+def test_opensta_scripts_have_bounded_runtime():
+    for name in ("scripts/run_opensta_aes.sh", "scripts/run_opensta_axi_dma.sh"):
+        text = Path(name).read_text()
+        assert "AGCWS_OPENSTA_TIMEOUT_S" in text
+        assert "timeout --kill-after=5s" in text
+
+
 def test_simulator_failure_is_not_returned_as_a_valid_artifact(tmp_path):
     with pytest.raises(RuntimeError, match="simulator failed"):
         run_simulator(["sh", "-c", "echo broken >&2; exit 3"], tmp_path, 5)
