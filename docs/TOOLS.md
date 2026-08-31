@@ -67,7 +67,9 @@ and one stock CHIA case completes. The container smoke includes the local
 CHIA/Ray task check as well as the EDA checks. Slice 2 additionally requires a Verilator
 trace, Yosys mapped netlist, Liberty inspection, and OpenSTA power report.
 
-The checked-in Liberty inputs are inspected with `scripts/inspect_liberty.py`.
+The checked-in Liberty inputs are inspected with `make inspect-liberties`, which
+reports characterization features and SHA-256 digests for both Sky130 and
+Nangate45. `make inspect-liberty` remains available for the primary library.
 The complete AES vertical-slice acceptance check is `make research-smoke`; it
 reuses an existing synthesis manifest and produces scalar evaluation,
 determinism, activity-figure, temporal-search, and compositional-search
