@@ -7,6 +7,7 @@ resumable output directory.
 from __future__ import annotations
 
 from dataclasses import dataclass
+import fcntl
 import hashlib
 import json
 from pathlib import Path
@@ -61,43 +62,43 @@ class TaskStore:
             output_path = Path(relative)
             if output_path.is_absolute() or ".." in output_path.parts:
                 raise ValueError(f"required output must stay inside task directory: {relative}")
-        complete = {"name": name, "key": key, "inputs": inputs, "status": "complete"}
-        if manifest.exists():
-            try:
-                stored = json.loads(manifest.read_text())
-            except json.JSONDecodeError:
-                stored = None
-            outputs_exist = all((output_dir / relative).is_file()
-                                for relative in required_outputs)
-            if stored == complete and outputs_exist:
-                return TaskResult(name, key, output_dir, manifest, True)
-
         output_dir.mkdir(parents=True, exist_ok=True)
-        # A crashed/interrupted action must never look resumable.  The running
-        # marker is also useful when inspecting a task directory after failure.
-        manifest.write_text(json.dumps(
-            {"name": name, "key": key, "inputs": inputs, "status": "running"},
-            indent=2,
-            sort_keys=True,
-        ) + "\n")
-        try:
-            action(output_dir)
-        except Exception as exc:
-            manifest.write_text(json.dumps({
-                "name": name, "key": key, "inputs": inputs,
-                "status": "failed", "error": f"{type(exc).__name__}: {exc}",
-            }, indent=2, sort_keys=True) + "\n")
-            raise
-        missing = [relative for relative in required_outputs
-                   if not (output_dir / relative).is_file()]
-        if missing:
-            error = f"task did not produce required outputs: {', '.join(missing)}"
-            manifest.write_text(json.dumps({
-                "name": name, "key": key, "inputs": inputs,
-                "status": "failed", "error": error,
-            }, indent=2, sort_keys=True) + "\n")
-            raise FileNotFoundError(error)
-        temporary = manifest.with_suffix(".json.tmp")
-        temporary.write_text(json.dumps(complete, indent=2, sort_keys=True) + "\n")
-        temporary.replace(manifest)
-        return TaskResult(name, key, output_dir, manifest, False)
+        with (output_dir / ".lock").open("w") as lock_file:
+            fcntl.flock(lock_file.fileno(), fcntl.LOCK_EX)
+            complete = {"name": name, "key": key, "inputs": inputs, "status": "complete"}
+            if manifest.exists():
+                try:
+                    stored = json.loads(manifest.read_text())
+                except json.JSONDecodeError:
+                    stored = None
+                outputs_exist = all((output_dir / relative).is_file()
+                                    for relative in required_outputs)
+                if stored == complete and outputs_exist:
+                    return TaskResult(name, key, output_dir, manifest, True)
+
+            # A crashed/interrupted action must never look resumable.
+            manifest.write_text(json.dumps(
+                {"name": name, "key": key, "inputs": inputs, "status": "running"},
+                indent=2, sort_keys=True,
+            ) + "\n")
+            try:
+                action(output_dir)
+            except Exception as exc:
+                manifest.write_text(json.dumps({
+                    "name": name, "key": key, "inputs": inputs,
+                    "status": "failed", "error": f"{type(exc).__name__}: {exc}",
+                }, indent=2, sort_keys=True) + "\n")
+                raise
+            missing = [relative for relative in required_outputs
+                       if not (output_dir / relative).is_file()]
+            if missing:
+                error = f"task did not produce required outputs: {', '.join(missing)}"
+                manifest.write_text(json.dumps({
+                    "name": name, "key": key, "inputs": inputs,
+                    "status": "failed", "error": error,
+                }, indent=2, sort_keys=True) + "\n")
+                raise FileNotFoundError(error)
+            temporary = manifest.with_suffix(".json.tmp")
+            temporary.write_text(json.dumps(complete, indent=2, sort_keys=True) + "\n")
+            temporary.replace(manifest)
+            return TaskResult(name, key, output_dir, manifest, False)

@@ -1,6 +1,8 @@
 from pathlib import Path
 import json
+import multiprocessing
 import pytest
+import time
 
 from agcws.tasks import TaskStore, file_digest, task_key
 
@@ -76,3 +78,30 @@ def test_task_rejects_output_path_escape(tmp_path: Path):
     with pytest.raises(ValueError, match="inside task directory"):
         store.run("evaluate", {}, lambda output: None,
                   required_outputs=("../result.json",))
+
+
+def test_task_store_serializes_same_key_across_processes(tmp_path: Path):
+    calls = tmp_path / "calls"
+
+    def worker(root: str, marker: str) -> None:
+        def action(output: Path):
+            calls_path = Path(root) / "calls"
+            calls_path.write_text(
+                calls_path.read_text() + marker if calls_path.exists() else marker
+            )
+            time.sleep(0.05)
+            (output / "result.txt").write_text("ok")
+
+        TaskStore(Path(root) / "tasks").run(
+            "evaluate", {"input": "same"}, action,
+            required_outputs=("result.txt",),
+        )
+
+    processes = [multiprocessing.Process(target=worker, args=(str(tmp_path), str(index)))
+                 for index in range(2)]
+    for process in processes:
+        process.start()
+    for process in processes:
+        process.join()
+        assert process.exitcode == 0
+    assert calls.read_text() in {"0", "1"}
