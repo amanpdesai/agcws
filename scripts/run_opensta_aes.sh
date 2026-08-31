@@ -19,7 +19,7 @@ read_verilog $synth_dir/mapped.v
 link_design aes_cipher_core
 create_clock -name clk_i -period 10 [get_ports clk_i]
 read_vcd -scope aes_core_smoke/dut $waveform
-report_power
+report_power -digits 12
 EOF
 "${AGCWS_OPENSTA:-sta}" -exit "$out_dir/power.tcl" > "$out_dir/power.rpt" 2>&1
 echo "OPENSTA_DONE report=$out_dir/power.rpt"
