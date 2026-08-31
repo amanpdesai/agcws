@@ -25,6 +25,7 @@ make verify
 make inspect-liberty
 make synth-aes
 make evaluate-aes
+make research-smoke
 PYTHONPATH=src python scripts/run_aes_task.py \
   experiments/workloads/aes_min_scored.json out/aes-core-synthesis-final4
 ```

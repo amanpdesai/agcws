@@ -60,6 +60,9 @@ and one stock CHIA case completes. Slice 2 additionally requires a Verilator
 trace, Yosys mapped netlist, Liberty inspection, and OpenSTA power report.
 
 The checked-in Liberty inputs are inspected with `scripts/inspect_liberty.py`.
+The complete AES vertical-slice acceptance check is `make research-smoke`; it
+reuses an existing synthesis manifest and produces evaluation, determinism,
+and activity-figure artifacts under `out/research-smoke/`.
 
 Host configuration is optional and comes from an untracked `.env` copied from
 `.env.example`. Relative paths are repository-relative. The container supplies
