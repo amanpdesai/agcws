@@ -25,12 +25,34 @@ def main() -> None:
     parser.add_argument("--policy", choices=("random", "mutation", "evolutionary",
                                               "one-shot-agent", "offline-hybrid"),
                         default="random")
+    parser.add_argument("--policies", help="comma-separated policy matrix; overrides --policy")
     parser.add_argument("--p-min", type=float, required=True)
     parser.add_argument("--p-max", type=float, required=True)
     parser.add_argument("--budget", type=int, default=8)
     parser.add_argument("--seed", type=int, default=0)
     parser.add_argument("--out", type=Path, default=Path("out/axi-dma-search"))
     args = parser.parse_args()
+    if args.policies:
+        policies = [item.strip() for item in args.policies.split(",") if item.strip()]
+        allowed = {"random", "mutation", "evolutionary", "one-shot-agent", "offline-hybrid"}
+        if not policies or any(item not in allowed for item in policies):
+            parser.error("--policies contains an unknown policy")
+        matrix = []
+        for policy in policies:
+            command = [sys.executable, str(Path(__file__).resolve()),
+                       "--policy", policy, "--target", str(args.target),
+                       "--p-min", str(args.p_min), "--p-max", str(args.p_max),
+                       "--budget", str(args.budget), "--seed", str(args.seed),
+                       "--out", str(args.out / policy)]
+            completed = subprocess.run(command, check=True, text=True,
+                                       capture_output=True)
+            matrix.append(json.loads(completed.stdout))
+        args.out.mkdir(parents=True, exist_ok=True)
+        (args.out / "matrix.json").write_text(
+            json.dumps({"policies": matrix}, indent=2, sort_keys=True) + "\n"
+        )
+        print(json.dumps({"policies": policies, "output": str(args.out.resolve())}, indent=2))
+        return
     counter = 0
 
     def evaluate(workload: dict) -> PowerProfile:
