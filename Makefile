@@ -22,7 +22,7 @@ BUDGET ?= 200
 SEEDS ?= 0
 TARGETS ?= 0.10 0.25 0.50 0.75 0.90
 
-.PHONY: test lint dev-install analysis-install verification-install chia-install chia-smoke chia-node-smoke upstream-dma-reference research-smoke audit-reproducibility vertex-preflight verify-artifact inspect-liberty inspect-liberties check-liberty-coverage synth-aes evaluate-aes determinism plot-activity plot-search-curves random-corpus temporal-corpus temporal-search compositional-search baseline-matrix cross-pdk run-aes-pdk-corpus validate-aes-pdk-corpus validate-finalists cross-pdk-dma axi-dma-search validate-axi-dma-finalists check-axi-dma-rtl run-axi-dma-rd-smoke run-axi-dma-wr-smoke run-axi-dma-workload run-axi-dma-coupled run-axi-memory-smoke compile-ibex resolve-ibex-sources probe-ibex-synthesis run-ibex verify-ibex verify container-smoke
+.PHONY: test lint dev-install analysis-install verification-install chia-install chia-smoke chia-node-smoke upstream-dma-reference research-smoke audit-reproducibility vertex-preflight verify-artifact inspect-liberty inspect-liberties check-liberty-coverage synth-aes evaluate-aes determinism plot-activity plot-search-curves random-corpus temporal-corpus temporal-search compositional-search baseline-matrix cross-pdk run-aes-pdk-corpus validate-aes-pdk-corpus validate-finalists cross-pdk-dma axi-dma-search validate-axi-dma-finalists check-axi-dma-rtl run-axi-dma-rd-smoke run-axi-dma-wr-smoke run-axi-dma-workload run-axi-dma-coupled run-axi-memory-smoke compile-ibex resolve-ibex-sources probe-ibex-synthesis check-ibex-rtl run-ibex verify-ibex verify container-smoke
 test:
 	$(VENV_PYTHON) -m pytest -q
 dev-install:
@@ -122,6 +122,8 @@ resolve-ibex-sources:
 	PYTHONPATH=src $(VENV_PYTHON) scripts/resolve_ibex_sources.py --out "$${AGCWS_ARTIFACT_ROOT:-out}/ibex-sources"
 probe-ibex-synthesis:
 	PYTHONPATH=src $(VENV_PYTHON) scripts/probe_ibex_synthesis.py "$${IBEX_SOURCES:-out/ibex-sources-top-check4/sources.json}" --out "$${AGCWS_ARTIFACT_ROOT:-out}/ibex-synthesis-probe"
+check-ibex-rtl: resolve-ibex-sources
+	PYTHONPATH=src $(VENV_PYTHON) scripts/check_ibex_verilator.py "$${AGCWS_ARTIFACT_ROOT:-out}/ibex-sources/sources.json"
 run-ibex:
 	bash scripts/run_ibex_workload.sh experiments/workloads/ibex_smoke.json out/ibex
 verify-ibex:

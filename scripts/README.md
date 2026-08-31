@@ -115,6 +115,10 @@ To capture the current Ibex gate-level integration diagnostic, run
 `make probe-ibex-synthesis IBEX_SOURCES=out/ibex-sources-top-check4/sources.json`.
 The probe writes `manifest.json` and `yosys.log` and intentionally exits
 nonzero when the frontend cannot elaborate the pinned closure.
+
+For the supported RTL-boundary check, run `make check-ibex-rtl`. It resolves the
+same closure and lints it with Verilator; this is intentionally separate from
+the Slang/Yosys synthesis-front-end experiment.
 ## AES synthesis
 
 Generate the cached AES core netlist against the configured Liberty file:
