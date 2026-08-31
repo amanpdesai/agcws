@@ -9,6 +9,7 @@ BASELINE_DIR ?= out/aes-baseline-matrix
 CORPUS_DIR ?= out/aes-random-corpus
 TEMPORAL_CORPUS_DIR ?= out/aes-temporal-corpus
 CROSS_PDK_DIR ?= out/aes-cross-pdk
+FINALIST_TRIALS ?= $(BASELINE_DIR)/target-0.50/seed-0/random/trials.jsonl
 WAVEFORM ?= $(EVAL_DIR)/activity.vcd
 P_MIN ?= 128.726293
 P_MAX ?= 130.431250
@@ -70,7 +71,8 @@ baseline-matrix:
 cross-pdk:
 	bash scripts/run_aes_cross_pdk.sh "$(WAVEFORM)" "$(CROSS_PDK_DIR)"
 validate-finalists:
-	PYTHONPATH=src $(VENV_PYTHON) scripts/validate_finalists.py "$(BASELINE_DIR)/target-0.50/seed-0/random/trials.jsonl" "$(SYNTH_DIR)" --out "$${AGCWS_ARTIFACT_ROOT:-out}/finalist-validation"
+	@test -f "$(FINALIST_TRIALS)" || (echo "missing FINALIST_TRIALS=$(FINALIST_TRIALS)" >&2; exit 1)
+	PYTHONPATH=src $(VENV_PYTHON) scripts/validate_finalists.py "$(FINALIST_TRIALS)" "$(SYNTH_DIR)" --out "$${AGCWS_ARTIFACT_ROOT:-out}/finalist-validation"
 check-axi-dma-rtl:
 	bash scripts/check_axi_dma_rtl.sh
 run-axi-dma-rd-smoke:

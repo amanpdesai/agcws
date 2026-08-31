@@ -26,6 +26,7 @@ make inspect-liberty
 make synth-aes
 make evaluate-aes
 make research-smoke
+make validate-finalists FINALIST_TRIALS=out/aes-baseline-matrix/target-0.50/seed-0/random/trials.jsonl
 PYTHONPATH=src python scripts/run_aes_task.py \
   experiments/workloads/aes_min_scored.json out/aes-core-synthesis-final4
 ```
