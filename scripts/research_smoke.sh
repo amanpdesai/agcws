@@ -33,7 +33,7 @@ from pathlib import Path
 
 root = Path(sys.argv[1])
 activity = json.loads((root / "activity.json").read_text())
-power = json.loads((root / "power.json").read_text())
+power = json.loads((root / "result.json").read_text())
 required_activity = ("per_cycle_toggles", "window_toggles", "clock_edges")
 missing = [key for key in required_activity if key not in activity]
 if missing:
