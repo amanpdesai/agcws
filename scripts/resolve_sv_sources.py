@@ -41,6 +41,10 @@ def resolve(top: str = "aes_cipher_core", include_generated: bool = False) -> li
         if package in package_file:
             selected.add(package_file[package])
     selected.add(ROOT / "hw/ip/aes/rtl/aes_pkg.sv")
+    # Included by prim_assert's sparse-FSM macro expansion, but not visible to
+    # the lightweight instantiation regex because the module name is produced
+    # by a preprocessor macro.
+    selected.add(ROOT / "hw/ip/prim/rtl/prim_sparse_fsm_flop.sv")
     # Verilator requires package declarations to be seen before consumers.
     packages = sorted(path for path in selected if PACKAGE_RE.search(text[path]))
     modules = sorted(selected - set(packages))
