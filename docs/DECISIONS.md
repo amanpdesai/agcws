@@ -26,6 +26,11 @@ On 2026-08-31, the corrected closure was tested with Slang's default mode,
 the same `Design elaboration failed` result, so compilation-unit and generic
 compatibility flags are not sufficient to resolve the remaining issue.
 
+As a negative control, the same 86-source closure was passed to Yosys
+`read_verilog -sv`; it failed before hierarchy with an unresolved
+`prim_ram_2p_pkg::Ram2pReqWidth` package identifier. Native Yosys is therefore
+not accepted as an Ibex fallback frontend.
+
 ## 2026-08-31 — Ibex synthesis probe remains unclaimed at gate level
 
 **Finding.** FuseSoC source closure resolution and simple-system simulation are
