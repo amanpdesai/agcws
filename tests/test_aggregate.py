@@ -12,4 +12,6 @@ def test_aggregate_keeps_unsolved_runs_in_denominator():
         "policy": "random", "design": "aes", "runs": 2,
         "solve_rate": 0.5, "mean_auc_best_so_far": 1.5,
         "mean_evaluations_to_target": 6.0,
+        "auc_best_so_far_ci95": {"mean": 1.5, "lower": 1.0, "upper": 2.0},
+        "evaluations_to_target_ci95": {"mean": 6.0, "lower": 4.0, "upper": 8.0},
     }]

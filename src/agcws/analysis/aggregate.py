@@ -20,6 +20,12 @@ def aggregate_summaries(records: Iterable[dict]) -> list[dict]:
     output = []
     for (policy, design), values in sorted(groups.items()):
         count = len(values)
+        auc_ci = bootstrap_mean_ci(
+            [value["auc_best_so_far"] for value in values], seed=0
+        )
+        eval_ci = bootstrap_mean_ci(
+            [value["evaluations_to_target"] for value in values], seed=1
+        )
         output.append({
             "policy": policy,
             "design": design,
@@ -29,6 +35,8 @@ def aggregate_summaries(records: Iterable[dict]) -> list[dict]:
                                          for value in values) / count,
             "mean_evaluations_to_target": sum(float(value["evaluations_to_target"])
                                                for value in values) / count,
+            "auc_best_so_far_ci95": auc_ci,
+            "evaluations_to_target_ci95": eval_ci,
         })
     return output
 
