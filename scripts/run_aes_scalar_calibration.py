@@ -33,6 +33,10 @@ def main() -> None:
         for target in targets:
             run_dir = args.out / f"seed-{seed}" / f"target-{target:.2f}"
             run_dir.mkdir(parents=True, exist_ok=True)
+            cell_summary = run_dir / "summary.json"
+            if cell_summary.exists():
+                results.append(json.loads(cell_summary.read_text()))
+                continue
             index = 0
 
             def evaluator(workload: dict) -> PowerProfile:
@@ -50,8 +54,10 @@ def main() -> None:
             scored = [trial for trial in trials if trial.profile is not None]
             solved = any(abs((trial.profile.mean_power - p_min) / (p_max - p_min) - target) <= args.epsilon
                          for trial in scored)
-            results.append({"seed": seed, "target": target, "solved": solved,
-                            "evaluations": len(trials), "valid_evaluations": len(scored)})
+            cell = {"seed": seed, "target": target, "solved": solved,
+                    "evaluations": len(trials), "valid_evaluations": len(scored)}
+            cell_summary.write_text(json.dumps(cell, indent=2, sort_keys=True) + "\n")
+            results.append(cell)
     solved_fraction = sum(item["solved"] for item in results) / len(results)
     report = {"targets": targets, "seeds": args.seeds, "budget": args.budget,
               "epsilon": args.epsilon, "p_min": p_min, "p_max": p_max,
