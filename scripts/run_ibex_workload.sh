@@ -14,6 +14,7 @@ objcopy=${AGCWS_RISCV_OBJCOPY:-riscv64-unknown-elf-objcopy}
 fst2vcd=${AGCWS_FST2VCD:-fst2vcd}
 
 mkdir -p "$out_dir"
+cp "$workload" "$out_dir/workload.json"
 PYTHONPATH=src "${AGCWS_PYTHON:-python3}" scripts/compile_ibex_workload.py \
   "$workload" "$out_dir/workload.elf" --gcc "$gcc" --objcopy "$objcopy"
 
@@ -50,4 +51,6 @@ activity = parse_vcd(path, clock_name="clk_i", windows=16)
 (path.parent / "activity.json").write_text(__import__("json").dumps(activity, indent=2, sort_keys=True) + "\n")
 PY
 fi
+PYTHONPATH=src "${AGCWS_PYTHON:-python3}" scripts/write_ibex_result.py \
+  "$out_dir" "$workload"
 echo "AGCWS_IBEX_WORKLOAD_OK"
