@@ -6,4 +6,6 @@ def test_baseline_matrix_uses_common_activity_runner():
     for policy in ("random", "mutation", "evolutionary", "offline-hybrid"):
         assert policy in text
     assert "--fidelity activity" in text
+    assert 'target=${AGCWS_SEARCH_TARGET:-0.5}' in text
+    assert 'epsilon=${AGCWS_SEARCH_EPSILON:-0.05}' in text
     assert "aggregate_runs.py" in text
