@@ -47,7 +47,7 @@ docker run --rm agcws:dev python -c \
 The canonical toolchain smoke test is:
 
 ```bash
-docker run --rm agcws:dev bash scripts/container_smoke.sh
+docker run --rm --user "$(id -u):$(id -g)" agcws:dev bash scripts/container_smoke.sh
 ```
 
 The image also includes the optional analysis dependencies and the checked-in

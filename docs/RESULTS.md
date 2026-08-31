@@ -25,6 +25,13 @@ non-overlapping, in-bounds, and satisfy the 4,096-byte useful-work floor.
 These are activity-proxy bounds, not synthesis-level power bounds; they are
 not yet used to claim a completed DMA comparative study.
 
+A calibrated five-policy smoke matrix at 20 proposal slots is stored at
+`out/axi-dma-matrix-calibrated-seed0/`, with an aggregate at
+`out/axi-dma-matrix-calibrated-seed0-aggregate.json`. All 100 proposal slots
+ran validly through the coupled Docker oracle; no policy reached the primary
+0.05 tolerance within this short smoke budget. This is orchestration evidence,
+not a comparative result.
+
 ## Preliminary AES scalar study
 
 The verified AES scalar aggregate combines the original corpus with seeds 5
