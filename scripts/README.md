@@ -98,6 +98,7 @@ write a content-hashed SystemVerilog manifest:
 
 ```bash
 make chia-install
+make verification-install
 make resolve-ibex-sources
 ```
 
@@ -105,7 +106,9 @@ The output is `out/ibex-sources/sources.json`, including the hashed RTL files
 and include directories required for single-unit Slang compilation. It is the
 input inventory for the upcoming Ibex synthesis flow; the script fails if
 FuseSoC references a missing source instead of silently producing a partial
-design.
+design. `verification-install` installs the pinned FuseSoC dependency into the
+project virtualenv. Generated FuseSoC files are written below the configured
+artifact root in `fusesoc-work/`, not into the RTL checkout.
 
 Use the selectable Make variables to resolve a specific closure. For the
 standalone CPU boundary, the reproducible container command is:
