@@ -20,4 +20,7 @@ def run_simulator(command: list[str], output_dir: Path, timeout_s: float) -> tup
         raise RuntimeError(
             f"simulator failed with exit code {result.returncode}: {result.stderr.strip()}"
         )
-    return result, SimulationArtifact(output_dir / "activity.vcd", stdout, stderr)
+    waveform = output_dir / "activity.vcd"
+    if not waveform.is_file():
+        raise FileNotFoundError(f"simulator did not produce expected waveform: {waveform}")
+    return result, SimulationArtifact(waveform, stdout, stderr)
