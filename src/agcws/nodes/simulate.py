@@ -16,4 +16,8 @@ def run_simulator(command: list[str], output_dir: Path, timeout_s: float) -> tup
     stderr = output_dir / "sim.stderr"
     stdout.write_text(result.stdout)
     stderr.write_text(result.stderr)
+    if result.returncode != 0:
+        raise RuntimeError(
+            f"simulator failed with exit code {result.returncode}: {result.stderr.strip()}"
+        )
     return result, SimulationArtifact(output_dir / "activity.vcd", stdout, stderr)
