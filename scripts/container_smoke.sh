@@ -9,6 +9,8 @@ command -v "${AGCWS_VERILATOR:-verilator}" >/dev/null
 command -v "${AGCWS_YOSYS:-yosys}" >/dev/null
 command -v "${AGCWS_OPENSTA:-sta}" >/dev/null
 "${AGCWS_OPENSTA:-sta}" -version >/dev/null
+command -v "${AGCWS_RISCV_GCC:-riscv64-unknown-elf-gcc}" >/dev/null
+"${AGCWS_RISCV_GCC:-riscv64-unknown-elf-gcc}" --version >/dev/null
 if [[ -n "${AGCWS_SLANG_PLUGIN:-}" ]]; then
   test -f "$AGCWS_SLANG_PLUGIN"
   "${AGCWS_YOSYS:-yosys}" -Q -p "plugin -i $AGCWS_SLANG_PLUGIN; help read_slang" >/dev/null
