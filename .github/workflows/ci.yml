@@ -33,9 +33,4 @@ jobs:
       - name: Build reproducibility image
         run: docker build --file docker/Dockerfile --tag agcws:ci .
       - name: Smoke test image
-        run: >-
-          docker run --rm agcws:ci /bin/sh -c
-          'python -c "import os; from pathlib import Path; import subprocess;
-          assert subprocess.run([os.environ[\"AGCWS_OPENSTA\"], \"-version\"], check=True).returncode == 0;
-          assert Path(os.environ[\"AGCWS_LIBERTY\"]).exists();
-          assert Path(os.environ[\"AGCWS_LIBERTY_NANGATE45\"]).exists()"'
+        run: docker run --rm agcws:ci bash scripts/container_smoke.sh

@@ -25,4 +25,10 @@ Run the basic image check with:
 docker build -f docker/Dockerfile -t agcws:dev .
 docker run --rm agcws:dev python -c \
   'import os; from pathlib import Path; print(Path(os.environ["AGCWS_LIBERTY"]).exists())'
+
+The canonical toolchain smoke test is:
+
+```bash
+docker run --rm agcws:dev bash scripts/container_smoke.sh
+```
 ```
