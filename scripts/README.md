@@ -10,6 +10,7 @@ python scripts/aes_sources.py
 python scripts/resolve_sv_sources.py --top aes_cipher_core
 python scripts/resolve_sv_sources.py --top aes --include-generated
 bash scripts/lint_aes_core.sh
+bash scripts/run_aes_core_smoke.sh
 ```
 
 The AES source manifest is intentionally separate from the future TileLink
