@@ -1,5 +1,6 @@
 from pathlib import Path
 from scripts.parse_vcd_activity import parse
+from agcws.nodes.activity import attribute_regions
 
 def test_parse_smoke_vcd():
     result = parse(Path("out/aes-core-smoke/activity.vcd"), windows=8)
@@ -8,3 +9,11 @@ def test_parse_smoke_vcd():
     assert len(result["window_toggles"]) == 8
     assert len(result["per_cycle_toggles"]) == result["clock_edges"]
     assert sum(result["per_cycle_toggles"]) == result["total_transitions"]
+
+
+def test_region_attribution_keeps_unmatched_and_ambiguous_signals_visible():
+    result = attribute_regions(
+        {"ctrl_ready": 3, "data_bus": 5, "ctrl_data": 7, "other": 2},
+        {"control": ("ctrl_",), "data": ("data_",)},
+    )
+    assert result == {"control": 10.0, "data": 5.0, "unattributed": 2.0}

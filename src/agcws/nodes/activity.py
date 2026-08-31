@@ -26,6 +26,24 @@ def windowize(values: Sequence[int], windows: int) -> tuple[int, ...]:
     return tuple(buckets)
 
 
+def attribute_regions(signal_transitions: dict[str, int],
+                      region_prefixes: dict[str, tuple[str, ...]]) -> dict[str, float]:
+    """Aggregate signal transitions into declared RTL regions.
+
+    This is an activity-fidelity attribution, not a claim of gate-level power
+    partitioning. Prefix rules are explicit adapter metadata so unmatched
+    signals remain visible instead of silently disappearing.
+    """
+    totals = {region: 0.0 for region in region_prefixes}
+    totals["unattributed"] = 0.0
+    for signal, count in signal_transitions.items():
+        matches = [region for region, prefixes in region_prefixes.items()
+                   if any(signal.startswith(prefix) for prefix in prefixes)]
+        region = matches[0] if len(matches) == 1 else "unattributed"
+        totals[region] += float(count)
+    return totals
+
+
 def parse_vcd(path: Path, clock_name: str = "clk_i", windows: int = 16) -> dict:
     """Extract deterministic transition counts without invoking EDA tools."""
     if windows <= 0:
