@@ -7,6 +7,8 @@ def test_scalar_search_cli_exposes_declared_policies():
         assert policy in text
     assert "AGCWS_GEMINI_MODEL" in text
     assert "AGCWS_GCP_PROJECT" in text
+    assert 'choices=("activity", "synthesis")' in text
+    assert 'default="activity"' in text
 
 
 def test_scalar_search_cli_uses_preregistered_primary_tolerance():
