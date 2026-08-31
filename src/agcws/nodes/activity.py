@@ -1,7 +1,13 @@
 from dataclasses import dataclass
 from pathlib import Path
 from collections.abc import Sequence
+from collections import defaultdict
+from bisect import bisect_right
+import json
+import re
 from agcws.nodes.commands import CommandResult, run_command
+
+_VAR_RE = re.compile(r"\$var\s+\S+\s+(\d+)\s+(\S+)\s+(.+?)\s+\$end")
 
 @dataclass(frozen=True)
 class ActivityArtifact:
@@ -19,7 +25,70 @@ def windowize(values: Sequence[int], windows: int) -> tuple[int, ...]:
         buckets[index * len(buckets) // len(values)] += value
     return tuple(buckets)
 
-def extract_activity(command: list[str], waveform: Path, output_dir: Path) -> tuple[CommandResult, ActivityArtifact]:
+
+def parse_vcd(path: Path, clock_name: str = "clk_i", windows: int = 16) -> dict:
+    """Extract deterministic transition counts without invoking EDA tools."""
+    if windows <= 0:
+        raise ValueError("windows must be positive")
+    identifiers: dict[str, tuple[str, int]] = {}
+    clocks: set[str] = set()
+    values: dict[str, str] = {}
+    transitions: defaultdict[str, int] = defaultdict(int)
+    per_time: defaultdict[int, int] = defaultdict(int)
+    edges: list[int] = []
+    time, header = 0, True
+    for line in path.read_text(errors="replace").splitlines():
+        match = _VAR_RE.search(line) if header else None
+        if match:
+            width, identifier, name = int(match[1]), match[2], match[3]
+            identifiers[identifier] = (name, width)
+            if name.split()[-1] == clock_name:
+                clocks.add(identifier)
+            continue
+        if line.startswith("$enddefinitions"):
+            header = False
+        elif line.startswith("#"):
+            time = int(line[1:])
+        elif line and line[0] not in "$ ":
+            if line[0] in "01xXzZ":
+                value, identifier = line[0], line[1:]
+            elif line[0] == "b":
+                value, identifier = line.split(maxsplit=1)
+            else:
+                continue
+            old = values.get(identifier)
+            if old is not None and old != value:
+                name = identifiers.get(identifier, (identifier, 1))[0]
+                transitions[name] += 1
+                per_time[time] += 1
+            values[identifier] = value
+            if identifier in clocks and old == "0" and value == "1":
+                edges.append(time)
+    edges.sort()
+    if not edges:
+        edges = sorted(per_time)
+    per_cycle = [0] * len(edges)
+    for timestamp, count in per_time.items():
+        cycle = bisect_right(edges, timestamp) - 1
+        if cycle >= 0:
+            per_cycle[cycle] += count
+    bucket_count = min(windows, max(1, len(edges)))
+    buckets = [0] * bucket_count
+    for timestamp, count in per_time.items():
+        cycle = bisect_right(edges, timestamp) - 1
+        if cycle >= 0:
+            buckets[min(cycle * bucket_count // max(1, len(edges)), bucket_count - 1)] += count
+    return {"vcd": path.name, "clock": clock_name, "clock_edges": len(edges),
+            "total_transitions": sum(transitions.values()),
+            "signal_transitions": dict(sorted(transitions.items())),
+            "per_cycle_toggles": per_cycle, "window_toggles": buckets}
+
+def extract_activity(command: list[str], waveform: Path, output_dir: Path, *, clock_name: str = "clk_i", windows: int = 16) -> tuple[CommandResult, ActivityArtifact]:
     output_dir.mkdir(parents=True, exist_ok=True)
     result = run_command(command, cwd=output_dir)
-    return result, ActivityArtifact(output_dir / "activity.saif")
+    activity = parse_vcd(waveform, clock_name, windows) if waveform.exists() else None
+    if activity is not None:
+        (output_dir / "activity.json").write_text(json.dumps(activity, indent=2, sort_keys=True) + "\n")
+    return result, ActivityArtifact(output_dir / "activity.saif",
+                                   per_cycle_toggles=tuple(activity["per_cycle_toggles"]) if activity else (),
+                                   window_toggles=tuple(activity["window_toggles"]) if activity else ())
