@@ -21,4 +21,4 @@ def test_temporal_policy_is_seed_reproducible():
 
 def test_temporal_policy_default_clears_aes_useful_work_floor():
     workload = TemporalRandomSearch(4).propose(None, None, [], 1)[0]
-    assert sum(op.get("blocks", 0) for op in workload["operations"] if op["op"] == "encrypt") >= 36
+    assert sum(op.get("blocks", 0) for op in workload["operations"] if op["op"] == "encrypt") >= 38

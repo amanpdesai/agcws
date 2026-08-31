@@ -185,6 +185,8 @@ the four-workload temporal schedule corpus produced `rho = -1.0`.
 with the pinned Verilator/Yosys/OpenSTA toolchain. Its activity envelope is
 128.723790–130.434211 total transitions per clock edge, and the inclusive
 10th-percentile useful-work floor is 38 blocks.
+The prescribed five-seed × five-target random calibration then solved 5/25
+cells (`r=0.20`) within 20 proposals at ε=0.05.
 **Decision.** Supersede the earlier 128.726293–130.431250 / 36-block record
 for future runs. Keep ε_s=0.05 and its already-recorded five-seed calibration
 decision unchanged; this refresh changes the measurement corpus, not the

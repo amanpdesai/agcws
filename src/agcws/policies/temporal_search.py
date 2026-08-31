@@ -9,10 +9,10 @@ from agcws.policies.base import SearchPolicy
 class TemporalRandomSearch(SearchPolicy):
     name = "temporal-random"
 
-    def __init__(self, seed: int = 0, blocks: int = 36):
+    def __init__(self, seed: int = 0, blocks: int = 38):
         self.rng = random.Random(seed)
-        if blocks < 36:
-            raise ValueError("temporal AES workloads require at least 36 blocks")
+        if blocks < 38:
+            raise ValueError("temporal AES workloads require at least 38 blocks")
         self.blocks = blocks
 
     def propose(self, adapter, goal, history, n: int) -> list[dict]:

@@ -2,7 +2,7 @@ from agcws.adapters.base import DesignAdapter, SimResult, Validity, ValidityStag
 
 class AESAdapter(DesignAdapter):
     name = "opentitan_aes"
-    useful_work_floor = 36
+    useful_work_floor = 38
     regions = ["aes_core", "aes_control", "aes_data"]
     activity_region_prefixes = {
         "aes_control": ("state_", "ctrl_", "in_ready", "out_valid", "key_", "start_"),

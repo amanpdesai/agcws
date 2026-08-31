@@ -26,10 +26,13 @@ def main() -> None:
     parser.add_argument("--seed-start", type=int, default=0)
     parser.add_argument("--budget", type=int, default=20)
     parser.add_argument("--epsilon", type=float, default=0.05)
+    parser.add_argument("--calibration", type=Path,
+                        help="calibration.json produced from the selected corpus")
     args = parser.parse_args()
     if args.seeds <= 0 or args.budget <= 0:
         raise ValueError("seeds and budget must be positive")
-    calibration = _find_calibration(args.synthesis_dir)
+    calibration = (json.loads(args.calibration.read_text())
+                   if args.calibration else _find_calibration(args.synthesis_dir))
     p_min, p_max = calibration["p_min"], calibration["p_max"]
     adapter = AESAdapter()
     targets = [0.10, 0.25, 0.50, 0.75, 0.90]
