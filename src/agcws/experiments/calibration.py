@@ -27,11 +27,16 @@ def tenth_percentile(values: list[float]) -> float:
 def calibration_record(records: list[dict], solved_fraction: float | None = None) -> dict:
     if not records:
         raise ValueError("calibration corpus is empty")
-    powers = [float(record["mean_power"]) for record in records if record.get("valid", True)]
+    valid = [record for record in records if record.get("valid", True)]
+    proxy = [float(record["activity"]["total_transitions"]) /
+             max(1, int(record["activity"]["clock_edges"])) for record in valid
+             if "activity" in record]
+    powers = proxy or [float(record["mean_power"]) for record in valid]
     work = [float(record["useful_work"]) for record in records if record.get("valid", True)]
     if not powers or not work:
         raise ValueError("corpus has no valid measurements")
     result = {"count": len(records), "valid_count": len(powers),
+              "power_metric": "total_transitions_per_clock_edge" if proxy else "mean_power",
               "p_min": min(powers), "p_max": max(powers),
               "useful_work_floor": math.floor(tenth_percentile(work)),
               "epsilon_scalar": choose_scalar_epsilon(solved_fraction)
