@@ -8,20 +8,23 @@ from collections import defaultdict
 from pathlib import Path
 
 
-def load_curves(root: Path) -> dict[str, list[list[float]]]:
+def load_curves(roots: list[Path] | Path) -> dict[str, list[list[float]]]:
     groups: dict[str, list[list[float]]] = defaultdict(list)
-    for curve_path in sorted(root.rglob("best_so_far.json")):
-        summary_path = curve_path.with_name("summary.json")
-        if not summary_path.is_file():
-            continue
-        summary = json.loads(summary_path.read_text())
-        curve = json.loads(curve_path.read_text()).get("error")
-        if not isinstance(curve, list) or not curve:
-            continue
-        policy = str(summary.get("policy", "unknown"))
-        groups[policy].append([float(value) for value in curve])
+    if isinstance(roots, Path):
+        roots = [roots]
+    for root in roots:
+        for curve_path in sorted(root.rglob("best_so_far.json")):
+            summary_path = curve_path.with_name("summary.json")
+            if not summary_path.is_file():
+                continue
+            summary = json.loads(summary_path.read_text())
+            curve = json.loads(curve_path.read_text()).get("error")
+            if not isinstance(curve, list) or not curve:
+                continue
+            policy = str(summary.get("policy", "unknown"))
+            groups[policy].append([float(value) for value in curve])
     if not groups:
-        raise ValueError(f"no search curves found below {root}")
+        raise ValueError(f"no search curves found below {', '.join(map(str, roots))}")
     return dict(sorted(groups.items()))
 
 
@@ -54,7 +57,7 @@ def plot(curves: dict[str, list[list[float]]], output: Path) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("root", type=Path)
+    parser.add_argument("root", type=Path, nargs="+")
     parser.add_argument("--out", type=Path, required=True)
     args = parser.parse_args()
     curves = load_curves(args.root)
