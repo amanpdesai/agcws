@@ -77,3 +77,20 @@ experiment workload.
 **Decision.** Flash for scalar, Pro for profile goals; one design-agnostic prompt frozen after Slice 6 with a recorded hash.  
 **Rationale.** Preserves the cross-interface generality claim and makes prompt changes auditable.  
 **Rejected.** Per-design prompt tuning and silent model substitution.
+
+## 2026-08-31 — Sky130 HD primary Liberty; Nangate45 cross-check
+
+**Decision.** Use the copied Sky130 HD TT Liberty as the primary validation
+library and copied Nangate45 typical Liberty as an independent cross-check.
+**Evidence.** Sky130 contains 2,477 `internal_power` groups, 2,477 rise-power
+tables, 2,477 fall-power tables, 428 leakage entries, 1,328 capacitance entries,
+and 6 clock-gating declarations. Nangate45 contains 2,459, 2,459, 2,459, 126,
+404, and 8 respectively. SHA-256 digests are recorded in
+`third_party/liberty/README.md`.
+**Rationale.** The characterized tables support relative synthesis-level power
+analysis; the second library tests whether finalist ordering is robust to
+library choice.
+**Rejected.** Treating RTL toggles as the final power claim or relying on host
+`/opt/eda` paths.
+**Consequence.** Reports distinguish per-cycle toggle activity from OpenSTA
+synthesis-level power and include cross-library rank agreement.

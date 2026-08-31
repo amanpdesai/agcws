@@ -3,6 +3,7 @@ set -euo pipefail
 
 repo_root=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
 cd "$repo_root"
+source scripts/load_env.sh
 out_dir=${1:-out/aes-core-synthesis}
 liberty=${AGCWS_LIBERTY:-third_party/liberty/sky130hd/sky130_fd_sc_hd__tt_025C_1v80.lib}
 yosys_bin=${AGCWS_YOSYS:-yosys}

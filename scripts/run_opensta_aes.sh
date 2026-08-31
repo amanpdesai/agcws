@@ -3,6 +3,7 @@ set -euo pipefail
 
 repo_root=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
 cd "$repo_root"
+source scripts/load_env.sh
 if [[ $# -lt 2 || $# -gt 4 ]]; then
   echo "usage: $0 SYNTHESIS_DIR WAVEFORM.vcd [OUTPUT_DIR] [LIBERTY]" >&2
   exit 2

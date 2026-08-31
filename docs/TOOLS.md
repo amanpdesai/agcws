@@ -22,7 +22,7 @@ ultimately pinned in the container image.
 | Verilator | RTL simulation and VCD/FST tracing | Set by `AGCWS_VERILATOR` | Container image/version |
 | Yosys | RTL synthesis/mapping | Set by `AGCWS_YOSYS` | Container image/version |
 | OpenSTA (`sta`) | synthesis-level timing/power report | Set by `AGCWS_OPENSTA` | Container image/version |
-| Liberty library | cell power/timing characterization | `third_party/liberty/`; selected by `AGCWS_LIBERTY` | Store path/checksum in provenance; do not assume completeness |
+| Liberty library | cell power/timing characterization | Copied into `third_party/liberty/`; selected by `AGCWS_LIBERTY` | Store path/checksum in provenance; inspect before claims |
 | Icarus Verilog | small smoke tests | `/usr/bin/iverilog` | Optional fallback, not power oracle |
 
 ## Source dependencies to pin as submodules
@@ -48,6 +48,10 @@ and one stock CHIA case completes. Slice 2 additionally requires a Verilator
 trace, Yosys mapped netlist, Liberty inspection, and OpenSTA power report.
 
 The checked-in Liberty inputs are inspected with `scripts/inspect_liberty.py`.
+
+Host configuration is optional and comes from an untracked `.env` copied from
+`.env.example`. Relative paths are repository-relative. The container supplies
+its own defaults, so host-specific `/opt/eda` paths do not enter the artifact.
 The primary Sky130 file is the default; Nangate45 is used for finalist
 cross-checks. `scripts/aes_sources.py` emits the current OpenTitan AES RTL set.
 `scripts/lint_aes_core.sh` is the first executable RTL acceptance check.
