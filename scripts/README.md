@@ -20,6 +20,15 @@ Aggregate completed search runs without dropping unsolved runs:
 python3 scripts/aggregate_runs.py out/aes-runs --out out/aes-runs/aggregate.json
 ```
 
+Run the DMA activity search matrix with isolated output per policy:
+
+```bash
+make axi-dma-search DMA_POLICIES=random,mutation,evolutionary BUDGET=200
+```
+
+The matrix writes `matrix.json` plus one directory per policy. Every policy
+uses the same proposal-counted budget and coupled simulation/activity oracle.
+
 Each search directory contains `summary.json` with the pre-registered
 best-so-far AUC, solve status, right-censored evaluations-to-target, policy,
 design, and seed. The aggregator groups by policy and canonical design name.
