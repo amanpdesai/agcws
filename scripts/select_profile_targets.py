@@ -30,13 +30,14 @@ def select(corpus: Path, kind: str, *, seed: int = 0, holdout: float = 0.25) -> 
                              "windows": len(profile), "profile": profile})
         else:
             values = record["by_region"]
-            total = sum(float(value) for value in values.values())
+            declared = {key: float(value) for key, value in values.items()
+                        if key != "unattributed"}
+            total = sum(declared.values())
             if total <= 0:
                 continue
             selected.append({"source": record.get("index", position),
-                             "shares": {key: float(value) / total
-                                        for key, value in values.items()
-                                        if key != "unattributed"}})
+                             "shares": {key: value / total
+                                        for key, value in declared.items()}})
     if not selected:
         raise ValueError("selected profiles have no positive activity")
     return selected
