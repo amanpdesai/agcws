@@ -7,7 +7,7 @@ from dataclasses import asdict, is_dataclass
 from pathlib import Path
 from typing import Callable
 
-from agcws.adapters.base import DesignAdapter, SimResult
+from agcws.adapters.base import DesignAdapter, SimResult, ValidityStage
 from agcws.analysis.metrics import summarize_run
 from agcws.goals.loss import loss
 from agcws.nodes.power import PowerProfile
@@ -113,8 +113,16 @@ def run_search(
         ) + "\n")
         (output_dir / "best_so_far.json").write_text(json.dumps({"error": curve}) + "\n")
         summary = summarize_run(curve, goal.tolerance, budget=budget)
+        stages = {stage.value: 0 for stage in ValidityStage}
+        for trial in trials:
+            if not trial.validity.valid and trial.validity.stage is not None:
+                stages[trial.validity.stage.value] += 1
         summary.update({"policy": policy.name, "design": design or adapter.name,
-                        "seed": seed})
+                        "seed": seed, "validity_failures": stages,
+                        "valid_trials": sum(trial.validity.valid for trial in trials),
+                        "tokens_in": sum(trial.tokens_in for trial in trials),
+                        "tokens_out": sum(trial.tokens_out for trial in trials),
+                        "simulations": sum(trial.sim_count for trial in trials)})
         if hasattr(goal, "q"):
             summary["target"] = float(goal.q)
         else:
