@@ -9,6 +9,7 @@ docker run --rm agcws:dev
 ```
 
 The image installs distribution versions of Verilator, Yosys, and Icarus, and
+pins FuseSoC to 2.4.6,
 builds OpenSTA from the pinned `OPENSTA_REF` in the Dockerfile. The checked-in
 Sky130 and Nangate45 Liberty files and the OpenTitan RTL submodule are copied
 into the image. Build-time network access is required for the OpenSTA source;

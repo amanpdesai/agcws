@@ -64,7 +64,7 @@ COPY third_party/ibex /opt/agcws/third_party/ibex
 COPY third_party/harnesses /opt/agcws/third_party/harnesses
 WORKDIR /opt/agcws
 RUN python -m pip install --upgrade pip && \
-    python -m pip install fusesoc && \
+    python -m pip install fusesoc==2.4.6 && \
     python -m pip install -e /opt/chia
 RUN python -m pip install -e '.[analysis,verification]'
 
