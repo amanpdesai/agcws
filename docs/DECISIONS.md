@@ -1,5 +1,19 @@
 # Decision log
 
+## 2026-08-31 — Dependency-free paired inference for final comparisons
+
+**Decision.** Implement exact paired sign-flip permutation p-values, Holm
+adjustment, and matched-pairs rank-biserial effect sizes in
+`agcws.analysis.inference`; retain deterministic bootstrap confidence intervals
+for means.
+**Rationale.** These procedures are required by the pre-registration, and a
+small dependency-free implementation keeps analysis reproducible in the base
+container while making finite-sample behavior explicit.
+**Rejected.** Unrecorded notebook-only statistics or silently adding SciPy as a
+runtime requirement for the core artifact.
+**Consequence.** Final reports must record the pairing key, input vectors, and
+deterministic procedure used for every comparison.
+
 ## 2026-08-31 — Ibex RTL closure validated with Verilator; synthesis remains separate
 
 **Finding.** The corrected standalone Ibex closure contains 91 sources after
