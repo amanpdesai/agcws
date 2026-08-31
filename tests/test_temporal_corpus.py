@@ -22,3 +22,9 @@ def test_temporal_policy_is_seed_reproducible():
 def test_temporal_policy_default_clears_aes_useful_work_floor():
     workload = TemporalRandomSearch(4).propose(None, None, [], 1)[0]
     assert sum(op.get("blocks", 0) for op in workload["operations"] if op["op"] == "encrypt") >= 38
+
+
+def test_temporal_corpus_requires_cached_evaluation_outputs():
+    from pathlib import Path
+    text = Path("scripts/run_aes_temporal_corpus.py").read_text()
+    assert 'required_outputs=("result.json", "activity.json")' in text

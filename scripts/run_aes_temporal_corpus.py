@@ -58,7 +58,8 @@ def main() -> None:
         def action(output: Path, workload_path=workload_path) -> None:
             evaluate(workload_path, args.synthesis_dir, output)
 
-        task = store.run("evaluate", inputs, action)
+        task = store.run("evaluate", inputs, action,
+                         required_outputs=("result.json", "activity.json"))
         result = json.loads((task.output_dir / "result.json").read_text())
         activity = result["activity"]
         peak = max(activity["window_toggles"] or [1])
