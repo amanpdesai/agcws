@@ -15,9 +15,9 @@ Build one design vertically before widening: AES first, `axi_dma` second, Ibex t
 | 6 | Agent policy | D9 | DONE |
 | 7 | `axi_dma`, then Ibex | D13 | WIP |
 | 8 | Mutation/evolutionary/hybrid baselines | D12 | WIP |
-| 9 | Compositional/temporal targets (G4) | D16 | TODO |
+| 9 | Compositional/temporal targets (G4) | D16 | WIP |
 | 10 | Statistics and figures | D21 | WIP |
-| 11 | Container and upstream PR prep | D21 | TODO |
+| 11 | Container and upstream PR prep | D21 | WIP |
 | 12 | Four-page report | D23 | TODO |
 
 Record non-obvious choices in `DECISIONS.md`, unknowns in `RISKS.md`, and never commit waveform artifacts.
@@ -31,3 +31,9 @@ Slice 8 currently exposes random, mutation, evolutionary, and hybrid policies
 through the common proposal-counted AES runner. Slice 10 has deterministic AUC,
 solve-rate, censoring, and corpus-aggregation utilities; full multi-seed
 comparative runs and figures remain outstanding.
+
+Slice 9 has executable AES temporal and compositional search drivers using the
+activity oracle, with per-cycle/windowed profiles and provenance; finalist
+validation and the G4 end-to-end target study remain. Slice 11 has a rebuildable
+Docker image and container smoke test; upstream extraction and PR preparation
+remain.
