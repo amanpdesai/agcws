@@ -32,6 +32,12 @@ ran validly through the coupled Docker oracle; no policy reached the primary
 0.05 tolerance within this short smoke budget. This is orchestration evidence,
 not a comparative result.
 
+A second seed has since completed the same matrix. The two-seed aggregate is
+`out/axi-dma-matrix-calibrated-2seed-aggregate.json`: 5 policies × 20 slots ×
+2 seeds, 200/200 valid simulations, and zero solves. The preregistered 200-slot
+DMA comparison remains outstanding; these short runs only validate stability
+of the calibrated orchestration.
+
 ## Preliminary AES scalar study
 
 The verified AES scalar aggregate combines the original corpus with seeds 5
