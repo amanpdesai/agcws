@@ -14,6 +14,16 @@ sky_lib=${AGCWS_LIBERTY:-third_party/liberty/sky130hd/sky130_fd_sc_hd__tt_025C_1
 nangate_lib=${AGCWS_LIBERTY_NANGATE45:-third_party/liberty/nangate45/Nangate45_typ.lib}
 mkdir -p "$out_dir"
 
+if [[ -z "${AGCWS_SLANG_PLUGIN:-}" || ! -f "${AGCWS_SLANG_PLUGIN}" ]]; then
+  cat >&2 <<'EOF'
+cross-PDK AES synthesis requires a Yosys Slang plugin.
+Set AGCWS_SLANG_PLUGIN to the checked plugin path (Docker supplies it), then
+rerun this command. The compatibility frontend cannot parse the OpenTitan AES
+source set reliably.
+EOF
+  exit 2
+fi
+
 for name in sky130hd nangate45; do
   if [[ "$name" == sky130hd ]]; then lib=$sky_lib; else lib=$nangate_lib; fi
   AGCWS_LIBERTY="$lib" AGCWS_SLANG_PLUGIN="${AGCWS_SLANG_PLUGIN:-}" \
