@@ -107,12 +107,22 @@ input inventory for the upcoming Ibex synthesis flow; the script fails if
 FuseSoC references a missing source instead of silently producing a partial
 design.
 
-Use `--core lowrisc:ibex:ibex_top` to resolve the standalone CPU closure for
-the ASIC-oriented synthesis boundary.
+Use the selectable Make variables to resolve a specific closure. For the
+standalone CPU boundary, the reproducible container command is:
+
+```bash
+make resolve-ibex-sources IBEX_CORE=lowrisc:ibex:ibex_core
+make probe-ibex-synthesis \
+  IBEX_SOURCES=out/ibex-sources/sources.json IBEX_TOP=ibex_core
+```
+
+The default remains `lowrisc:ibex:ibex_simple_system` / `ibex_top`, which is
+the closure used by the current workload runner. `IBEX_CORE`, `IBEX_SOURCES`,
+and `IBEX_TOP` are recorded in the generated probe manifest so a failed or
+successful frontend boundary can be reproduced exactly.
 
 To capture the current Ibex gate-level integration diagnostic, run
-`make resolve-ibex-sources` followed by
-`make probe-ibex-synthesis IBEX_SOURCES=out/ibex-sources-top-check4/sources.json`.
+`make resolve-ibex-sources` followed by `make probe-ibex-synthesis`.
 The probe writes `manifest.json` and `yosys.log` and intentionally exits
 nonzero when the frontend cannot elaborate the pinned closure.
 
