@@ -30,7 +30,7 @@ chia-smoke:
 	$(VENV_PYTHON) scripts/chia_smoke.py
 upstream-dma-reference:
 	$(VENV_PYTHON) -m pip install -e '.[verification]'
-	bash scripts/run_axi_dma_upstream_reference.sh
+	bash scripts/run_axi_dma_upstream_reference.sh "$${AGCWS_ARTIFACT_ROOT:-out}/axi-dma-upstream-reference"
 research-smoke:
 	bash scripts/research_smoke.sh "$(SYNTH_DIR)" "$${AGCWS_ARTIFACT_ROOT:-out/research-smoke}"
 lint:

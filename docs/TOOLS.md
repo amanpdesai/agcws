@@ -41,8 +41,9 @@ not part of the AGCWS runtime dependency set. Project-owned DMA smoke tests
 use native Icarus/SystemVerilog harnesses so the container remains smaller and
 the required toolchain is explicit.
 The optional `make upstream-dma-reference` target runs the upstream coupled
-DMA test in an isolated temporary checkout and removes its generated VPI,
-VVP, and waveform artifacts on exit.
+DMA test in an isolated temporary checkout and writes a hash-bearing reference
+manifest plus test log under `out/axi-dma-upstream-reference/`; generated VPI,
+VVP, and waveform artifacts in the temporary checkout are removed on exit.
 
 Liberty files are the exception: selected Sky130 HD TT and Nangate45 typical
 files are copied into `third_party/liberty/` so runs do not depend on a machine
