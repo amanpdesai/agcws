@@ -86,7 +86,11 @@ def evaluate(workload_path: Path, synthesis_dir: Path, output_dir: Path, *, allo
                 "opensta": (config.OPENSTA, ("-version",)),
             }),
             "inputs": input_record({
-                "workload": workload_path,
+                # Hash the normalized copy that is shipped with the result,
+                # not the caller's source file.  This keeps verification
+                # valid when JSON formatting differs between the input and
+                # the archived workload.
+                "workload": workload_copy,
                 "synthesis_manifest": synthesis_dir / "manifest.json",
                 "activity": output_dir / "activity.json",
                 "waveform": output_dir / "activity.vcd",
