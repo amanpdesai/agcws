@@ -18,6 +18,14 @@ The image also builds the pinned `sv-elab` Yosys/Slang frontend and configures
 it for full OpenTitan AES synthesis. Host runs may override
 `AGCWS_SLANG_PLUGIN` with an explicitly verified compatible plugin; the
 compatibility frontend is retained only for reduced/simple sources.
+The build restores the Slang checkout's GitHub remote prefix and uses Slang's
+vendored Boost compatibility headers. The regex dependency is explicitly
+cloned and pinned to the resolved commit behind its annotated release tag,
+then supplied to CMake as a local FetchContent source.
+Toml++ is also supplied by the base distribution; optional mimalloc is disabled
+to avoid another network-fetched dependency.
+The image also supplies the small `yosys-config` compatibility wrapper expected
+by `sv-elab`, since Debian packages the Yosys binary without that helper.
 
 For a host development environment, use the repository-local virtualenv:
 

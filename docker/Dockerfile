@@ -7,11 +7,12 @@ ARG SV_ELAB_REF=84bbdaacf59f56ff9b5e7be486f9cc7df136b385
 
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    verilator yosys iverilog git make g++ cmake bison flex swig \
+    verilator yosys yosys-dev iverilog git make g++ cmake bison flex swig \
     tcl-dev zlib1g-dev libeigen3-dev \
     libboost-system-dev libboost-filesystem-dev libboost-program-options-dev \
     libboost-serialization-dev libboost-iostreams-dev libboost-regex-dev \
-    libboost-thread-dev libgtest-dev libfl-dev wget graphviz ca-certificates \
+    libboost-thread-dev libgtest-dev libfl-dev libtomlplusplus-dev libmimalloc-dev \
+    wget graphviz ca-certificates \
     && rm -rf /var/lib/apt/lists/*
 
 RUN wget -q https://raw.githubusercontent.com/davidkebo/cudd/main/cudd_versions/cudd-3.0.0.tar.gz \
@@ -19,6 +20,9 @@ RUN wget -q https://raw.githubusercontent.com/davidkebo/cudd/main/cudd_versions/
     tar -xzf /tmp/cudd-3.0.0.tar.gz -C /tmp && \
     cd /tmp/cudd-3.0.0 && ./configure --prefix=/tmp/cudd-install && \
     make --jobs 2 && make install
+
+COPY docker/yosys-config /usr/local/bin/yosys-config
+RUN chmod 0755 /usr/local/bin/yosys-config
 
 RUN git clone --no-checkout "$OPENSTA_REPO" /tmp/OpenSTA && \
     git -C /tmp/OpenSTA checkout --detach "$OPENSTA_REF" && \
@@ -31,7 +35,12 @@ RUN git clone --no-checkout "$OPENSTA_REPO" /tmp/OpenSTA && \
 RUN git clone --recursive --no-checkout "$SV_ELAB_REPO" /tmp/sv-elab && \
     git -C /tmp/sv-elab checkout --detach "$SV_ELAB_REF" && \
     git -C /tmp/sv-elab submodule update --init --recursive && \
-    cmake -S /tmp/sv-elab -B /tmp/sv-elab/build -DCMAKE_BUILD_TYPE=Release && \
+    git -C /tmp/sv-elab/third_party/slang config remote.origin.url https://github.com/MikePopoloski/slang.git && \
+    git clone https://github.com/MikePopoloski/regex.git /tmp/boost-regex && \
+    git -C /tmp/boost-regex checkout --detach 2b3ac0834f31086c6e3c0e0ceb8516e427d5c39d && \
+    GIT_DIR=/tmp/sv-elab/third_party/slang/.git cmake -S /tmp/sv-elab -B /tmp/sv-elab/build -DCMAKE_BUILD_TYPE=Release \
+      -DFETCHCONTENT_SOURCE_DIR_BOOST_REGEX=/tmp/boost-regex \
+      -DSLANG_USE_SYSTEM_TOMLPLUSPLUS=ON -DSLANG_USE_MIMALLOC=OFF && \
     cmake --build /tmp/sv-elab/build --parallel 2 && \
     install -Dm755 /tmp/sv-elab/build/slang.so /usr/local/share/yosys/plugins/slang.so && \
     rm -rf /tmp/sv-elab
@@ -51,6 +60,8 @@ RUN python -m pip install --upgrade pip && \
 RUN python -m pip install -e .
 
 ENV PYTHONUNBUFFERED=1 \
+    AGCWS_VERILATOR=/usr/bin/verilator \
+    AGCWS_YOSYS=/usr/bin/yosys \
     AGCWS_OPENSTA=/usr/local/bin/sta \
     AGCWS_SLANG_PLUGIN=/usr/local/share/yosys/plugins/slang.so \
     AGCWS_LIBERTY=third_party/liberty/sky130hd/sky130_fd_sc_hd__tt_025C_1v80.lib \

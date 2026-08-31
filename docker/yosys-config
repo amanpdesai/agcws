@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+case "${1:-}" in
+  --bindir) echo /usr/bin ;;
+  --datdir) echo /usr/share/yosys ;;
+  --cxxflags) echo '-D_YOSYS_ -I/usr/share/yosys/include' ;;
+  *) echo "usage: yosys-config --bindir|--datdir|--cxxflags" >&2; exit 2 ;;
+esac
