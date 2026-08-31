@@ -40,8 +40,9 @@ class OfflineAgent(AgentPolicy):
 
         def propose(adapter, goal, history, n):
             candidates = []
+            minimum_blocks = max(16, int(getattr(adapter, "useful_work_floor", 16)))
             for _ in range(n):
-                blocks = 16 + rng.randrange(17)
+                blocks = minimum_blocks + rng.randrange(17)
                 candidates.append({"data_pattern": rng.randrange(4), "operations": [
                     {"op": "configure", "key_len": 128},
                     {"op": "encrypt", "blocks": blocks},

@@ -14,8 +14,9 @@ class RandomSearch(SearchPolicy):
 
     def propose(self, adapter, goal, history, n: int) -> list[dict]:
         candidates = []
+        minimum_blocks = max(16, int(getattr(adapter, "useful_work_floor", 16)))
         for _ in range(n):
-            blocks = self.rng.randint(16, 64)
+            blocks = self.rng.randint(minimum_blocks, 64)
             candidates.append({"data_pattern": self.rng.randrange(4), "operations": [
                 {"op": "configure", "key_len": self.rng.choice([128, 192, 256])},
                 {"op": self.rng.choice(["encrypt", "decrypt"]), "blocks": blocks},
