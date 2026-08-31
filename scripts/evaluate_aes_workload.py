@@ -79,6 +79,7 @@ def evaluate(workload_path: Path, synthesis_dir: Path, output_dir: Path, *, allo
             "power_report": "opensta/power.rpt",
             "annotation_report": "opensta/annotation.rpt",
             "annotation": annotation,
+            "power_metric": "opensta_total_power_w",
             "liberty": json.loads((synthesis_dir / "manifest.json").read_text()).get("liberty"),
             "tools": toolchain_record({
                 "verilator": (config.VERILATOR, ("--version",)),

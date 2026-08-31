@@ -15,6 +15,11 @@ def test_evaluator_composes_runtime_useful_work_gate():
     assert "annotation.rpt" in opensta
 
 
+def test_opensta_result_declares_power_metric():
+    text = Path("scripts/evaluate_aes_workload.py").read_text()
+    assert '"power_metric": "opensta_total_power_w"' in text
+
+
 def test_simulator_failure_is_not_returned_as_a_valid_artifact(tmp_path):
     with pytest.raises(RuntimeError, match="simulator failed"):
         run_simulator(["sh", "-c", "echo broken >&2; exit 3"], tmp_path, 5)
