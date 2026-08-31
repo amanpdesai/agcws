@@ -56,3 +56,9 @@ def test_command_timeout_returns_structured_result(tmp_path):
     result = run_command(["sh", "-c", "sleep 1"], cwd=tmp_path, timeout_s=0.01)
     assert result.returncode == 124
     assert "timed out" in result.stderr
+
+
+def test_evaluate_power_reports_timeout_as_sta_failure(tmp_path):
+    with pytest.raises(RuntimeError, match="OpenSTA failed with exit code 124"):
+        evaluate_power(["sh", "-c", "sleep 1"], *artifacts(tmp_path),
+                       tmp_path / "run", timeout_s=0.01)
