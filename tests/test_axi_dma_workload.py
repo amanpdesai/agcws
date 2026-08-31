@@ -1,6 +1,8 @@
 import json
 import subprocess
 from pathlib import Path
+import pytest
+from agcws.adapters.axi_dma.runtime import load_sim_result
 
 
 def test_axi_dma_workload_drives_both_channels(tmp_path: Path):
@@ -25,7 +27,8 @@ def test_axi_dma_workload_drives_both_channels(tmp_path: Path):
         artifact = manifest["transfers"][0]["artifacts"][direction]
         assert len(artifact["sha256"]) == 64
         assert artifact["bytes"] > 0
-        assert (tmp_path / "out" / artifact["path"]).is_file()
+    assert (tmp_path / "out" / artifact["path"]).is_file()
+    assert load_sim_result(tmp_path / "out/workload_manifest.json").useful_work == 4096
 
 
 def test_axi_dma_workload_enforces_useful_work_floor(tmp_path: Path):
@@ -35,3 +38,10 @@ def test_axi_dma_workload_enforces_useful_work_floor(tmp_path: Path):
                             capture_output=True, text=True, check=False)
     assert result.returncode != 0
     assert "USEFUL_WORK" in result.stderr
+
+
+def test_dma_runtime_loader_rejects_incomplete_manifest(tmp_path: Path):
+    manifest = tmp_path / "manifest.json"
+    manifest.write_text(json.dumps({"simulation": {"terminated": True}}))
+    with pytest.raises(ValueError, match="incomplete"):
+        load_sim_result(manifest)

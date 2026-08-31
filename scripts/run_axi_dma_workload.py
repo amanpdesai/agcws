@@ -8,6 +8,7 @@ import sys
 from pathlib import Path
 
 from agcws.adapters.axi_dma.adapter import AxiDmaAdapter
+from agcws.adapters.axi_dma.runtime import load_sim_result
 from agcws.provenance import toolchain_record
 
 
@@ -71,6 +72,9 @@ def main() -> int:
         {"workload": workload, "transfers": records, "simulation": simulation,
          "provenance": provenance}, indent=2
     ) + "\n")
+    sim_result = load_sim_result(out_dir / "workload_manifest.json")
+    if not adapter.validate_result(sim_result).valid:
+        raise SystemExit("DMA simulation result failed runtime validation")
     print(f"AGCWS_AXI_DMA_WORKLOAD_OK transfers={len(records)}")
     return 0
 
