@@ -7,7 +7,7 @@ cd "$repo_root"
 synthesis_dir=${1:-out/aes-core-synthesis-final4}
 artifact_root=${2:-out/research-smoke}
 workload=${AGCWS_SMOKE_WORKLOAD:-experiments/workloads/aes_min_scored.json}
-python_bin=${AGCWS_PYTHON:-.venv/bin/python}
+python_bin=${AGCWS_PYTHON:-python3}
 
 test -f "$synthesis_dir/manifest.json" || {
   echo "missing synthesis manifest: $synthesis_dir (run make synth-aes first)" >&2
