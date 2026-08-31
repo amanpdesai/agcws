@@ -1,7 +1,7 @@
 from pathlib import Path
 import pytest
 
-from scripts.resolve_ibex_sources import find_eda_manifest, resolve_manifest
+from scripts.resolve_ibex_sources import find_eda_manifest, require_toplevel, resolve_manifest
 
 
 def test_resolve_manifest_filters_and_hashes_sv(tmp_path: Path):
@@ -33,6 +33,13 @@ def test_resolve_manifest_fails_on_missing_source(tmp_path: Path):
     )
     with pytest.raises(FileNotFoundError, match="FuseSoC source is missing"):
         resolve_manifest(manifest)
+
+
+def test_require_toplevel_rejects_incomplete_closure(tmp_path: Path):
+    source = tmp_path / "core.sv"
+    source.write_text("module other; endmodule\n")
+    with pytest.raises(ValueError, match="does not contain top-level module core"):
+        require_toplevel([{"path": str(source)}], "core")
 
 
 def test_find_eda_manifest_selects_core_manifest(tmp_path: Path):

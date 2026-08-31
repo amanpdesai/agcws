@@ -1,5 +1,20 @@
 # Decision log
 
+## 2026-08-31 — Reject incomplete Ibex source closures before synthesis
+
+**Finding.** The upstream `ibex_top` FuseSoC `lint` target emits the generic
+primitive mapping fileset but omits `files_rtl`, including `ibex_top.sv`.
+Slang therefore reports no valid top-level module rather than an RTL error.
+**Decision.** The source resolver now requires the manifest's declared top
+module to appear in the resolved SystemVerilog closure and fails otherwise.
+**Rationale.** A manifest without its top could otherwise be fingerprinted and
+passed to synthesis, creating a misleading integration result.
+**Rejected.** Silently accepting the incomplete closure or treating the
+frontend's generic missing-top diagnostic as a design failure.
+**Consequence.** The Ibex synthesis path remains open, but its current failure
+is now reproducible and attributable to FuseSoC target selection; no gate-level
+Ibex claim is made until the RTL fileset is restored.
+
 ## 2026-08-31 — Ibex synthesis probe remains unclaimed at gate level
 
 **Finding.** FuseSoC source closure resolution and simple-system simulation are

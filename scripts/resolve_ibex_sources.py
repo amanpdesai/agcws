@@ -43,6 +43,17 @@ def resolve_manifest(manifest: Path) -> tuple[list[dict[str, str | int]], list[s
     return sources, sorted(include_dirs)
 
 
+def require_toplevel(sources: list[dict[str, str | int]], top: str) -> None:
+    """Reject a FuseSoC closure that does not contain its declared top module."""
+    module = f"module {top}"
+    if not any(module in Path(str(item["path"])).read_text(errors="ignore")
+               for item in sources):
+        raise ValueError(
+            f"resolved closure does not contain top-level module {top}; "
+            "the selected FuseSoC target may omit its RTL fileset"
+        )
+
+
 def find_eda_manifest(build_root: Path, core_id: str) -> Path:
     """Find the lint EDA manifest emitted for a FuseSoC core ID.
 
@@ -78,6 +89,7 @@ def main() -> None:
     ], cwd=root, check=True)
     manifest = find_eda_manifest(root / "build", args.core)
     sources, include_dirs = resolve_manifest(manifest)
+    require_toplevel(sources, manifest.read_text().split("toplevel:", 1)[1].splitlines()[0].strip())
     args.out.mkdir(parents=True, exist_ok=True)
     output = args.out / "sources.json"
     output.write_text(json.dumps({
