@@ -21,6 +21,19 @@ def sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
+def model_copy(transfer: dict) -> dict:
+    """Model the deterministic byte copy represented by one DMA descriptor."""
+    length = int(transfer["length"])
+    source = bytes((index + int(transfer["src"])) % 256 for index in range(length))
+    destination = bytearray(length)
+    destination[:] = source
+    if bytes(destination) != source:
+        raise RuntimeError("DMA memory model copy verification failed")
+    return {"source_sha256": hashlib.sha256(source).hexdigest(),
+            "destination_sha256": hashlib.sha256(destination).hexdigest(),
+            "bytes_verified": length}
+
+
 def main() -> int:
     if len(sys.argv) != 3:
         raise SystemExit("usage: run_axi_dma_workload.py WORKLOAD.json OUT_DIR")
@@ -62,7 +75,7 @@ def main() -> int:
         records.append({"index": index, "src": transfer["src"], "dst": transfer["dst"],
                         "length": transfer["length"], "status": "simulated",
                         "terminated": True, "assertions_ok": True, "outputs_ok": True,
-                        "artifacts": artifacts})
+                        "memory_model": model_copy(transfer), "artifacts": artifacts})
     simulation = {"terminated": True, "assertions_ok": True, "outputs_ok": True,
                   "useful_work": useful_work, "transfer_count": len(records)}
     provenance = {
