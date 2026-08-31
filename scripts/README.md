@@ -37,3 +37,10 @@ Convert a simulation waveform to backward SAIF for OpenSTA:
 ```bash
 bash scripts/vcd_to_saif.sh out/aes-workload/activity.vcd out/aes-workload/activity.saif
 ```
+
+Run the first OpenSTA smoke evaluation against a mapped netlist:
+
+```bash
+bash scripts/run_opensta_aes.sh out/aes-core-synthesis-final4 \
+  out/aes-core-smoke-bounded/activity.vcd
+```
