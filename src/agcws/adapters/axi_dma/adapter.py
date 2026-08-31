@@ -15,6 +15,18 @@ class AxiDmaAdapter(DesignAdapter):
     max_transfer = 1 << 20
     channel_depth = 8
 
+    def random_workload(self, rng) -> dict:
+        """Generate a legal, non-idle baseline workload for the generic policy."""
+        transfers = []
+        for index in range(4):
+            # Four fixed 1 KiB transfers guarantee the 4096-byte useful-work
+            # floor and never cross a 4 KiB boundary.
+            length = 1024
+            transfers.append({"src": 0x400 + index * 0x800,
+                              "dst": 0x1000 + index * 0x800,
+                              "length": length})
+        return {"transfers": transfers}
+
     def validate_schema(self, workload: dict) -> Validity:
         if not isinstance(workload, dict):
             return Validity(False, ValidityStage.SCHEMA, "workload must be an object")

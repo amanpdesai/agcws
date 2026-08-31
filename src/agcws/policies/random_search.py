@@ -13,6 +13,9 @@ class RandomSearch(SearchPolicy):
         self.rng = random.Random(seed)
 
     def propose(self, adapter, goal, history, n: int) -> list[dict]:
+        generator = getattr(adapter, "random_workload", None)
+        if generator is not None:
+            return [generator(self.rng) for _ in range(n)]
         candidates = []
         minimum_blocks = max(16, int(getattr(adapter, "useful_work_floor", 16)))
         for _ in range(n):
