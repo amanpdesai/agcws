@@ -27,6 +27,18 @@ class AxiDmaAdapter(DesignAdapter):
                               "length": length})
         return {"transfers": transfers}
 
+    def mutate_workload(self, workload: dict, rng) -> dict:
+        """Mutate DMA addresses/lengths while preserving protocol legality."""
+        import copy
+        candidate = copy.deepcopy(workload)
+        index = rng.randrange(len(candidate["transfers"]))
+        transfer = candidate["transfers"][index]
+        transfer["src"] = 0x400 + rng.randrange(12) * 0x100
+        transfer["src"] &= ~0x7
+        transfer["dst"] = 0x1000 + rng.randrange(12) * 0x100
+        transfer["dst"] &= ~0x7
+        return candidate
+
     def validate_schema(self, workload: dict) -> Validity:
         if not isinstance(workload, dict):
             return Validity(False, ValidityStage.SCHEMA, "workload must be an object")

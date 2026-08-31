@@ -19,9 +19,12 @@ class MutationSearch(SearchPolicy):
         if not parents:
             from agcws.policies.random_search import RandomSearch
             return RandomSearch(self.rng.randrange(2**31)).propose(adapter, goal, history, n)
-        return [self._mutate(self.rng.choice(parents)) for _ in range(n)]
+        return [self._mutate(self.rng.choice(parents), adapter) for _ in range(n)]
 
-    def _mutate(self, workload: dict) -> dict:
+    def _mutate(self, workload: dict, adapter=None) -> dict:
+        custom = getattr(adapter, "mutate_workload", None)
+        if custom is not None:
+            return custom(workload, self.rng)
         candidate = copy.deepcopy(workload)
         operations = candidate.get("operations", [])
         crypto = [op for op in operations if op.get("op") in {"encrypt", "decrypt"}]

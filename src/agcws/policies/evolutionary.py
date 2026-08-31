@@ -22,4 +22,4 @@ class EvolutionarySearch(SearchPolicy):
         if not scored:
             return RandomSearch(self.rng.randrange(2**31)).propose(adapter, goal, history, n)
         elites = [trial.workload for trial in scored[:self.elite_size]]
-        return [self.mutator._mutate(self.rng.choice(elites)) for _ in range(n)]
+        return [self.mutator._mutate(self.rng.choice(elites), adapter) for _ in range(n)]
