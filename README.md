@@ -23,6 +23,7 @@ The Makefile is a thin operator surface over the reproducible scripts:
 make test
 make verify
 make inspect-liberty
+make inspect-liberties
 make synth-aes
 make evaluate-aes
 make research-smoke
@@ -31,6 +32,21 @@ make cross-pdk-dma DMA_WAVEFORM=out/axi-dma-coupled/activity.vcd
 PYTHONPATH=src python scripts/run_aes_task.py \
   experiments/workloads/aes_min_scored.json out/aes-core-synthesis-final4
 ```
+
+For paired-PDK validation, use the checked-in corpus runner after synthesis:
+
+```bash
+make run-aes-pdk-corpus \
+  CORPUS_DIR=out/aes-random-corpus \
+  CROSS_PDK_DIR=out/aes-cross-pdk \
+  ARTIFACT_ROOT=out/aes-pdk-validation
+```
+
+The runner emits OpenSTA reports, rank-agreement results, and a
+`run-manifest.json` containing the exact tool, netlist, Liberty, workload, and
+waveform hashes. Vertex-backed runs additionally require
+`AGCWS_GCP_PROJECT` and `AGCWS_GEMINI_MODEL`; `make vertex-preflight` checks
+those settings without making a cloud call.
 
 Override `SYNTH_DIR`, `WORKLOAD`, and `EVAL_DIR` for separate task roots;
 tool and Liberty paths come from `.env` or container defaults.
