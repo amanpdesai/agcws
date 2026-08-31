@@ -27,3 +27,27 @@ def test_probe_writes_failure_manifest(tmp_path: Path, monkeypatch):
     assert record["returncode"] == 1
     assert record["source_count"] == 1
     assert "-Q" not in record["command"]
+
+
+def test_probe_records_timeout_as_non_success(tmp_path: Path, monkeypatch):
+    source = tmp_path / "core.sv"
+    source.write_text("module core; endmodule\n")
+    sources = tmp_path / "sources.json"
+    sources.write_text(json.dumps({"sources": [{"path": str(source)}]}))
+
+    def timeout(*_args, **_kwargs):
+        raise __import__("subprocess").TimeoutExpired("yosys", 0.01, stderr="partial")
+
+    monkeypatch.setenv("AGCWS_SLANG_PLUGIN", "plugin.so")
+    monkeypatch.setattr("subprocess.run", timeout)
+    monkeypatch.setattr("sys.argv", ["probe", str(sources), "--map",
+                                      "--timeout", "0.01", "--out", str(tmp_path / "out")])
+    try:
+        main()
+    except SystemExit as exc:
+        assert exc.code == 124
+    record = json.loads((tmp_path / "out" / "manifest.json").read_text())
+    assert record["returncode"] == 124
+    assert record["timed_out"] is True
+    assert record["timeout_s"] == 0.01
+    assert "timed out" in (tmp_path / "out" / "yosys.log").read_text()
