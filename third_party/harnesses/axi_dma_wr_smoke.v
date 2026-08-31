@@ -12,12 +12,12 @@ module agcws_axi_dma_wr_smoke;
   wire awlock; wire [3:0] awcache; wire [2:0] awprot; wire awvalid; reg awready=1;
   wire [DW-1:0] wdata; wire [SW-1:0] wstrb; wire wlast,wvalid; reg wready=1;
   reg [IW-1:0] bid=0; reg [1:0] bresp=0; reg bvalid=0; wire bready;
-  integer sent=0, written=0; reg aw_seen=0;
+  integer sent=0, written=0, cfg_addr=16'h0200, cfg_len=64; reg aw_seen=0;
 
   always @(posedge clk) begin
     if (rst) begin dvalid<=0; enable<=0; sent<=0; tvalid<=0; tlast<=0; end
     else if (!enable) enable<=1;
-    else if (!dvalid && !sent && dready) begin daddr<=16'h0200; dlen<=64; dtag<=8'ha5; dvalid<=1; sent<=1; end
+    else if (!dvalid && !sent && dready) begin daddr<=cfg_addr; dlen<=cfg_len; dtag<=8'ha5; dvalid<=1; sent<=1; end
     else begin dvalid<=0; end
   end
   always @(posedge clk) begin
@@ -30,11 +30,15 @@ module agcws_axi_dma_wr_smoke;
     end
   end
   always @(posedge clk) if (!rst && svalid) begin
-    if (serr!=0 || stag!=8'ha5 || slen!=64 || written!=16)
+    if (serr!=0 || stag!=8'ha5 || slen!=cfg_len || written!=cfg_len/4)
       $fatal(1,"DMA write failed error=%h tag=%h len=%0d beats=%0d",serr,stag,slen,written);
     $display("AGCWS_AXI_DMA_WR_OK beats=%0d",written); $finish;
   end
-  initial begin $dumpfile("activity.vcd"); $dumpvars(0,agcws_axi_dma_wr_smoke); #25 rst=0; #20000 $fatal(1,"DMA write timeout"); end
+  initial begin
+    if (!$value$plusargs("ADDR=%d", cfg_addr)) cfg_addr=16'h0200;
+    if (!$value$plusargs("LEN=%d", cfg_len)) cfg_len=64;
+    $dumpfile("activity.vcd"); $dumpvars(0,agcws_axi_dma_wr_smoke); #25 rst=0; #20000 $fatal(1,"DMA write timeout");
+  end
 
   always @(posedge clk) begin
     if (rst) bvalid<=0;

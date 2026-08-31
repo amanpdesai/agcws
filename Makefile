@@ -6,7 +6,7 @@ SYNTH_DIR ?= out/aes-core-synthesis
 WORKLOAD ?= experiments/workloads/aes_min_scored.json
 EVAL_DIR ?= out/aes-evaluation
 
-.PHONY: test lint dev-install inspect-liberty check-liberty-coverage synth-aes evaluate-aes determinism plot-activity temporal-search compositional-search check-axi-dma-rtl run-axi-dma-rd-smoke run-axi-dma-wr-smoke container-smoke
+.PHONY: test lint dev-install inspect-liberty check-liberty-coverage synth-aes evaluate-aes determinism plot-activity temporal-search compositional-search check-axi-dma-rtl run-axi-dma-rd-smoke run-axi-dma-wr-smoke run-axi-dma-workload container-smoke
 test:
 	$(PYTHON) -m pytest -q
 dev-install:
@@ -38,5 +38,7 @@ run-axi-dma-rd-smoke:
 	bash scripts/run_axi_dma_rd_smoke.sh
 run-axi-dma-wr-smoke:
 	bash scripts/run_axi_dma_wr_smoke.sh
+run-axi-dma-workload:
+	PYTHONPATH=src $(PYTHON) scripts/run_axi_dma_workload.py experiments/workloads/axi_dma_smoke.json out/axi-dma-workload
 container-smoke:
 	docker run --rm agcws:dev bash scripts/container_smoke.sh

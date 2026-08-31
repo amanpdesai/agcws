@@ -18,7 +18,7 @@ module agcws_axi_dma_rd_smoke;
   wire [2:0] arprot; wire arvalid; reg arready=1;
   reg [IW-1:0] rid=0; reg [DW-1:0] rdata=0; reg [1:0] rresp=0;
   reg rlast=0, rvalid=0; wire rready;
-  integer beats_left=0, submitted=0, received=0;
+  integer beats_left=0, submitted=0, received=0, cfg_addr=16'h0100, cfg_len=64;
 
   always @(posedge clk) begin
     if (rst) begin
@@ -43,7 +43,7 @@ module agcws_axi_dma_rd_smoke;
     end else if (!submitted && !enable) begin
       enable <= 1;
     end else if (!submitted && desc_ready) begin
-      desc_addr <= 16'h0100; desc_len <= 64; desc_tag <= 8'h5a;
+      desc_addr <= cfg_addr; desc_len <= cfg_len; desc_tag <= 8'h5a;
       desc_valid <= 1; submitted <= 1;
     end else begin
       desc_valid <= 0;
@@ -52,7 +52,7 @@ module agcws_axi_dma_rd_smoke;
 
   always @(posedge clk) begin
     if (!rst && status_valid) begin
-      if (status_error != 0 || status_tag != 8'h5a || received != 16)
+      if (status_error != 0 || status_tag != 8'h5a || received != cfg_len/4)
         $fatal(1, "DMA read failed error=%h tag=%h beats=%0d", status_error, status_tag, received);
       $display("AGCWS_AXI_DMA_RD_OK beats=%0d", received);
       $finish;
@@ -60,6 +60,8 @@ module agcws_axi_dma_rd_smoke;
   end
 
   initial begin
+    if (!$value$plusargs("ADDR=%d", cfg_addr)) cfg_addr=16'h0100;
+    if (!$value$plusargs("LEN=%d", cfg_len)) cfg_len=64;
     $dumpfile("activity.vcd"); $dumpvars(0, agcws_axi_dma_rd_smoke);
     #25 rst=0;
     #20000 $fatal(1, "DMA read timeout");
