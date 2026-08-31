@@ -4,6 +4,7 @@ from __future__ import annotations
 import argparse
 import json
 import re
+from bisect import bisect_right
 from collections import defaultdict
 from pathlib import Path
 
@@ -52,6 +53,11 @@ def parse(path: Path, clock_name: str = "clk_i", windows: int = 16) -> dict:
             clock_edges.append(time)
     if not clock_edges:
         clock_edges = sorted(per_time)
+    per_cycle = [0] * max(0, len(clock_edges))
+    for timestamp, count in per_time.items():
+        cycle = bisect_right(clock_edges, timestamp) - 1
+        if cycle >= 0:
+            per_cycle[cycle] += count
     buckets = [0] * min(windows, max(1, len(clock_edges)))
     if clock_edges:
         edge_set = {edge: index for index, edge in enumerate(clock_edges)}
@@ -60,7 +66,10 @@ def parse(path: Path, clock_name: str = "clk_i", windows: int = 16) -> dict:
             if prior:
                 index = edge_set[max(prior)] * len(buckets) // len(clock_edges)
                 buckets[min(index, len(buckets) - 1)] += count
-    return {"vcd": str(path), "clock": clock_name, "clock_edges": len(clock_edges), "total_transitions": sum(transitions.values()), "signal_transitions": dict(sorted(transitions.items())), "window_toggles": buckets}
+    return {"vcd": str(path), "clock": clock_name, "clock_edges": len(clock_edges),
+            "total_transitions": sum(transitions.values()),
+            "signal_transitions": dict(sorted(transitions.items())),
+            "per_cycle_toggles": per_cycle, "window_toggles": buckets}
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()

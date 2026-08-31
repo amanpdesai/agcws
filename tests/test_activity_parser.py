@@ -6,3 +6,5 @@ def test_parse_smoke_vcd():
     assert result["clock_edges"] > 0
     assert result["total_transitions"] > 0
     assert len(result["window_toggles"]) == 8
+    assert len(result["per_cycle_toggles"]) == result["clock_edges"]
+    assert sum(result["per_cycle_toggles"]) == result["total_transitions"]
