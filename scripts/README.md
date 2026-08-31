@@ -167,3 +167,10 @@ Independent seed ranges may be run in parallel with separate output roots.
 
 Simulator compilation is shared through `AGCWS_SIM_BUILD_DIR` by default, while
 each task retains isolated waveform, activity, and result artifacts.
+
+Run and validate the functional Ibex artifact:
+
+```bash
+make run-ibex
+make verify-ibex IBEX_ARTIFACT=out/ibex
+```

@@ -22,7 +22,7 @@ BUDGET ?= 200
 SEEDS ?= 0
 TARGETS ?= 0.10 0.25 0.50 0.75 0.90
 
-.PHONY: test lint dev-install analysis-install verification-install chia-install chia-smoke upstream-dma-reference research-smoke verify-artifact inspect-liberty check-liberty-coverage synth-aes evaluate-aes determinism plot-activity plot-search-curves random-corpus temporal-corpus temporal-search compositional-search baseline-matrix cross-pdk validate-finalists cross-pdk-dma axi-dma-search validate-axi-dma-finalists check-axi-dma-rtl run-axi-dma-rd-smoke run-axi-dma-wr-smoke run-axi-dma-workload run-axi-dma-coupled run-axi-memory-smoke compile-ibex resolve-ibex-sources run-ibex verify container-smoke
+.PHONY: test lint dev-install analysis-install verification-install chia-install chia-smoke upstream-dma-reference research-smoke verify-artifact inspect-liberty check-liberty-coverage synth-aes evaluate-aes determinism plot-activity plot-search-curves random-corpus temporal-corpus temporal-search compositional-search baseline-matrix cross-pdk validate-finalists cross-pdk-dma axi-dma-search validate-axi-dma-finalists check-axi-dma-rtl run-axi-dma-rd-smoke run-axi-dma-wr-smoke run-axi-dma-workload run-axi-dma-coupled run-axi-memory-smoke compile-ibex resolve-ibex-sources run-ibex verify-ibex verify container-smoke
 test:
 	$(VENV_PYTHON) -m pytest -q
 dev-install:
@@ -106,6 +106,8 @@ resolve-ibex-sources:
 	PYTHONPATH=src $(VENV_PYTHON) scripts/resolve_ibex_sources.py --out "$${AGCWS_ARTIFACT_ROOT:-out}/ibex-sources"
 run-ibex:
 	bash scripts/run_ibex_workload.sh experiments/workloads/ibex_smoke.json out/ibex
+verify-ibex:
+	$(VENV_PYTHON) scripts/verify_artifact.py "$${IBEX_ARTIFACT:-out/ibex}"
 verify:
 	$(MAKE) test lint check-axi-dma-rtl run-axi-memory-smoke run-axi-dma-workload
 container-smoke:
