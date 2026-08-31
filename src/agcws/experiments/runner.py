@@ -61,7 +61,16 @@ def run_search(
             if validity.valid:
                 profile = evaluate(workload)
                 if not profile.valid:
-                    validity = adapter.validate_result(SimResult(False, True, False, profile.useful_work))
+                    validity = adapter.validate_result(
+                        SimResult(False, True, False, profile.useful_work)
+                    )
+                else:
+                    # Evaluators must not be able to bypass the runtime half of
+                    # the four-stage gate.  In particular, the useful-work
+                    # floor is enforced before a score enters the history.
+                    validity = adapter.validate_result(
+                        SimResult(True, True, True, profile.useful_work)
+                    )
             if validity.valid and profile is not None:
                 current = loss(profile, goal, p_min=p_min, p_max=p_max)
                 best = min(best, current)
