@@ -6,7 +6,7 @@ SYNTH_DIR ?= out/aes-core-synthesis
 WORKLOAD ?= experiments/workloads/aes_min_scored.json
 EVAL_DIR ?= out/aes-evaluation
 
-.PHONY: test lint dev-install inspect-liberty check-liberty-coverage synth-aes evaluate-aes determinism plot-activity temporal-search compositional-search container-smoke
+.PHONY: test lint dev-install inspect-liberty check-liberty-coverage synth-aes evaluate-aes determinism plot-activity temporal-search compositional-search check-axi-dma-rtl container-smoke
 test:
 	$(PYTHON) -m pytest -q
 dev-install:
@@ -32,5 +32,7 @@ temporal-search:
 	PYTHONPATH=src $(PYTHON) scripts/run_aes_temporal_search.py "$(SYNTH_DIR)"
 compositional-search:
 	PYTHONPATH=src $(PYTHON) scripts/run_aes_compositional_search.py "$(SYNTH_DIR)"
+check-axi-dma-rtl:
+	bash scripts/check_axi_dma_rtl.sh
 container-smoke:
 	docker run --rm agcws:dev bash scripts/container_smoke.sh
