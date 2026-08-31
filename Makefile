@@ -17,7 +17,7 @@ BUDGET ?= 200
 SEEDS ?= 0
 TARGETS ?= 0.10 0.25 0.50 0.75 0.90
 
-.PHONY: test lint dev-install analysis-install verification-install chia-install chia-smoke upstream-dma-reference research-smoke verify-artifact inspect-liberty check-liberty-coverage synth-aes evaluate-aes determinism plot-activity random-corpus temporal-corpus temporal-search compositional-search baseline-matrix cross-pdk check-axi-dma-rtl run-axi-dma-rd-smoke run-axi-dma-wr-smoke run-axi-dma-workload run-axi-dma-coupled run-axi-memory-smoke compile-ibex run-ibex verify container-smoke
+.PHONY: test lint dev-install analysis-install verification-install chia-install chia-smoke upstream-dma-reference research-smoke verify-artifact inspect-liberty check-liberty-coverage synth-aes evaluate-aes determinism plot-activity random-corpus temporal-corpus temporal-search compositional-search baseline-matrix cross-pdk validate-finalists check-axi-dma-rtl run-axi-dma-rd-smoke run-axi-dma-wr-smoke run-axi-dma-workload run-axi-dma-coupled run-axi-memory-smoke compile-ibex run-ibex verify container-smoke
 test:
 	$(VENV_PYTHON) -m pytest -q
 dev-install:
@@ -69,6 +69,8 @@ baseline-matrix:
 		"$(SYNTH_DIR)" "$(P_MIN)" "$(P_MAX)" "$(BASELINE_DIR)"
 cross-pdk:
 	bash scripts/run_aes_cross_pdk.sh "$(WAVEFORM)" "$(CROSS_PDK_DIR)"
+validate-finalists:
+	PYTHONPATH=src $(VENV_PYTHON) scripts/validate_finalists.py "$(BASELINE_DIR)/random/target-0.50/seed-0/trials.jsonl" "$(SYNTH_DIR)" --out "$${AGCWS_ARTIFACT_ROOT:-out}/finalist-validation"
 check-axi-dma-rtl:
 	bash scripts/check_axi_dma_rtl.sh
 run-axi-dma-rd-smoke:
