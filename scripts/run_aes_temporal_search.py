@@ -33,6 +33,7 @@ def main() -> None:
         result = evaluate(workload_path, args.synthesis_dir, trial_dir)
         activity = result["activity"]
         return PowerProfile(mean_power=result["mean_power"], peak_power=result["mean_power"],
+                            per_cycle_toggles=activity["per_cycle_toggles"],
                             windowed=activity["window_toggles"], useful_work=result["useful_work"],
                             valid=True, fidelity="synthesis", provenance=result["provenance"])
 

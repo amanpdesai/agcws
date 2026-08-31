@@ -60,6 +60,7 @@ def evaluate(workload_path: Path, synthesis_dir: Path, output_dir: Path, *, allo
         "valid": True,
         "useful_work": completed_blocks,
         "mean_power": profile.mean_power,
+        "per_cycle_toggles": json.loads((output_dir / "activity.json").read_text())["per_cycle_toggles"],
         "fidelity": profile.fidelity,
         "activity": json.loads((output_dir / "activity.json").read_text()),
         "provenance": {

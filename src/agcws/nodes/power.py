@@ -13,6 +13,7 @@ class PowerProfile:
     valid: bool = False
     fidelity: Literal["activity", "synthesis"] = "activity"
     provenance: dict[str, str] | None = None
+    per_cycle_toggles: list[int] | None = None
 
 
 _POWER_LINE = re.compile(
