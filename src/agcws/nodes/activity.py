@@ -104,6 +104,10 @@ def parse_vcd(path: Path, clock_name: str = "clk_i", windows: int = 16) -> dict:
 def extract_activity(command: list[str], waveform: Path, output_dir: Path, *, clock_name: str = "clk_i", windows: int = 16) -> tuple[CommandResult, ActivityArtifact]:
     output_dir.mkdir(parents=True, exist_ok=True)
     result = run_command(command, cwd=output_dir)
+    if result.returncode != 0:
+        raise RuntimeError(
+            f"activity command failed with exit code {result.returncode}: {result.stderr.strip()}"
+        )
     if not waveform.is_file():
         raise FileNotFoundError(f"activity command did not produce waveform: {waveform}")
     activity = parse_vcd(waveform, clock_name, windows)

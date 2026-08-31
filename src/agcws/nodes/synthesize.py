@@ -25,9 +25,13 @@ def synthesize_once(command: list[str], output_dir: Path, liberty: Path, design_
     if not design_fingerprint:
         raise ValueError("design_fingerprint is required for safe synthesis caching")
     inputs = {"command": command, "design_fingerprint": design_fingerprint, "liberty_sha256": liberty_digest(liberty)}
-    if manifest.exists() and json.loads(manifest.read_text()).get("inputs") == inputs:
+    netlist = output_dir / "mapped.v"
+    if (manifest.exists() and netlist.is_file()
+            and json.loads(manifest.read_text()).get("inputs") == inputs):
         return CommandResult(command, 0, "cached synthesis\n", ""), NetlistArtifact(output_dir / "mapped.v", liberty, manifest)
     result = run_command(command, cwd=output_dir)
     if result.returncode == 0:
+        if not netlist.is_file():
+            raise FileNotFoundError(f"synthesis command did not produce expected netlist: {netlist}")
         manifest.write_text(json.dumps({"inputs": inputs}, indent=2) + "\n")
     return result, NetlistArtifact(output_dir / "mapped.v", liberty, manifest)
