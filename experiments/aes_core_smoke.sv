@@ -49,6 +49,8 @@ module aes_core_smoke;
     static int idle_cycles = 0;
     static int pattern = 0;
     static int completed = 0;
+    int block_idle;
+    string idle_arg;
     logic [127:0] expected_state;
     void'($value$plusargs("BLOCKS=%d", blocks));
     void'($value$plusargs("IDLE=%d", idle_cycles));
@@ -98,7 +100,12 @@ module aes_core_smoke;
         repeat (4) @(posedge clk_i);
         rst_ni = 1'b1;
         repeat (2) @(posedge clk_i);
-        repeat (idle_cycles) @(posedge clk_i);
+        block_idle = idle_cycles;
+        $sformat(idle_arg, "IDLE%0d", block);
+        void'($value$plusargs({idle_arg, "=%d"}, block_idle));
+        if (block_idle < 0 || block_idle > 10000)
+          $fatal(1, "indexed idle cycles out of range");
+        repeat (block_idle) @(posedge clk_i);
       end
     end
     $display("AES_CORE_WORKLOAD_DONE blocks=%0d", completed);

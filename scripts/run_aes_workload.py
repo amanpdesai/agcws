@@ -29,6 +29,23 @@ def data_pattern(workload: dict) -> int:
         raise ValueError("data_pattern must be in [0,3]")
     return value
 
+def idle_pattern(workload: dict, block_total: int) -> str:
+    """Encode DSL idle operations as indexed inter-block gaps."""
+    gaps = [0] * max(0, block_total - 1)
+    pending = 0
+    block = 0
+    for operation in workload["operations"]:
+        name = operation.get("op")
+        if name == "idle":
+            pending += int(operation.get("cycles", 0))
+        elif name in {"encrypt", "decrypt"}:
+            for _ in range(int(operation.get("blocks", 1))):
+                if block < len(gaps):
+                    gaps[block] = pending
+                pending = 0
+                block += 1
+    return ",".join(str(value) for value in gaps)
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("workload", type=Path)
@@ -40,7 +57,10 @@ def main() -> None:
     pattern = data_pattern(workload)
     args.out.mkdir(parents=True, exist_ok=True)
     (args.out / "workload.json").write_text(json.dumps(workload, indent=2, sort_keys=True) + "\n")
-    subprocess.run(["bash", "scripts/run_aes_core_smoke.sh", str(args.out), str(blocks), str(idle), str(pattern)], check=True)
+    import os
+    environment = dict(os.environ)
+    environment["AGCWS_IDLE_PATTERN"] = idle_pattern(workload, blocks)
+    subprocess.run(["bash", "scripts/run_aes_core_smoke.sh", str(args.out), str(blocks), str(idle), str(pattern)], check=True, env=environment)
 
 if __name__ == "__main__":
     main()

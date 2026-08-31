@@ -22,8 +22,15 @@ verilator --binary --trace-vcd --timing --sv --top-module aes_core_smoke \
   -Ithird_party/opentitan/hw/ip/entropy_src/rtl \
   $(<"$out_dir/sources.list") experiments/aes_core_smoke.sv
 : > "$out_dir/activity.vcd"
+idle_args=("+BLOCKS=$blocks" "+IDLE=$idle_cycles" "+PATTERN=$pattern")
+if [[ -n "${AGCWS_IDLE_PATTERN:-}" ]]; then
+  IFS=',' read -r -a idle_values <<< "$AGCWS_IDLE_PATTERN"
+  for index in "${!idle_values[@]}"; do
+    idle_args+=("+IDLE${index}=${idle_values[$index]}")
+  done
+fi
 timeout --kill-after=5s "${timeout_s}s" bash -c \
-  "cd \"$out_dir\" && ./obj_dir/aes_core_smoke \"+BLOCKS=$blocks\" \"+IDLE=$idle_cycles\" \"+PATTERN=$pattern\"" \
+  "cd \"$out_dir\" && ./obj_dir/aes_core_smoke ${idle_args[*]}" \
   > "$out_dir/run.log" 2>&1
 if [[ ! -s "$out_dir/activity.vcd" ]]; then
   echo "simulation did not produce a non-empty VCD" >&2
