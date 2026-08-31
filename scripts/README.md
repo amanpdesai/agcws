@@ -76,3 +76,10 @@ Compute the Slice-4 envelope and provisional useful-work floor:
 PYTHONPATH=src python3 scripts/calibrate_aes.py \
   out/aes-calibration-10/corpus.jsonl --out out/aes-calibration-10/calibration.json
 ```
+
+Measure the pre-registered random-search solve fraction before comparative runs:
+
+```bash
+PYTHONPATH=src python3 scripts/run_aes_scalar_calibration.py \
+  out/aes-core-synthesis-final4 --out out/aes-scalar-calibration
+```
