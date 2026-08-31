@@ -61,6 +61,11 @@ Host configuration is optional and comes from an untracked `.env` copied from
 its own defaults, so host-specific `/opt/eda` paths do not enter the artifact.
 The Yosys-slang frontend is opt-in via `AGCWS_SLANG_PLUGIN`; the default
 compatibility frontend avoids host-specific Yosys plugin ABI mismatches.
+
+For local CHIA development, run `make chia-install` after `make dev-install`.
+This installs the pinned checkout and its Ray/Vertex dependencies into the
+project virtual environment; the lightweight default development install does
+not pull those large runtime dependencies.
 The primary Sky130 file is the default; Nangate45 is used for finalist
 cross-checks. `scripts/aes_sources.py` emits the current OpenTitan AES RTL set.
 `scripts/lint_aes_core.sh` is the first executable RTL acceptance check.
