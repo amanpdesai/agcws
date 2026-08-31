@@ -10,6 +10,20 @@ Under active development (2026-08-29 → 2026-09-20). Not yet usable.
 
 See `docs/ARCHITECTURE.md` and `docs/PLAN.md`.
 
+## Common tasks
+
+The Makefile is a thin operator surface over the reproducible scripts:
+
+```bash
+make test
+make inspect-liberty
+make synth-aes
+make evaluate-aes
+```
+
+Override `SYNTH_DIR`, `WORKLOAD`, and `EVAL_DIR` for separate task roots;
+tool and Liberty paths come from `.env` or container defaults.
+
 ## Designs
 
 OpenTitan AES (register/data), verilog-axi `axi_dma` (descriptors), and Ibex (instruction stream).
