@@ -23,8 +23,8 @@ def command_version(command: str | Path, *args: str) -> str | None:
     return (result.stdout or result.stderr).strip().splitlines()[0] if (result.stdout or result.stderr).strip() else ""
 
 
-def toolchain_record(commands: dict[str, str | Path]) -> dict[str, str | None]:
-    return {name: command_version(command, "--version") for name, command in commands.items()}
+def toolchain_record(commands: dict[str, tuple[str | Path, tuple[str, ...]]]) -> dict[str, str | None]:
+    return {name: command_version(command, *args) for name, (command, args) in commands.items()}
 
 
 def input_record(paths: dict[str, Path]) -> dict[str, dict[str, str | int]]:

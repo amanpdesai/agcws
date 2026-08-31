@@ -16,6 +16,7 @@ from agcws.adapters.aes import AESAdapter
 from agcws.nodes.power import parse_opensta_power_file
 from agcws.nodes.validation import validate_static
 from agcws.provenance import input_record, toolchain_record
+from agcws import config
 
 
 def evaluate(workload_path: Path, synthesis_dir: Path, output_dir: Path) -> dict:
@@ -51,7 +52,9 @@ def evaluate(workload_path: Path, synthesis_dir: Path, output_dir: Path) -> dict
             "power_report": str((output_dir / "opensta/power.rpt").resolve()),
             "liberty": json.loads((synthesis_dir / "manifest.json").read_text()).get("liberty"),
             "tools": toolchain_record({
-                "verilator": "verilator", "yosys": "yosys", "opensta": "sta",
+                "verilator": (config.VERILATOR, ("--version",)),
+                "yosys": (config.YOSYS, ("--version",)),
+                "opensta": (config.OPENSTA, ("-version",)),
             }),
             "inputs": input_record({
                 "workload": workload_path,
