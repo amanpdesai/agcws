@@ -44,6 +44,11 @@ The final version must include:
 4. Finalist proxy-to-gate agreement and proxy exploitation rate.
 5. Cross-PDK rank agreement with annotation coverage.
 
+The dependency-free helpers in `agcws.analysis.inference` provide exact
+paired sign-flip p-values, Holm adjustment, and matched-pairs rank-biserial
+effect sizes for these comparisons. Bootstrap confidence intervals are
+provided by `agcws.analysis.aggregate`.
+
 Current preliminary source: `out/aes-analysis-6seed/aggregate.json`, covering
 AES scalar targets, five policies, and six seeds per cell. It is not the final
 factorial result.
