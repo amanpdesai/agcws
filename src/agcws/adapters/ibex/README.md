@@ -15,4 +15,7 @@ on structured JSON, while the container owns the compiler toolchain.
 `scripts/run_ibex_workload.sh` runs the generated ELF with the upstream
 Verilator simulator and collects retirement counters, the core trace, and an
 FST waveform into one output directory. Gate-level synthesis/power integration
-is still pending for the Ibex vertical slice.
+is still pending for the Ibex vertical slice. The current reproducible probe
+resolves the complete upstream closure, but the pinned Slang/Yosys frontend
+fails during `ibex_top` elaboration before mapping; this is recorded as an
+integration boundary, not a fabricated power result.

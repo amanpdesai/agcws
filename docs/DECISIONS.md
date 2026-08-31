@@ -1,5 +1,21 @@
 # Decision log
 
+## 2026-08-31 — Ibex synthesis probe remains unclaimed at gate level
+
+**Finding.** FuseSoC source closure resolution and simple-system simulation are
+reproducible in the container. The standalone `ibex_top` closure (57 RTL
+sources, 33 include directories) fails during Slang/Yosys elaboration before
+mapping, so no Ibex netlist or OpenSTA power number is used.
+**Decision.** Keep Ibex in the simulation/activity tier until the frontend
+boundary is fixed and independently validated.
+**Rationale.** A successful simulator run does not establish synthesizability;
+publishing a proxy or partial netlist would overstate the cross-design claim.
+**Rejected.** Rewriting upstream Ibex RTL or scoring a failed synthesis as a
+valid power result.
+**Consequence.** The next Ibex integration task is to isolate the unsupported
+elaboration construct or establish a documented synthesis wrapper, followed by
+netlist, annotation, and OpenSTA checks before Ibex enters gate-level claims.
+
 ## 2026-08-31 — Cross-PDK smoke requires the Slang synthesis frontend
 
 **Decision.** The AES cross-PDK flow uses the Yosys Slang frontend for host

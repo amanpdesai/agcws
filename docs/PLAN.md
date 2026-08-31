@@ -33,8 +33,11 @@ source-to-destination memory-copy harness with VCD/activity provenance,
 workload validation, useful-work gating, provenance, and Sky130/Nangate45
 synthesis/OpenSTA validation. It also has a
 deterministic Ibex JSON-to-ELF compiler and upstream simple-system Verilator
-runner. Comparative DMA workload runs and full Ibex synthesis/power integration
-remain before the widened experiment is complete.
+runner, with both Ibex FuseSoC source closures fingerprinted. Comparative DMA
+workload runs and full Ibex synthesis/power integration remain before the
+widened experiment is complete. The current Ibex synthesis probe fails during
+upstream `ibex_top` elaboration in the pinned Slang/Yosys frontend; no netlist
+or power result is treated as valid until that boundary is resolved.
 The pinned upstream coupled-DMA reference test now passes through the isolated
 `make upstream-dma-reference` target; it is a protocol oracle, not the project
 runtime, and does not change this milestone's status.
