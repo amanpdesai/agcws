@@ -20,6 +20,13 @@ def test_vertex_sampling_protocol_is_frozen():
     assert VertexAgent.max_output_tokens == 4096
 
 
+def test_vertex_records_injected_usage_metadata():
+    agent = VertexAgent(lambda *_: ('[{"operations": []}]', {"tokens_in": 12, "tokens_out": 7}),
+                        "system", model="fake")
+    agent.propose(None, ScalarGoal(0.5), [], 1)
+    assert agent.last_usage == {"tokens_in": 12, "tokens_out": 7}
+
+
 def test_vertex_boundary_rejects_non_json():
     with pytest.raises(ValueError, match="valid JSON"):
         parse_candidates("not-json", 2)

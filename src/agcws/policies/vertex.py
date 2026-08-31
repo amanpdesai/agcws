@@ -52,12 +52,23 @@ class VertexAgent(AgentPolicy):
     top_p = 0.95
     max_output_tokens = 4096
 
-    def __init__(self, generate: Callable[[str, str], str], system_prompt: str, *, model: str):
+    def __init__(self, generate: Callable[[str, str], str | tuple[str, dict[str, int]]], system_prompt: str, *, model: str):
         self.system_prompt = system_prompt
+        self.last_usage: dict[str, int] = {"tokens_in": 0, "tokens_out": 0}
 
         def propose(adapter, goal, history, n):
             payload = build_payload(adapter, goal, history, n, system_prompt)
-            return parse_candidates(generate(model, payload), n)
+            generated = generate(model, payload)
+            if isinstance(generated, tuple):
+                text, usage = generated
+                self.last_usage = {
+                    "tokens_in": int(usage.get("tokens_in", 0)),
+                    "tokens_out": int(usage.get("tokens_out", 0)),
+                }
+            else:
+                text = generated
+                self.last_usage = {"tokens_in": 0, "tokens_out": 0}
+            return parse_candidates(text, n)
 
         digest = hashlib.sha256(system_prompt.encode()).hexdigest()
         super().__init__(propose, model=model, prompt_hash=digest)
@@ -70,7 +81,7 @@ class VertexAgent(AgentPolicy):
             raise RuntimeError("install agcws[chia] to use VertexAgent") from exc
         client = genai.Client(vertexai=True, project=project, location=location)
 
-        def generate(model_name: str, payload: str) -> str:
+        def generate(model_name: str, payload: str) -> tuple[str, dict[str, int]]:
             response = client.models.generate_content(model=model_name, contents=payload,
                                                       config={
                                                           "temperature": cls.temperature,
@@ -78,6 +89,10 @@ class VertexAgent(AgentPolicy):
                                                           "max_output_tokens": cls.max_output_tokens,
                                                           "response_mime_type": "application/json",
                                                       })
-            return response.text or ""
+            metadata = getattr(response, "usage_metadata", None)
+            return response.text or "", {
+                "tokens_in": int(getattr(metadata, "prompt_token_count", 0) or 0),
+                "tokens_out": int(getattr(metadata, "candidates_token_count", 0) or 0),
+            }
 
         return cls(generate, system_prompt, model=model)
