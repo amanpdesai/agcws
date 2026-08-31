@@ -57,6 +57,9 @@ Verification is available locally through the Python contract suite, Makefile
 smoke targets, and Docker build/smoke test. GitHub Actions is intentionally not
 used. The container includes the open EDA flow and copied Liberty inputs; cloud
 credentials and optional LLM integrations are exercised only in experiments.
+It also includes the `riscv64-unknown-elf` compiler/binutils pair for the
+planned Ibex instruction-image flow; the Ibex simulator harness remains a
+separate bring-up milestone.
 
 To verify that an evaluation still matches its recorded inputs:
 

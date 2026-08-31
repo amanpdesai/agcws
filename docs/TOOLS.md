@@ -26,6 +26,7 @@ ultimately pinned in the container image.
 | Icarus Verilog | small smoke tests | `/usr/bin/iverilog` | Optional fallback, not power oracle |
 | Matplotlib | deterministic activity figures | Optional analysis extra | Install with `make analysis-install` |
 | MyHDL + Icarus VPI | upstream verilog-axi coupled-DMA reference test | Optional verification extra | Run `make upstream-dma-reference` |
+| RISC-V GCC + binutils | Ibex instruction-image assembly/linking | Container-provided (`riscv64-unknown-elf-*`) | Record compiler version in workload provenance |
 
 ## Source dependencies to pin as submodules
 

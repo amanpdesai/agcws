@@ -8,6 +8,7 @@ ARG SV_ELAB_REF=84bbdaacf59f56ff9b5e7be486f9cc7df136b385
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y --no-install-recommends \
     verilator yosys yosys-dev iverilog git make g++ cmake bison flex swig \
+    gcc-riscv64-unknown-elf binutils-riscv64-unknown-elf \
     tcl-dev zlib1g-dev libeigen3-dev \
     libboost-system-dev libboost-filesystem-dev libboost-program-options-dev \
     libboost-serialization-dev libboost-iostreams-dev libboost-regex-dev \
