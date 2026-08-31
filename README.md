@@ -63,6 +63,9 @@ credentials and optional LLM integrations are exercised only in experiments.
 It also includes the `riscv64-unknown-elf` compiler/binutils pair, FuseSoC,
 and the native dependencies needed to build and run the pinned Ibex simulator.
 
+Contributors should start with [`CONTRIBUTING.md`](CONTRIBUTING.md), which
+defines the local verification and reproducibility contract.
+
 To verify that an evaluation still matches its recorded inputs:
 
 ```bash
