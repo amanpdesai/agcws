@@ -57,6 +57,12 @@ def evaluate(workload_path: Path, synthesis_dir: Path, output_dir: Path, *, allo
         check=True,
     )
     profile = parse_opensta_power_file(output_dir / "opensta/power.rpt")
+    annotation_report = output_dir / "opensta/annotation.rpt"
+    annotation_line = annotation_report.read_text().strip()
+    annotation_match = re.fullmatch(r"Annotated (\d+) pin activities\.", annotation_line)
+    if not annotation_match:
+        raise RuntimeError("OpenSTA report has no parseable activity annotation count")
+    annotated_pins = int(annotation_match.group(1))
     activity = json.loads((output_dir / "activity.json").read_text())
     by_region = attribute_regions(activity["signal_transitions"], AESAdapter.activity_region_prefixes)
     result = {
@@ -73,6 +79,8 @@ def evaluate(workload_path: Path, synthesis_dir: Path, output_dir: Path, *, allo
             # to the task directory/repository, while hashes identify content.
             "synthesis_manifest": "synthesis/manifest.json",
             "power_report": "opensta/power.rpt",
+            "annotation_report": "opensta/annotation.rpt",
+            "annotated_pin_activities": annotated_pins,
             "liberty": json.loads((synthesis_dir / "manifest.json").read_text()).get("liberty"),
             "tools": toolchain_record({
                 "verilator": (config.VERILATOR, ("--version",)),

@@ -9,6 +9,9 @@ def test_evaluator_composes_runtime_useful_work_gate():
     assert "validate_result" in text
     assert "SimResult" in text
     assert "allow_invalid" in text
+    opensta = Path("scripts/run_opensta_aes.sh").read_text()
+    assert "report_activity_annotation" in opensta
+    assert "annotation.rpt" in opensta
 
 
 def test_simulator_failure_is_not_returned_as_a_valid_artifact(tmp_path):
