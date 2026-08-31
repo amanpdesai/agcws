@@ -26,11 +26,20 @@ def main() -> None:
     parser.add_argument("--budget", type=int, default=32)
     parser.add_argument("--seed", type=int, default=0)
     parser.add_argument("--power-floor", type=float, default=0.0)
+    parser.add_argument("--targets", type=Path,
+                        help="achieved-profile target manifest from select_profile_targets.py")
+    parser.add_argument("--target-index", type=int, default=0)
     args = parser.parse_args()
-    goal = CompositionalGoal(
-        shares={"aes_core": 0.4, "aes_control": 0.2, "aes_data": 0.4},
-        power_floor=args.power_floor,
-    )
+    target_source = "built-in-smoke-target"
+    shares = {"aes_core": 0.4, "aes_control": 0.2, "aes_data": 0.4}
+    if args.targets:
+        manifest = json.loads(args.targets.read_text())
+        targets = manifest.get("targets", [])
+        if not targets or not 0 <= args.target_index < len(targets):
+            raise ValueError("target-index is outside the target manifest")
+        shares = targets[args.target_index]["shares"]
+        target_source = f"{args.targets}:{args.target_index}"
+    goal = CompositionalGoal(shares=shares, power_floor=args.power_floor)
     adapter = AESAdapter()
     trial_index = 0
 
@@ -76,7 +85,10 @@ def main() -> None:
     trials = run_search(adapter, RandomSearch(args.seed), goal, evaluator,
                         budget=args.budget, batch_size=8, seed=args.seed,
                         output_dir=args.out)
-    print(json.dumps({"trials": len(trials), "output": str(args.out.resolve())}, indent=2))
+    (args.out / "target.json").write_text(json.dumps({"source": target_source,
+        "goal": {"shares": goal.shares, "power_floor": goal.power_floor}}, indent=2) + "\n")
+    print(json.dumps({"trials": len(trials), "output": str(args.out.resolve()),
+                      "target_source": target_source}, indent=2))
 
 
 if __name__ == "__main__":
