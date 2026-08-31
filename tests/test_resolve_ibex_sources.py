@@ -1,7 +1,8 @@
 from pathlib import Path
 import pytest
 
-from scripts.resolve_ibex_sources import find_eda_manifest, require_toplevel, resolve_manifest
+from scripts.resolve_ibex_sources import (add_declared_fileset, find_eda_manifest,
+                                          require_toplevel, resolve_manifest)
 
 
 def test_resolve_manifest_filters_and_hashes_sv(tmp_path: Path):
@@ -40,6 +41,18 @@ def test_require_toplevel_rejects_incomplete_closure(tmp_path: Path):
     source.write_text("module other; endmodule\n")
     with pytest.raises(ValueError, match="does not contain top-level module core"):
         require_toplevel([{"path": str(source)}], "core")
+
+
+def test_add_declared_fileset_adds_sv_sources(tmp_path: Path):
+    source = tmp_path / "rtl" / "core.sv"
+    source.parent.mkdir()
+    source.write_text("module core; endmodule\n")
+    core = tmp_path / "core.core"
+    core.write_text("filesets:\n  files_rtl:\n    files:\n      - rtl/core.sv\n")
+    sources, includes = [], []
+    add_declared_fileset(core, "files_rtl", sources, includes)
+    assert sources[0]["path"] == str(source.resolve())
+    assert includes == [str(source.parent.resolve())]
 
 
 def test_find_eda_manifest_selects_core_manifest(tmp_path: Path):

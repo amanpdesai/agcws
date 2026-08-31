@@ -54,6 +54,30 @@ def require_toplevel(sources: list[dict[str, str | int]], top: str) -> None:
         )
 
 
+def add_declared_fileset(core_file: Path, fileset: str, sources: list[dict[str, str | int]],
+                         include_dirs: list[str]) -> None:
+    """Add direct files from an Ibex core fileset omitted by a lint target."""
+    try:
+        import yaml
+    except ImportError as exc:
+        raise RuntimeError("PyYAML is required to resolve FuseSoC sources") from exc
+    document = yaml.safe_load(core_file.read_text())
+    entries = document.get("filesets", {}).get(fileset, {}).get("files", [])
+    known = {item["path"] for item in sources}
+    for entry in entries:
+        name = entry if isinstance(entry, str) else next(iter(entry))
+        path = (core_file.parent / name).resolve()
+        if path.suffix not in {".sv", ".v"}:
+            continue
+        if not path.is_file():
+            raise FileNotFoundError(f"FuseSoC fileset source is missing: {path}")
+        if str(path) not in known:
+            sources.append({"path": str(path), "sha256": sha256(path), "bytes": path.stat().st_size})
+            known.add(str(path))
+        if str(path.parent) not in include_dirs:
+            include_dirs.append(str(path.parent))
+
+
 def find_eda_manifest(build_root: Path, core_id: str) -> Path:
     """Find the lint EDA manifest emitted for a FuseSoC core ID.
 
@@ -89,7 +113,11 @@ def main() -> None:
     ], cwd=root, check=True)
     manifest = find_eda_manifest(root / "build", args.core)
     sources, include_dirs = resolve_manifest(manifest)
-    require_toplevel(sources, manifest.read_text().split("toplevel:", 1)[1].splitlines()[0].strip())
+    top = manifest.read_text().split("toplevel:", 1)[1].splitlines()[0].strip()
+    if not any(f"module {top}" in Path(str(item["path"])).read_text(errors="ignore")
+               for item in sources):
+        add_declared_fileset(root / "ibex_top.core", "files_rtl", sources, include_dirs)
+    require_toplevel(sources, top)
     args.out.mkdir(parents=True, exist_ok=True)
     output = args.out / "sources.json"
     output.write_text(json.dumps({
