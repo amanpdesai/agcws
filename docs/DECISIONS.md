@@ -1,5 +1,20 @@
 # Decision log
 
+## 2026-08-31 — AES evaluator determinism verified
+
+**Finding.** Two independent evaluations of the 24-block scored AES workload
+produced byte-identical VCD and activity artifacts, identical useful work (24
+blocks), and identical Sky130 OpenSTA mean power (`0.02118620276451`). The
+machine-readable record is `out/aes-determinism-final/determinism.json`.
+**Decision.** Treat the current simulator/activity/OpenSTA configuration as
+deterministic for calibration and comparative runs; rerun this check after
+changing simulator, frontend, synthesis, or activity code.
+**Rationale.** The calibration assumes evaluator noise does not determine the
+result. Hashing both waveform and extracted activity detects nondeterminism that
+a matching scalar power value could hide.
+**Rejected.** Checking only the final power scalar; accepting waveform
+differences without measuring them.
+
 ## 2026-08-30 — Own repo, upstream CHIA as pinned read-only dependency
 
 **Decision.** `agcws/` is standalone; `tools/chia` is pinned and read-only.  
