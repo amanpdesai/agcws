@@ -6,6 +6,10 @@ SYNTH_DIR ?= out/aes-core-synthesis-final4
 WORKLOAD ?= experiments/workloads/aes_min_scored.json
 EVAL_DIR ?= out/aes-evaluation
 BASELINE_DIR ?= out/aes-baseline-matrix
+CORPUS_DIR ?= out/aes-random-corpus
+TEMPORAL_CORPUS_DIR ?= out/aes-temporal-corpus
+CROSS_PDK_DIR ?= out/aes-cross-pdk
+WAVEFORM ?= $(EVAL_DIR)/activity.vcd
 P_MIN ?= 128.726293
 P_MAX ?= 130.431250
 CALIBRATION ?= experiments/calibration/aes_activity_calibration.json
@@ -13,7 +17,7 @@ BUDGET ?= 200
 SEEDS ?= 0
 TARGETS ?= 0.10 0.25 0.50 0.75 0.90
 
-.PHONY: test lint dev-install analysis-install verification-install chia-install chia-smoke upstream-dma-reference research-smoke verify-artifact inspect-liberty check-liberty-coverage synth-aes evaluate-aes determinism plot-activity temporal-search compositional-search baseline-matrix check-axi-dma-rtl run-axi-dma-rd-smoke run-axi-dma-wr-smoke run-axi-dma-workload run-axi-memory-smoke compile-ibex run-ibex verify container-smoke
+.PHONY: test lint dev-install analysis-install verification-install chia-install chia-smoke upstream-dma-reference research-smoke verify-artifact inspect-liberty check-liberty-coverage synth-aes evaluate-aes determinism plot-activity random-corpus temporal-corpus temporal-search compositional-search baseline-matrix cross-pdk check-axi-dma-rtl run-axi-dma-rd-smoke run-axi-dma-wr-smoke run-axi-dma-workload run-axi-memory-smoke compile-ibex run-ibex verify container-smoke
 test:
 	$(VENV_PYTHON) -m pytest -q
 dev-install:
@@ -51,6 +55,10 @@ determinism:
 	PYTHONPATH=src $(VENV_PYTHON) scripts/check_aes_determinism.py "$(WORKLOAD)" "$(SYNTH_DIR)" --out "$${AGCWS_ARTIFACT_ROOT:-out}/aes-determinism"
 plot-activity:
 	$(VENV_PYTHON) analysis/plot_activity.py "$(EVAL_DIR)/activity.json" --out "$${AGCWS_ARTIFACT_ROOT:-out}/figures/activity.png"
+random-corpus:
+	PYTHONPATH=src $(VENV_PYTHON) scripts/run_aes_random_corpus.py "$(SYNTH_DIR)" --out "$(CORPUS_DIR)"
+temporal-corpus:
+	PYTHONPATH=src $(VENV_PYTHON) scripts/run_aes_temporal_corpus.py "$(SYNTH_DIR)" --out "$(TEMPORAL_CORPUS_DIR)"
 temporal-search:
 	PYTHONPATH=src $(PYTHON) scripts/run_aes_temporal_search.py "$(SYNTH_DIR)"
 compositional-search:
@@ -59,6 +67,8 @@ baseline-matrix:
 	AGCWS_PYTHON=$(VENV_PYTHON) AGCWS_SEARCH_BUDGET=$(BUDGET) AGCWS_SEARCH_SEEDS="$(SEEDS)" \
 	AGCWS_SEARCH_TARGETS="$(TARGETS)" AGCWS_CALIBRATION="$(CALIBRATION)" bash scripts/run_aes_baseline_matrix.sh \
 		"$(SYNTH_DIR)" "$(P_MIN)" "$(P_MAX)" "$(BASELINE_DIR)"
+cross-pdk:
+	bash scripts/run_aes_cross_pdk.sh "$(WAVEFORM)" "$(CROSS_PDK_DIR)"
 check-axi-dma-rtl:
 	bash scripts/check_axi_dma_rtl.sh
 run-axi-dma-rd-smoke:
