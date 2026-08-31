@@ -13,7 +13,9 @@ bytes.
 The current deterministic harness is runnable with
 `scripts/run_axi_dma_workload.py`. It drives the pinned RTL read and write
 channel modules, checks descriptor completion and payload sequences, emits a
-VCD for each direction, and writes a provenance-bearing manifest. The checked-
+VCD for each direction, and writes a provenance-bearing manifest. Each transfer
+artifact records the waveform SHA-256, raw per-cycle/window activity, and the
+canonical max-normalized window profile. The checked-
 in smoke workload contains four legal 1024-byte descriptors, satisfying the
 4096-byte useful-work floor while respecting AXI 4KB boundaries.
 
