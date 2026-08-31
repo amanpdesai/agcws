@@ -26,6 +26,18 @@ differences without measuring them.
 
 AES has the shallowest bring-up; DMA tests protocol depth; Ibex has the longest toolchain tail.
 
+## 2026-08-31 — Pin all declared RTL sources as HTTPS submodules
+
+**Decision.** Add `third_party/verilog-axi` at
+`516bd5dadc3365b7f9e225d2af8fe0b8d804fe53` and `third_party/ibex` at
+`8b8ee086aef72e0833b7f0493d9d33f1e4d3c8e2` as HTTPS submodules.
+**Rationale.** The declared three-design study must reproduce against exact RTL
+revisions without vendoring third-party trees. HTTPS works in clean containers
+and for reviewers without configured GitHub SSH keys.
+**Rejected.** Floating branch clones; copying RTL into the project tree.
+**Consequence.** Harness bring-up can proceed against immutable source inputs;
+RTL updates require a new decision and refreshed measurements.
+
 ## 2026-08-30 — Local compute, credits reserved for LLM
 
 Simulation/synthesis/STA run locally; GCP credit is reserved for Vertex AI.
