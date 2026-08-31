@@ -34,6 +34,9 @@ def test_evaluate_power_parses_report(tmp_path):
     _, profile = evaluate_power(["true"], *artifacts(tmp_path), output)
     assert profile.valid
     assert profile.mean_power == pytest.approx(0.00125)
+    assert len(profile.provenance["netlist_sha256"]) == 64
+    assert len(profile.provenance["liberty_sha256"]) == 64
+    assert len(profile.provenance["activity_sha256"]) == 64
 
 
 def test_command_timeout_returns_structured_result(tmp_path):

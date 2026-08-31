@@ -1,4 +1,5 @@
 from pathlib import Path
+from agcws.provenance import file_sha256
 from agcws.nodes.commands import CommandResult, run_command
 from agcws.nodes.power import PowerProfile, parse_opensta_power_file
 from agcws.nodes.synthesize import NetlistArtifact
@@ -18,6 +19,12 @@ def evaluate_power(command: list[str], netlist: NetlistArtifact, activity: Activ
     if not report.is_file():
         raise FileNotFoundError(f"OpenSTA did not produce expected report: {report}")
     profile = parse_opensta_power_file(
-        report, provenance={"report": report.name, "fidelity": "synthesis"}
+        report, provenance={
+            "report": report.name,
+            "fidelity": "synthesis",
+            "netlist_sha256": file_sha256(netlist.netlist),
+            "liberty_sha256": file_sha256(netlist.liberty),
+            "activity_sha256": file_sha256(activity.activity_file),
+        }
     )
     return result, profile
