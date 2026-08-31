@@ -11,6 +11,9 @@ lint:
 	$(PYTHON) -m ruff check --select E9,F src scripts tests
 inspect-liberty:
 	$(PYTHON) scripts/inspect_liberty.py "$${AGCWS_LIBERTY:-third_party/liberty/sky130hd/sky130_fd_sc_hd__tt_025C_1v80.lib}"
+
+check-liberty-coverage:
+	$(PYTHON) scripts/check_liberty_coverage.py out/aes-core-synthesis-final4/stat.json "$${AGCWS_LIBERTY:-third_party/liberty/sky130hd/sky130_fd_sc_hd__tt_025C_1v80.lib}"
 synth-aes:
 	bash scripts/synthesize_aes_core.sh "$(SYNTH_DIR)"
 evaluate-aes:

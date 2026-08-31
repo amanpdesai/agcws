@@ -11,6 +11,15 @@ and contains 2,477 `internal_power`, 2,477 `rise_power`, 2,477 `fall_power`,
 but does not close R-01: coverage must still be compared with the synthesized
 netlist cell histogram, and the path must be supplied through `AGCWS_LIBERTY`.
 
+**Closed (2026-08-31).** The copied Sky130 Liberty contains 2,477 internal-power
+groups, 2,477 rise-power tables, 2,477 fall-power tables, 429 leakage entries,
+1,328 capacitance entries, and 6 clock-gating declarations. The AES Sky130
+netlist uses 72 distinct cell types and 43,619 instances; all are defined by
+the Liberty (100% instance coverage, no unmatched types). The independent
+Nangate45 netlist likewise has 100% instance coverage (29 types, 40,479
+instances). R-01 is closed for relative synthesis-level power claims; this does
+not constitute signoff-accuracy power characterization.
+
 ## R-02 — Activity annotation coverage — H
 
 Report annotated-net and annotated-capacitance fractions. Preserve hierarchy, use rank correlation, or gate-level simulate finalists if coverage is poor.

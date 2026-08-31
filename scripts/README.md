@@ -40,6 +40,13 @@ bash scripts/vcd_to_saif.sh out/aes-workload/activity.vcd out/aes-workload/activ
 
 Run the first OpenSTA smoke evaluation against a mapped netlist:
 
+Check that every mapped cell instance is characterized by the selected Liberty:
+
+```bash
+python3 scripts/check_liberty_coverage.py \
+  out/aes-core-synthesis-final4/stat.json "$AGCWS_LIBERTY"
+```
+
 ```bash
 bash scripts/run_opensta_aes.sh out/aes-core-synthesis-final4 \
   out/aes-core-smoke-bounded/activity.vcd
