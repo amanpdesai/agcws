@@ -18,6 +18,8 @@ def test_runner_counts_requested_slots_and_writes_curve(tmp_path):
     assert "validity_failures" in summary
     assert "tokens_in" in summary
     assert summary["budget"] == 5
+    assert summary["proposals"] == 5
+    assert summary["proposal_slots"] == 5
     assert summary["policy"] == "random"
     assert summary["design"] == AESAdapter.name
     assert summary["seed"] == 0
