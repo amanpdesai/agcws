@@ -34,8 +34,10 @@ def main() -> None:
     # Keep the CLI default aligned with the pre-registered primary endpoint.
     # Sensitivity values must be selected explicitly.
     parser.add_argument("--epsilon", type=float, default=0.05)
-    parser.add_argument("--p-min", type=float, required=True)
-    parser.add_argument("--p-max", type=float, required=True)
+    parser.add_argument("--p-min", type=float)
+    parser.add_argument("--p-max", type=float)
+    parser.add_argument("--calibration", type=Path,
+                        help="calibration JSON containing p_min and p_max")
     parser.add_argument("--budget", type=int, default=200)
     parser.add_argument("--seed", type=int, default=0)
     parser.add_argument("--out", type=Path, default=Path("out/aes-search"))
@@ -45,6 +47,17 @@ def main() -> None:
     parser.add_argument("--project", default=os.environ.get("AGCWS_GCP_PROJECT"))
     parser.add_argument("--prompt", type=Path, default=ROOT / "prompts/agent_system_v1.txt")
     args = parser.parse_args()
+    if args.calibration is not None:
+        calibration = json.loads(args.calibration.read_text())
+        if calibration.get("power_metric") != "total_transitions_per_clock_edge":
+            parser.error("calibration power_metric must be total_transitions_per_clock_edge")
+        try:
+            args.p_min = float(calibration["p_min"])
+            args.p_max = float(calibration["p_max"])
+        except (KeyError, TypeError, ValueError) as exc:
+            parser.error(f"invalid calibration envelope: {exc}")
+    if args.p_min is None or args.p_max is None:
+        parser.error("provide --calibration or both --p-min and --p-max")
     policies = {"random": RandomSearch, "mutation": MutationSearch,
                 "evolutionary": EvolutionarySearch, "offline-agent": OfflineAgent}
     if args.policy == "vertex":
@@ -89,6 +102,9 @@ def main() -> None:
                 windowed=tuple(activity["window_toggles"]),
                 useful_work=float(match.group(1)), valid=True, fidelity="activity",
                 provenance={"oracle": "verilator-vcd",
+                            "metric": "total_transitions_per_clock_edge",
+                            "p_min": args.p_min,
+                            "p_max": args.p_max,
                             "workload_sha256": file_sha256(workload_path),
                             "activity_sha256": file_sha256(trial_dir / "activity.json"),
                             "tools": toolchain_record({

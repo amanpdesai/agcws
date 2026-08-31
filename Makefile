@@ -8,6 +8,7 @@ EVAL_DIR ?= out/aes-evaluation
 BASELINE_DIR ?= out/aes-baseline-matrix
 P_MIN ?= 128.726293
 P_MAX ?= 130.431250
+CALIBRATION ?= out/calibration-input/calibration.json
 BUDGET ?= 200
 SEEDS ?= 0
 TARGETS ?= 0.10 0.25 0.50 0.75 0.90
@@ -56,7 +57,7 @@ compositional-search:
 	PYTHONPATH=src $(PYTHON) scripts/run_aes_compositional_search.py "$(SYNTH_DIR)"
 baseline-matrix:
 	AGCWS_PYTHON=$(VENV_PYTHON) AGCWS_SEARCH_BUDGET=$(BUDGET) AGCWS_SEARCH_SEEDS="$(SEEDS)" \
-	AGCWS_SEARCH_TARGETS="$(TARGETS)" bash scripts/run_aes_baseline_matrix.sh \
+	AGCWS_SEARCH_TARGETS="$(TARGETS)" AGCWS_CALIBRATION="$(CALIBRATION)" bash scripts/run_aes_baseline_matrix.sh \
 		"$(SYNTH_DIR)" "$(P_MIN)" "$(P_MAX)" "$(BASELINE_DIR)"
 check-axi-dma-rtl:
 	bash scripts/check_axi_dma_rtl.sh

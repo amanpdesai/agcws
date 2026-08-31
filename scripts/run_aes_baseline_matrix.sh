@@ -18,6 +18,7 @@ python_bin=${AGCWS_PYTHON:-python3}
 target=${AGCWS_SEARCH_TARGET:-0.5}
 epsilon=${AGCWS_SEARCH_EPSILON:-0.05}
 targets=${AGCWS_SEARCH_TARGETS:-$target}
+calibration=${AGCWS_CALIBRATION:-}
 export PYTHONPATH="$repo_root/src${PYTHONPATH:+:$PYTHONPATH}"
 
 for target_value in $targets; do
@@ -25,10 +26,15 @@ for target_value in $targets; do
   for seed in $seeds; do
     for policy in random mutation evolutionary offline-hybrid; do
       run_dir="$target_dir/seed-$seed/$policy"
-      "$python_bin" scripts/run_aes_search.py "$synthesis_dir" --policy "$policy" \
+      search_args=("$synthesis_dir" --policy "$policy" \
         --fidelity activity --target "$target_value" --epsilon "$epsilon" \
-        --p-min "$p_min" --p-max "$p_max" \
-        --budget "$budget" --seed "$seed" --out "$run_dir"
+        --budget "$budget" --seed "$seed" --out "$run_dir")
+      if [[ -n "$calibration" ]]; then
+        search_args+=(--calibration "$calibration")
+      else
+        search_args+=(--p-min "$p_min" --p-max "$p_max")
+      fi
+      "$python_bin" scripts/run_aes_search.py "${search_args[@]}"
     done
   done
 done
