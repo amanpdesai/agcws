@@ -39,6 +39,9 @@ class OfflineAgent(AgentPolicy):
         rng = random.Random(seed)
 
         def propose(adapter, goal, history, n):
+            generator = getattr(adapter, "random_workload", None)
+            if generator is not None:
+                return [generator(rng) for _ in range(n)]
             candidates = []
             minimum_blocks = max(16, int(getattr(adapter, "useful_work_floor", 16)))
             for _ in range(n):

@@ -15,12 +15,16 @@ from agcws.adapters.axi_dma import AxiDmaAdapter
 from agcws.experiments.runner import run_search
 from agcws.goals.schema import ScalarGoal
 from agcws.nodes.power import PowerProfile
-from agcws.policies import RandomSearch
+from agcws.policies import (EvolutionarySearch, HybridSearch, MutationSearch,
+                            OfflineAgent, OneShotAgent, RandomSearch)
 
 
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--target", type=float, default=0.5)
+    parser.add_argument("--policy", choices=("random", "mutation", "evolutionary",
+                                              "one-shot-agent", "offline-hybrid"),
+                        default="random")
     parser.add_argument("--p-min", type=float, required=True)
     parser.add_argument("--p-max", type=float, required=True)
     parser.add_argument("--budget", type=int, default=8)
@@ -51,11 +55,20 @@ def main() -> None:
                          "metric": "total_transitions_per_clock_edge"},
         )
 
-    trials = run_search(AxiDmaAdapter(), RandomSearch(args.seed),
+    policies = {"random": RandomSearch, "mutation": MutationSearch,
+                "evolutionary": EvolutionarySearch, "one-shot-agent": OneShotAgent}
+    if args.policy == "offline-hybrid":
+        agent = OfflineAgent(args.seed)
+        policy = HybridSearch(agent.proposer, seed=args.seed,
+                              model=agent.model, prompt_hash=agent.prompt_hash)
+    else:
+        policy = policies[args.policy](args.seed)
+    trials = run_search(AxiDmaAdapter(), policy,
                         ScalarGoal(args.target, 0.05), evaluate, budget=args.budget,
                         batch_size=4, seed=args.seed, p_min=args.p_min, p_max=args.p_max,
                         output_dir=args.out)
-    print(json.dumps({"trials": len(trials), "output": str(args.out.resolve())}, indent=2))
+    print(json.dumps({"trials": len(trials), "policy": args.policy,
+                      "output": str(args.out.resolve())}, indent=2))
 
 
 if __name__ == "__main__":
