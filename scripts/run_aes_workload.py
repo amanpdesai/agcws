@@ -60,6 +60,7 @@ def main() -> None:
     import os
     environment = dict(os.environ)
     environment["AGCWS_IDLE_PATTERN"] = idle_pattern(workload, blocks)
+    environment.setdefault("AGCWS_SIM_BUILD_DIR", "out/.cache/aes-sim")
     subprocess.run(["bash", "scripts/run_aes_core_smoke.sh", str(args.out), str(blocks), str(idle), str(pattern)], check=True, env=environment)
 
 if __name__ == "__main__":

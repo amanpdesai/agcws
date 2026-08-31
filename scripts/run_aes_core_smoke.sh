@@ -10,10 +10,17 @@ pattern=${4:-0}
 timeout_s=${AGCWS_SIM_TIMEOUT_S:-60}
 max_waveform_bytes=${AGCWS_MAX_WAVEFORM_BYTES:-268435456}
 mkdir -p "$out_dir"
+build_dir=${AGCWS_SIM_BUILD_DIR:-"$out_dir/obj_dir"}
+if [[ "$build_dir" != /* ]]; then
+  build_dir="$repo_root/$build_dir"
+fi
+mkdir -p "$build_dir"
 python3 scripts/resolve_sv_sources.py --top aes_cipher_core > "$out_dir/sources.list"
+sim_binary="$build_dir/aes_core_smoke"
+if [[ ! -x "$sim_binary" ]]; then
 verilator --binary --trace-vcd --timing --sv --top-module aes_core_smoke \
   -Wno-fatal -Wno-WIDTHTRUNC \
-  -Mdir "$out_dir/obj_dir" -o aes_core_smoke \
+  -Mdir "$build_dir" -o "$sim_binary" \
   -Ithird_party/opentitan/hw/ip/aes/rtl \
   -Ithird_party/opentitan/hw/ip/prim/rtl \
   -Ithird_party/opentitan/hw/ip/prim_generic/rtl \
@@ -21,6 +28,7 @@ verilator --binary --trace-vcd --timing --sv --top-module aes_core_smoke \
   -Ithird_party/opentitan/hw/ip/csrng/rtl \
   -Ithird_party/opentitan/hw/ip/entropy_src/rtl \
   $(<"$out_dir/sources.list") experiments/aes_core_smoke.sv
+fi
 : > "$out_dir/activity.vcd"
 idle_args=("+BLOCKS=$blocks" "+IDLE=$idle_cycles" "+PATTERN=$pattern")
 if [[ -n "${AGCWS_IDLE_PATTERN:-}" ]]; then
@@ -30,7 +38,7 @@ if [[ -n "${AGCWS_IDLE_PATTERN:-}" ]]; then
   done
 fi
 timeout --kill-after=5s "${timeout_s}s" bash -c \
-  "cd \"$out_dir\" && ./obj_dir/aes_core_smoke ${idle_args[*]}" \
+  "cd \"$out_dir\" && \"$sim_binary\" ${idle_args[*]}" \
   > "$out_dir/run.log" 2>&1
 if [[ ! -s "$out_dir/activity.vcd" ]]; then
   echo "simulation did not produce a non-empty VCD" >&2

@@ -83,3 +83,6 @@ Measure the pre-registered random-search solve fraction before comparative runs:
 PYTHONPATH=src python3 scripts/run_aes_scalar_calibration.py \
   out/aes-core-synthesis-final4 --out out/aes-scalar-calibration
 ```
+
+Simulator compilation is shared through `AGCWS_SIM_BUILD_DIR` by default, while
+each task retains isolated waveform, activity, and result artifacts.
