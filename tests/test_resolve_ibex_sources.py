@@ -1,7 +1,7 @@
 from pathlib import Path
 import pytest
 
-from scripts.resolve_ibex_sources import resolve_manifest
+from scripts.resolve_ibex_sources import find_eda_manifest, resolve_manifest
 
 
 def test_resolve_manifest_filters_and_hashes_sv(tmp_path: Path):
@@ -33,3 +33,11 @@ def test_resolve_manifest_fails_on_missing_source(tmp_path: Path):
     )
     with pytest.raises(FileNotFoundError, match="FuseSoC source is missing"):
         resolve_manifest(manifest)
+
+
+def test_find_eda_manifest_selects_core_manifest(tmp_path: Path):
+    expected = tmp_path / "lowrisc_ibex_ibex_top_0.1" / "lint-verilator"
+    expected.mkdir(parents=True)
+    manifest = expected / "ibex_top_0.1.eda.yml"
+    manifest.write_text("files: []\n")
+    assert find_eda_manifest(tmp_path, "lowrisc:ibex:ibex_top") == manifest

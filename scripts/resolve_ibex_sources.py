@@ -43,24 +43,35 @@ def resolve_manifest(manifest: Path) -> tuple[list[dict[str, str | int]], list[s
     return sources, sorted(include_dirs)
 
 
+def find_eda_manifest(build_root: Path, core_id: str) -> Path:
+    """Find the unique EDA manifest emitted for a FuseSoC core ID."""
+    leaf = core_id.split(":")[-1]
+    matches = sorted(build_root.glob(f"**/{leaf}_*.eda.yml"))
+    if len(matches) != 1:
+        raise FileNotFoundError(
+            f"expected one EDA manifest for {core_id}, found {len(matches)}"
+        )
+    return matches[0]
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--ibex-root", type=Path, default=Path("third_party/ibex"))
     parser.add_argument("--out", type=Path, default=Path("out/ibex-sources"))
+    parser.add_argument("--core", default="lowrisc:ibex:ibex_simple_system")
     parser.add_argument("--fusesoc", default=os.environ.get("AGCWS_FUSESOC", "fusesoc"))
     args = parser.parse_args()
     root = args.ibex_root.resolve()
     subprocess.run([
         args.fusesoc, "--cores-root=.", "run", "--target=lint", "--setup",
-        "lowrisc:ibex:ibex_simple_system",
+        args.core,
     ], cwd=root, check=True)
-    manifest = root / "build/lowrisc_ibex_ibex_simple_system_0/lint-verilator/"
-    manifest /= "lowrisc_ibex_ibex_simple_system_0.eda.yml"
+    manifest = find_eda_manifest(root / "build", args.core)
     sources, include_dirs = resolve_manifest(manifest)
     args.out.mkdir(parents=True, exist_ok=True)
     output = args.out / "sources.json"
     output.write_text(json.dumps({
-        "design": "ibex_simple_system",
+        "design": args.core,
         "manifest": str(manifest),
         "include_dirs": include_dirs,
         "sources": sources,

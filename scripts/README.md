@@ -61,6 +61,9 @@ and include directories required for single-unit Slang compilation. It is the
 input inventory for the upcoming Ibex synthesis flow; the script fails if
 FuseSoC references a missing source instead of silently producing a partial
 design.
+
+Use `--core lowrisc:ibex:ibex_top` to resolve the standalone CPU closure for
+the ASIC-oriented synthesis boundary.
 ## AES synthesis
 
 Generate the cached AES core netlist against the configured Liberty file:
