@@ -164,8 +164,9 @@ def main() -> None:
     add_toplevel_fallback(root, top, sources, include_dirs)
     add_include_root(root / "vendor/lowrisc_ip/dv/sv/dv_utils", include_dirs)
     add_include_file_dirs(root, ("prim_util_memload.svh", "dv_fcov_macros.svh"), include_dirs)
-    add_source_file(root / "vendor/lowrisc_ip/ip/prim/rtl/prim_secded_pkg.sv",
-                    sources, include_dirs)
+    for package in ("prim_secded_pkg.sv", "prim_util_pkg.sv"):
+        add_source_file(root / "vendor/lowrisc_ip/ip/prim/rtl" / package,
+                        sources, include_dirs)
     require_toplevel(sources, top)
     args.out.mkdir(parents=True, exist_ok=True)
     output = args.out / "sources.json"

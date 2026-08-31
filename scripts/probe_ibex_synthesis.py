@@ -43,10 +43,12 @@ def main() -> None:
         include_dir_paths.update(path.parent for path in
                                  (repository_root / "third_party/ibex").rglob(filename))
     if any("third_party/ibex" in path for path in source_paths):
-        secded = repository_root / "third_party/ibex/vendor/lowrisc_ip/ip/prim/rtl/prim_secded_pkg.sv"
-        if secded.is_file():
-            source_paths.insert(0, str(secded))
-            include_dir_paths.add(secded.parent)
+        package_root = repository_root / "third_party/ibex/vendor/lowrisc_ip/ip/prim/rtl"
+        for package in ("prim_util_pkg.sv", "prim_secded_pkg.sv"):
+            path = package_root / package
+            if path.is_file():
+                source_paths.insert(0, str(path))
+                include_dir_paths.add(path.parent)
     include_dirs = sorted(str(path) for path in include_dir_paths if path.is_dir())
     yosys = os.environ.get("AGCWS_YOSYS", "yosys")
     plugin = os.environ.get("AGCWS_SLANG_PLUGIN", "")
