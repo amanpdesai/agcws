@@ -14,3 +14,8 @@ def test_docker_context_excludes_generated_artifacts():
     assert "out" in text
     assert "*.vcd" in text
     assert ".env" in text
+
+
+def test_dockerfile_pins_base_image_digest():
+    text = Path("docker/Dockerfile").read_text()
+    assert "FROM python:3.10-slim@sha256:" in text

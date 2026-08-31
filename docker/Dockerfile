@@ -1,4 +1,6 @@
-FROM python:3.10-slim
+# Pin the architecture-specific base resolved by the verified build on
+# 2026-08-31. Dependency/tool commits below are pinned independently.
+FROM python:3.10-slim@sha256:38758a82a44d1acb9bae3dd5f7d2a55452fb44a5ceca7c4589f360f2c4aa3d0c
 
 ARG OPENSTA_REPO=https://github.com/The-OpenROAD-Project/OpenSTA.git
 ARG OPENSTA_REF=c821ad1ad07031de831fd567fc626bf70d522c49
