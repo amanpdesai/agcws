@@ -39,6 +39,8 @@ differences without measuring them.
 
 ## 2026-08-31 — Freeze AES calibration from activity-only inner-loop run
 
+**Superseded by the 2026-08-31 container calibration refresh below.**
+
 **Decision.** AES ε_s is frozen at 0.05 globally. The prescribed five-seed,
 five-target random-search calibration solved 5/25 cells (r=0.20), which is
 inside the retain-0.05 band. The activity envelope is 128.726293–130.431250
@@ -98,6 +100,9 @@ entropy, lifecycle, key-manager, and alert plumbing.
 **Consequence.** N remains provisional until Slice 4 runtime calibration.
 
 ## 2026-08-31 — Freeze AES scalar epsilon at 0.10
+
+**Superseded by the 2026-08-31 container calibration refresh below; ε=0.05 is
+the current authoritative value.**
 
 **Decision.** AES ε_s is frozen at 0.10 normalized envelope units. The initial
 0.05 run solved 0/25 target-seed cells within 20 proposals; the one permitted
