@@ -14,6 +14,9 @@ def test_runner_counts_requested_slots_and_writes_curve(tmp_path):
                         budget=5, batch_size=8, p_min=1, p_max=9, output_dir=tmp_path)
     assert len(trials) == 5
     assert len(__import__("json").loads((tmp_path / "best_so_far.json").read_text())["error"]) == 5
+    summary = __import__("json").loads((tmp_path / "summary.json").read_text())
+    assert summary["budget"] == 5
+    assert "auc_best_so_far" in summary
 
 
 def test_runner_applies_runtime_useful_work_gate():

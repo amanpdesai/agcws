@@ -8,6 +8,7 @@ from pathlib import Path
 from typing import Callable
 
 from agcws.adapters.base import DesignAdapter, SimResult
+from agcws.analysis.metrics import summarize_run
 from agcws.goals.loss import loss
 from agcws.nodes.power import PowerProfile
 from agcws.nodes.validation import validate_static
@@ -111,4 +112,8 @@ def run_search(
             for trial in trials
         ) + "\n")
         (output_dir / "best_so_far.json").write_text(json.dumps({"error": curve}) + "\n")
+        (output_dir / "summary.json").write_text(json.dumps(
+            summarize_run(curve, goal.tolerance, budget=budget),
+            indent=2, sort_keys=True,
+        ) + "\n")
     return trials
