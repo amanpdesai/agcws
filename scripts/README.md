@@ -77,6 +77,13 @@ PYTHONPATH=src python3 scripts/check_aes_determinism.py \
   experiments/workloads/aes_zero_blocks.json out/aes-core-synthesis-final4
 ```
 
+Plot recorded per-cycle and coarse-window activity without rerunning the tools:
+
+```bash
+python3 analysis/plot_activity.py out/aes-determinism/run-0/activity.json \
+  --out out/figures/aes_activity.png
+```
+
 Compute the Slice-4 envelope and provisional useful-work floor:
 
 ```bash

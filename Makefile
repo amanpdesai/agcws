@@ -4,7 +4,7 @@ SYNTH_DIR ?= out/aes-core-synthesis
 WORKLOAD ?= experiments/workloads/aes_min_scored.json
 EVAL_DIR ?= out/aes-evaluation
 
-.PHONY: test lint inspect-liberty check-liberty-coverage synth-aes evaluate-aes determinism temporal-search container-smoke
+.PHONY: test lint inspect-liberty check-liberty-coverage synth-aes evaluate-aes determinism plot-activity temporal-search container-smoke
 test:
 	$(PYTHON) -m pytest -q
 lint:
@@ -20,6 +20,8 @@ evaluate-aes:
 	PYTHONPATH=src $(PYTHON) scripts/evaluate_aes_workload.py "$(WORKLOAD)" "$(SYNTH_DIR)" --out "$(EVAL_DIR)"
 determinism:
 	PYTHONPATH=src $(PYTHON) scripts/check_aes_determinism.py "$(WORKLOAD)" "$(SYNTH_DIR)" --out "$${AGCWS_ARTIFACT_ROOT:-out}/aes-determinism"
+plot-activity:
+	$(PYTHON) analysis/plot_activity.py "$(EVAL_DIR)/activity.json" --out "$${AGCWS_ARTIFACT_ROOT:-out}/figures/activity.png"
 temporal-search:
 	PYTHONPATH=src $(PYTHON) scripts/run_aes_temporal_search.py "$(SYNTH_DIR)"
 container-smoke:
