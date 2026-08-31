@@ -50,6 +50,17 @@ def power(name):
         if fields and fields[0] == "Total" and len(fields) >= 5:
             return float(fields[4])
     raise ValueError(f"no total power in {name} report")
+def annotation(name):
+    text = (Path(root) / f"{name}-power/power.rpt").read_text()
+    annotated = next((int(line.split()[1]) for line in text.splitlines()
+                      if line.startswith("Annotated ") and "pin activities" in line), None)
+    unannotated = next((int(line.split()[1]) for line in text.splitlines()
+                        if line.strip().startswith("unannotated ")), None)
+    if annotated is None or unannotated is None:
+        raise ValueError(f"no parseable annotation summary in {name} report")
+    total = annotated + unannotated
+    return {"annotated_pins": annotated, "unannotated_pins": unannotated,
+            "annotation_fraction": annotated / total if total else 0.0}
 def sha(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 def tool_version(command, *args):
@@ -61,6 +72,7 @@ def tool_version(command, *args):
 
 Path(output).write_text(json.dumps({
     "waveform": {"path": waveform_path.name, "sha256": sha(waveform_path)},
+    "power_metric": "opensta_total_power_w",
     "tools": {
         "yosys": tool_version(os.environ.get("AGCWS_YOSYS", "yosys"), "-V"),
         "opensta": tool_version(os.environ.get("AGCWS_OPENSTA", "sta"), "-version"),
@@ -71,8 +83,10 @@ Path(output).write_text(json.dumps({
         },
     },
     "pdks": {
-        "sky130hd": {"liberty": sky_lib, "liberty_sha256": sha(sky_lib), "total_power_w": power("sky130hd")},
-        "nangate45": {"liberty": nangate_lib, "liberty_sha256": sha(nangate_lib), "total_power_w": power("nangate45")},
+        "sky130hd": {"liberty": sky_lib, "liberty_sha256": sha(sky_lib),
+                     "total_power_w": power("sky130hd"), "annotation": annotation("sky130hd")},
+        "nangate45": {"liberty": nangate_lib, "liberty_sha256": sha(nangate_lib),
+                       "total_power_w": power("nangate45"), "annotation": annotation("nangate45")},
     },
 }, indent=2) + "\n")
 PY
