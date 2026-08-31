@@ -17,7 +17,7 @@ BUDGET ?= 200
 SEEDS ?= 0
 TARGETS ?= 0.10 0.25 0.50 0.75 0.90
 
-.PHONY: test lint dev-install analysis-install verification-install chia-install chia-smoke upstream-dma-reference research-smoke verify-artifact inspect-liberty check-liberty-coverage synth-aes evaluate-aes determinism plot-activity random-corpus temporal-corpus temporal-search compositional-search baseline-matrix cross-pdk check-axi-dma-rtl run-axi-dma-rd-smoke run-axi-dma-wr-smoke run-axi-dma-workload run-axi-memory-smoke compile-ibex run-ibex verify container-smoke
+.PHONY: test lint dev-install analysis-install verification-install chia-install chia-smoke upstream-dma-reference research-smoke verify-artifact inspect-liberty check-liberty-coverage synth-aes evaluate-aes determinism plot-activity random-corpus temporal-corpus temporal-search compositional-search baseline-matrix cross-pdk check-axi-dma-rtl run-axi-dma-rd-smoke run-axi-dma-wr-smoke run-axi-dma-workload run-axi-dma-coupled run-axi-memory-smoke compile-ibex run-ibex verify container-smoke
 test:
 	$(VENV_PYTHON) -m pytest -q
 dev-install:
@@ -77,6 +77,8 @@ run-axi-dma-wr-smoke:
 	bash scripts/run_axi_dma_wr_smoke.sh
 run-axi-dma-workload:
 	PYTHONPATH=src $(VENV_PYTHON) scripts/run_axi_dma_workload.py experiments/workloads/axi_dma_smoke.json out/axi-dma-workload
+run-axi-dma-coupled:
+	AGCWS_PYTHON=$(VENV_PYTHON) bash scripts/run_axi_dma_coupled.sh experiments/workloads/axi_dma_smoke.json out/axi-dma-coupled
 run-axi-memory-smoke:
 	@mkdir -p out
 	$${AGCWS_IVERILOG:-iverilog} -g2012 -s agcws_axi_memory_model_smoke -o out/axi-memory-model-smoke.vvp third_party/harnesses/axi_memory_model.v third_party/harnesses/axi_memory_model_smoke.v

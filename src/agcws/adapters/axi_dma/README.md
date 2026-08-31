@@ -17,12 +17,14 @@ VCD for each direction, and writes a provenance-bearing manifest. The checked-
 in smoke workload contains four legal 1024-byte descriptors, satisfying the
 4096-byte useful-work floor while respecting AXI 4KB boundaries.
 
-This is intentionally not yet a coupled memory-copy model: read and write
-channels are validated independently with deterministic models. Functional
-source-to-destination copying and full `axi_dma` top-level power evaluation
-remain the next harness milestone.
+The workload-driven coupled harness is available through
+`scripts/run_axi_dma_coupled.sh`. It instantiates the pinned `axi_dma` top
+level with a real AXI RAM, streams each read descriptor into the corresponding
+write descriptor, and asserts source-to-destination byte equality. It is a
+functional/protocol harness; synthesis-backed power integration remains a
+separate milestone.
 
-Manifests mark this boundary explicitly with
+The legacy runner's manifests retain
 `simulation_backend=independent_channel_rtl_plus_python_memory_model` and
-`coupled_axi_dma_top=false`; these results must not be used as coupled-DMA
-claims.
+`coupled_axi_dma_top=false`; those results must not be used as coupled-DMA
+claims. Coupled-harness logs are separately labeled by the script.
