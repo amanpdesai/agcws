@@ -8,7 +8,6 @@ def main() -> None:
     import chia.base.ChiaFunction  # noqa: F401  (verify CHIA package imports)
 
     ray.init(
-        local_mode=True,
         include_dashboard=False,
         num_cpus=1,
         ignore_reinit_error=True,
