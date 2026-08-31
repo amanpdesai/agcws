@@ -17,6 +17,8 @@ if [[ -n "${AGCWS_SLANG_PLUGIN:-}" ]]; then
 fi
 test -f "${AGCWS_LIBERTY:-third_party/liberty/sky130hd/sky130_fd_sc_hd__tt_025C_1v80.lib}"
 test -f "${AGCWS_LIBERTY_NANGATE45:-third_party/liberty/nangate45/Nangate45_typ.lib}"
+python3 scripts/resolve_ibex_sources.py --core lowrisc:ibex:ibex_top --out out/container-ibex-sources >/dev/null
+python3 scripts/check_ibex_verilator.py out/container-ibex-sources/sources.json >/dev/null
 python3 scripts/chia_smoke.py >/dev/null
 PYTHONPATH=src python3 scripts/chia_node_smoke.py >/dev/null
 python3 scripts/inspect_liberty.py "${AGCWS_LIBERTY:-third_party/liberty/sky130hd/sky130_fd_sc_hd__tt_025C_1v80.lib}" >/dev/null
