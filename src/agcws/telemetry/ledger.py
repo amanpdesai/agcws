@@ -17,6 +17,7 @@ class Trial:
     tokens_in: int = 0
     tokens_out: int = 0
     model: str = ""
+    prompt_hash: str = ""
     est_cost_usd: float = 0.0
     timestamp: str = ""
 

@@ -77,6 +77,8 @@ def run_search(
                 profile=profile,
                 wall_clock_s=time.monotonic() - started,
                 sim_count=sim_count,
+                model=getattr(policy, "model", ""),
+                prompt_hash=getattr(policy, "prompt_hash", ""),
             ))
         proposal_index += requested
     if output_dir is not None:
