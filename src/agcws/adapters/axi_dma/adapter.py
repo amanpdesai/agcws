@@ -17,14 +17,30 @@ class AxiDmaAdapter(DesignAdapter):
 
     def random_workload(self, rng) -> dict:
         """Generate a legal, non-idle baseline workload for the generic policy."""
+        # Keep every transfer within one 4-KiB page, while varying transfer
+        # count, lengths, and page-local offsets. The total is padded to the
+        # useful-work floor so calibration cannot collapse to one workload.
         transfers = []
-        for index in range(4):
-            # Four fixed 1 KiB transfers guarantee the 4096-byte useful-work
-            # floor and never cross a 4 KiB boundary.
-            length = 1024
-            transfers.append({"src": 0x400 + index * 0x800,
-                              "dst": 0x1000 + index * 0x800,
+        remaining = self.useful_work_floor
+        count = rng.randint(4, 8)
+        for index in range(count):
+            slots_left = count - index - 1
+            minimum = max(256, remaining - slots_left * 1024)
+            maximum = min(1024, remaining - slots_left * 256)
+            length = rng.randrange(minimum // 256, maximum // 256 + 1) * 256
+            remaining -= length
+            # Give each descriptor a distinct page at each endpoint. This
+            # keeps the coupled RAM oracle valid even when several transfers
+            # are issued in one workload.
+            src_page = index * 0x1000
+            dst_page = (index + 8) * 0x1000
+            src_offset = rng.randrange(0, 0x1000 - length + 1, 8)
+            dst_offset = rng.randrange(0, 0x1000 - length + 1, 8)
+            transfers.append({"src": src_page + src_offset,
+                              "dst": dst_page + dst_offset,
                               "length": length})
+        if remaining:
+            transfers[-1]["length"] += remaining
         return {"transfers": transfers}
 
     def mutate_workload(self, workload: dict, rng) -> dict:

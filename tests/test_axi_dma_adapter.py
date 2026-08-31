@@ -31,3 +31,17 @@ def test_axi_dma_allows_many_sequential_descriptors():
 def test_axi_dma_rejects_true_outstanding_depth_overflow():
     result = AxiDmaAdapter().validate_protocol({"transfers": [transfer(outstanding=9)]})
     assert result.stage is ValidityStage.PROTOCOL
+
+
+def test_axi_dma_random_workloads_are_diverse_and_above_floor():
+    import random
+
+    adapter = AxiDmaAdapter()
+    workloads = [adapter.random_workload(random.Random(seed)) for seed in range(4)]
+    assert len({str(workload) for workload in workloads}) == 4
+    for workload in workloads:
+        assert sum(item["length"] for item in workload["transfers"]) >= adapter.useful_work_floor
+        assert adapter.validate_schema(workload).valid
+        assert adapter.validate_protocol(workload).valid
+        assert all(item["src"] + item["length"] <= 0x10000 for item in workload["transfers"])
+        assert all(item["dst"] + item["length"] <= 0x10000 for item in workload["transfers"])
