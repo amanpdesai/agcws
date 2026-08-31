@@ -1,2 +1,3 @@
 from .base import SearchPolicy
-__all__ = ["SearchPolicy"]
+from .agent import AgentPolicy, OfflineAgent
+__all__ = ["SearchPolicy", "AgentPolicy", "OfflineAgent"]

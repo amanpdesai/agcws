@@ -1,0 +1,49 @@
+"""Batched agent policy boundary.
+
+The runner owns fairness and evaluation budgets. This module owns only the
+proposal boundary, making the LLM provider replaceable and testable offline.
+"""
+from __future__ import annotations
+
+from collections.abc import Callable
+from typing import Any
+
+from agcws.policies.base import SearchPolicy
+
+
+class AgentPolicy(SearchPolicy):
+    name = "agent"
+
+    def __init__(self, proposer: Callable[[Any, Any, list[Any], int], list[dict]], *,
+                 model: str = "offline", prompt_hash: str = ""):
+        self.proposer = proposer
+        self.model = model
+        self.prompt_hash = prompt_hash
+
+    def propose(self, adapter, goal, history, n: int) -> list[dict]:
+        if n <= 0:
+            return []
+        candidates = self.proposer(adapter, goal, history, n)
+        if not isinstance(candidates, list):
+            raise TypeError("agent proposer must return a list")
+        return candidates[:n]
+
+
+class OfflineAgent(AgentPolicy):
+    """Deterministic semantic proposer used for smoke tests and dry runs."""
+
+    def __init__(self, seed: int = 0):
+        import random
+        rng = random.Random(seed)
+
+        def propose(adapter, goal, history, n):
+            candidates = []
+            for _ in range(n):
+                blocks = 16 + rng.randrange(17)
+                candidates.append({"data_pattern": rng.randrange(4), "operations": [
+                    {"op": "configure", "key_len": 128},
+                    {"op": "encrypt", "blocks": blocks},
+                ]})
+            return candidates
+
+        super().__init__(propose, model="offline-deterministic")
