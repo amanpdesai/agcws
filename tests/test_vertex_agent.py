@@ -14,6 +14,12 @@ def test_vertex_boundary_parses_batched_json():
     assert agent.prompt_hash == hashlib.sha256(b"system").hexdigest()
 
 
+def test_vertex_sampling_protocol_is_frozen():
+    assert VertexAgent.temperature == 0.7
+    assert VertexAgent.top_p == 0.95
+    assert VertexAgent.max_output_tokens == 4096
+
+
 def test_vertex_boundary_rejects_non_json():
     with pytest.raises(ValueError, match="valid JSON"):
         parse_candidates("not-json", 2)

@@ -48,6 +48,9 @@ class VertexAgent(AgentPolicy):
     """Use an injected text generator; Vertex SDK wiring is deliberately lazy."""
 
     name = "vertex-agent"
+    temperature = 0.7
+    top_p = 0.95
+    max_output_tokens = 4096
 
     def __init__(self, generate: Callable[[str, str], str], system_prompt: str, *, model: str):
         self.system_prompt = system_prompt
@@ -69,7 +72,12 @@ class VertexAgent(AgentPolicy):
 
         def generate(model_name: str, payload: str) -> str:
             response = client.models.generate_content(model=model_name, contents=payload,
-                                                      config={"temperature": 0.7})
+                                                      config={
+                                                          "temperature": cls.temperature,
+                                                          "top_p": cls.top_p,
+                                                          "max_output_tokens": cls.max_output_tokens,
+                                                          "response_mime_type": "application/json",
+                                                      })
             return response.text or ""
 
         return cls(generate, system_prompt, model=model)
