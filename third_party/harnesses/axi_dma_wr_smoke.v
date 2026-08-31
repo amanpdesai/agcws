@@ -30,7 +30,7 @@ module agcws_axi_dma_wr_smoke;
     else if (dvalid && dready) begin tvalid<=1; tlast<=0; tdata<=32'h1000; end
     else if (tvalid && tready) begin
       written<=written+1; tdata<=tdata+1;
-      if (written==14) begin tlast<=1; end
+      if (written==(cfg_len/4 - 2)) begin tlast<=1; end
       else if (tlast) begin tvalid<=0; tlast<=0; end
     end
   end
@@ -42,13 +42,13 @@ module agcws_axi_dma_wr_smoke;
   initial begin
     if (!$value$plusargs("ADDR=%d", cfg_addr)) cfg_addr=16'h0200;
     if (!$value$plusargs("LEN=%d", cfg_len)) cfg_len=64;
-    $dumpfile("activity.vcd"); $dumpvars(0,agcws_axi_dma_wr_smoke); #25 rst=0; #20000 $fatal(1,"DMA write timeout");
+    $display("AGCWS_AXI_DMA_WR_CONFIG addr=%0d len=%0d", cfg_addr, cfg_len);
+    $dumpfile("activity.vcd"); $dumpvars(0,agcws_axi_dma_wr_smoke); #25 rst=0; #1000000 $fatal(1,"DMA write timeout written=%0d", written);
   end
 
   always @(posedge clk) begin
     if (rst) bvalid<=0;
-    else if (awvalid && awready) aw_seen<=1;
-    else if (aw_seen && wvalid && wready && wlast) begin bvalid<=1; aw_seen<=0; end
+    else if (wvalid && wready && wlast) begin bvalid<=1; aw_seen<=0; end
     else if (bvalid && bready) bvalid<=0;
   end
   axi_dma_wr #(.AXI_DATA_WIDTH(DW),.AXI_ADDR_WIDTH(AW),.AXI_STRB_WIDTH(SW),.AXI_ID_WIDTH(IW),

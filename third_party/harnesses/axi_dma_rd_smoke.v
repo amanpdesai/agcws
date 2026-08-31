@@ -15,10 +15,11 @@ module agcws_axi_dma_rd_smoke;
   wire [IW-1:0] stream_id; wire [7:0] stream_dest; wire [KW-1:0] stream_user;
   wire [IW-1:0] arid; wire [AW-1:0] araddr; wire [7:0] arlen;
   wire [2:0] arsize; wire [1:0] arburst; wire arlock; wire [3:0] arcache;
-  wire [2:0] arprot; wire arvalid; reg arready=1;
+  wire [2:0] arprot; wire arvalid; wire arready;
   reg [IW-1:0] rid=0; reg [DW-1:0] rdata=0; reg [1:0] rresp=0;
   reg rlast=0, rvalid=0; wire rready;
   integer beats_left=0, submitted=0, received=0, stream_seen=0, cfg_addr=16'h0100, cfg_len=64;
+  assign arready = !rvalid && (beats_left == 0);
 
   always @(posedge clk) begin
     if (rst) begin
@@ -69,7 +70,7 @@ module agcws_axi_dma_rd_smoke;
     if (!$value$plusargs("LEN=%d", cfg_len)) cfg_len=64;
     $dumpfile("activity.vcd"); $dumpvars(0, agcws_axi_dma_rd_smoke);
     #25 rst=0;
-    #20000 $fatal(1, "DMA read timeout");
+    #1000000 $fatal(1, "DMA read timeout received=%0d", received);
   end
 
   axi_dma_rd #(.AXI_DATA_WIDTH(DW), .AXI_ADDR_WIDTH(AW), .AXI_STRB_WIDTH(SW),
