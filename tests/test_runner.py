@@ -19,6 +19,7 @@ def test_runner_counts_requested_slots_and_writes_curve(tmp_path):
     assert summary["policy"] == "random"
     assert summary["design"] == AESAdapter.name
     assert summary["seed"] == 0
+    assert summary["target"] == 0.5
     assert "auc_best_so_far" in summary
 
 

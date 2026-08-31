@@ -13,12 +13,13 @@ def aggregate_summaries(records: Iterable[dict]) -> list[dict]:
     unsolved runs. Records may include ``policy`` and ``design`` metadata; an
     absent design is grouped as ``unknown``.
     """
-    groups: defaultdict[tuple[str, str], list[dict]] = defaultdict(list)
+    groups: defaultdict[tuple[str, str, str], list[dict]] = defaultdict(list)
     for record in records:
         groups[(str(record.get("policy", "unknown")),
-                str(record.get("design", "unknown")))].append(record)
+                str(record.get("design", "unknown")),
+                str(record.get("target", "unknown")))].append(record)
     output = []
-    for (policy, design), values in sorted(groups.items()):
+    for (policy, design, target), values in sorted(groups.items()):
         count = len(values)
         auc_ci = bootstrap_mean_ci(
             [value["auc_best_so_far"] for value in values], seed=0
@@ -29,6 +30,7 @@ def aggregate_summaries(records: Iterable[dict]) -> list[dict]:
         output.append({
             "policy": policy,
             "design": design,
+            "target": target,
             "runs": count,
             "solve_rate": sum(bool(value.get("solved", False)) for value in values) / count,
             "mean_auc_best_so_far": sum(float(value["auc_best_so_far"])

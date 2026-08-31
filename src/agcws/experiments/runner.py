@@ -115,6 +115,10 @@ def run_search(
         summary = summarize_run(curve, goal.tolerance, budget=budget)
         summary.update({"policy": policy.name, "design": design or adapter.name,
                         "seed": seed})
+        if hasattr(goal, "q"):
+            summary["target"] = float(goal.q)
+        else:
+            summary["target"] = "profile"
         (output_dir / "summary.json").write_text(
             json.dumps(summary, indent=2, sort_keys=True) + "\n"
         )
