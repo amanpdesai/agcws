@@ -10,7 +10,7 @@ Build one design vertically before widening: AES first, `axi_dma` second, Ibex t
 | 1 | CHIA stock case and Vertex billing | D3 |
 | 2 | AES power oracle (G1) | D3 |
 | 3 | AES DSL, validator, runner | D5 |
-| 4 | Random envelope/calibration corpus; freeze ε=0.10 and AES useful-work floor=21, and record them in `DECISIONS.md` | D6 |
+| 4 | Random envelope/calibration corpus; apply the pre-registered ε rule, freeze the AES useful-work floor, and record measured values in `DECISIONS.md` | D6 |
 | 5 | Non-LLM scalar loop (G2) | D7 |
 | 6 | Agent policy | D9 |
 | 7 | `axi_dma`, then Ibex | D13 | WIP |
