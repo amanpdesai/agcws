@@ -69,8 +69,10 @@ trace, Yosys mapped netlist, Liberty inspection, and OpenSTA power report.
 
 The checked-in Liberty inputs are inspected with `scripts/inspect_liberty.py`.
 The complete AES vertical-slice acceptance check is `make research-smoke`; it
-reuses an existing synthesis manifest and produces evaluation, determinism,
-and activity-figure artifacts under `out/research-smoke/`.
+reuses an existing synthesis manifest and produces scalar evaluation,
+determinism, activity-figure, temporal-search, and compositional-search
+artifacts under `out/research-smoke/`. Set `AGCWS_PROFILE_SMOKE_BUDGET` to
+change the small profile smoke budget without changing comparative budgets.
 The script honors `AGCWS_PYTHON` for container or alternate-environment use;
 the Make target defaults it to the project virtualenv.
 
