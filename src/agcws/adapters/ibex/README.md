@@ -12,5 +12,7 @@ uses the system's documented 1 MiB RAM map and simulator-halt register. The
 compiler is intentionally separate from the adapter so policies still operate
 on structured JSON, while the container owns the compiler toolchain.
 
-The simulator invocation and instruction-retirement extraction remain the next
-bring-up step; this compiler does not claim gate-level power results by itself.
+`scripts/run_ibex_workload.sh` runs the generated ELF with the upstream
+Verilator simulator and collects retirement counters, the core trace, and an
+FST waveform into one output directory. Gate-level power integration remains a
+separate validation step.

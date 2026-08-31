@@ -10,6 +10,8 @@ from pathlib import Path
 
 from agcws.adapters.ibex import IbexAdapter
 
+SIMPLE_SYSTEM_RAM_BASE = 0x100000
+
 
 def assembly_for(workload: dict) -> str:
     """Return deterministic RV32IM assembly for a validated workload."""
@@ -36,7 +38,7 @@ def assembly_for(workload: dict) -> str:
         elif op in {"add", "and", "or", "xor"}:
             lines.append(f"  {op} t0, t0, t1")
         elif op in {"lw", "sw"}:
-            address = int(instruction["address"])
+            address = SIMPLE_SYSTEM_RAM_BASE + int(instruction["address"])
             lines.extend([f"  li t2, {address}", f"  {op} t1, 0(t2)"])
         elif op in {"beq", "bne"}:
             lines.append(f"  {op} t0, t1, .L{instruction['target'] // 4}")

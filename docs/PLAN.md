@@ -23,9 +23,10 @@ Build one design vertically before widening: AES first, `axi_dma` second, Ibex t
 Record non-obvious choices in `DECISIONS.md`, unknowns in `RISKS.md`, and never commit waveform artifacts.
 
 Slice 7 currently has deterministic DMA channel harnesses, payload checks,
-workload validation, useful-work gating, and provenance. The remaining DMA
-work is a coupled memory-copy model and synthesis/evaluation integration before
-the Ibex adapter is expanded.
+workload validation, useful-work gating, and provenance. It also has a
+deterministic Ibex JSON-to-ELF compiler and upstream simple-system Verilator
+runner. The remaining DMA work is a coupled memory-copy model and
+synthesis/evaluation integration before both adapters are experiment-ready.
 The pinned upstream coupled-DMA reference test now passes through the isolated
 `make upstream-dma-reference` target; it is a protocol oracle, not the project
 runtime, and does not change this milestone's status.
