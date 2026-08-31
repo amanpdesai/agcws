@@ -104,9 +104,10 @@ def parse_vcd(path: Path, clock_name: str = "clk_i", windows: int = 16) -> dict:
 def extract_activity(command: list[str], waveform: Path, output_dir: Path, *, clock_name: str = "clk_i", windows: int = 16) -> tuple[CommandResult, ActivityArtifact]:
     output_dir.mkdir(parents=True, exist_ok=True)
     result = run_command(command, cwd=output_dir)
-    activity = parse_vcd(waveform, clock_name, windows) if waveform.exists() else None
-    if activity is not None:
-        (output_dir / "activity.json").write_text(json.dumps(activity, indent=2, sort_keys=True) + "\n")
+    if not waveform.is_file():
+        raise FileNotFoundError(f"activity command did not produce waveform: {waveform}")
+    activity = parse_vcd(waveform, clock_name, windows)
+    (output_dir / "activity.json").write_text(json.dumps(activity, indent=2, sort_keys=True) + "\n")
     return result, ActivityArtifact(output_dir / "activity.saif",
-                                   per_cycle_toggles=tuple(activity["per_cycle_toggles"]) if activity else (),
-                                   window_toggles=tuple(activity["window_toggles"]) if activity else ())
+                                   per_cycle_toggles=tuple(activity["per_cycle_toggles"]),
+                                   window_toggles=tuple(activity["window_toggles"]))
