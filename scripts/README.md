@@ -69,3 +69,10 @@ Check evaluator determinism before freezing calibration parameters:
 PYTHONPATH=src python3 scripts/check_aes_determinism.py \
   experiments/workloads/aes_zero_blocks.json out/aes-core-synthesis-final4
 ```
+
+Compute the Slice-4 envelope and provisional useful-work floor:
+
+```bash
+PYTHONPATH=src python3 scripts/calibrate_aes.py \
+  out/aes-calibration-10/corpus.jsonl --out out/aes-calibration-10/calibration.json
+```
