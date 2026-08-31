@@ -1,5 +1,20 @@
 # Decision log
 
+## 2026-08-31 — Cross-PDK smoke requires the Slang synthesis frontend
+
+**Decision.** The AES cross-PDK flow uses the Yosys Slang frontend for host
+runs, with copied Sky130 HD and Nangate45 Liberty files. The compatibility
+frontend remains available for simpler designs but is insufficient for the
+current OpenTitan AES source set.
+**Rationale.** A real two-PDK smoke completed with Slang and produced OpenSTA
+reports for both libraries. The compatibility frontend failed on an OpenTitan
+unpacked-port construct before synthesis.
+**Rejected.** Rewriting third-party RTL to satisfy the compatibility frontend;
+treating a failed frontend run as a valid power result.
+**Consequence.** Host setup must expose `AGCWS_SLANG_PLUGIN`; Docker supplies
+the plugin. The smoke records both Liberty hashes and the waveform hash. A
+single waveform is a toolchain check, not rank-agreement evidence.
+
 ## 2026-08-31 — AES evaluator determinism verified
 
 **Finding.** Two independent evaluations of the 24-block scored AES workload
