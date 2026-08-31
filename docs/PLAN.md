@@ -22,6 +22,12 @@ Build one design vertically before widening: AES first, `axi_dma` second, Ibex t
 
 Record non-obvious choices in `DECISIONS.md`, unknowns in `RISKS.md`, and never commit waveform artifacts.
 
+Evidence checkpoint (2026-08-31): the image-only container smoke passes, the
+AES scalar matrix has completed for five targets and four policies at 200
+proposals, and temporal/compositional activity-loop smokes pass in the same
+container. These are infrastructure and one-seed baseline results; they are
+not the final multi-seed statistical study.
+
 Slice 7 currently has deterministic DMA channel harnesses, payload checks,
 workload validation, useful-work gating, and provenance. It also has a
 deterministic Ibex JSON-to-ELF compiler and upstream simple-system Verilator
