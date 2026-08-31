@@ -60,12 +60,14 @@ def main() -> None:
             + " ".join(f"-I {path}" for path in include_dirs)
             + " " + " ".join(source_paths))
     args.out.mkdir(parents=True, exist_ok=True)
-    result = subprocess.run([yosys, "-Q", "-p", read], capture_output=True, text=True)
+    # Keep frontend diagnostics in the artifact.  ``-Q`` hides the Slang error
+    # location and turns a reproducibility failure into an opaque exit code.
+    result = subprocess.run([yosys, "-p", read], capture_output=True, text=True)
     (args.out / "yosys.log").write_text("STDOUT\n" + result.stdout + "\nSTDERR\n" + result.stderr)
     (args.out / "manifest.json").write_text(json.dumps({
         "top": args.top, "sources": args.sources.resolve().as_posix(),
         "source_count": len(source_paths), "original_source_paths": original_paths,
-        "resolved_source_paths": source_paths, "command": [yosys, "-Q", "-p", read],
+        "resolved_source_paths": source_paths, "command": [yosys, "-p", read],
         "returncode": result.returncode,
     }, indent=2, sort_keys=True) + "\n")
     print(json.dumps({"out": str(args.out), "returncode": result.returncode,

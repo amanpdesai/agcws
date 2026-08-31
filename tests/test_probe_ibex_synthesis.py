@@ -26,3 +26,4 @@ def test_probe_writes_failure_manifest(tmp_path: Path, monkeypatch):
     record = json.loads((tmp_path / "out" / "manifest.json").read_text())
     assert record["returncode"] == 1
     assert record["source_count"] == 1
+    assert "-Q" not in record["command"]
