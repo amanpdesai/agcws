@@ -1,7 +1,14 @@
 import json
 from pathlib import Path
 
-from scripts.probe_ibex_synthesis import main
+from scripts.probe_ibex_synthesis import main, resolve_source_path
+
+
+def test_resolve_source_path_remaps_container_root(tmp_path: Path):
+    source = tmp_path / "third_party" / "ibex" / "rtl.sv"
+    source.parent.mkdir(parents=True)
+    source.write_text("module core; endmodule\n")
+    assert resolve_source_path("/workspace/third_party/ibex/rtl.sv", tmp_path) == source
 
 
 def test_probe_writes_failure_manifest(tmp_path: Path, monkeypatch):
