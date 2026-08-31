@@ -56,5 +56,6 @@ comparative cloud-agent run remain unverified.
 Slice 9 has executable AES temporal and compositional search drivers using the
 activity oracle, achieved-profile target selection, per-cycle/windowed profiles,
 and provenance; the full G4 target study remains. Slice 11 has a rebuildable
-Docker image and container smoke test; upstream extraction and PR preparation
-remain.
+Docker image, container smoke test, reproducibility audit
+(`make audit-reproducibility`), and contributor contract; upstream extraction
+and PR preparation remain.
