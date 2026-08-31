@@ -35,7 +35,9 @@ bash scripts/run_aes_baseline_matrix.sh out/aes-core-synthesis-final4 \
 Set `AGCWS_PYTHON` when the host uses a specific virtual environment; the
 driver also exports the repository `src/` path for direct checkouts.
 `AGCWS_SEARCH_TARGET` and `AGCWS_SEARCH_EPSILON` select the scalar target and
-tolerance without modifying the driver (defaults: `0.5` and `0.05`).
+tolerance without modifying the driver (defaults: `0.5` and `0.05`). For the
+pre-registered target set, use `AGCWS_SEARCH_TARGETS='0.10 0.25 0.50 0.75 0.90'`;
+each target receives an isolated output directory.
 
 The AES source manifest is intentionally separate from the future TileLink
 harness. OpenTitan's `aes` top level depends on common OpenTitan primitive and

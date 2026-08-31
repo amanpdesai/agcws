@@ -8,4 +8,5 @@ def test_baseline_matrix_uses_common_activity_runner():
     assert "--fidelity activity" in text
     assert 'target=${AGCWS_SEARCH_TARGET:-0.5}' in text
     assert 'epsilon=${AGCWS_SEARCH_EPSILON:-0.05}' in text
+    assert 'targets=${AGCWS_SEARCH_TARGETS:-$target}' in text
     assert "aggregate_runs.py" in text
