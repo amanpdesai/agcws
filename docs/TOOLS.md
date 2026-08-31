@@ -34,6 +34,11 @@ Only design/framework source belongs here: `tools/chia` is pinned at
 `8b8ee086aef72e0833b7f0493d9d33f1e4d3c8e2`. Do not vendor their trees into
 this repository.
 
+The upstream verilog-axi MyHDL testbenches are reference material only and are
+not part of the AGCWS runtime dependency set. Project-owned DMA smoke tests
+use native Icarus/SystemVerilog harnesses so the container remains smaller and
+the required toolchain is explicit.
+
 Liberty files are the exception: selected Sky130 HD TT and Nangate45 typical
 files are copied into `third_party/liberty/` so runs do not depend on a machine
 path. Their source paths and checksums are recorded there.
