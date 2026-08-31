@@ -44,6 +44,7 @@ The optional `make upstream-dma-reference` target runs the upstream coupled
 DMA test in an isolated temporary checkout and writes a hash-bearing reference
 manifest plus test log under `out/axi-dma-upstream-reference/`; generated VPI,
 VVP, and waveform artifacts in the temporary checkout are removed on exit.
+The script honors `AGCWS_PYTHON`, defaulting to `.venv/bin/python`.
 
 Liberty files are the exception: selected Sky130 HD TT and Nangate45 typical
 files are copied into `third_party/liberty/` so runs do not depend on a machine

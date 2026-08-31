@@ -5,6 +5,7 @@ repo_root=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
 tmp_dir=$(mktemp -d "${TMPDIR:-/tmp}/agcws-verilog-axi.XXXXXX")
 trap 'rm -rf "$tmp_dir"' EXIT
 output_dir=${1:-}
+python_bin=${AGCWS_PYTHON:-.venv/bin/python}
 
 # The upstream testbench expects ../rtl relative to its working directory and
 # loads MyHDL's VPI module by name. Keep both build products isolated from the
@@ -26,7 +27,7 @@ grep -q '^Running test' "$tmp_dir/upstream.log"
 if [[ -n "$output_dir" ]]; then
   mkdir -p "$output_dir"
   cp "$tmp_dir/upstream.log" "$output_dir/upstream.log"
-  "$repo_root/.venv/bin/python" - "$output_dir/reference_manifest.json" "$repo_root" "$output_dir/upstream.log" <<'PY'
+  "$python_bin" - "$output_dir/reference_manifest.json" "$repo_root" "$output_dir/upstream.log" <<'PY'
 import hashlib
 import json
 import subprocess
