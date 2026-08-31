@@ -13,7 +13,7 @@ Build one design vertically before widening: AES first, `axi_dma` second, Ibex t
 | 4 | Random envelope/calibration corpus; freeze ε=0.10 and AES useful-work floor=21, and record them in `DECISIONS.md` | D6 |
 | 5 | Non-LLM scalar loop (G2) | D7 |
 | 6 | Agent policy | D9 |
-| 7 | `axi_dma`, then Ibex | D13 |
+| 7 | `axi_dma`, then Ibex | D13 | WIP |
 | 8 | Mutation/evolutionary/hybrid baselines | D12 |
 | 9 | Compositional/temporal targets (G4) | D16 |
 | 10 | Statistics and figures | D21 |
@@ -21,3 +21,8 @@ Build one design vertically before widening: AES first, `axi_dma` second, Ibex t
 | 12 | Four-page report | D23 |
 
 Record non-obvious choices in `DECISIONS.md`, unknowns in `RISKS.md`, and never commit waveform artifacts.
+
+Slice 7 currently has deterministic DMA channel harnesses, payload checks,
+workload validation, useful-work gating, and provenance. The remaining DMA
+work is a coupled memory-copy model and synthesis/evaluation integration before
+the Ibex adapter is expanded.

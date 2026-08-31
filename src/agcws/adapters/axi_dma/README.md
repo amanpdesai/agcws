@@ -7,7 +7,17 @@ positive `length` fields. Optional `outstanding` values request a bounded
 channel depth from 1 through 8.
 
 `validate_schema` and `validate_protocol` are pure and fast. `elaborate`
-returns the validated descriptor sequence for a future AXI harness, while
-`useful_work` is completed bytes. No RTL simulator is claimed yet: functional
-completion and power evaluation remain blocked on the pinned `verilog-axi`
-RTL harness slice.
+returns the validated descriptor sequence, while `useful_work` is completed
+bytes.
+
+The current deterministic harness is runnable with
+`scripts/run_axi_dma_workload.py`. It drives the pinned RTL read and write
+channel modules, checks descriptor completion and payload sequences, emits a
+VCD for each direction, and writes a provenance-bearing manifest. The checked-
+in smoke workload contains four legal 1024-byte descriptors, satisfying the
+4096-byte useful-work floor while respecting AXI 4KB boundaries.
+
+This is intentionally not yet a coupled memory-copy model: read and write
+channels are validated independently with deterministic models. Functional
+source-to-destination copying and full `axi_dma` top-level power evaluation
+remain the next harness milestone.
