@@ -44,8 +44,9 @@ def main() -> None:
                                  (repository_root / "third_party/ibex").rglob(filename))
     if any("third_party/ibex" in path for path in source_paths):
         package_root = repository_root / "third_party/ibex/vendor/lowrisc_ip/ip/prim/rtl"
-        for package in ("prim_count_pkg.sv", "prim_count.sv", "prim_cipher_pkg.sv",
-                        "prim_util_pkg.sv", "prim_secded_pkg.sv"):
+        # insert(0) reverses this sequence; keep packages before consumers.
+        for package in ("prim_secded_pkg.sv", "prim_util_pkg.sv", "prim_cipher_pkg.sv",
+                        "prim_count.sv", "prim_count_pkg.sv"):
             path = package_root / package
             if path.is_file():
                 source_paths.insert(0, str(path))
