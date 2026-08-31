@@ -52,6 +52,18 @@ python3 scripts/validate_aes_pdk_corpus.py CORPUS SKY_REPORTS NANGATE_REPORTS \
   --out out/aes-pdk-corpus-validation.json
 ```
 
+To generate those paired reports from an existing corpus and the two netlists,
+use the wrapper (it honors `AGCWS_PYTHON` for the active virtual environment):
+
+```bash
+make run-aes-pdk-corpus \
+  CORPUS_DIR=out/aes-random-corpus \
+  CROSS_PDK_DIR=out/aes-cross-pdk
+```
+
+The wrapper writes report directories and `corpus-validation.json` below
+`AGCWS_ARTIFACT_ROOT/aes-pdk-corpus`.
+
 Run the declared local baseline matrix (override `AGCWS_SEARCH_BUDGET` and
 space-separated `AGCWS_SEARCH_SEEDS` as needed):
 
