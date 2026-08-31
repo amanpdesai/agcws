@@ -11,7 +11,13 @@ from agcws.policies.agent import AgentPolicy
 
 def _jsonable(value: Any) -> Any:
     if is_dataclass(value):
-        return asdict(value)
+        return _jsonable(asdict(value))
+    if hasattr(value, "value"):
+        return value.value
+    if isinstance(value, dict):
+        return {str(key): _jsonable(item) for key, item in value.items()}
+    if isinstance(value, (list, tuple)):
+        return [_jsonable(item) for item in value]
     return value
 
 
