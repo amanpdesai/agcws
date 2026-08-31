@@ -63,6 +63,22 @@ frozen generic prompt. The offline agent has completed a real AES smoke run
 under the shared evaluator budget; Vertex credentials/model billing and a
 comparative cloud-agent run remain unverified.
 
+Latest verification checkpoint (2026-08-31): `make verify` passes with 161
+tests passed and one skipped, Ruff clean, a valid reproducibility audit, and
+valid AES/AXI artifacts. Checked-in Sky130 HD and Nangate45 Liberty files both
+contain characterized `internal_power`, rise/fall power, leakage, capacitance,
+and clock-gating data. The AES cross-PDK corpus has 10 shared workloads with
+Spearman rank agreement approximately 1.0. DMA cross-PDK reports are retained
+as diagnostics because RTL-to-netlist activity annotation is sparse (about
+1.31% Sky130 and 0.77% Nangate45 in the recorded finalist run).
+
+The full declared factorial study (10 seeds, all designs and target classes)
+has not been run and must not be described as complete. The Ibex core frontend
+elaborates from an isolated FuseSoC closure, but the bounded Liberty-mapping
+probe has not produced a completed mapped netlist; Ibex gate-level power is
+therefore unsupported. Vertex-backed comparative runs remain blocked on
+project/model/billing configuration outside the repository.
+
 Slice 9 has executable AES temporal and compositional search drivers using the
 activity oracle, achieved-profile target selection, per-cycle/windowed profiles,
 and provenance; the full G4 target study remains. Slice 11 has a rebuildable
