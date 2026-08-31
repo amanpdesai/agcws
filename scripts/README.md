@@ -14,6 +14,16 @@ bash scripts/run_aes_core_smoke.sh
 python3 scripts/run_aes_workload.py experiments/workloads/aes_zero_blocks.json
 ```
 
+Aggregate completed search runs without dropping unsolved runs:
+
+```bash
+python3 scripts/aggregate_runs.py out/aes-runs --out out/aes-runs/aggregate.json
+```
+
+Each search directory contains `summary.json` with the pre-registered
+best-so-far AUC, solve status, right-censored evaluations-to-target, policy,
+design, and seed. The aggregator groups by policy and canonical design name.
+
 The AES source manifest is intentionally separate from the future TileLink
 harness. OpenTitan's `aes` top level depends on common OpenTitan primitive and
 TileLink packages plus generated lifecycle constants. The manifest is an
