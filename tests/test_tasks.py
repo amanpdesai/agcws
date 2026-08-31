@@ -1,4 +1,5 @@
 from pathlib import Path
+import json
 import pytest
 
 from agcws.tasks import TaskStore, file_digest, task_key
@@ -54,6 +55,20 @@ def test_task_rejects_incomplete_action(tmp_path: Path):
     with pytest.raises(FileNotFoundError, match="required outputs"):
         store.run("evaluate", {}, lambda output: None,
                   required_outputs=("result.json",))
+
+
+def test_task_records_failure_reason(tmp_path: Path):
+    store = TaskStore(tmp_path / "tasks")
+
+    def action(output: Path):
+        raise RuntimeError("simulator exploded")
+
+    with pytest.raises(RuntimeError, match="simulator exploded"):
+        store.run("simulate", {}, action)
+    manifest = next((tmp_path / "tasks" / "simulate").glob("*/task.json"))
+    record = json.loads(manifest.read_text())
+    assert record["status"] == "failed"
+    assert "simulator exploded" in record["error"]
 
 
 def test_task_rejects_output_path_escape(tmp_path: Path):

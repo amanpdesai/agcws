@@ -34,7 +34,8 @@ def test_task_store_does_not_cache_failed_action(tmp_path: Path):
         raise AssertionError("expected action failure")
 
     manifest = calls[0] / "task.json"
-    assert '"status": "running"' in manifest.read_text()
+    assert '"status": "failed"' in manifest.read_text()
+    assert "simulated interruption" in manifest.read_text()
     recovered = store.run("evaluate", {"workload": "one"},
                           lambda output: (output / "result.json").write_text("{}\n"))
     assert recovered.cached is False
