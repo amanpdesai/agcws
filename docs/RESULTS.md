@@ -17,19 +17,18 @@ multi-design factorial study has not yet been completed.
 
 ## Preliminary AES scalar study
 
-The current strongest aggregate is generated from
-`out/aes-baseline-matrix-complete` plus the seed-5 extension and reproduced at
-`out/aes-analysis-6seed/aggregate.json`. It contains five policies, five scalar
-targets, and six seeds per policy/target cell. The seed-5 convergence figure is
-`out/aes-analysis-6seed/seed5-convergence.png`; the earlier five-seed aggregate
-and combined convergence figure remain under `out/final-analysis/`.
+The verified AES scalar aggregate combines the original corpus with seeds 5
+through 9 and is stored at `out/aes-analysis-10seed/aggregate.json`. It
+contains five policies, five scalar targets, and exactly ten seeds per
+policy/target cell (250 run summaries total). The corresponding convergence
+figure is `out/aes-analysis-10seed/convergence.png`.
 
 In this corpus, all policies solve the high target (`q=0.90`) at least once;
 the recorded solve rates are random `1.0`, mutation `1.0`, evolutionary `1.0`,
 hybrid `1.0`, and one-shot agent `0.8`. The lower targets have no recorded
 solves in these runs. These are descriptive preliminary results, not a claim
-that one method is superior: the corpus is AES-only, has six rather than ten
-seeds, and does not include Vertex-backed agent trials.
+that one method is superior: the corpus is AES-only, does not include the
+other designs, and does not include Vertex-backed agent trials.
 
 ## Known limitations
 
