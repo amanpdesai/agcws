@@ -6,7 +6,7 @@ SYNTH_DIR ?= out/aes-core-synthesis
 WORKLOAD ?= experiments/workloads/aes_min_scored.json
 EVAL_DIR ?= out/aes-evaluation
 
-.PHONY: test lint dev-install inspect-liberty check-liberty-coverage synth-aes evaluate-aes determinism plot-activity temporal-search compositional-search check-axi-dma-rtl run-axi-dma-rd-smoke run-axi-dma-wr-smoke run-axi-dma-workload verify container-smoke
+.PHONY: test lint dev-install inspect-liberty check-liberty-coverage synth-aes evaluate-aes determinism plot-activity temporal-search compositional-search check-axi-dma-rtl run-axi-dma-rd-smoke run-axi-dma-wr-smoke run-axi-dma-workload run-axi-memory-smoke verify container-smoke
 test:
 	$(VENV_PYTHON) -m pytest -q
 dev-install:
@@ -40,7 +40,11 @@ run-axi-dma-wr-smoke:
 	bash scripts/run_axi_dma_wr_smoke.sh
 run-axi-dma-workload:
 	PYTHONPATH=src $(PYTHON) scripts/run_axi_dma_workload.py experiments/workloads/axi_dma_smoke.json out/axi-dma-workload
+run-axi-memory-smoke:
+	@mkdir -p out
+	iverilog -g2012 -s agcws_axi_memory_model_smoke -o out/axi-memory-model-smoke.vvp third_party/harnesses/axi_memory_model.v third_party/harnesses/axi_memory_model_smoke.v
+	(cd out && vvp axi-memory-model-smoke.vvp)
 verify:
-	$(MAKE) test lint check-axi-dma-rtl run-axi-dma-workload
+	$(MAKE) test lint check-axi-dma-rtl run-axi-memory-smoke run-axi-dma-workload
 container-smoke:
 	docker run --rm agcws:dev bash scripts/container_smoke.sh
