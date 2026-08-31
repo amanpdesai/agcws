@@ -67,9 +67,15 @@ def main() -> None:
         workload_path.write_text(json.dumps(workload, indent=2, sort_keys=True) + "\n")
         trial_dir = args.out / "evaluations" / f"trial-{counter:05d}"
         if args.fidelity == "activity":
-            subprocess.run([sys.executable, "scripts/run_aes_workload.py",
-                            str(workload_path), "--out", str(trial_dir)],
-                           check=True, capture_output=True, text=True)
+            completed = subprocess.run(
+                [sys.executable, "scripts/run_aes_workload.py", str(workload_path),
+                 "--out", str(trial_dir)], check=False, capture_output=True, text=True,
+            )
+            if completed.returncode:
+                detail = (completed.stderr or completed.stdout).strip()
+                raise RuntimeError(
+                    f"activity simulation failed with exit code {completed.returncode}: {detail}"
+                )
             log = (trial_dir / "run.log").read_text()
             match = re.search(r"AES_CORE_WORKLOAD_DONE blocks=(\d+)", log)
             if not match:

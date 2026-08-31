@@ -35,10 +35,15 @@ def main() -> None:
         # Temporal search uses the fast deterministic activity oracle. OpenSTA
         # is reserved for finalist validation; no temporal loss depends on its
         # scalar report.
-        subprocess.run(
+        completed = subprocess.run(
             [sys.executable, "scripts/run_aes_workload.py", str(workload_path),
-             "--out", str(trial_dir)], check=True, capture_output=True, text=True,
+             "--out", str(trial_dir)], check=False, capture_output=True, text=True,
         )
+        if completed.returncode:
+            detail = (completed.stderr or completed.stdout).strip()
+            raise RuntimeError(
+                f"activity simulation failed with exit code {completed.returncode}: {detail}"
+            )
         log = (trial_dir / "run.log").read_text()
         match = re.search(r"AES_CORE_WORKLOAD_DONE blocks=(\d+)", log)
         if not match:
