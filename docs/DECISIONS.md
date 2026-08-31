@@ -1,5 +1,18 @@
 # Decision log
 
+## 2026-08-31 — Ibex Verilator warnings remain visible but non-fatal
+
+**Decision.** The shared Ibex RTL checker passes `-Wno-fatal` while retaining
+Verilator diagnostics in the command output.
+**Rationale.** The pinned closure produces version-dependent duplicate-package
+and `UNOPTFLAT` warnings that do not prevent elaboration or simulation. Treating
+them as fatal made host and container checks disagree without improving the
+validity boundary.
+**Rejected.** Suppressing the warning classes entirely, or treating a warning
+pass as evidence of successful gate-level synthesis.
+**Consequence.** A nonzero Verilator error still fails the check; Ibex remains
+supported at the RTL simulation/activity boundary only.
+
 ## 2026-08-31 — Dependency-free paired inference for final comparisons
 
 **Decision.** Implement exact paired sign-flip permutation p-values, Holm
