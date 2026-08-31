@@ -33,7 +33,7 @@ class AxiDmaAdapter(DesignAdapter):
         candidate = copy.deepcopy(workload)
         index = rng.randrange(len(candidate["transfers"]))
         transfer = candidate["transfers"][index]
-        transfer["src"] = 0x400 + rng.randrange(12) * 0x100
+        transfer["src"] = 0x400 + rng.randrange(9) * 0x100
         transfer["src"] &= ~0x7
         transfer["dst"] = 0x1000 + rng.randrange(12) * 0x100
         transfer["dst"] &= ~0x7
