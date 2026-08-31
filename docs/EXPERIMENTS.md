@@ -29,7 +29,7 @@ Unsolved runs are retained with evaluations-to-target=N (right-censored) and rep
 - A workload must pass, in order: **SCHEMA → PROTOCOL → FUNCTIONAL → USEFUL WORK**. Failure short-circuits later stages; invalid workloads receive no power score and never enter the scored archive.
 - Schema is JSON Schema draft 2020-12, with bounded numeric parameters, known keys/operations, and per-design operation caps.
 - Protocol legality is design-specific and pure. Functional validity requires termination, no assertions, no monitored X/Z after reset, and design-specific correctness.
-- Slice-4 useful-work floor: AES ≥36 blocks, derived as the floor of the inclusive 10th percentile of the nine valid records in the 10-workload calibration corpus. The other design floors remain provisional until their corpora exist. The floor is a hard gate, not a penalty.
+- Slice-4 useful-work floor: AES ≥38 blocks, derived as the floor of the inclusive 10th percentile of the ten valid records in the refreshed container calibration corpus. The other design floors remain provisional until their corpora exist. The floor is a hard gate, not a penalty.
 
 ## Prompt/model freeze
 

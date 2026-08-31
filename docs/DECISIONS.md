@@ -178,6 +178,25 @@ agreement from mapped-power agreement.
 `Spearman rho = 1.0` between Sky130 and Nangate45 mean-power ordering, while
 the four-workload temporal schedule corpus produced `rho = -1.0`.
 **Decision.** Report corpus-class-specific agreement and retain both datasets.
+
+## 2026-08-31 — Refresh AES calibration under the reproducible container
+
+**Finding.** A fresh ten-workload corpus (seed 7) executed inside `agcws:dev`
+with the pinned Verilator/Yosys/OpenSTA toolchain. Its activity envelope is
+128.723790–130.434211 total transitions per clock edge, and the inclusive
+10th-percentile useful-work floor is 38 blocks.
+**Decision.** Supersede the earlier 128.726293–130.431250 / 36-block record
+for future runs. Keep ε_s=0.05 and its already-recorded five-seed calibration
+decision unchanged; this refresh changes the measurement corpus, not the
+pre-registered adjustment rule.
+**Rationale.** Calibration and comparative runs must use the same reproducible
+container toolchain. The earlier values were generated before the container
+workflow was the authoritative execution path.
+**Rejected.** Mixing host-generated and container-generated envelopes or
+silently retaining the older floor because it was already documented.
+**Consequence.** Comparative invocations must use the refreshed envelope and
+the 38-block hard useful-work floor. The generated corpus remains an ignored
+artifact and is reproducible from the pinned checkout.
 Do not average the coefficients or present the random-corpus result as proof
 that temporal profile rankings transfer across libraries.
 **Rationale.** Random workloads and hand-shaped temporal schedules probe
