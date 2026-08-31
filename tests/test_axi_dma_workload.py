@@ -27,7 +27,10 @@ def test_axi_dma_workload_drives_both_channels(tmp_path: Path):
         artifact = manifest["transfers"][0]["artifacts"][direction]
         assert len(artifact["sha256"]) == 64
         assert artifact["bytes"] > 0
-    assert (tmp_path / "out" / artifact["path"]).is_file()
+        assert (tmp_path / "out" / artifact["path"]).is_file()
+        assert artifact["clock_edges"] > 0
+        assert artifact["total_transitions"] > 0
+        assert (tmp_path / "out" / artifact["activity_path"]).is_file()
     assert load_sim_result(tmp_path / "out/workload_manifest.json").useful_work == 4096
 
 

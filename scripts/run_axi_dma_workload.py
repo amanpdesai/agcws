@@ -9,6 +9,7 @@ from pathlib import Path
 
 from agcws.adapters.axi_dma.adapter import AxiDmaAdapter
 from agcws.adapters.axi_dma.runtime import load_sim_result
+from agcws.nodes.activity import parse_vcd
 from agcws.provenance import toolchain_record
 
 
@@ -49,8 +50,15 @@ def main() -> int:
             if result.returncode:
                 raise SystemExit(result.stderr or result.stdout)
             waveform = transfer_dir / direction / "activity.vcd"
+            activity = parse_vcd(waveform, windows=16)
+            (transfer_dir / direction / "activity.json").write_text(
+                json.dumps(activity, indent=2, sort_keys=True) + "\n"
+            )
             artifacts[direction] = {"path": str(waveform.relative_to(out_dir)),
-                                    "sha256": sha256(waveform), "bytes": waveform.stat().st_size}
+                                    "sha256": sha256(waveform), "bytes": waveform.stat().st_size,
+                                    "activity_path": str((transfer_dir / direction / "activity.json").relative_to(out_dir)),
+                                    "total_transitions": activity["total_transitions"],
+                                    "clock_edges": activity["clock_edges"]}
         records.append({"index": index, "src": transfer["src"], "dst": transfer["dst"],
                         "length": transfer["length"], "status": "simulated",
                         "terminated": True, "assertions_ok": True, "outputs_ok": True,
