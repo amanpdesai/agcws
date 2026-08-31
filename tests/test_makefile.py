@@ -26,3 +26,12 @@ def test_makefile_exposes_explicit_chia_install():
     text = Path("Makefile").read_text()
     assert "chia-install:" in text
     assert "pip install -e tools/chia" in text
+
+
+def test_makefile_exposes_dual_pdk_liberty_inspection():
+    text = Path("Makefile").read_text()
+    assert "inspect-liberties:" in text
+    target = text.split("inspect-liberties:", 1)[1].split("\n", 3)
+    body = "\n".join(target)
+    assert "AGCWS_LIBERTY" in body
+    assert "AGCWS_LIBERTY_NANGATE45" in body
