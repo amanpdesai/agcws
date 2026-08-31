@@ -24,6 +24,14 @@ Each search directory contains `summary.json` with the pre-registered
 best-so-far AUC, solve status, right-censored evaluations-to-target, policy,
 design, and seed. The aggregator groups by policy and canonical design name.
 
+Run the declared local baseline matrix (override `AGCWS_SEARCH_BUDGET` and
+space-separated `AGCWS_SEARCH_SEEDS` as needed):
+
+```bash
+bash scripts/run_aes_baseline_matrix.sh out/aes-core-synthesis-final4 \
+  128.726293 130.431250 out/aes-baselines
+```
+
 The AES source manifest is intentionally separate from the future TileLink
 harness. OpenTitan's `aes` top level depends on common OpenTitan primitive and
 TileLink packages plus generated lifecycle constants. The manifest is an
