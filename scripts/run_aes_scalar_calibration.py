@@ -45,9 +45,13 @@ def main() -> None:
                 index += 1
                 workload_path = run_dir / f"workload-{index:04d}.json"
                 workload_path.write_text(json.dumps(workload, sort_keys=True) + "\n")
-                result = evaluate(workload_path, args.synthesis_dir, run_dir / f"eval-{index:04d}")
+                result = evaluate(workload_path, args.synthesis_dir, run_dir / f"eval-{index:04d}", allow_invalid=True)
+                if not result["valid"]:
+                    return PowerProfile(mean_power=0.0, peak_power=0.0,
+                                        useful_work=result["useful_work"], valid=False,
+                                        fidelity="synthesis", provenance=result)
                 return PowerProfile(mean_power=result["mean_power"], peak_power=result["mean_power"],
-                                    useful_work=result["useful_work"], valid=True)
+                                        useful_work=result["useful_work"], valid=result["valid"])
 
             trials = run_search(adapter, RandomSearch(seed), ScalarGoal(target, args.epsilon),
                                 evaluator, budget=args.budget, batch_size=8, seed=seed,

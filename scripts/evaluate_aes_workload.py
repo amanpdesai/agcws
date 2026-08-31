@@ -20,7 +20,7 @@ from agcws.provenance import input_record, toolchain_record
 from agcws import config
 
 
-def evaluate(workload_path: Path, synthesis_dir: Path, output_dir: Path) -> dict:
+def evaluate(workload_path: Path, synthesis_dir: Path, output_dir: Path, *, allow_invalid: bool = False) -> dict:
     workload = json.loads(workload_path.read_text())
     validity = validate_static(AESAdapter(), workload)
     if not validity.valid:
@@ -42,7 +42,14 @@ def evaluate(workload_path: Path, synthesis_dir: Path, output_dir: Path) -> dict
                   useful_work=completed_blocks)
     )
     if not runtime_validity.valid:
-        raise ValueError(f"invalid simulated workload at {runtime_validity.stage.value}: {runtime_validity.reason}")
+        if not allow_invalid:
+            raise ValueError(f"invalid simulated workload at {runtime_validity.stage.value}: {runtime_validity.reason}")
+        result = {"valid": False, "useful_work": completed_blocks,
+                  "invalid_stage": runtime_validity.stage.value,
+                  "invalid_reason": runtime_validity.reason,
+                  "activity": json.loads((output_dir / "activity.json").read_text())}
+        (output_dir / "result.json").write_text(json.dumps(result, indent=2, sort_keys=True) + "\n")
+        return result
     subprocess.run(
         ["bash", "scripts/run_opensta_aes.sh", str(synthesis_dir),
          str(output_dir / "activity.vcd"), str(output_dir / "opensta")],

@@ -41,9 +41,13 @@ def main() -> None:
         workload_path = args.out / "workloads" / f"workload-{counter:05d}.json"
         workload_path.parent.mkdir(parents=True, exist_ok=True)
         workload_path.write_text(json.dumps(workload, indent=2, sort_keys=True) + "\n")
-        result = evaluate(workload_path, args.synthesis_dir, args.out / "evaluations" / f"trial-{counter:05d}")
+        result = evaluate(workload_path, args.synthesis_dir, args.out / "evaluations" / f"trial-{counter:05d}", allow_invalid=True)
+        if not result["valid"]:
+            return PowerProfile(mean_power=0.0, peak_power=0.0,
+                                useful_work=result["useful_work"], valid=False,
+                                fidelity="synthesis", provenance=result)
         return PowerProfile(mean_power=result["mean_power"], peak_power=result["mean_power"],
-                            useful_work=result["useful_work"], valid=True,
+                            useful_work=result["useful_work"], valid=result["valid"],
                             fidelity="synthesis", provenance=result["provenance"])
 
     trials = run_search(AESAdapter(), policy, ScalarGoal(args.target, args.epsilon), evaluator,
