@@ -21,6 +21,9 @@ def aggregate_summaries(records: Iterable[dict]) -> list[dict]:
     output = []
     for (policy, design, target), values in sorted(groups.items()):
         count = len(values)
+        failure_stages = {stage: sum(
+            int(value.get("validity_failures", {}).get(stage, 0)) for value in values
+        ) for stage in ("SCHEMA", "PROTOCOL", "FUNCTIONAL", "USEFUL_WORK")}
         auc_ci = bootstrap_mean_ci(
             [value["auc_best_so_far"] for value in values], seed=0
         )
@@ -39,6 +42,11 @@ def aggregate_summaries(records: Iterable[dict]) -> list[dict]:
                                                for value in values) / count,
             "auc_best_so_far_ci95": auc_ci,
             "evaluations_to_target_ci95": eval_ci,
+            "valid_trials": sum(int(value.get("valid_trials", 0)) for value in values),
+            "simulations": sum(int(value.get("simulations", 0)) for value in values),
+            "tokens_in": sum(int(value.get("tokens_in", 0)) for value in values),
+            "tokens_out": sum(int(value.get("tokens_out", 0)) for value in values),
+            "validity_failures": failure_stages,
         })
     return output
 
