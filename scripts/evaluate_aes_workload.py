@@ -17,6 +17,7 @@ from agcws.nodes.power import parse_opensta_power_file
 from agcws.nodes.validation import validate_static
 from agcws.adapters.base import SimResult
 from agcws.provenance import input_record, toolchain_record
+from agcws.nodes.activity import attribute_regions
 from agcws import config
 
 
@@ -56,11 +57,15 @@ def evaluate(workload_path: Path, synthesis_dir: Path, output_dir: Path, *, allo
         check=True,
     )
     profile = parse_opensta_power_file(output_dir / "opensta/power.rpt")
+    activity = json.loads((output_dir / "activity.json").read_text())
+    by_region = attribute_regions(activity["signal_transitions"], AESAdapter.activity_region_prefixes)
     result = {
         "valid": True,
         "useful_work": completed_blocks,
         "mean_power": profile.mean_power,
-        "per_cycle_toggles": json.loads((output_dir / "activity.json").read_text())["per_cycle_toggles"],
+        "per_cycle_toggles": activity["per_cycle_toggles"],
+        "by_region": by_region,
+        "region_fidelity": "activity",
         "fidelity": profile.fidelity,
         "activity": json.loads((output_dir / "activity.json").read_text()),
         "provenance": {

@@ -28,6 +28,9 @@ class DesignAdapter(ABC):
     workload_schema: dict
     regions: list[str] | None = None
     useful_work_floor: float = 0.0
+    # Optional activity-level attribution rules.  These are not gate-level
+    # power partitions; evaluators must preserve that fidelity distinction.
+    activity_region_prefixes: dict[str, tuple[str, ...]] | None = None
 
     @abstractmethod
     def validate_schema(self, workload: dict) -> Validity: ...

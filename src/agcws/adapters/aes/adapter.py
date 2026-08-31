@@ -4,6 +4,11 @@ class AESAdapter(DesignAdapter):
     name = "opentitan_aes"
     useful_work_floor = 21
     regions = ["aes_core", "aes_control", "aes_data"]
+    activity_region_prefixes = {
+        "aes_control": ("state_", "ctrl_", "in_ready", "out_valid", "key_", "start_"),
+        "aes_data": ("data_", "state_d", "state_q", "round_key", "sbox"),
+        "aes_core": ("aes_", "round", "mix_", "shift_", "sub_"),
+    }
     workload_schema = {"type": "object", "required": ["operations"], "properties": {"operations": {"type": "array", "maxItems": 256}, "data_pattern": {"type": "integer", "minimum": 0, "maximum": 3}}, "additionalProperties": False}
 
     def validate_schema(self, workload: dict) -> Validity:
