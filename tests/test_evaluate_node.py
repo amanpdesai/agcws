@@ -8,6 +8,9 @@ from agcws.nodes.synthesize import NetlistArtifact
 
 
 def artifacts(tmp_path: Path) -> tuple[NetlistArtifact, ActivityArtifact]:
+    (tmp_path / "mapped.v").write_text("module top; endmodule\n")
+    (tmp_path / "cells.lib").write_text("library(test) {}\n")
+    (tmp_path / "activity.saif").write_text("(SAIFILE)\n")
     return (
         NetlistArtifact(tmp_path / "mapped.v", tmp_path / "cells.lib", tmp_path / "manifest.json"),
         ActivityArtifact(tmp_path / "activity.saif"),
