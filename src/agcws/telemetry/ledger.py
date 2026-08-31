@@ -12,6 +12,7 @@ class Trial:
     workload: dict
     validity: Any
     profile: Any = None
+    loss: float | None = None
     wall_clock_s: float = 0.0
     sim_count: int = 0
     tokens_in: int = 0

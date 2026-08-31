@@ -75,6 +75,7 @@ def run_search(
                 workload=workload,
                 validity=validity,
                 profile=profile,
+                loss=None if not validity.valid else current,
                 wall_clock_s=time.monotonic() - started,
                 sim_count=sim_count,
                 model=getattr(policy, "model", ""),
