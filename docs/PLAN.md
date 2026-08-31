@@ -28,7 +28,8 @@ node-DAG smoke both pass (`AGCWS_CHIA_SMOKE_OK` and
 Vertex billing remains unverified, so Slice 1 is still WIP. The image-only container smoke passes, the
 AES scalar matrix has completed for five targets and four policies at 200
 proposals for two seeds, and achieved-profile temporal/compositional searches
-plus finalist OpenSTA validation have executed. These remain preliminary
+ plus finalist OpenSTA validation have executed. The strongest AES scalar
+ corpus currently covers six seeds per policy/target cell. These remain preliminary
 results; they are not the final multi-design statistical study.
 The public `make baseline-matrix` entry point also completed a five-policy AES
 smoke at 20 proposals per arm, with 20 valid simulations per policy and a
