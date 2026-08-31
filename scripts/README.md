@@ -44,3 +44,10 @@ Run the first OpenSTA smoke evaluation against a mapped netlist:
 bash scripts/run_opensta_aes.sh out/aes-core-synthesis-final4 \
   out/aes-core-smoke-bounded/activity.vcd
 ```
+
+Evaluate one workload through the complete simulation and power path:
+
+```bash
+python3 scripts/evaluate_aes_workload.py experiments/workloads/aes_zero_blocks.json \
+  out/aes-core-synthesis-final4 --out out/aes-evaluation
+```
