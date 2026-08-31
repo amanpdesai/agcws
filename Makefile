@@ -22,7 +22,7 @@ BUDGET ?= 200
 SEEDS ?= 0
 TARGETS ?= 0.10 0.25 0.50 0.75 0.90
 
-.PHONY: test lint dev-install analysis-install verification-install chia-install chia-smoke chia-node-smoke upstream-dma-reference research-smoke audit-reproducibility vertex-preflight verify-artifact inspect-liberty check-liberty-coverage synth-aes evaluate-aes determinism plot-activity plot-search-curves random-corpus temporal-corpus temporal-search compositional-search baseline-matrix cross-pdk validate-aes-pdk-corpus validate-finalists cross-pdk-dma axi-dma-search validate-axi-dma-finalists check-axi-dma-rtl run-axi-dma-rd-smoke run-axi-dma-wr-smoke run-axi-dma-workload run-axi-dma-coupled run-axi-memory-smoke compile-ibex resolve-ibex-sources probe-ibex-synthesis run-ibex verify-ibex verify container-smoke
+.PHONY: test lint dev-install analysis-install verification-install chia-install chia-smoke chia-node-smoke upstream-dma-reference research-smoke audit-reproducibility vertex-preflight verify-artifact inspect-liberty check-liberty-coverage synth-aes evaluate-aes determinism plot-activity plot-search-curves random-corpus temporal-corpus temporal-search compositional-search baseline-matrix cross-pdk run-aes-pdk-corpus validate-aes-pdk-corpus validate-finalists cross-pdk-dma axi-dma-search validate-axi-dma-finalists check-axi-dma-rtl run-axi-dma-rd-smoke run-axi-dma-wr-smoke run-axi-dma-workload run-axi-dma-coupled run-axi-memory-smoke compile-ibex resolve-ibex-sources probe-ibex-synthesis run-ibex verify-ibex verify container-smoke
 test:
 	$(VENV_PYTHON) -m pytest -q
 dev-install:
@@ -86,6 +86,9 @@ validate-aes-pdk-corpus:
 	$(VENV_PYTHON) scripts/validate_aes_pdk_corpus.py "$(CORPUS_DIR)" \
 		"$(CROSS_PDK_DIR)/sky130hd-synthesis" "$(CROSS_PDK_DIR)/nangate45-synthesis" \
 		--out "$${AGCWS_ARTIFACT_ROOT:-out}/aes-pdk-corpus-validation.json"
+run-aes-pdk-corpus:
+	bash scripts/run_aes_pdk_corpus.sh "$(CORPUS_DIR)" "$(CROSS_PDK_DIR)" \
+		"$${AGCWS_ARTIFACT_ROOT:-out}/aes-pdk-corpus"
 cross-pdk-dma:
 	@test -f "$(DMA_WAVEFORM)" || (echo "missing DMA_WAVEFORM=$(DMA_WAVEFORM)" >&2; exit 1)
 	bash scripts/run_axi_dma_cross_pdk.sh "$(DMA_WAVEFORM)" "$(DMA_CROSS_PDK_DIR)"
