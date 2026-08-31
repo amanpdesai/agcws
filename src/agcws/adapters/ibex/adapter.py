@@ -37,7 +37,6 @@ class IbexAdapter(DesignAdapter):
 
     def validate_protocol(self, workload: dict) -> Validity:
         program = workload["program"]
-        has_termination = False
         for index, instruction in enumerate(program):
             op = instruction.get("op")
             if op not in self.supported_ops:
@@ -52,11 +51,26 @@ class IbexAdapter(DesignAdapter):
                 target = instruction.get("target")
                 if not isinstance(target, int) or target < 0 or target >= len(program) * 4 or target % 4:
                     return Validity(False, ValidityStage.PROTOCOL, "branch target outside aligned program")
-            if op == "ecall":
-                has_termination = True
-        if not has_termination:
-            return Validity(False, ValidityStage.PROTOCOL, "program must contain a reachable termination instruction")
-        return Validity(True)
+        # Presence alone is not enough: a self-loop or an earlier unconditional
+        # control-flow trap must not satisfy the termination contract.
+        reachable = {0}
+        pending = [0]
+        while pending:
+            index = pending.pop()
+            instruction = program[index]
+            if instruction["op"] == "ecall":
+                return Validity(True)
+            successors = []
+            if instruction["op"] in {"beq", "bne"}:
+                successors.append(instruction["target"] // 4)
+            if index + 1 < len(program):
+                successors.append(index + 1)
+            for successor in successors:
+                if successor not in reachable:
+                    reachable.add(successor)
+                    pending.append(successor)
+        return Validity(False, ValidityStage.PROTOCOL,
+                        "program must contain a reachable termination instruction")
 
     def elaborate(self, workload: dict) -> list[dict]:
         return workload["program"]
