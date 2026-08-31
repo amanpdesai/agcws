@@ -45,33 +45,40 @@ module aes_core_smoke;
   ) dut (.*);
 
   initial begin
+    static int blocks = 1;
+    static int completed = 0;
+    void'($value$plusargs("BLOCKS=%d", blocks));
+    if (blocks < 1 || blocks > 256) $fatal(1, "BLOCKS must be in [1,256]");
     $dumpfile("activity.vcd");
     $dumpvars(0, aes_core_smoke);
     repeat (4) @(posedge clk_i);
     rst_ni = 1'b1;
     repeat (2) @(posedge clk_i);
-    cfg_valid_i = 1'b1;
-    crypt_i = SP2V_HIGH;
-    in_valid_i = SP2V_HIGH;
-    @(posedge clk_i);
-    in_valid_i = SP2V_LOW;
-    cfg_valid_i = 1'b0;
-    crypt_i = SP2V_LOW;
-    fork
-      begin
-        wait (out_valid_o == SP2V_HIGH);
-        $display("AES_CORE_SMOKE_DONE state=%h", state_o[0]);
-        // OpenTitan stores the AES state as [row][column][byte], so this is
-        // the NIST zero-key/zero-block vector in packed SV display order.
-        if (state_o[0] !== 128'h2e593bd42bfa2c4b344c8ae9ca88ef66)
-          $fatal(1, "unexpected AES-128 result: %h", state_o[0]);
-      end
-      begin
-        repeat (400) @(posedge clk_i);
-        $fatal(1, "AES core did not complete within timeout");
-      end
-    join_any
-    disable fork;
+    for (int block = 0; block < blocks; block++) begin
+      fork
+        begin
+          wait (out_valid_o == SP2V_HIGH);
+          completed++;
+          // OpenTitan stores the AES state as [row][column][byte], so this is
+          // the NIST zero-key/zero-block vector in packed SV display order.
+          if (state_o[0] !== 128'h2e593bd42bfa2c4b344c8ae9ca88ef66)
+            $fatal(1, "unexpected AES-128 result at block %0d: %h", block, state_o[0]);
+        end
+        begin
+          cfg_valid_i = 1'b1;
+          crypt_i = SP2V_HIGH;
+          in_valid_i = SP2V_HIGH;
+          @(posedge clk_i);
+          in_valid_i = SP2V_LOW;
+          cfg_valid_i = 1'b0;
+          crypt_i = SP2V_LOW;
+          repeat (400) @(posedge clk_i);
+          $fatal(1, "AES core did not complete block %0d", block);
+        end
+      join_any
+      disable fork;
+    end
+    $display("AES_CORE_WORKLOAD_DONE blocks=%0d", completed);
     $finish;
   end
 endmodule

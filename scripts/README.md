@@ -11,6 +11,7 @@ python scripts/resolve_sv_sources.py --top aes_cipher_core
 python scripts/resolve_sv_sources.py --top aes --include-generated
 bash scripts/lint_aes_core.sh
 bash scripts/run_aes_core_smoke.sh
+python3 scripts/run_aes_workload.py experiments/workloads/aes_zero_blocks.json
 ```
 
 The AES source manifest is intentionally separate from the future TileLink
@@ -19,3 +20,20 @@ TileLink packages plus generated lifecycle constants. The manifest is an
 auditable first-pass compile set; the harness command must still select the
 configuration-specific generated packages and remove unrelated primitive
 implementations before treating lint as a pass.
+## AES synthesis
+
+Generate the cached AES core netlist against the configured Liberty file:
+
+```bash
+bash scripts/synthesize_aes_core.sh out/aes-core-synthesis
+```
+
+The output contains the resolved source list, Yosys log, mapped netlist,
+statistics, checksums, and a manifest. The netlist is a design-level artifact;
+candidate workloads must not trigger synthesis again.
+
+Convert a simulation waveform to backward SAIF for OpenSTA:
+
+```bash
+bash scripts/vcd_to_saif.sh out/aes-workload/activity.vcd out/aes-workload/activity.saif
+```

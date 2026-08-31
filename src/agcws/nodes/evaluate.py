@@ -1,10 +1,15 @@
 from pathlib import Path
 from agcws.nodes.commands import CommandResult, run_command
-from agcws.nodes.power import PowerProfile
+from agcws.nodes.power import PowerProfile, parse_opensta_power_file
 from agcws.nodes.synthesize import NetlistArtifact
 from agcws.nodes.activity import ActivityArtifact
 
 def evaluate_power(command: list[str], netlist: NetlistArtifact, activity: ActivityArtifact, output_dir: Path) -> tuple[CommandResult, PowerProfile]:
     """Run OpenSTA for one candidate against a cached netlist."""
     output_dir.mkdir(parents=True, exist_ok=True)
-    raise NotImplementedError("OpenSTA report parsing is required before producing a valid PowerProfile")
+    result = run_command(command, cwd=output_dir)
+    report = output_dir / "power.rpt"
+    if result.returncode != 0:
+        return result, PowerProfile(0.0, 0.0, valid=False, fidelity="synthesis")
+    profile = parse_opensta_power_file(report, provenance={"report": str(report), "fidelity": "synthesis"})
+    return result, profile
