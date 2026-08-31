@@ -6,6 +6,8 @@ def test_makefile_exposes_core_tasks():
     for target in ("test:", "synth-aes:", "evaluate-aes:", "verify:", "container-smoke:"):
         assert target in text
     assert "DMA_POLICIES" in text
+    assert 'DMA_SEARCH_DIR' in text
+    assert '--budget "$(BUDGET)"' in text
 
 
 def test_makefile_exposes_baseline_matrix_task():

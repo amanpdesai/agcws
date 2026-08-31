@@ -11,6 +11,7 @@ TEMPORAL_CORPUS_DIR ?= out/aes-temporal-corpus
 CROSS_PDK_DIR ?= out/aes-cross-pdk
 DMA_CROSS_PDK_DIR ?= out/axi-dma-cross-pdk
 DMA_POLICIES ?= random,mutation,evolutionary,one-shot-agent,offline-hybrid
+DMA_SEARCH_DIR ?= out/axi-dma-search
 FINALIST_TRIALS ?= $(BASELINE_DIR)/target-0.50/seed-0/random/trials.jsonl
 WAVEFORM ?= $(EVAL_DIR)/activity.vcd
 DMA_WAVEFORM ?= out/axi-dma-coupled/activity.vcd
@@ -77,7 +78,7 @@ cross-pdk-dma:
 	@test -f "$(DMA_WAVEFORM)" || (echo "missing DMA_WAVEFORM=$(DMA_WAVEFORM)" >&2; exit 1)
 	bash scripts/run_axi_dma_cross_pdk.sh "$(DMA_WAVEFORM)" "$(DMA_CROSS_PDK_DIR)"
 axi-dma-search:
-	PYTHONPATH=src $(VENV_PYTHON) scripts/run_axi_dma_search.py --policies "$(DMA_POLICIES)" --p-min 0 --p-max 1
+	PYTHONPATH=src $(VENV_PYTHON) scripts/run_axi_dma_search.py --policies "$(DMA_POLICIES)" --budget "$(BUDGET)" --p-min 0 --p-max 1 --out "$(DMA_SEARCH_DIR)"
 validate-axi-dma-finalists:
 	PYTHONPATH=src $(VENV_PYTHON) scripts/validate_axi_dma_finalists.py "$${DMA_FINALIST_TRIALS:-out/axi-dma-search/trials.jsonl}" "$${DMA_SYNTH_DIR:-out/axi-dma-synthesis-sky130-v2}" --out "$${AGCWS_ARTIFACT_ROOT:-out}/axi-dma-finalist-validation"
 validate-finalists:
