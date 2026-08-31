@@ -1,5 +1,5 @@
 from dataclasses import dataclass, field
-from typing import Any, Callable
+from typing import Any
 from agcws.goals import Goal
 from agcws.policies import SearchPolicy
 from agcws.adapters import DesignAdapter
@@ -19,9 +19,13 @@ def propose_batch(state: LoopState, adapter: DesignAdapter, batch_size: int) -> 
     if remaining <= 0:
         return []
     requested = min(batch_size, remaining)
-    candidates = state.policy.propose(adapter, state.goal, state.history, requested)
-    # The requested slots are consumed even when parsing/validation returns fewer.
-    state.proposal_index += requested
+    try:
+        candidates = state.policy.propose(adapter, state.goal, state.history, requested)
+    except (TypeError, ValueError):
+        candidates = []
+    finally:
+        # The requested slots are consumed even when parsing/validation fails.
+        state.proposal_index += requested
     return candidates
 
 def validate_batch(adapter: DesignAdapter, candidates: list[dict]) -> list[tuple[dict, Any]]:
