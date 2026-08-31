@@ -5,6 +5,7 @@ repo_root=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
 cd "$repo_root"
 out_dir=${1:-out/aes-core-smoke}
 blocks=${2:-1}
+idle_cycles=${3:-0}
 timeout_s=${AGCWS_SIM_TIMEOUT_S:-60}
 max_waveform_bytes=${AGCWS_MAX_WAVEFORM_BYTES:-268435456}
 mkdir -p "$out_dir"
@@ -21,7 +22,7 @@ verilator --binary --trace-vcd --timing --sv --top-module aes_core_smoke \
   $(<"$out_dir/sources.list") experiments/aes_core_smoke.sv
 : > "$out_dir/activity.vcd"
 timeout --kill-after=5s "${timeout_s}s" bash -c \
-  "cd \"$out_dir\" && ./obj_dir/aes_core_smoke \"+BLOCKS=$blocks\"" \
+  "cd \"$out_dir\" && ./obj_dir/aes_core_smoke \"+BLOCKS=$blocks\" \"+IDLE=$idle_cycles\"" \
   > "$out_dir/run.log" 2>&1
 if [[ ! -s "$out_dir/activity.vcd" ]]; then
   echo "simulation did not produce a non-empty VCD" >&2

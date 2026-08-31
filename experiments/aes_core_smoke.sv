@@ -46,9 +46,12 @@ module aes_core_smoke;
 
   initial begin
     static int blocks = 1;
+    static int idle_cycles = 0;
     static int completed = 0;
     void'($value$plusargs("BLOCKS=%d", blocks));
-    if (blocks < 1 || blocks > 256) $fatal(1, "BLOCKS must be in [1,256]");
+    void'($value$plusargs("IDLE=%d", idle_cycles));
+    if (blocks < 1 || blocks > 256 || idle_cycles < 0 || idle_cycles > 10000)
+      $fatal(1, "BLOCKS must be in [1,256] and IDLE must be in [0,10000]");
     $dumpfile("activity.vcd");
     $dumpvars(0, aes_core_smoke);
     repeat (4) @(posedge clk_i);
@@ -77,6 +80,13 @@ module aes_core_smoke;
         end
       join_any
       disable fork;
+      if (block + 1 < blocks) begin
+        rst_ni = 1'b0;
+        repeat (4) @(posedge clk_i);
+        rst_ni = 1'b1;
+        repeat (2) @(posedge clk_i);
+        repeat (idle_cycles) @(posedge clk_i);
+      end
     end
     $display("AES_CORE_WORKLOAD_DONE blocks=%0d", completed);
     $finish;

@@ -16,6 +16,13 @@ def block_count(workload: dict) -> int:
         raise ValueError("workload must contain 1..256 crypto blocks")
     return total
 
+def idle_cycles(workload: dict) -> int:
+    total = sum(int(op.get("cycles", 0)) for op in workload.get("operations", [])
+                if op.get("op") == "idle")
+    if total < 0 or total > 10000:
+        raise ValueError("idle cycles must be in [0,10000]")
+    return total
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("workload", type=Path)
@@ -23,9 +30,10 @@ def main() -> None:
     args = parser.parse_args()
     workload = json.loads(args.workload.read_text())
     blocks = block_count(workload)
+    idle = idle_cycles(workload)
     args.out.mkdir(parents=True, exist_ok=True)
     (args.out / "workload.json").write_text(json.dumps(workload, indent=2, sort_keys=True) + "\n")
-    subprocess.run(["bash", "scripts/run_aes_core_smoke.sh", str(args.out), str(blocks)], check=True)
+    subprocess.run(["bash", "scripts/run_aes_core_smoke.sh", str(args.out), str(blocks), str(idle)], check=True)
 
 if __name__ == "__main__":
     main()

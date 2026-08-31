@@ -19,5 +19,6 @@ class RandomSearch(SearchPolicy):
             candidates.append({"operations": [
                 {"op": "configure", "key_len": self.rng.choice([128, 192, 256])},
                 {"op": self.rng.choice(["encrypt", "decrypt"]), "blocks": blocks},
+                {"op": "idle", "cycles": self.rng.randint(0, 200)},
             ]})
         return candidates
