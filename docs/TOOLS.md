@@ -22,7 +22,7 @@ ultimately pinned in the container image.
 | Verilator | RTL simulation and VCD/FST tracing | Set by `AGCWS_VERILATOR` | Container image/version |
 | Yosys | RTL synthesis/mapping | Set by `AGCWS_YOSYS` | Container image/version |
 | OpenSTA (`sta`) | synthesis-level timing/power report | Set by `AGCWS_OPENSTA` | Container image/version |
-| Liberty library | cell power/timing characterization | Set by `AGCWS_LIBERTY`; initial candidate is the local Sky130 HD TT library | Store path/checksum in provenance; do not assume completeness |
+| Liberty library | cell power/timing characterization | `third_party/liberty/`; selected by `AGCWS_LIBERTY` | Store path/checksum in provenance; do not assume completeness |
 | Icarus Verilog | small smoke tests | `/usr/bin/iverilog` | Optional fallback, not power oracle |
 
 ## Source dependencies to pin as submodules
@@ -31,6 +31,10 @@ Only design/framework source belongs here: `tools/chia` is pinned at
 `d78ad77e4ce7b11523bf15a253a258c0f8795673`. Later add pinned commits for
 OpenTitan AES, verilog-axi `axi_dma`, and Ibex after selecting the exact RTL
 versions. Do not vendor their trees into this repository.
+
+Liberty files are the exception: selected Sky130 HD TT and Nangate45 typical
+files are copied into `third_party/liberty/` so runs do not depend on a machine
+path. Their source paths and checksums are recorded there.
 
 ## Not required yet
 
@@ -42,3 +46,7 @@ commercial PDKs, commercial power tools, and FPGA toolchains are out of scope.
 The Slice-1 setup is ready when CHIA imports, Ray starts, Docker runs a worker,
 and one stock CHIA case completes. Slice 2 additionally requires a Verilator
 trace, Yosys mapped netlist, Liberty inspection, and OpenSTA power report.
+
+The checked-in Liberty inputs are inspected with `scripts/inspect_liberty.py`.
+The primary Sky130 file is the default; Nangate45 is used for finalist
+cross-checks. `scripts/aes_sources.py` emits the current OpenTitan AES RTL set.
