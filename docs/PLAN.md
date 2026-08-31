@@ -49,8 +49,9 @@ deterministic search-curve plotting. A five-policy DMA matrix has also executed;
 the complete multi-seed, multi-design statistical study remains outstanding.
 
 Slice 6 has the common offline-agent and Vertex policy interfaces plus the
-frozen generic prompt; Vertex credentials/model billing and a comparative
-agent run remain unverified.
+frozen generic prompt. The offline agent has completed a real AES smoke run
+under the shared evaluator budget; Vertex credentials/model billing and a
+comparative cloud-agent run remain unverified.
 
 Slice 9 has executable AES temporal and compositional search drivers using the
 activity oracle, achieved-profile target selection, per-cycle/windowed profiles,

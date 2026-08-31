@@ -4,7 +4,7 @@ This adapter defines the instruction-stream workload boundary for Ibex. A
 workload contains a program of structured instructions, with legal load/store
 addresses, aligned branch targets, supported instruction names, and an `ecall`
 termination point. `useful_work` is the retired-instruction count supplied by
-the future simulator harness.
+the simulator harness.
 
 `scripts/compile_ibex_workload.py` deterministically lowers this DSL to RV32IM
 assembly and an ELF image for Ibex's upstream `ibex_simple_system`. The image
