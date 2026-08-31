@@ -19,6 +19,18 @@ Simulation/synthesis/STA run locally; GCP credit is reserved for Vertex AI.
 
 Close the loop with hill-climbing first to establish a fair harness and fallback result.
 
+## 2026-08-31 — OpenTitan AES as the first real design dependency
+
+**Decision.** Use the HTTPS-pinned `third_party/opentitan` submodule at commit
+`b16f2be75d2f38c62d861208453ed5b81ccf41b0`; use its TileLink-connected `aes`
+top level for the production adapter.  
+**Rationale.** It is an established, self-contained crypto IP with meaningful
+internal hierarchy and legal register/data workload semantics.  
+**Rejected.** Driving only `aes_cipher_core` as the headline interface; it
+would simplify bring-up but would not represent a realistic legal workload.  
+**Consequence.** The first harness must provide deterministic TileLink,
+entropy, lifecycle, key-manager, and alert plumbing.
+
 ## 2026-08-30 — Proposal-counted evaluator budgets
 
 **Decision.** N=200 for scalar and N=300 for profile goals; every proposed candidate consumes budget, including malformed and rejected candidates. Simulations are secondary.  
