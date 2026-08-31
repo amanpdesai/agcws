@@ -50,3 +50,4 @@ trace, Yosys mapped netlist, Liberty inspection, and OpenSTA power report.
 The checked-in Liberty inputs are inspected with `scripts/inspect_liberty.py`.
 The primary Sky130 file is the default; Nangate45 is used for finalist
 cross-checks. `scripts/aes_sources.py` emits the current OpenTitan AES RTL set.
+`scripts/lint_aes_core.sh` is the first executable RTL acceptance check.
