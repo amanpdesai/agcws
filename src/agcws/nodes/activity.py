@@ -28,6 +28,14 @@ def windowize(values: Sequence[int], windows: int) -> tuple[int, ...]:
     return tuple(buckets)
 
 
+def normalize_windows(values: Sequence[int]) -> tuple[float, ...]:
+    """Normalize a window profile by its maximum, preserving all-zero input."""
+    if not values:
+        return ()
+    peak = max(values)
+    return tuple(0.0 for _ in values) if peak <= 0 else tuple(float(v) / peak for v in values)
+
+
 def attribute_regions(signal_transitions: dict[str, int],
                       region_prefixes: dict[str, tuple[str, ...]]) -> dict[str, float]:
     """Aggregate signal transitions into declared RTL regions.
@@ -102,7 +110,8 @@ def parse_vcd(path: Path, clock_name: str = "clk_i", windows: int = 16) -> dict:
             "clock": clock_name, "clock_edges": len(edges),
             "total_transitions": sum(transitions.values()),
             "signal_transitions": dict(sorted(transitions.items())),
-            "per_cycle_toggles": per_cycle, "window_toggles": buckets}
+            "per_cycle_toggles": per_cycle, "window_toggles": buckets,
+            "normalized_windows": list(normalize_windows(buckets))}
 
 def extract_activity(command: list[str], waveform: Path, output_dir: Path, *, clock_name: str = "clk_i", windows: int = 16) -> tuple[CommandResult, ActivityArtifact]:
     output_dir.mkdir(parents=True, exist_ok=True)

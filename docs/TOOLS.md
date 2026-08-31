@@ -74,7 +74,9 @@ determinism, activity-figure, temporal-search, and compositional-search
 artifacts under `out/research-smoke/`. Set `AGCWS_PROFILE_SMOKE_BUDGET` to
 change the small profile smoke budget without changing comparative budgets.
 The resulting `activity.json` includes the waveform SHA-256 alongside the
-per-cycle and coarse-window toggle counts. The script honors `AGCWS_PYTHON` for container or alternate-environment use;
+per-cycle, coarse-window, and max-normalized window counts. The normalized
+profile is derived from the same window buckets used by temporal goals; an
+all-zero profile remains all zero. The script honors `AGCWS_PYTHON` for container or alternate-environment use;
 the Make target defaults it to the project virtualenv.
 
 Host configuration is optional and comes from an untracked `.env` copied from

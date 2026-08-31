@@ -1,7 +1,7 @@
 from pathlib import Path
 import pytest
 from scripts.parse_vcd_activity import parse
-from agcws.nodes.activity import attribute_regions, extract_activity
+from agcws.nodes.activity import attribute_regions, extract_activity, normalize_windows
 
 
 def test_extract_activity_requires_waveform(tmp_path: Path):
@@ -38,3 +38,8 @@ def test_region_attribution_keeps_unmatched_and_ambiguous_signals_visible():
         {"control": ("ctrl_",), "data": ("data_",)},
     )
     assert result == {"control": 10.0, "data": 5.0, "unattributed": 2.0}
+
+
+def test_normalize_windows_handles_peak_and_zero_profiles():
+    assert normalize_windows([2, 4, 1]) == (0.5, 1.0, 0.25)
+    assert normalize_windows([0, 0]) == (0.0, 0.0)
