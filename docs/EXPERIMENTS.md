@@ -16,9 +16,9 @@ Log best-so-far error at every index 1..N. Report simulations executed as a seco
 
 ## Tolerance and calibration
 
-Primary tolerances are ε_s=0.10 normalized envelope units, ε_c=0.05 region-share error, and ε_t=0.10 temporal NRMSE. AES began with the preregistered ε_s=0.05 value and, after the permitted calibration re-evaluation, froze ε_s=0.10 globally; the result is recorded in `DECISIONS.md`. Scalar ε_s=0.02 and 0.05 remain sensitivity analyses. Scalar q is normalized against each design's non-idle [P_min,P_max].
+Primary tolerances are ε_s=0.05 normalized envelope units, ε_c=0.05 region-share error, and ε_t=0.10 temporal NRMSE. Scalar ε_s=0.02 and 0.10 remain sensitivity analyses. Scalar q is normalized against each design's non-idle [P_min,P_max].
 
-After Slice 4, on AES only, let r be the median-over-five-seeds fraction of five scalar targets solved by random search within ε_s in ≤20 evaluations. If r>0.6, adjust once to 0.02; if r<0.1, adjust once to 0.10; otherwise retain 0.05. This rule was applied: both the initial 0.05 run and permitted 0.10 re-evaluation solved 0/25 target-seed cells, so 0.10 is frozen. Apply the resulting value globally and record r before comparative runs. If 0.02 still gives r>0.6, G3 fails and profile arms become primary.
+After Slice 4, on AES only, let r be the median-over-five-seeds fraction of five scalar targets solved by random search within ε_s in ≤20 evaluations. If r>0.6, adjust once to 0.02; if r<0.1, adjust once to 0.10; otherwise retain 0.05. This rule was applied: r=0.20 (5/25 target-seed cells) at ε_s=0.05, so 0.05 is frozen globally. If 0.02 still gives r>0.6, G3 fails and profile arms become primary.
 
 Identical workloads must be deterministic across three repeated evaluations. If not, fix nondeterminism; if impossible, set ε≥3× observed run-to-run standard deviation and record it.
 
@@ -29,7 +29,7 @@ Unsolved runs are retained with evaluations-to-target=N (right-censored) and rep
 - A workload must pass, in order: **SCHEMA → PROTOCOL → FUNCTIONAL → USEFUL WORK**. Failure short-circuits later stages; invalid workloads receive no power score and never enter the scored archive.
 - Schema is JSON Schema draft 2020-12, with bounded numeric parameters, known keys/operations, and per-design operation caps.
 - Protocol legality is design-specific and pure. Functional validity requires termination, no assertions, no monitored X/Z after reset, and design-specific correctness.
-- Slice-4 useful-work floor: AES ≥21 blocks, derived as the floor of the inclusive 10th percentile of the 10-workload valid calibration corpus. The other design floors remain provisional until their corpora exist. The floor is a hard gate, not a penalty.
+- Slice-4 useful-work floor: AES ≥36 blocks, derived as the floor of the inclusive 10th percentile of the nine valid records in the 10-workload calibration corpus. The other design floors remain provisional until their corpora exist. The floor is a hard gate, not a penalty.
 
 ## Prompt/model freeze
 

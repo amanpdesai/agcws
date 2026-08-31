@@ -22,6 +22,23 @@ differences without measuring them.
 **Rationale.** Keep experiments separate from framework work and make upstream extraction reviewable.  
 **Rejected.** Fork-and-branch development inside `ucb-bar/chia`.
 
+## 2026-08-31 — Freeze AES calibration from activity-only inner-loop run
+
+**Decision.** AES ε_s is frozen at 0.05 globally. The prescribed five-seed,
+five-target random-search calibration solved 5/25 cells (r=0.20), which is
+inside the retain-0.05 band. The activity envelope is 128.726293–130.431250
+total transitions per clock edge, and the AES useful-work floor is frozen at
+36 blocks from the inclusive 10th percentile of the nine valid records in the
+ten-workload corpus.
+**Rationale.** Calibration uses the same deterministic activity proxy as the
+fast search loop; OpenSTA remains a finalist validation tier. The pre-declared
+rule therefore determines ε without per-design or post-hoc tuning.
+**Rejected.** OpenSTA per candidate during calibration; changing ε after
+inspecting comparative results.
+**Consequence.** ε_s=0.05 and the 36-block AES floor are fixed for comparative
+runs. Generated calibration summaries remain ignored artifacts and can be
+reproduced from the pinned repository state.
+
 ## 2026-08-30 — AES first, `axi_dma` second, Ibex third
 
 AES has the shallowest bring-up; DMA tests protocol depth; Ibex has the longest toolchain tail.
