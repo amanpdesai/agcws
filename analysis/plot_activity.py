@@ -28,6 +28,11 @@ def plot(activity: dict, output: Path) -> None:
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
 
+    if "per_cycle_toggles" not in activity:
+        raise ValueError(
+            "activity artifact has no per_cycle_toggles; rerun the evaluator "
+            "with cycle-level activity enabled"
+        )
     cycles = [int(value) for value in activity["per_cycle_toggles"]]
     windows = [int(value) for value in activity.get("window_toggles", [])]
     figure, axes = plt.subplots(2, 1, figsize=(10, 6), constrained_layout=True)
