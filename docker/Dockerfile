@@ -51,6 +51,7 @@ COPY src /opt/agcws/src
 COPY scripts /opt/agcws/scripts
 COPY experiments /opt/agcws/experiments
 COPY flows /opt/agcws/flows
+COPY analysis /opt/agcws/analysis
 COPY prompts /opt/agcws/prompts
 COPY third_party/liberty /opt/agcws/third_party/liberty
 COPY third_party/opentitan /opt/agcws/third_party/opentitan
@@ -59,7 +60,7 @@ COPY third_party/harnesses /opt/agcws/third_party/harnesses
 WORKDIR /opt/agcws
 RUN python -m pip install --upgrade pip && \
     python -m pip install -e /opt/chia
-RUN python -m pip install -e .
+RUN python -m pip install -e '.[analysis]'
 
 ENV PYTHONUNBUFFERED=1 \
     AGCWS_VERILATOR=/usr/bin/verilator \
