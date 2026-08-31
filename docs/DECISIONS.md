@@ -1,5 +1,21 @@
 # Decision log
 
+## 2026-08-31 — Ibex RTL closure validated with Verilator; synthesis remains separate
+
+**Finding.** The corrected standalone Ibex closure contains 91 sources after
+restoring omitted packages and include-only files. It passes Verilator lint in
+the reproducible Docker image. Slang/Yosys still fails during elaboration, and
+native Yosys fails on the SystemVerilog package syntax.
+**Decision.** Verilator is the supported Ibex simulation/activity boundary;
+Slang/Yosys is retained as an explicitly separate synthesis probe. No Ibex
+gate-level power result is admitted until that probe succeeds.
+**Rationale.** This preserves a valid RTL result without conflating simulator
+compatibility with synthesis compatibility.
+**Rejected.** Treating the Verilator pass as evidence of a mapped netlist or
+silently substituting a different frontend for comparative power runs.
+**Consequence.** `make check-ibex-rtl` and the container smoke enforce the
+Verilator boundary; synthesis claims remain fenced and reproducible.
+
 ## 2026-08-31 — Reject incomplete Ibex source closures before synthesis
 
 **Finding.** The upstream `ibex_top` FuseSoC `lint` target emits the generic
