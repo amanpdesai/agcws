@@ -117,6 +117,6 @@ run-ibex:
 verify-ibex:
 	$(VENV_PYTHON) scripts/verify_artifact.py "$${IBEX_ARTIFACT:-out/ibex}"
 verify:
-	$(MAKE) test lint check-axi-dma-rtl run-axi-memory-smoke run-axi-dma-workload
+	$(MAKE) test lint audit-reproducibility check-axi-dma-rtl run-axi-memory-smoke run-axi-dma-workload
 container-smoke:
 	docker run --rm agcws:dev bash scripts/container_smoke.sh
