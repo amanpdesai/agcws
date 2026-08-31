@@ -65,10 +65,10 @@ run-axi-dma-rd-smoke:
 run-axi-dma-wr-smoke:
 	bash scripts/run_axi_dma_wr_smoke.sh
 run-axi-dma-workload:
-	PYTHONPATH=src $(PYTHON) scripts/run_axi_dma_workload.py experiments/workloads/axi_dma_smoke.json out/axi-dma-workload
+	PYTHONPATH=src $(VENV_PYTHON) scripts/run_axi_dma_workload.py experiments/workloads/axi_dma_smoke.json out/axi-dma-workload
 run-axi-memory-smoke:
 	@mkdir -p out
-	iverilog -g2012 -s agcws_axi_memory_model_smoke -o out/axi-memory-model-smoke.vvp third_party/harnesses/axi_memory_model.v third_party/harnesses/axi_memory_model_smoke.v
+	$${AGCWS_IVERILOG:-iverilog} -g2012 -s agcws_axi_memory_model_smoke -o out/axi-memory-model-smoke.vvp third_party/harnesses/axi_memory_model.v third_party/harnesses/axi_memory_model_smoke.v
 	(cd out && vvp axi-memory-model-smoke.vvp)
 verify:
 	$(MAKE) test lint check-axi-dma-rtl run-axi-memory-smoke run-axi-dma-workload
