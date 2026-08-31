@@ -9,7 +9,7 @@ fi
 workload=$1
 out_dir=$2
 mkdir -p "$out_dir"
-python_bin=${AGCWS_PYTHON:-python3}
+python_bin=${AGCWS_PYTHON:-.venv/bin/python}
 export AGCWS_DMA_WORKLOAD=$(realpath "$workload")
 fst2vcd_bin=${AGCWS_FST2VCD:-fst2vcd}
 

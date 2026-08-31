@@ -62,8 +62,18 @@ def main() -> None:
         trial_dir = args.out / "evaluations" / f"trial-{counter:05d}"
         workload_path.parent.mkdir(parents=True, exist_ok=True)
         workload_path.write_text(json.dumps(workload, indent=2, sort_keys=True) + "\n")
-        subprocess.run(["bash", "scripts/run_axi_dma_coupled.sh", str(workload_path),
-                        str(trial_dir)], check=True, capture_output=True, text=True)
+        completed = subprocess.run(
+            ["bash", "scripts/run_axi_dma_coupled.sh", str(workload_path),
+             str(trial_dir)], check=False, capture_output=True, text=True,
+            env={**__import__("os").environ, "AGCWS_PYTHON": sys.executable},
+        )
+        if completed.returncode:
+            raise RuntimeError(
+                "AXI-DMA coupled harness failed "
+                f"(returncode={completed.returncode})\n"
+                f"stdout:\n{completed.stdout}\n"
+                f"stderr:\n{completed.stderr}"
+            )
         activity = json.loads((trial_dir / "activity.json").read_text())
         edges = max(1, int(activity["clock_edges"]))
         useful = sum(int(item["length"]) for item in workload["transfers"])
