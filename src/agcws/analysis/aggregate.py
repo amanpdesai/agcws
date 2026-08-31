@@ -3,6 +3,7 @@ from __future__ import annotations
 
 from collections import defaultdict
 from collections.abc import Iterable
+import random
 
 
 def aggregate_summaries(records: Iterable[dict]) -> list[dict]:
@@ -30,3 +31,25 @@ def aggregate_summaries(records: Iterable[dict]) -> list[dict]:
                                                for value in values) / count,
         })
     return output
+
+
+def bootstrap_mean_ci(values: Iterable[float], *, samples: int = 2000,
+                      seed: int = 0, confidence: float = 0.95) -> dict[str, float]:
+    """Return a deterministic percentile bootstrap CI for a sample mean."""
+    data = [float(value) for value in values]
+    if not data or samples <= 0 or not 0.0 < confidence < 1.0:
+        raise ValueError("values, samples, and confidence must be valid")
+    rng = random.Random(seed)
+    means = [sum(rng.choice(data) for _ in data) / len(data) for _ in range(samples)]
+    means.sort()
+    alpha = (1.0 - confidence) / 2.0
+
+    def percentile(q: float) -> float:
+        position = q * (len(means) - 1)
+        lower = int(position)
+        upper = min(lower + 1, len(means) - 1)
+        fraction = position - lower
+        return means[lower] + fraction * (means[upper] - means[lower])
+
+    return {"mean": sum(data) / len(data), "lower": percentile(alpha),
+            "upper": percentile(1.0 - alpha)}
