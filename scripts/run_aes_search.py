@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
 from pathlib import Path
 
@@ -14,14 +15,14 @@ from agcws.adapters.aes import AESAdapter
 from agcws.experiments.runner import run_search
 from agcws.goals.schema import ScalarGoal
 from agcws.nodes.power import PowerProfile
-from agcws.policies import EvolutionarySearch, MutationSearch, OfflineAgent, RandomSearch
+from agcws.policies import EvolutionarySearch, MutationSearch, OfflineAgent, RandomSearch, VertexAgent
 from evaluate_aes_workload import evaluate
 
 
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("synthesis_dir", type=Path)
-    parser.add_argument("--policy", choices=("random", "mutation", "evolutionary", "offline-agent"), default="random")
+    parser.add_argument("--policy", choices=("random", "mutation", "evolutionary", "offline-agent", "vertex"), default="random")
     parser.add_argument("--target", type=float, default=0.5)
     parser.add_argument("--epsilon", type=float, default=0.10)
     parser.add_argument("--p-min", type=float, required=True)
@@ -29,10 +30,18 @@ def main() -> None:
     parser.add_argument("--budget", type=int, default=200)
     parser.add_argument("--seed", type=int, default=0)
     parser.add_argument("--out", type=Path, default=Path("out/aes-search"))
+    parser.add_argument("--model", default=os.environ.get("AGCWS_GEMINI_MODEL"))
+    parser.add_argument("--project", default=os.environ.get("AGCWS_GCP_PROJECT"))
+    parser.add_argument("--prompt", type=Path, default=ROOT / "prompts/agent_system_v1.txt")
     args = parser.parse_args()
     policies = {"random": RandomSearch, "mutation": MutationSearch,
                 "evolutionary": EvolutionarySearch, "offline-agent": OfflineAgent}
-    policy = policies[args.policy](args.seed)
+    if args.policy == "vertex":
+        if not args.model or not args.project:
+            parser.error("vertex policy requires --model/AGCWS_GEMINI_MODEL and --project/AGCWS_GCP_PROJECT")
+        policy = VertexAgent.from_vertex(args.prompt.read_text(), model=args.model, project=args.project)
+    else:
+        policy = policies[args.policy](args.seed)
     counter = 0
 
     def evaluator(workload: dict) -> PowerProfile:
