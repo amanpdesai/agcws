@@ -6,7 +6,7 @@ import argparse
 import json
 from pathlib import Path
 
-from agcws.analysis.rank_agreement import rank_agreement
+from agcws.analysis.rank_agreement import bootstrap_rank_ci, rank_agreement
 from agcws.nodes.power import parse_opensta_power_file
 
 
@@ -37,6 +37,7 @@ def validate(corpus: Path, sky_synthesis: Path, nangate_synthesis: Path,
         "corpus": str(corpus),
         "workloads": len(records),
         "rank_agreement": rank_agreement(left, right),
+        "rank_agreement_ci95": bootstrap_rank_ci(left, right),
         "pdks": {
             "sky130hd": {"min_w": min(r["sky130hd"] for r in records),
                           "max_w": max(r["sky130hd"] for r in records)},

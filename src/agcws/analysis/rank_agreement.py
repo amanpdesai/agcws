@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import random
 from collections.abc import Iterable
 
 
@@ -39,3 +40,34 @@ def rank_agreement(left: Iterable[tuple[str, float]], right: Iterable[tuple[str,
     denom_y = sum((b - mean_y) ** 2 for b in y) ** 0.5
     rho = numerator / (denom_x * denom_y) if denom_x and denom_y else 1.0
     return {"shared_workloads": len(keys), "spearman_rho": rho}
+
+
+def bootstrap_rank_ci(left: Iterable[tuple[str, float]],
+                      right: Iterable[tuple[str, float]], *,
+                      samples: int = 2000, seed: int = 0,
+                      confidence: float = 0.95) -> dict[str, float]:
+    """Return a deterministic percentile bootstrap CI for Spearman rho."""
+    lhs, rhs = dict(left), dict(right)
+    keys = sorted(lhs.keys() & rhs.keys())
+    if len(keys) < 2 or samples <= 0 or not 0.0 < confidence < 1.0:
+        raise ValueError("shared data, samples, and confidence must be valid")
+    rng = random.Random(seed)
+    estimates = []
+    for _ in range(samples):
+        selected = [keys[rng.randrange(len(keys))] for _ in keys]
+        estimates.append(rank_agreement(
+            [(str(i), lhs[key]) for i, key in enumerate(selected)],
+            [(str(i), rhs[key]) for i, key in enumerate(selected)],
+        )["spearman_rho"])
+    estimates.sort()
+    alpha = (1.0 - confidence) / 2.0
+
+    def percentile(q: float) -> float:
+        position = q * (len(estimates) - 1)
+        lower = int(position)
+        upper = min(lower + 1, len(estimates) - 1)
+        return estimates[lower] + (position - lower) * (estimates[upper] - estimates[lower])
+
+    return {"mean": rank_agreement([(k, lhs[k]) for k in keys],
+                                    [(k, rhs[k]) for k in keys])["spearman_rho"],
+            "lower": percentile(alpha), "upper": percentile(1.0 - alpha)}
