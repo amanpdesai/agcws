@@ -51,11 +51,27 @@ module aes_core_smoke;
     rst_ni = 1'b1;
     repeat (2) @(posedge clk_i);
     cfg_valid_i = 1'b1;
+    crypt_i = SP2V_HIGH;
     in_valid_i = SP2V_HIGH;
-    repeat (4) @(posedge clk_i);
+    @(posedge clk_i);
     in_valid_i = SP2V_LOW;
     cfg_valid_i = 1'b0;
-    repeat (80) @(posedge clk_i);
+    crypt_i = SP2V_LOW;
+    fork
+      begin
+        wait (out_valid_o == SP2V_HIGH);
+        $display("AES_CORE_SMOKE_DONE state=%h", state_o[0]);
+        // OpenTitan stores the AES state as [row][column][byte], so this is
+        // the NIST zero-key/zero-block vector in packed SV display order.
+        if (state_o[0] !== 128'h2e593bd42bfa2c4b344c8ae9ca88ef66)
+          $fatal(1, "unexpected AES-128 result: %h", state_o[0]);
+      end
+      begin
+        repeat (400) @(posedge clk_i);
+        $fatal(1, "AES core did not complete within timeout");
+      end
+    join_any
+    disable fork;
     $finish;
   end
 endmodule
