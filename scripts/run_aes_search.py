@@ -15,14 +15,17 @@ from agcws.adapters.aes import AESAdapter
 from agcws.experiments.runner import run_search
 from agcws.goals.schema import ScalarGoal
 from agcws.nodes.power import PowerProfile
-from agcws.policies import EvolutionarySearch, MutationSearch, OfflineAgent, RandomSearch, VertexAgent
+from agcws.policies import (EvolutionarySearch, HybridSearch, MutationSearch,
+                            OfflineAgent, RandomSearch, VertexAgent)
 from evaluate_aes_workload import evaluate
 
 
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("synthesis_dir", type=Path)
-    parser.add_argument("--policy", choices=("random", "mutation", "evolutionary", "offline-agent", "vertex"), default="random")
+    parser.add_argument("--policy", choices=("random", "mutation", "evolutionary",
+                                              "offline-agent", "offline-hybrid", "vertex"),
+                        default="random")
     parser.add_argument("--target", type=float, default=0.5)
     # Keep the CLI default aligned with the pre-registered primary endpoint.
     # Sensitivity values must be selected explicitly.
@@ -42,6 +45,10 @@ def main() -> None:
         if not args.model or not args.project:
             parser.error("vertex policy requires --model/AGCWS_GEMINI_MODEL and --project/AGCWS_GCP_PROJECT")
         policy = VertexAgent.from_vertex(args.prompt.read_text(), model=args.model, project=args.project)
+    elif args.policy == "offline-hybrid":
+        agent = OfflineAgent(args.seed)
+        policy = HybridSearch(agent.proposer, seed=args.seed,
+                              model=agent.model, prompt_hash=agent.prompt_hash)
     else:
         policy = policies[args.policy](args.seed)
     counter = 0
