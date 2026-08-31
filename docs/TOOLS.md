@@ -46,6 +46,10 @@ manifest plus test log under `out/axi-dma-upstream-reference/`; generated VPI,
 VVP, and waveform artifacts in the temporary checkout are removed on exit.
 The script honors `AGCWS_PYTHON`, defaulting to `.venv/bin/python`.
 
+`make verify-artifact AGCWS_ARTIFACT=out/aes-evaluation` checks a result bundle's
+validity, useful-work field, and recorded input SHA-256 hashes. Run it after
+copying or archiving results to catch stale or modified inputs before analysis.
+
 Liberty files are the exception: selected Sky130 HD TT and Nangate45 typical
 files are copied into `third_party/liberty/` so runs do not depend on a machine
 path. Their source paths and checksums are recorded there.

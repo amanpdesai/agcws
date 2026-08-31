@@ -58,6 +58,14 @@ smoke targets, and Docker build/smoke test. GitHub Actions is intentionally not
 used. The container includes the open EDA flow and copied Liberty inputs; cloud
 credentials and optional LLM integrations are exercised only in experiments.
 
+To verify that an evaluation still matches its recorded inputs:
+
+```bash
+make verify-artifact AGCWS_ARTIFACT=out/aes-evaluation
+```
+
+This checks the validity/useful-work contract and every recorded input hash.
+
 ## License
 
 BSD 3-Clause, matching CHIA.
