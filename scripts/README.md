@@ -32,6 +32,9 @@ bash scripts/run_aes_baseline_matrix.sh out/aes-core-synthesis-final4 \
   128.726293 130.431250 out/aes-baselines
 ```
 
+Set `AGCWS_PYTHON` when the host uses a specific virtual environment; the
+driver also exports the repository `src/` path for direct checkouts.
+
 The AES source manifest is intentionally separate from the future TileLink
 harness. OpenTitan's `aes` top level depends on common OpenTitan primitive and
 TileLink packages plus generated lifecycle constants. The manifest is an

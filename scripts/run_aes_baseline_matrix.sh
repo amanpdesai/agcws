@@ -14,15 +14,17 @@ p_max=$3
 output_dir=${4:-out/aes-baseline-matrix}
 budget=${AGCWS_SEARCH_BUDGET:-200}
 seeds=${AGCWS_SEARCH_SEEDS:-0}
+python_bin=${AGCWS_PYTHON:-python3}
+export PYTHONPATH="$repo_root/src${PYTHONPATH:+:$PYTHONPATH}"
 
 for seed in $seeds; do
   for policy in random mutation evolutionary offline-hybrid; do
     run_dir="$output_dir/seed-$seed/$policy"
-    python3 scripts/run_aes_search.py "$synthesis_dir" --policy "$policy" \
+    "$python_bin" scripts/run_aes_search.py "$synthesis_dir" --policy "$policy" \
       --fidelity activity --target 0.5 --p-min "$p_min" --p-max "$p_max" \
       --budget "$budget" --seed "$seed" --out "$run_dir"
   done
 done
 
-python3 scripts/aggregate_runs.py "$output_dir" --out "$output_dir/aggregate.json"
+"$python_bin" scripts/aggregate_runs.py "$output_dir" --out "$output_dir/aggregate.json"
 echo "AES_BASELINE_MATRIX_DONE aggregate=$output_dir/aggregate.json"
