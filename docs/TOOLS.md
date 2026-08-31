@@ -90,3 +90,7 @@ case and Vertex billing confirmation remain environment-specific Slice-1 gates.
 The primary Sky130 file is the default; Nangate45 is used for finalist
 cross-checks. `scripts/aes_sources.py` emits the current OpenTitan AES RTL set.
 `scripts/lint_aes_core.sh` is the first executable RTL acceptance check.
+`make vertex-preflight` checks the non-secret Vertex project/model configuration
+and frozen prompt without making an API call. `make probe-ibex-synthesis`
+captures the current Ibex Slang/Yosys elaboration boundary and intentionally
+fails if no valid gate-level design is produced.
