@@ -18,7 +18,7 @@ BUDGET ?= 200
 SEEDS ?= 0
 TARGETS ?= 0.10 0.25 0.50 0.75 0.90
 
-.PHONY: test lint dev-install analysis-install verification-install chia-install chia-smoke upstream-dma-reference research-smoke verify-artifact inspect-liberty check-liberty-coverage synth-aes evaluate-aes determinism plot-activity random-corpus temporal-corpus temporal-search compositional-search baseline-matrix cross-pdk validate-finalists cross-pdk-dma axi-dma-search check-axi-dma-rtl run-axi-dma-rd-smoke run-axi-dma-wr-smoke run-axi-dma-workload run-axi-dma-coupled run-axi-memory-smoke compile-ibex run-ibex verify container-smoke
+.PHONY: test lint dev-install analysis-install verification-install chia-install chia-smoke upstream-dma-reference research-smoke verify-artifact inspect-liberty check-liberty-coverage synth-aes evaluate-aes determinism plot-activity random-corpus temporal-corpus temporal-search compositional-search baseline-matrix cross-pdk validate-finalists cross-pdk-dma axi-dma-search validate-axi-dma-finalists check-axi-dma-rtl run-axi-dma-rd-smoke run-axi-dma-wr-smoke run-axi-dma-workload run-axi-dma-coupled run-axi-memory-smoke compile-ibex run-ibex verify container-smoke
 test:
 	$(VENV_PYTHON) -m pytest -q
 dev-install:
@@ -74,6 +74,8 @@ cross-pdk-dma:
 	bash scripts/run_axi_dma_cross_pdk.sh "$(WAVEFORM)" "$${AGCWS_ARTIFACT_ROOT:-out}/axi-dma-cross-pdk"
 axi-dma-search:
 	PYTHONPATH=src $(VENV_PYTHON) scripts/run_axi_dma_search.py --p-min 0 --p-max 1
+validate-axi-dma-finalists:
+	PYTHONPATH=src $(VENV_PYTHON) scripts/validate_axi_dma_finalists.py "$${DMA_FINALIST_TRIALS:-out/axi-dma-search/trials.jsonl}" "$${DMA_SYNTH_DIR:-out/axi-dma-synthesis-sky130-v2}" --out "$${AGCWS_ARTIFACT_ROOT:-out}/axi-dma-finalist-validation"
 validate-finalists:
 	@test -f "$(FINALIST_TRIALS)" || (echo "missing FINALIST_TRIALS=$(FINALIST_TRIALS)" >&2; exit 1)
 	PYTHONPATH=src $(VENV_PYTHON) scripts/validate_finalists.py "$(FINALIST_TRIALS)" "$(SYNTH_DIR)" --out "$${AGCWS_ARTIFACT_ROOT:-out}/finalist-validation"
