@@ -14,5 +14,5 @@ on structured JSON, while the container owns the compiler toolchain.
 
 `scripts/run_ibex_workload.sh` runs the generated ELF with the upstream
 Verilator simulator and collects retirement counters, the core trace, and an
-FST waveform into one output directory. Gate-level power integration remains a
-separate validation step.
+FST waveform into one output directory. Gate-level synthesis/power integration
+is still pending for the Ibex vertical slice.

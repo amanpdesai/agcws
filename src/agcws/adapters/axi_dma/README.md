@@ -21,8 +21,9 @@ The workload-driven coupled harness is available through
 `scripts/run_axi_dma_coupled.sh`. It instantiates the pinned `axi_dma` top
 level with a real AXI RAM, streams each read descriptor into the corresponding
 write descriptor, and asserts source-to-destination byte equality. It is a
-functional/protocol harness; synthesis-backed power integration remains a
-separate milestone.
+functional/protocol harness. The resulting waveform can be passed to
+`scripts/run_axi_dma_cross_pdk.sh` for Sky130 and Nangate45 synthesis/OpenSTA
+power validation; comparative DMA search studies remain separate.
 
 The legacy runner's manifests retain
 `simulation_backend=independent_channel_rtl_plus_python_memory_model` and
