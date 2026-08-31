@@ -70,7 +70,7 @@ baseline-matrix:
 cross-pdk:
 	bash scripts/run_aes_cross_pdk.sh "$(WAVEFORM)" "$(CROSS_PDK_DIR)"
 validate-finalists:
-	PYTHONPATH=src $(VENV_PYTHON) scripts/validate_finalists.py "$(BASELINE_DIR)/random/target-0.50/seed-0/trials.jsonl" "$(SYNTH_DIR)" --out "$${AGCWS_ARTIFACT_ROOT:-out}/finalist-validation"
+	PYTHONPATH=src $(VENV_PYTHON) scripts/validate_finalists.py "$(BASELINE_DIR)/target-0.50/seed-0/random/trials.jsonl" "$(SYNTH_DIR)" --out "$${AGCWS_ARTIFACT_ROOT:-out}/finalist-validation"
 check-axi-dma-rtl:
 	bash scripts/check_axi_dma_rtl.sh
 run-axi-dma-rd-smoke:
