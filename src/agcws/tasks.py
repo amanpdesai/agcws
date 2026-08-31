@@ -57,6 +57,10 @@ class TaskStore:
         key = task_key(name, inputs)
         output_dir = self.root / name / key
         manifest = output_dir / "task.json"
+        for relative in required_outputs:
+            output_path = Path(relative)
+            if output_path.is_absolute() or ".." in output_path.parts:
+                raise ValueError(f"required output must stay inside task directory: {relative}")
         complete = {"name": name, "key": key, "inputs": inputs, "status": "complete"}
         if manifest.exists():
             try:

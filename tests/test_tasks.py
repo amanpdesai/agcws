@@ -54,3 +54,10 @@ def test_task_rejects_incomplete_action(tmp_path: Path):
     with pytest.raises(FileNotFoundError, match="required outputs"):
         store.run("evaluate", {}, lambda output: None,
                   required_outputs=("result.json",))
+
+
+def test_task_rejects_output_path_escape(tmp_path: Path):
+    store = TaskStore(tmp_path / "tasks")
+    with pytest.raises(ValueError, match="inside task directory"):
+        store.run("evaluate", {}, lambda output: None,
+                  required_outputs=("../result.json",))
