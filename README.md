@@ -37,9 +37,12 @@ docker run --rm agcws:dev bash scripts/container_smoke.sh
 
 ## Designs
 
-OpenTitan AES (register/data) is runnable. The verilog-axi `axi_dma`
-(descriptors) and Ibex (instruction stream) adapters currently provide pure
-legality contracts; their RTL harnesses are subsequent bring-up slices.
+OpenTitan AES (register/data) is runnable. The verilog-axi `axi_dma` adapter
+(descriptors) has deterministic read/write channel harnesses and a
+workload-driven runtime path; coupled source-to-destination copying and
+top-level DMA power evaluation remain in progress. Ibex (instruction stream)
+currently provides its pure legality contract while its simulator harness is a
+later bring-up slice.
 
 ## Reproducibility
 
