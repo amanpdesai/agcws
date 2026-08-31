@@ -34,3 +34,10 @@ def test_evaluate_power_parses_report(tmp_path):
     _, profile = evaluate_power(["true"], *artifacts(tmp_path), output)
     assert profile.valid
     assert profile.mean_power == pytest.approx(0.00125)
+
+
+def test_command_timeout_returns_structured_result(tmp_path):
+    from agcws.nodes.commands import run_command
+    result = run_command(["sh", "-c", "sleep 1"], cwd=tmp_path, timeout_s=0.01)
+    assert result.returncode == 124
+    assert "timed out" in result.stderr
