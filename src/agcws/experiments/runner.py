@@ -57,6 +57,7 @@ def run_search(
             # reason to terminate the experiment. Empty slots are materialized
             # below and consume the full requested budget.
             candidates = []
+        usage = getattr(policy, "last_usage", {})
         # Missing candidates consume their requested slots just like malformed
         # LLM output; this is the primary fairness unit.
         for slot in range(requested):
@@ -99,6 +100,8 @@ def run_search(
                 sim_count=sim_count,
                 model=getattr(policy, "model", ""),
                 prompt_hash=getattr(policy, "prompt_hash", ""),
+                tokens_in=int(usage.get("tokens_in", 0)) if slot == 0 else 0,
+                tokens_out=int(usage.get("tokens_out", 0)) if slot == 0 else 0,
             ))
         proposal_index += requested
     if output_dir is not None:
