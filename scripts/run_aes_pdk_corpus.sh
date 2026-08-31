@@ -25,4 +25,6 @@ for workload in "${workloads[@]}"; do
   bash scripts/run_opensta_aes.sh "$nangate_synth" "$waveform" "$output/nangate-reports/$trial" "$nangate_lib" >/dev/null
 done
 "$python_bin" scripts/validate_aes_pdk_corpus.py "$corpus" "$output/sky-reports" "$output/nangate-reports" --out "$output/corpus-validation.json"
+"$python_bin" scripts/write_aes_pdk_manifest.py "$corpus" "$sky_synth" "$nangate_synth" \
+  "$sky_lib" "$nangate_lib" --out "$output/run-manifest.json" >/dev/null
 echo "AES_PDK_CORPUS_DONE output=$output"
