@@ -7,16 +7,19 @@ source scripts/load_env.sh
 out_dir=${1:-out/aes-core-synthesis}
 liberty=${AGCWS_LIBERTY:-third_party/liberty/sky130hd/sky130_fd_sc_hd__tt_025C_1v80.lib}
 yosys_bin=${AGCWS_YOSYS:-yosys}
-slang_plugin=${AGCWS_SLANG_PLUGIN:-/opt/eda/verific-yosys.disabled/yosys-slang/build/slang.so}
+# The host may contain a plugin built against a different Yosys ABI. Keep the
+# compatibility frontend as the reproducible default; opt in explicitly only
+# after checking the plugin against the selected Yosys binary.
+slang_plugin=${AGCWS_SLANG_PLUGIN:-}
 mkdir -p "$out_dir"
 
 python3 scripts/resolve_sv_sources.py --top aes_cipher_core > "$out_dir/sources.list"
 mapfile -t sources < "$out_dir/sources.list"
 
-if [[ -f "$slang_plugin" ]]; then
+if [[ -n "$slang_plugin" && -f "$slang_plugin" ]]; then
   frontend="plugin -i $slang_plugin; read_slang --top aes_cipher_core -D SYNTHESIS -I third_party/opentitan/hw/ip/aes/rtl -I third_party/opentitan/hw/ip/prim/rtl -I third_party/opentitan/hw/ip/prim_generic/rtl -I third_party/opentitan/hw/ip/edn/rtl -I third_party/opentitan/hw/ip/csrng/rtl -I third_party/opentitan/hw/ip/entropy_src/rtl ${sources[*]}"
 else
-  echo "yosys-slang plugin not found at $slang_plugin; using compatibility frontend" >&2
+  echo "using Yosys compatibility frontend (set AGCWS_SLANG_PLUGIN to opt in)" >&2
   compat_dir="$out_dir/frontend_compat"
   mkdir -p "$compat_dir"
   compat_sources=()
@@ -43,13 +46,15 @@ tee -o $out_dir/stat.json stat -liberty $liberty -json" \
 sha256sum "$out_dir/mapped.v" | awk '{print $1}' > "$out_dir/netlist.sha256"
 sha256sum "$liberty" | awk '{print $1}' > "$out_dir/liberty.sha256"
 sha256sum "${sources[@]}" | sha256sum | awk '{print $1}' > "$out_dir/sources.sha256"
-python3 - "$out_dir/manifest.json" "$liberty" "$out_dir" "$frontend" <<'PY'
+python3 - "$out_dir/manifest.json" "$liberty" "$out_dir" "$frontend" "$yosys_bin" "$slang_plugin" <<'PY'
 import json
 import sys
 from pathlib import Path
 
-manifest, liberty, out_dir, frontend = sys.argv[1:]
+manifest, liberty, out_dir, frontend, yosys_bin, slang_plugin = sys.argv[1:]
 root = Path(out_dir)
+import subprocess
+version = subprocess.run([yosys_bin, "-V"], capture_output=True, text=True, check=True).stdout.strip()
 Path(manifest).write_text(json.dumps({
     "top": "aes_cipher_core",
     "liberty": liberty,
@@ -57,6 +62,8 @@ Path(manifest).write_text(json.dumps({
     "liberty_sha256": (root / "liberty.sha256").read_text().strip(),
     "sources_sha256": (root / "sources.sha256").read_text().strip(),
     "frontend": "slang" if frontend.startswith("plugin -i") else "yosys-compat",
+    "yosys_version": version,
+    "slang_plugin": slang_plugin or None,
 }, indent=2) + "\n")
 PY
 echo "SYNTHESIS_DONE out=$out_dir"

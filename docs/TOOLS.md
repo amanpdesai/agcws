@@ -52,6 +52,8 @@ The checked-in Liberty inputs are inspected with `scripts/inspect_liberty.py`.
 Host configuration is optional and comes from an untracked `.env` copied from
 `.env.example`. Relative paths are repository-relative. The container supplies
 its own defaults, so host-specific `/opt/eda` paths do not enter the artifact.
+The Yosys-slang frontend is opt-in via `AGCWS_SLANG_PLUGIN`; the default
+compatibility frontend avoids host-specific Yosys plugin ABI mismatches.
 The primary Sky130 file is the default; Nangate45 is used for finalist
 cross-checks. `scripts/aes_sources.py` emits the current OpenTitan AES RTL set.
 `scripts/lint_aes_core.sh` is the first executable RTL acceptance check.

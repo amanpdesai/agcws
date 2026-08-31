@@ -40,6 +40,7 @@ RUN python -m pip install -e .
 
 ENV PYTHONUNBUFFERED=1 \
     AGCWS_OPENSTA=/usr/local/bin/sta \
+    AGCWS_SLANG_PLUGIN= \
     AGCWS_LIBERTY=third_party/liberty/sky130hd/sky130_fd_sc_hd__tt_025C_1v80.lib \
     AGCWS_LIBERTY_NANGATE45=third_party/liberty/nangate45/Nangate45_typ.lib
 CMD ["python", "-c", "import agcws; print(agcws.__version__)"]

@@ -9,6 +9,9 @@ import subprocess
 import sys
 from pathlib import Path
 
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "src"))
+
 from agcws.adapters.aes import AESAdapter
 from agcws.nodes.power import parse_opensta_power_file
 from agcws.nodes.validation import validate_static
