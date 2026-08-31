@@ -63,8 +63,10 @@ def evaluate(workload_path: Path, synthesis_dir: Path, output_dir: Path, *, allo
         "fidelity": profile.fidelity,
         "activity": json.loads((output_dir / "activity.json").read_text()),
         "provenance": {
-            "synthesis_manifest": str((synthesis_dir / "manifest.json").resolve()),
-            "power_report": str((output_dir / "opensta/power.rpt").resolve()),
+            # Keep provenance portable: artifact paths are interpreted relative
+            # to the task directory/repository, while hashes identify content.
+            "synthesis_manifest": "synthesis/manifest.json",
+            "power_report": "opensta/power.rpt",
             "liberty": json.loads((synthesis_dir / "manifest.json").read_text()).get("liberty"),
             "tools": toolchain_record({
                 "verilator": (config.VERILATOR, ("--version",)),
