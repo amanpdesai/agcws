@@ -27,6 +27,13 @@ _POWER_TABLE_TOTAL = re.compile(
     r"(?P<leakage>[-+]?\d+(?:\.\d*)?(?:[eE][-+]?\d+)?)\s+"
     r"(?P<total>[-+]?\d+(?:\.\d*)?(?:[eE][-+]?\d+)?)\s+100\.0%"
 )
+_ANNOTATED_PINS = re.compile(r"(?im)^\s*Annotated\s+(?P<count>\d+)\s+pin activities\.")
+
+
+def parse_annotated_pin_count(report: str) -> int | None:
+    """Return OpenSTA's reported activity annotation count, when present."""
+    match = _ANNOTATED_PINS.search(report)
+    return int(match.group("count")) if match else None
 
 
 def parse_opensta_power_report(report: str, *, provenance: dict[str, str] | None = None) -> PowerProfile:

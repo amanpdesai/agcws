@@ -1,7 +1,7 @@
 from pathlib import Path
 from agcws.provenance import file_sha256
 from agcws.nodes.commands import CommandResult, run_command
-from agcws.nodes.power import PowerProfile, parse_opensta_power_file
+from agcws.nodes.power import PowerProfile, parse_annotated_pin_count, parse_opensta_power_file
 from agcws.nodes.synthesize import NetlistArtifact
 from agcws.nodes.activity import ActivityArtifact
 
@@ -18,13 +18,15 @@ def evaluate_power(command: list[str], netlist: NetlistArtifact, activity: Activ
         raise RuntimeError(f"OpenSTA failed with exit code {result.returncode}: {result.stderr.strip()}")
     if not report.is_file():
         raise FileNotFoundError(f"OpenSTA did not produce expected report: {report}")
-    profile = parse_opensta_power_file(
-        report, provenance={
+    annotation_count = parse_annotated_pin_count(report.read_text())
+    provenance = {
             "report": report.name,
             "fidelity": "synthesis",
             "netlist_sha256": file_sha256(netlist.netlist),
             "liberty_sha256": file_sha256(netlist.liberty),
             "activity_sha256": file_sha256(activity.activity_file),
         }
-    )
+    if annotation_count is not None:
+        provenance["annotated_pin_activities"] = str(annotation_count)
+    profile = parse_opensta_power_file(report, provenance=provenance)
     return result, profile
