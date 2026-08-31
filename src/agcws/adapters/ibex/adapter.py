@@ -16,11 +16,23 @@ class IbexAdapter(DesignAdapter):
     supported_ops = {"add", "addi", "and", "or", "xor", "lw", "sw", "beq", "bne", "nop", "ecall"}
 
     def validate_schema(self, workload: dict) -> Validity:
+        if not isinstance(workload, dict):
+            return Validity(False, ValidityStage.SCHEMA, "workload must be an object")
+        if set(workload) - {"program", "memory_size"}:
+            return Validity(False, ValidityStage.SCHEMA, "unknown workload field")
+        if not isinstance(workload.get("memory_size", self.memory_size), int) or workload.get("memory_size", self.memory_size) < 4:
+            return Validity(False, ValidityStage.SCHEMA, "memory_size must be an integer >= 4")
         program = workload.get("program") if isinstance(workload, dict) else None
         if not isinstance(program, list) or not program or len(program) > 200_000:
             return Validity(False, ValidityStage.SCHEMA, "program must contain 1..200000 instructions")
         if any(not isinstance(instruction, dict) for instruction in program):
             return Validity(False, ValidityStage.SCHEMA, "each instruction must be an object")
+        allowed = {"lw": {"op", "address"}, "sw": {"op", "address"},
+                   "beq": {"op", "target"}, "bne": {"op", "target"}}
+        for instruction in program:
+            op = instruction.get("op")
+            if op in allowed and set(instruction) - allowed[op]:
+                return Validity(False, ValidityStage.SCHEMA, "unknown instruction field")
         return Validity(True)
 
     def validate_protocol(self, workload: dict) -> Validity:

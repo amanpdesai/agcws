@@ -16,11 +16,17 @@ class AxiDmaAdapter(DesignAdapter):
     channel_depth = 8
 
     def validate_schema(self, workload: dict) -> Validity:
+        if not isinstance(workload, dict):
+            return Validity(False, ValidityStage.SCHEMA, "workload must be an object")
+        if set(workload) - {"transfers"}:
+            return Validity(False, ValidityStage.SCHEMA, "unknown workload field")
         transfers = workload.get("transfers") if isinstance(workload, dict) else None
         if not isinstance(transfers, list) or len(transfers) > 128:
             return Validity(False, ValidityStage.SCHEMA, "transfers must contain at most 128 items")
         if any(not isinstance(item, dict) for item in transfers):
             return Validity(False, ValidityStage.SCHEMA, "each transfer must be an object")
+        if any(set(item) - {"src", "dst", "length", "outstanding"} for item in transfers):
+            return Validity(False, ValidityStage.SCHEMA, "unknown transfer field")
         return Validity(True)
 
     def validate_protocol(self, workload: dict) -> Validity:

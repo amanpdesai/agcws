@@ -12,11 +12,22 @@ class AESAdapter(DesignAdapter):
     workload_schema = {"type": "object", "required": ["operations"], "properties": {"operations": {"type": "array", "maxItems": 256}, "data_pattern": {"type": "integer", "minimum": 0, "maximum": 3}}, "additionalProperties": False}
 
     def validate_schema(self, workload: dict) -> Validity:
+        if not isinstance(workload, dict):
+            return Validity(False, ValidityStage.SCHEMA, "workload must be an object")
+        if set(workload) - {"operations", "data_pattern"}:
+            return Validity(False, ValidityStage.SCHEMA, "unknown workload field")
         ops = workload.get("operations") if isinstance(workload, dict) else None
         if not isinstance(ops, list) or len(ops) > 256:
             return Validity(False, ValidityStage.SCHEMA, "operations must contain at most 256 items")
         if not isinstance(workload.get("data_pattern", 0), int) or workload.get("data_pattern", 0) not in range(4):
             return Validity(False, ValidityStage.SCHEMA, "data_pattern must be an integer in [0,3]")
+        allowed = {"configure": {"op", "key_len"}, "encrypt": {"op", "blocks"},
+                   "decrypt": {"op", "blocks"}, "idle": {"op", "cycles"}}
+        for operation in ops:
+            if not isinstance(operation, dict) or operation.get("op") not in allowed:
+                continue
+            if set(operation) - allowed[operation["op"]]:
+                return Validity(False, ValidityStage.SCHEMA, "unknown operation field")
         return Validity(True)
 
     def validate_protocol(self, workload: dict) -> Validity:
