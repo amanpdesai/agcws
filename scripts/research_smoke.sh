@@ -7,6 +7,7 @@ cd "$repo_root"
 synthesis_dir=${1:-out/aes-core-synthesis-final4}
 artifact_root=${2:-out/research-smoke}
 workload=${AGCWS_SMOKE_WORKLOAD:-experiments/workloads/aes_min_scored.json}
+python_bin=${AGCWS_PYTHON:-.venv/bin/python}
 
 test -f "$synthesis_dir/manifest.json" || {
   echo "missing synthesis manifest: $synthesis_dir (run make synth-aes first)" >&2
@@ -18,15 +19,15 @@ rm -f "$artifact_root/evaluation/activity.json" \
       "$artifact_root/evaluation/opensta/power.rpt"
 mkdir -p "$artifact_root"
 
-PYTHONPATH=src .venv/bin/python scripts/evaluate_aes_workload.py \
+PYTHONPATH=src "$python_bin" scripts/evaluate_aes_workload.py \
   "$workload" "$synthesis_dir" --out "$artifact_root/evaluation" >/dev/null
-PYTHONPATH=src .venv/bin/python scripts/check_aes_determinism.py \
+PYTHONPATH=src "$python_bin" scripts/check_aes_determinism.py \
   "$workload" "$synthesis_dir" --out "$artifact_root/determinism" >/dev/null
-.venv/bin/python analysis/plot_activity.py \
+"$python_bin" analysis/plot_activity.py \
   "$artifact_root/evaluation/activity.json" \
   --out "$artifact_root/activity.png" >/dev/null
 
-.venv/bin/python - "$artifact_root/evaluation" <<'PY'
+"$python_bin" - "$artifact_root/evaluation" <<'PY'
 import json
 import sys
 from pathlib import Path
