@@ -7,6 +7,7 @@ import hashlib
 import json
 import os
 import subprocess
+import sys
 from pathlib import Path
 
 
@@ -147,14 +148,22 @@ def main() -> None:
     parser.add_argument("--ibex-root", type=Path, default=Path("third_party/ibex"))
     parser.add_argument("--out", type=Path, default=Path("out/ibex-sources"))
     parser.add_argument("--core", default="lowrisc:ibex:ibex_simple_system")
-    parser.add_argument("--fusesoc", default=os.environ.get("AGCWS_FUSESOC", "fusesoc"))
+    default_fusesoc = Path(sys.executable).with_name("fusesoc")
+    if not default_fusesoc.is_file():
+        default_fusesoc = Path("fusesoc")
+    parser.add_argument("--fusesoc", default=os.environ.get("AGCWS_FUSESOC", str(default_fusesoc)))
     args = parser.parse_args()
     root = args.ibex_root.resolve()
+    # Keep FuseSoC's generated export outside the RTL checkout.  This avoids
+    # stale/root-owned artifacts left by container builds and makes repeated
+    # resolution safe on a normal host checkout.
+    fusesoc_work_root = args.out.resolve().parent / "fusesoc-work"
     subprocess.run([
-        args.fusesoc, "--cores-root=.", "run", "--target=lint", "--setup",
+        args.fusesoc, "--cores-root=.", "run", "--work-root", str(fusesoc_work_root),
+        "--target=lint", "--setup",
         args.core,
     ], cwd=root, check=True)
-    manifest = find_eda_manifest(root / "build", args.core)
+    manifest = find_eda_manifest(fusesoc_work_root, args.core)
     sources, include_dirs = resolve_manifest(manifest)
     top = manifest.read_text().split("toplevel:", 1)[1].splitlines()[0].strip()
     if not any(f"module {top}" in Path(str(item["path"])).read_text(errors="ignore")
