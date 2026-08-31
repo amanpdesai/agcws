@@ -25,6 +25,7 @@ ultimately pinned in the container image.
 | Liberty library | cell power/timing characterization | Copied into `third_party/liberty/`; selected by `AGCWS_LIBERTY` | Store path/checksum in provenance; inspect before claims |
 | Icarus Verilog | small smoke tests | `/usr/bin/iverilog` | Optional fallback, not power oracle |
 | Matplotlib | deterministic activity figures | Optional analysis extra | Install with `make analysis-install` |
+| MyHDL + Icarus VPI | upstream verilog-axi coupled-DMA reference test | Optional verification extra | Run `make upstream-dma-reference` |
 
 ## Source dependencies to pin as submodules
 
@@ -39,6 +40,9 @@ The upstream verilog-axi MyHDL testbenches are reference material only and are
 not part of the AGCWS runtime dependency set. Project-owned DMA smoke tests
 use native Icarus/SystemVerilog harnesses so the container remains smaller and
 the required toolchain is explicit.
+The optional `make upstream-dma-reference` target runs the upstream coupled
+DMA test in an isolated temporary checkout and removes its generated VPI,
+VVP, and waveform artifacts on exit.
 
 Liberty files are the exception: selected Sky130 HD TT and Nangate45 typical
 files are copied into `third_party/liberty/` so runs do not depend on a machine
