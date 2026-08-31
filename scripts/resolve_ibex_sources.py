@@ -116,7 +116,8 @@ def main() -> None:
     top = manifest.read_text().split("toplevel:", 1)[1].splitlines()[0].strip()
     if not any(f"module {top}" in Path(str(item["path"])).read_text(errors="ignore")
                for item in sources):
-        add_declared_fileset(root / "ibex_top.core", "files_rtl", sources, include_dirs)
+        for core_file in ("ibex_pkg.core", "ibex_core.core", "ibex_top.core"):
+            add_declared_fileset(root / core_file, "files_rtl", sources, include_dirs)
     require_toplevel(sources, top)
     args.out.mkdir(parents=True, exist_ok=True)
     output = args.out / "sources.json"

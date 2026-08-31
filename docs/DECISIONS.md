@@ -15,10 +15,11 @@ frontend's generic missing-top diagnostic as a design failure.
 is now reproducible and attributable to FuseSoC target selection; no gate-level
 Ibex claim is made until the RTL fileset is restored.
 
-The resolver now restores the direct `files_rtl` entries from `ibex_top.core`,
-producing a 63-source closure that includes `ibex_top.sv`. The corrected
-closure reaches Slang elaboration but still fails there; that remaining failure
-is tracked separately and is not converted into a synthesis result.
+The resolver now restores the direct `files_rtl` entries from `ibex_pkg.core`,
+`ibex_core.core`, and `ibex_top.core`, producing an 86-source closure that
+includes the package, core, and top RTL. The corrected closure reaches Slang
+elaboration but still fails there; that remaining failure is tracked separately
+and is not converted into a synthesis result.
 
 ## 2026-08-31 — Ibex synthesis probe remains unclaimed at gate level
 
