@@ -34,9 +34,10 @@ not accepted as an Ibex fallback frontend.
 ## 2026-08-31 — Ibex synthesis probe remains unclaimed at gate level
 
 **Finding.** FuseSoC source closure resolution and simple-system simulation are
-reproducible in the container. The standalone `ibex_top` closure (57 RTL
-sources, 33 include directories) fails during Slang/Yosys elaboration before
-mapping, so no Ibex netlist or OpenSTA power number is used.
+reproducible in the container. The original standalone `ibex_top` probe
+(57 RTL sources, 33 include directories) failed during Slang/Yosys elaboration
+before mapping; the later corrected closure is 86 sources and still fails at
+elaboration. No Ibex netlist or OpenSTA power number is used.
 **Decision.** Keep Ibex in the simulation/activity tier until the frontend
 boundary is fixed and independently validated.
 **Rationale.** A successful simulator run does not establish synthesizability;
