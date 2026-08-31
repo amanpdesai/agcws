@@ -22,3 +22,9 @@ def test_task_store_resumes_completed_task(tmp_path: Path):
     assert second.cached is True
     assert len(calls) == 1
     assert file_digest(first.manifest) == file_digest(second.manifest)
+
+
+def test_task_key_changes_when_toolchain_changes():
+    base = {"workload_sha256": "abc", "tools": {"opensta": "3.1.0"}}
+    changed = {"workload_sha256": "abc", "tools": {"opensta": "3.2.0"}}
+    assert task_key("evaluate", base) != task_key("evaluate", changed)

@@ -11,6 +11,8 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
 from agcws.tasks import TaskStore, file_digest
+from agcws import config
+from agcws.provenance import toolchain_record
 from evaluate_aes_workload import evaluate
 
 
@@ -27,6 +29,11 @@ def main() -> None:
         "workload_sha256": file_digest(args.workload),
         "synthesis_manifest_sha256": file_digest(manifest),
         "evaluator": "aes-opensta-v1",
+        "tools": toolchain_record({
+            "verilator": (config.VERILATOR, ("--version",)),
+            "yosys": (config.YOSYS, ("--version",)),
+            "opensta": (config.OPENSTA, ("-version",)),
+        }),
     }
     store = TaskStore(args.out)
 
