@@ -54,6 +54,8 @@ COPY flows /opt/agcws/flows
 COPY prompts /opt/agcws/prompts
 COPY third_party/liberty /opt/agcws/third_party/liberty
 COPY third_party/opentitan /opt/agcws/third_party/opentitan
+COPY third_party/verilog-axi /opt/agcws/third_party/verilog-axi
+COPY third_party/harnesses /opt/agcws/third_party/harnesses
 WORKDIR /opt/agcws
 RUN python -m pip install --upgrade pip && \
     python -m pip install -e /opt/chia

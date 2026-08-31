@@ -16,4 +16,6 @@ fi
 test -f "${AGCWS_LIBERTY:-third_party/liberty/sky130hd/sky130_fd_sc_hd__tt_025C_1v80.lib}"
 test -f "${AGCWS_LIBERTY_NANGATE45:-third_party/liberty/nangate45/Nangate45_typ.lib}"
 python3 scripts/inspect_liberty.py "${AGCWS_LIBERTY:-third_party/liberty/sky130hd/sky130_fd_sc_hd__tt_025C_1v80.lib}" >/dev/null
+PYTHONPATH=src python3 scripts/run_axi_dma_workload.py \
+  experiments/workloads/axi_dma_smoke.json out/container-axi-dma-smoke >/dev/null
 echo "AGCWS_CONTAINER_SMOKE_OK"
