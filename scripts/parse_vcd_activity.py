@@ -66,7 +66,9 @@ def parse(path: Path, clock_name: str = "clk_i", windows: int = 16) -> dict:
             if prior:
                 index = edge_set[max(prior)] * len(buckets) // len(clock_edges)
                 buckets[min(index, len(buckets) - 1)] += count
-    return {"vcd": str(path), "clock": clock_name, "clock_edges": len(clock_edges),
+    # Keep reports portable: absolute artifact paths make identical runs look
+    # different when stored in separate task directories.
+    return {"vcd": path.name, "clock": clock_name, "clock_edges": len(clock_edges),
             "total_transitions": sum(transitions.values()),
             "signal_transitions": dict(sorted(transitions.items())),
             "per_cycle_toggles": per_cycle, "window_toggles": buckets}

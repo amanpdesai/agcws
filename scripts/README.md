@@ -62,3 +62,10 @@ PYTHONPATH=src python3 scripts/run_aes_task.py \
 
 The task key includes the workload and synthesis-manifest digests. Re-running
 the command resumes a completed task; changed inputs produce a new task.
+
+Check evaluator determinism before freezing calibration parameters:
+
+```bash
+PYTHONPATH=src python3 scripts/check_aes_determinism.py \
+  experiments/workloads/aes_zero_blocks.json out/aes-core-synthesis-final4
+```
