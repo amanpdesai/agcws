@@ -15,8 +15,9 @@ def test_resolve_manifest_filters_and_hashes_sv(tmp_path: Path):
         "  - file_type: vlt\n"
         "    name: lint.vlt\n"
     )
-    result = resolve_manifest(manifest)
+    result, include_dirs = resolve_manifest(manifest)
     assert len(result) == 1
     assert result[0]["path"] == str(source.resolve())
     assert result[0]["bytes"] == source.stat().st_size
     assert len(result[0]["sha256"]) == 64
+    assert include_dirs == [str(source.parent.resolve())]

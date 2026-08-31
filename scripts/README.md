@@ -56,9 +56,11 @@ make chia-install
 make resolve-ibex-sources
 ```
 
-The output is `out/ibex-sources/sources.json`. It is the input inventory for
-the upcoming Ibex synthesis flow; the script fails if FuseSoC references a
-missing source instead of silently producing a partial design.
+The output is `out/ibex-sources/sources.json`, including the hashed RTL files
+and include directories required for single-unit Slang compilation. It is the
+input inventory for the upcoming Ibex synthesis flow; the script fails if
+FuseSoC references a missing source instead of silently producing a partial
+design.
 ## AES synthesis
 
 Generate the cached AES core netlist against the configured Liberty file:
