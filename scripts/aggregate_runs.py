@@ -15,16 +15,19 @@ from agcws.analysis.aggregate import aggregate_summaries
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("root", type=Path, help="directory containing summary.json files")
+    parser.add_argument("root", type=Path, nargs="+",
+                        help="one or more directories containing summary.json files")
     parser.add_argument("--out", type=Path)
     args = parser.parse_args()
     records = []
-    for path in sorted(args.root.rglob("summary.json")):
-        record = json.loads(path.read_text())
-        # Preserve the run identity when the summary itself came from the
-        # generic runner, which intentionally stores no filesystem paths.
-        record.setdefault("run_dir", str(path.parent.relative_to(args.root)))
-        records.append(record)
+    for root in args.root:
+        for path in sorted(root.rglob("summary.json")):
+            record = json.loads(path.read_text())
+            # Preserve the run identity when the summary itself came from the
+            # generic runner, which intentionally stores no filesystem paths.
+            record.setdefault("run_dir", str(path.parent.relative_to(root)))
+            record.setdefault("source_root", str(root))
+            records.append(record)
     result = aggregate_summaries(records)
     encoded = json.dumps(result, indent=2, sort_keys=True) + "\n"
     if args.out:
