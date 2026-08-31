@@ -6,7 +6,8 @@ out_dir=${1:-"$repo_root/out/axi-dma-wr-smoke"}
 if [[ $# -gt 0 ]]; then shift; fi
 mkdir -p "$out_dir"
 
-iverilog -g2012 -s agcws_axi_dma_wr_smoke -o "$out_dir/smoke.vvp" \
+iverilog_bin=${AGCWS_IVERILOG:-iverilog}
+"$iverilog_bin" -g2012 -s agcws_axi_dma_wr_smoke -o "$out_dir/smoke.vvp" \
   "$repo_root/third_party/harnesses/axi_dma_wr_smoke.v" \
   "$repo_root/third_party/verilog-axi/rtl/axi_dma_wr.v"
 (cd "$out_dir" && vvp smoke.vvp "$@")

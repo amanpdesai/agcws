@@ -11,6 +11,7 @@ from agcws.adapters.axi_dma.adapter import AxiDmaAdapter
 from agcws.adapters.axi_dma.runtime import load_sim_result
 from agcws.nodes.activity import parse_vcd
 from agcws.provenance import toolchain_record
+from agcws import config
 
 
 def sha256(path: Path) -> str:
@@ -99,8 +100,8 @@ def main() -> int:
         "coupled_axi_dma_top": False,
         "workload_sha256": sha256(workload_path),
         "tools": toolchain_record({
-            "iverilog": ("iverilog", ("-V",)),
-            "vvp": ("vvp", ("-V",)),
+            "iverilog": (config.IVERILOG, ("-V",)),
+            "vvp": (config.VVP, ("-V",)),
         }),
     }
     provenance.update(rtl_provenance(root / "third_party/verilog-axi"))
