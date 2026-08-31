@@ -4,6 +4,9 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
+import subprocess
+import sys
 from pathlib import Path
 
 from agcws.adapters.aes import AESAdapter
@@ -11,7 +14,8 @@ from agcws.experiments.runner import run_search
 from agcws.goals.schema import ScalarGoal
 from agcws.nodes.power import PowerProfile
 from agcws.policies.random_search import RandomSearch
-from evaluate_aes_workload import evaluate
+from agcws.nodes.validation import validate_static
+from agcws.adapters.base import SimResult
 
 
 def main() -> None:
@@ -45,14 +49,35 @@ def main() -> None:
                 index += 1
                 workload_path = run_dir / f"workload-{index:04d}.json"
                 workload_path.write_text(json.dumps(workload, sort_keys=True) + "\n")
-                result = evaluate(workload_path, args.synthesis_dir, run_dir / f"eval-{index:04d}", allow_invalid=True)
-                if not result["valid"]:
+                eval_dir = run_dir / f"eval-{index:04d}"
+                validity = validate_static(adapter, workload)
+                if not validity.valid:
                     return PowerProfile(mean_power=0.0, peak_power=0.0,
-                                        useful_work=result["useful_work"], valid=False,
-                                        fidelity="synthesis", provenance={"invalid_stage": result["invalid_stage"],
-                                                                            "invalid_reason": result["invalid_reason"]})
-                return PowerProfile(mean_power=result["mean_power"], peak_power=result["mean_power"],
-                                        useful_work=result["useful_work"], valid=result["valid"])
+                                        useful_work=0.0, valid=False,
+                                        fidelity="activity", provenance={"invalid_stage": validity.stage.value,
+                                                                          "invalid_reason": validity.reason})
+                eval_dir.mkdir(parents=True, exist_ok=True)
+                subprocess.run([sys.executable, "scripts/run_aes_workload.py",
+                                str(workload_path), "--out", str(eval_dir)], check=True)
+                log = (eval_dir / "run.log").read_text()
+                match = re.search(r"AES_CORE_WORKLOAD_DONE blocks=(\d+)", log)
+                if not match:
+                    raise RuntimeError("simulation log has no completed-work marker")
+                blocks = int(match.group(1))
+                runtime_validity = adapter.validate_result(
+                    SimResult(True, True, True, blocks))
+                if not runtime_validity.valid:
+                    return PowerProfile(mean_power=0.0, peak_power=0.0,
+                                        useful_work=blocks, valid=False,
+                                        fidelity="activity", provenance={"invalid_stage": runtime_validity.stage.value,
+                                                                          "invalid_reason": runtime_validity.reason})
+                activity = json.loads((eval_dir / "activity.json").read_text())
+                cycles = max(1, int(activity["clock_edges"]))
+                proxy = float(activity["total_transitions"]) / cycles
+                return PowerProfile(mean_power=proxy, peak_power=max(activity["per_cycle_toggles"]),
+                                    useful_work=blocks, valid=True, fidelity="activity",
+                                    provenance={"metric": "total_transitions_per_clock_edge",
+                                                "activity": "activity.json"})
 
             trials = run_search(adapter, RandomSearch(seed), ScalarGoal(target, args.epsilon),
                                 evaluator, budget=args.budget, batch_size=8, seed=seed,
