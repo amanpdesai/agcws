@@ -6,7 +6,9 @@ def test_makefile_exposes_core_tasks():
     for target in ("test:", "synth-aes:", "evaluate-aes:", "verify:", "verify-ibex:", "probe-ibex-synthesis:", "chia-node-smoke:", "audit-reproducibility:", "vertex-preflight:", "container-smoke:"):
         assert target in text
     assert "verify:" in text
-    assert "audit-reproducibility" in text.split("verify:", 1)[1]
+    verify_body = text.split("verify:", 1)[1]
+    assert "audit-reproducibility" in verify_body
+    assert "verify-artifact" in verify_body
     assert "DMA_POLICIES" in text
     assert 'DMA_SEARCH_DIR' in text
     assert '--budget "$(BUDGET)"' in text
