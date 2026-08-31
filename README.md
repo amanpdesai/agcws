@@ -18,6 +18,7 @@ The Makefile is a thin operator surface over the reproducible scripts:
 
 ```bash
 make test
+make verify
 make inspect-liberty
 make synth-aes
 make evaluate-aes
