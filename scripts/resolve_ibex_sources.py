@@ -92,8 +92,8 @@ def add_source_file(path: Path, sources: list[dict[str, str | int]],
     if not path.is_file() or path.suffix not in {".sv", ".v"}:
         return
     if not any(item["path"] == str(path) for item in sources):
-        sources.append({"path": str(path), "sha256": sha256(path),
-                        "bytes": path.stat().st_size})
+        sources.insert(0, {"path": str(path), "sha256": sha256(path),
+                           "bytes": path.stat().st_size})
     add_include_root(path.parent, include_dirs)
 
 
