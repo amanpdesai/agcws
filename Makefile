@@ -39,7 +39,7 @@ temporal-search:
 compositional-search:
 	PYTHONPATH=src $(PYTHON) scripts/run_aes_compositional_search.py "$(SYNTH_DIR)"
 baseline-matrix:
-	AGCWS_SEARCH_BUDGET=$(BUDGET) AGCWS_SEARCH_SEEDS="$(SEEDS)" \
+	AGCWS_PYTHON=$(VENV_PYTHON) AGCWS_SEARCH_BUDGET=$(BUDGET) AGCWS_SEARCH_SEEDS="$(SEEDS)" \
 	AGCWS_SEARCH_TARGETS="$(TARGETS)" bash scripts/run_aes_baseline_matrix.sh \
 		"$(SYNTH_DIR)" "$(P_MIN)" "$(P_MAX)" "$(BASELINE_DIR)"
 check-axi-dma-rtl:

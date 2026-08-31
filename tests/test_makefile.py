@@ -13,3 +13,4 @@ def test_makefile_exposes_baseline_matrix_task():
     assert "AGCWS_SEARCH_TARGETS" in text
     assert "$(P_MIN)" in text
     assert "$(P_MAX)" in text
+    assert "AGCWS_PYTHON=$(VENV_PYTHON)" in text
