@@ -2,7 +2,7 @@ from agcws.adapters.base import DesignAdapter, SimResult, Validity, ValidityStag
 
 class AESAdapter(DesignAdapter):
     name = "opentitan_aes"
-    useful_work_floor = 16
+    useful_work_floor = 21
     regions = ["aes_core", "aes_control", "aes_data"]
     workload_schema = {"type": "object", "required": ["operations"], "properties": {"operations": {"type": "array", "maxItems": 256}, "data_pattern": {"type": "integer", "minimum": 0, "maximum": 3}}, "additionalProperties": False}
 
@@ -19,7 +19,10 @@ class AESAdapter(DesignAdapter):
         for op in workload["operations"]:
             if not isinstance(op, dict) or op.get("op") not in {"configure", "encrypt", "decrypt", "idle"}:
                 return Validity(False, ValidityStage.PROTOCOL, "unknown AES operation")
-            if op["op"] == "configure": configured = True
+            if op["op"] == "configure":
+                if op.get("key_len", 128) not in {128, 192, 256}:
+                    return Validity(False, ValidityStage.PROTOCOL, "key_len must be 128, 192, or 256")
+                configured = True
             elif op["op"] == "idle":
                 if int(op.get("cycles", -1)) < 0 or int(op.get("cycles", -1)) > 10000:
                     return Validity(False, ValidityStage.PROTOCOL, "idle cycles out of range")
