@@ -185,6 +185,21 @@ different operating regimes; their disagreement is scientifically meaningful.
 **Consequence.** Future claims require larger, preregistered corpora and must
 separate activity-shape agreement from mapped-power rank agreement.
 
+## 2026-08-31 — Activity oracle is the compositional inner loop
+
+**Decision.** Compositional search computes region shares from deterministic
+RTL activity and does not invoke OpenSTA for every candidate. OpenSTA remains a
+separate finalist-validation step.
+**Rationale.** Region attribution is defined by the adapter's explicit RTL
+signal-prefix map, while synthesis-level power is a slower scalar validation
+measurement. Keeping the evaluator boundary consistent with temporal search
+preserves the declared cost model and makes profile-search budgets meaningful.
+**Rejected.** Running OpenSTA for every profile candidate; using an unannotated
+gate-level report as a fabricated region attribution.
+**Consequence.** Compositional trial provenance records `fidelity: activity`;
+finalist reports must carry their separate synthesis fidelity and annotation
+coverage.
+
 ## 2026-08-31 — Upstream coupled-DMA test is optional reference verification
 
 **Finding.** The pinned `verilog-axi` upstream MyHDL test passes when its Icarus
