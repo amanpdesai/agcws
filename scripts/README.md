@@ -84,6 +84,12 @@ design.
 
 Use `--core lowrisc:ibex:ibex_top` to resolve the standalone CPU closure for
 the ASIC-oriented synthesis boundary.
+
+To capture the current Ibex gate-level integration diagnostic, run
+`make resolve-ibex-sources` followed by
+`make probe-ibex-synthesis IBEX_SOURCES=out/ibex-sources-top-check4/sources.json`.
+The probe writes `manifest.json` and `yosys.log` and intentionally exits
+nonzero when the frontend cannot elaborate the pinned closure.
 ## AES synthesis
 
 Generate the cached AES core netlist against the configured Liberty file:
