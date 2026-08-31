@@ -49,7 +49,8 @@ def main() -> None:
                 if not result["valid"]:
                     return PowerProfile(mean_power=0.0, peak_power=0.0,
                                         useful_work=result["useful_work"], valid=False,
-                                        fidelity="synthesis", provenance=result)
+                                        fidelity="synthesis", provenance={"invalid_stage": result["invalid_stage"],
+                                                                            "invalid_reason": result["invalid_reason"]})
                 return PowerProfile(mean_power=result["mean_power"], peak_power=result["mean_power"],
                                         useful_work=result["useful_work"], valid=result["valid"])
 
