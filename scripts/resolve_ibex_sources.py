@@ -85,6 +85,18 @@ def add_include_file_dirs(root: Path, filenames: tuple[str, ...],
             add_include_root(path.parent, include_dirs)
 
 
+def add_source_file(path: Path, sources: list[dict[str, str | int]],
+                    include_dirs: list[str]) -> None:
+    """Add a required RTL source omitted by a generated target manifest."""
+    path = path.resolve()
+    if not path.is_file() or path.suffix not in {".sv", ".v"}:
+        return
+    if not any(item["path"] == str(path) for item in sources):
+        sources.append({"path": str(path), "sha256": sha256(path),
+                        "bytes": path.stat().st_size})
+    add_include_root(path.parent, include_dirs)
+
+
 def add_declared_fileset(core_file: Path, fileset: str, sources: list[dict[str, str | int]],
                          include_dirs: list[str]) -> None:
     """Add direct files from an Ibex core fileset omitted by a lint target."""
@@ -152,6 +164,8 @@ def main() -> None:
     add_toplevel_fallback(root, top, sources, include_dirs)
     add_include_root(root / "vendor/lowrisc_ip/dv/sv/dv_utils", include_dirs)
     add_include_file_dirs(root, ("prim_util_memload.svh", "dv_fcov_macros.svh"), include_dirs)
+    add_source_file(root / "vendor/lowrisc_ip/ip/prim/rtl/prim_secded_pkg.sv",
+                    sources, include_dirs)
     require_toplevel(sources, top)
     args.out.mkdir(parents=True, exist_ok=True)
     output = args.out / "sources.json"

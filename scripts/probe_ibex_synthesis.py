@@ -42,6 +42,11 @@ def main() -> None:
     for filename in ("prim_util_memload.svh", "dv_fcov_macros.svh"):
         include_dir_paths.update(path.parent for path in
                                  (repository_root / "third_party/ibex").rglob(filename))
+    if any("third_party/ibex" in path for path in source_paths):
+        secded = repository_root / "third_party/ibex/vendor/lowrisc_ip/ip/prim/rtl/prim_secded_pkg.sv"
+        if secded.is_file():
+            source_paths.append(str(secded))
+            include_dir_paths.add(secded.parent)
     include_dirs = sorted(str(path) for path in include_dir_paths if path.is_dir())
     yosys = os.environ.get("AGCWS_YOSYS", "yosys")
     plugin = os.environ.get("AGCWS_SLANG_PLUGIN", "")

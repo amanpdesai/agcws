@@ -4,7 +4,7 @@ import pytest
 from scripts.resolve_ibex_sources import (add_declared_fileset, find_eda_manifest,
                                           require_toplevel, resolve_manifest)
 from scripts.resolve_ibex_sources import (add_include_file_dirs, add_include_root,
-                                          add_toplevel_fallback)
+                                          add_source_file, add_toplevel_fallback)
 
 
 def test_resolve_manifest_filters_and_hashes_sv(tmp_path: Path):
@@ -82,6 +82,16 @@ def test_add_include_file_dirs_discovers_generated_include_roots(tmp_path: Path)
     includes = []
     add_include_file_dirs(tmp_path, ("macro.svh",), includes)
     assert includes == [str(include_dir.resolve())]
+
+
+def test_add_source_file_records_hash_and_include_root(tmp_path: Path):
+    source = tmp_path / "rtl" / "package.sv"
+    source.parent.mkdir()
+    source.write_text("package package; endpackage\n")
+    sources, includes = [], []
+    add_source_file(source, sources, includes)
+    assert sources[0]["path"] == str(source.resolve())
+    assert includes == [str(source.parent.resolve())]
 
 
 def test_find_eda_manifest_selects_core_manifest(tmp_path: Path):
