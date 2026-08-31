@@ -28,12 +28,28 @@ _POWER_TABLE_TOTAL = re.compile(
     r"(?P<total>[-+]?\d+(?:\.\d*)?(?:[eE][-+]?\d+)?)\s+100\.0%"
 )
 _ANNOTATED_PINS = re.compile(r"(?im)^\s*Annotated\s+(?P<count>\d+)\s+pin activities\.")
+_ANNOTATION_SUMMARY = re.compile(
+    r"(?im)^\s*vcd\s+(?P<annotated>\d+)\s*$.*?^\s*unannotated\s+(?P<unannotated>\d+)\s*$",
+    re.MULTILINE | re.DOTALL,
+)
 
 
 def parse_annotated_pin_count(report: str) -> int | None:
     """Return OpenSTA's reported activity annotation count, when present."""
     match = _ANNOTATED_PINS.search(report)
     return int(match.group("count")) if match else None
+
+
+def parse_annotation_summary(report: str) -> dict[str, int | float] | None:
+    """Parse OpenSTA's VCD/unannotated pin summary and compute its fraction."""
+    match = _ANNOTATION_SUMMARY.search(report)
+    if not match:
+        return None
+    annotated = int(match.group("annotated"))
+    unannotated = int(match.group("unannotated"))
+    total = annotated + unannotated
+    return {"annotated": annotated, "unannotated": unannotated,
+            "fraction": annotated / total if total else 0.0}
 
 
 def parse_opensta_power_report(report: str, *, provenance: dict[str, str] | None = None) -> PowerProfile:

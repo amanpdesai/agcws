@@ -1,6 +1,6 @@
 import pytest
 
-from agcws.nodes.power import parse_annotated_pin_count, parse_opensta_power_report
+from agcws.nodes.power import parse_annotation_summary, parse_annotated_pin_count, parse_opensta_power_report
 from agcws.goals import ScalarGoal, TemporalGoal
 from agcws.goals.loss import loss
 from agcws.nodes.power import PowerProfile
@@ -27,6 +27,10 @@ def test_parse_real_opensta_summary_table():
 def test_parser_reads_opensta_annotation_count():
     assert parse_annotated_pin_count("Annotated 203 pin activities.\n") == 203
     assert parse_annotated_pin_count("Total Power = 1.0\n") is None
+    summary = parse_annotation_summary("vcd           203\nunannotated 153856\n")
+    assert summary["annotated"] == 203
+    assert summary["unannotated"] == 153856
+    assert summary["fraction"] == pytest.approx(203 / (203 + 153856))
 
 
 def test_goal_losses_are_deterministic():

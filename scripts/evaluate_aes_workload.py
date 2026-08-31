@@ -13,7 +13,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
 from agcws.adapters.aes import AESAdapter
-from agcws.nodes.power import parse_opensta_power_file
+from agcws.nodes.power import parse_annotation_summary, parse_opensta_power_file
 from agcws.nodes.validation import validate_static
 from agcws.adapters.base import SimResult
 from agcws.provenance import input_record, toolchain_record
@@ -57,12 +57,10 @@ def evaluate(workload_path: Path, synthesis_dir: Path, output_dir: Path, *, allo
         check=True,
     )
     profile = parse_opensta_power_file(output_dir / "opensta/power.rpt")
-    annotation_report = output_dir / "opensta/annotation.rpt"
-    annotation_line = annotation_report.read_text().strip()
-    annotation_match = re.fullmatch(r"Annotated (\d+) pin activities\.", annotation_line)
-    if not annotation_match:
+    annotation_text = (output_dir / "opensta/power.rpt").read_text()
+    annotation = parse_annotation_summary(annotation_text)
+    if annotation is None:
         raise RuntimeError("OpenSTA report has no parseable activity annotation count")
-    annotated_pins = int(annotation_match.group(1))
     activity = json.loads((output_dir / "activity.json").read_text())
     by_region = attribute_regions(activity["signal_transitions"], AESAdapter.activity_region_prefixes)
     result = {
@@ -80,7 +78,7 @@ def evaluate(workload_path: Path, synthesis_dir: Path, output_dir: Path, *, allo
             "synthesis_manifest": "synthesis/manifest.json",
             "power_report": "opensta/power.rpt",
             "annotation_report": "opensta/annotation.rpt",
-            "annotated_pin_activities": annotated_pins,
+            "annotation": annotation,
             "liberty": json.loads((synthesis_dir / "manifest.json").read_text()).get("liberty"),
             "tools": toolchain_record({
                 "verilator": (config.VERILATOR, ("--version",)),

@@ -20,9 +20,16 @@ Nangate45 netlist likewise has 100% instance coverage (29 types, 40,479
 instances). R-01 is closed for relative synthesis-level power claims; this does
 not constitute signoff-accuracy power characterization.
 
-## R-02 — Activity annotation coverage — H
+## R-02 — Activity annotation coverage — H — OPEN
 
-Report annotated-net and annotated-capacitance fractions. Preserve hierarchy, use rank correlation, or gate-level simulate finalists if coverage is poor.
+The verified AES Sky130 run reports 203 VCD-annotated pins and 153,856
+unannotated pins, a pin-count fraction of 0.0013177. This is far below a
+threshold suitable for claiming broad gate-level activity agreement.
+
+**Fallback currently in force.** Report synthesis-weighted switching power and
+RTL cycle-toggle profiles; do not describe the result as signoff-accuracy power.
+The next resolution step is hierarchy-preserving name mapping or gate-level
+simulation of finalists, followed by a per-design proxy-to-gate rank analysis.
 
 ## R-03 — Scalar targeting is trivial — M
 
