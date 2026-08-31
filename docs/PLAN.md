@@ -44,8 +44,9 @@ runtime, and does not change this milestone's status.
 
 Slice 8 currently exposes random, mutation, evolutionary, and hybrid policies
 through the common proposal-counted AES runner. Slice 10 has deterministic AUC,
-solve-rate, censoring, validity/cost metrics, and multi-root corpus aggregation;
-multi-design runs and figures remain outstanding.
+solve-rate, censoring, validity/cost metrics, multi-root corpus aggregation, and
+deterministic search-curve plotting. A five-policy DMA matrix has also executed;
+the complete multi-seed, multi-design statistical study remains outstanding.
 
 Slice 6 has the common offline-agent and Vertex policy interfaces plus the
 frozen generic prompt; Vertex credentials/model billing and a comparative

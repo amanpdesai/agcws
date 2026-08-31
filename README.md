@@ -48,7 +48,7 @@ OpenTitan AES (register/data) is runnable. The verilog-axi `axi_dma` adapter
 (descriptors) has deterministic read/write harnesses plus a coupled
 source-to-destination memory-copy harness with waveform/activity provenance;
 top-level DMA synthesis/power evaluation now works for Sky130 and Nangate45;
-comparative DMA search studies remain in progress. Ibex (instruction stream)
+a five-policy proposal-counted DMA matrix is runnable. Ibex (instruction stream)
 now has a deterministic JSON-to-ELF compiler and upstream simple-system
 Verilator runner that collects retirement counters and FST traces.
 
