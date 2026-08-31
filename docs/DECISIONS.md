@@ -94,13 +94,15 @@ cells.
 **Consequence.** Unsolved runs remain right-censored at the budget; ε=0.10 is
 used for subsequent comparative runs, with 0.02 and 0.05 as sensitivities.
 
-## 2026-08-31 — Freeze AES useful-work floor at 21 blocks
+## 2026-08-31 — Superseded: freeze AES useful-work floor at 21 blocks
 
 **Decision.** Scored AES workloads must complete at least 21 blocks, the floor
 of the inclusive 10th percentile of the 10-valid-workload calibration corpus.
 **Rationale.** The hard floor prevents low-power results from being idle
 solutions while remaining grounded in observed workload support.
 **Rejected.** A zero-work threshold or selecting the floor after comparison.
+
+**Superseded by the activity-calibration decision above.**
 **Consequence.** The 16-block workload remains a harness test, not a scored
 experiment workload.
 

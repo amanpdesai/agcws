@@ -4,7 +4,7 @@ from agcws.adapters.base import SimResult, ValidityStage
 
 def test_aes_floor_matches_frozen_calibration_decision():
     adapter = AESAdapter()
-    assert adapter.useful_work_floor == 21
+    assert adapter.useful_work_floor == 36
     result = adapter.validate_result(SimResult(True, True, True, 20))
     assert result.stage is ValidityStage.USEFUL_WORK
 
