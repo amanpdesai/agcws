@@ -44,11 +44,25 @@ def main() -> None:
                                  (repository_root / "third_party/ibex").rglob(filename))
     if any("third_party/ibex" in path for path in source_paths):
         package_root = repository_root / "third_party/ibex/vendor/lowrisc_ip/ip/prim/rtl"
+        # The resolver may include both the original vendor copy and FuseSoC's
+        # exported copy.  Slang rejects duplicate package declarations; retain
+        # the exported closure whenever it exists.
+        package_names = {"prim_secded_pkg.sv", "prim_util_pkg.sv",
+                         "prim_cipher_pkg.sv", "prim_count.sv", "prim_count_pkg.sv"}
+        for package in package_names:
+            paths = [path for path in source_paths if Path(path).name == package]
+            if len(paths) > 1 and any("fusesoc-work" in path for path in paths):
+                source_paths = [
+                    path for path in source_paths
+                    if not (Path(path).name == package
+                            and "third_party/ibex/vendor" in path)
+                ]
         # insert(0) reverses this sequence; keep packages before consumers.
+        existing_names = {Path(path).name for path in source_paths}
         for package in ("prim_secded_pkg.sv", "prim_util_pkg.sv", "prim_cipher_pkg.sv",
                         "prim_count.sv", "prim_count_pkg.sv"):
             path = package_root / package
-            if path.is_file():
+            if path.is_file() and package not in existing_names:
                 source_paths.insert(0, str(path))
                 include_dir_paths.add(path.parent)
     include_dirs = sorted(str(path) for path in include_dir_paths if path.is_dir())

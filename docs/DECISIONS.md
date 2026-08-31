@@ -305,6 +305,20 @@ gate-level report as a fabricated region attribution.
 finalist reports must carry their separate synthesis fidelity and annotation
 coverage.
 
+## 2026-08-31 — Ibex probe uses the selected FuseSoC closure without duplicate vendor packages
+
+**Finding.** The standalone `lowrisc:ibex:ibex_core` closure elaborates with
+Slang/Yosys after removing duplicate primitive package copies; the simple-system
+wrapper remains a separate frontend boundary.
+**Decision.** Prefer FuseSoC-exported package sources when the manifest already
+contains them, and keep generated FuseSoC work under the artifact root.
+**Rationale.** Passing the same package twice causes deterministic Slang
+duplicate-definition errors and obscures whether the selected closure itself is
+ synthesizable.
+**Rejected.** Editing pinned Ibex RTL or silently ignoring frontend errors.
+**Consequence.** The core frontend boundary is now verified, while no mapped
+Ibex power result is claimed until synthesis and mapping are completed.
+
 ## 2026-08-31 — Upstream coupled-DMA test is optional reference verification
 
 **Finding.** The pinned `verilog-axi` upstream MyHDL test passes when its Icarus

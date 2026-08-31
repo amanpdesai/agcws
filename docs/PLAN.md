@@ -43,8 +43,11 @@ runner, with both Ibex FuseSoC source closures fingerprinted. Comparative DMA
 workload runs and full Ibex synthesis/power integration remain before the
 widened experiment is complete. The full 91-source Ibex closure now passes
 Verilator lint in the reproducible container. The pinned Slang/Yosys synthesis
-probe still fails during elaboration; no netlist or power result is treated as
-valid until that boundary is resolved.
+The standalone `lowrisc:ibex:ibex_core` Slang/Yosys frontend probe now
+elaborates successfully from an isolated artifact root. The default
+`lowrisc:ibex:ibex_simple_system` wrapper still fails at its own elaboration
+boundary; no Ibex netlist or power result is treated as valid until synthesis
+and mapping are completed for the selected closure.
 The pinned upstream coupled-DMA reference test now passes through the isolated
 `make upstream-dma-reference` target; it is a protocol oracle, not the project
 runtime, and does not change this milestone's status.
