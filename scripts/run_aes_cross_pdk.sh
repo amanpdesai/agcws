@@ -29,6 +29,9 @@ import sys
 from pathlib import Path
 
 output, root, waveform, sky_lib, nangate_lib = sys.argv[1:]
+waveform_path = Path(waveform)
+if not waveform_path.is_file():
+    raise FileNotFoundError(f"waveform is not a file: {waveform_path}")
 def power(name):
     for line in (Path(root) / f"{name}-power/power.rpt").read_text().splitlines():
         fields = line.split()
@@ -39,7 +42,7 @@ def sha(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 Path(output).write_text(json.dumps({
-    "waveform": str(Path(waveform).resolve()),
+    "waveform": {"path": waveform_path.name, "sha256": sha(waveform_path)},
     "pdks": {
         "sky130hd": {"liberty": sky_lib, "liberty_sha256": sha(sky_lib), "total_power_w": power("sky130hd")},
         "nangate45": {"liberty": nangate_lib, "liberty_sha256": sha(nangate_lib), "total_power_w": power("nangate45")},
