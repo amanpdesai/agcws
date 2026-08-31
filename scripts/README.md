@@ -51,3 +51,14 @@ Evaluate one workload through the complete simulation and power path:
 python3 scripts/evaluate_aes_workload.py experiments/workloads/aes_zero_blocks.json \
   out/aes-core-synthesis-final4 --out out/aes-evaluation
 ```
+
+For resumable, content-addressed evaluation tasks:
+
+```bash
+PYTHONPATH=src python3 scripts/run_aes_task.py \
+  experiments/workloads/aes_zero_blocks.json out/aes-core-synthesis-final4 \
+  --out out/tasks
+```
+
+The task key includes the workload and synthesis-manifest digests. Re-running
+the command resumes a completed task; changed inputs produce a new task.
