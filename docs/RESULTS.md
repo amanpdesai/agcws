@@ -6,7 +6,7 @@ multi-design factorial study has not yet been completed.
 
 ## Verified infrastructure
 
-- `make verify`: 182 tests passed, one skipped; Ruff clean.
+- `make verify`: 195 tests passed, one skipped; Ruff clean.
 - `make research-smoke`: passed.
 - `make container-smoke`: passed, including FuseSoC/Ibex source preparation
   and deterministic workload compilation.
@@ -15,6 +15,12 @@ multi-design factorial study has not yet been completed.
   counter artifact creation, and three-input provenance verification all
   succeed. This closes the Ibex RTL simulation/activity artifact boundary, not
   the separate mapped-netlist/OpenSTA boundary.
+- A fresh single-container AES run using the Docker Slang frontend completed
+  synthesis and OpenSTA evaluation: 38 useful blocks, synthesis-weighted total
+  power `0.02159873023629 W`, 608 clock edges, and per-cycle/window activity
+  artifacts. `verify_artifact` passed. Annotation was sparse (203 annotated
+  versus 153,020 unannotated instances), so this is reproducibility and
+  relative-search evidence, not signoff-accuracy power.
 - Both checked-in Liberty files contain `internal_power`, rise/fall power,
   leakage, capacitance, and clock-gating characterization.
 - The AES Sky130 mapped netlist coverage check matches all 43,619 cell
