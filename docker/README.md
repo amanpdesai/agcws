@@ -62,6 +62,11 @@ docker run --rm --user "$(id -u):$(id -g)" \
   agcws:dev make verify-ibex
 ```
 
+The full `make verify` target is a host-checkout target because the image does
+not package the repository's tests, documentation, or Makefile. Inside the
+image, use `scripts/container_smoke.sh` as the supported end-to-end toolchain
+check; use the mounted-checkout command above for targeted checks.
+
 The image also includes the optional analysis dependencies and the checked-in
 `analysis/` tools, so activity figures can be generated inside the same
 reproducible environment.
