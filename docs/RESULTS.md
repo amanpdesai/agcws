@@ -82,6 +82,11 @@ held-out achieved target. Across the compositional arm, 96/96 were valid and
 0/3 seeds solved its held-out region-share target. Every run retained per-cycle
 activity and target provenance. This remains one target per class and is not a
 general profile-method conclusion.
+The temporal manifest currently contains one target, while the compositional
+manifest contains five; only compositional target 0 has been executed in the
+reported profile snapshot. A request for temporal target index 1 was rejected
+before simulation by the driver, so no second temporal target is silently
+being evaluated.
 
 A third full-budget seed is complete. The three-seed aggregate is
 `out/axi-dma-matrix-calibrated-200-3seed-aggregate.json`, with paired inference
