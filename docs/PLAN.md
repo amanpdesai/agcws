@@ -64,7 +64,7 @@ frozen generic prompt. The offline agent has completed a real AES smoke run
 under the shared evaluator budget; Vertex credentials/model billing and a
 comparative cloud-agent run remain unverified.
 
-Latest verification checkpoint (2026-08-31): `make verify` passes with 166
+Latest verification checkpoint (2026-09-01): `make verify` passes with 169
 tests passed and one skipped, Ruff clean, a valid reproducibility audit, and
 valid AES/AXI artifacts. Checked-in Sky130 HD and Nangate45 Liberty files both
 contain characterized `internal_power`, rise/fall power, leakage, capacitance,
