@@ -50,6 +50,18 @@ The canonical toolchain smoke test is:
 docker run --rm --user "$(id -u):$(id -g)" agcws:dev bash scripts/container_smoke.sh
 ```
 
+The smoke is designed for arbitrary non-root UIDs: the image uses `/tmp` for
+FuseSoC's cache and provides a writable `/opt/agcws/out` work root. For a
+mounted checkout, set an explicit writable artifact root rather than reusing
+old root-owned output directories:
+
+```bash
+docker run --rm --user "$(id -u):$(id -g)" \
+  -v "$PWD:/workspace" -w /workspace \
+  -e AGCWS_ARTIFACT_ROOT=/tmp/agcws-artifacts \
+  agcws:dev make verify-ibex
+```
+
 The image also includes the optional analysis dependencies and the checked-in
 `analysis/` tools, so activity figures can be generated inside the same
 reproducible environment.
