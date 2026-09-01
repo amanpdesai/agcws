@@ -22,7 +22,9 @@ def audit(directory: Path) -> dict:
             errors.append(f"{macro['source_name']}: physical width mismatch")
         if sram.get("depth") != macro["physical_depth"]:
             errors.append(f"{macro['source_name']}: physical depth mismatch")
-    expected_ready = all(macro["mapping_eligible"] for macro in macros)
+    # An empty inventory is a valid no-memory result, but it is not evidence
+    # that a mapped memory backend is available.
+    expected_ready = bool(macros) and all(macro["mapping_eligible"] for macro in macros)
     if manifest["mapping_ready"] != expected_ready:
         errors.append("mapping_ready disagrees with per-macro eligibility")
     result = {"directory": str(directory), "macros": len(macros),

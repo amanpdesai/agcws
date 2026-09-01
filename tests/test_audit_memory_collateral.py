@@ -17,3 +17,14 @@ def test_audit_memory_collateral_accepts_generated_bundle(tmp_path: Path):
     result = audit(directory)
     assert result["valid"] is True
     assert result["mapping_ready"] is True
+
+
+def test_audit_memory_collateral_accepts_empty_inventory(tmp_path: Path):
+    inventory = tmp_path / "inventory.json"
+    inventory.write_text(json.dumps({"top": "aes", "memories": []}))
+    directory = tmp_path / "collateral"
+    generate(inventory, directory)
+    result = audit(directory)
+    assert result["valid"] is True
+    assert result["macros"] == 0
+    assert result["mapping_ready"] is False
