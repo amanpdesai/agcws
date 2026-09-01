@@ -148,6 +148,13 @@ run. The matrix has 10 target-policy groups and 953 valid trials out of 960
 proposal slots; it is a preliminary two-target activity comparison, not the
 full preregistered profile factorial or a gate-level power result.
 
+The corresponding compositional comparison is archived at
+`out/aes-compositional-policy-matrix-20260901-v2-aggregate.json`: two achieved
+region-share targets, five policies, three seeds, and 32 proposal slots per
+run. It contains 10 target-policy groups and 956 valid trials out of 960
+proposal slots. This is preliminary activity-oracle evidence, not a full
+multi-design or gate-level result.
+
 The five-seed full-budget aggregate is
 `out/axi-dma-matrix-calibrated-200-5seed-aggregate.json`, with paired inference
 at `out/axi-dma-inference-5seed.json`: 5 policies × 200 proposals × 5 seeds.
