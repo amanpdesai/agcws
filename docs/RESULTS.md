@@ -27,7 +27,12 @@ workloads); see `out/aes-pdk-rank-20260831/corpus-validation.json`.
 - The archived temporal cross-PDK diagnostic reports Spearman ρ≈`-1.0` across
   four shared schedules (`out/aes-temporal-cross-pdk.json`), indicating a rank
   inversion rather than agreement. It is excluded from validation claims until
-  the temporal workload/report pairing is independently reconciled.
+  the temporal workload/report pairing is independently reconciled. The paired
+  means are Sky130: `low_high_low=0.01852035`, `high_low_high=0.01848644`,
+  `burst=0.01915642`, `ramp=0.01844827`; Nangate45:
+  `low_high_low=0.00504285`, `high_low_high=0.00505190`,
+  `burst=0.00499004`, `ramp=0.00506829`. The inversion is therefore a
+  PDK-dependent temporal diagnostic, not evidence of cross-PDK agreement.
 - A fresh containerized AES cross-PDK run also completes both Sky130 and
   Nangate45 synthesis/OpenSTA passes, with waveform and Liberty hashes recorded
   in `out/aes-cross-pdk/comparison.json`. Its single-workload annotation is
