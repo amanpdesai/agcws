@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
 import subprocess
 import sys
@@ -67,6 +68,13 @@ def main() -> None:
         if not match:
             raise RuntimeError("simulation log has no completed-work marker")
         activity = json.loads((trial_dir / "activity.json").read_text())
+        # Search needs parsed activity, not a copy of every raw waveform. Keep
+        # VCDs only when explicitly requested for debugging; otherwise a
+        # long-run matrix can exhaust the workspace without improving results.
+        if os.environ.get("AGCWS_KEEP_WAVEFORMS", "0") != "1":
+            waveform = trial_dir / "activity.vcd"
+            if waveform.exists():
+                waveform.unlink()
         edges = max(1, int(activity["clock_edges"]))
         return PowerProfile(
             mean_power=float(activity["total_transitions"]) / edges,

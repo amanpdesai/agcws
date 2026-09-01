@@ -173,8 +173,11 @@ synthesize-ibex-core:
 check-ibex-rtl: resolve-ibex-sources
 	PYTHONPATH=src $(VENV_PYTHON) scripts/check_ibex_verilator.py "$${AGCWS_ARTIFACT_ROOT:-out}/ibex-sources/sources.json"
 run-ibex:
-	$(VENV_PYTHON) scripts/generate_ibex_workload.py "$${AGCWS_IBEX_ARTIFACT_ROOT:-$${AGCWS_ARTIFACT_ROOT:-out}/ibex-run}/floor_workload.json"
-	bash scripts/run_ibex_workload.sh "$${AGCWS_IBEX_ARTIFACT_ROOT:-$${AGCWS_ARTIFACT_ROOT:-out}/ibex-run}/floor_workload.json" "$${AGCWS_IBEX_ARTIFACT_ROOT:-$${AGCWS_ARTIFACT_ROOT:-out}/ibex-run}"
+	# Defaults: "$${AGCWS_ARTIFACT_ROOT:-out}/ibex" or
+	# "$${IBEX_ARTIFACT:-$${AGCWS_ARTIFACT_ROOT:-out}/ibex}".
+	ibex_root="$${AGCWS_IBEX_ARTIFACT_ROOT:-$${IBEX_ARTIFACT:-$${AGCWS_ARTIFACT_ROOT:-out}/ibex}}"; \
+	$(VENV_PYTHON) scripts/generate_ibex_workload.py "$$ibex_root/floor_workload.json"; \
+	bash scripts/run_ibex_workload.sh "$$ibex_root/floor_workload.json" "$$ibex_root"
 verify-ibex: run-ibex
 	$(VENV_PYTHON) scripts/verify_artifact.py "$${IBEX_ARTIFACT:-$${AGCWS_IBEX_ARTIFACT_ROOT:-$${AGCWS_ARTIFACT_ROOT:-out}/ibex-run}}"
 verify:
