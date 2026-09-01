@@ -322,6 +322,14 @@ python3 scripts/run_ibex_search.py --policy random \
   --budget 20 --seed 0 --out out/ibex-search
 ```
 
+The Make target requires that calibration artifact explicitly, preventing
+placeholder bounds from entering an experiment:
+
+```bash
+make ibex-search IBEX_CALIBRATION=out/ibex-activity-calibration/calibration.json \
+  BUDGET=200 SEEDS=0 IBEX_MATRIX_ROOT=out/ibex-matrix
+```
+
 Run a reproducible seed matrix with isolated outputs:
 
 ```bash

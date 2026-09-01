@@ -25,6 +25,7 @@ def test_makefile_exposes_core_tasks():
     assert '--budget "$(BUDGET)"' in text
     assert "plot-search-curves:" in text
     assert "ibex-search:" in text
+    assert "IBEX_CALIBRATION" in text
 
 
 def test_makefile_exposes_baseline_matrix_task():
