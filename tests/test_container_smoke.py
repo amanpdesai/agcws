@@ -7,6 +7,8 @@ def test_container_smoke_checks_frontend_and_both_liberties():
     assert "AGCWS_LIBERTY_NANGATE45" in text
     assert "run_axi_dma_workload.py" in text
     assert "axi_dma_smoke.json" in text
+    assert "artifact_root=${AGCWS_ARTIFACT_ROOT:-out}" in text
+    assert '"$artifact_root/container-ibex-smoke"' in text
 
 
 def test_docker_context_excludes_generated_artifacts():
