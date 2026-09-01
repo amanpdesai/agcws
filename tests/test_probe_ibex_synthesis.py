@@ -53,3 +53,23 @@ def test_probe_records_timeout_as_non_success(tmp_path: Path, monkeypatch):
     assert record["timeout_s"] == 0.01
     assert len(record["sources_sha256"]) == 64
     assert "timed out" in (tmp_path / "out" / "yosys.log").read_text()
+
+
+def test_core_probe_does_not_add_unrelated_memload_include_dirs(tmp_path: Path, monkeypatch):
+    source = tmp_path / "core.sv"
+    source.write_text("module ibex_core; endmodule\n")
+    unrelated = tmp_path / "simple-system" / "prim_util_memload.svh"
+    unrelated.parent.mkdir()
+    unrelated.write_text("initial begin end\n")
+    sources = tmp_path / "sources.json"
+    sources.write_text(json.dumps({"sources": [{"path": str(source)}]}))
+    monkeypatch.setenv("AGCWS_SLANG_PLUGIN", "plugin.so")
+    monkeypatch.setenv("AGCWS_YOSYS", "false")
+    monkeypatch.setattr("sys.argv", ["probe", str(sources), "--top", "ibex_core",
+                                      "--out", str(tmp_path / "out")])
+    try:
+        main()
+    except SystemExit as exc:
+        assert exc.code == 1
+    record = json.loads((tmp_path / "out" / "manifest.json").read_text())
+    assert str(unrelated.parent) not in " ".join(record["command"])
