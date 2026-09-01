@@ -14,6 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
 from agcws.adapters.ibex import IbexAdapter
+from agcws.provenance import toolchain_record
 
 
 def main() -> None:
@@ -58,7 +59,12 @@ def main() -> None:
     values = [record["activity"] for record in records]
     output = {"design": "ibex", "seed": args.seed, "samples": records,
               "p_min": min(values), "p_max": max(values),
-              "metric": "total_transitions_per_clock_edge", "fidelity": "activity"}
+              "metric": "total_transitions_per_clock_edge", "fidelity": "activity",
+              "tools": toolchain_record({
+                  "verilator": (os.environ.get("AGCWS_VERILATOR", "verilator"), ("--version",)),
+                  "riscv_gcc": (os.environ.get("AGCWS_RISCV_GCC", "riscv64-unknown-elf-gcc"), ("--version",)),
+                  "fst2vcd": (os.environ.get("AGCWS_FST2VCD", "fst2vcd"), ("--version",)),
+              })}
     (args.out / "calibration.json").write_text(json.dumps(output, indent=2, sort_keys=True) + "\n")
     print(json.dumps({"samples": len(records), "p_min": min(values), "p_max": max(values),
                       "output": str((args.out / "calibration.json").resolve())}, indent=2))
