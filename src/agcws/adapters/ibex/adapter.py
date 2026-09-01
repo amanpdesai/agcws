@@ -15,7 +15,9 @@ class IbexAdapter(DesignAdapter):
                        "properties": {"program": {"type": "array", "maxItems": 200_000},
                                       "memory_size": {"type": "integer", "minimum": 4}},
                        "additionalProperties": False}
-    memory_size = 1 << 20
+    # Matches the upstream simple-system linker: 192 KiB of RAM at 0x100000.
+    memory_size = 0x30000
+    data_base = 0x20000
     supported_ops = {"add", "addi", "and", "or", "xor", "lw", "sw", "beq", "bne", "nop", "ecall"}
 
     def validate_schema(self, workload: dict) -> Validity:
@@ -83,13 +85,16 @@ class IbexAdapter(DesignAdapter):
 
     def random_workload(self, rng: random.Random) -> dict:
         """Generate a legal, terminating instruction-stream candidate."""
-        length = rng.randint(self.useful_work_floor, self.useful_work_floor + 256)
+        # The simple-system runtime retires a few setup/control-flow
+        # instructions outside the generated body.  Keep a margin so the
+        # measured counter remains above the hard useful-work floor.
+        length = rng.randint(self.useful_work_floor + 64, self.useful_work_floor + 320)
         ops = ("nop", "addi", "add", "and", "or", "xor", "lw", "sw")
         program = []
         for _ in range(length):
             op = rng.choice(ops)
             if op in {"lw", "sw"}:
-                instruction = {"op": op, "address": rng.randrange(0, self.memory_size - 3, 4)}
+                instruction = {"op": op, "address": rng.randrange(self.data_base, self.memory_size - 3, 4)}
             elif op == "addi":
                 instruction = {"op": op, "immediate": rng.randint(-16, 16)}
             else:
@@ -108,7 +113,7 @@ class IbexAdapter(DesignAdapter):
         index = rng.randrange(len(body))
         op = rng.choice(("nop", "addi", "add", "and", "or", "xor", "lw", "sw"))
         if op in {"lw", "sw"}:
-            body[index] = {"op": op, "address": rng.randrange(0, self.memory_size - 3, 4)}
+            body[index] = {"op": op, "address": rng.randrange(self.data_base, self.memory_size - 3, 4)}
         elif op == "addi":
             body[index] = {"op": op, "immediate": rng.randint(-16, 16)}
         else:
