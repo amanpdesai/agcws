@@ -48,6 +48,13 @@ def test_makefile_exposes_dual_pdk_liberty_inspection():
     assert "AGCWS_LIBERTY_NANGATE45" in body
 
 
+def test_makefile_loads_and_exports_host_environment_contract():
+    text = Path("Makefile").read_text()
+    assert "-include .env" in text
+    assert "export AGCWS_SLANG_PLUGIN" in text
+    assert "AGCWS_LIBERTY AGCWS_LIBERTY_NANGATE45" in text
+
+
 def test_makefile_ibex_tasks_are_selectable_and_reproducible():
     text = Path("Makefile").read_text()
     assert "IBEX_CORE" in text

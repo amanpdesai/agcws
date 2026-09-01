@@ -1,4 +1,13 @@
 .DEFAULT_GOAL := test
+-include .env
+
+# Keep host-specific tool paths in .env while exporting them to scripts.  The
+# file is intentionally ignored; .env.example is the portable contract.
+export AGCWS_VERILATOR AGCWS_YOSYS AGCWS_OPENSTA AGCWS_VCD2SAIF AGCWS_IVERILOG
+export AGCWS_VVP AGCWS_IVERILOG_VPI AGCWS_FST2VCD AGCWS_MYHDL_DIR
+export AGCWS_SLANG_PLUGIN AGCWS_LIBERTY AGCWS_LIBERTY_NANGATE45
+export AGCWS_ARTIFACT_ROOT AGCWS_PROFILE_SMOKE_BUDGET AGCWS_CALIBRATION
+export AGCWS_GCP_PROJECT AGCWS_GEMINI_MODEL
 PYTHON ?= python3
 VENV ?= .venv
 VENV_PYTHON ?= $(VENV)/bin/python
