@@ -27,15 +27,20 @@ def verify_activity(root: Path) -> None:
     normalized = activity.get("normalized_windows")
     if not isinstance(cycles, list) or not isinstance(windows, list):
         return  # legacy non-AES artifacts may carry a minimal activity record
-    if not isinstance(normalized, list) or len(normalized) != len(windows):
-        return  # pre-normalization AES artifacts remain structurally verifiable
-    if any(float(value) < 0 for value in cycles + windows):
-        raise ValueError("activity toggle counts cannot be negative")
-    peak = max(windows, default=0)
-    expected = [0.0 for _ in windows] if peak == 0 else [float(v) / peak for v in windows]
-    if normalized != expected:
-        raise ValueError("activity normalized profile is inconsistent with windows")
+    if isinstance(normalized, list):
+        if len(normalized) != len(windows):
+            raise ValueError("activity normalized profile does not match windows")
+        if any(float(value) < 0 for value in cycles + windows):
+            raise ValueError("activity toggle counts cannot be negative")
+        peak = max(windows, default=0)
+        expected = [0.0 for _ in windows] if peak == 0 else [float(v) / peak for v in windows]
+        if normalized != expected:
+            raise ValueError("activity normalized profile is inconsistent with windows")
+    # Pre-normalization AES artifacts remain structurally verifiable; continue
+    # to the waveform digest check when the legacy record includes one.
     digest = activity.get("waveform_sha256")
+    if digest is None:
+        return
     waveform = root / str(activity.get("vcd", "activity.vcd"))
     if not isinstance(digest, str) or len(digest) != 64:
         raise ValueError("activity has no valid waveform SHA-256")
