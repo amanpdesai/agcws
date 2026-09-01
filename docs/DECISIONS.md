@@ -401,8 +401,9 @@ proposal slots and remains preliminary AES activity-oracle evidence.
 
 **Decision.** Treat the containerized `ibex_core` Slang frontend probe as
 supported, but do not treat Ibex mapped-netlist power as supported until mapping
-completes within the declared bound. A clean Sky130 mapping attempt was bounded
-at 300 seconds and timed out after frontend elaboration succeeded.
+completes within the declared bound. Clean Sky130 and Nangate45 mapping attempts
+were bounded at 300 and 120 seconds respectively and both timed out after
+frontend elaboration succeeded.
 **Rationale.** This separates a verified frontend capability from an unverified
 power pipeline and preserves an honest reproducibility boundary.
 **Rejected.** Calling the timeout a successful synthesis result; claiming Ibex
