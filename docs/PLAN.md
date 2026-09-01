@@ -88,6 +88,8 @@ valid proposals, with 16 distinct activity values and measured bounds
 `out/axi-dma-calibration-corrected-3seed.json`. This is calibration evidence
 only. The DMA multi-policy matrix still needs to use these recorded bounds and
 complete its multi-seed run before it can support comparative claims.
+The first full-budget seed-0 matrix now exists (5 policies × 200 proposals),
+but additional seeds and statistical inference remain required.
 
 Slice 9 has executable AES temporal and compositional search drivers using the
 activity oracle, achieved-profile target selection, per-cycle/windowed profiles,

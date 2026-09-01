@@ -38,6 +38,14 @@ A second seed has since completed the same matrix. The two-seed aggregate is
 DMA comparison remains outstanding; these short runs only validate stability
 of the calibrated orchestration.
 
+The first full-budget calibrated DMA run is stored at
+`out/axi-dma-matrix-calibrated-200-seed0/`, with aggregate
+`out/axi-dma-matrix-calibrated-200-seed0-aggregate.json`. At 200 proposals,
+random reached tolerance at evaluation 51 and offline-hybrid at 101; mutation,
+evolutionary, and one-shot-agent were unsolved. All five arms completed 200
+valid simulations with no validity-stage failures. This is one seed on one
+activity oracle and is preliminary evidence, not a general policy ranking.
+
 ## Preliminary AES scalar study
 
 The verified AES scalar aggregate combines the original corpus with seeds 5
