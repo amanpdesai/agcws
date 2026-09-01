@@ -24,6 +24,7 @@ def test_makefile_exposes_core_tasks():
     assert "aggregate-compositional-pilot:" in text
     assert '--budget "$(BUDGET)"' in text
     assert "plot-search-curves:" in text
+    assert "ibex-search:" in text
 
 
 def test_makefile_exposes_baseline_matrix_task():
