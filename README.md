@@ -40,9 +40,16 @@ make aggregate-temporal-policy-matrix
 make aggregate-compositional-policy-matrix
 make plot-temporal-policy-matrix
 make plot-compositional-policy-matrix
+make audit-profile-matrix
+make audit-temporal-profile-matrix
 PYTHONPATH=src python scripts/run_aes_task.py \
   experiments/workloads/aes_min_scored.json out/aes-core-synthesis-final4
 ```
+
+The profile audit targets verify that each aggregate matches its achieved
+target manifest, policy set, seed count, and proposal budget. The temporal
+audit names both recorded manifest generations because that pilot was assembled
+incrementally.
 
 For paired-PDK validation, use the checked-in corpus runner after synthesis:
 
