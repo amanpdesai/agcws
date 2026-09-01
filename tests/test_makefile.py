@@ -53,6 +53,7 @@ def test_makefile_ibex_tasks_are_selectable_and_reproducible():
     assert "IBEX_CORE" in text
     assert "--core \"$(IBEX_CORE)\"" in text
     assert "IBEX_SOURCES" in text
+    assert "$(if $(AGCWS_ARTIFACT_ROOT),$(AGCWS_ARTIFACT_ROOT),out)/ibex-sources/sources.json" in text
     assert "--top \"$(IBEX_TOP)\"" in text
     assert "verify-ibex: run-ibex" in text
     assert '"$${AGCWS_ARTIFACT_ROOT:-out}/ibex"' in text
