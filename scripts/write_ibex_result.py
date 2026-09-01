@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import os
 from pathlib import Path
 
 from agcws.provenance import input_record, toolchain_record
@@ -35,8 +36,8 @@ def main() -> None:
         "provenance": {
             "inputs": input_record(inputs),
             "tools": toolchain_record({
-                "verilator": ("verilator", ("--version",)),
-                "riscv_gcc": ("riscv64-unknown-elf-gcc", ("--version",)),
+                "verilator": (os.environ.get("AGCWS_VERILATOR", "verilator"), ("--version",)),
+                "riscv_gcc": (os.environ.get("AGCWS_RISCV_GCC", "riscv64-unknown-elf-gcc"), ("--version",)),
             }),
         },
     }, indent=2, sort_keys=True) + "\n")
