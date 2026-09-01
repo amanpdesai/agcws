@@ -280,6 +280,11 @@ activity-tier summaries are retained in the generated matrix format; this pilot
 is intentionally too small for an inferential comparison and is not used as a
 headline result.
 
+A subsequent five-proposal-per-policy pilot with the same seed and calibrated
+bounds completed 15/15 valid simulations across the same three policies. This
+exercises history-dependent mutation and evolutionary proposals under a shared
+budget; it remains activity-only and too small for an inferential claim.
+
 The memory inventory and collateral path was validated on the current pinned
 RTL closures. AES `aes_cipher_core` produced zero inferred memories. AXI DMA
 produced 13 internal 32-entry FIFO memories with independent read and write
