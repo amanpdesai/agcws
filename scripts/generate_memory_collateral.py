@@ -37,6 +37,9 @@ def generate(inventory_path: Path, output_dir: Path, *, backend: str = "bsg_fake
             "backend": backend,
             "width": width,
             "depth": depth,
+            # CACTI used by bsg_fakeram requires at least 64 bytes. Keep the
+            # logical geometry and record the padded physical depth explicitly.
+            "physical_depth": max(depth, (64 * 8 + width - 1) // width),
             "address_bits": abits,
             "read_ports": memory.get("rd_ports", 0),
             "write_ports": memory.get("wr_ports", 0),
@@ -61,8 +64,8 @@ def generate(inventory_path: Path, output_dir: Path, *, backend: str = "bsg_fake
         "snapWidth_nm": 460,
         "snapHeight_nm": 2720,
         "flipPins": True,
-        "srams": [{"name": f"fakeram{tech_nm}_{macro['depth']}x{macro['width']}",
-                   "width": macro["width"], "depth": macro["depth"], "banks": 1}
+        "srams": [{"name": f"fakeram{tech_nm}_{macro['physical_depth']}x{macro['width']}",
+                   "width": macro["width"], "depth": macro["physical_depth"], "banks": 1}
                   for macro in macros],
     }
     (output_dir / "memory-macros.json").write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n")
