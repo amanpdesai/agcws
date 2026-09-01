@@ -20,6 +20,14 @@ def test_opensta_result_declares_power_metric():
     assert '"power_metric": "opensta_total_power_w"' in text
 
 
+def test_axi_opensta_carries_semantic_useful_work():
+    text = Path("scripts/run_opensta_axi_dma.sh").read_text()
+    assert "USEFUL_WORK_BYTES" in text
+    assert '"useful_work": useful_work' in text
+    validator = Path("scripts/validate_axi_dma_finalists.py").read_text()
+    assert "sum(int(item[\"length\"])" in validator
+
+
 def test_opensta_scripts_have_bounded_runtime():
     for name in ("scripts/run_opensta_aes.sh", "scripts/run_opensta_axi_dma.sh"):
         text = Path(name).read_text()

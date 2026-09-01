@@ -30,9 +30,10 @@ def main() -> None:
         sim_dir = args.out / f"simulation-{index:03d}"
         subprocess.run(["bash", "scripts/run_axi_dma_coupled.sh", str(workload), str(sim_dir)],
                        check=True)
+        useful_work = sum(int(item["length"]) for item in trial["workload"]["transfers"])
         sta_dir = args.out / f"opensta-{index:03d}"
         subprocess.run(["bash", "scripts/run_opensta_axi_dma.sh", str(args.synthesis_dir),
-                        str(sim_dir / "activity.vcd"), str(sta_dir)], check=True)
+                        str(sim_dir / "activity.vcd"), str(sta_dir), str(useful_work)], check=True)
         records.append({"rank": index + 1, "trial_id": trial.get("trial_id"),
                         "search_loss": trial["loss"],
                         "result": json.loads((sta_dir / "result.json").read_text())})
