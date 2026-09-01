@@ -42,6 +42,11 @@ reported power result.
 Existing design synthesis remains unchanged until port semantics, mapping, and
 characterization are validated, keeping baseline results comparable.
 
+The host compatibility frontend is suitable for reduced/simple SystemVerilog
+closures only. Full OpenTitan AES synthesis requires the pinned Slang plugin
+provided by `docker/Dockerfile`; if that plugin is absent, a host AES run may
+fail during parsing and must not be treated as a synthesis result.
+
 ```bash
 python scripts/inspect_liberty.py "$AGCWS_LIBERTY"
 python scripts/aes_sources.py
