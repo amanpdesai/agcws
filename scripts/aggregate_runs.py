@@ -23,6 +23,15 @@ def main() -> None:
     for root in args.root:
         for path in sorted(root.rglob("summary.json")):
             record = json.loads(path.read_text())
+            # Older profile runners wrote target.json beside summary.json but
+            # did not copy its identity into the summary. Recover it here so
+            # archived runs remain correctly grouped after the schema fix.
+            if "target_source" not in record:
+                target_path = path.parent / "target.json"
+                if target_path.exists():
+                    target = json.loads(target_path.read_text())
+                    if target.get("source") is not None:
+                        record["target_source"] = target["source"]
             # Preserve the run identity when the summary itself came from the
             # generic runner, which intentionally stores no filesystem paths.
             record.setdefault("run_dir", str(path.parent.relative_to(root)))
