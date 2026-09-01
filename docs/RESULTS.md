@@ -46,6 +46,13 @@ evolutionary, and one-shot-agent were unsolved. All five arms completed 200
 valid simulations with no validity-stage failures. This is one seed on one
 activity oracle and is preliminary evidence, not a general policy ranking.
 
+A second full-budget seed is complete. The two-seed aggregate is
+`out/axi-dma-matrix-calibrated-200-2seed-aggregate.json`: 5 policies × 200
+proposals × 2 seeds, or 2,000 valid coupled simulations. Random solved both
+seeds; evolutionary solved one; offline-hybrid solved both; mutation and
+one-shot-agent did not solve either. Seed variation is visible, so these are
+descriptive preliminary observations rather than a definitive policy ranking.
+
 ## Preliminary AES scalar study
 
 The verified AES scalar aggregate combines the original corpus with seeds 5

@@ -90,6 +90,9 @@ only. The DMA multi-policy matrix still needs to use these recorded bounds and
 complete its multi-seed run before it can support comparative claims.
 The first full-budget seed-0 matrix now exists (5 policies × 200 proposals),
 but additional seeds and statistical inference remain required.
+Seed 1 is now also complete, giving two full-budget DMA seeds and a machine-
+readable aggregate; the preregistered multi-seed study and paired inference
+remain outstanding.
 
 Slice 9 has executable AES temporal and compositional search drivers using the
 activity oracle, achieved-profile target selection, per-cycle/windowed profiles,
