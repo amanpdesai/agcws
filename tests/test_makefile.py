@@ -75,3 +75,10 @@ def test_synthesis_scripts_expose_opt_in_memory_mapping():
         assert "AGCWS_MEMORY_LIBMAP" in text
         assert "memory_libmap -lib" in text
         assert "memory_libmap_sha256" in text
+
+
+def test_env_example_covers_ibex_and_memory_tools():
+    text = Path(".env.example").read_text()
+    for name in ("AGCWS_FUSESOC", "AGCWS_RISCV_GCC", "AGCWS_RISCV_OBJCOPY",
+                 "AGCWS_IBEX_ROOT", "AGCWS_IBEX_SIM", "AGCWS_MEMORY_LIBMAP"):
+        assert f"{name}=" in text
