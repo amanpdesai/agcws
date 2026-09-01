@@ -225,3 +225,20 @@ other designs, and does not include Vertex-backed agent trials.
 The final report must replace this preliminary section only after the full
 factorial run, statistical tests, finalist validation, and provenance audit
 are complete.
+
+## Memory-aware synthesis evidence
+
+The memory inventory and collateral path was validated on the current pinned
+RTL closures. AES `aes_cipher_core` produced zero inferred memories. AXI DMA
+produced 13 internal 32-entry FIFO memories with independent read and write
+ports; the pinned BSG FakeRAM backend is single-port synchronous 1RW, so Yosys
+rejects that mapping and the baseline remains unchanged. Ibex core inventory
+produced four memories and two unique read-only geometries (32×32 and 16×3),
+but their read ports are asynchronous (`RD_CLK_ENABLE=0`), which is also
+incompatible with BSG FakeRAM's synchronous interface.
+
+BSG generation was run in an isolated checkout for the AXI and Ibex physical
+geometries. CACTI-required padding is recorded explicitly as physical geometry
+in the generated manifest; logical widths and depths are never silently
+replaced. Generated collateral is reproducible diagnostic evidence, not a
+claim that either design has been successfully macro-mapped.
