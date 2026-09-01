@@ -92,7 +92,9 @@ The first implementation pass inventories inferred Yosys memories before
 design flow, validate read/write latency and port semantics, map it to a real
 bsg_fakeram-compatible wrapper, and provide a characterized Liberty model. The
 baseline synthesis paths remain unchanged until those checks pass, preventing
-flop-mapped and macro-mapped power results from being mixed.
+flop-mapped and macro-mapped power results from being mixed. The synthesis
+scripts now require `AGCWS_MEMORY_MANIFEST` with `mapping_ready: true` whenever
+`AGCWS_MEMORY_LIBMAP` is set, and record both collateral digests.
 The current reproducible scalar analysis was regenerated from
 `out/aes-baseline-matrix-complete` into `out/final-analysis/`, producing 25
 policy-target records and `convergence.png`; this remains AES-only evidence.
