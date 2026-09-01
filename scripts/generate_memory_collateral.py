@@ -50,7 +50,13 @@ def generate(inventory_path: Path, output_dir: Path, *, backend: str = "bsg_fake
             "status": "contract-only",
             # bsg_fakeram is a single synchronous 1RW port. A memory with
             # independent read and write ports needs a dual-port backend.
-            "mapping_eligible": memory.get("rd_ports", 0) == 1 and memory.get("wr_ports", 0) == 0,
+            "read_clock_enable": memory.get("parameters", {}).get("RD_CLK_ENABLE") ==
+            "1" or memory.get("parameters", {}).get("RD_CLK_ENABLE") == 1,
+            "mapping_eligible": (
+                memory.get("rd_ports", 0) == 1 and memory.get("wr_ports", 0) == 0
+                and (memory.get("parameters", {}).get("RD_CLK_ENABLE") == "1"
+                     or memory.get("parameters", {}).get("RD_CLK_ENABLE") == 1)
+            ),
         })
     manifest = {
         "schema": 1,

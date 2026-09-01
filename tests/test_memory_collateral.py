@@ -9,7 +9,8 @@ def test_memory_collateral_preserves_geometry(tmp_path: Path):
     inventory.write_text(json.dumps({
         "top": "ram",
         "memories": [{"module": "ram", "name": "$mem", "width": 8,
-                       "size": 256, "abits": 8, "rd_ports": 1, "wr_ports": 0}],
+                       "size": 256, "abits": 8, "rd_ports": 1, "wr_ports": 0,
+                       "parameters": {"RD_CLK_ENABLE": "1"}}],
     }))
     result = generate(inventory, tmp_path / "collateral")
     assert result["mapping_ready"] is True
