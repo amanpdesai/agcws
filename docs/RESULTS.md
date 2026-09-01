@@ -61,6 +61,15 @@ produced 8/8 valid simulations against an achieved region-share target. Neither
 short smoke solved its target. These validate profile plumbing and provenance,
 not the full G4 comparison.
 
+A larger one-seed profile run is also complete. The temporal arm at 32
+proposals (`out/aes-temporal-heldout-20260901-seed1/`) produced 32/32 valid
+simulations, retained 2,425 per-cycle samples per candidate, and reached its
+achieved target within budget. The compositional arm
+(`out/aes-compositional-heldout-20260901-seed1/`) produced 32/32 valid
+simulations with 672 per-cycle samples per candidate but did not reach its
+target. This is a G4 plumbing/milestone result for one target and one seed,
+not a comparative profile conclusion.
+
 A third full-budget seed is complete. The three-seed aggregate is
 `out/axi-dma-matrix-calibrated-200-3seed-aggregate.json`, with paired inference
 at `out/axi-dma-matrix-calibrated-200-3seed-inference.json`: 5 policies × 200
