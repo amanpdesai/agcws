@@ -7,9 +7,9 @@ WORKLOAD ?= experiments/workloads/aes_min_scored.json
 EVAL_DIR ?= out/aes-evaluation
 BASELINE_DIR ?= out/aes-baseline-matrix-complete
 ANALYSIS_DIR ?= out/aes-baseline-analysis
-CORPUS_DIR ?= out/aes-random-corpus
+CORPUS_DIR ?= out/aes-pdk-rank-20260831/corpus
 TEMPORAL_CORPUS_DIR ?= out/aes-temporal-corpus
-CROSS_PDK_DIR ?= out/aes-cross-pdk
+CROSS_PDK_DIR ?= out/aes-pdk-rank-20260831
 DMA_CROSS_PDK_DIR ?= out/axi-dma-cross-pdk
 DMA_POLICIES ?= random,mutation,evolutionary,one-shot-agent,offline-hybrid
 DMA_SEARCH_DIR ?= out/axi-dma-search
@@ -101,7 +101,7 @@ cross-pdk:
 	bash scripts/run_aes_cross_pdk.sh "$(WAVEFORM)" "$(CROSS_PDK_DIR)"
 validate-aes-pdk-corpus:
 	$(VENV_PYTHON) scripts/validate_aes_pdk_corpus.py "$(CORPUS_DIR)" \
-		"$(CROSS_PDK_DIR)/sky130hd-synthesis" "$(CROSS_PDK_DIR)/nangate45-synthesis" \
+		"$(CROSS_PDK_DIR)/sky-reports" "$(CROSS_PDK_DIR)/nangate-reports" \
 		--out "$${AGCWS_ARTIFACT_ROOT:-out}/aes-pdk-corpus-validation.json"
 run-aes-pdk-corpus:
 	bash scripts/run_aes_pdk_corpus.sh "$(CORPUS_DIR)" "$(CROSS_PDK_DIR)" \
