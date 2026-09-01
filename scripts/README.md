@@ -322,6 +322,15 @@ python3 scripts/run_ibex_search.py --policy random \
   --budget 20 --seed 0 --out out/ibex-search
 ```
 
+Run a reproducible seed matrix with isolated outputs:
+
+```bash
+python3 scripts/run_ibex_search.py \
+  --policies random,mutation,evolutionary,offline-agent,one-shot-agent,offline-hybrid \
+  --calibration out/ibex-activity-calibration/calibration.json \
+  --budget 200 --seeds 0,1,2,3,4 --out out/ibex-matrix
+```
+
 The runner records RTL per-cycle/window toggle activity and simulator
 provenance through the shared search contract. `--p-min` and `--p-max` are
 activity-envelope bounds, not watts; this path is not an Ibex gate-level

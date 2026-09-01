@@ -33,6 +33,7 @@ def main() -> None:
                         help="calibration.json containing p_min and p_max")
     parser.add_argument("--budget", type=int, default=20)
     parser.add_argument("--seed", type=int, default=0)
+    parser.add_argument("--seeds", help="comma-separated seed matrix; overrides --seed")
     parser.add_argument("--out", type=Path, default=Path("out/ibex-search"))
     args = parser.parse_args()
     if args.calibration:
@@ -44,6 +45,32 @@ def main() -> None:
             parser.error(f"invalid Ibex calibration: {exc}")
     if args.p_min is None or args.p_max is None or args.p_max <= args.p_min:
         parser.error("provide --calibration or valid --p-min/--p-max bounds")
+    if args.seeds:
+        try:
+            seeds = [int(item.strip()) for item in args.seeds.split(",") if item.strip()]
+        except ValueError as exc:
+            parser.error(f"invalid seed matrix: {exc}")
+        if not seeds:
+            parser.error("--seeds must contain at least one integer")
+        results = []
+        for seed in seeds:
+            command = [sys.executable, str(Path(__file__).resolve()),
+                       "--policy", args.policy, "--target", str(args.target),
+                       "--p-min", str(args.p_min), "--p-max", str(args.p_max),
+                       "--budget", str(args.budget), "--seed", str(seed),
+                       "--out", str(args.out / f"seed-{seed}")]
+            if args.policies:
+                command.extend(["--policies", args.policies])
+            if args.calibration:
+                command.extend(["--calibration", str(args.calibration)])
+            completed = subprocess.run(command, check=True, text=True, capture_output=True)
+            results.append(json.loads(completed.stdout))
+        args.out.mkdir(parents=True, exist_ok=True)
+        (args.out / "seeds.json").write_text(
+            json.dumps({"seeds": results}, indent=2, sort_keys=True) + "\n"
+        )
+        print(json.dumps({"seeds": seeds, "output": str(args.out.resolve())}, indent=2))
+        return
     if args.policies:
         policies = [item.strip() for item in args.policies.split(",") if item.strip()]
         allowed = set(choices)
