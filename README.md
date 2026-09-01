@@ -96,7 +96,7 @@ flow and copied Liberty inputs; cloud
 credentials and optional LLM integrations are exercised only in experiments.
 
 The current verified evidence inventory is maintained in
-[`docs/RESULTS.md`](docs/RESULTS.md), including the three-seed DMA aggregate,
+[`docs/RESULTS.md`](docs/RESULTS.md), including the five-seed DMA aggregate,
 paired inference output, and three-seed temporal/compositional profile snapshot.
 It also includes the `riscv64-unknown-elf` compiler/binutils pair, FuseSoC,
 and the native dependencies needed to build and run the pinned Ibex simulator.
