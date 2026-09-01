@@ -147,6 +147,9 @@ distinct policies, three seeds per target-policy cell, and 32 proposal slots per
 run. The matrix has 10 target-policy groups and 953 valid trials out of 960
 proposal slots; it is a preliminary two-target activity comparison, not the
 full preregistered profile factorial or a gate-level power result.
+The corresponding convergence figures are
+`out/figures/temporal-policy-convergence.png` and
+`out/figures/compositional-policy-convergence.png`.
 
 The corresponding compositional comparison is archived at
 `out/aes-compositional-policy-matrix-20260901-v2-aggregate.json`: two achieved
