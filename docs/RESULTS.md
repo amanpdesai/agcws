@@ -274,6 +274,12 @@ three isolated runs produced one valid simulation with zero schema, protocol,
 functional, or useful-work failures. This validates orchestration and artifact
 separation only; it is not comparative performance evidence.
 
+A three-proposal-per-policy Ibex pilot (seed `20260901`) then completed with
+9/9 valid simulations across random, mutation, and evolutionary policies. The
+activity-tier summaries are retained in the generated matrix format; this pilot
+is intentionally too small for an inferential comparison and is not used as a
+headline result.
+
 The memory inventory and collateral path was validated on the current pinned
 RTL closures. AES `aes_cipher_core` produced zero inferred memories. AXI DMA
 produced 13 internal 32-entry FIFO memories with independent read and write
