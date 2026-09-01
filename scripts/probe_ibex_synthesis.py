@@ -65,6 +65,15 @@ def main() -> None:
             (Path(path).parent for path in source_paths)
             if (path / filename).is_file()
         )
+    # FuseSoC may preserve include-only directories from another target in its
+    # generated manifest.  They are unsafe for a core-only probe unless the
+    # resolved source closure actually contains that header.
+    if args.top == "ibex_core":
+        include_dir_paths = {
+            path for path in include_dir_paths
+            if "prim_util_memload" not in str(path)
+            and "simple_system" not in str(path)
+        }
     if any("third_party/ibex" in path for path in source_paths):
         package_root = repository_root / "third_party/ibex/vendor/lowrisc_ip/ip/prim/rtl"
         # The resolver may include both the original vendor copy and FuseSoC's
