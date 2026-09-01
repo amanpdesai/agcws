@@ -45,7 +45,9 @@ experiment still requires the full multi-design/profile factorial study and
 full Ibex synthesis/power integration. The full 91-source Ibex closure now passes
 Verilator lint in the reproducible container. The standalone
 `lowrisc:ibex:ibex_core` Slang/Yosys frontend probe now
-elaborates and maps successfully from an isolated artifact root. The default
+elaborates successfully from an isolated artifact root. Memory inventory is
+also reproducible, but the current asynchronous read memories fall back to
+FFs; no BSG macro-mapped Ibex netlist is claimed. The default
 `lowrisc:ibex:ibex_simple_system` wrapper still fails at its own elaboration
 boundary; no Ibex netlist or power result is treated as valid until synthesis
 and mapping are completed for the selected closure.
@@ -65,7 +67,7 @@ frozen generic prompt. The offline agent has completed a real AES smoke run
 under the shared evaluator budget; Vertex credentials/model billing and a
 comparative cloud-agent run remain unverified.
 
-Latest verification checkpoint (2026-09-01): `make verify` passes with 181
+Latest verification checkpoint (2026-09-01): `make verify` passes with 188
 tests passed and one skipped, Ruff clean, a valid reproducibility audit, and
 valid AES/AXI artifacts. Checked-in Sky130 HD and Nangate45 Liberty files both
 contain characterized `internal_power`, rise/fall power, leakage, capacitance,
