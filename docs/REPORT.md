@@ -58,11 +58,11 @@ and `out/axi-dma-inference-5seed.json`. They cover one scalar target, five
 policies, five seeds, and 200 proposals on the coupled activity oracle. They
 must be labeled as a preliminary single-design activity study, not a full
 multi-design factorial or gate-level conclusion. Current profile-arm evidence is
-summarized in `docs/RESULTS.md`; it covers one achieved target per profile class,
-not a full target factorial. The current pilot now covers all four achieved
-temporal schedules and all five achieved compositional targets, with three
-seeds at 32 proposals per target, but it remains activity-only and below the
-preregistered comparative scope.
+summarized in `docs/RESULTS.md`; it remains activity-only and below the
+preregistered multi-design scope. The completed compositional policy matrix
+covers three achieved targets, five policies, three seeds, and 300 proposal
+slots per target-policy-seed cell. The temporal policy matrix covers four
+achieved targets, five policies, three seeds, and 32 proposal slots per cell.
 The machine-readable pilot aggregates are
 `out/aes-temporal-pilot-aggregate.json` and
 `out/aes-compositional-pilot-aggregate.json`; these preserve the distinct
