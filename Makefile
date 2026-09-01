@@ -23,6 +23,7 @@ TEMPORAL_PILOT_ROOTS ?= out/aes-temporal-heldout-20260901-seed0-32 out/aes-tempo
 COMPOSITIONAL_PILOT_ROOTS ?= out/aes-compositional-heldout-20260901-seed0-32 out/aes-compositional-heldout-20260901-seed1 out/aes-compositional-heldout-20260901-seed2-32 out/aes-compositional-target1-seed0 out/aes-compositional-target1-seed1 out/aes-compositional-target1-seed2 out/aes-compositional-target2-seed0 out/aes-compositional-target2-seed1 out/aes-compositional-target2-seed2 out/aes-compositional-target3-seed0 out/aes-compositional-target3-seed1 out/aes-compositional-target3-seed2 out/aes-compositional-target4-seed0 out/aes-compositional-target4-seed1 out/aes-compositional-target4-seed2
 TEMPORAL_POLICY_MATRIX_ROOT ?= out/aes-temporal-policy-matrix-20260901-v2
 COMPOSITIONAL_POLICY_MATRIX_ROOT ?= out/aes-compositional-policy-matrix-20260901-v2
+COMPOSITIONAL_FULL_POLICY_MATRIX_ROOT ?= out/aes-compositional-policy-matrix-20260901-300
 FINALIST_TRIALS ?= $(BASELINE_DIR)/target-0.50/seed-0/random/trials.jsonl
 WAVEFORM ?= $(EVAL_DIR)/activity.vcd
 DMA_WAVEFORM ?= out/axi-dma-coupled/activity.vcd
@@ -89,6 +90,8 @@ plot-temporal-policy-matrix:
 	$(VENV_PYTHON) analysis/plot_search_curves.py "$(TEMPORAL_POLICY_MATRIX_ROOT)" --out "$${AGCWS_ARTIFACT_ROOT:-out}/figures/temporal-policy-convergence.png"
 plot-compositional-policy-matrix:
 	$(VENV_PYTHON) analysis/plot_search_curves.py "$(COMPOSITIONAL_POLICY_MATRIX_ROOT)" --out "$${AGCWS_ARTIFACT_ROOT:-out}/figures/compositional-policy-convergence.png"
+plot-compositional-full-policy-matrix:
+	$(VENV_PYTHON) analysis/plot_search_curves.py "$(COMPOSITIONAL_FULL_POLICY_MATRIX_ROOT)" --out "$${AGCWS_ARTIFACT_ROOT:-out}/figures/compositional-policy-convergence-300.png"
 analyze-baseline:
 	@mkdir -p "$(ANALYSIS_DIR)"
 	PYTHONPATH=src $(VENV_PYTHON) scripts/aggregate_runs.py "$(BASELINE_DIR)" --out "$(ANALYSIS_DIR)/aggregate.json"
@@ -131,8 +134,12 @@ aggregate-temporal-policy-matrix:
 	PYTHONPATH=src $(VENV_PYTHON) scripts/aggregate_runs.py "$(TEMPORAL_POLICY_MATRIX_ROOT)" --out "$${AGCWS_ARTIFACT_ROOT:-out}/aes-temporal-policy-matrix-20260901-v2-aggregate.json"
 aggregate-compositional-policy-matrix:
 	PYTHONPATH=src $(VENV_PYTHON) scripts/aggregate_runs.py "$(COMPOSITIONAL_POLICY_MATRIX_ROOT)" --out "$${AGCWS_ARTIFACT_ROOT:-out}/aes-compositional-policy-matrix-20260901-v2-aggregate.json"
+aggregate-compositional-full-policy-matrix:
+	PYTHONPATH=src $(VENV_PYTHON) scripts/aggregate_runs.py "$(COMPOSITIONAL_FULL_POLICY_MATRIX_ROOT)" --out "$${AGCWS_ARTIFACT_ROOT:-out}/aes-compositional-policy-matrix-20260901-300-aggregate.json"
 audit-profile-matrix:
 	$(VENV_PYTHON) scripts/audit_profile_matrix.py out/aes-compositional-targets.json out/aes-compositional-policy-matrix-20260901-v2-aggregate.json --policies random mutation evolutionary offline-agent one-shot-agent --seeds 3 --budget 32
+audit-compositional-full-policy-matrix:
+	$(VENV_PYTHON) scripts/audit_profile_matrix.py out/aes-compositional-targets.json out/aes-compositional-policy-matrix-20260901-300-aggregate.json --policies random mutation evolutionary offline-agent one-shot-agent --seeds 3 --budget 300
 audit-temporal-profile-matrix:
 	$(VENV_PYTHON) scripts/audit_profile_matrix.py out/aes-temporal-targets-2.json out/aes-temporal-targets-4.json out/aes-temporal-policy-matrix-20260901-v2-aggregate.json --policies random mutation evolutionary offline-agent one-shot-agent --seeds 3 --budget 32
 validate-axi-dma-finalists:
