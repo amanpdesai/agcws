@@ -9,7 +9,7 @@ from agcws.policies.profile import build_profile_policy
 def test_profile_policy_factory_is_deterministic(name):
     left = build_profile_policy(name, 7)
     right = build_profile_policy(name, 7)
-    assert left.name == right.name
+    assert left.name == right.name == name
     assert left.propose(None, None, [], 1) == right.propose(None, None, [], 1)
 
 

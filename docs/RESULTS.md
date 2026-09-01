@@ -141,6 +141,13 @@ simulations and 0/3 solves for each. Their aggregates are
 covers all four achieved schedules, 384 valid simulations total, and 2/12
 seed-target solves across the two schedules already reported plus these two.
 
+The profile-policy seam was then exercised on two achieved temporal targets:
+`out/aes-temporal-policy-matrix-20260901-v2-aggregate.json` contains five
+distinct policies, three seeds per target-policy cell, and 32 proposal slots per
+run. The matrix has 10 target-policy groups and 953 valid trials out of 960
+proposal slots; it is a preliminary two-target activity comparison, not the
+full preregistered profile factorial or a gate-level power result.
+
 The five-seed full-budget aggregate is
 `out/axi-dma-matrix-calibrated-200-5seed-aggregate.json`, with paired inference
 at `out/axi-dma-inference-5seed.json`: 5 policies × 200 proposals × 5 seeds.

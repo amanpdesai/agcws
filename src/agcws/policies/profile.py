@@ -22,7 +22,11 @@ def build_profile_policy(name: str, seed: int = 0) -> SearchPolicy:
         "one-shot-agent": lambda: OneShotAgent(seed),
     }
     try:
-        return policies[name]()
+        policy = policies[name]()
     except KeyError as exc:
         choices = ", ".join(sorted(policies))
         raise ValueError(f"unknown profile policy {name!r}; choose from {choices}") from exc
+    # OfflineAgent's class-level name is the generic ``agent``.  Give each
+    # profile arm its declared identity so aggregation cannot merge arms.
+    policy.name = name
+    return policy
