@@ -13,7 +13,7 @@ from agcws.adapters.aes import AESAdapter
 from agcws.experiments.runner import run_search
 from agcws.goals.schema import CompositionalGoal
 from agcws.nodes.power import PowerProfile
-from agcws.policies.random_search import RandomSearch
+from agcws.policies.profile import build_profile_policy
 from agcws import config
 from agcws.nodes.activity import attribute_regions
 from agcws.provenance import file_sha256, toolchain_record
@@ -29,6 +29,9 @@ def main() -> None:
     parser.add_argument("--targets", type=Path,
                         help="achieved-profile target manifest from select_profile_targets.py")
     parser.add_argument("--target-index", type=int, default=0)
+    parser.add_argument("--policy", default="random",
+                        choices=("random", "mutation", "evolutionary",
+                                 "offline-agent", "one-shot-agent"))
     args = parser.parse_args()
     target_source = "built-in-smoke-target"
     shares = {"aes_core": 0.4, "aes_control": 0.2, "aes_data": 0.4}
@@ -82,7 +85,7 @@ def main() -> None:
                         })},
         )
 
-    trials = run_search(adapter, RandomSearch(args.seed), goal, evaluator,
+    trials = run_search(adapter, build_profile_policy(args.policy, args.seed), goal, evaluator,
                         budget=args.budget, batch_size=8, seed=args.seed,
                         output_dir=args.out)
     (args.out / "target.json").write_text(json.dumps({"source": target_source,

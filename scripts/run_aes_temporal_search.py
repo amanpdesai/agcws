@@ -14,6 +14,7 @@ from agcws.experiments.runner import run_search
 from agcws.goals.schema import TemporalGoal
 from agcws.nodes.power import PowerProfile
 from agcws.policies.temporal_search import TemporalRandomSearch
+from agcws.policies.profile import build_profile_policy
 from agcws import config
 from agcws.provenance import file_sha256, toolchain_record
 def main() -> None:
@@ -25,6 +26,9 @@ def main() -> None:
     parser.add_argument("--targets", type=Path,
                         help="achieved-profile target manifest from select_profile_targets.py")
     parser.add_argument("--target-index", type=int, default=0)
+    parser.add_argument("--policy", default="random",
+                        choices=("random", "mutation", "evolutionary",
+                                 "offline-agent", "one-shot-agent"))
     args = parser.parse_args()
     target_source = "built-in-smoke-target"
     if args.targets:
@@ -77,7 +81,9 @@ def main() -> None:
                                 }),
                             })
 
-    trials = run_search(adapter, TemporalRandomSearch(args.seed), goal, evaluator,
+    policy = (TemporalRandomSearch(args.seed) if args.policy == "temporal-random"
+              else build_profile_policy(args.policy, args.seed))
+    trials = run_search(adapter, policy, goal, evaluator,
                         budget=args.budget, batch_size=8, seed=args.seed,
                         output_dir=args.out)
     (args.out / "target.json").write_text(json.dumps({"source": target_source,

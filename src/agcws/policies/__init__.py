@@ -5,4 +5,5 @@ from .evolutionary import EvolutionarySearch
 from .hybrid import HybridSearch
 from .random_search import RandomSearch
 from .vertex import VertexAgent
-__all__ = ["AgentPolicy", "EvolutionarySearch", "HybridSearch", "MutationSearch", "OfflineAgent", "OneShotAgent", "RandomSearch", "SearchPolicy", "VertexAgent"]
+from .profile import build_profile_policy
+__all__ = ["AgentPolicy", "EvolutionarySearch", "HybridSearch", "MutationSearch", "OfflineAgent", "OneShotAgent", "RandomSearch", "SearchPolicy", "VertexAgent", "build_profile_policy"]
