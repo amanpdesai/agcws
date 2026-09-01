@@ -300,7 +300,10 @@ python3 scripts/calibrate_ibex_activity.py --samples 10 --seed 0 \
 ```
 
 Pass the resulting `p_min` and `p_max` to `run_ibex_search.py`; these are
-normalized activity units, not watts.
+normalized activity units, not watts. The runner supports `random`, `mutation`,
+`evolutionary`, `offline-agent`, `one-shot-agent`, and `offline-hybrid`; the
+offline agent arms are deterministic smoke/comparison surrogates, not Vertex
+AI evidence.
 
 Run the proposal-counted Ibex activity search (inside the verification
 container, because each proposal compiles and runs the upstream simple-system
