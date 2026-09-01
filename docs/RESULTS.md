@@ -30,6 +30,11 @@ multi-design factorial study has not yet been completed.
   prompt hash is available, but reports missing `AGCWS_GCP_PROJECT` and
   `AGCWS_GEMINI_MODEL`; no cloud API call was made and no Vertex comparative
   result is claimed.
+- `make analyze-baseline BASELINE_DIR=out/aes-baseline-matrix-complete
+  ANALYSIS_DIR=out/final-analysis` completes successfully, producing 25
+  policy-target groups (125 run summaries across five policies and five scalar
+  targets) and a reproducible convergence figure. This verifies the analysis
+  tooling; it is not the undeclared multi-design final study.
 
 ## Preliminary AXI-DMA activity calibration
 
