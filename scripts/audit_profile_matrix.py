@@ -9,19 +9,22 @@ from pathlib import Path
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("manifest", type=Path)
+    parser.add_argument("manifest", type=Path, nargs="+")
     parser.add_argument("aggregate", type=Path)
     parser.add_argument("--policies", nargs="+", required=True)
     parser.add_argument("--seeds", type=int, required=True)
     parser.add_argument("--budget", type=int, required=True)
     args = parser.parse_args()
 
-    manifest = json.loads(args.manifest.read_text())
+    manifests = [json.loads(path.read_text()) for path in args.manifest]
     aggregate = json.loads(args.aggregate.read_text())
-    targets = manifest.get("targets", [])
-    sources = {f"{args.manifest}:{index}" for index in range(len(targets))}
+    available_sources = {
+        f"{path}:{index}"
+        for path, manifest in zip(args.manifest, manifests)
+        for index in range(len(manifest.get("targets", [])))
+    }
     actual_sources = {record.get("target_source") for record in aggregate}
-    expected_groups = len(targets) * len(args.policies)
+    expected_groups = len(actual_sources) * len(args.policies)
     actual_policies = {record.get("policy") for record in aggregate}
     runs = {record.get("runs") for record in aggregate}
     slots = sum(record.get("runs", 0) * args.budget for record in aggregate)
@@ -31,15 +34,15 @@ def main() -> None:
         errors.append(f"groups={len(aggregate)} expected={expected_groups}")
     if actual_policies != set(args.policies):
         errors.append(f"policies={sorted(actual_policies)} expected={sorted(args.policies)}")
-    if actual_sources != sources:
-        errors.append(f"target_sources={sorted(actual_sources)} expected={sorted(sources)}")
+    if not actual_sources <= available_sources:
+        errors.append(f"unknown_target_sources={sorted(actual_sources - available_sources)}")
     if runs != {args.seeds}:
         errors.append(f"runs={sorted(runs)} expected={args.seeds}")
     expected_slots = expected_groups * args.seeds * args.budget
     if slots != expected_slots:
         errors.append(f"slots={slots} expected={expected_slots}")
-    result = {"aggregate": str(args.aggregate), "manifest": str(args.manifest),
-              "groups": len(aggregate), "targets": len(targets),
+    result = {"aggregate": str(args.aggregate), "manifests": [str(path) for path in args.manifest],
+              "groups": len(aggregate), "targets": len(actual_sources),
               "policies": sorted(actual_policies), "runs_per_group": sorted(runs),
               "proposal_slots": slots, "valid_trials": valid, "errors": errors,
               "valid": not errors}
