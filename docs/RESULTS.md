@@ -157,6 +157,15 @@ multi-design or gate-level result. The manifest contains three targets; older
 notes referring to five targets describe a superseded corpus and are not part
 of this matrix.
 
+The rerun at the preregistered profile budget is archived at
+`out/aes-compositional-policy-matrix-20260901-300-aggregate.json`: the same
+three achieved region-share targets, five policies, three seeds, and 300
+proposal slots per cell. It contains 15 target-policy groups and 13,410 valid
+trials out of 13,500 proposal slots, with no profile-audit errors. This remains
+preliminary AES activity-oracle evidence, not a multi-design or gate-level
+result; the corresponding figure is
+`out/figures/compositional-policy-convergence-300.png`.
+
 The five-seed full-budget aggregate is
 `out/axi-dma-matrix-calibrated-200-5seed-aggregate.json`, with paired inference
 at `out/axi-dma-inference-5seed.json`: 5 policies × 200 proposals × 5 seeds.
