@@ -6,7 +6,7 @@ multi-design factorial study has not yet been completed.
 
 ## Verified infrastructure
 
-- `make verify`: 171 tests passed, one skipped; Ruff clean.
+- `make verify`: 173 tests passed, one skipped; Ruff clean.
 - `make research-smoke`: passed.
 - `make container-smoke`: passed, including FuseSoC/Ibex source preparation
   and deterministic workload compilation.
@@ -162,9 +162,9 @@ other designs, and does not include Vertex-backed agent trials.
 
 ## Known limitations
 
-- Ibex core elaboration and RTL/source closure are reproducible; the bounded
-  Liberty-mapping probe has not completed a mapped netlist, so Ibex
-  gate-level power is unsupported.
+- Ibex core elaboration, RTL/source closure, and standalone-core mapping are
+  reproducible; simple-system wrapper mapping and Ibex gate-level power
+  integration remain unsupported.
 - DMA finalist OpenSTA reports have sparse activity annotation (about 1.31%
   for Sky130 and 0.77% for Nangate45 in the recorded run); they are retained
   as diagnostic evidence.

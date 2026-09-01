@@ -44,7 +44,7 @@ workload runs and full Ibex synthesis/power integration remain before the
 widened experiment is complete. The full 91-source Ibex closure now passes
 Verilator lint in the reproducible container. The pinned Slang/Yosys synthesis
 The standalone `lowrisc:ibex:ibex_core` Slang/Yosys frontend probe now
-elaborates successfully from an isolated artifact root. The default
+elaborates and maps successfully from an isolated artifact root. The default
 `lowrisc:ibex:ibex_simple_system` wrapper still fails at its own elaboration
 boundary; no Ibex netlist or power result is treated as valid until synthesis
 and mapping are completed for the selected closure.
@@ -78,8 +78,8 @@ now been executed and mechanically verified at 250 run summaries. The full
 multi-design/profile factorial study has not been run and must not be
 described as complete. The Ibex core frontend
 elaborates from an isolated FuseSoC closure, but the bounded Liberty-mapping
-probe has not produced a completed mapped netlist; Ibex gate-level power is
-therefore unsupported. Vertex-backed comparative runs remain blocked on
+wrapper mapping and Ibex gate-level power integration remain unsupported.
+Vertex-backed comparative runs remain blocked on
 project/model/billing configuration outside the repository.
 
 The corrected coupled-DMA calibration now covers three random seeds and 48
