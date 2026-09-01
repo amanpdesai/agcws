@@ -285,6 +285,12 @@ bounds completed 15/15 valid simulations across the same three policies. This
 exercises history-dependent mutation and evolutionary proposals under a shared
 budget; it remains activity-only and too small for an inferential claim.
 
+The complete local Ibex arm set was also smoke-tested in Docker at one proposal
+per arm: random, mutation, evolutionary, offline-agent, one-shot-agent, and
+offline-hybrid. All 6/6 simulations were valid, with no schema, protocol,
+functional, or useful-work failures. This confirms common-runner compatibility;
+it is not comparative performance evidence.
+
 The memory inventory and collateral path was validated on the current pinned
 RTL closures. AES `aes_cipher_core` produced zero inferred memories. AXI DMA
 produced 13 internal 32-entry FIFO memories with independent read and write
