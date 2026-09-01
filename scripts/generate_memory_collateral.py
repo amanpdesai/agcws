@@ -17,13 +17,19 @@ def generate(inventory_path: Path, output_dir: Path, *, backend: str = "bsg_fake
     data = json.loads(inventory_path.read_text())
     output_dir.mkdir(parents=True, exist_ok=True)
     macros = []
+    seen_geometries = {}
     for index, memory in enumerate(data.get("memories", [])):
         width = memory.get("width")
         depth = memory.get("size")
         abits = memory.get("abits")
         if not all(isinstance(value, int) and value > 0 for value in (width, depth, abits)):
             raise ValueError(f"memory has incomplete geometry: {memory.get('name')}")
-        name = f"agcws_mem_{index}_{memory['name'].replace('$', 'mem_')}"
+        geometry = (width, depth, abits, memory.get("rd_ports", 0), memory.get("wr_ports", 0))
+        is_new = geometry not in seen_geometries
+        macro_index = seen_geometries.setdefault(geometry, len(seen_geometries))
+        name = f"agcws_mem_{macro_index}_{memory['name'].replace('$', 'mem_')}"
+        if not is_new:
+            continue
         macros.append({
             "source_module": memory["module"],
             "source_name": memory["name"],
