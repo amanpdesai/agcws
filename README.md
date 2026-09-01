@@ -32,6 +32,8 @@ make research-smoke
 make analyze-baseline BASELINE_DIR=out/aes-baseline-matrix-complete ANALYSIS_DIR=out/final-analysis
 make validate-finalists FINALIST_TRIALS=out/aes-baseline-matrix/target-0.50/seed-0/random/trials.jsonl
 make cross-pdk-dma DMA_WAVEFORM=out/axi-dma-coupled/activity.vcd
+make axi-dma-search BUDGET=200 SEEDS=0
+make infer-dma
 PYTHONPATH=src python scripts/run_aes_task.py \
   experiments/workloads/aes_min_scored.json out/aes-core-synthesis-final4
 ```
@@ -79,6 +81,10 @@ Verification is available locally through the Python contract suite, Makefile
 smoke targets, and Docker build/smoke test. The container includes the open EDA
 flow and copied Liberty inputs; cloud
 credentials and optional LLM integrations are exercised only in experiments.
+
+The current verified evidence inventory is maintained in
+[`docs/RESULTS.md`](docs/RESULTS.md), including the three-seed DMA aggregate,
+paired inference output, and three-seed temporal/compositional profile snapshot.
 It also includes the `riscv64-unknown-elf` compiler/binutils pair, FuseSoC,
 and the native dependencies needed to build and run the pinned Ibex simulator.
 

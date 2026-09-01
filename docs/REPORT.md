@@ -53,6 +53,13 @@ Current AES scalar source: `out/aes-analysis-10seed/aggregate.json`, covering
 AES scalar targets, five policies, and exactly ten seeds per cell. It is still
 not the final multi-design factorial result.
 
+Current DMA pilot sources are `out/axi-dma-matrix-calibrated-200-3seed-aggregate.json`
+and `out/axi-dma-matrix-calibrated-200-3seed-inference.json`. They cover three
+seeds at 200 proposals on the coupled activity oracle and must be labeled as a
+preliminary single-design activity study. Current profile-arm evidence is
+summarized in `docs/RESULTS.md`; it covers one achieved target per profile class,
+not a full target factorial.
+
 ## 5. Figures
 
 The current reproducible convergence figure is
