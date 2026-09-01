@@ -64,7 +64,7 @@ frozen generic prompt. The offline agent has completed a real AES smoke run
 under the shared evaluator budget; Vertex credentials/model billing and a
 comparative cloud-agent run remain unverified.
 
-Latest verification checkpoint (2026-09-01): `make verify` passes with 175
+Latest verification checkpoint (2026-09-01): `make verify` passes with 181
 tests passed and one skipped, Ruff clean, a valid reproducibility audit, and
 valid AES/AXI artifacts. Checked-in Sky130 HD and Nangate45 Liberty files both
 contain characterized `internal_power`, rise/fall power, leakage, capacitance,
@@ -94,9 +94,11 @@ the panel remains small and underpowered for definitive policy claims.
 
 Slice 9 has executable AES temporal and compositional search drivers using the
 activity oracle, achieved-profile target selection, per-cycle/windowed profiles,
-and provenance. Shared-policy pilot matrices are archived for two temporal and
-two compositional targets at five policies and three seeds; the full G4 target
-factorial and finalist gate-level validation remain. Slice 11 has a rebuildable
+and provenance. The temporal pilot matrix covers four targets at five policies
+and three seeds; the completed compositional matrix covers three targets at five
+policies and three seeds with 300 proposal slots per run. These are activity-
+oracle comparisons; the full multi-design G4 target factorial and finalist
+gate-level validation remain. Slice 11 has a rebuildable
 Docker image, container smoke test, reproducibility audit
 (`make audit-reproducibility`), and contributor contract; upstream extraction
 and PR preparation remain.
