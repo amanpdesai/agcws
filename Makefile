@@ -36,7 +36,7 @@ IBEX_CORE ?= lowrisc:ibex:ibex_simple_system
 IBEX_SOURCES ?= $(if $(AGCWS_ARTIFACT_ROOT),$(AGCWS_ARTIFACT_ROOT),out)/ibex-sources/sources.json
 IBEX_TOP ?= ibex_top
 
-.PHONY: test lint dev-install analysis-install verification-install chia-install chia-smoke chia-node-smoke upstream-dma-reference research-smoke audit-reproducibility vertex-preflight verify-artifact inspect-liberty inspect-liberties check-liberty-coverage synth-aes evaluate-aes determinism plot-activity plot-search-curves analyze-baseline random-corpus temporal-corpus temporal-search compositional-search baseline-matrix cross-pdk run-aes-pdk-corpus validate-aes-pdk-corpus validate-finalists cross-pdk-dma axi-dma-search aggregate-axi-dma-calibration infer-dma aggregate-temporal-pilot aggregate-compositional-pilot aggregate-temporal-policy-matrix aggregate-compositional-policy-matrix validate-axi-dma-finalists check-axi-dma-rtl run-axi-dma-rd-smoke run-axi-dma-wr-smoke run-axi-dma-workload run-axi-dma-coupled run-axi-memory-smoke compile-ibex resolve-ibex-sources probe-ibex-synthesis synthesize-ibex-core check-ibex-rtl run-ibex verify-ibex verify container-smoke
+.PHONY: test lint dev-install analysis-install verification-install chia-install chia-smoke chia-node-smoke upstream-dma-reference research-smoke audit-reproducibility vertex-preflight verify-artifact inspect-liberty inspect-liberties check-liberty-coverage synth-aes evaluate-aes determinism plot-activity plot-search-curves plot-temporal-policy-matrix plot-compositional-policy-matrix analyze-baseline random-corpus temporal-corpus temporal-search compositional-search baseline-matrix cross-pdk run-aes-pdk-corpus validate-aes-pdk-corpus validate-finalists cross-pdk-dma axi-dma-search aggregate-axi-dma-calibration infer-dma aggregate-temporal-pilot aggregate-compositional-pilot aggregate-temporal-policy-matrix aggregate-compositional-policy-matrix validate-axi-dma-finalists check-axi-dma-rtl run-axi-dma-rd-smoke run-axi-dma-wr-smoke run-axi-dma-workload run-axi-dma-coupled run-axi-memory-smoke compile-ibex resolve-ibex-sources probe-ibex-synthesis synthesize-ibex-core check-ibex-rtl run-ibex verify-ibex verify container-smoke
 test:
 	$(VENV_PYTHON) -m pytest -q
 dev-install:
@@ -85,6 +85,10 @@ plot-activity:
 	$(VENV_PYTHON) analysis/plot_activity.py "$(EVAL_DIR)/activity.json" --out "$${AGCWS_ARTIFACT_ROOT:-out}/figures/activity.png"
 plot-search-curves:
 	$(VENV_PYTHON) analysis/plot_search_curves.py "$(BASELINE_DIR)" --out "$${AGCWS_ARTIFACT_ROOT:-out}/figures/search-curves.png"
+plot-temporal-policy-matrix:
+	$(VENV_PYTHON) analysis/plot_search_curves.py "$(TEMPORAL_POLICY_MATRIX_ROOT)" --out "$${AGCWS_ARTIFACT_ROOT:-out}/figures/temporal-policy-convergence.png"
+plot-compositional-policy-matrix:
+	$(VENV_PYTHON) analysis/plot_search_curves.py "$(COMPOSITIONAL_POLICY_MATRIX_ROOT)" --out "$${AGCWS_ARTIFACT_ROOT:-out}/figures/compositional-policy-convergence.png"
 analyze-baseline:
 	@mkdir -p "$(ANALYSIS_DIR)"
 	PYTHONPATH=src $(VENV_PYTHON) scripts/aggregate_runs.py "$(BASELINE_DIR)" --out "$(ANALYSIS_DIR)/aggregate.json"

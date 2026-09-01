@@ -38,6 +38,8 @@ make aggregate-temporal-pilot
 make aggregate-compositional-pilot
 make aggregate-temporal-policy-matrix
 make aggregate-compositional-policy-matrix
+make plot-temporal-policy-matrix
+make plot-compositional-policy-matrix
 PYTHONPATH=src python scripts/run_aes_task.py \
   experiments/workloads/aes_min_scored.json out/aes-core-synthesis-final4
 ```
