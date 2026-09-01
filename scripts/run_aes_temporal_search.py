@@ -82,6 +82,11 @@ def main() -> None:
                         output_dir=args.out)
     (args.out / "target.json").write_text(json.dumps({"source": target_source,
         "goal": {"windows": goal.windows, "profile": goal.profile}}, indent=2) + "\n")
+    summary_path = args.out / "summary.json"
+    summary = json.loads(summary_path.read_text())
+    summary["target_source"] = target_source
+    summary["target_index"] = args.target_index
+    summary_path.write_text(json.dumps(summary, indent=2, sort_keys=True) + "\n")
     print(json.dumps({"trials": len(trials), "output": str(args.out.resolve()),
                       "target_source": target_source}, indent=2))
 

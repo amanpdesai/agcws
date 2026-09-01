@@ -30,3 +30,12 @@ def test_aggregate_keeps_unsolved_runs_in_denominator():
         "validity_failures": {"SCHEMA": 0, "PROTOCOL": 0,
                               "FUNCTIONAL": 0, "USEFUL_WORK": 0},
     }]
+
+
+def test_aggregate_keeps_profile_targets_separate():
+    base = {"policy": "random", "design": "aes", "target": "profile",
+            "solved": False, "auc_best_so_far": 1.0,
+            "evaluations_to_target": 2}
+    result = aggregate_summaries([base | {"target_source": "burst"},
+                                  base | {"target_source": "ramp"}])
+    assert [row["target_source"] for row in result] == ["burst", "ramp"]

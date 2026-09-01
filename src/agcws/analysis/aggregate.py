@@ -13,13 +13,16 @@ def aggregate_summaries(records: Iterable[dict]) -> list[dict]:
     unsolved runs. Records may include ``policy`` and ``design`` metadata; an
     absent design is grouped as ``unknown``.
     """
-    groups: defaultdict[tuple[str, str, str], list[dict]] = defaultdict(list)
+    groups: defaultdict[tuple[str, str, str, str | None], list[dict]] = defaultdict(list)
     for record in records:
         groups[(str(record.get("policy", "unknown")),
                 str(record.get("design", "unknown")),
-                str(record.get("target", "unknown")))].append(record)
+                str(record.get("target", "unknown")),
+                record.get("target_source"))].append(record)
     output = []
-    for (policy, design, target), values in sorted(groups.items()):
+    for (policy, design, target, target_source), values in sorted(groups.items(),
+                                                                  key=lambda item: tuple(
+                                                                      str(x) for x in item[0])):
         count = len(values)
         failure_stages = {stage: sum(
             int(value.get("validity_failures", {}).get(stage, 0)) for value in values
@@ -30,7 +33,7 @@ def aggregate_summaries(records: Iterable[dict]) -> list[dict]:
         eval_ci = bootstrap_mean_ci(
             [value["evaluations_to_target"] for value in values], seed=1
         )
-        output.append({
+        summary = {
             "policy": policy,
             "design": design,
             "target": target,
@@ -47,7 +50,10 @@ def aggregate_summaries(records: Iterable[dict]) -> list[dict]:
             "tokens_in": sum(int(value.get("tokens_in", 0)) for value in values),
             "tokens_out": sum(int(value.get("tokens_out", 0)) for value in values),
             "validity_failures": failure_stages,
-        })
+        }
+        if target_source is not None:
+            summary["target_source"] = str(target_source)
+        output.append(summary)
     return output
 
 
