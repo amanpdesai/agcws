@@ -12,9 +12,14 @@ def audit(directory: Path) -> dict:
     config = json.loads((directory / "bsg_fakeram.json").read_text())
     macros = manifest["macros"]
     errors = []
+    if manifest.get("schema") != 1:
+        errors.append("unsupported or missing collateral schema")
     if len(config.get("srams", [])) != len(macros):
         errors.append("BSG config count differs from macro manifest")
     for macro, sram in zip(macros, config.get("srams", []), strict=False):
+        if "mapping_eligible" not in macro:
+            errors.append(f"{macro.get('source_name', '<unknown>')}: missing mapping_eligible")
+            continue
         expected = f"fakeram{config['tech_nm']}_{macro['physical_depth']}x{macro['physical_width']}"
         if sram.get("name") != expected:
             errors.append(f"{macro['source_name']}: BSG name does not match physical geometry")
@@ -24,7 +29,7 @@ def audit(directory: Path) -> dict:
             errors.append(f"{macro['source_name']}: physical depth mismatch")
     # An empty inventory is a valid no-memory result, but it is not evidence
     # that a mapped memory backend is available.
-    expected_ready = bool(macros) and all(macro["mapping_eligible"] for macro in macros)
+    expected_ready = bool(macros) and all(macro.get("mapping_eligible", False) for macro in macros)
     if manifest["mapping_ready"] != expected_ready:
         errors.append("mapping_ready disagrees with per-macro eligibility")
     result = {"directory": str(directory), "macros": len(macros),
