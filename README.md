@@ -34,6 +34,8 @@ make validate-finalists FINALIST_TRIALS=out/aes-baseline-matrix/target-0.50/seed
 make cross-pdk-dma DMA_WAVEFORM=out/axi-dma-coupled/activity.vcd
 make axi-dma-search BUDGET=200
 make infer-dma
+make aggregate-temporal-pilot
+make aggregate-compositional-pilot
 PYTHONPATH=src python scripts/run_aes_task.py \
   experiments/workloads/aes_min_scored.json out/aes-core-synthesis-final4
 ```

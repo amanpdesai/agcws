@@ -94,6 +94,8 @@ are methodological results, not reasons to substitute unsupported claims.
 - `make chia-smoke chia-node-smoke`
 - `make inspect-liberties`
 - `make analyze-baseline BASELINE_DIR=<complete-run-root> ANALYSIS_DIR=<analysis-root>`
+- `make aggregate-temporal-pilot`
+- `make aggregate-compositional-pilot`
 - finalist validation for every reported synthesis-level result
 - provenance audit and archived manifests
 
