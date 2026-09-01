@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import math
 from pathlib import Path
 
 
@@ -24,6 +25,7 @@ def generate(inventory_path: Path, output_dir: Path, *, backend: str = "bsg_fake
         abits = memory.get("abits")
         if not all(isinstance(value, int) and value > 0 for value in (width, depth, abits)):
             raise ValueError(f"memory has incomplete geometry: {memory.get('name')}")
+        physical_width = 1 << math.ceil(math.log2(width))
         geometry = (width, depth, abits, memory.get("rd_ports", 0), memory.get("wr_ports", 0))
         is_new = geometry not in seen_geometries
         macro_index = seen_geometries.setdefault(geometry, len(seen_geometries))
@@ -40,6 +42,7 @@ def generate(inventory_path: Path, output_dir: Path, *, backend: str = "bsg_fake
             # CACTI used by bsg_fakeram requires at least 64 bytes. Keep the
             # logical geometry and record the padded physical depth explicitly.
             "physical_depth": max(depth, (64 * 8 + width - 1) // width),
+            "physical_width": physical_width,
             "address_bits": abits,
             "read_ports": memory.get("rd_ports", 0),
             "write_ports": memory.get("wr_ports", 0),
@@ -64,8 +67,8 @@ def generate(inventory_path: Path, output_dir: Path, *, backend: str = "bsg_fake
         "snapWidth_nm": 460,
         "snapHeight_nm": 2720,
         "flipPins": True,
-        "srams": [{"name": f"fakeram{tech_nm}_{macro['physical_depth']}x{macro['width']}",
-                   "width": macro["width"], "depth": macro["physical_depth"], "banks": 1}
+        "srams": [{"name": f"fakeram{tech_nm}_{macro['physical_depth']}x{macro['physical_width']}",
+                   "width": macro["physical_width"], "depth": macro["physical_depth"], "banks": 1}
                   for macro in macros],
     }
     (output_dir / "memory-macros.json").write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n")
