@@ -93,6 +93,17 @@ now covers targets 0 and 1. Target 1 has aggregate
 simulations and 0/3 solves. The compositional target set still has additional
 unrun achieved targets.
 
+Those remaining compositional targets are now covered as a pilot: targets 2,
+3, and 4 each ran for three seeds at 32 proposals, adding 288 valid
+simulations. Together with targets 0 and 1, the pilot covers all five achieved
+compositional targets, 480/480 valid simulations, and 0/15 seed-target runs
+solved. Per-target aggregates are stored as
+`out/aes-compositional-target{0..4}-3seed-aggregate.json` (with target 0 and 1
+using their corresponding held-out aggregate paths). The repeated AUC values
+across targets indicate the current random policy is not separating these
+nearby region-share goals at this budget; they are not evidence of target
+generality.
+
 A third full-budget seed is complete. The three-seed aggregate is
 `out/axi-dma-matrix-calibrated-200-3seed-aggregate.json`, with paired inference
 at `out/axi-dma-matrix-calibrated-200-3seed-inference.json`: 5 policies × 200
