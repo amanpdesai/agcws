@@ -122,16 +122,13 @@ now covers targets 0 and 1. Target 1 has aggregate
 simulations and 0/3 solves. The compositional target set still has additional
 unrun achieved targets.
 
-Those remaining compositional targets are now covered as a pilot: targets 2,
-3, and 4 each ran for three seeds at 32 proposals, adding 288 valid
-simulations. Together with targets 0 and 1, the pilot covers all five achieved
-compositional targets, 480/480 valid simulations, and 0/15 seed-target runs
-solved. Per-target aggregates are stored as
-`out/aes-compositional-target{0..4}-3seed-aggregate.json` (with target 0 and 1
-using their corresponding held-out aggregate paths). The repeated AUC values
-across targets indicate the current random policy is not separating these
-nearby region-share goals at this budget; they are not evidence of target
-generality.
+An older compositional pilot record referenced targets 2, 3, and 4 from a
+superseded corpus. Those artifacts are not the current policy matrix and are
+not used for its claims. The current machine-readable manifest contains three
+targets, all of which are covered by the policy matrix below. The repeated AUC
+values across these nearby region-share goals indicate that the current
+32-proposal activity budget is not separating them; they are not evidence of
+target generality.
 
 The remaining achieved temporal schedules are now covered as well: `high_low_high`
 and `ramp` each ran for three seeds at 32 proposals, with 96/96 valid

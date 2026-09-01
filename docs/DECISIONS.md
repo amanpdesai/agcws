@@ -366,8 +366,10 @@ additional seeds before comparative conclusions are drawn.
 
 ## 2026-09-01 — Profile target manifests are not interchangeable
 
-**Finding.** The temporal achieved-target manifest contains one target
-(`low_high_low`); the compositional manifest contains five achieved targets.
+**Finding.** The temporal achieved-target manifest used by the original pilot
+contained one target (`low_high_low`); the current temporal manifest used for
+the policy matrix contains four. The current compositional manifest contains
+three achieved targets.
 The reported three-seed profile snapshot executes temporal target 0 and
 compositional target 0 only.
 **Decision.** Do not synthesize or duplicate a missing temporal target. Treat
@@ -377,8 +379,8 @@ target cardinality explicitly.
 temporal target would violate that rule and make the G4 claim opaque.
 **Rejected.** Reusing a compositional target as temporal; silently falling back
 to the built-in smoke target.
-**Consequence.** A full G4 study needs additional achieved temporal targets
-before target-level generality can be claimed.
+**Consequence.** Target cardinality is recorded per manifest and matrix; no
+profile generality claim is made from the preliminary AES activity matrices.
 
 ## 2026-09-01 — Compositional policy matrix uses the three-target manifest
 
