@@ -82,6 +82,15 @@ elaborates from an isolated FuseSoC closure, but the bounded Liberty-mapping
 wrapper mapping and Ibex gate-level power integration remain unsupported.
 Vertex-backed comparative runs remain blocked on
 project/model/billing configuration outside the repository.
+
+## Memory-aware synthesis track
+
+The first implementation pass inventories inferred Yosys memories before
+`memory_map` and emits contract-only macro collateral. Before enabling it in a
+design flow, validate read/write latency and port semantics, map it to a real
+bsg_fakeram-compatible wrapper, and provide a characterized Liberty model. The
+baseline synthesis paths remain unchanged until those checks pass, preventing
+flop-mapped and macro-mapped power results from being mixed.
 The current reproducible scalar analysis was regenerated from
 `out/aes-baseline-matrix-complete` into `out/final-analysis/`, producing 25
 policy-target records and `convergence.png`; this remains AES-only evidence.

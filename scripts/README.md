@@ -4,6 +4,22 @@ Scripts in this directory are small, inspectable entry points used by local
 and container tasks. They must not embed machine-specific EDA paths; use the
 repository `.env` settings or command-line arguments.
 
+## Memory-aware synthesis
+
+`inventory_yosys_memories.py` preserves inferred memories through Yosys and
+records their geometry. `generate_memory_collateral.py` turns that inventory
+into deterministic macro contracts and a manifest. The output is contract-only
+until a verified bsg_fakeram wrapper and Liberty model are supplied; it is not
+valid input for power claims by itself.
+
+```bash
+make inventory-memories MEMORY_TOP=ram MEMORY_SOURCE=path/to/ram.sv
+make memory-collateral MEMORY_TOP=ram MEMORY_INVENTORY=out/memory-inventory/ram.json
+```
+
+Existing design synthesis remains unchanged until port semantics, mapping, and
+characterization are validated, keeping baseline results comparable.
+
 ```bash
 python scripts/inspect_liberty.py "$AGCWS_LIBERTY"
 python scripts/aes_sources.py
