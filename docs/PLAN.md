@@ -94,7 +94,9 @@ the panel remains small and underpowered for definitive policy claims.
 
 Slice 9 has executable AES temporal and compositional search drivers using the
 activity oracle, achieved-profile target selection, per-cycle/windowed profiles,
-and provenance; the full G4 target study remains. Slice 11 has a rebuildable
+and provenance. Shared-policy pilot matrices are archived for two temporal and
+two compositional targets at five policies and three seeds; the full G4 target
+factorial and finalist gate-level validation remain. Slice 11 has a rebuildable
 Docker image, container smoke test, reproducibility audit
 (`make audit-reproducibility`), and contributor contract; upstream extraction
 and PR preparation remain.
