@@ -61,7 +61,7 @@ upstream-dma-reference:
 research-smoke:
 	AGCWS_PYTHON=$(VENV_PYTHON) bash scripts/research_smoke.sh "$(SYNTH_DIR)" "$${AGCWS_ARTIFACT_ROOT:-out/research-smoke}"
 research-audit:
-	$(MAKE) test lint audit-reproducibility verify-artifact validate-aes-pdk-corpus audit-compositional-full-policy-matrix audit-temporal-profile-matrix check-axi-dma-rtl run-axi-memory-smoke run-axi-dma-workload
+	$(MAKE) test lint chia-smoke chia-node-smoke audit-reproducibility verify-artifact validate-aes-pdk-corpus audit-compositional-full-policy-matrix audit-temporal-profile-matrix check-axi-dma-rtl run-axi-memory-smoke run-axi-dma-workload
 audit-reproducibility:
 	$(VENV_PYTHON) scripts/audit_reproducibility.py
 vertex-preflight:
