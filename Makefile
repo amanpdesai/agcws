@@ -150,9 +150,9 @@ synthesize-ibex-core:
 check-ibex-rtl: resolve-ibex-sources
 	PYTHONPATH=src $(VENV_PYTHON) scripts/check_ibex_verilator.py "$${AGCWS_ARTIFACT_ROOT:-out}/ibex-sources/sources.json"
 run-ibex:
-	bash scripts/run_ibex_workload.sh experiments/workloads/ibex_smoke.json out/ibex
-verify-ibex:
-	$(VENV_PYTHON) scripts/verify_artifact.py "$${IBEX_ARTIFACT:-out/ibex}"
+	bash scripts/run_ibex_workload.sh experiments/workloads/ibex_smoke.json "$${AGCWS_ARTIFACT_ROOT:-out}/ibex"
+verify-ibex: run-ibex
+	$(VENV_PYTHON) scripts/verify_artifact.py "$${IBEX_ARTIFACT:-$${AGCWS_ARTIFACT_ROOT:-out}/ibex}"
 verify:
 	$(MAKE) test lint audit-reproducibility verify-artifact check-axi-dma-rtl run-axi-memory-smoke run-axi-dma-workload
 container-smoke:
