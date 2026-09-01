@@ -8,6 +8,35 @@ export AGCWS_VVP AGCWS_IVERILOG_VPI AGCWS_FST2VCD AGCWS_MYHDL_DIR
 export AGCWS_SLANG_PLUGIN AGCWS_LIBERTY AGCWS_LIBERTY_NANGATE45
 export AGCWS_ARTIFACT_ROOT AGCWS_PROFILE_SMOKE_BUDGET AGCWS_CALIBRATION
 export AGCWS_GCP_PROJECT AGCWS_GEMINI_MODEL
+
+# Portable defaults keep an absent .env from exporting empty executable names.
+ifeq ($(strip $(AGCWS_VERILATOR)),)
+AGCWS_VERILATOR := verilator
+endif
+ifeq ($(strip $(AGCWS_YOSYS)),)
+AGCWS_YOSYS := yosys
+endif
+ifeq ($(strip $(AGCWS_OPENSTA)),)
+AGCWS_OPENSTA := sta
+endif
+ifeq ($(strip $(AGCWS_VCD2SAIF)),)
+AGCWS_VCD2SAIF := vcd2saif
+endif
+ifeq ($(strip $(AGCWS_IVERILOG)),)
+AGCWS_IVERILOG := iverilog
+endif
+ifeq ($(strip $(AGCWS_VVP)),)
+AGCWS_VVP := vvp
+endif
+ifeq ($(strip $(AGCWS_IVERILOG_VPI)),)
+AGCWS_IVERILOG_VPI := iverilog-vpi
+endif
+ifeq ($(strip $(AGCWS_FST2VCD)),)
+AGCWS_FST2VCD := fst2vcd
+endif
+ifeq ($(strip $(AGCWS_ARTIFACT_ROOT)),)
+AGCWS_ARTIFACT_ROOT := out
+endif
 PYTHON ?= python3
 VENV ?= .venv
 VENV_PYTHON ?= $(VENV)/bin/python
