@@ -58,11 +58,18 @@ def run_search(
             # reason to terminate the experiment. Empty slots are materialized
             # below and consume the full requested budget.
             candidates = []
+        # Treat every structurally malformed policy response as a failed batch.
+        # This keeps the proposal-counted budget and schema-failure accounting
+        # intact instead of allowing a bad agent response to crash the run.
+        if not isinstance(candidates, (list, tuple)):
+            candidates = []
         usage = getattr(policy, "last_usage", {})
         # Missing candidates consume their requested slots just like malformed
         # LLM output; this is the primary fairness unit.
         for slot in range(requested):
             workload = candidates[slot] if slot < len(candidates) else {}
+            if not isinstance(workload, dict):
+                workload = {"__malformed_candidate__": workload}
             started = time.monotonic()
             validity = validate_static(adapter, workload)
             profile = None

@@ -52,3 +52,31 @@ def test_runner_records_malformed_batch_as_consumed_schema_slots():
     assert len(trials) == 3
     assert not calls
     assert all(trial.validity.stage.value == "SCHEMA" for trial in trials)
+
+
+def test_runner_records_non_list_policy_response_as_schema_slots():
+    class BadPolicy:
+        name = "bad"
+
+        def propose(self, *_args):
+            return {"not": "a batch"}
+
+    trials = run_search(AESAdapter(), BadPolicy(), ScalarGoal(0.5),
+                        lambda _: PowerProfile(1.0, 1.0, useful_work=24, valid=True),
+                        budget=2, batch_size=2, p_min=0.0, p_max=2.0)
+    assert len(trials) == 2
+    assert all(not trial.validity.valid for trial in trials)
+    assert all(trial.validity.stage.value == "SCHEMA" for trial in trials)
+
+
+def test_runner_records_non_dict_candidate_as_schema_failure():
+    class BadPolicy:
+        name = "bad"
+
+        def propose(self, *_args):
+            return ["not a workload"]
+
+    trials = run_search(AESAdapter(), BadPolicy(), ScalarGoal(0.5),
+                        lambda _: PowerProfile(1.0, 1.0, useful_work=24, valid=True),
+                        budget=1, batch_size=1, p_min=0.0, p_max=2.0)
+    assert trials[0].validity.stage.value == "SCHEMA"
