@@ -35,6 +35,15 @@ endif
 ifeq ($(strip $(AGCWS_FST2VCD)),)
 AGCWS_FST2VCD := fst2vcd
 endif
+ifeq ($(strip $(AGCWS_FUSESOC)),)
+AGCWS_FUSESOC := fusesoc
+endif
+ifeq ($(strip $(AGCWS_RISCV_GCC)),)
+AGCWS_RISCV_GCC := riscv64-unknown-elf-gcc
+endif
+ifeq ($(strip $(AGCWS_RISCV_OBJCOPY)),)
+AGCWS_RISCV_OBJCOPY := riscv64-unknown-elf-objcopy
+endif
 ifeq ($(strip $(AGCWS_ARTIFACT_ROOT)),)
 AGCWS_ARTIFACT_ROOT := out
 endif

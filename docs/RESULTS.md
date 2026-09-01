@@ -240,6 +240,16 @@ are complete.
 
 ## Memory-aware synthesis evidence
 
+## Ibex core synthesis re-check
+
+On 2026-09-01, a fresh Docker run of `make synthesize-ibex-core
+IBEX_TOP=ibex_core` completed successfully after restoring portable defaults for
+the optional FuseSoC and RISC-V tool variables. FuseSoC resolved 96 source files
+and the Slang/Yosys mapping command returned zero. The earlier failure was not a
+timeout: an empty exported `AGCWS_FUSESOC` value bypassed the resolver fallback.
+The mapped core is still not a complete Ibex workload power pipeline; wrapper
+closure and memory-compatible gate-level evaluation remain separate limitations.
+
 The memory inventory and collateral path was validated on the current pinned
 RTL closures. AES `aes_cipher_core` produced zero inferred memories. AXI DMA
 produced 13 internal 32-entry FIFO memories with independent read and write
