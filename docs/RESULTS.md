@@ -152,11 +152,13 @@ The corresponding convergence figures are
 `out/figures/compositional-policy-convergence.png`.
 
 The corresponding compositional comparison is archived at
-`out/aes-compositional-policy-matrix-20260901-v2-aggregate.json`: two achieved
+`out/aes-compositional-policy-matrix-20260901-v2-aggregate.json`: three achieved
 region-share targets, five policies, three seeds, and 32 proposal slots per
-run. It contains 10 target-policy groups and 956 valid trials out of 960
-proposal slots. This is preliminary activity-oracle evidence, not a full
-multi-design or gate-level result.
+run. It contains 15 target-policy groups and 1,434 valid trials out of 1,440
+proposal slots. This is preliminary AES activity-oracle evidence, not a full
+multi-design or gate-level result. The manifest contains three targets; older
+notes referring to five targets describe a superseded corpus and are not part
+of this matrix.
 
 The five-seed full-budget aggregate is
 `out/axi-dma-matrix-calibrated-200-5seed-aggregate.json`, with paired inference

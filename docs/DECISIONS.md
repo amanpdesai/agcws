@@ -380,6 +380,21 @@ to the built-in smoke target.
 **Consequence.** A full G4 study needs additional achieved temporal targets
 before target-level generality can be claimed.
 
+## 2026-09-01 — Compositional policy matrix uses the three-target manifest
+
+**Finding.** `out/aes-compositional-targets.json` contains three achieved
+region-share targets, while older pilot notes referenced five targets from a
+superseded corpus.
+**Decision.** Run and report only the three targets present in the pinned
+manifest: 15 target-policy groups, three seeds, 32 proposal slots per run.
+**Rationale.** Target cardinality must come from the machine-readable achieved
+profile manifest; inventing or duplicating targets would invalidate the
+feasibility construction.
+**Rejected.** Reusing stale five-target notes or silently generating targets
+outside the recorded corpus.
+**Consequence.** The completed matrix has 1,434 valid trials out of 1,440
+proposal slots and remains preliminary AES activity-oracle evidence.
+
 ## 2026-08-31 — Upstream coupled-DMA test is optional reference verification
 
 **Finding.** The pinned `verilog-axi` upstream MyHDL test passes when its Icarus
