@@ -327,7 +327,7 @@ placeholder bounds from entering an experiment:
 
 ```bash
 make ibex-search IBEX_CALIBRATION=out/ibex-activity-calibration/calibration.json \
-  BUDGET=200 SEEDS=0 IBEX_MATRIX_ROOT=out/ibex-matrix
+  BUDGET=200 IBEX_SEEDS=0,1,2,3,4 IBEX_MATRIX_ROOT=out/ibex-matrix
 ```
 
 Run a reproducible seed matrix with isolated outputs:

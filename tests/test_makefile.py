@@ -26,6 +26,7 @@ def test_makefile_exposes_core_tasks():
     assert "plot-search-curves:" in text
     assert "ibex-search:" in text
     assert "IBEX_CALIBRATION" in text
+    assert "IBEX_SEEDS" in text
 
 
 def test_makefile_exposes_baseline_matrix_task():

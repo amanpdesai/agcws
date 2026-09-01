@@ -65,6 +65,7 @@ DMA_POLICIES ?= random,mutation,evolutionary,one-shot-agent,offline-hybrid
 DMA_SEARCH_DIR ?= out/axi-dma-search
 IBEX_MATRIX_ROOT ?= out/ibex-matrix
 IBEX_CALIBRATION ?= out/ibex-activity-calibration/calibration.json
+IBEX_SEEDS ?= 0
 DMA_P_MIN ?= 19.674030658250675
 DMA_P_MAX ?= 19.80286241920591
 DMA_INFERENCE_ROOTS ?= out/axi-dma-matrix-calibrated-200-seed0 out/axi-dma-matrix-calibrated-200-seed1 out/axi-dma-matrix-calibrated-200-seed2 out/axi-dma-matrix-calibrated-200-seed3 out/axi-dma-matrix-calibrated-200-seed4
@@ -251,7 +252,7 @@ verify-ibex: run-ibex
 	$(VENV_PYTHON) scripts/verify_artifact.py --require-activity "$$ibex_root"
 ibex-search:
 	@test -f "$(IBEX_CALIBRATION)" || (echo "run calibrate_ibex_activity.py first or set IBEX_CALIBRATION" >&2; exit 2)
-	PYTHONPATH=src $(VENV_PYTHON) scripts/run_ibex_search.py --calibration "$(IBEX_CALIBRATION)" --budget "$(BUDGET)" --seed "$(SEEDS)" --out "$(IBEX_MATRIX_ROOT)"
+	PYTHONPATH=src $(VENV_PYTHON) scripts/run_ibex_search.py --calibration "$(IBEX_CALIBRATION)" --budget "$(BUDGET)" --seeds "$(IBEX_SEEDS)" --out "$(IBEX_MATRIX_ROOT)"
 aggregate-ibex:
 	PYTHONPATH=src $(VENV_PYTHON) scripts/aggregate_runs.py "$(IBEX_MATRIX_ROOT)" --out "$${AGCWS_ARTIFACT_ROOT:-out}/ibex-matrix-aggregate.json"
 infer-ibex:
