@@ -6,7 +6,7 @@ multi-design factorial study has not yet been completed.
 
 ## Verified infrastructure
 
-- `make verify`: 173 tests passed, one skipped; Ruff clean.
+- `make verify`: 175 tests passed, one skipped; Ruff clean.
 - `make research-smoke`: passed.
 - `make container-smoke`: passed, including FuseSoC/Ibex source preparation
   and deterministic workload compilation.
@@ -138,13 +138,13 @@ simulations and 0/3 solves for each. Their aggregates are
 covers all four achieved schedules, 384 valid simulations total, and 2/12
 seed-target solves across the two schedules already reported plus these two.
 
-A third full-budget seed is complete. The three-seed aggregate is
-`out/axi-dma-matrix-calibrated-200-3seed-aggregate.json`, with paired inference
+The five-seed full-budget aggregate is
+`out/axi-dma-matrix-calibrated-200-5seed-aggregate.json`, with paired inference
 at `out/axi-dma-inference-5seed.json`: 5 policies × 200 proposals × 5 seeds.
-This five-seed panel is still small and underpowered for definitive policy claims;
-use the machine-readable inference for exact paired statistics.
+This panel is still small and underpowered for definitive policy claims; use the
+machine-readable inference for exact paired statistics.
 The corresponding multi-root convergence figure is
-`out/axi-dma-analysis-3seed/convergence.png`, generated from the three seed
+`out/axi-dma-analysis-5seed/convergence.png`, generated from the five seed
 roots with `analysis/plot_search_curves.py`.
 
 ## Preliminary AES scalar study
