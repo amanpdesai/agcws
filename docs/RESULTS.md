@@ -262,6 +262,12 @@ extraction for Ibex. It does not establish Ibex gate-level power: the
 simple-system wrapper still lacks a verified mapped-netlist/OpenSTA path, and
 the core-only netlist is not a drop-in replacement for that wrapper.
 
+A five-sample calibration run (seed `20260901`) completed with every trial
+above the 10,000-instruction useful-work floor. Its measured RTL activity
+envelope was `75.47459106393761–76.16193221572304` total transitions per clock
+edge. These bounds are suitable for activity-tier target normalization only;
+they are not power-in-watts bounds and are not used as gate-level claims.
+
 The memory inventory and collateral path was validated on the current pinned
 RTL closures. AES `aes_cipher_core` produced zero inferred memories. AXI DMA
 produced 13 internal 32-entry FIFO memories with independent read and write
