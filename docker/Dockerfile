@@ -71,7 +71,7 @@ RUN python -m pip install -e '.[analysis,verification]'
 
 ENV PYTHONUNBUFFERED=1 \
     HOME=/tmp \
-    VENV_PYTHON=python \
+    VENV_PYTHON=python3 \
     MPLCONFIGDIR=/tmp/matplotlib \
     AGCWS_VERILATOR=/usr/bin/verilator \
     AGCWS_YOSYS=/usr/bin/yosys \
