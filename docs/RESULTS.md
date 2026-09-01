@@ -23,7 +23,11 @@ multi-design factorial study has not yet been completed.
 - AES cross-PDK corpus: the archived 10-workload corpus at
   `out/aes-pdk-rank-20260831/corpus` validates against its paired Sky130 and
   Nangate45 report roots with Spearman ρ=`0.9999999999999998` (10 shared
-  workloads); see `out/aes-pdk-rank-20260831/corpus-validation.json`.
+workloads); see `out/aes-pdk-rank-20260831/corpus-validation.json`.
+- The archived temporal cross-PDK diagnostic reports Spearman ρ≈`-1.0` across
+  four shared schedules (`out/aes-temporal-cross-pdk.json`), indicating a rank
+  inversion rather than agreement. It is excluded from validation claims until
+  the temporal workload/report pairing is independently reconciled.
 - A fresh containerized AES cross-PDK run also completes both Sky130 and
   Nangate45 synthesis/OpenSTA passes, with waveform and Liberty hashes recorded
   in `out/aes-cross-pdk/comparison.json`. Its single-workload annotation is
