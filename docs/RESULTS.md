@@ -319,6 +319,13 @@ simulations. Its activity-tier AUC summaries were random `3.7176`, mutation
 offline-agent reached tolerance in this seed. These values remain descriptive
 until the planned multi-seed aggregation is complete.
 
+Seed `2` of the full-budget Ibex matrix completed with 1,200/1,200 valid
+simulations. Its activity-tier AUC summaries were random `6.8117`, mutation
+`35.1314`, evolutionary `22.4766`, offline-agent `6.8117`, one-shot-agent
+`146.2547`, and offline-hybrid `35.1314`; random, evolutionary, and
+offline-agent reached tolerance in this seed. These values remain descriptive
+until the full seed set is aggregated.
+
 The memory inventory and collateral path was validated on the current pinned
 RTL closures. AES `aes_cipher_core` produced zero inferred memories. AXI DMA
 produced 13 internal 32-entry FIFO memories with independent read and write
