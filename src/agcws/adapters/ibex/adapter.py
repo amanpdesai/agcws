@@ -1,6 +1,9 @@
 """Instruction-stream legality boundary for the Ibex adapter."""
 from __future__ import annotations
 
+import copy
+import random
+
 from agcws.adapters.base import DesignAdapter, SimResult, Validity, ValidityStage
 
 
@@ -77,3 +80,38 @@ class IbexAdapter(DesignAdapter):
 
     def useful_work(self, result: SimResult) -> float:
         return result.useful_work
+
+    def random_workload(self, rng: random.Random) -> dict:
+        """Generate a legal, terminating instruction-stream candidate."""
+        length = rng.randint(self.useful_work_floor, self.useful_work_floor + 256)
+        ops = ("nop", "addi", "add", "and", "or", "xor", "lw", "sw")
+        program = []
+        for _ in range(length):
+            op = rng.choice(ops)
+            if op in {"lw", "sw"}:
+                instruction = {"op": op, "address": rng.randrange(0, self.memory_size - 3, 4)}
+            elif op == "addi":
+                instruction = {"op": op, "immediate": rng.randint(-16, 16)}
+            else:
+                instruction = {"op": op}
+            program.append(instruction)
+        program.append({"op": "ecall"})
+        return {"program": program, "memory_size": self.memory_size}
+
+    def mutate_workload(self, workload: dict, rng: random.Random) -> dict:
+        """Mutate one stream while retaining its terminating ecall."""
+        candidate = copy.deepcopy(workload)
+        program = candidate["program"]
+        body = program[:-1] if program and program[-1].get("op") == "ecall" else program
+        if not body:
+            return self.random_workload(rng)
+        index = rng.randrange(len(body))
+        op = rng.choice(("nop", "addi", "add", "and", "or", "xor", "lw", "sw"))
+        if op in {"lw", "sw"}:
+            body[index] = {"op": op, "address": rng.randrange(0, self.memory_size - 3, 4)}
+        elif op == "addi":
+            body[index] = {"op": op, "immediate": rng.randint(-16, 16)}
+        else:
+            body[index] = {"op": op}
+        candidate["program"] = body + [{"op": "ecall"}]
+        return candidate
