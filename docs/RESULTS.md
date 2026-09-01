@@ -104,6 +104,14 @@ across targets indicate the current random policy is not separating these
 nearby region-share goals at this budget; they are not evidence of target
 generality.
 
+The remaining achieved temporal schedules are now covered as well: `high_low_high`
+and `ramp` each ran for three seeds at 32 proposals, with 96/96 valid
+simulations and 0/3 solves for each. Their aggregates are
+`out/aes-temporal-target2-3seed-aggregate.json` and
+`out/aes-temporal-target3-3seed-aggregate.json`. The temporal pilot therefore
+covers all four achieved schedules, 384 valid simulations total, and 2/12
+seed-target solves across the two schedules already reported plus these two.
+
 A third full-budget seed is complete. The three-seed aggregate is
 `out/axi-dma-matrix-calibrated-200-3seed-aggregate.json`, with paired inference
 at `out/axi-dma-matrix-calibrated-200-3seed-inference.json`: 5 policies × 200
