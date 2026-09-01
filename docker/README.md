@@ -32,8 +32,8 @@ For a host development environment, use the repository-local virtualenv:
 
 ```bash
 make dev-install
-make test PYTHON=.venv/bin/python
-make lint PYTHON=.venv/bin/python
+make test VENV_PYTHON=.venv/bin/python
+make lint VENV_PYTHON=.venv/bin/python
 ```
 
 Run the basic image check with:
