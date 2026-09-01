@@ -153,6 +153,10 @@ distinct policies, three seeds per target-policy cell, and 32 proposal slots per
 run. The matrix has 20 target-policy groups and 1,904 valid trials out of 1,920
 proposal slots; it is a preliminary four-target activity comparison, not the
 full preregistered profile factorial or a gate-level power result.
+Paired policy inference for this matrix is recorded in
+`out/aes-temporal-policy-inference-32.json`; each comparison has three matched
+seeds per achieved target and Holm-adjusted p-values. The panel is too small for
+definitive policy claims.
 The corresponding convergence figures are
 `out/figures/temporal-policy-convergence.png` and
 `out/figures/compositional-policy-convergence.png`.
