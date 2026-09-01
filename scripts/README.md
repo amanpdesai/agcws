@@ -133,6 +133,13 @@ make probe-ibex-synthesis \
   IBEX_SOURCES=out/ibex-sources/sources.json IBEX_TOP=ibex_core
 ```
 
+For `make synthesize-ibex-core IBEX_TOP=ibex_core`, the target intentionally
+ignores the default `IBEX_SOURCES` value and resolves a fresh, isolated
+`lowrisc:ibex:ibex_core` closure under the artifact root. This prevents the
+simple-system workload closure from contaminating core-only synthesis. Use the
+`probe-ibex-synthesis` command above when you specifically need to inspect an
+already-resolved manifest.
+
 The default remains `lowrisc:ibex:ibex_simple_system` / `ibex_top`, which is
 the closure used by the current workload runner. `IBEX_CORE`, `IBEX_SOURCES`,
 and `IBEX_TOP` are recorded in the generated probe manifest so a failed or
