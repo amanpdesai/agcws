@@ -57,3 +57,4 @@ def test_makefile_ibex_tasks_are_selectable_and_reproducible():
     assert "verify-ibex: run-ibex" in text
     assert '"$${AGCWS_ARTIFACT_ROOT:-out}/ibex"' in text
     assert '"$${IBEX_ARTIFACT:-$${AGCWS_ARTIFACT_ROOT:-out}/ibex}"' in text
+    assert "generate_ibex_workload.py" in text
