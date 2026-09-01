@@ -28,6 +28,20 @@ def test_verify_artifact_checks_input_hashes(tmp_path: Path):
     assert verify(_artifact(tmp_path))["inputs_checked"] == 1
 
 
+def test_verify_artifact_accepts_pre_normalization_activity(tmp_path: Path):
+    artifact = _artifact(tmp_path)
+    payload = artifact / "activity.json"
+    payload.write_text(json.dumps({
+        "per_cycle_toggles": [1, 2], "window_toggles": [1, 2],
+    }) + "\n")
+    result = json.loads((artifact / "result.json").read_text())
+    activity_record = result["provenance"]["inputs"]["activity"]
+    activity_record["sha256"] = hashlib.sha256(payload.read_bytes()).hexdigest()
+    activity_record["bytes"] = payload.stat().st_size
+    (artifact / "result.json").write_text(json.dumps(result))
+    assert verify(artifact)["inputs_checked"] == 1
+
+
 def test_verify_artifact_rejects_changed_input(tmp_path: Path):
     artifact = _artifact(tmp_path)
     (artifact / "activity.json").write_text("changed\n")
