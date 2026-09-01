@@ -48,9 +48,11 @@ Verilator lint in the reproducible container. The standalone
 elaborates successfully from an isolated artifact root. Memory inventory is
 also reproducible, but the current asynchronous read memories fall back to
 FFs; no BSG macro-mapped Ibex netlist is claimed. The default
-`lowrisc:ibex:ibex_simple_system` wrapper still fails at its own elaboration
-boundary; no Ibex netlist or power result is treated as valid until synthesis
-and mapping are completed for the selected closure.
+`lowrisc:ibex:ibex_simple_system` wrapper now runs through functional simulation
+and RTL activity extraction in the verification container. Its
+wrapper-to-mapped-netlist/OpenSTA path remains unsupported; no Ibex gate-level
+power result is treated as valid until synthesis and mapping are completed for
+that selected closure.
 The pinned upstream coupled-DMA reference test now passes through the isolated
 `make upstream-dma-reference` target; it is a protocol oracle, not the project
 runtime, and does not change this milestone's status.
