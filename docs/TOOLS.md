@@ -34,8 +34,9 @@ ultimately pinned in the container image.
 Only design/framework source belongs here: `tools/chia` is pinned at
 `d78ad77e4ce7b11523bf15a253a258c0f8795673`; OpenTitan is pinned at
 `b16f2be75d2f38c62d861208453ed5b81ccf41b0`; verilog-axi is pinned at
-`516bd5dadc3365b7f9e225d2af8fe0b8d804fe53`; and Ibex is pinned at
-`8b8ee086aef72e0833b7f0493d9d33f1e4d3c8e2`. Do not vendor their trees into
+`516bd5dadc3365b7f9e225d2af8fe0b8d804fe53`; Ibex is pinned at
+`8b8ee086aef72e0833b7f0493d9d33f1e4d3c8e2`; and bsg_fakeram is pinned at
+`a2c856eacdeda5a97e23891378ba34792a3acd3c`. Do not vendor their trees into
 this repository.
 
 The upstream verilog-axi MyHDL testbenches are reference material only and are
