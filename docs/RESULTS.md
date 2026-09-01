@@ -17,6 +17,9 @@ multi-design factorial study has not yet been completed.
   the separate mapped-netlist/OpenSTA boundary.
 - Both checked-in Liberty files contain `internal_power`, rise/fall power,
   leakage, capacitance, and clock-gating characterization.
+- The AES Sky130 mapped netlist coverage check matches all 43,619 cell
+  instances across 72 distinct cell types to the Liberty (`instance_coverage`
+  = 1.0); reproduce with `make check-liberty-coverage`.
 - AES cross-PDK corpus: the archived 10-workload corpus at
   `out/aes-pdk-rank-20260831/corpus` validates against its paired Sky130 and
   Nangate45 report roots with Spearman ρ=`0.9999999999999998` (10 shared
