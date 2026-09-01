@@ -21,6 +21,7 @@ def test_memory_collateral_preserves_geometry(tmp_path: Path):
                                  "depth": 256, "banks": 1}]
     assert "agcws_mem_0_mem" in (tmp_path / "collateral/memory_macros.v").read_text()
     assert "memory_libmap.txt" in {p.name for p in (tmp_path / "collateral").iterdir()}
+    assert "ram distributed" in (tmp_path / "collateral/memory_libmap.txt").read_text()
     assert "port srsw" in (tmp_path / "collateral/memory_libmap.txt").read_text()
     assert "$__AGCWS_MEM_0_8x256" in (tmp_path / "collateral/memory_libmap.txt").read_text()
 
@@ -62,3 +63,5 @@ def test_memory_collateral_deduplicates_macro_geometries(tmp_path: Path):
     result = generate(inventory, tmp_path / "collateral")
     assert len(result["macros"]) == 1
     assert len(json.loads((tmp_path / "collateral/bsg_fakeram.json").read_text())["srams"]) == 1
+    assert result["mapping_ready"] is False
+    assert result["mapping_blockers"] == ["a"]

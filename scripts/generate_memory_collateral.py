@@ -48,6 +48,9 @@ def generate(inventory_path: Path, output_dir: Path, *, backend: str = "bsg_fake
             "read_ports": memory.get("rd_ports", 0),
             "write_ports": memory.get("wr_ports", 0),
             "status": "contract-only",
+            # bsg_fakeram is a single synchronous 1RW port. A memory with
+            # independent read and write ports needs a dual-port backend.
+            "mapping_eligible": memory.get("rd_ports", 0) == 1 and memory.get("wr_ports", 0) == 0,
         })
     manifest = {
         "schema": 1,
@@ -55,8 +58,9 @@ def generate(inventory_path: Path, output_dir: Path, *, backend: str = "bsg_fake
         "inventory": str(inventory_path),
         "backend": backend,
         "macros": macros,
-        "mapping_ready": False,
-        "note": "Contracts require a verified bsg_fakeram wrapper and Liberty model before use in synthesis.",
+        "mapping_ready": all(macro["mapping_eligible"] for macro in macros),
+        "mapping_blockers": [macro["source_name"] for macro in macros if not macro["mapping_eligible"]],
+        "note": "Independent read/write memories require a dual-port backend; bsg_fakeram is 1RW.",
     }
     bsg_config = {
         "tech_nm": tech_nm,
@@ -74,11 +78,16 @@ def generate(inventory_path: Path, output_dir: Path, *, backend: str = "bsg_fake
     }
     (output_dir / "memory-macros.json").write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n")
     (output_dir / "bsg_fakeram.json").write_text(json.dumps(bsg_config, indent=2, sort_keys=True) + "\n")
-    libmap = ["# Generated memory_libmap definitions for validated 1RW BSG macros.",
-              "# Physical dimensions are explicit in memory-macros.json."]
+    libmap = ["# Generated memory_libmap definitions for BSG-compatible memories.",
+              "# Physical dimensions are explicit in memory-macros.json.",
+              "# Independent read/write FIFO addresses are intentionally excluded."]
     for macro in macros:
+        if not macro["mapping_eligible"]:
+            continue
         libmap.extend([
-            f"ram block {macro['yosys_cell_type']} {{",
+            # AXI's RTL marks these FIFO memories as distributed; matching the
+            # class is required for Yosys' ram_style attribute selection.
+            f"ram distributed {macro['yosys_cell_type']} {{",
             f"  abits {int(math.log2(macro['physical_depth']))};",
             f"  width {macro['physical_width']};",
             "  cost 1;",
