@@ -100,6 +100,8 @@ are methodological results, not reasons to substitute unsupported claims.
 - `make aggregate-compositional-pilot`
 - `make aggregate-temporal-policy-matrix`
 - `make aggregate-compositional-policy-matrix`
+- `make infer-temporal-policy-matrix`
+- `make infer-compositional-policy-matrix`
 - `make plot-temporal-policy-matrix`
 - `make plot-compositional-policy-matrix`
 - finalist validation for every reported synthesis-level result
