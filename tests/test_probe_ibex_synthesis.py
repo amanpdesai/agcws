@@ -37,7 +37,9 @@ def test_probe_records_timeout_as_non_success(tmp_path: Path, monkeypatch):
     sources.write_text(json.dumps({"sources": [{"path": str(source)}]}))
 
     def timeout(*_args, **_kwargs):
-        raise __import__("subprocess").TimeoutExpired("yosys", 0.01, stderr="partial")
+        raise __import__("subprocess").TimeoutExpired("yosys", 0.01,
+                                                       output=b"partial output",
+                                                       stderr=b"partial")
 
     monkeypatch.setenv("AGCWS_SLANG_PLUGIN", "plugin.so")
     monkeypatch.setattr("subprocess.run", timeout)

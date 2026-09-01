@@ -120,7 +120,12 @@ def main() -> None:
     except subprocess.TimeoutExpired as exc:
         timed_out = True
         stdout = exc.stdout or ""
-        stderr = (exc.stderr or "") + f"\nIbex synthesis probe timed out after {args.timeout:g}s\n"
+        stderr = exc.stderr or ""
+        if isinstance(stdout, bytes):
+            stdout = stdout.decode(errors="replace")
+        if isinstance(stderr, bytes):
+            stderr = stderr.decode(errors="replace")
+        stderr += f"\nIbex synthesis probe timed out after {args.timeout:g}s\n"
         returncode = 124
     (args.out / "yosys.log").write_text("STDOUT\n" + stdout + "\nSTDERR\n" + stderr)
     (args.out / "manifest.json").write_text(json.dumps({
