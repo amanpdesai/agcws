@@ -88,6 +88,15 @@ gate-level power is not currently established, and Vertex-backed comparative
 runs require external project/model/billing configuration. These constraints
 are methodological results, not reasons to substitute unsupported claims.
 
+The memory-backend investigation must also be reported as a negative result:
+AES has no inferred memories at its synthesized core boundary; AXI DMA's
+inferred FIFOs have independent read/write addresses and therefore cannot use
+the single-port synchronous BSG FakeRAM interface; and Ibex's discovered
+read-only memories have asynchronous reads. BSG/CACTI collateral was generated
+and audited for the discovered geometries, but no macro-mapped AXI or Ibex
+power result is claimed. Any future dual-port or asynchronous macro backend
+must be a separately identified evaluator tier.
+
 ## 7. Reproduction checklist
 
 - `make verify`
