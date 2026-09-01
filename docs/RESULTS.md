@@ -72,12 +72,11 @@ evolutionary, and one-shot-agent were unsolved. All five arms completed 200
 valid simulations with no validity-stage failures. This is one seed on one
 activity oracle and is preliminary evidence, not a general policy ranking.
 
-A second full-budget seed is complete. The two-seed aggregate is
-`out/axi-dma-matrix-calibrated-200-2seed-aggregate.json`: 5 policies × 200
-proposals × 2 seeds, or 2,000 valid coupled simulations. Random solved both
-seeds; evolutionary solved one; offline-hybrid solved both; mutation and
-one-shot-agent did not solve either. Seed variation is visible, so these are
-descriptive preliminary observations rather than a definitive policy ranking.
+A five-seed full-budget matrix is now complete across the five policies, with
+200 proposal slots per policy and seed. Paired inference is recorded at
+`out/axi-dma-inference-5seed.json`; the panel remains small and underpowered for
+definitive policy claims, and the result is still limited to the AXI DMA
+activity oracle rather than the full multi-design study.
 
 Held-out profile-arm Docker smokes also complete end to end. The temporal run
 (`out/aes-temporal-heldout-20260901/`) used an achieved target manifest with 8

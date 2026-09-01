@@ -82,17 +82,13 @@ wrapper mapping and Ibex gate-level power integration remain unsupported.
 Vertex-backed comparative runs remain blocked on
 project/model/billing configuration outside the repository.
 
-The corrected coupled-DMA calibration now covers three random seeds and 48
+The corrected coupled-DMA calibration covers three random seeds and 48
 valid proposals, with 16 distinct activity values and measured bounds
 `19.67403066–19.80286242`; the machine-readable aggregate is
 `out/axi-dma-calibration-corrected-3seed.json`. This is calibration evidence
-only. The DMA multi-policy matrix still needs to use these recorded bounds and
-complete its multi-seed run before it can support comparative claims.
-The first full-budget seed-0 matrix now exists (5 policies × 200 proposals),
-but additional seeds and statistical inference remain required.
-Seed 1 is now also complete, giving two full-budget DMA seeds and a machine-
-readable aggregate; the preregistered multi-seed study and paired inference
-remain outstanding.
+only. The full-budget DMA matrix now covers five policies, 200 proposals, and
+five seeds, with paired inference generated; the panel remains small and
+underpowered for definitive policy claims.
 Five full-budget DMA seeds are now complete, with paired inference generated;
 the panel remains small and underpowered for definitive policy claims.
 
