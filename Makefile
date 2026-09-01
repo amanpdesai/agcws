@@ -63,6 +63,7 @@ PDK_VALIDATION_DIR ?= out/aes-pdk-rank-20260831
 DMA_CROSS_PDK_DIR ?= out/axi-dma-cross-pdk
 DMA_POLICIES ?= random,mutation,evolutionary,one-shot-agent,offline-hybrid
 DMA_SEARCH_DIR ?= out/axi-dma-search
+IBEX_MATRIX_ROOT ?= out/ibex-matrix
 DMA_P_MIN ?= 19.674030658250675
 DMA_P_MAX ?= 19.80286241920591
 DMA_INFERENCE_ROOTS ?= out/axi-dma-matrix-calibrated-200-seed0 out/axi-dma-matrix-calibrated-200-seed1 out/axi-dma-matrix-calibrated-200-seed2 out/axi-dma-matrix-calibrated-200-seed3 out/axi-dma-matrix-calibrated-200-seed4
@@ -85,7 +86,7 @@ IBEX_CORE ?= lowrisc:ibex:ibex_simple_system
 IBEX_SOURCES ?= $(if $(AGCWS_ARTIFACT_ROOT),$(AGCWS_ARTIFACT_ROOT),out)/ibex-sources/sources.json
 IBEX_TOP ?= ibex_top
 
-.PHONY: test lint dev-install analysis-install verification-install chia-install chia-smoke chia-node-smoke upstream-dma-reference research-smoke research-audit audit-reproducibility audit-profile-matrix audit-temporal-profile-matrix vertex-preflight verify-artifact inspect-liberty inspect-liberties check-liberty-coverage synth-aes evaluate-aes determinism plot-activity plot-search-curves plot-temporal-policy-matrix plot-compositional-policy-matrix analyze-baseline random-corpus temporal-corpus temporal-search compositional-search baseline-matrix cross-pdk run-aes-pdk-corpus validate-aes-pdk-corpus validate-finalists cross-pdk-dma axi-dma-search aggregate-axi-dma-calibration infer-dma infer-temporal-policy-matrix infer-compositional-policy-matrix aggregate-temporal-pilot aggregate-compositional-pilot aggregate-temporal-policy-matrix aggregate-compositional-policy-matrix validate-axi-dma-finalists check-axi-dma-rtl run-axi-dma-rd-smoke run-axi-dma-wr-smoke run-axi-dma-workload run-axi-dma-coupled run-axi-memory-smoke inventory-memories memory-collateral audit-memory-collateral compile-ibex resolve-ibex-sources probe-ibex-synthesis synthesize-ibex-core check-ibex-rtl run-ibex verify-ibex ibex-search verify container-smoke
+.PHONY: test lint dev-install analysis-install verification-install chia-install chia-smoke chia-node-smoke upstream-dma-reference research-smoke research-audit audit-reproducibility audit-profile-matrix audit-temporal-profile-matrix vertex-preflight verify-artifact inspect-liberty inspect-liberties check-liberty-coverage synth-aes evaluate-aes determinism plot-activity plot-search-curves plot-temporal-policy-matrix plot-compositional-policy-matrix analyze-baseline random-corpus temporal-corpus temporal-search compositional-search baseline-matrix cross-pdk run-aes-pdk-corpus validate-aes-pdk-corpus validate-finalists cross-pdk-dma axi-dma-search aggregate-axi-dma-calibration infer-dma infer-temporal-policy-matrix infer-compositional-policy-matrix aggregate-temporal-pilot aggregate-compositional-pilot aggregate-temporal-policy-matrix aggregate-compositional-policy-matrix validate-axi-dma-finalists check-axi-dma-rtl run-axi-dma-rd-smoke run-axi-dma-wr-smoke run-axi-dma-workload run-axi-dma-coupled run-axi-memory-smoke inventory-memories memory-collateral audit-memory-collateral compile-ibex resolve-ibex-sources probe-ibex-synthesis synthesize-ibex-core check-ibex-rtl run-ibex verify-ibex ibex-search aggregate-ibex infer-ibex verify container-smoke
 test:
 	$(VENV_PYTHON) -m pytest -q
 dev-install:
@@ -249,6 +250,10 @@ verify-ibex: run-ibex
 	$(VENV_PYTHON) scripts/verify_artifact.py --require-activity "$$ibex_root"
 ibex-search:
 	PYTHONPATH=src $(VENV_PYTHON) scripts/run_ibex_search.py --p-min 0 --p-max 100 --budget "$(BUDGET)" --seed "$(SEEDS)"
+aggregate-ibex:
+	PYTHONPATH=src $(VENV_PYTHON) scripts/aggregate_runs.py "$(IBEX_MATRIX_ROOT)" --out "$${AGCWS_ARTIFACT_ROOT:-out}/ibex-matrix-aggregate.json"
+infer-ibex:
+	PYTHONPATH=src $(VENV_PYTHON) scripts/infer_policy_comparisons.py "$(IBEX_MATRIX_ROOT)" --baseline random --metric auc_best_so_far --out "$${AGCWS_ARTIFACT_ROOT:-out}/ibex-matrix-inference.json"
 verify:
 	$(MAKE) test lint audit-reproducibility verify-artifact validate-aes-pdk-corpus check-axi-dma-rtl run-axi-memory-smoke run-axi-dma-workload
 container-smoke:

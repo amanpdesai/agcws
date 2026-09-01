@@ -5,7 +5,7 @@ import subprocess
 
 def test_makefile_exposes_core_tasks():
     text = Path("Makefile").read_text()
-    for target in ("test:", "synth-aes:", "evaluate-aes:", "verify:", "verify-ibex:", "ibex-search:", "probe-ibex-synthesis:", "chia-node-smoke:", "audit-reproducibility:", "vertex-preflight:", "container-smoke:"):
+    for target in ("test:", "synth-aes:", "evaluate-aes:", "verify:", "verify-ibex:", "ibex-search:", "aggregate-ibex:", "infer-ibex:", "probe-ibex-synthesis:", "chia-node-smoke:", "audit-reproducibility:", "vertex-preflight:", "container-smoke:"):
         assert target in text
     assert "verify:" in text
     verify_body = text.split("verify:", 1)[1]

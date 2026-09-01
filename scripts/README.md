@@ -331,6 +331,13 @@ python3 scripts/run_ibex_search.py \
   --budget 200 --seeds 0,1,2,3,4 --out out/ibex-matrix
 ```
 
+Aggregate and run preregistered paired inference over that matrix:
+
+```bash
+make aggregate-ibex IBEX_MATRIX_ROOT=out/ibex-matrix
+make infer-ibex IBEX_MATRIX_ROOT=out/ibex-matrix
+```
+
 The runner records RTL per-cycle/window toggle activity and simulator
 provenance through the shared search contract. `--p-min` and `--p-max` are
 activity-envelope bounds, not watts; this path is not an Ibex gate-level
