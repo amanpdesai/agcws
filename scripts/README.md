@@ -17,6 +17,16 @@ make inventory-memories MEMORY_TOP=ram MEMORY_SOURCE=path/to/ram.sv
 make memory-collateral MEMORY_TOP=ram MEMORY_INVENTORY=out/memory-inventory/ram.json
 ```
 
+The second command also writes `bsg_fakeram.json`, in the native generator
+configuration shape. Run the pinned generator explicitly after reviewing the
+inventory and selecting the matching technology parameters:
+
+```bash
+python3 third_party/bsg_fakeram/scripts/run.py \
+  out/memory-collateral/ram/bsg_fakeram.json \
+  --output_dir out/memory-collateral/ram/generated
+```
+
 Existing design synthesis remains unchanged until port semantics, mapping, and
 characterization are validated, keeping baseline results comparable.
 
