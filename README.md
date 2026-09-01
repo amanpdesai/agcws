@@ -7,8 +7,9 @@ Built as a composable [CHIA](https://github.com/ucb-bar/chia) loop for the A³ C
 ## Status
 
 Under active development (2026-08-29 → 2026-09-20). The AES oracle and
-bounded search path are runnable; DMA/Ibex adapters and comparative studies
-remain in progress.
+bounded search path are runnable; the DMA adapter and five-seed comparative
+matrix are runnable; Ibex power integration, Vertex-backed trials, and the full
+multi-design/profile study remain in progress.
 
 See `docs/ARCHITECTURE.md` and `docs/PLAN.md`. The current evidence and claim
 boundaries are summarized in [`docs/RESULTS.md`](docs/RESULTS.md), and the
