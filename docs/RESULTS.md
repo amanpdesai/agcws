@@ -70,6 +70,12 @@ simulations with 672 per-cycle samples per candidate but did not reach its
 target. This is a G4 plumbing/milestone result for one target and one seed,
 not a comparative profile conclusion.
 
+Machine-readable aggregates for this snapshot are
+`out/aes-temporal-heldout-3seed-aggregate.json` and
+`out/aes-compositional-heldout-3seed-aggregate.json`. They preserve the
+three-run denominators and deterministic bootstrap summaries used by the
+reporting tooling.
+
 The profile smoke was expanded to three seeds at 32 proposals per seed. Across
 the temporal arm, 96/96 simulations were valid and 2/3 seeds solved the same
 held-out achieved target. Across the compositional arm, 96/96 were valid and

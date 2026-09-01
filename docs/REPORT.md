@@ -59,6 +59,9 @@ seeds at 200 proposals on the coupled activity oracle and must be labeled as a
 preliminary single-design activity study. Current profile-arm evidence is
 summarized in `docs/RESULTS.md`; it covers one achieved target per profile class,
 not a full target factorial.
+The machine-readable pilot aggregates are
+`out/aes-temporal-heldout-3seed-aggregate.json` and
+`out/aes-compositional-heldout-3seed-aggregate.json`.
 
 ## 5. Figures
 
