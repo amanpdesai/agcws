@@ -297,6 +297,12 @@ The run used the calibrated activity bounds and shared proposal budget. It is a
 preliminary activity-tier dataset; the sample is too small for inferential
 policy claims and no gate-level power conclusion is drawn from it.
 
+The first multi-seed Ibex activity dataset used seeds `1–3`, all six local arms,
+and five proposal slots per arm. All 90/90 proposal slots completed valid
+simulations. This confirms reproducible multi-seed orchestration and clean
+validity accounting, but remains below the pre-registered 200-proposal budget
+and is not a final policy comparison.
+
 The memory inventory and collateral path was validated on the current pinned
 RTL closures. AES `aes_cipher_core` produced zero inferred memories. AXI DMA
 produced 13 internal 32-entry FIFO memories with independent read and write
