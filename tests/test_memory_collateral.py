@@ -66,3 +66,11 @@ def test_memory_collateral_deduplicates_macro_geometries(tmp_path: Path):
     assert len(json.loads((tmp_path / "collateral/bsg_fakeram.json").read_text())["srams"]) == 1
     assert result["mapping_ready"] is False
     assert result["mapping_blockers"] == ["a"]
+
+
+def test_empty_inventory_is_not_reported_as_mapped(tmp_path: Path):
+    inventory = tmp_path / "inventory.json"
+    inventory.write_text(json.dumps({"top": "aes", "memories": []}))
+    result = generate(inventory, tmp_path / "collateral")
+    assert result["mapping_ready"] is False
+    assert result["macros"] == []

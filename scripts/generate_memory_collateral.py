@@ -64,7 +64,7 @@ def generate(inventory_path: Path, output_dir: Path, *, backend: str = "bsg_fake
         "inventory": str(inventory_path),
         "backend": backend,
         "macros": macros,
-        "mapping_ready": all(macro["mapping_eligible"] for macro in macros),
+        "mapping_ready": bool(macros) and all(macro["mapping_eligible"] for macro in macros),
         "mapping_blockers": [macro["source_name"] for macro in macros if not macro["mapping_eligible"]],
         "note": "Independent read/write memories require a dual-port backend; bsg_fakeram is 1RW.",
     }
