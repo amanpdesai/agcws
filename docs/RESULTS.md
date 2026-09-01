@@ -303,6 +303,15 @@ simulations. This confirms reproducible multi-seed orchestration and clean
 validity accounting, but remains below the pre-registered 200-proposal budget
 and is not a final policy comparison.
 
+The first full-budget Ibex activity matrix used seed `0`, 200 proposal slots,
+and all six local arms. All 1,200/1,200 proposal slots completed valid
+simulations. The resulting activity-tier AUC summaries were random `2.9088`,
+mutation `74.9344`, evolutionary `54.5826`, offline-agent `2.9088`,
+one-shot-agent `11.7927`, and offline-hybrid `74.9344`; only random and
+offline-agent reached the configured tolerance in this single seed. These are
+descriptive activity-only results, not an inferential multi-seed comparison or
+gate-level power claim.
+
 The memory inventory and collateral path was validated on the current pinned
 RTL closures. AES `aes_cipher_core` produced zero inferred memories. AXI DMA
 produced 13 internal 32-entry FIFO memories with independent read and write
