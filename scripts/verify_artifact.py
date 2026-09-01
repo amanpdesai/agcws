@@ -16,10 +16,12 @@ def sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
-def verify_activity(root: Path) -> None:
+def verify_activity(root: Path, *, required: bool = False) -> None:
     """Validate the structural invariants of a persisted activity artifact."""
     activity_path = root / "activity.json"
     if not activity_path.is_file():
+        if required:
+            raise FileNotFoundError(f"missing activity artifact: {activity_path}")
         return
     activity = json.loads(activity_path.read_text())
     cycles = activity.get("per_cycle_toggles")
@@ -92,8 +94,11 @@ def verify(root: Path) -> dict:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("artifact", type=Path)
+    parser.add_argument("--require-activity", action="store_true")
     args = parser.parse_args()
-    print(json.dumps(verify(args.artifact), sort_keys=True))
+    result = verify(args.artifact)
+    verify_activity(args.artifact, required=args.require_activity)
+    print(json.dumps(result, sort_keys=True))
 
 
 if __name__ == "__main__":

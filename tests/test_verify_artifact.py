@@ -4,7 +4,7 @@ from pathlib import Path
 
 import pytest
 
-from scripts.verify_artifact import verify
+from scripts.verify_artifact import verify, verify_activity
 
 
 def _artifact(tmp_path: Path) -> Path:
@@ -63,3 +63,10 @@ def test_verify_artifact_rejects_inconsistent_normalized_activity(tmp_path: Path
     (artifact / "result.json").write_text(json.dumps(result))
     with pytest.raises(ValueError, match="normalized profile"):
         verify(artifact)
+
+
+def test_verify_artifact_can_require_activity(tmp_path: Path):
+    artifact = _artifact(tmp_path)
+    (artifact / "activity.json").unlink()
+    with pytest.raises(FileNotFoundError, match="activity artifact"):
+        verify_activity(artifact, required=True)
