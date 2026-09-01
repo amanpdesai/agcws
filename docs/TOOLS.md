@@ -27,6 +27,7 @@ ultimately pinned in the container image.
 | Matplotlib | deterministic activity figures | Optional analysis extra | Install with `make analysis-install` |
 | MyHDL + Icarus VPI | upstream verilog-axi coupled-DMA reference test | Optional verification extra | Run `make upstream-dma-reference` |
 | RISC-V GCC + binutils | Ibex instruction-image assembly/linking | Container-provided (`riscv64-unknown-elf-*`) | Record compiler version in workload provenance |
+| bsg_fakeram | Generate black-box SRAM Verilog/LEF/Liberty from discovered geometry | Pinned submodule at `a2c856eacdeda5a97e23891378ba34792a3acd3c` | Build its pinned CACTI dependency only when macro generation is enabled |
 
 ## Source dependencies to pin as submodules
 
@@ -46,6 +47,12 @@ DMA test in an isolated temporary checkout and writes a hash-bearing reference
 manifest plus test log under `out/axi-dma-upstream-reference/`; generated VPI,
 VVP, and waveform artifacts in the temporary checkout are removed on exit.
 The script honors `AGCWS_PYTHON`, defaulting to `.venv/bin/python`.
+
+Memory-aware synthesis uses Yosys `memory -nomap` inventory first, then emits
+the native bsg_fakeram JSON configuration under `out/memory-collateral/`.
+The generator is intentionally not run as part of ordinary verification: its
+CACTI build is expensive and generated macro models must be reviewed for port
+latency and Liberty compatibility before they can replace flop mapping.
 
 `make verify-artifact AGCWS_ARTIFACT=out/aes-evaluation` checks a result bundle's
 validity, useful-work field, and recorded input SHA-256 hashes. Run it after
