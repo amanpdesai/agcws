@@ -10,6 +10,14 @@ import os
 from pathlib import Path
 
 
+def genai_installed() -> bool:
+    """Return whether the optional Vertex SDK can be imported."""
+    try:
+        return importlib.util.find_spec("google.genai") is not None
+    except ModuleNotFoundError:
+        return False
+
+
 def preflight(prompt: Path, project: str | None, model: str | None) -> dict:
     missing = []
     if not project:
@@ -18,10 +26,11 @@ def preflight(prompt: Path, project: str | None, model: str | None) -> dict:
         missing.append("AGCWS_GEMINI_MODEL")
     if not prompt.is_file() or prompt.stat().st_size == 0:
         missing.append(str(prompt))
+    installed = genai_installed()
     return {
-        "valid": not missing and importlib.util.find_spec("google.genai") is not None,
+        "valid": not missing and installed,
         "missing": missing,
-        "genai_installed": importlib.util.find_spec("google.genai") is not None,
+        "genai_installed": installed,
         "project": project,
         "model": model,
         "prompt_sha256": hashlib.sha256(prompt.read_bytes()).hexdigest()

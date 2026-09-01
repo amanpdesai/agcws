@@ -24,6 +24,10 @@ multi-design factorial study has not yet been completed.
   in `out/aes-cross-pdk/comparison.json`. Its single-workload annotation is
   sparse (0.132% Sky130, 0.136% Nangate45), so it is provenance evidence rather
   than a broad cross-PDK power claim.
+- `make vertex-preflight` confirms the Vertex SDK is installed and the frozen
+  prompt hash is available, but reports missing `AGCWS_GCP_PROJECT` and
+  `AGCWS_GEMINI_MODEL`; no cloud API call was made and no Vertex comparative
+  result is claimed.
 
 ## Preliminary AXI-DMA activity calibration
 
