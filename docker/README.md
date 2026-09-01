@@ -40,7 +40,7 @@ Run the basic image check with:
 
 ```bash
 docker build -f docker/Dockerfile -t agcws:dev .
-docker run --rm agcws:dev python -c \
+docker run --rm agcws:dev python3 -c \
   'import os; from pathlib import Path; print(Path(os.environ["AGCWS_LIBERTY"]).exists())'
 ```
 
