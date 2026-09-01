@@ -12,6 +12,21 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[1]
 
 
+def deduplicate_package_sources(sources: list[Path]) -> list[Path]:
+    """Prefer FuseSoC-exported package copies over vendored duplicates."""
+    by_name: dict[str, list[Path]] = {}
+    for source in sources:
+        by_name.setdefault(source.name, []).append(source)
+    result = []
+    for source in sources:
+        matches = by_name[source.name]
+        if len(matches) > 1 and "third_party/ibex/vendor" in str(source):
+            if any("fusesoc-work" in str(other) for other in matches):
+                continue
+        result.append(source)
+    return result
+
+
 def parameter_int(value):
     """Decode Yosys JSON's binary parameter representation when present."""
     if isinstance(value, str) and value and set(value) <= {"0", "1"}:
@@ -23,6 +38,7 @@ def inventory(top: str, sources: list[Path], output: Path, *, yosys: str,
               slang_plugin: str | None = None, include_dirs: list[Path] | None = None,
               compat: bool = False) -> dict:
     output.parent.mkdir(parents=True, exist_ok=True)
+    sources = deduplicate_package_sources(sources)
     include_dirs = include_dirs or []
     source_text = " ".join(str(path) for path in sources)
     includes = " ".join(f"-I {path}" for path in include_dirs)
