@@ -26,11 +26,10 @@ Evidence checkpoint (2026-08-31): the pinned CHIA framework smoke and CHIA
 node-DAG smoke both pass (`AGCWS_CHIA_SMOKE_OK` and
 `AGCWS_CHIA_NODES_SMOKE_OK`) at commit `d78ad77e4ce7b11523bf15a253a258c0f8795673`.
 Vertex billing remains unverified, so Slice 1 is still WIP. The image-only container smoke passes, the
-AES scalar matrix has completed for five targets and four policies at 200
-proposals for two seeds, and achieved-profile temporal/compositional searches
- plus finalist OpenSTA validation have executed. The strongest AES scalar
- corpus currently covers six seeds per policy/target cell. These remain preliminary
-results; they are not the final multi-design statistical study.
+AES scalar matrix has completed for five targets and five policies at 200
+proposals and ten seeds per cell, and achieved-profile temporal/compositional
+searches plus finalist OpenSTA validation have executed. These remain
+preliminary results; they are not the final multi-design statistical study.
 The public `make baseline-matrix` entry point also completed a five-policy AES
 smoke at 20 proposals per arm, with 20 valid simulations per policy and a
 machine-readable aggregate; this validates orchestration, not performance.
@@ -53,11 +52,12 @@ The pinned upstream coupled-DMA reference test now passes through the isolated
 `make upstream-dma-reference` target; it is a protocol oracle, not the project
 runtime, and does not change this milestone's status.
 
-Slice 8 currently exposes random, mutation, evolutionary, and hybrid policies
-through the common proposal-counted AES runner. Slice 10 has deterministic AUC,
+Slice 8 currently exposes random, mutation, evolutionary, one-shot-agent, and
+hybrid policies through the common proposal-counted runner. Slice 10 has deterministic AUC,
 solve-rate, censoring, validity/cost metrics, multi-root corpus aggregation, and
-deterministic search-curve plotting. A five-policy DMA matrix has also executed;
-the complete multi-seed, multi-design statistical study remains outstanding.
+deterministic search-curve plotting. The DMA matrix has completed for five
+policies, 200 proposals, and three seeds; the complete multi-design statistical
+study remains outstanding.
 
 Slice 6 has the common offline-agent and Vertex policy interfaces plus the
 frozen generic prompt. The offline agent has completed a real AES smoke run
