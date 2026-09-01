@@ -39,9 +39,10 @@ source-to-destination memory-copy harness with VCD/activity provenance,
 workload validation, useful-work gating, provenance, and Sky130/Nangate45
 synthesis/OpenSTA validation. It also has a
 deterministic Ibex JSON-to-ELF compiler and upstream simple-system Verilator
-runner, with both Ibex FuseSoC source closures fingerprinted. Comparative DMA
-workload runs and full Ibex synthesis/power integration remain before the
-widened experiment is complete. The full 91-source Ibex closure now passes
+runner, with both Ibex FuseSoC source closures fingerprinted. The five-policy,
+five-seed DMA comparative matrix and paired inference are complete; the widened
+experiment still requires the full multi-design/profile factorial study and
+full Ibex synthesis/power integration. The full 91-source Ibex closure now passes
 Verilator lint in the reproducible container. The pinned Slang/Yosys synthesis
 The standalone `lowrisc:ibex:ibex_core` Slang/Yosys frontend probe now
 elaborates and maps successfully from an isolated artifact root. The default
