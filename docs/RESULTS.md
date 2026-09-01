@@ -82,11 +82,13 @@ held-out achieved target. Across the compositional arm, 96/96 were valid and
 0/3 seeds solved its held-out region-share target. Every run retained per-cycle
 activity and target provenance. This remains one target per class and is not a
 general profile-method conclusion.
-The temporal manifest currently contains one target, while the compositional
-manifest contains five; only compositional target 0 has been executed in the
-reported profile snapshot. A request for temporal target index 1 was rejected
-before simulation by the driver, so no second temporal target is silently
-being evaluated.
+The original temporal manifest contained one target, but the source corpus
+contains four achieved schedules. A deterministic two-target manifest is now
+recorded at `out/aes-temporal-targets-2.json`; the newly executed `burst` target
+covered three seeds (96/96 valid simulations), with aggregate
+`out/aes-temporal-burst-3seed-aggregate.json`. The reported profile evidence
+therefore spans two achieved temporal schedules, while the compositional snapshot
+still executes target 0 only.
 
 A third full-budget seed is complete. The three-seed aggregate is
 `out/axi-dma-matrix-calibrated-200-3seed-aggregate.json`, with paired inference
