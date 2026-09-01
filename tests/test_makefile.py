@@ -17,6 +17,7 @@ def test_makefile_exposes_core_tasks():
     assert '--p-max "$(DMA_P_MAX)"' in text
     assert "infer-dma:" in text
     assert "DMA_INFERENCE_ROOTS" in text
+    assert "DMA_CALIBRATION_ROOTS" in text
     assert "aggregate-temporal-pilot:" in text
     assert "aggregate-compositional-pilot:" in text
     assert '--budget "$(BUDGET)"' in text

@@ -16,6 +16,7 @@ DMA_SEARCH_DIR ?= out/axi-dma-search
 DMA_P_MIN ?= 19.674030658250675
 DMA_P_MAX ?= 19.80286241920591
 DMA_INFERENCE_ROOTS ?= out/axi-dma-matrix-calibrated-200-seed0 out/axi-dma-matrix-calibrated-200-seed1 out/axi-dma-matrix-calibrated-200-seed2
+DMA_CALIBRATION_ROOTS ?= out/axi-dma-calibration-seed1-fixed2 out/axi-dma-calibration-seed2 out/axi-dma-calibration-seed3
 TEMPORAL_PILOT_ROOTS ?= out/aes-temporal-heldout-20260901-seed0-32 out/aes-temporal-heldout-20260901-seed1 out/aes-temporal-heldout-20260901-seed2-32 out/aes-temporal-burst-seed0 out/aes-temporal-burst-seed1 out/aes-temporal-burst-seed2 out/aes-temporal-target2-seed0 out/aes-temporal-target2-seed1 out/aes-temporal-target2-seed2 out/aes-temporal-target3-seed0 out/aes-temporal-target3-seed1 out/aes-temporal-target3-seed2
 COMPOSITIONAL_PILOT_ROOTS ?= out/aes-compositional-heldout-20260901-seed0-32 out/aes-compositional-heldout-20260901-seed1 out/aes-compositional-heldout-20260901-seed2-32 out/aes-compositional-target1-seed0 out/aes-compositional-target1-seed1 out/aes-compositional-target1-seed2 out/aes-compositional-target2-seed0 out/aes-compositional-target2-seed1 out/aes-compositional-target2-seed2 out/aes-compositional-target3-seed0 out/aes-compositional-target3-seed1 out/aes-compositional-target3-seed2 out/aes-compositional-target4-seed0 out/aes-compositional-target4-seed1 out/aes-compositional-target4-seed2
 FINALIST_TRIALS ?= $(BASELINE_DIR)/target-0.50/seed-0/random/trials.jsonl
