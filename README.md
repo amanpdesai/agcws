@@ -30,6 +30,7 @@ make inspect-liberties
 make synth-aes
 make evaluate-aes
 make research-smoke
+make research-audit
 make analyze-baseline BASELINE_DIR=out/aes-baseline-matrix-complete ANALYSIS_DIR=out/final-analysis
 make validate-finalists FINALIST_TRIALS=out/aes-baseline-matrix-complete/target-0.50/seed-0/random/trials.jsonl
 make cross-pdk-dma DMA_WAVEFORM=out/axi-dma-coupled/activity.vcd
