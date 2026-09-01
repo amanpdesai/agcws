@@ -27,6 +27,11 @@ python3 third_party/bsg_fakeram/scripts/run.py \
   --output_dir out/memory-collateral/ram/generated
 ```
 
+It also writes `memory_libmap.txt` for Yosys. Use that file only after checking
+that the inferred memory is truly single-clock synchronous 1RW and that the
+generated macro's logical wrapper preserves the design's read-during-write
+behavior.
+
 Existing design synthesis remains unchanged until port semantics, mapping, and
 characterization are validated, keeping baseline results comparable.
 
