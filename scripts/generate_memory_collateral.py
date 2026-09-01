@@ -84,6 +84,7 @@ def generate(inventory_path: Path, output_dir: Path, *, backend: str = "bsg_fake
     for macro in macros:
         if not macro["mapping_eligible"]:
             continue
+        port_kind = "sr" if macro["write_ports"] == 0 else "srsw"
         libmap.extend([
             # AXI's RTL marks these FIFO memories as distributed; matching the
             # class is required for Yosys' ram_style attribute selection.
@@ -92,7 +93,7 @@ def generate(inventory_path: Path, output_dir: Path, *, backend: str = "bsg_fake
             f"  width {macro['physical_width']};",
             "  cost 1;",
             "  init any;",
-            '  port srsw "A" {',
+            f'  port {port_kind} "A" {{',
             "    clock posedge;",
             "    clken;",
             "  }",

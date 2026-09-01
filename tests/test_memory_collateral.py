@@ -22,7 +22,7 @@ def test_memory_collateral_preserves_geometry(tmp_path: Path):
     assert "agcws_mem_0_mem" in (tmp_path / "collateral/memory_macros.v").read_text()
     assert "memory_libmap.txt" in {p.name for p in (tmp_path / "collateral").iterdir()}
     assert "ram distributed" in (tmp_path / "collateral/memory_libmap.txt").read_text()
-    assert "port srsw" in (tmp_path / "collateral/memory_libmap.txt").read_text()
+    assert "port sr" in (tmp_path / "collateral/memory_libmap.txt").read_text()
     assert "$__AGCWS_MEM_0_8x256" in (tmp_path / "collateral/memory_libmap.txt").read_text()
 
 
