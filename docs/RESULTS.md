@@ -6,7 +6,7 @@ multi-design factorial study has not yet been completed.
 
 ## Verified infrastructure
 
-- `make verify`: 169 tests passed, one skipped; Ruff clean.
+- `make verify`: 171 tests passed, one skipped; Ruff clean.
 - `make research-smoke`: passed.
 - `make container-smoke`: passed, including FuseSoC/Ibex source preparation
   and deterministic workload compilation.
@@ -71,10 +71,11 @@ target. This is a G4 plumbing/milestone result for one target and one seed,
 not a comparative profile conclusion.
 
 Machine-readable aggregates for this snapshot are
-`out/aes-temporal-heldout-3seed-aggregate.json` and
-`out/aes-compositional-heldout-3seed-aggregate.json`. They preserve the
-three-run denominators and deterministic bootstrap summaries used by the
-reporting tooling.
+`out/aes-temporal-pilot-aggregate.json` and
+`out/aes-compositional-pilot-aggregate.json`. The aggregation command recovers
+target identity from archived `target.json` files, preserving four temporal
+target groups and five compositional target groups with three-run denominators
+and deterministic bootstrap summaries.
 
 The profile smoke was expanded to three seeds at 32 proposals per seed. Across
 the temporal arm, 96/96 simulations were valid and 2/3 seeds solved the same
