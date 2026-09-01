@@ -291,6 +291,12 @@ offline-hybrid. All 6/6 simulations were valid, with no schema, protocol,
 functional, or useful-work failures. This confirms common-runner compatibility;
 it is not comparative performance evidence.
 
+An initial six-arm Ibex activity matrix (seed `0`, five proposal slots per arm)
+completed with 30/30 valid simulations and zero failures at any validity stage.
+The run used the calibrated activity bounds and shared proposal budget. It is a
+preliminary activity-tier dataset; the sample is too small for inferential
+policy claims and no gate-level power conclusion is drawn from it.
+
 The memory inventory and collateral path was validated on the current pinned
 RTL closures. AES `aes_cipher_core` produced zero inferred memories. AXI DMA
 produced 13 internal 32-entry FIFO memories with independent read and write
