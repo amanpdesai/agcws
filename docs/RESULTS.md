@@ -70,6 +70,13 @@ simulations with 672 per-cycle samples per candidate but did not reach its
 target. This is a G4 plumbing/milestone result for one target and one seed,
 not a comparative profile conclusion.
 
+The profile smoke was expanded to three seeds at 32 proposals per seed. Across
+the temporal arm, 96/96 simulations were valid and 2/3 seeds solved the same
+held-out achieved target. Across the compositional arm, 96/96 were valid and
+0/3 seeds solved its held-out region-share target. Every run retained per-cycle
+activity and target provenance. This remains one target per class and is not a
+general profile-method conclusion.
+
 A third full-budget seed is complete. The three-seed aggregate is
 `out/axi-dma-matrix-calibrated-200-3seed-aggregate.json`, with paired inference
 at `out/axi-dma-matrix-calibrated-200-3seed-inference.json`: 5 policies × 200
