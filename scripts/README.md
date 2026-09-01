@@ -128,9 +128,10 @@ Use the selectable Make variables to resolve a specific closure. For the
 standalone CPU boundary, the reproducible container command is:
 
 ```bash
-make resolve-ibex-sources IBEX_CORE=lowrisc:ibex:ibex_core
+PYTHONPATH=src .venv/bin/python scripts/resolve_ibex_sources.py \
+  --core lowrisc:ibex:ibex_core --out out/ibex-core-sources
 make probe-ibex-synthesis \
-  IBEX_SOURCES=out/ibex-sources/sources.json IBEX_TOP=ibex_core
+  IBEX_SOURCES=out/ibex-core-sources/sources.json IBEX_TOP=ibex_core
 ```
 
 For `make synthesize-ibex-core IBEX_TOP=ibex_core`, the target intentionally
