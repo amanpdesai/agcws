@@ -292,6 +292,16 @@ make run-ibex
 make verify-ibex IBEX_ARTIFACT=out/ibex
 ```
 
+Calibrate the Ibex RTL-activity envelope before selecting scalar targets:
+
+```bash
+python3 scripts/calibrate_ibex_activity.py --samples 10 --seed 0 \
+  --out out/ibex-activity-calibration
+```
+
+Pass the resulting `p_min` and `p_max` to `run_ibex_search.py`; these are
+normalized activity units, not watts.
+
 Run the proposal-counted Ibex activity search (inside the verification
 container, because each proposal compiles and runs the upstream simple-system
 simulator):
