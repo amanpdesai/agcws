@@ -53,6 +53,14 @@ seeds; evolutionary solved one; offline-hybrid solved both; mutation and
 one-shot-agent did not solve either. Seed variation is visible, so these are
 descriptive preliminary observations rather than a definitive policy ranking.
 
+A third full-budget seed is complete. The three-seed aggregate is
+`out/axi-dma-matrix-calibrated-200-3seed-aggregate.json`, with paired inference
+at `out/axi-dma-matrix-calibrated-200-3seed-inference.json`: 5 policies × 200
+proposals × 3 seeds, or 3,000 valid simulations. Random and offline-hybrid
+solved all three seeds; evolutionary solved one; mutation and one-shot-agent
+solved none. Exact paired AUC sign-flip tests give `p=0.25` for every comparison
+against random and Holm-adjusted `p=1.0`; this panel remains underpowered.
+
 ## Preliminary AES scalar study
 
 The verified AES scalar aggregate combines the original corpus with seeds 5

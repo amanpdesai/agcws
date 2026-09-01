@@ -93,6 +93,9 @@ but additional seeds and statistical inference remain required.
 Seed 1 is now also complete, giving two full-budget DMA seeds and a machine-
 readable aggregate; the preregistered multi-seed study and paired inference
 remain outstanding.
+Three full-budget DMA seeds are now complete, with paired inference generated;
+the panel is still small and additional seeds are required for the preregistered
+statistical analysis.
 
 Slice 9 has executable AES temporal and compositional search drivers using the
 activity oracle, achieved-profile target selection, per-cycle/windowed profiles,
