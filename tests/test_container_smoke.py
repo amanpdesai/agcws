@@ -19,3 +19,5 @@ def test_docker_context_excludes_generated_artifacts():
 def test_dockerfile_pins_base_image_digest():
     text = Path("docker/Dockerfile").read_text()
     assert "FROM python:3.10-slim@sha256:" in text
+    assert "HOME=/tmp" in text
+    assert "chmod 0777 /opt/agcws/out" in text
