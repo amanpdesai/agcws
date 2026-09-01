@@ -3,10 +3,19 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
 import subprocess
 from pathlib import Path
+
+
+def sha256(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as stream:
+        for block in iter(lambda: stream.read(1024 * 1024), b""):
+            digest.update(block)
+    return digest.hexdigest()
 
 
 def resolve_source_path(value: str, repository_root: Path) -> Path:
@@ -105,6 +114,8 @@ def main() -> None:
         "resolved_source_paths": source_paths, "command": [yosys, "-p", read],
         "returncode": returncode, "timed_out": timed_out, "timeout_s": args.timeout,
         "map": args.map, "liberty": str(args.liberty) if args.map else None,
+        "liberty_sha256": sha256(args.liberty) if args.map and args.liberty.is_file() else None,
+        "sources_sha256": sha256(args.sources),
     }, indent=2, sort_keys=True) + "\n")
     print(json.dumps({"out": str(args.out), "returncode": returncode,
                       "sources": len(source_paths)}, sort_keys=True))

@@ -26,6 +26,7 @@ def test_probe_writes_failure_manifest(tmp_path: Path, monkeypatch):
     record = json.loads((tmp_path / "out" / "manifest.json").read_text())
     assert record["returncode"] == 1
     assert record["source_count"] == 1
+    assert len(record["sources_sha256"]) == 64
     assert "-Q" not in record["command"]
 
 
@@ -50,4 +51,5 @@ def test_probe_records_timeout_as_non_success(tmp_path: Path, monkeypatch):
     assert record["returncode"] == 124
     assert record["timed_out"] is True
     assert record["timeout_s"] == 0.01
+    assert len(record["sources_sha256"]) == 64
     assert "timed out" in (tmp_path / "out" / "yosys.log").read_text()
