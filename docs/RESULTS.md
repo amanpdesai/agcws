@@ -250,6 +250,18 @@ timeout: an empty exported `AGCWS_FUSESOC` value bypassed the resolver fallback.
 The mapped core is still not a complete Ibex workload power pipeline; wrapper
 closure and memory-compatible gate-level evaluation remain separate limitations.
 
+## Ibex runtime activity evidence
+
+On 2026-09-01, `make verify-ibex` completed in the verification container on a
+fresh artifact root. The run compiled the generated RV32IM workload, executed
+the FuseSoC simple-system simulator, converted its FST to a 19.2 MB VCD, and
+produced a verified `activity.json` with 20,169 clock edges and nonzero
+per-cycle toggles. The artifact verifier checked three input records and
+returned `valid=true`. This establishes functional simulation and RTL activity
+extraction for Ibex. It does not establish Ibex gate-level power: the
+simple-system wrapper still lacks a verified mapped-netlist/OpenSTA path, and
+the core-only netlist is not a drop-in replacement for that wrapper.
+
 The memory inventory and collateral path was validated on the current pinned
 RTL closures. AES `aes_cipher_core` produced zero inferred memories. AXI DMA
 produced 13 internal 32-entry FIFO memories with independent read and write
