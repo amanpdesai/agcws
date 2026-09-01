@@ -30,12 +30,14 @@ make synth-aes
 make evaluate-aes
 make research-smoke
 make analyze-baseline BASELINE_DIR=out/aes-baseline-matrix-complete ANALYSIS_DIR=out/final-analysis
-make validate-finalists FINALIST_TRIALS=out/aes-baseline-matrix/target-0.50/seed-0/random/trials.jsonl
+make validate-finalists FINALIST_TRIALS=out/aes-baseline-matrix-complete/target-0.50/seed-0/random/trials.jsonl
 make cross-pdk-dma DMA_WAVEFORM=out/axi-dma-coupled/activity.vcd
 make axi-dma-search BUDGET=200
 make infer-dma
 make aggregate-temporal-pilot
 make aggregate-compositional-pilot
+make aggregate-temporal-policy-matrix
+make aggregate-compositional-policy-matrix
 PYTHONPATH=src python scripts/run_aes_task.py \
   experiments/workloads/aes_min_scored.json out/aes-core-synthesis-final4
 ```
