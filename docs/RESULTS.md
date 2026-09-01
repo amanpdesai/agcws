@@ -174,6 +174,10 @@ trials out of 13,500 proposal slots, with no profile-audit errors. This remains
 preliminary AES activity-oracle evidence, not a multi-design or gate-level
 result; the corresponding figure is
 `out/figures/compositional-policy-convergence-300.png`.
+Paired policy inference for this matrix is recorded in
+`out/aes-compositional-policy-inference-300.json`; each comparison has three
+matched seeds per achieved target and Holm-adjusted p-values. The panel is too
+small for definitive policy claims.
 
 The five-seed full-budget aggregate is
 `out/axi-dma-matrix-calibrated-200-5seed-aggregate.json`, with paired inference
