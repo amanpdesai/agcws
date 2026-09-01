@@ -58,7 +58,10 @@ and `out/axi-dma-matrix-calibrated-200-3seed-inference.json`. They cover three
 seeds at 200 proposals on the coupled activity oracle and must be labeled as a
 preliminary single-design activity study. Current profile-arm evidence is
 summarized in `docs/RESULTS.md`; it covers one achieved target per profile class,
-not a full target factorial.
+not a full target factorial. The current pilot now covers all four achieved
+temporal schedules and all five achieved compositional targets, with three
+seeds at 32 proposals per target, but it remains activity-only and below the
+preregistered comparative scope.
 The machine-readable pilot aggregates are
 `out/aes-temporal-heldout-3seed-aggregate.json` and
 `out/aes-compositional-heldout-3seed-aggregate.json`.
