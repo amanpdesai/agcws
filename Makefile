@@ -236,7 +236,8 @@ run-ibex:
 	$(VENV_PYTHON) scripts/generate_ibex_workload.py "$$ibex_root/floor_workload.json"; \
 	bash scripts/run_ibex_workload.sh "$$ibex_root/floor_workload.json" "$$ibex_root"
 verify-ibex: run-ibex
-	$(VENV_PYTHON) scripts/verify_artifact.py "$${IBEX_ARTIFACT:-$${AGCWS_IBEX_ARTIFACT_ROOT:-$${AGCWS_ARTIFACT_ROOT:-out}/ibex-run}}"
+	ibex_root="$${AGCWS_IBEX_ARTIFACT_ROOT:-$${IBEX_ARTIFACT:-$${AGCWS_ARTIFACT_ROOT:-out}/ibex}}"; \
+	$(VENV_PYTHON) scripts/verify_artifact.py "$$ibex_root"
 verify:
 	$(MAKE) test lint audit-reproducibility verify-artifact validate-aes-pdk-corpus check-axi-dma-rtl run-axi-memory-smoke run-axi-dma-workload
 container-smoke:
