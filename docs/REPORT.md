@@ -63,8 +63,9 @@ temporal schedules and all five achieved compositional targets, with three
 seeds at 32 proposals per target, but it remains activity-only and below the
 preregistered comparative scope.
 The machine-readable pilot aggregates are
-`out/aes-temporal-heldout-3seed-aggregate.json` and
-`out/aes-compositional-heldout-3seed-aggregate.json`.
+`out/aes-temporal-pilot-aggregate.json` and
+`out/aes-compositional-pilot-aggregate.json`; these preserve the distinct
+target identities recovered from each archived `target.json`.
 
 ## 5. Figures
 
