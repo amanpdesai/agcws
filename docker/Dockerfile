@@ -61,6 +61,7 @@ COPY third_party/liberty /opt/agcws/third_party/liberty
 COPY third_party/opentitan /opt/agcws/third_party/opentitan
 COPY third_party/verilog-axi /opt/agcws/third_party/verilog-axi
 COPY third_party/ibex /opt/agcws/third_party/ibex
+COPY third_party/bsg_fakeram /opt/agcws/third_party/bsg_fakeram
 COPY third_party/harnesses /opt/agcws/third_party/harnesses
 WORKDIR /opt/agcws
 RUN mkdir -p /opt/agcws/out && chmod 0777 /opt/agcws/out
