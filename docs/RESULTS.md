@@ -19,6 +19,11 @@ multi-design factorial study has not yet been completed.
   leakage, capacitance, and clock-gating characterization.
 - AES cross-PDK corpus: 10 shared workloads, Spearman rank agreement about
   `1.0`; see `out/aes-pdk-rank-20260831/corpus-validation.json`.
+- A fresh containerized AES cross-PDK run also completes both Sky130 and
+  Nangate45 synthesis/OpenSTA passes, with waveform and Liberty hashes recorded
+  in `out/aes-cross-pdk/comparison.json`. Its single-workload annotation is
+  sparse (0.132% Sky130, 0.136% Nangate45), so it is provenance evidence rather
+  than a broad cross-PDK power claim.
 
 ## Preliminary AXI-DMA activity calibration
 
