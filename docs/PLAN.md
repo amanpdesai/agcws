@@ -43,8 +43,8 @@ runner, with both Ibex FuseSoC source closures fingerprinted. The five-policy,
 five-seed DMA comparative matrix and paired inference are complete; the widened
 experiment still requires the full multi-design/profile factorial study and
 full Ibex synthesis/power integration. The full 91-source Ibex closure now passes
-Verilator lint in the reproducible container. The pinned Slang/Yosys synthesis
-The standalone `lowrisc:ibex:ibex_core` Slang/Yosys frontend probe now
+Verilator lint in the reproducible container. The standalone
+`lowrisc:ibex:ibex_core` Slang/Yosys frontend probe now
 elaborates and maps successfully from an isolated artifact root. The default
 `lowrisc:ibex:ibex_simple_system` wrapper still fails at its own elaboration
 boundary; no Ibex netlist or power result is treated as valid until synthesis
