@@ -10,6 +10,11 @@ multi-design factorial study has not yet been completed.
 - `make research-smoke`: passed.
 - `make container-smoke`: passed, including FuseSoC/Ibex source preparation
   and deterministic workload compilation.
+- Containerized `make verify-ibex` now passes with a generated 10,000-instruction
+  floor-compliant workload: compilation, simple-system simulation, waveform/
+  counter artifact creation, and three-input provenance verification all
+  succeed. This closes the Ibex RTL simulation/activity artifact boundary, not
+  the separate mapped-netlist/OpenSTA boundary.
 - Both checked-in Liberty files contain `internal_power`, rise/fall power,
   leakage, capacitance, and clock-gating characterization.
 - AES cross-PDK corpus: 10 shared workloads, Spearman rank agreement about
