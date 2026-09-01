@@ -37,7 +37,7 @@ IBEX_CORE ?= lowrisc:ibex:ibex_simple_system
 IBEX_SOURCES ?= $(if $(AGCWS_ARTIFACT_ROOT),$(AGCWS_ARTIFACT_ROOT),out)/ibex-sources/sources.json
 IBEX_TOP ?= ibex_top
 
-.PHONY: test lint dev-install analysis-install verification-install chia-install chia-smoke chia-node-smoke upstream-dma-reference research-smoke audit-reproducibility audit-profile-matrix audit-temporal-profile-matrix vertex-preflight verify-artifact inspect-liberty inspect-liberties check-liberty-coverage synth-aes evaluate-aes determinism plot-activity plot-search-curves plot-temporal-policy-matrix plot-compositional-policy-matrix analyze-baseline random-corpus temporal-corpus temporal-search compositional-search baseline-matrix cross-pdk run-aes-pdk-corpus validate-aes-pdk-corpus validate-finalists cross-pdk-dma axi-dma-search aggregate-axi-dma-calibration infer-dma aggregate-temporal-pilot aggregate-compositional-pilot aggregate-temporal-policy-matrix aggregate-compositional-policy-matrix validate-axi-dma-finalists check-axi-dma-rtl run-axi-dma-rd-smoke run-axi-dma-wr-smoke run-axi-dma-workload run-axi-dma-coupled run-axi-memory-smoke compile-ibex resolve-ibex-sources probe-ibex-synthesis synthesize-ibex-core check-ibex-rtl run-ibex verify-ibex verify container-smoke
+.PHONY: test lint dev-install analysis-install verification-install chia-install chia-smoke chia-node-smoke upstream-dma-reference research-smoke audit-reproducibility audit-profile-matrix audit-temporal-profile-matrix vertex-preflight verify-artifact inspect-liberty inspect-liberties check-liberty-coverage synth-aes evaluate-aes determinism plot-activity plot-search-curves plot-temporal-policy-matrix plot-compositional-policy-matrix analyze-baseline random-corpus temporal-corpus temporal-search compositional-search baseline-matrix cross-pdk run-aes-pdk-corpus validate-aes-pdk-corpus validate-finalists cross-pdk-dma axi-dma-search aggregate-axi-dma-calibration infer-dma infer-temporal-policy-matrix infer-compositional-policy-matrix aggregate-temporal-pilot aggregate-compositional-pilot aggregate-temporal-policy-matrix aggregate-compositional-policy-matrix validate-axi-dma-finalists check-axi-dma-rtl run-axi-dma-rd-smoke run-axi-dma-wr-smoke run-axi-dma-workload run-axi-dma-coupled run-axi-memory-smoke compile-ibex resolve-ibex-sources probe-ibex-synthesis synthesize-ibex-core check-ibex-rtl run-ibex verify-ibex verify container-smoke
 test:
 	$(VENV_PYTHON) -m pytest -q
 dev-install:
@@ -126,6 +126,10 @@ aggregate-axi-dma-calibration:
 	PYTHONPATH=src $(VENV_PYTHON) scripts/aggregate_axi_dma_calibration.py $(DMA_CALIBRATION_ROOTS) --out "$${AGCWS_ARTIFACT_ROOT:-out}/axi-dma-calibration.json"
 infer-dma:
 	PYTHONPATH=src $(VENV_PYTHON) scripts/infer_policy_comparisons.py $(DMA_INFERENCE_ROOTS) --out "$${AGCWS_ARTIFACT_ROOT:-out}/axi-dma-inference.json"
+infer-temporal-policy-matrix:
+	PYTHONPATH=src $(VENV_PYTHON) scripts/infer_policy_comparisons.py "$(TEMPORAL_POLICY_MATRIX_ROOT)" --baseline random --metric auc_best_so_far --out "$${AGCWS_ARTIFACT_ROOT:-out}/aes-temporal-policy-inference-32.json"
+infer-compositional-policy-matrix:
+	PYTHONPATH=src $(VENV_PYTHON) scripts/infer_policy_comparisons.py "$(COMPOSITIONAL_FULL_POLICY_MATRIX_ROOT)" --baseline random --metric auc_best_so_far --out "$${AGCWS_ARTIFACT_ROOT:-out}/aes-compositional-policy-inference-300.json"
 aggregate-temporal-pilot:
 	PYTHONPATH=src $(VENV_PYTHON) scripts/aggregate_runs.py $(TEMPORAL_PILOT_ROOTS) --out "$${AGCWS_ARTIFACT_ROOT:-out}/aes-temporal-pilot-aggregate.json"
 aggregate-compositional-pilot:
