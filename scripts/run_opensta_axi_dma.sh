@@ -26,7 +26,7 @@ EOF
 timeout_s=${AGCWS_OPENSTA_TIMEOUT_S:-600}
 timeout --kill-after=5s "${timeout_s}s" "${AGCWS_OPENSTA:-sta}" -exit "$out_dir/power.tcl" > "$out_dir/power.rpt" 2>&1
 awk '/^Annotated [0-9]+ pin activities\./ {print $0}' "$out_dir/power.rpt" > "$out_dir/annotation.rpt"
-python3 - "$out_dir/power.rpt" "$synth_dir/manifest.json" "$out_dir/result.json" "$useful_work" <<'PY'
+python3 - "$out_dir/power.rpt" "$synth_dir/manifest.json" "$out_dir/result.json" "$useful_work" "$waveform" "$liberty" <<'PY'
 import hashlib
 import json
 import re
@@ -35,6 +35,7 @@ from pathlib import Path
 
 report, synthesis_manifest, output = map(Path, sys.argv[1:4])
 useful_work = int(sys.argv[4])
+waveform, liberty = map(Path, sys.argv[5:7])
 text = report.read_text()
 match = re.search(r"^Total\s+[-+0-9.eE]+\s+[-+0-9.eE]+\s+[-+0-9.eE]+\s+(?P<power>[-+0-9.eE]+)", text, re.MULTILINE)
 annotation = re.search(r"^Annotated\s+(?P<annotated>\d+) pin activities\.", text, re.MULTILINE)
@@ -43,6 +44,9 @@ if not match or not annotation or not unannotated:
     raise ValueError("OpenSTA report lacks total power or annotation fields")
 annotated = int(annotation.group("annotated"))
 unannotated_count = int(unannotated.group("count"))
+def input_record(path):
+    return {"path": str(path.resolve()), "bytes": path.stat().st_size,
+            "sha256": hashlib.sha256(path.read_bytes()).hexdigest()}
 output.write_text(json.dumps({
     "valid": True,
     "useful_work": useful_work,
@@ -53,6 +57,11 @@ output.write_text(json.dumps({
         "power_report": report.name,
         "power_report_sha256": hashlib.sha256(report.read_bytes()).hexdigest(),
         "synthesis_manifest": synthesis_manifest.name,
+        "inputs": {
+            "waveform": input_record(waveform),
+            "synthesis_manifest": input_record(synthesis_manifest),
+            "liberty": input_record(liberty),
+        },
         "annotated_pins": annotated,
         "unannotated_pins": unannotated_count,
         "annotation_fraction": annotated / (annotated + unannotated_count),
