@@ -81,6 +81,9 @@ elaborates from an isolated FuseSoC closure, but the bounded Liberty-mapping
 wrapper mapping and Ibex gate-level power integration remain unsupported.
 Vertex-backed comparative runs remain blocked on
 project/model/billing configuration outside the repository.
+The current reproducible scalar analysis was regenerated from
+`out/aes-baseline-matrix-complete` into `out/final-analysis/`, producing 25
+policy-target records and `convergence.png`; this remains AES-only evidence.
 
 The corrected coupled-DMA calibration covers three random seeds and 48
 valid proposals, with 16 distinct activity values and measured bounds
