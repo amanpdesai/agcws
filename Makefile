@@ -164,6 +164,6 @@ run-ibex:
 verify-ibex: run-ibex
 	$(VENV_PYTHON) scripts/verify_artifact.py "$${IBEX_ARTIFACT:-$${AGCWS_ARTIFACT_ROOT:-out}/ibex}"
 verify:
-	$(MAKE) test lint audit-reproducibility verify-artifact check-axi-dma-rtl run-axi-memory-smoke run-axi-dma-workload
+	$(MAKE) test lint audit-reproducibility verify-artifact validate-aes-pdk-corpus check-axi-dma-rtl run-axi-memory-smoke run-axi-dma-workload
 container-smoke:
 	docker run --rm agcws:dev bash scripts/container_smoke.sh
