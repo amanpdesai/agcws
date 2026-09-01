@@ -17,8 +17,10 @@ multi-design factorial study has not yet been completed.
   the separate mapped-netlist/OpenSTA boundary.
 - Both checked-in Liberty files contain `internal_power`, rise/fall power,
   leakage, capacitance, and clock-gating characterization.
-- AES cross-PDK corpus: 10 shared workloads, Spearman rank agreement about
-  `1.0`; see `out/aes-pdk-rank-20260831/corpus-validation.json`.
+- AES cross-PDK corpus: the archived 10-workload corpus at
+  `out/aes-pdk-rank-20260831/corpus` validates against its paired Sky130 and
+  Nangate45 report roots with Spearman ρ=`0.9999999999999998` (10 shared
+  workloads); see `out/aes-pdk-rank-20260831/corpus-validation.json`.
 - A fresh containerized AES cross-PDK run also completes both Sky130 and
   Nangate45 synthesis/OpenSTA passes, with waveform and Liberty hashes recorded
   in `out/aes-cross-pdk/comparison.json`. Its single-workload annotation is
