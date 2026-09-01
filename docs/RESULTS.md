@@ -21,6 +21,12 @@ multi-design factorial study has not yet been completed.
   artifacts. `verify_artifact` passed. Annotation was sparse (203 annotated
   versus 153,020 unannotated instances), so this is reproducibility and
   relative-search evidence, not signoff-accuracy power.
+- A fresh single-container AXI-DMA run completed synthesis, coupled
+  source-to-destination simulation/activity generation, OpenSTA, and generic
+  artifact verification (`valid=true`, `inputs_checked=3`). The result carries
+  the explicit 4,096-byte useful-work value and hashes for its waveform,
+  synthesis manifest, and Liberty; it is an end-to-end pipeline result, not a
+  standalone comparative claim.
 - Both checked-in Liberty files contain `internal_power`, rise/fall power,
   leakage, capacitance, and clock-gating characterization.
 - The AES Sky130 mapped netlist coverage check matches all 43,619 cell
