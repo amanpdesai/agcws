@@ -89,7 +89,7 @@ def test_env_example_covers_ibex_and_memory_tools():
 def test_verify_ibex_checks_the_artifact_written_by_run_ibex():
     text = Path("Makefile").read_text()
     verify = text.split("verify-ibex: run-ibex", 1)[1].split("\nverify:", 1)[0]
-    assert 'scripts/verify_artifact.py "$$ibex_root"' in verify
+    assert 'scripts/verify_artifact.py --require-activity "$$ibex_root"' in verify
 
 
 def test_makefile_defaults_empty_ibex_environment_values():
