@@ -106,7 +106,12 @@ def main() -> None:
             env={**os.environ, "AGCWS_PYTHON": sys.executable},
         )
         if completed.returncode:
-            raise RuntimeError(f"Ibex harness failed (returncode={completed.returncode})\n{completed.stderr}")
+            return PowerProfile(
+                mean_power=0.0, peak_power=0.0, useful_work=0.0, valid=False,
+                fidelity="activity",
+                provenance={"oracle": "ibex-simple-system-vcd",
+                            "error": f"harness returncode {completed.returncode}"},
+            )
         activity = json.loads((trial_dir / "activity.json").read_text())
         edges = max(1, int(activity["clock_edges"]))
         return PowerProfile(
