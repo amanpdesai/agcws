@@ -40,9 +40,6 @@ def main() -> None:
     parser.add_argument("--liberty", type=Path,
                         default=Path(os.environ.get("AGCWS_LIBERTY",
                             "third_party/liberty/sky130hd/sky130_fd_sc_hd__tt_025C_1v80.lib")))
-    parser.add_argument("--timeout", type=float,
-                        default=float(os.environ.get("AGCWS_IBEX_SYNTH_TIMEOUT_S", "600")),
-                        help="abort synthesis after this many seconds (default: 600)")
     args = parser.parse_args()
     manifest = json.loads(args.sources.read_text())
     repository_root = Path(__file__).resolve().parents[1]
@@ -112,27 +109,15 @@ def main() -> None:
     args.out.mkdir(parents=True, exist_ok=True)
     # Keep frontend diagnostics in the artifact.  ``-Q`` hides the Slang error
     # location and turns a reproducibility failure into an opaque exit code.
-    timed_out = False
-    try:
-        result = subprocess.run([yosys, "-p", read], capture_output=True, text=True,
-                                timeout=args.timeout, check=False)
-        stdout, stderr, returncode = result.stdout, result.stderr, result.returncode
-    except subprocess.TimeoutExpired as exc:
-        timed_out = True
-        stdout = exc.stdout or ""
-        stderr = exc.stderr or ""
-        if isinstance(stdout, bytes):
-            stdout = stdout.decode(errors="replace")
-        if isinstance(stderr, bytes):
-            stderr = stderr.decode(errors="replace")
-        stderr += f"\nIbex synthesis probe timed out after {args.timeout:g}s\n"
-        returncode = 124
+    result = subprocess.run([yosys, "-p", read], capture_output=True, text=True,
+                            check=False)
+    stdout, stderr, returncode = result.stdout, result.stderr, result.returncode
     (args.out / "yosys.log").write_text("STDOUT\n" + stdout + "\nSTDERR\n" + stderr)
     (args.out / "manifest.json").write_text(json.dumps({
         "top": args.top, "sources": args.sources.resolve().as_posix(),
         "source_count": len(source_paths), "original_source_paths": original_paths,
         "resolved_source_paths": source_paths, "command": [yosys, "-p", read],
-        "returncode": returncode, "timed_out": timed_out, "timeout_s": args.timeout,
+        "returncode": returncode,
         "map": args.map, "liberty": str(args.liberty) if args.map else None,
         "liberty_sha256": sha256(args.liberty) if args.map and args.liberty.is_file() else None,
         "sources_sha256": sha256(args.sources),

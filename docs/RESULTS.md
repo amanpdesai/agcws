@@ -40,10 +40,11 @@ workloads); see `out/aes-pdk-rank-20260831/corpus-validation.json`.
   than a broad cross-PDK power claim.
 - In the production container, the core-only Slang frontend probe succeeds
   with `IBEX_TOP=ibex_core` and 96 elaborated sources. A subsequent Sky130
-  mapping attempt reaches the synthesis flow but exceeds a 300-second bound;
-  a Nangate45 attempt likewise exceeds a 120-second bound. No mapped netlist
-  or Ibex power result is claimed. The probe and timeout manifests retain the
-  source and Liberty hashes for reproduction.
+  mapping attempt reaches the synthesis flow but did not complete in the
+  observed run; a Nangate45 attempt likewise did not complete. The probe now
+  runs without an application timeout, so these are unfinished runs rather
+  than timeout-classified results. No mapped netlist or Ibex power result is
+  claimed; manifests retain source and Liberty hashes for reproduction.
 - `make vertex-preflight` confirms the Vertex SDK is installed and the frozen
   prompt hash is available, but reports missing `AGCWS_GCP_PROJECT` and
   `AGCWS_GEMINI_MODEL`; no cloud API call was made and no Vertex comparative
