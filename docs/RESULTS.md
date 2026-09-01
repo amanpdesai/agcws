@@ -53,6 +53,14 @@ seeds; evolutionary solved one; offline-hybrid solved both; mutation and
 one-shot-agent did not solve either. Seed variation is visible, so these are
 descriptive preliminary observations rather than a definitive policy ranking.
 
+Held-out profile-arm Docker smokes also complete end to end. The temporal run
+(`out/aes-temporal-heldout-20260901/`) used an achieved target manifest with 8
+coarse windows and produced 8/8 valid simulations with 2,444 per-cycle samples;
+the compositional run (`out/aes-compositional-heldout-20260901/`) likewise
+produced 8/8 valid simulations against an achieved region-share target. Neither
+short smoke solved its target. These validate profile plumbing and provenance,
+not the full G4 comparison.
+
 A third full-budget seed is complete. The three-seed aggregate is
 `out/axi-dma-matrix-calibrated-200-3seed-aggregate.json`, with paired inference
 at `out/axi-dma-matrix-calibrated-200-3seed-inference.json`: 5 policies × 200
