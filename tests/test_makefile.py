@@ -1,4 +1,6 @@
 from pathlib import Path
+import os
+import subprocess
 
 
 def test_makefile_exposes_core_tasks():
@@ -88,3 +90,23 @@ def test_verify_ibex_checks_the_artifact_written_by_run_ibex():
     text = Path("Makefile").read_text()
     verify = text.split("verify-ibex: run-ibex", 1)[1].split("\nverify:", 1)[0]
     assert 'scripts/verify_artifact.py "$$ibex_root"' in verify
+
+
+def test_makefile_defaults_empty_ibex_environment_values():
+    env = os.environ.copy()
+    env.update({
+        "AGCWS_FUSESOC": "",
+        "AGCWS_RISCV_GCC": "",
+        "AGCWS_RISCV_OBJCOPY": "",
+    })
+    result = subprocess.run(
+        ["make", "-pn"],
+        env=env,
+        capture_output=True,
+        text=True,
+        check=True,
+    )
+    database = result.stdout
+    assert "AGCWS_FUSESOC := fusesoc" in database
+    assert "AGCWS_RISCV_GCC := riscv64-unknown-elf-gcc" in database
+    assert "AGCWS_RISCV_OBJCOPY := riscv64-unknown-elf-objcopy" in database
