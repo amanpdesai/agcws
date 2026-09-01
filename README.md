@@ -114,6 +114,20 @@ make verify-artifact AGCWS_ARTIFACT=out/aes-evaluation
 
 This checks the validity/useful-work contract and every recorded input hash.
 
+For memory-aware synthesis discovery and collateral generation:
+
+```bash
+make inventory-memories MEMORY_TOP=<top> MEMORY_SOURCE=<rtl-file>
+make memory-collateral MEMORY_TOP=<top> \
+  MEMORY_INVENTORY=out/memory-inventory/<top>.json
+make audit-memory-collateral \
+  MEMORY_COLLATERAL=out/memory-collateral/<top>
+```
+
+Review `memory-macros.json` before enabling any mapping. The generated BSG
+configuration may contain explicit physical padding for CACTI constraints, and
+the audit rejects unsupported read/write or latency semantics.
+
 ## License
 
 BSD 3-Clause, matching CHIA.

@@ -174,7 +174,7 @@ inventory-memories:
 	@test -n "$(MEMORY_TOP)" -a -n "$(MEMORY_SOURCE)" || (echo "set MEMORY_TOP and MEMORY_SOURCE" >&2; exit 2)
 	$(VENV_PYTHON) scripts/inventory_yosys_memories.py --top "$(MEMORY_TOP)" --source "$(MEMORY_SOURCE)" --out "$${AGCWS_ARTIFACT_ROOT:-out}/memory-inventory/$(MEMORY_TOP).json"
 memory-collateral:
-	@test -f "$(MEMORY_INVENTORY)" || (echo "set MEMORY_INVENTORY" >&2; exit 2)
+	@test -n "$(MEMORY_TOP)" -a -f "$(MEMORY_INVENTORY)" || (echo "set MEMORY_TOP and MEMORY_INVENTORY" >&2; exit 2)
 	$(VENV_PYTHON) scripts/generate_memory_collateral.py "$(MEMORY_INVENTORY)" "$${AGCWS_ARTIFACT_ROOT:-out}/memory-collateral/$(MEMORY_TOP)"
 compile-ibex:
 	PYTHONPATH=src $(VENV_PYTHON) scripts/compile_ibex_workload.py experiments/workloads/ibex_smoke.json out/ibex/ibex_smoke.elf
