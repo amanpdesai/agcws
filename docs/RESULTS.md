@@ -6,7 +6,7 @@ multi-design factorial study has not yet been completed.
 
 ## Verified infrastructure
 
-- `make verify`: 195 tests passed, one skipped; Ruff clean.
+- `make verify`: 197 tests passed, one skipped; Ruff clean.
 - `make research-smoke`: passed.
 - `make container-smoke`: passed, including FuseSoC/Ibex source preparation
   and deterministic workload compilation.
