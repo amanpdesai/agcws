@@ -314,6 +314,14 @@ python3 scripts/run_ibex_search.py --policy random --p-min 0 --p-max 100 \
   --budget 20 --seed 0 --out out/ibex-search
 ```
 
+Prefer loading bounds directly from calibration to avoid copying values:
+
+```bash
+python3 scripts/run_ibex_search.py --policy random \
+  --calibration out/ibex-activity-calibration/calibration.json \
+  --budget 20 --seed 0 --out out/ibex-search
+```
+
 The runner records RTL per-cycle/window toggle activity and simulator
 provenance through the shared search contract. `--p-min` and `--p-max` are
 activity-envelope bounds, not watts; this path is not an Ibex gate-level

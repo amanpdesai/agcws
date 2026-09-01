@@ -27,12 +27,23 @@ def main() -> None:
                "one-shot-agent", "offline-hybrid")
     parser.add_argument("--policy", choices=choices, default="random")
     parser.add_argument("--policies", help="comma-separated policy matrix; overrides --policy")
-    parser.add_argument("--p-min", type=float, required=True)
-    parser.add_argument("--p-max", type=float, required=True)
+    parser.add_argument("--p-min", type=float)
+    parser.add_argument("--p-max", type=float)
+    parser.add_argument("--calibration", type=Path,
+                        help="calibration.json containing p_min and p_max")
     parser.add_argument("--budget", type=int, default=20)
     parser.add_argument("--seed", type=int, default=0)
     parser.add_argument("--out", type=Path, default=Path("out/ibex-search"))
     args = parser.parse_args()
+    if args.calibration:
+        calibration = json.loads(args.calibration.read_text())
+        try:
+            args.p_min = float(calibration["p_min"])
+            args.p_max = float(calibration["p_max"])
+        except (KeyError, TypeError, ValueError) as exc:
+            parser.error(f"invalid Ibex calibration: {exc}")
+    if args.p_min is None or args.p_max is None or args.p_max <= args.p_min:
+        parser.error("provide --calibration or valid --p-min/--p-max bounds")
     if args.policies:
         policies = [item.strip() for item in args.policies.split(",") if item.strip()]
         allowed = set(choices)
