@@ -111,6 +111,9 @@ proposals × 3 seeds, or 3,000 valid simulations. Random and offline-hybrid
 solved all three seeds; evolutionary solved one; mutation and one-shot-agent
 solved none. Exact paired AUC sign-flip tests give `p=0.25` for every comparison
 against random and Holm-adjusted `p=1.0`; this panel remains underpowered.
+The corresponding multi-root convergence figure is
+`out/axi-dma-analysis-3seed/convergence.png`, generated from the three seed
+roots with `analysis/plot_search_curves.py`.
 
 ## Preliminary AES scalar study
 

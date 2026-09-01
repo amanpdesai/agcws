@@ -71,6 +71,9 @@ with `make analyze-baseline` (or an equivalent recorded command) from the
 complete declared corpus, and must include scalar convergence, temporal
 profiles, compositional attribution, cross-PDK agreement, and validity/cost
 breakdowns.
+The verified DMA pilot convergence figure is
+`out/axi-dma-analysis-3seed/convergence.png`; its source summary is stored
+beside the figure as `convergence.json`.
 
 ## 6. Limitations and negative results
 
