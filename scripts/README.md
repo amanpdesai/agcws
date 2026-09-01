@@ -292,6 +292,20 @@ make run-ibex
 make verify-ibex IBEX_ARTIFACT=out/ibex
 ```
 
+Run the proposal-counted Ibex activity search (inside the verification
+container, because each proposal compiles and runs the upstream simple-system
+simulator):
+
+```bash
+python3 scripts/run_ibex_search.py --policy random --p-min 0 --p-max 100 \
+  --budget 20 --seed 0 --out out/ibex-search
+```
+
+The runner records RTL per-cycle/window toggle activity and simulator
+provenance through the shared search contract. `--p-min` and `--p-max` are
+activity-envelope bounds, not watts; this path is not an Ibex gate-level
+OpenSTA evaluation. Use separate output roots for parallel seeds.
+
 Run the remote CHIA simulation-to-activity acceptance DAG:
 
 ```bash
