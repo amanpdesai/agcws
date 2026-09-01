@@ -88,7 +88,10 @@ recorded at `out/aes-temporal-targets-2.json`; the newly executed `burst` target
 covered three seeds (96/96 valid simulations), with aggregate
 `out/aes-temporal-burst-3seed-aggregate.json`. The reported profile evidence
 therefore spans two achieved temporal schedules, while the compositional snapshot
-still executes target 0 only.
+now covers targets 0 and 1. Target 1 has aggregate
+`out/aes-compositional-target1-3seed-aggregate.json` with 96/96 valid
+simulations and 0/3 solves. The compositional target set still has additional
+unrun achieved targets.
 
 A third full-budget seed is complete. The three-seed aggregate is
 `out/axi-dma-matrix-calibrated-200-3seed-aggregate.json`, with paired inference
