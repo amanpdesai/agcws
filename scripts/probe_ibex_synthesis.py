@@ -51,14 +51,20 @@ def main() -> None:
                     for path in original_paths]
     include_dir_paths = {Path(path).parent for path in source_paths}
     # FuseSoC's generated source list does not always carry include-only files.
+    # Keep the shared primitive include roots, but only add generated include
+    # directories that belong to the resolved closure.  Searching the whole
+    # checkout here can pull simple-system-only memload headers into an
+    # ibex_core probe and make Slang parse them at compilation-unit scope.
     include_dir_paths.update({
         repository_root / "third_party/ibex/vendor/lowrisc_ip/ip/prim/rtl",
         repository_root / "third_party/ibex/vendor/lowrisc_ip/dv/sv/dv_utils",
-        repository_root / "third_party/ibex/build/lowrisc_ibex_ibex_top_0.1/lint-verilator/src/lowrisc_prim_util_memload_0/rtl",
     })
     for filename in ("prim_util_memload.svh", "dv_fcov_macros.svh"):
-        include_dir_paths.update(path.parent for path in
-                                 (repository_root / "third_party/ibex").rglob(filename))
+        include_dir_paths.update(
+            path.parent for path in
+            (Path(path).parent for path in source_paths)
+            if (path / filename).is_file()
+        )
     if any("third_party/ibex" in path for path in source_paths):
         package_root = repository_root / "third_party/ibex/vendor/lowrisc_ip/ip/prim/rtl"
         # The resolver may include both the original vendor copy and FuseSoC's
