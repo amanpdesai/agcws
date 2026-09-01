@@ -12,11 +12,19 @@ yosys_bin=${AGCWS_YOSYS:-yosys}
 # after checking the plugin against the selected Yosys binary.
 slang_plugin=${AGCWS_SLANG_PLUGIN:-}
 memory_libmap=${AGCWS_MEMORY_LIBMAP:-}
+memory_manifest=${AGCWS_MEMORY_MANIFEST:-}
 mkdir -p "$out_dir"
 
 memory_pass="memory_map"
 if [[ -n "$memory_libmap" ]]; then
   test -f "$memory_libmap" || { echo "missing AGCWS_MEMORY_LIBMAP: $memory_libmap" >&2; exit 2; }
+  test -f "$memory_manifest" || { echo "set AGCWS_MEMORY_MANIFEST with mapping_ready=true" >&2; exit 2; }
+  python3 - "$memory_manifest" <<'PY'
+import json
+import sys
+if not json.load(open(sys.argv[1], encoding="utf-8")).get("mapping_ready", False):
+    raise SystemExit("memory collateral is not mapping-ready")
+PY
   memory_pass="memory_libmap -lib $memory_libmap; memory_map"
 fi
 
@@ -53,19 +61,21 @@ tee -o $out_dir/stat.json stat -liberty $liberty -json" \
 sha256sum "$out_dir/mapped.v" | awk '{print $1}' > "$out_dir/netlist.sha256"
 sha256sum "$liberty" | awk '{print $1}' > "$out_dir/liberty.sha256"
 sha256sum "${sources[@]}" | sha256sum | awk '{print $1}' > "$out_dir/sources.sha256"
-python3 - "$out_dir/manifest.json" "$liberty" "$out_dir" "$frontend" "$yosys_bin" "$slang_plugin" "$memory_libmap" <<'PY'
+python3 - "$out_dir/manifest.json" "$liberty" "$out_dir" "$frontend" "$yosys_bin" "$slang_plugin" "$memory_libmap" "$memory_manifest" <<'PY'
 import json
 import sys
 from pathlib import Path
 
-manifest, liberty, out_dir, frontend, yosys_bin, slang_plugin, memory_libmap = sys.argv[1:]
+manifest, liberty, out_dir, frontend, yosys_bin, slang_plugin, memory_libmap, memory_manifest = sys.argv[1:]
 root = Path(out_dir)
 import subprocess
 version = subprocess.run([yosys_bin, "-V"], capture_output=True, text=True, check=True).stdout.strip()
 memory_sha256 = None
+memory_manifest_sha256 = None
 if memory_libmap:
     import hashlib
     memory_sha256 = hashlib.sha256(Path(memory_libmap).read_bytes()).hexdigest()
+    memory_manifest_sha256 = hashlib.sha256(Path(memory_manifest).read_bytes()).hexdigest()
 Path(manifest).write_text(json.dumps({
     "top": "aes_cipher_core",
     "liberty": liberty,
@@ -77,6 +87,8 @@ Path(manifest).write_text(json.dumps({
     "slang_plugin": slang_plugin or None,
     "memory_libmap": memory_libmap or None,
     "memory_libmap_sha256": memory_sha256,
+    "memory_manifest": memory_manifest or None,
+    "memory_manifest_sha256": memory_manifest_sha256,
 }, indent=2) + "\n")
 PY
 echo "SYNTHESIS_DONE out=$out_dir"
