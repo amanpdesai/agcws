@@ -67,3 +67,11 @@ def test_makefile_ibex_tasks_are_selectable_and_reproducible():
     assert '"$${IBEX_ARTIFACT:-$${AGCWS_ARTIFACT_ROOT:-out}/ibex}"' in text
     assert "generate_ibex_workload.py" in text
     assert "lowrisc:ibex:ibex_core" in text
+
+
+def test_synthesis_scripts_expose_opt_in_memory_mapping():
+    for name in ("scripts/synthesize_aes_core.sh", "scripts/synthesize_axi_dma.sh"):
+        text = Path(name).read_text()
+        assert "AGCWS_MEMORY_LIBMAP" in text
+        assert "memory_libmap -lib" in text
+        assert "memory_libmap_sha256" in text

@@ -32,6 +32,13 @@ that the inferred memory is truly single-clock synchronous 1RW and that the
 generated macro's logical wrapper preserves the design's read-during-write
 behavior.
 
+To run an explicitly reviewed mapping experiment, set
+`AGCWS_MEMORY_LIBMAP` to that file before invoking either synthesis script.
+The scripts run `memory_libmap` before `memory_map` and record the selected file
+and digest in `manifest.json`. Leave the variable unset for the baseline; a
+contract-only or semantically incompatible bundle must never be used for a
+reported power result.
+
 Existing design synthesis remains unchanged until port semantics, mapping, and
 characterization are validated, keeping baseline results comparable.
 
