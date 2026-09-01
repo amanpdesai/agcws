@@ -169,13 +169,9 @@ probe-ibex-synthesis:
 	PYTHONPATH=src $(VENV_PYTHON) scripts/probe_ibex_synthesis.py "$(IBEX_SOURCES)" --top "$(IBEX_TOP)" --out "$${AGCWS_ARTIFACT_ROOT:-out}/ibex-synthesis-probe"
 synthesize-ibex-core:
 	@test "$(IBEX_TOP)" = "ibex_core" || (echo "use IBEX_TOP=ibex_core for this target" >&2; exit 2)
-	@if test -n "$(IBEX_SOURCES)" && test -f "$(IBEX_SOURCES)"; then \
-		sources="$(IBEX_SOURCES)"; \
-	else \
-		root="$${AGCWS_ARTIFACT_ROOT:-out}/ibex-core-sources"; \
-		PYTHONPATH=src $(VENV_PYTHON) scripts/resolve_ibex_sources.py --core lowrisc:ibex:ibex_core --out "$$root" >/dev/null; \
-		sources="$$root/sources.json"; \
-	fi; \
+	@root="$${AGCWS_ARTIFACT_ROOT:-out}/ibex-core-sources"; \
+	PYTHONPATH=src $(VENV_PYTHON) scripts/resolve_ibex_sources.py --core lowrisc:ibex:ibex_core --out "$$root" >/dev/null; \
+	sources="$$root/sources.json"; \
 	PYTHONPATH=src $(VENV_PYTHON) scripts/probe_ibex_synthesis.py "$$sources" --top "$(IBEX_TOP)" --map --out "$${AGCWS_ARTIFACT_ROOT:-out}/ibex-core-synthesis"
 check-ibex-rtl: resolve-ibex-sources
 	PYTHONPATH=src $(VENV_PYTHON) scripts/check_ibex_verilator.py "$${AGCWS_ARTIFACT_ROOT:-out}/ibex-sources/sources.json"
