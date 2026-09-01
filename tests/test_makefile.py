@@ -15,6 +15,8 @@ def test_makefile_exposes_core_tasks():
     assert 'DMA_P_MAX' in text
     assert '--p-min "$(DMA_P_MIN)"' in text
     assert '--p-max "$(DMA_P_MAX)"' in text
+    assert "infer-dma:" in text
+    assert "DMA_INFERENCE_ROOTS" in text
     assert '--budget "$(BUDGET)"' in text
     assert "plot-search-curves:" in text
 
