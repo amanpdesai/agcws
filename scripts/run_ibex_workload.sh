@@ -14,6 +14,14 @@ objcopy=${AGCWS_RISCV_OBJCOPY:-riscv64-unknown-elf-objcopy}
 fst2vcd=${AGCWS_FST2VCD:-fst2vcd}
 
 mkdir -p "$out_dir"
+command -v "$gcc" >/dev/null 2>&1 || {
+  echo "missing RISC-V compiler: $gcc (run inside the AGCWS verification container or set AGCWS_RISCV_GCC)" >&2
+  exit 2
+}
+command -v "$objcopy" >/dev/null 2>&1 || {
+  echo "missing RISC-V objcopy: $objcopy (run inside the AGCWS verification container or set AGCWS_RISCV_OBJCOPY)" >&2
+  exit 2
+}
 workload_abs=$(cd "$(dirname "$workload")" && pwd)/$(basename "$workload")
 if [[ "$workload_abs" != "$(cd "$out_dir" && pwd)/workload.json" ]]; then
   cp "$workload" "$out_dir/workload.json"
