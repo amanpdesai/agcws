@@ -141,11 +141,11 @@ simulations and 0/3 solves for each. Their aggregates are
 covers all four achieved schedules, 384 valid simulations total, and 2/12
 seed-target solves across the two schedules already reported plus these two.
 
-The profile-policy seam was then exercised on two achieved temporal targets:
+The profile-policy seam was then exercised on all four achieved temporal targets:
 `out/aes-temporal-policy-matrix-20260901-v2-aggregate.json` contains five
 distinct policies, three seeds per target-policy cell, and 32 proposal slots per
-run. The matrix has 10 target-policy groups and 953 valid trials out of 960
-proposal slots; it is a preliminary two-target activity comparison, not the
+run. The matrix has 20 target-policy groups and 1,904 valid trials out of 1,920
+proposal slots; it is a preliminary four-target activity comparison, not the
 full preregistered profile factorial or a gate-level power result.
 The corresponding convergence figures are
 `out/figures/temporal-policy-convergence.png` and
