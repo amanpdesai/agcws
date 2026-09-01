@@ -25,7 +25,7 @@ def test_ibex_requires_termination():
 def test_ibex_generators_preserve_useful_work_and_termination():
     adapter = IbexAdapter()
     workload = adapter.random_workload(random.Random(7))
-    assert len(workload["program"]) >= adapter.useful_work_floor + 1
+    assert len(workload["program"]) >= adapter.useful_work_floor + 65
     assert workload["program"][-1] == {"op": "ecall"}
     mutated = adapter.mutate_workload(workload, random.Random(8))
     assert mutated["program"][-1] == {"op": "ecall"}
