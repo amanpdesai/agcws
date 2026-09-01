@@ -56,7 +56,7 @@ Slice 8 currently exposes random, mutation, evolutionary, one-shot-agent, and
 hybrid policies through the common proposal-counted runner. Slice 10 has deterministic AUC,
 solve-rate, censoring, validity/cost metrics, multi-root corpus aggregation, and
 deterministic search-curve plotting. The DMA matrix has completed for five
-policies, 200 proposals, and three seeds; the complete multi-design statistical
+policies, 200 proposals, and five seeds; the complete multi-design statistical
 study remains outstanding.
 
 Slice 6 has the common offline-agent and Vertex policy interfaces plus the
@@ -93,9 +93,8 @@ but additional seeds and statistical inference remain required.
 Seed 1 is now also complete, giving two full-budget DMA seeds and a machine-
 readable aggregate; the preregistered multi-seed study and paired inference
 remain outstanding.
-Three full-budget DMA seeds are now complete, with paired inference generated;
-the panel is still small and additional seeds are required for the preregistered
-statistical analysis.
+Five full-budget DMA seeds are now complete, with paired inference generated;
+the panel remains small and underpowered for definitive policy claims.
 
 Slice 9 has executable AES temporal and compositional search drivers using the
 activity oracle, achieved-profile target selection, per-cycle/windowed profiles,

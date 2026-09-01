@@ -141,11 +141,9 @@ seed-target solves across the two schedules already reported plus these two.
 
 A third full-budget seed is complete. The three-seed aggregate is
 `out/axi-dma-matrix-calibrated-200-3seed-aggregate.json`, with paired inference
-at `out/axi-dma-matrix-calibrated-200-3seed-inference.json`: 5 policies × 200
-proposals × 3 seeds, or 3,000 valid simulations. Random and offline-hybrid
-solved all three seeds; evolutionary solved one; mutation and one-shot-agent
-solved none. Exact paired AUC sign-flip tests give `p=0.25` for every comparison
-against random and Holm-adjusted `p=1.0`; this panel remains underpowered.
+at `out/axi-dma-inference-5seed.json`: 5 policies × 200 proposals × 5 seeds.
+This five-seed panel is still small and underpowered for definitive policy claims;
+use the machine-readable inference for exact paired statistics.
 The corresponding multi-root convergence figure is
 `out/axi-dma-analysis-3seed/convergence.png`, generated from the three seed
 roots with `analysis/plot_search_curves.py`.
