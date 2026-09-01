@@ -397,6 +397,19 @@ outside the recorded corpus.
 **Consequence.** The completed matrix has 1,434 valid trials out of 1,440
 proposal slots and remains preliminary AES activity-oracle evidence.
 
+## 2026-09-01 — Ibex core frontend passes; mapped synthesis is time-bounded
+
+**Decision.** Treat the containerized `ibex_core` Slang frontend probe as
+supported, but do not treat Ibex mapped-netlist power as supported until mapping
+completes within the declared bound. A clean Sky130 mapping attempt was bounded
+at 300 seconds and timed out after frontend elaboration succeeded.
+**Rationale.** This separates a verified frontend capability from an unverified
+power pipeline and preserves an honest reproducibility boundary.
+**Rejected.** Calling the timeout a successful synthesis result; claiming Ibex
+power from RTL activity alone.
+**Consequence.** Ibex remains an RTL/source-closure capability in the report;
+the timeout manifest is retained as diagnostic evidence.
+
 ## 2026-08-31 — Upstream coupled-DMA test is optional reference verification
 
 **Finding.** The pinned `verilog-axi` upstream MyHDL test passes when its Icarus

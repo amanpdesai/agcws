@@ -38,11 +38,11 @@ workloads); see `out/aes-pdk-rank-20260831/corpus-validation.json`.
   in `out/aes-cross-pdk/comparison.json`. Its single-workload annotation is
   sparse (0.132% Sky130, 0.136% Nangate45), so it is provenance evidence rather
   than a broad cross-PDK power claim.
-- `make synthesize-ibex-core IBEX_TOP=ibex_core` also succeeds in the
-  production container from a clean artifact root: FuseSoC resolves the core
-  closure automatically and the pinned Slang/Yosys mapping returns code 0.
-  Its manifest records source and Liberty hashes; this remains a mapped-core
-  reproducibility result, not an Ibex power result.
+- In the production container, the core-only Slang frontend probe succeeds
+  with `IBEX_TOP=ibex_core` and 96 elaborated sources. A subsequent Sky130
+  mapping attempt reaches the synthesis flow but exceeds a 300-second bound;
+  no mapped netlist or Ibex power result is claimed. The probe and timeout
+  manifests retain the source and Liberty hashes for reproduction.
 - `make vertex-preflight` confirms the Vertex SDK is installed and the frozen
   prompt hash is available, but reports missing `AGCWS_GCP_PROJECT` and
   `AGCWS_GEMINI_MODEL`; no cloud API call was made and no Vertex comparative
