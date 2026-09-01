@@ -16,6 +16,8 @@ DMA_SEARCH_DIR ?= out/axi-dma-search
 DMA_P_MIN ?= 19.674030658250675
 DMA_P_MAX ?= 19.80286241920591
 DMA_INFERENCE_ROOTS ?= out/axi-dma-matrix-calibrated-200-seed0 out/axi-dma-matrix-calibrated-200-seed1 out/axi-dma-matrix-calibrated-200-seed2
+TEMPORAL_PILOT_ROOTS ?= out/aes-temporal-heldout-20260901-seed0-32 out/aes-temporal-heldout-20260901-seed1 out/aes-temporal-heldout-20260901-seed2-32 out/aes-temporal-burst-seed0 out/aes-temporal-burst-seed1 out/aes-temporal-burst-seed2 out/aes-temporal-target2-seed0 out/aes-temporal-target2-seed1 out/aes-temporal-target2-seed2 out/aes-temporal-target3-seed0 out/aes-temporal-target3-seed1 out/aes-temporal-target3-seed2
+COMPOSITIONAL_PILOT_ROOTS ?= out/aes-compositional-heldout-20260901-seed0-32 out/aes-compositional-heldout-20260901-seed1 out/aes-compositional-heldout-20260901-seed2-32 out/aes-compositional-target1-seed0 out/aes-compositional-target1-seed1 out/aes-compositional-target1-seed2 out/aes-compositional-target2-seed0 out/aes-compositional-target2-seed1 out/aes-compositional-target2-seed2 out/aes-compositional-target3-seed0 out/aes-compositional-target3-seed1 out/aes-compositional-target3-seed2 out/aes-compositional-target4-seed0 out/aes-compositional-target4-seed1 out/aes-compositional-target4-seed2
 FINALIST_TRIALS ?= $(BASELINE_DIR)/target-0.50/seed-0/random/trials.jsonl
 WAVEFORM ?= $(EVAL_DIR)/activity.vcd
 DMA_WAVEFORM ?= out/axi-dma-coupled/activity.vcd
@@ -29,7 +31,7 @@ IBEX_CORE ?= lowrisc:ibex:ibex_simple_system
 IBEX_SOURCES ?= $(AGCWS_ARTIFACT_ROOT)/ibex-sources/sources.json
 IBEX_TOP ?= ibex_top
 
-.PHONY: test lint dev-install analysis-install verification-install chia-install chia-smoke chia-node-smoke upstream-dma-reference research-smoke audit-reproducibility vertex-preflight verify-artifact inspect-liberty inspect-liberties check-liberty-coverage synth-aes evaluate-aes determinism plot-activity plot-search-curves analyze-baseline random-corpus temporal-corpus temporal-search compositional-search baseline-matrix cross-pdk run-aes-pdk-corpus validate-aes-pdk-corpus validate-finalists cross-pdk-dma axi-dma-search aggregate-axi-dma-calibration infer-dma validate-axi-dma-finalists check-axi-dma-rtl run-axi-dma-rd-smoke run-axi-dma-wr-smoke run-axi-dma-workload run-axi-dma-coupled run-axi-memory-smoke compile-ibex resolve-ibex-sources probe-ibex-synthesis synthesize-ibex-core check-ibex-rtl run-ibex verify-ibex verify container-smoke
+.PHONY: test lint dev-install analysis-install verification-install chia-install chia-smoke chia-node-smoke upstream-dma-reference research-smoke audit-reproducibility vertex-preflight verify-artifact inspect-liberty inspect-liberties check-liberty-coverage synth-aes evaluate-aes determinism plot-activity plot-search-curves analyze-baseline random-corpus temporal-corpus temporal-search compositional-search baseline-matrix cross-pdk run-aes-pdk-corpus validate-aes-pdk-corpus validate-finalists cross-pdk-dma axi-dma-search aggregate-axi-dma-calibration infer-dma aggregate-temporal-pilot aggregate-compositional-pilot validate-axi-dma-finalists check-axi-dma-rtl run-axi-dma-rd-smoke run-axi-dma-wr-smoke run-axi-dma-workload run-axi-dma-coupled run-axi-memory-smoke compile-ibex resolve-ibex-sources probe-ibex-synthesis synthesize-ibex-core check-ibex-rtl run-ibex verify-ibex verify container-smoke
 test:
 	$(VENV_PYTHON) -m pytest -q
 dev-install:
@@ -112,6 +114,10 @@ aggregate-axi-dma-calibration:
 	PYTHONPATH=src $(VENV_PYTHON) scripts/aggregate_axi_dma_calibration.py $(DMA_CALIBRATION_ROOTS) --out "$${AGCWS_ARTIFACT_ROOT:-out}/axi-dma-calibration.json"
 infer-dma:
 	PYTHONPATH=src $(VENV_PYTHON) scripts/infer_policy_comparisons.py $(DMA_INFERENCE_ROOTS) --out "$${AGCWS_ARTIFACT_ROOT:-out}/axi-dma-inference.json"
+aggregate-temporal-pilot:
+	PYTHONPATH=src $(VENV_PYTHON) scripts/aggregate_runs.py $(TEMPORAL_PILOT_ROOTS) --out "$${AGCWS_ARTIFACT_ROOT:-out}/aes-temporal-pilot-aggregate.json"
+aggregate-compositional-pilot:
+	PYTHONPATH=src $(VENV_PYTHON) scripts/aggregate_runs.py $(COMPOSITIONAL_PILOT_ROOTS) --out "$${AGCWS_ARTIFACT_ROOT:-out}/aes-compositional-pilot-aggregate.json"
 validate-axi-dma-finalists:
 	PYTHONPATH=src $(VENV_PYTHON) scripts/validate_axi_dma_finalists.py "$${DMA_FINALIST_TRIALS:-out/axi-dma-search/trials.jsonl}" "$${DMA_SYNTH_DIR:-out/axi-dma-synthesis-sky130-v2}" --out "$${AGCWS_ARTIFACT_ROOT:-out}/axi-dma-finalist-validation"
 validate-finalists:
