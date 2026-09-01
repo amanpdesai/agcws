@@ -268,6 +268,12 @@ envelope was `75.47459106393761–76.16193221572304` total transitions per clock
 edge. These bounds are suitable for activity-tier target normalization only;
 they are not power-in-watts bounds and are not used as gate-level claims.
 
+The Ibex matrix entry point was smoke-tested in Docker with random, mutation,
+and evolutionary policies at one proposal per policy using those bounds. All
+three isolated runs produced one valid simulation with zero schema, protocol,
+functional, or useful-work failures. This validates orchestration and artifact
+separation only; it is not comparative performance evidence.
+
 The memory inventory and collateral path was validated on the current pinned
 RTL closures. AES `aes_cipher_core` produced zero inferred memories. AXI DMA
 produced 13 internal 32-entry FIFO memories with independent read and write
