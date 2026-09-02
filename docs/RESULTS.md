@@ -359,6 +359,25 @@ offline-hybrid `15.3292`; random, evolutionary, and offline-agent reached
 tolerance. The single-seed aggregate has no pairwise inferential comparisons;
 this is reproducible activity-only evidence, not a gate-level power claim.
 
+Seed `2` was subsequently rerun with persistent output under
+`out/ibex-full/seed-2` and completed with 1,200/1,200 valid simulations. Its
+activity-tier AUC summaries were random `6.8117`, mutation `35.1314`,
+evolutionary `22.4766`, offline-agent `6.8117`, one-shot-agent `146.2547`, and
+offline-hybrid `35.1314`; random, evolutionary, and offline-agent reached
+tolerance. The persistent seed archive is reproducible activity-only evidence;
+it does not establish a gate-level power claim.
+
+The current persistent Ibex activity archive covers seeds `0`, `1`, `2`, and
+`4`, with 800 valid simulations per policy and zero failures at all validity
+stages. Across these four seeds, mean AUC was random `3.8203`, offline-agent
+`3.8203`, evolutionary `20.2033`, mutation `32.0462`, offline-hybrid `32.0462`,
+and one-shot-agent `74.2328`; solve rates were respectively `1.00`, `1.00`,
+`0.75`, `0.25`, `0.25`, and `0.00`. The paired activity-tier audit found no
+Holm-adjusted significant difference at this sample size (all adjusted
+comparisons ≥ `0.625`), and these results remain descriptive because seed `3`
+is not yet in the persistent archive and the Ibex wrapper lacks gate-level
+OpenSTA support.
+
 The memory inventory and collateral path was validated on the current pinned
 RTL closures. AES `aes_cipher_core` produced zero inferred memories. AXI DMA
 produced 13 internal 32-entry FIFO memories with independent read and write
