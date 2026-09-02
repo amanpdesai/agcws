@@ -351,6 +351,14 @@ offline-hybrid `74.9344`; random and offline-agent reached tolerance. The
 result is retained as a reproducible seed archive, but remains activity-only
 and descriptive until the complete seed aggregation and gate-level validation.
 
+Seed `1` was subsequently rerun with persistent output under
+`out/ibex-full/seed-1` and completed with 1,200/1,200 valid simulations. Its
+activity-tier AUC summaries were random `3.7176`, mutation `15.3292`,
+evolutionary `3.0465`, offline-agent `3.7176`, one-shot-agent `90.0793`, and
+offline-hybrid `15.3292`; random, evolutionary, and offline-agent reached
+tolerance. The single-seed aggregate has no pairwise inferential comparisons;
+this is reproducible activity-only evidence, not a gate-level power claim.
+
 The memory inventory and collateral path was validated on the current pinned
 RTL closures. AES `aes_cipher_core` produced zero inferred memories. AXI DMA
 produced 13 internal 32-entry FIFO memories with independent read and write
