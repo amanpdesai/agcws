@@ -343,6 +343,14 @@ in this seed. This is still a single-seed descriptive result and activity-only;
 the aggregation output has one run per arm and therefore is not an inferential
 multi-seed comparison or a gate-level power claim.
 
+Seed `0` was subsequently rerun with persistent output under
+`out/ibex-full/seed-0` and completed with 1,200/1,200 valid simulations. The
+activity-tier AUC summaries were random `2.9088`, mutation `74.9344`,
+evolutionary `54.5826`, offline-agent `2.9088`, one-shot-agent `11.7927`, and
+offline-hybrid `74.9344`; random and offline-agent reached tolerance. The
+result is retained as a reproducible seed archive, but remains activity-only
+and descriptive until the complete seed aggregation and gate-level validation.
+
 The memory inventory and collateral path was validated on the current pinned
 RTL closures. AES `aes_cipher_core` produced zero inferred memories. AXI DMA
 produced 13 internal 32-entry FIFO memories with independent read and write
