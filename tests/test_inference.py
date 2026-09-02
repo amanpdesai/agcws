@@ -21,3 +21,7 @@ def test_holm_preserves_input_order():
 
 def test_rank_biserial_effect():
     assert rank_biserial_effect([3, 4, 5], [1, 2, 3]) == 1.0
+
+
+def test_rank_biserial_effect_reports_tie():
+    assert rank_biserial_effect([1, 2], [1, 2]) == 0.0

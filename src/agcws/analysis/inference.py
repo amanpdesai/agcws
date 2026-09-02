@@ -50,8 +50,10 @@ def rank_biserial_effect(left: Iterable[float], right: Iterable[float]) -> float
     """Return matched-pairs rank-biserial effect in [-1, 1]."""
     differences = [float(a) - float(b) for a, b in zip(left, right)]
     differences = [value for value in differences if value != 0.0]
-    if not differences or any(not math.isfinite(value) for value in differences):
-        raise ValueError("paired samples must contain finite nonzero differences")
+    if any(not math.isfinite(value) for value in differences):
+        raise ValueError("paired samples must contain finite differences")
+    if not differences:
+        return 0.0
     ranked = sorted((abs(value), value > 0.0) for value in differences)
     positive = sum(rank + 1 for rank, (_, is_positive) in enumerate(ranked) if is_positive)
     negative = sum(rank + 1 for rank, (_, is_positive) in enumerate(ranked) if not is_positive)
