@@ -395,6 +395,13 @@ produced four memories and two unique read-only geometries (32×32 and 16×3),
 but their read ports are asynchronous (`RD_CLK_ENABLE=0`), which is also
 incompatible with BSG FakeRAM's synchronous interface.
 
+The integrated AES acceptance smoke was rerun after the five-seed Ibex update
+with `make research-smoke`. It passed with synthesis-backed scalar evaluation,
+determinism checking, activity extraction/plotting, and temporal and
+compositional profile searches. The resulting bundle is under
+`out/research-smoke/`; this is an integration checkpoint, not additional
+comparative evidence.
+
 BSG generation was run in an isolated checkout for the AXI and Ibex physical
 geometries. CACTI-required padding is recorded explicitly as physical geometry
 in the generated manifest; logical widths and depths are never silently
