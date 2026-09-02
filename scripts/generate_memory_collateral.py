@@ -64,9 +64,14 @@ def generate(inventory_path: Path, output_dir: Path, *, backend: str = "bsg_fake
         "inventory": str(inventory_path),
         "backend": backend,
         "macros": macros,
+        # This is intentionally not an all-or-nothing gate.  Synthesis may map
+        # eligible memories and flatten the remainder into ordinary logic.
         "mapping_ready": bool(macros) and all(macro["mapping_eligible"] for macro in macros),
+        "mapping_policy": "map_eligible_flatten_incompatible",
+        "mapped_memory_count": sum(macro["mapping_eligible"] for macro in macros),
+        "flattened_memory_count": sum(not macro["mapping_eligible"] for macro in macros),
         "mapping_blockers": [macro["source_name"] for macro in macros if not macro["mapping_eligible"]],
-        "note": "Independent read/write memories require a dual-port backend; bsg_fakeram is 1RW.",
+        "note": "Eligible memories use the characterized backend; incompatible memories are flattened by the synthesis flow.",
     }
     bsg_config = {
         "tech_nm": tech_nm,

@@ -18,12 +18,13 @@ mkdir -p "$out_dir"
 memory_pass="memory_map"
 if [[ -n "$memory_libmap" ]]; then
   test -f "$memory_libmap" || { echo "missing AGCWS_MEMORY_LIBMAP: $memory_libmap" >&2; exit 2; }
-  test -f "$memory_manifest" || { echo "set AGCWS_MEMORY_MANIFEST with mapping_ready=true" >&2; exit 2; }
+  test -f "$memory_manifest" || { echo "set AGCWS_MEMORY_MANIFEST" >&2; exit 2; }
   python3 - "$memory_manifest" <<'PY'
 import json
 import sys
-if not json.load(open(sys.argv[1], encoding="utf-8")).get("mapping_ready", False):
-    raise SystemExit("memory collateral is not mapping-ready")
+manifest = json.load(open(sys.argv[1], encoding="utf-8"))
+if manifest.get("mapping_policy") != "map_eligible_flatten_incompatible":
+    raise SystemExit("memory collateral lacks the mixed mapping/flatten policy")
 PY
   memory_pass="memory_libmap -lib $memory_libmap; memory_map"
 fi

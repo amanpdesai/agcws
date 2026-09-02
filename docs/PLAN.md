@@ -90,13 +90,14 @@ project/model/billing configuration outside the repository.
 ## Memory-aware synthesis track
 
 The first implementation pass inventories inferred Yosys memories before
-`memory_map` and emits contract-only macro collateral. Before enabling it in a
-design flow, validate read/write latency and port semantics, map it to a real
-bsg_fakeram-compatible wrapper, and provide a characterized Liberty model. The
-baseline synthesis paths remain unchanged until those checks pass, preventing
-flop-mapped and macro-mapped power results from being mixed. The synthesis
-scripts now require `AGCWS_MEMORY_MANIFEST` with `mapping_ready: true` whenever
-`AGCWS_MEMORY_LIBMAP` is set, and record both collateral digests.
+`memory_map` and emits contract-only macro collateral. The synthesis policy is
+per-memory: compatible geometries are mapped to the characterized
+bsg_fakeram-compatible backend; incompatible memories are deliberately left
+for ordinary flop/distributed mapping. `AGCWS_MEMORY_MANIFEST` records the
+eligible and flattened counts and the scripts reject manifests without this
+explicit policy. This keeps the large compatible majority on macros without
+silently claiming that unsupported port semantics were mapped, and records
+both collateral digests.
 The all-design audit (`make audit-memory-collateral-all`) passes for the
 regenerated AES, AXI DMA, and Ibex bundles. Their `mapping_ready: false`
 statuses are intentional: AES has no memories, while AXI DMA and Ibex require
