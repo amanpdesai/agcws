@@ -7,7 +7,6 @@ out_dir=${1:-out/aes-core-smoke}
 blocks=${2:-1}
 idle_cycles=${3:-0}
 pattern=${4:-0}
-timeout_s=${AGCWS_SIM_TIMEOUT_S:-60}
 max_waveform_bytes=${AGCWS_MAX_WAVEFORM_BYTES:-268435456}
 mkdir -p "$out_dir"
 build_dir=${AGCWS_SIM_BUILD_DIR:-"$out_dir/obj_dir"}
@@ -37,9 +36,13 @@ if [[ -n "${AGCWS_IDLE_PATTERN:-}" ]]; then
     idle_args+=("+IDLE${index}=${idle_values[$index]}")
   done
 fi
-timeout --kill-after=5s "${timeout_s}s" bash -c \
-  "cd \"$out_dir\" && \"$sim_binary\" ${idle_args[*]}" \
-  > "$out_dir/run.log" 2>&1
+if [[ -n "${AGCWS_SIM_TIMEOUT_S:-}" ]]; then
+  timeout --kill-after=5s "${AGCWS_SIM_TIMEOUT_S}s" bash -c \
+    "cd \"$out_dir\" && \"$sim_binary\" ${idle_args[*]}" \
+    > "$out_dir/run.log" 2>&1
+else
+  (cd "$out_dir" && "$sim_binary" "${idle_args[@]}") > "$out_dir/run.log" 2>&1
+fi
 if [[ ! -s "$out_dir/activity.vcd" ]]; then
   echo "simulation did not produce a non-empty VCD" >&2
   exit 1

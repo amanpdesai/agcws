@@ -23,7 +23,10 @@ read_vcd -scope aes_core_smoke/dut $waveform
 report_power -digits 12
 report_activity_annotation -report_unannotated
 EOF
-timeout_s=${AGCWS_OPENSTA_TIMEOUT_S:-600}
-timeout --kill-after=5s "${timeout_s}s" "${AGCWS_OPENSTA:-sta}" -exit "$out_dir/power.tcl" > "$out_dir/power.rpt" 2>&1
+if [[ -n "${AGCWS_OPENSTA_TIMEOUT_S:-}" ]]; then
+  timeout --kill-after=5s "${AGCWS_OPENSTA_TIMEOUT_S}s" "${AGCWS_OPENSTA:-sta}" -exit "$out_dir/power.tcl" > "$out_dir/power.rpt" 2>&1
+else
+  "${AGCWS_OPENSTA:-sta}" -exit "$out_dir/power.tcl" > "$out_dir/power.rpt" 2>&1
+fi
 awk '/^Annotated [0-9]+ pin activities\./ {print $0}' "$out_dir/power.rpt" > "$out_dir/annotation.rpt"
 echo "OPENSTA_DONE report=$out_dir/power.rpt"
