@@ -112,7 +112,7 @@ upstream-dma-reference:
 research-smoke:
 	AGCWS_PYTHON=$(VENV_PYTHON) bash scripts/research_smoke.sh "$(SYNTH_DIR)" "$${AGCWS_ARTIFACT_ROOT:-out/research-smoke}"
 research-audit:
-	$(MAKE) test lint chia-smoke chia-node-smoke inspect-liberties audit-reproducibility verify-artifact validate-aes-pdk-corpus audit-compositional-full-policy-matrix audit-temporal-profile-matrix check-axi-dma-rtl run-axi-memory-smoke run-axi-dma-workload
+	$(MAKE) test lint chia-smoke chia-node-smoke inspect-liberties audit-reproducibility verify-artifact validate-aes-pdk-corpus audit-compositional-full-policy-matrix audit-temporal-profile-matrix audit-memory-collateral-all check-axi-dma-rtl run-axi-memory-smoke run-axi-dma-workload
 audit-reproducibility:
 	$(VENV_PYTHON) scripts/audit_reproducibility.py
 vertex-preflight:
@@ -262,6 +262,6 @@ aggregate-ibex:
 infer-ibex:
 	PYTHONPATH=src $(VENV_PYTHON) scripts/infer_policy_comparisons.py "$(IBEX_MATRIX_ROOT)" --baseline random --metric auc_best_so_far --out "$${AGCWS_ARTIFACT_ROOT:-out}/ibex-matrix-inference.json"
 verify:
-	$(MAKE) test lint audit-reproducibility verify-artifact validate-aes-pdk-corpus check-axi-dma-rtl run-axi-memory-smoke run-axi-dma-workload
+	$(MAKE) test lint audit-reproducibility verify-artifact validate-aes-pdk-corpus audit-memory-collateral-all check-axi-dma-rtl run-axi-memory-smoke run-axi-dma-workload
 container-smoke:
 	docker run --rm agcws:dev bash scripts/container_smoke.sh
