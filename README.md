@@ -8,7 +8,8 @@ Built as a composable [CHIA](https://github.com/ucb-bar/chia) loop for the A³ C
 
 Under active development (2026-08-29 → 2026-09-20). The AES oracle and
 bounded search path are runnable; the DMA adapter and five-seed comparative
-matrix are runnable; Ibex power integration, Vertex-backed trials, and the full
+matrix are runnable; the Ibex activity runner and five-seed activity matrix are
+complete. Ibex gate-level power integration, Vertex-backed trials, and the full
 multi-design/profile study remain in progress.
 
 See `docs/ARCHITECTURE.md` and `docs/PLAN.md`. The current evidence and claim
@@ -122,6 +123,7 @@ make memory-collateral MEMORY_TOP=<top> \
   MEMORY_INVENTORY=out/memory-inventory/<top>.json
 make audit-memory-collateral \
   MEMORY_COLLATERAL=out/memory-collateral/<top>
+make audit-memory-collateral-all
 ```
 
 Review `memory-macros.json` before enabling any mapping. The generated BSG
