@@ -68,6 +68,12 @@ The machine-readable pilot aggregates are
 `out/aes-compositional-pilot-aggregate.json`; these preserve the distinct
 target identities recovered from each archived `target.json`.
 
+Current Ibex activity sources are `out/ibex-full/seeds-0-1-2-3-4-aggregate.json`
+and `out/ibex-full/seeds-0-1-2-3-4-inference.json`. They cover one scalar
+activity target, six local policies, five seeds, and 200 proposal slots per
+cell. They must be labeled as activity-only evidence because the selected Ibex
+wrapper does not yet have a valid gate-level OpenSTA power path.
+
 ## 5. Figures
 
 The current reproducible convergence figure is
@@ -104,6 +110,7 @@ must be a separately identified evaluator tier.
 - `make container-smoke`
 - `make chia-smoke chia-node-smoke`
 - `make inspect-liberties`
+- `make audit-memory-collateral-all` (after generating the three bundles)
 - `make analyze-baseline BASELINE_DIR=<complete-run-root> ANALYSIS_DIR=<analysis-root>`
 - `make aggregate-temporal-pilot`
 - `make aggregate-compositional-pilot`
