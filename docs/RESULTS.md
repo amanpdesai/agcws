@@ -334,6 +334,15 @@ tolerance in this seed. These values remain descriptive until the full seed set
 is aggregated. The run used an ephemeral container output root, so it is
 recorded as audit evidence rather than a portable result archive.
 
+Seed `4` of the full-budget Ibex matrix completed with 1,200/1,200 valid
+simulations and persistent artifacts under `out/ibex-full/seed-4`. Its
+activity-tier AUC summaries were random `1.8430`, mutation `2.7897`,
+evolutionary `0.7075`, offline-agent `1.8430`, one-shot-agent `48.8044`, and
+offline-hybrid `2.7897`; every policy except one-shot-agent reached tolerance
+in this seed. This is still a single-seed descriptive result and activity-only;
+the aggregation output has one run per arm and therefore is not an inferential
+multi-seed comparison or a gate-level power claim.
+
 The memory inventory and collateral path was validated on the current pinned
 RTL closures. AES `aes_cipher_core` produced zero inferred memories. AXI DMA
 produced 13 internal 32-entry FIFO memories with independent read and write
