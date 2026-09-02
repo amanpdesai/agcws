@@ -97,6 +97,10 @@ baseline synthesis paths remain unchanged until those checks pass, preventing
 flop-mapped and macro-mapped power results from being mixed. The synthesis
 scripts now require `AGCWS_MEMORY_MANIFEST` with `mapping_ready: true` whenever
 `AGCWS_MEMORY_LIBMAP` is set, and record both collateral digests.
+The all-design audit (`make audit-memory-collateral-all`) passes for the
+regenerated AES, AXI DMA, and Ibex bundles. Their `mapping_ready: false`
+statuses are intentional: AES has no memories, while AXI DMA and Ibex require
+memory interfaces not provided by the pinned synchronous 1RW BSG backend.
 The current reproducible scalar analysis was regenerated from
 `out/aes-baseline-matrix-complete` into `out/final-analysis/`, producing 25
 policy-target records and `convergence.png`; this remains AES-only evidence.
