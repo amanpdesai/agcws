@@ -367,16 +367,24 @@ offline-hybrid `35.1314`; random, evolutionary, and offline-agent reached
 tolerance. The persistent seed archive is reproducible activity-only evidence;
 it does not establish a gate-level power claim.
 
-The current persistent Ibex activity archive covers seeds `0`, `1`, `2`, and
-`4`, with 800 valid simulations per policy and zero failures at all validity
-stages. Across these four seeds, mean AUC was random `3.8203`, offline-agent
-`3.8203`, evolutionary `20.2033`, mutation `32.0462`, offline-hybrid `32.0462`,
-and one-shot-agent `74.2328`; solve rates were respectively `1.00`, `1.00`,
-`0.75`, `0.25`, `0.25`, and `0.00`. The paired activity-tier audit found no
-Holm-adjusted significant difference at this sample size (all adjusted
-comparisons ≥ `0.625`), and these results remain descriptive because seed `3`
-is not yet in the persistent archive and the Ibex wrapper lacks gate-level
-OpenSTA support.
+Seed `3` completed with persistent output under `out/ibex-full/seed-3` and
+1,200/1,200 valid simulations. Its activity-tier AUC summaries were random
+`4.2547`, mutation `101.6232`, evolutionary `81.2774`, offline-agent `4.2547`,
+one-shot-agent `77.3938`, and offline-hybrid `101.6232`; random and
+offline-agent reached tolerance. The persistent seed archive is reproducible
+activity-only evidence; it does not establish a gate-level power claim.
+
+The complete persistent Ibex activity archive now covers seeds `0` through `4`,
+with 1,000 valid simulations per policy and zero failures at all validity
+stages. The five-seed aggregate and paired inference are stored at
+`out/ibex-full/seeds-0-1-2-3-4-aggregate.json` and
+`out/ibex-full/seeds-0-1-2-3-4-inference.json`. Mean AUC was random and
+offline-agent `3.9072`, evolutionary `32.4181`, mutation and offline-hybrid
+`45.9616`, and one-shot-agent `74.8650`; solve rates were respectively `1.00`,
+`1.00`, `0.60`, `0.20`, `0.20`, and `0.00`. The paired activity-tier audit
+found no Holm-adjusted significant difference at this sample size (minimum
+adjusted p-value `0.3125`). These results remain descriptive activity-only
+evidence because the Ibex wrapper lacks gate-level OpenSTA support.
 
 The memory inventory and collateral path was validated on the current pinned
 RTL closures. AES `aes_cipher_core` produced zero inferred memories. AXI DMA
