@@ -54,6 +54,10 @@ the native bsg_fakeram JSON configuration under `out/memory-collateral/`.
 The generator is intentionally not run as part of ordinary verification: its
 CACTI build is expensive and generated macro models must be reviewed for port
 latency and Liberty compatibility before they can replace flop mapping.
+After generating the design bundles, `make audit-memory-collateral-all`
+audits AES, AXI DMA, and Ibex together. A valid audit may report
+`mapping_ready: false`: that is the expected, explicit result while a design's
+memory port semantics lack a verified compatible macro backend.
 
 `make verify-artifact AGCWS_ARTIFACT=out/aes-evaluation` checks a result bundle's
 validity, useful-work field, and recorded input SHA-256 hashes. Run it after
