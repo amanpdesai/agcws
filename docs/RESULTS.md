@@ -6,7 +6,17 @@ multi-design factorial study has not yet been completed.
 
 ## Verified infrastructure
 
-- `make verify`: 201 tests passed, one skipped; Ruff clean.
+### Oracle responsiveness finding
+
+A fresh 17-workload AES diagnostic after widening the workload generator showed
+substantially different per-window activity schedules, but OpenSTA annotated
+only 203 of 154,059 pins (0.132%). The resulting total-power range was only
+0.048% of its minimum. This confirms that the current RTL-waveform-to-netlist
+annotation path is not sufficient to establish workload-sensitive gate-level
+power. These measurements are retained as a negative methodological result;
+they are not used as a power-characterization claim.
+
+- `make verify`: 208 tests passed, one skipped; Ruff clean.
 - `make research-smoke`: passed.
 - `make container-smoke`: passed, including FuseSoC/Ibex source preparation
   and deterministic workload compilation.
