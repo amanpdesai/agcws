@@ -253,6 +253,16 @@ other designs, and does not include Vertex-backed agent trials.
 
 ## Known limitations
 
+## Fresh policy-independence smoke
+
+On 2026-09-03, two-seed AES activity smokes were rerun after correcting policy
+identity recording and the offline-agent fallback. The five declared arms
+(random, mutation, evolutionary, offline-agent, and one-shot-agent) now appear
+under distinct policy labels and produce distinct proposal streams. The
+two-seed inference artifact contains paired comparisons for all non-random
+arms; its p-values are descriptive because the smoke budget is only two
+evaluations per seed and is not a preregistered final study.
+
 - Ibex core elaboration, RTL/source closure, and standalone-core mapping are
   reproducible; simple-system wrapper mapping and Ibex gate-level power
   integration remain unsupported.
