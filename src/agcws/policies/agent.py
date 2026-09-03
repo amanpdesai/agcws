@@ -46,7 +46,7 @@ class OfflineAgent(AgentPolicy):
                 import copy
                 q = max(0.0, min(1.0, float(goal.q)))
                 candidates = []
-                seen = {repr(item.get("workload", item)) for item in history}
+                seen = {repr(getattr(item, "workload", item)) for item in history}
                 for _ in range(n * 4):
                     candidate = adapter.random_workload(rng)
                     ops = candidate.get("operations", [])

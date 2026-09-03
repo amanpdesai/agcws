@@ -319,6 +319,14 @@ The latter is the calibration artifact to use for subsequent Ibex activity
 experiments; the initial narrow result is retained as evidence of the prior
 generator failure mode.
 
+A fresh six-arm Ibex activity smoke (20 proposal slots per arm, seed `0`) then
+completed with the widened calibration. All declared arms—random, mutation,
+evolutionary, offline-agent, one-shot-agent, and offline-hybrid—completed their
+isolated runs. The offline-agent history adapter bug found during this rerun
+(the policy received `Trial` objects, not dictionaries) was fixed and covered
+by the policy tests. This is a runner/integration validation artifact, not a
+multi-seed statistical result.
+
 The Ibex matrix entry point was smoke-tested in Docker with random, mutation,
 and evolutionary policies at one proposal per policy using those bounds. All
 three isolated runs produced one valid simulation with zero schema, protocol,
