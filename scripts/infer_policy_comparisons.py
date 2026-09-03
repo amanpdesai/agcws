@@ -10,6 +10,8 @@ from agcws.analysis.inference import (holm_bonferroni,
                                       paired_permutation_pvalue,
                                       rank_biserial_effect)
 
+DISALLOWED_POLICY_ALIASES = {"agent", "hybrid"}
+
 
 def summaries(roots: list[Path]) -> list[dict]:
     rows = []
@@ -30,6 +32,11 @@ def main() -> None:
     parser.add_argument("--out", type=Path, required=True)
     args = parser.parse_args()
     rows = summaries(args.roots)
+    aliases = sorted({row.get("policy") for row in rows}
+                     & DISALLOWED_POLICY_ALIASES)
+    if aliases:
+        parser.error("input contains ambiguous policy aliases "
+                     f"{aliases}; rerun those arms with explicit policy names")
     keys = lambda row: (row.get("design"), str(row.get("target")), row.get("seed"))
     indexed = { (row.get("policy"), keys(row)): row for row in rows }
     policies = sorted({row.get("policy") for row in rows} - {args.baseline})
