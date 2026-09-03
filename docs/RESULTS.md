@@ -30,11 +30,11 @@ closure, so the reproducible GLS runner uses Icarus for this Sky130 view.
 
 The analogous AXI GLS runner compiles the mapped DMA netlist with Sky130
 functional cell models and completes the existing coupled cocotb protocol
-harness (8 transfers in the probe workload). It now emits a gate-level
-waveform. OpenSTA still cannot read this AXI mapped Verilog because Yosys
-preserves unpacked FIFO arrays in the writer output; no AXI gate-level power
-number is claimed until those arrays are fully flattened or an equivalent
-gate-level power path is added.
+harness (8 transfers in the probe workload). A second `memory_map` pass after
+flattening removes residual unpacked FIFO arrays from the emitted Verilog, so
+the waveform is now OpenSTA-readable. The probe reports `0.02201835066080 W`
+with 36,292 annotated pins and 4 unannotated pins. This is a gate-level probe,
+not yet a comparative policy result.
 
 - `make verify`: 209 tests passed, one skipped; Ruff clean.
 - `make research-smoke`: passed.

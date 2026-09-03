@@ -30,7 +30,7 @@ sources=(third_party/verilog-axi/rtl/axi_dma.v
          third_party/verilog-axi/rtl/axi_dma_rd.v
          third_party/verilog-axi/rtl/axi_dma_wr.v)
 "$yosys_bin" -Q -T -p "read_verilog -lib ${sources[*]}; read_verilog ${sources[*]}; \
-  hierarchy -top axi_dma; proc; opt; $memory_pass; opt; flatten; opt; techmap; opt; \
+  hierarchy -top axi_dma; proc; opt; $memory_pass; opt; flatten; opt; memory_map; opt; techmap; opt; \
   dfflibmap -liberty $liberty; abc -liberty $liberty; clean; \
   write_verilog -noattr -noexpr $out_dir/mapped.v; \
   tee -o $out_dir/stat.json stat -liberty $liberty -json" \
