@@ -21,19 +21,22 @@ class AxiDmaAdapter(DesignAdapter):
         # count, lengths, and page-local offsets. The total is padded to the
         # useful-work floor so calibration cannot collapse to one workload.
         transfers = []
-        remaining = self.useful_work_floor
-        count = rng.randint(4, 8)
+        # The old generator always moved roughly 4--8 KiB, collapsing the
+        # activity envelope. Sample substantially different legal volumes.
+        remaining = rng.randrange(self.useful_work_floor, 32 * 1024 + 1, 256)
+        minimum_count = max(4, (remaining + 4095) // 4096)
+        count = rng.randint(minimum_count, min(8, remaining // 256))
         for index in range(count):
             slots_left = count - index - 1
-            minimum = max(256, remaining - slots_left * 1024)
-            maximum = min(1024, remaining - slots_left * 256)
+            minimum = max(256, remaining - slots_left * 4096)
+            maximum = min(4096, remaining - slots_left * 256)
             length = rng.randrange(minimum // 256, maximum // 256 + 1) * 256
             remaining -= length
             # Give each descriptor a distinct page at each endpoint. This
             # keeps the coupled RAM oracle valid even when several transfers
             # are issued in one workload.
-            src_page = index * 0x1000
-            dst_page = (index + 8) * 0x1000
+            src_page = (index % 4) * 0x1000
+            dst_page = (index % 4 + 4) * 0x1000
             src_offset = rng.randrange(0, 0x1000 - length + 1, 8)
             dst_offset = rng.randrange(0, 0x1000 - length + 1, 8)
             transfers.append({"src": src_page + src_offset,
@@ -41,6 +44,9 @@ class AxiDmaAdapter(DesignAdapter):
                               "length": length})
         if remaining:
             transfers[-1]["length"] += remaining
+            length = transfers[-1]["length"]
+            transfers[-1]["src"] = (count - 1) % 4 * 0x1000 + rng.randrange(0, 0x1000 - length + 1, 8)
+            transfers[-1]["dst"] = ((count - 1) % 4 + 4) * 0x1000 + rng.randrange(0, 0x1000 - length + 1, 8)
         return {"transfers": transfers}
 
     def mutate_workload(self, workload: dict, rng) -> dict:

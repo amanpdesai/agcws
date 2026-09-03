@@ -88,7 +88,9 @@ class IbexAdapter(DesignAdapter):
         # The simple-system runtime retires a few setup/control-flow
         # instructions outside the generated body.  Keep a margin so the
         # measured counter remains above the hard useful-work floor.
-        length = rng.randint(self.useful_work_floor + 64, self.useful_work_floor + 320)
+        # Vary dynamic instruction mix and runtime well beyond the old narrow
+        # 256-instruction band; normalization needs a real behavioral spread.
+        length = rng.randint(self.useful_work_floor + 64, 20_000)
         ops = ("nop", "addi", "add", "and", "or", "xor", "lw", "sw")
         program = []
         for _ in range(length):

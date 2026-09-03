@@ -30,10 +30,15 @@ class AESAdapter(DesignAdapter):
             remaining -= value
         blocks.append(remaining)
         operations = [{"op": "configure", "key_len": rng.choice((128, 192, 256))}]
+        idle_budget = 10_000
         for index, count in enumerate(blocks):
             operations.append({"op": rng.choice(("encrypt", "decrypt")), "blocks": count})
             if index != len(blocks) - 1:
-                operations.append({"op": "idle", "cycles": rng.choice((0, 1, 4, 16, 128, 1024, 5000))})
+                choices = tuple(value for value in (0, 1, 4, 16, 128, 1024, 5000)
+                                if value <= idle_budget)
+                gap = rng.choice(choices)
+                idle_budget -= gap
+                operations.append({"op": "idle", "cycles": gap})
         return {"operations": operations, "data_pattern": rng.randrange(4)}
 
     def validate_schema(self, workload: dict) -> Validity:

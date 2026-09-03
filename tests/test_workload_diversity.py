@@ -13,6 +13,8 @@ def test_aes_random_workloads_span_schedule_dimensions():
     assert len(totals) > 20
     assert len(gaps) > 5
     assert all(adapter.validate_protocol(w).valid for w in workloads)
+    assert all(sum(op.get("cycles", 0) for op in w["operations"]) <= 10_000
+               for w in workloads)
 
 
 def test_offline_agent_is_not_random_alias_for_scalar_goal():
