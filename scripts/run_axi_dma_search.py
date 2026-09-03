@@ -23,7 +23,7 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--target", type=float, default=0.5)
     parser.add_argument("--policy", choices=("random", "mutation", "evolutionary",
-                                              "one-shot-agent", "offline-hybrid"),
+                                              "offline-agent", "one-shot-agent", "offline-hybrid"),
                         default="random")
     parser.add_argument("--policies", help="comma-separated policy matrix; overrides --policy")
     parser.add_argument("--p-min", type=float, required=True)
@@ -34,7 +34,7 @@ def main() -> None:
     args = parser.parse_args()
     if args.policies:
         policies = [item.strip() for item in args.policies.split(",") if item.strip()]
-        allowed = {"random", "mutation", "evolutionary", "one-shot-agent", "offline-hybrid"}
+        allowed = {"random", "mutation", "evolutionary", "offline-agent", "one-shot-agent", "offline-hybrid"}
         if not policies or any(item not in allowed for item in policies):
             parser.error("--policies contains an unknown policy")
         matrix = []
@@ -88,13 +88,15 @@ def main() -> None:
         )
 
     policies = {"random": RandomSearch, "mutation": MutationSearch,
-                "evolutionary": EvolutionarySearch, "one-shot-agent": OneShotAgent}
+                "evolutionary": EvolutionarySearch, "offline-agent": OfflineAgent,
+                "one-shot-agent": OneShotAgent}
     if args.policy == "offline-hybrid":
         agent = OfflineAgent(args.seed)
         policy = HybridSearch(agent.proposer, seed=args.seed,
                               model=agent.model, prompt_hash=agent.prompt_hash)
     else:
         policy = policies[args.policy](args.seed)
+    policy.name = args.policy
     trials = run_search(AxiDmaAdapter(), policy,
                         ScalarGoal(args.target, 0.05), evaluate, budget=args.budget,
                         batch_size=4, seed=args.seed, p_min=args.p_min, p_max=args.p_max,

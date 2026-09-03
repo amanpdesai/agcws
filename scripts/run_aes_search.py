@@ -71,6 +71,9 @@ def main() -> None:
                               model=agent.model, prompt_hash=agent.prompt_hash)
     else:
         policy = policies[args.policy](args.seed)
+    # Keep the declared arm identity stable in summaries; OfflineAgent's
+    # implementation name is intentionally generic for reuse across runners.
+    policy.name = args.policy
     counter = 0
 
     def evaluator(workload: dict) -> PowerProfile:
