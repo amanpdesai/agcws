@@ -8,13 +8,13 @@ multi-design factorial study has not yet been completed.
 
 ### Oracle responsiveness finding
 
-A fresh 17-workload AES diagnostic after widening the workload generator showed
-substantially different per-window activity schedules, but OpenSTA annotated
-only 203 of 154,059 pins (0.132%). The resulting total-power range was only
-0.048% of its minimum. This confirms that the current RTL-waveform-to-netlist
-annotation path is not sufficient to establish workload-sensitive gate-level
-power. These measurements are retained as a negative methodological result;
-they are not used as a power-characterization claim.
+A clean 20-workload AES calibration after widening the generator produced
+20/20 valid workloads and an RTL activity range of 22.25--130.29 transitions
+per clock edge (486% relative spread). OpenSTA still annotated only 203 of
+154,059 pins (0.132%), yielding a total-power range of only 0.050% of its
+minimum. This isolates the current bottleneck to RTL-waveform-to-netlist
+annotation. These reports are retained as a negative methodological result,
+not as a workload-sensitive gate-level power claim.
 
 - `make verify`: 208 tests passed, one skipped; Ruff clean.
 - `make research-smoke`: passed.

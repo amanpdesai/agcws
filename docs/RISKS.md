@@ -31,12 +31,13 @@ RTL cycle-toggle profiles; do not describe the result as signoff-accuracy power.
 The next resolution step is hierarchy-preserving name mapping or gate-level
 simulation of finalists, followed by a per-design proxy-to-gate rank analysis.
 
-**Current finding (2026-09-03).** A fresh 17-workload AES diagnostic showed
-substantially different coarse activity profiles, but only 0.132% OpenSTA pin
-annotation and 0.048% spread in reported total power. The current number is
-therefore dominated by default activity assumptions and is not an authoritative
-workload-sensitive power oracle. These reports remain plumbing evidence until
-gate-level simulation or materially improved annotation is available.
+**Current finding (2026-09-03).** A clean 20-workload calibration now spans
+22.25--130.29 RTL transitions per clock edge (486% relative spread), with all
+20 workloads valid. The corresponding OpenSTA reports annotate only 203 of
+154,059 pins (0.132%) and span just 0.050% in total power. Workload diversity is
+therefore real; the RTL-waveform-to-netlist annotation path is the bottleneck,
+not the DSL. These reports remain plumbing evidence until gate-level simulation
+or materially improved annotation is available.
 
 ## R-03 — Scalar targeting is trivial — M
 
