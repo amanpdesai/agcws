@@ -263,6 +263,12 @@ two-seed inference artifact contains paired comparisons for all non-random
 arms; its p-values are descriptive because the smoke budget is only two
 evaluations per seed and is not a preregistered final study.
 
+The same rerun was completed for AXI DMA on 2026-09-03 with two seeds and 20
+proposal slots per arm. All six arms completed: random, mutation, evolutionary,
+offline-agent, one-shot-agent, and offline-hybrid. The aggregate contains paired
+comparisons for each non-random arm; results are integration evidence only and
+are not used as final statistical claims.
+
 - Ibex core elaboration, RTL/source closure, and standalone-core mapping are
   reproducible; simple-system wrapper mapping and Ibex gate-level power
   integration remain unsupported.
