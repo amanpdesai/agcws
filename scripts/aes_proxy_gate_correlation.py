@@ -6,11 +6,12 @@ import argparse
 import json
 import re
 import subprocess
+import os
+import sys
 import time
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-import sys
 sys.path.insert(0, str(ROOT / "src"))
 from agcws.analysis.rank_agreement import rank_agreement
 
@@ -32,12 +33,12 @@ def project(workload: dict, max_blocks: int) -> dict:
     return {"data_pattern": workload.get("data_pattern", 0), "operations": operations}
 
 
-def power_watts(report: Path) -> float:
+def dynamic_power(report: Path) -> float:
     text = report.read_text()
-    match = re.search(r"^Total\s+\S+\s+\S+\s+\S+\s+([0-9.eE+-]+)", text, re.MULTILINE)
+    match = re.search(r"^Total\s+([0-9.eE+-]+)\s+([0-9.eE+-]+)", text, re.MULTILINE)
     if not match:
         raise RuntimeError(f"OpenSTA total power not found in {report}")
-    return float(match.group(1))
+    return float(match.group(1)) + float(match.group(2))
 
 
 def main() -> None:
@@ -45,7 +46,7 @@ def main() -> None:
     parser.add_argument("corpus", type=Path)
     parser.add_argument("synthesis", type=Path)
     parser.add_argument("--out", type=Path, required=True)
-    parser.add_argument("--max-blocks", type=int, default=4)
+    parser.add_argument("--ladder", type=int, nargs="+", default=[1, 2, 4, 8, 16, 32])
     parser.add_argument("--limit", type=int)
     args = parser.parse_args()
     workloads = [path for path in sorted(args.corpus.glob("*.json"))
@@ -57,31 +58,38 @@ def main() -> None:
     args.out.mkdir(parents=True, exist_ok=True)
     rows = []
     for index, source in enumerate(workloads):
-        workload = project(json.loads(source.read_text()), args.max_blocks)
-        item_dir = args.out / f"workload-{index:03d}"
-        rtl_dir, gls_dir, sta_dir = item_dir / "rtl", item_dir / "gls", item_dir / "sta"
-        item_dir.mkdir(parents=True, exist_ok=True)
-        projected = item_dir / "workload.json"
-        projected.write_text(json.dumps(workload, indent=2, sort_keys=True) + "\n")
-        started = time.monotonic()
-        subprocess.run(["python3", "scripts/run_aes_workload.py", str(projected), "--out", str(rtl_dir)], cwd=ROOT, check=True, stdout=subprocess.DEVNULL)
-        rtl = json.loads((rtl_dir / "activity.json").read_text())
-        rtl_time = time.monotonic() - started
-        started = time.monotonic()
-        subprocess.run(["bash", "scripts/run_aes_gls.sh", str(args.synthesis), str(gls_dir), str(projected)], cwd=ROOT, check=True, stdout=subprocess.DEVNULL)
-        environment = dict(__import__("os").environ)
-        environment["AGCWS_VCD_SCOPE"] = "aes_core_gls/dut"
-        subprocess.run(["bash", "scripts/run_opensta_aes.sh", str(args.synthesis), str(gls_dir / "activity.vcd"), str(sta_dir)], cwd=ROOT, check=True, stdout=subprocess.DEVNULL, env=environment)
-        rows.append({"workload": source.name, "projected_blocks": args.max_blocks,
-                     "rtl_transitions_per_cycle": rtl["total_transitions"] / rtl["clock_edges"],
-                     "gate_power_w": power_watts(sta_dir / "power.rpt"),
-                     "rtl_elapsed_s": rtl_time, "gls_opensta_elapsed_s": time.monotonic() - started})
-    left = [(row["workload"], row["rtl_transitions_per_cycle"]) for row in rows]
-    right = [(row["workload"], row["gate_power_w"]) for row in rows]
-    result = {"scope": "bounded_projection", "max_blocks": args.max_blocks,
-              "correlation": rank_agreement(left, right), "rows": rows}
+        original = json.loads(source.read_text())
+        for blocks in args.ladder:
+            workload = project(original, blocks)
+            tag = f"workload-{index:03d}-blocks-{blocks}"
+            item_dir = args.out / tag
+            rtl_dir, gls_dir, sta_dir = item_dir / "rtl", item_dir / "gls", item_dir / "sta"
+            item_dir.mkdir(parents=True, exist_ok=True)
+            projected = item_dir / "workload.json"
+            projected.write_text(json.dumps(workload, indent=2, sort_keys=True) + "\n")
+            started = time.monotonic()
+            subprocess.run(["python3", "scripts/run_aes_workload.py", str(projected), "--out", str(rtl_dir)], cwd=ROOT, check=True, stdout=subprocess.DEVNULL)
+            rtl = json.loads((rtl_dir / "activity.json").read_text())
+            rtl_time = time.monotonic() - started
+            started = time.monotonic()
+            subprocess.run(["bash", "scripts/run_aes_gls.sh", str(args.synthesis), str(gls_dir), str(projected)], cwd=ROOT, check=True, stdout=subprocess.DEVNULL)
+            environment = dict(os.environ)
+            environment["AGCWS_VCD_SCOPE"] = "aes_core_gls/dut"
+            subprocess.run(["bash", "scripts/run_opensta_aes.sh", str(args.synthesis), str(gls_dir / "activity.vcd"), str(sta_dir)], cwd=ROOT, check=True, stdout=subprocess.DEVNULL, env=environment)
+            rows.append({"workload": source.name, "projected_blocks": blocks,
+                         "rtl_transitions_per_cycle": rtl["total_transitions"] / rtl["clock_edges"],
+                         "gate_dynamic_power_w": dynamic_power(sta_dir / "power.rpt"),
+                         "rtl_elapsed_s": rtl_time, "gls_opensta_elapsed_s": time.monotonic() - started})
+    correlations = []
+    for blocks in args.ladder:
+        subset = [row for row in rows if row["projected_blocks"] == blocks]
+        left = [(row["workload"], row["rtl_transitions_per_cycle"]) for row in subset]
+        right = [(row["workload"], row["gate_dynamic_power_w"]) for row in subset]
+        correlations.append({"projected_blocks": blocks, "correlation": rank_agreement(left, right)})
+    result = {"scope": "block_count_ladder_projection", "ladder": args.ladder,
+              "power_metric": "opensta_internal_plus_switching_w", "correlations": correlations, "rows": rows}
     (args.out / "results.json").write_text(json.dumps(result, indent=2) + "\n")
-    print(json.dumps({"rows": len(rows), "spearman_rho": result["correlation"]["spearman_rho"], "out": str(args.out)}))
+    print(json.dumps({"rows": len(rows), "correlations": correlations, "out": str(args.out)}))
 
 
 if __name__ == "__main__":

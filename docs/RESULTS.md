@@ -134,15 +134,12 @@ stopped manually. This confirms exact replay is available but unsuitable for
 the inner loop or a full smoke matrix; correlation must use a deliberately
 bounded finalist corpus and report that scope.
 
-The reproducible bounded-correlation run over all 20 fresh calibration
-workloads used one-block projections, preserving each workload's pattern,
-key length, direction, and derived pacing controls. RTL activity versus
-Sky130 GLS/OpenSTA total power gave Spearman ρ=`0.0968280607` over 20 shared
-inputs. This weak agreement is the result: the RTL proxy is not licensed as a
-gate-power predictor for this corpus. The artifact is
-`out/aes-proxy-gate-correlation/results.json`; the command is
-`scripts/aes_proxy_gate_correlation.py`. Full-length GLS remains too expensive
-for the inner loop and is not represented by this bounded statistic.
+The earlier one-block bounded run reported ρ=`0.0968280607`; it is superseded
+because constant projection removed the corpus's block-count variance. The
+correlation tool now supports the preregistered ladder of 1, 2, 4, 8, 16, and
+32 blocks and parses OpenSTA dynamic power as internal plus switching power,
+excluding leakage. The full ladder run is pending; no constant-projection
+correlation is used as evidence.
 
 A calibrated five-policy smoke matrix at 20 proposal slots is stored at
 `out/axi-dma-matrix-calibrated-seed0/`, with an aggregate at
