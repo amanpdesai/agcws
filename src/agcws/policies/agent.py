@@ -39,6 +39,31 @@ class OfflineAgent(AgentPolicy):
         rng = random.Random(seed)
 
         def propose(adapter, goal, history, n):
+            # This deterministic semantic heuristic is intentionally distinct
+            # from RandomSearch: steer transaction density toward scalar q and
+            # use history to avoid repeating an already-seen workload.
+            if hasattr(adapter, "random_workload") and hasattr(goal, "q"):
+                import copy
+                q = max(0.0, min(1.0, float(goal.q)))
+                candidates = []
+                seen = {repr(item.get("workload", item)) for item in history}
+                for _ in range(n * 4):
+                    candidate = adapter.random_workload(rng)
+                    ops = candidate.get("operations", [])
+                    crypto = [op for op in ops if op.get("op") in {"encrypt", "decrypt"}]
+                    if crypto:
+                        desired = max(1, int(adapter.useful_work_floor + q * (256 - adapter.useful_work_floor)))
+                        desired = max(adapter.useful_work_floor,
+                                     min(256, desired + rng.randint(-8, 8)))
+                        crypto[0]["blocks"] = desired - sum(op.get("blocks", 0) for op in crypto[1:])
+                        if crypto[0]["blocks"] <= 0:
+                            continue
+                    key = repr(candidate)
+                    if key not in seen:
+                        seen.add(key)
+                        candidates.append(copy.deepcopy(candidate))
+                    if len(candidates) == n:
+                        return candidates
             generator = getattr(adapter, "random_workload", None)
             if generator is not None:
                 return [generator(rng) for _ in range(n)]

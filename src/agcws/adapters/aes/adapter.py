@@ -1,3 +1,5 @@
+import random
+
 from agcws.adapters.base import DesignAdapter, SimResult, Validity, ValidityStage
 
 class AESAdapter(DesignAdapter):
@@ -10,6 +12,29 @@ class AESAdapter(DesignAdapter):
         "aes_core": ("aes_", "round", "mix_", "shift_", "sub_"),
     }
     workload_schema = {"type": "object", "required": ["operations"], "properties": {"operations": {"type": "array", "maxItems": 256}, "data_pattern": {"type": "integer", "minimum": 0, "maximum": 3}}, "additionalProperties": False}
+
+    def random_workload(self, rng: random.Random) -> dict:
+        """Sample materially different legal transaction schedules.
+
+        Varying only the key length leaves the AES core nearly saturated. This
+        samples transaction count, crypto direction, key size, data pattern,
+        block grouping, and inter-block gaps while retaining the work floor.
+        """
+        total = rng.randint(self.useful_work_floor, 256)
+        chunks = rng.randint(1, min(8, total))
+        remaining, blocks = total, []
+        for index in range(chunks - 1):
+            minimum = chunks - index - 1
+            value = rng.randint(1, remaining - minimum)
+            blocks.append(value)
+            remaining -= value
+        blocks.append(remaining)
+        operations = [{"op": "configure", "key_len": rng.choice((128, 192, 256))}]
+        for index, count in enumerate(blocks):
+            operations.append({"op": rng.choice(("encrypt", "decrypt")), "blocks": count})
+            if index != len(blocks) - 1:
+                operations.append({"op": "idle", "cycles": rng.choice((0, 1, 4, 16, 128, 1024, 5000))})
+        return {"operations": operations, "data_pattern": rng.randrange(4)}
 
     def validate_schema(self, workload: dict) -> Validity:
         if not isinstance(workload, dict):
