@@ -141,6 +141,13 @@ correlation tool now supports the preregistered ladder of 1, 2, 4, 8, 16, and
 excluding leakage. The full ladder run is pending; no constant-projection
 correlation is used as evidence.
 
+An initial ladder attempt was stopped after 34 complete matched rows: it had
+run for about 2h45 locally and was still processing the 16-block rung. Its
+partial pooled diagnostic was ρ=`-0.7169`, but it is not a result because the
+ladder was incomplete. This invalidates the earlier estimate that 32-block GLS
+would fit comfortably under a minute and motivates trace reuse or an explicitly
+bounded validation budget before final correlation claims.
+
 A calibrated five-policy smoke matrix at 20 proposal slots is stored at
 `out/axi-dma-matrix-calibrated-seed0/`, with an aggregate at
 `out/axi-dma-matrix-calibrated-seed0-aggregate.json`. All 100 proposal slots

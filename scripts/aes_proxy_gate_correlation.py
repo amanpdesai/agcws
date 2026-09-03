@@ -37,7 +37,7 @@ def dynamic_power(report: Path) -> float:
     text = report.read_text()
     match = re.search(r"^Total\s+([0-9.eE+-]+)\s+([0-9.eE+-]+)", text, re.MULTILINE)
     if not match:
-        raise RuntimeError(f"OpenSTA total power not found in {report}")
+        raise RuntimeError(f"OpenSTA dynamic power not found in {report}")
     return float(match.group(1)) + float(match.group(2))
 
 
@@ -80,12 +80,14 @@ def main() -> None:
                          "rtl_transitions_per_cycle": rtl["total_transitions"] / rtl["clock_edges"],
                          "gate_dynamic_power_w": dynamic_power(sta_dir / "power.rpt"),
                          "rtl_elapsed_s": rtl_time, "gls_opensta_elapsed_s": time.monotonic() - started})
-    correlations = []
+    pooled_left = [(f'{row["workload"]}@{row["projected_blocks"]}', row["rtl_transitions_per_cycle"]) for row in rows]
+    pooled_right = [(f'{row["workload"]}@{row["projected_blocks"]}', row["gate_dynamic_power_w"]) for row in rows]
+    correlations = {"pooled": rank_agreement(pooled_left, pooled_right), "per_rung": []}
     for blocks in args.ladder:
         subset = [row for row in rows if row["projected_blocks"] == blocks]
         left = [(row["workload"], row["rtl_transitions_per_cycle"]) for row in subset]
         right = [(row["workload"], row["gate_dynamic_power_w"]) for row in subset]
-        correlations.append({"projected_blocks": blocks, "correlation": rank_agreement(left, right)})
+        correlations["per_rung"].append({"projected_blocks": blocks, "correlation": rank_agreement(left, right)})
     result = {"scope": "block_count_ladder_projection", "ladder": args.ladder,
               "power_metric": "opensta_internal_plus_switching_w", "correlations": correlations, "rows": rows}
     (args.out / "results.json").write_text(json.dumps(result, indent=2) + "\n")
