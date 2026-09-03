@@ -24,8 +24,14 @@ module aes_core_gls;
     $dumpfile("activity.vcd"); $dumpvars(0, aes_core_gls);
     repeat (4) @(posedge clk_i); rst_ni = 1'b1; repeat (2) @(posedge clk_i);
     repeat (blocks) begin
-      cfg_valid_i = 1'b1; @(posedge clk_i); cfg_valid_i = 1'b0;
-      wait (out_valid_o == 3'b011); @(posedge clk_i);
+      cfg_valid_i = 1'b1; crypt_i = 3'b011; in_valid_i = 3'b011;
+      @(posedge clk_i); cfg_valid_i = 1'b0; crypt_i = 3'b100; in_valid_i = 3'b100;
+      for (int cycle = 0; cycle < 2000; cycle++) begin
+        @(posedge clk_i);
+        if (out_valid_o == 3'b011) cycle = 2000;
+        if (cycle == 1999)
+          $fatal(1, "GLS handshake did not complete: in_ready=%b out_valid=%b", in_ready_o, out_valid_o);
+      end
     end
     $display("AES_GLS_DONE blocks=%0d", blocks); $finish;
   end

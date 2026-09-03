@@ -19,7 +19,7 @@ read_liberty $liberty
 read_verilog $synth_dir/mapped.v
 link_design aes_cipher_core
 create_clock -name clk_i -period 10 [get_ports clk_i]
-read_vcd -scope aes_core_smoke/dut $waveform
+read_vcd -scope "${AGCWS_VCD_SCOPE:-aes_core_smoke/dut}" $waveform
 report_power -digits 12
 report_activity_annotation -report_unannotated
 EOF

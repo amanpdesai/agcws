@@ -100,8 +100,9 @@ The Yosys-slang frontend is opt-in via `AGCWS_SLANG_PLUGIN`; the default
 compatibility frontend avoids host-specific Yosys plugin ABI mismatches.
 The AES GLS probe is `scripts/run_aes_gls.sh`; it requires explicit Sky130
 functional and primitive cell models and is separate from RTL-VCD annotation.
-The current installed simulators do not complete the mapped AES GLS compile,
-so no GLS result is admitted until that probe passes.
+It emits a VCD from the mapped netlist itself. Pass
+`AGCWS_VCD_SCOPE=aes_core_gls/dut` to `scripts/run_opensta_aes.sh` when reading
+that waveform; the resulting OpenSTA report is the gate-level evaluator tier.
 
 For local CHIA development, run `make chia-install` after `make dev-install`.
 This installs the pinned checkout and its Ray/Vertex dependencies into the

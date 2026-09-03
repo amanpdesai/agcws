@@ -20,11 +20,13 @@ not as a workload-sensitive gate-level power claim.
 
 The repository now includes a flat-port AES GLS harness and a model-explicit
 runner. The available Sky130 functional and primitive cell models were found,
-but the current mapped AES netlist does not yet complete with the installed
-simulators: Verilator hits an internal code-generation failure on the large
-cell model closure, while Icarus fails during code generation. No GLS activity
-or GLS power result is claimed. The runner requires explicit cell-model inputs
-and keeps this failure separate from the working RTL activity/OpenSTA proxy.
+and Icarus now compiles and runs the mapped AES netlist to completion after
+defining the model's empty `UNIT_DELAY` macro. A first direct gate-level VCD
+annotated 154,059/154,059 pins and produced OpenSTA total power
+`0.02861616946757 W`. The flat harness includes a 2,000-cycle handshake
+assertion to classify deadlocks without imposing a wall-clock experiment cap.
+Verilator still hits an internal code-generation failure on this model
+closure, so the reproducible GLS runner uses Icarus for this Sky130 view.
 
 - `make verify`: 208 tests passed, one skipped; Ruff clean.
 - `make research-smoke`: passed.

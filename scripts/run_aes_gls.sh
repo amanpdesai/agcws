@@ -11,14 +11,13 @@ test -f "$primitive_models" || { echo "missing AGCWS_SKY130_PRIMITIVES: $primiti
 # closure here would accidentally compile a second aes_cipher_core and pull in
 # assertion-only source files; the mapped netlist is the implementation under test.
 mapfile -t pkg_sources < <(grep '/pkg\.sv$' "$synth_dir/sources.list")
-build_dir=${AGCWS_GLS_BUILD_DIR:-out/.cache/aes-gls}; mkdir -p "$build_dir"; sim="$build_dir/aes_core_gls"
+build_dir=${AGCWS_GLS_BUILD_DIR:-out/.cache/aes-gls}; mkdir -p "$build_dir"; sim="$build_dir/aes_core_gls.vvp"
 if [[ ! -x "$sim" ]]; then
-  verilator --binary --trace-vcd --timing --sv -DAGCWS_GLS --top-module aes_core_gls \
-    -Wno-fatal -Wno-WIDTHTRUNC -Wno-IMPLICIT -Mdir "$build_dir" -o "$sim" \
+  iverilog -g2012 -DFUNCTIONAL -DUNIT_DELAY= -s aes_core_gls -o "$sim" \
     "$synth_dir/mapped.v" "$cell_models" "$primitive_models" "${pkg_sources[@]}" \
-    experiments/aes_core_gls.sv -Ithird_party/opentitan/hw/ip/aes/rtl
+    experiments/aes_core_gls.sv
 fi
-(cd "$out_dir" && "$sim" +BLOCKS="${AGCWS_GLS_BLOCKS:-1}") > "$out_dir/run.log" 2>&1
+(cd "$out_dir" && vvp "$repo_root/$sim" +BLOCKS="${AGCWS_GLS_BLOCKS:-1}") > "$out_dir/run.log" 2>&1
 test -s "$out_dir/activity.vcd"
 python3 scripts/parse_vcd_activity.py "$out_dir/activity.vcd" --windows 8 --output "$out_dir/activity.json"
 echo "AES_GLS_DONE out=$out_dir"
