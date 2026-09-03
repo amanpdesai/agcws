@@ -120,6 +120,13 @@ stopped. This confirms that GLS/OpenSTA belongs in the finalist tier rather
 than the inner loop; a complete 20-workload proxy-to-gate correlation must be
 run as a separately budgeted validation experiment.
 
+The one-block RTL activity smoke measured 3.42 s wall time including the
+initial Verilator build and produced a 19.5 MiB VCD. The existing one-block
+GLS probe completed, but the full calibration DSL is not replayed by that
+harness: data patterns and inter-block timing are not equivalent. Therefore no
+proxy-to-gate correlation is reported yet; GLS/OpenSTA remains finalist-only
+validation rather than an inner-loop evaluator.
+
 A calibrated five-policy smoke matrix at 20 proposal slots is stored at
 `out/axi-dma-matrix-calibrated-seed0/`, with an aggregate at
 `out/axi-dma-matrix-calibrated-seed0-aggregate.json`. All 100 proposal slots
