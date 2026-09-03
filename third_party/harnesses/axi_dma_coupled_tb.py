@@ -67,6 +67,10 @@ async def run_workload(dut):
     dut.write_enable.value = 1
 
     for tag, transfer in enumerate(transfers, start=1):
+        gap_cycles = int(transfer.get("gap_cycles", 0))
+        if gap_cycles:
+            for _ in range(gap_cycles):
+                await RisingEdge(dut.clk)
         length = int(transfer["length"])
         source = bytes((int(transfer["src"]) + i) % 256 for i in range(length))
         ram.write(int(transfer["src"]), source)

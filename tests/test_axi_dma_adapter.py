@@ -45,3 +45,10 @@ def test_axi_dma_random_workloads_are_diverse_and_above_floor():
         assert adapter.validate_protocol(workload).valid
         assert all(item["src"] + item["length"] <= 0x10000 for item in workload["transfers"])
         assert all(item["dst"] + item["length"] <= 0x10000 for item in workload["transfers"])
+
+
+def test_axi_dma_random_workloads_vary_transaction_pacing():
+    import random
+    workloads = [AxiDmaAdapter().random_workload(random.Random(seed)) for seed in range(40)]
+    gaps = {item.get("gap_cycles", 0) for workload in workloads for item in workload["transfers"]}
+    assert len(gaps) > 10
