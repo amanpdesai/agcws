@@ -18,6 +18,8 @@ def summaries(roots: list[Path]) -> list[dict]:
     for root in roots:
         for path in sorted(root.rglob("summary.json")):
             row = json.loads(path.read_text())
+            if row.get("claim_scope") == "heuristic_smoke_only":
+                continue
             row["source_root"] = str(root)
             rows.append(row)
     return rows

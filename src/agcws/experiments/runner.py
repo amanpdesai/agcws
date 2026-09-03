@@ -54,18 +54,10 @@ def run_search(
         try:
             candidates = policy.propose(adapter, goal, trials, requested)
         except (TypeError, ValueError):
-            # A malformed agent response is a failed proposal batch, not a
-            # reason to terminate the experiment. Empty slots are materialized
-            # below and consume the full requested budget.
             candidates = []
-        # Treat every structurally malformed policy response as a failed batch.
-        # This keeps the proposal-counted budget and schema-failure accounting
-        # intact instead of allowing a bad agent response to crash the run.
         if not isinstance(candidates, (list, tuple)):
             candidates = []
         usage = getattr(policy, "last_usage", {})
-        # Missing candidates consume their requested slots just like malformed
-        # LLM output; this is the primary fairness unit.
         for slot in range(requested):
             workload = candidates[slot] if slot < len(candidates) else {}
             if not isinstance(workload, dict):
@@ -80,9 +72,6 @@ def run_search(
                         SimResult(False, True, False, profile.useful_work)
                     )
                 else:
-                    # Evaluators must not be able to bypass the runtime half of
-                    # the four-stage gate.  In particular, the useful-work
-                    # floor is enforced before a score enters the history.
                     validity = adapter.validate_result(
                         SimResult(True, True, True, profile.useful_work)
                     )
@@ -108,6 +97,7 @@ def run_search(
                 sim_count=sim_count,
                 model=getattr(policy, "model", ""),
                 prompt_hash=getattr(policy, "prompt_hash", ""),
+                claim_scope=getattr(policy, "claim_scope", "baseline"),
                 tokens_in=int(usage.get("tokens_in", 0)) if slot == 0 else 0,
                 tokens_out=int(usage.get("tokens_out", 0)) if slot == 0 else 0,
             ))
@@ -129,6 +119,7 @@ def run_search(
                         "proposals": len(trials),
                         "proposal_slots": budget,
                         "valid_trials": sum(trial.validity.valid for trial in trials),
+                        "claim_scope": getattr(policy, "claim_scope", "baseline"),
                         "tokens_in": sum(trial.tokens_in for trial in trials),
                         "tokens_out": sum(trial.tokens_out for trial in trials),
                         "simulations": sum(trial.sim_count for trial in trials)})

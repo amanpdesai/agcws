@@ -19,6 +19,7 @@ class Trial:
     tokens_out: int = 0
     model: str = ""
     prompt_hash: str = ""
+    claim_scope: str = "baseline"
     est_cost_usd: float = 0.0
     timestamp: str = ""
 

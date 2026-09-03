@@ -496,3 +496,7 @@ geometries. CACTI-required padding is recorded explicitly as physical geometry
 in the generated manifest; logical widths and depths are never silently
 replaced. Generated collateral is reproducible diagnostic evidence, not a
 claim that either design has been successfully macro-mapped.
+
+Offline agent and hybrid summaries are tagged `heuristic_smoke_only` and are
+excluded from policy inference. Only the Vertex-backed arm is eligible for the
+cross-design agent claim.

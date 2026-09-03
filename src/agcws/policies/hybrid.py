@@ -7,6 +7,7 @@ from agcws.policies.mutation import MutationSearch
 
 class HybridSearch(AgentPolicy):
     name = "hybrid"
+    claim_scope = "heuristic_smoke_only"
 
     def __init__(self, proposer, seed: int = 0, agent_fraction: float = 0.5,
                  model: str = "offline", prompt_hash: str = ""):

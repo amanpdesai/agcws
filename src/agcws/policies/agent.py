@@ -15,6 +15,7 @@ from agcws.policies.prompt import prompt_hash
 
 class AgentPolicy(SearchPolicy):
     name = "agent"
+    claim_scope = "cross_design_agent"
 
     def __init__(self, proposer: Callable[[Any, Any, list[Any], int], list[dict]], *,
                  model: str = "offline", prompt_hash: str = ""):
@@ -34,14 +35,13 @@ class AgentPolicy(SearchPolicy):
 class OfflineAgent(AgentPolicy):
     """Deterministic semantic proposer used for smoke tests and dry runs."""
 
+    claim_scope = "heuristic_smoke_only"
+
     def __init__(self, seed: int = 0):
         import random
         rng = random.Random(seed)
 
         def propose(adapter, goal, history, n):
-            # This deterministic semantic heuristic is intentionally distinct
-            # from RandomSearch: steer transaction density toward scalar q and
-            # use history to avoid repeating an already-seen workload.
             if hasattr(adapter, "random_workload") and hasattr(goal, "q"):
                 import copy
                 q = max(0.0, min(1.0, float(goal.q)))
@@ -51,8 +51,6 @@ class OfflineAgent(AgentPolicy):
                     candidate = adapter.random_workload(rng)
                     ops = candidate.get("operations", [])
                     crypto = [op for op in ops if op.get("op") in {"encrypt", "decrypt"}]
-                    # This semantic block is AES-specific; non-AES adapters
-                    # must fall through to the adapter mutation path below.
                     if not crypto:
                         continue
                     if crypto:
@@ -74,10 +72,6 @@ class OfflineAgent(AgentPolicy):
                 candidates = []
                 for _ in range(n):
                     candidate = generator(rng)
-                    # Keep the offline semantic arm distinct for every
-                    # adapter, not only AES: mutate a generated candidate so
-                    # it exercises the adapter's structured transformation
-                    # path instead of becoming a RandomSearch alias.
                     if mutator is not None:
                         original = repr(candidate)
                         for _attempt in range(4):

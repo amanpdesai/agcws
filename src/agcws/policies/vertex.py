@@ -48,6 +48,7 @@ class VertexAgent(AgentPolicy):
     """Use an injected text generator; Vertex SDK wiring is deliberately lazy."""
 
     name = "vertex-agent"
+    claim_scope = "cross_design_agent"
     temperature = 0.7
     top_p = 0.95
     max_output_tokens = 4096
