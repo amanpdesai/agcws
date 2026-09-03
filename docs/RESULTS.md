@@ -269,6 +269,12 @@ offline-agent, one-shot-agent, and offline-hybrid. The aggregate contains paired
 comparisons for each non-random arm; results are integration evidence only and
 are not used as final statistical claims.
 
+The fresh larger activity rerun also covered AES and AXI DMA with two new seeds
+and 20 proposal slots per arm. The combined inference artifact contains four
+paired design/seed instances for each policy shared by both designs, and two
+for the AXI-only hybrid arm. These runs remain descriptive smoke evidence, not
+the preregistered 5–10-seed final analysis.
+
 - Ibex core elaboration, RTL/source closure, and standalone-core mapping are
   reproducible; simple-system wrapper mapping and Ibex gate-level power
   integration remain unsupported.
