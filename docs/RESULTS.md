@@ -16,6 +16,16 @@ minimum. This isolates the current bottleneck to RTL-waveform-to-netlist
 annotation. These reports are retained as a negative methodological result,
 not as a workload-sensitive gate-level power claim.
 
+### Gate-level simulation status
+
+The repository now includes a flat-port AES GLS harness and a model-explicit
+runner. The available Sky130 functional and primitive cell models were found,
+but the current mapped AES netlist does not yet complete with the installed
+simulators: Verilator hits an internal code-generation failure on the large
+cell model closure, while Icarus fails during code generation. No GLS activity
+or GLS power result is claimed. The runner requires explicit cell-model inputs
+and keeps this failure separate from the working RTL activity/OpenSTA proxy.
+
 - `make verify`: 208 tests passed, one skipped; Ruff clean.
 - `make research-smoke`: passed.
 - `make container-smoke`: passed, including FuseSoC/Ibex source preparation

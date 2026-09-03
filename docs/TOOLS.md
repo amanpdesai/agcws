@@ -27,7 +27,7 @@ ultimately pinned in the container image.
 | Matplotlib | deterministic activity figures | Optional analysis extra | Install with `make analysis-install` |
 | MyHDL + Icarus VPI | upstream verilog-axi coupled-DMA reference test | Optional verification extra | Run `make upstream-dma-reference` |
 | RISC-V GCC + binutils | Ibex instruction-image assembly/linking | Container-provided (`riscv64-unknown-elf-*`) | Record compiler version in workload provenance |
-| bsg_fakeram | Generate black-box SRAM Verilog/LEF/Liberty from discovered geometry | Pinned submodule at `a2c856eacdeda5a97e23891378ba34792a3acd3c` | Build its pinned CACTI dependency only when macro generation is enabled |
+| bsg_fakeram | Generate capability-aware SRAM Verilog/LEF/Liberty views from explicit characterization | Pinned submodule at `639fb69d8cbf8c956592615386429413b1230fbb` | Build its pinned CACTI dependency only when macro generation is enabled |
 
 ## Source dependencies to pin as submodules
 
@@ -36,7 +36,7 @@ Only design/framework source belongs here: `tools/chia` is pinned at
 `b16f2be75d2f38c62d861208453ed5b81ccf41b0`; verilog-axi is pinned at
 `516bd5dadc3365b7f9e225d2af8fe0b8d804fe53`; Ibex is pinned at
 `8b8ee086aef72e0833b7f0493d9d33f1e4d3c8e2`; and bsg_fakeram is pinned at
-`a2c856eacdeda5a97e23891378ba34792a3acd3c`. Do not vendor their trees into
+`639fb69d8cbf8c956592615386429413b1230fbb`. Do not vendor their trees into
 this repository.
 
 The upstream verilog-axi MyHDL testbenches are reference material only and are
@@ -98,6 +98,10 @@ Host configuration is optional and comes from an untracked `.env` copied from
 its own defaults, so host-specific `/opt/eda` paths do not enter the artifact.
 The Yosys-slang frontend is opt-in via `AGCWS_SLANG_PLUGIN`; the default
 compatibility frontend avoids host-specific Yosys plugin ABI mismatches.
+The AES GLS probe is `scripts/run_aes_gls.sh`; it requires explicit Sky130
+functional and primitive cell models and is separate from RTL-VCD annotation.
+The current installed simulators do not complete the mapped AES GLS compile,
+so no GLS result is admitted until that probe passes.
 
 For local CHIA development, run `make chia-install` after `make dev-install`.
 This installs the pinned checkout and its Ray/Vertex dependencies into the

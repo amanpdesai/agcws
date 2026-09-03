@@ -38,11 +38,15 @@ module aes_core_smoke;
 
   always #5ns clk_i = ~clk_i;
 
+`ifdef AGCWS_GLS
+  aes_cipher_core dut (.*);
+`else
   aes_cipher_core #(
     .SecMasking(1'b0),
     .SecSBoxImpl(SBoxImplLut),
     .EntropyWidth(EntropyWidth)
   ) dut (.*);
+`endif
 
   initial begin
     static int blocks = 1;
