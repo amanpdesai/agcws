@@ -339,6 +339,11 @@ isolated runs. The offline-agent history adapter bug found during this rerun
 by the policy tests. This is a runner/integration validation artifact, not a
 multi-seed statistical result.
 
+Two additional Ibex seeds (`2`, `3`) were rerun at the same budget after fixing
+the runner's policy-name serialization. The corrected summaries record
+`offline-agent` and `offline-hybrid` explicitly; the earlier summaries using
+the generic `agent`/`hybrid` labels are excluded from corrected inference.
+
 The Ibex matrix entry point was smoke-tested in Docker with random, mutation,
 and evolutionary policies at one proposal per policy using those bounds. All
 three isolated runs produced one valid simulation with zero schema, protocol,

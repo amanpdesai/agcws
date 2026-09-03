@@ -133,6 +133,9 @@ def main() -> None:
                               model=agent.model, prompt_hash=agent.prompt_hash)
     else:
         policy = policies[args.policy](args.seed)
+    # Preserve the CLI arm identity in summaries; implementation classes use
+    # generic names so they can be shared across design runners.
+    policy.name = args.policy
     trials = run_search(IbexAdapter(), policy, ScalarGoal(args.target, 0.05), evaluate,
                         budget=args.budget, batch_size=1, seed=args.seed,
                         p_min=args.p_min, p_max=args.p_max, output_dir=args.out)
