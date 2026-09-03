@@ -28,6 +28,11 @@ assertion to classify deadlocks without imposing a wall-clock experiment cap.
 Verilator still hits an internal code-generation failure on this model
 closure, so the reproducible GLS runner uses Icarus for this Sky130 view.
 
+The analogous AXI GLS runner compiles the mapped DMA netlist and starts the
+existing coupled cocotb protocol harness with Sky130 cell models, but the
+mapped transaction does not yet reach completion. No AXI GLS waveform or
+OpenSTA result is admitted until that handshake is resolved.
+
 - `make verify`: 208 tests passed, one skipped; Ruff clean.
 - `make research-smoke`: passed.
 - `make container-smoke`: passed, including FuseSoC/Ibex source preparation
