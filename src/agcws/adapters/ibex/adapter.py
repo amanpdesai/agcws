@@ -91,7 +91,17 @@ class IbexAdapter(DesignAdapter):
         # Vary dynamic instruction mix and runtime well beyond the old narrow
         # 256-instruction band; normalization needs a real behavioral spread.
         length = rng.randint(self.useful_work_floor + 64, 20_000)
-        ops = ("nop", "addi", "add", "and", "or", "xor", "lw", "sw")
+        # Choose a workload family first.  Uniformly sampling individual
+        # instructions makes every long program converge to the same mix and
+        # collapses the activity envelope.  Structured families preserve legal
+        # termination while exercising materially different datapaths.
+        families = (
+            ("idle", ("nop",) * 7 + ("addi",)),
+            ("alu", ("addi", "add", "and", "or", "xor") * 3 + ("nop",)),
+            ("memory", ("lw", "sw") * 3 + ("addi", "nop")),
+            ("mixed", ("nop", "addi", "add", "and", "or", "xor", "lw", "sw")),
+        )
+        _, ops = rng.choice(families)
         program = []
         for _ in range(length):
             op = rng.choice(ops)

@@ -298,6 +298,17 @@ envelope was `75.47459106393761–76.16193221572304` total transitions per clock
 edge. These bounds are suitable for activity-tier target normalization only;
 they are not power-in-watts bounds and are not used as gate-level claims.
 
+On 2026-09-03, a fresh ten-sample host calibration initially confirmed that
+varying only instruction-stream length still produced a narrow
+`75.5794185655843–75.9378289204592` envelope (0.47% span). The generator was
+then changed to sample structured legal families (idle-heavy, ALU-heavy,
+memory-heavy, and mixed). A fresh ten-sample calibration with that generator
+passed the useful-work gate for every trial and widened the envelope to
+`33.02092981603255–94.42136020261603` transitions per clock edge (186% span).
+The latter is the calibration artifact to use for subsequent Ibex activity
+experiments; the initial narrow result is retained as evidence of the prior
+generator failure mode.
+
 The Ibex matrix entry point was smoke-tested in Docker with random, mutation,
 and evolutionary policies at one proposal per policy using those bounds. All
 three isolated runs produced one valid simulation with zero schema, protocol,
