@@ -20,18 +20,30 @@ module aes_core_gls;
   aes_cipher_core dut (.*);
   initial begin
     int blocks = 1;
+    int pattern = 0, key_len = 128, decrypt = 0, idle = 0;
     void'($value$plusargs("BLOCKS=%d", blocks));
+    void'($value$plusargs("PATTERN=%d", pattern));
+    void'($value$plusargs("KEYLEN=%d", key_len));
+    void'($value$plusargs("DECRYPT=%d", decrypt));
+    void'($value$plusargs("IDLE=%d", idle));
+    if (pattern < 0 || pattern > 3 || key_len < 128 || key_len > 256)
+      $fatal(1, "invalid workload controls");
+    state_init_i = '0;
+    state_init_i[7:0] = pattern * 8'h55;
+    key_len_i = (key_len == 128) ? 3'b001 : (key_len == 192) ? 3'b010 : 3'b100;
+    crypt_i = decrypt ? 3'b011 : 3'b100;
     $dumpfile("activity.vcd"); $dumpvars(0, aes_core_gls);
     repeat (4) @(posedge clk_i); rst_ni = 1'b1; repeat (2) @(posedge clk_i);
     repeat (blocks) begin
       cfg_valid_i = 1'b1; crypt_i = 3'b011; in_valid_i = 3'b011;
-      @(posedge clk_i); cfg_valid_i = 1'b0; crypt_i = 3'b100; in_valid_i = 3'b100;
+      @(posedge clk_i); cfg_valid_i = 1'b0; crypt_i = decrypt ? 3'b011 : 3'b100; in_valid_i = 3'b100;
       for (int cycle = 0; cycle < 2000; cycle++) begin
         @(posedge clk_i);
         if (out_valid_o == 3'b011) cycle = 2000;
         if (cycle == 1999)
           $fatal(1, "GLS handshake did not complete: in_ready=%b out_valid=%b", in_ready_o, out_valid_o);
       end
+      repeat (idle) @(posedge clk_i);
     end
     $display("AES_GLS_DONE blocks=%0d", blocks); $finish;
   end

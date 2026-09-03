@@ -127,6 +127,13 @@ harness: data patterns and inter-block timing are not equivalent. Therefore no
 proxy-to-gate correlation is reported yet; GLS/OpenSTA remains finalist-only
 validation rather than an inner-loop evaluator.
 
+The GLS harness now accepts the workload's block count, pattern, key length,
+direction, and aggregate pacing. A 221-block replay compiled and launched with
+those controls, reached 307 MiB of VCD after about five minutes, and was
+stopped manually. This confirms exact replay is available but unsuitable for
+the inner loop or a full smoke matrix; correlation must use a deliberately
+bounded finalist corpus and report that scope.
+
 A calibrated five-policy smoke matrix at 20 proposal slots is stored at
 `out/axi-dma-matrix-calibrated-seed0/`, with an aggregate at
 `out/axi-dma-matrix-calibrated-seed0-aggregate.json`. All 100 proposal slots
