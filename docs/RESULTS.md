@@ -107,6 +107,19 @@ non-overlapping, in-bounds, and satisfy the 4,096-byte useful-work floor.
 These are activity-proxy bounds, not synthesis-level power bounds; they are
 not yet used to claim a completed DMA comparative study.
 
+The pacing-enabled generator was calibrated separately with 20 fresh random
+workloads. All 20 passed validation and produced 20 distinct activity values;
+the range widened to `12.38400853–19.90410309` transitions per clock edge.
+This is the corrected envelope for future DMA activity searches. It varies
+back-to-back, lightly gapped, bursty, and sparse descriptor schedules while
+retaining the 4,096-byte floor and AXI 4-KiB legality rules.
+
+A direct AES GLS runtime probe on the largest fresh calibration workload
+(238 blocks) exceeded 13 minutes and generated a 220 MiB VCD before being
+stopped. This confirms that GLS/OpenSTA belongs in the finalist tier rather
+than the inner loop; a complete 20-workload proxy-to-gate correlation must be
+run as a separately budgeted validation experiment.
+
 A calibrated five-policy smoke matrix at 20 proposal slots is stored at
 `out/axi-dma-matrix-calibrated-seed0/`, with an aggregate at
 `out/axi-dma-matrix-calibrated-seed0-aggregate.json`. All 100 proposal slots
