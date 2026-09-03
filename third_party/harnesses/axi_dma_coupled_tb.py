@@ -50,7 +50,7 @@ async def run_workload(dut):
                     state = {}
                     for name in names:
                         try:
-                            state[name] = str(dut._id(name).value)
+                            state[name] = str(getattr(dut, name).value)
                         except Exception:
                             pass
                     dut._log.error("GLS stalled at %s signals=%s", label, state)
