@@ -20,7 +20,7 @@ repo, synth, out, cells, primitives = map(Path, sys.argv[1:])
 run(verilog_sources=[synth / "mapped.v", cells, primitives],
     toplevel="axi_dma", module="axi_dma_coupled_tb", simulator="icarus",
     sim_build=str(out / "sim_build"), waves=True,
-    compile_args=["-DUNIT_DELAY="])
+    compile_args=["-DFUNCTIONAL", "-DUNIT_DELAY="])
 PY
 fst=$(find "$out_dir/sim_build" -maxdepth 2 -name '*.fst' -print -quit)
 test -n "$fst" || { echo "AXI GLS produced no FST" >&2; exit 1; }
