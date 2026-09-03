@@ -21,8 +21,9 @@ must follow the verification legend in `docs/LITERATURE.md`.
 
 ## 2. System
 
-Describe the CHIA node boundary, design adapters, four-stage validity gate,
-proposal-counted budget, activity evaluator, finalist OpenSTA evaluator, and
+Describe the CHIA node boundary, the typed agent-facing evaluator contract,
+design adapters, four-stage validity gate, proposal-counted budget, RTL proxy
+evaluator, gate-level evaluator, and
 telemetry ledger. Include the architecture diagram from `docs/ARCHITECTURE.md`.
 
 ## 3. Experimental method
