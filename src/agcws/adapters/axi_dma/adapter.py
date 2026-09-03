@@ -17,12 +17,10 @@ class AxiDmaAdapter(DesignAdapter):
 
     def random_workload(self, rng) -> dict:
         """Generate a legal, non-idle baseline workload for the generic policy."""
-        # Keep every transfer within one 4-KiB page, while varying transfer
-        # count, lengths, and page-local offsets. The total is padded to the
-        # useful-work floor so calibration cannot collapse to one workload.
         transfers = []
-        # The old generator always moved roughly 4--8 KiB, collapsing the
-        # activity envelope. Sample substantially different legal volumes.
+        pacing = rng.choice(("back_to_back", "light_gap", "bursty", "sparse"))
+        gap_range = {"back_to_back": (0, 0), "light_gap": (1, 8),
+                     "bursty": (0, 40), "sparse": (80, 400)}[pacing]
         remaining = rng.randrange(self.useful_work_floor, 32 * 1024 + 1, 256)
         minimum_count = max(4, (remaining + 4095) // 4096)
         count = rng.randint(minimum_count, min(8, remaining // 256))
@@ -32,16 +30,14 @@ class AxiDmaAdapter(DesignAdapter):
             maximum = min(4096, remaining - slots_left * 256)
             length = rng.randrange(minimum // 256, maximum // 256 + 1) * 256
             remaining -= length
-            # Give each descriptor a distinct page at each endpoint. This
-            # keeps the coupled RAM oracle valid even when several transfers
-            # are issued in one workload.
             src_page = (index % 4) * 0x1000
             dst_page = (index % 4 + 4) * 0x1000
             src_offset = rng.randrange(0, 0x1000 - length + 1, 8)
             dst_offset = rng.randrange(0, 0x1000 - length + 1, 8)
             transfers.append({"src": src_page + src_offset,
                               "dst": dst_page + dst_offset,
-                              "length": length})
+                              "length": length,
+                              "gap_cycles": rng.randint(*gap_range)})
         if remaining:
             transfers[-1]["length"] += remaining
             length = transfers[-1]["length"]
@@ -71,7 +67,7 @@ class AxiDmaAdapter(DesignAdapter):
             return Validity(False, ValidityStage.SCHEMA, "transfers must contain at most 128 items")
         if any(not isinstance(item, dict) for item in transfers):
             return Validity(False, ValidityStage.SCHEMA, "each transfer must be an object")
-        if any(set(item) - {"src", "dst", "length", "outstanding"} for item in transfers):
+        if any(set(item) - {"src", "dst", "length", "outstanding", "gap_cycles"} for item in transfers):
             return Validity(False, ValidityStage.SCHEMA, "unknown transfer field")
         return Validity(True)
 
@@ -89,6 +85,9 @@ class AxiDmaAdapter(DesignAdapter):
             outstanding = transfer.get("outstanding", 1)
             if not isinstance(outstanding, int) or outstanding < 1 or outstanding > self.channel_depth:
                 return Validity(False, ValidityStage.PROTOCOL, "channel depth exceeded")
+            gap_cycles = transfer.get("gap_cycles", 0)
+            if not isinstance(gap_cycles, int) or gap_cycles < 0 or gap_cycles > 10_000:
+                return Validity(False, ValidityStage.PROTOCOL, "gap_cycles out of range")
         return Validity(True)
 
     def elaborate(self, workload: dict) -> list[dict]:
