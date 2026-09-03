@@ -9,6 +9,7 @@ primitive_models=${AGCWS_SKY130_PRIMITIVES:-/opt/eda/ChipSTA/examples/sky130_hd_
 test -f "$cell_models" || { echo "missing AGCWS_SKY130_CELL_MODELS: $cell_models" >&2; exit 2; }
 test -f "$primitive_models" || { echo "missing AGCWS_SKY130_PRIMITIVES: $primitive_models" >&2; exit 2; }
 export AGCWS_DMA_WORKLOAD=$(realpath "$workload")
+export AGCWS_GLS_DIAGNOSTIC=1
 build_dir=${AGCWS_GLS_BUILD_DIR:-out/.cache/axi-dma-gls}; mkdir -p "$build_dir"
 PYTHONPATH="$repo_root/third_party/harnesses${PYTHONPATH:+:$PYTHONPATH}" \
   "$repo_root/.venv/bin/python" - "$repo_root" "$synth_dir" "$out_dir" "$cell_models" "$primitive_models" <<'PY'

@@ -6,7 +6,7 @@ import os
 
 import cocotb
 from cocotb.clock import Clock
-from cocotb.triggers import RisingEdge
+from cocotb.triggers import RisingEdge, with_timeout
 from cocotbext.axi import AxiBus, AxiRam, AxiStreamBus, AxiStreamFrame
 from cocotbext.axi.stream import define_stream
 
@@ -37,6 +37,26 @@ async def run_workload(dut):
     write_data = cocotbext_write_source(dut)
     ram = AxiRam(AxiBus.from_prefix(dut, "m_axi"), dut.clk, dut.rst, size=2**16)
 
+    async def transaction(awaitable, label):
+        if os.getenv("AGCWS_GLS_DIAGNOSTIC"):
+            try:
+                return await with_timeout(awaitable, 100_000, "ns")
+            except Exception as exc:
+                if os.getenv("AGCWS_GLS_DIAGNOSTIC"):
+                    names = ("read_enable", "write_enable", "s_axis_read_desc_valid",
+                             "s_axis_read_desc_ready", "m_axis_read_data_tvalid",
+                             "m_axis_read_data_tready", "m_axi_arvalid", "m_axi_arready",
+                             "m_axi_rvalid", "m_axi_rready")
+                    state = {}
+                    for name in names:
+                        try:
+                            state[name] = str(dut._id(name).value)
+                        except Exception:
+                            pass
+                    dut._log.error("GLS stalled at %s signals=%s", label, state)
+                raise AssertionError(f"GLS handshake stalled at {label}") from exc
+        return await awaitable
+
     dut.rst.value = 0
     await RisingEdge(dut.clk)
     dut.rst.value = 1
@@ -51,12 +71,12 @@ async def run_workload(dut):
         source = bytes((int(transfer["src"]) + i) % 256 for i in range(length))
         ram.write(int(transfer["src"]), source)
         ram.write(int(transfer["dst"]), b"\x00" * length)
-        await read_desc.send(DescTransaction(addr=int(transfer["src"]), len=length, tag=tag))
-        await write_desc.send(DescTransaction(addr=int(transfer["dst"]), len=length, tag=tag))
-        frame = await read_data.recv()
-        await write_data.send(AxiStreamFrame(frame.tdata, tid=tag))
-        read_result = await read_status.recv()
-        write_result = await write_status.recv()
+        await transaction(read_desc.send(DescTransaction(addr=int(transfer["src"]), len=length, tag=tag)), "read descriptor")
+        await transaction(write_desc.send(DescTransaction(addr=int(transfer["dst"]), len=length, tag=tag)), "write descriptor")
+        frame = await transaction(read_data.recv(), "read data")
+        await transaction(write_data.send(AxiStreamFrame(frame.tdata, tid=tag)), "write data")
+        read_result = await transaction(read_status.recv(), "read status")
+        write_result = await transaction(write_status.recv(), "write status")
         assert int(read_result.error) == 0
         assert int(write_result.error) == 0
         assert ram.read(int(transfer["dst"]), length) == source
