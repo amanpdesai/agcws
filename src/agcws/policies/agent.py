@@ -51,6 +51,10 @@ class OfflineAgent(AgentPolicy):
                     candidate = adapter.random_workload(rng)
                     ops = candidate.get("operations", [])
                     crypto = [op for op in ops if op.get("op") in {"encrypt", "decrypt"}]
+                    # This semantic block is AES-specific; non-AES adapters
+                    # must fall through to the adapter mutation path below.
+                    if not crypto:
+                        continue
                     if crypto:
                         desired = max(1, int(adapter.useful_work_floor + q * (256 - adapter.useful_work_floor)))
                         desired = max(adapter.useful_work_floor,
@@ -66,7 +70,22 @@ class OfflineAgent(AgentPolicy):
                         return candidates
             generator = getattr(adapter, "random_workload", None)
             if generator is not None:
-                return [generator(rng) for _ in range(n)]
+                mutator = getattr(adapter, "mutate_workload", None)
+                candidates = []
+                for _ in range(n):
+                    candidate = generator(rng)
+                    # Keep the offline semantic arm distinct for every
+                    # adapter, not only AES: mutate a generated candidate so
+                    # it exercises the adapter's structured transformation
+                    # path instead of becoming a RandomSearch alias.
+                    if mutator is not None:
+                        original = repr(candidate)
+                        for _attempt in range(4):
+                            candidate = mutator(candidate, rng)
+                            if repr(candidate) != original:
+                                break
+                    candidates.append(candidate)
+                return candidates
             candidates = []
             minimum_blocks = max(16, int(getattr(adapter, "useful_work_floor", 16)))
             for _ in range(n):
