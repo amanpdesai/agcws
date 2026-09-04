@@ -87,10 +87,12 @@ workloads); see `out/aes-pdk-rank-20260831/corpus-validation.json`.
   runs without an application timeout, so these are unfinished runs rather
   than timeout-classified results. No mapped netlist or Ibex power result is
   claimed; manifests retain source and Liberty hashes for reproduction.
-- `make vertex-preflight` confirms the Vertex SDK is installed and the frozen
-  prompt hash is available, but reports missing `AGCWS_GCP_PROJECT` and
-  `AGCWS_GEMINI_MODEL`; no cloud API call was made and no Vertex comparative
-  result is claimed.
+- `make vertex-preflight` passes with project `agcws-507604`, model
+  `gemini-2.5-flash`, and the frozen prompt hash. A one-slot AES scalar Vertex
+  smoke produced a valid workload and reached the activity evaluator, recording
+  450 input tokens and 136 output tokens. An initial eight-slot call also
+  confirmed malformed batches consume all requested proposal slots. This is a
+  plumbing smoke, not comparative evidence.
 - `make analyze-baseline BASELINE_DIR=out/aes-baseline-matrix-complete
   ANALYSIS_DIR=out/final-analysis` completes successfully, producing 25
   policy-target groups (125 run summaries across five policies and five scalar
