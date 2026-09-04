@@ -562,3 +562,10 @@ distinct eight-bin activity vectors. Burst stays near-flat; alternating
 schedules preserve alternating peaks; ramp declines as gaps increase. The
 temporal target arm therefore remains in scope. The 8-block probe was rejected
 by the existing 38-block useful-work floor and was not scored.
+
+Batch calibration showed that retries are material: an eight-slot DMA call
+produced 4/8 valid proposals, 4 schema failures, 118,054 input tokens, and
+$0.03975 estimated spend. AES produced 6/8 valid proposals at $0.00219. Ibex
+produced no valid proposals because its short programs failed the useful-work
+floor; its runner now records those failures and bounds nonterminating
+simulations with a wall-clock guard.

@@ -84,17 +84,22 @@ class VertexAgent(AgentPolicy):
         def propose(adapter, goal, history, n):
             self.last_usage = {"tokens_in": 0, "tokens_out": 0}
             payload = build_payload(adapter, goal, history, n, system_prompt)
-            generated = generate(model, payload)
-            if isinstance(generated, tuple):
-                text, usage = generated
-                self.last_usage = {
-                    "tokens_in": int(usage.get("tokens_in", 0)),
-                    "tokens_out": int(usage.get("tokens_out", 0)),
-                }
-            else:
-                text = generated
-                self.last_usage = {"tokens_in": 0, "tokens_out": 0}
-            return parse_candidates(text, n)
+            last_error = None
+            for attempt in range(3):
+                generated = generate(model, payload)
+                if isinstance(generated, tuple):
+                    text, usage = generated
+                    self.last_usage["tokens_in"] += int(usage.get("tokens_in", 0))
+                    self.last_usage["tokens_out"] += int(usage.get("tokens_out", 0))
+                else:
+                    text = generated
+                try:
+                    return parse_candidates(text, n)
+                except ValueError as exc:
+                    last_error = exc
+                    if attempt == 2:
+                        raise
+            raise last_error
 
         digest = hashlib.sha256(system_prompt.encode()).hexdigest()
         super().__init__(propose, model=model, prompt_hash=digest)

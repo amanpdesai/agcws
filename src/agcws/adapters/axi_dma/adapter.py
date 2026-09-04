@@ -9,13 +9,13 @@ class AxiDmaAdapter(DesignAdapter):
     design_summary = ("verilog-axi DMA moves memory blocks through independent read and write channels. "
                       "Activity changes with transfer lengths, descriptor count, channel concurrency, "
                       "and backpressure gaps across the descriptor engine and channels.")
-    protocol_constraints = ("use at most 8 transfers", "addresses are aligned and stay within mapped memory", "length is positive and <= 1 MiB",
+    protocol_constraints = ("use transfers totaling at least 4096 bytes", "use at most 128 transfers", "addresses are aligned and stay within mapped memory", "length is positive and <= 1 MiB",
                             "transfers cannot cross a 4 KiB boundary", "outstanding depth is 1..8",
                             "gap_cycles is 0..10000")
     useful_work_floor = 4096
     regions = ["read_channel", "write_channel", "descriptor_engine"]
     workload_schema = {"type": "object", "required": ["transfers"],
-                       "properties": {"transfers": {"type": "array", "maxItems": 8,
+                       "properties": {"transfers": {"type": "array", "maxItems": 128,
                        "items": {"type": "object", "properties": {
                            "src": {"type": "integer", "minimum": 0}, "dst": {"type": "integer", "minimum": 0},
                            "length": {"type": "integer", "minimum": 1, "maximum": 1048576},
@@ -75,8 +75,8 @@ class AxiDmaAdapter(DesignAdapter):
         if set(workload) - {"transfers"}:
             return Validity(False, ValidityStage.SCHEMA, "unknown workload field")
         transfers = workload.get("transfers") if isinstance(workload, dict) else None
-        if not isinstance(transfers, list) or len(transfers) > 8:
-            return Validity(False, ValidityStage.SCHEMA, "transfers must contain at most 8 items")
+        if not isinstance(transfers, list) or len(transfers) > 128:
+            return Validity(False, ValidityStage.SCHEMA, "transfers must contain at most 128 items")
         if any(not isinstance(item, dict) for item in transfers):
             return Validity(False, ValidityStage.SCHEMA, "each transfer must be an object")
         if any(set(item) - {"src", "dst", "length", "outstanding", "gap_cycles"} for item in transfers):
