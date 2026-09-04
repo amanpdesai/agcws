@@ -17,14 +17,14 @@ from agcws.experiments.runner import run_search
 from agcws.goals.schema import ScalarGoal
 from agcws.nodes.power import PowerProfile
 from agcws.policies import (EvolutionarySearch, HybridSearch, MutationSearch,
-                            OfflineAgent, OneShotAgent, RandomSearch)
+                            OfflineAgent, OneShotAgent, RandomSearch, VertexAgent)
 
 
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--target", type=float, default=0.5)
     choices = ("random", "mutation", "evolutionary", "offline-agent",
-               "one-shot-agent", "offline-hybrid")
+               "one-shot-agent", "offline-hybrid", "vertex")
     parser.add_argument("--policy", choices=choices, default="random")
     parser.add_argument("--policies", help="comma-separated policy matrix; overrides --policy")
     parser.add_argument("--p-min", type=float)
@@ -35,6 +35,9 @@ def main() -> None:
     parser.add_argument("--seed", type=int, default=0)
     parser.add_argument("--seeds", help="comma-separated seed matrix; overrides --seed")
     parser.add_argument("--out", type=Path, default=Path("out/ibex-search"))
+    parser.add_argument("--model", default=os.environ.get("AGCWS_GEMINI_MODEL"))
+    parser.add_argument("--project", default=os.environ.get("AGCWS_GCP_PROJECT"))
+    parser.add_argument("--prompt", type=Path, default=ROOT / "prompts/agent_system_v1.txt")
     args = parser.parse_args()
     if args.calibration:
         calibration = json.loads(args.calibration.read_text())
@@ -127,7 +130,11 @@ def main() -> None:
     policies = {"random": RandomSearch, "mutation": MutationSearch,
                 "evolutionary": EvolutionarySearch,
                 "offline-agent": OfflineAgent, "one-shot-agent": OneShotAgent}
-    if args.policy == "offline-hybrid":
+    if args.policy == "vertex":
+        if not args.model or not args.project:
+            parser.error("vertex policy requires --model and --project")
+        policy = VertexAgent.from_vertex(args.prompt.read_text(), model=args.model, project=args.project)
+    elif args.policy == "offline-hybrid":
         agent = OfflineAgent(args.seed)
         policy = HybridSearch(agent.proposer, seed=args.seed,
                               model=agent.model, prompt_hash=agent.prompt_hash)
@@ -137,7 +144,7 @@ def main() -> None:
     # generic names so they can be shared across design runners.
     policy.name = args.policy
     trials = run_search(IbexAdapter(), policy, ScalarGoal(args.target, 0.05), evaluate,
-                        budget=args.budget, batch_size=1, seed=args.seed,
+                        budget=args.budget, batch_size=8 if args.policy == "vertex" else 1, seed=args.seed,
                         p_min=args.p_min, p_max=args.p_max, output_dir=args.out)
     print(json.dumps({"trials": len(trials), "policy": args.policy,
                       "output": str(args.out.resolve())}, indent=2))

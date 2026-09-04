@@ -554,3 +554,11 @@ forms while preserving strict candidate validation. A one-slot DMA smoke then
 produced a valid workload and completed the coupled activity evaluator on
 2026-09-04. The run used `gemini-2.5-flash`, 494 input tokens, 242 output
 tokens, and an estimated $0.0007532 at the configured standard text rates.
+
+### Temporal DSL gate (2026-09-04)
+
+The 48-block sustained, burst, alternating, and ramp workloads produce
+distinct eight-bin activity vectors. Burst stays near-flat; alternating
+schedules preserve alternating peaks; ramp declines as gaps increase. The
+temporal target arm therefore remains in scope. The 8-block probe was rejected
+by the existing 38-block useful-work floor and was not scored.
