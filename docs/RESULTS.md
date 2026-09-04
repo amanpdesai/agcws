@@ -569,3 +569,13 @@ $0.03975 estimated spend. AES produced 6/8 valid proposals at $0.00219. Ibex
 produced no valid proposals because its short programs failed the useful-work
 floor; its runner now records those failures and bounds nonterminating
 simulations with a wall-clock guard.
+
+### Vertex scalar pilot (2026-09-04)
+
+The first three-seed pilot launched all three real Vertex arms. AES completed
+20 proposals per seed with 4, 7, and 17 valid trials; estimated spend was
+$0.3616 total. DMA completed 8 proposals per seed with 0, 0, and 4 valid
+trials; Ibex completed 8 per seed with no valid trials. DMA and Ibex results
+are diagnostic only: strict batch parsing and useful-work compliance remain
+too weak for comparative claims. The pilot exposed this before the factorial
+matrix and consumed approximately $0.38 including calibration.
