@@ -33,10 +33,16 @@ def build_payload(adapter: Any, goal: Any, history: list[Any], n: int, system_pr
 
 
 def parse_candidates(text: str, n: int) -> list[dict]:
+    text = text.strip()
+    if text.startswith("```"):
+        lines = text.splitlines()
+        text = "\n".join(lines[1:-1]).strip()
     try:
         candidates = json.loads(text)
     except json.JSONDecodeError as exc:
         raise ValueError("agent response is not valid JSON") from exc
+    if isinstance(candidates, dict) and isinstance(candidates.get("candidates"), list):
+        candidates = candidates["candidates"]
     if not isinstance(candidates, list) or len(candidates) != n:
         raise ValueError(f"agent response must be a JSON list of exactly {n} candidates")
     if not all(isinstance(candidate, dict) for candidate in candidates):

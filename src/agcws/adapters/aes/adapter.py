@@ -11,7 +11,19 @@ class AESAdapter(DesignAdapter):
         "aes_data": ("data_", "state_d", "state_q", "round_key", "sbox"),
         "aes_core": ("aes_", "round", "mix_", "shift_", "sub_"),
     }
-    workload_schema = {"type": "object", "required": ["operations"], "properties": {"operations": {"type": "array", "maxItems": 256}, "data_pattern": {"type": "integer", "minimum": 0, "maximum": 3}}, "additionalProperties": False}
+    workload_schema = {
+        "type": "object", "required": ["operations"],
+        "properties": {
+            "operations": {"type": "array", "maxItems": 256, "items": {
+                "oneOf": [
+                    {"type": "object", "properties": {"op": {"const": "configure"}, "key_len": {"enum": [128, 192, 256]}}, "required": ["op", "key_len"], "additionalProperties": False},
+                    {"type": "object", "properties": {"op": {"enum": ["encrypt", "decrypt"]}, "blocks": {"type": "integer", "minimum": 1, "maximum": 256}}, "required": ["op", "blocks"], "additionalProperties": False},
+                    {"type": "object", "properties": {"op": {"const": "idle"}, "cycles": {"type": "integer", "minimum": 0, "maximum": 10000}}, "required": ["op", "cycles"], "additionalProperties": False}
+                ]
+            }},
+            "data_pattern": {"type": "integer", "minimum": 0, "maximum": 3}
+        }, "additionalProperties": False
+    }
 
     def random_workload(self, rng: random.Random) -> dict:
         """Sample materially different legal transaction schedules.

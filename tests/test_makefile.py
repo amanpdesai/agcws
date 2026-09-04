@@ -1,5 +1,6 @@
 from pathlib import Path
 import os
+import re
 import subprocess
 
 
@@ -111,6 +112,6 @@ def test_makefile_defaults_empty_ibex_environment_values():
         check=True,
     )
     database = result.stdout
-    assert "AGCWS_FUSESOC := fusesoc" in database
-    assert "AGCWS_RISCV_GCC := riscv64-unknown-elf-gcc" in database
-    assert "AGCWS_RISCV_OBJCOPY := riscv64-unknown-elf-objcopy" in database
+    assert re.search(r"AGCWS_FUSESOC\s*[:]?=\s*fusesoc", database)
+    assert re.search(r"AGCWS_RISCV_GCC\s*[:]?=\s*riscv64-unknown-elf-gcc", database)
+    assert re.search(r"AGCWS_RISCV_OBJCOPY\s*[:]?=\s*riscv64-unknown-elf-objcopy", database)
