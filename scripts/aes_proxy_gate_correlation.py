@@ -77,19 +77,22 @@ def main() -> None:
             environment["AGCWS_VCD_SCOPE"] = "aes_core_gls/dut"
             subprocess.run(["bash", "scripts/run_opensta_aes.sh", str(args.synthesis), str(gls_dir / "activity.vcd"), str(sta_dir)], cwd=ROOT, check=True, stdout=subprocess.DEVNULL, env=environment)
             rows.append({"workload": source.name, "projected_blocks": blocks,
-                         "rtl_transitions_per_cycle": rtl["total_transitions"] / rtl["clock_edges"],
+                         "rtl_total_transitions": rtl["total_transitions"],
+                         "rtl_clock_edges": rtl["clock_edges"],
                          "gate_dynamic_power_w": dynamic_power(sta_dir / "power.rpt"),
                          "rtl_elapsed_s": rtl_time, "gls_opensta_elapsed_s": time.monotonic() - started})
-    pooled_left = [(f'{row["workload"]}@{row["projected_blocks"]}', row["rtl_transitions_per_cycle"]) for row in rows]
-    pooled_right = [(f'{row["workload"]}@{row["projected_blocks"]}', row["gate_dynamic_power_w"]) for row in rows]
+    for row in rows:
+        row["gate_dynamic_energy_j"] = row["gate_dynamic_power_w"] * row["rtl_clock_edges"] * 10e-9
+    pooled_left = [(f'{row["workload"]}@{row["projected_blocks"]}', row["rtl_total_transitions"]) for row in rows]
+    pooled_right = [(f'{row["workload"]}@{row["projected_blocks"]}', row["gate_dynamic_energy_j"]) for row in rows]
     correlations = {"pooled": rank_agreement(pooled_left, pooled_right), "per_rung": []}
     for blocks in args.ladder:
         subset = [row for row in rows if row["projected_blocks"] == blocks]
-        left = [(row["workload"], row["rtl_transitions_per_cycle"]) for row in subset]
-        right = [(row["workload"], row["gate_dynamic_power_w"]) for row in subset]
+        left = [(row["workload"], row["rtl_total_transitions"]) for row in subset]
+        right = [(row["workload"], row["gate_dynamic_energy_j"]) for row in subset]
         correlations["per_rung"].append({"projected_blocks": blocks, "correlation": rank_agreement(left, right)})
     result = {"scope": "block_count_ladder_projection", "ladder": args.ladder,
-              "power_metric": "opensta_internal_plus_switching_w", "correlations": correlations, "rows": rows}
+              "power_metric": "opensta_internal_plus_switching_energy_j", "correlations": correlations, "rows": rows}
     (args.out / "results.json").write_text(json.dumps(result, indent=2) + "\n")
     print(json.dumps({"rows": len(rows), "correlations": correlations, "out": str(args.out)}))
 

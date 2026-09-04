@@ -141,6 +141,14 @@ correlation tool now supports the preregistered ladder of 1, 2, 4, 8, 16, and
 excluding leakage. The full ladder run is pending; no constant-projection
 correlation is used as evidence.
 
+Recomputing those 34 matched rows with extensive quantities—RTL total
+transitions versus OpenSTA internal-plus-switching dynamic energy, using the
+same VCD clock span—gives pooled ρ=`0.9794547358`. The per-rung correlations
+are `-0.0990` (1/2 blocks), `0.2970` (4/8), and `0.2962` (16/32), confirming
+that the earlier negative pooled rate correlation was a window/amortization
+artifact. The 34-row value remains partial and is not the final 20-workload
+ladder statistic; the corrected tool now emits the extensive metric directly.
+
 An initial ladder attempt was stopped after 34 complete matched rows: it had
 run for about 2h45 locally and was still processing the 16-block rung. Its
 partial pooled diagnostic was ρ=`-0.7169`, but it is not a result because the
