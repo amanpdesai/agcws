@@ -9,8 +9,8 @@ multi-design factorial study has not yet been completed.
 ### Oracle responsiveness finding
 
 A clean 20-workload AES calibration after widening the generator produced
-20/20 valid workloads and an RTL activity range of 22.25--130.29 transitions
-per clock edge (486% relative spread). OpenSTA still annotated only 203 of
+20/20 valid workloads and an RTL activity range of 14.37--130.21 transitions
+per clock edge (806% relative spread). OpenSTA still annotated only 203 of
 154,059 pins (0.132%), yielding a total-power range of only 0.050% of its
 minimum. This isolates the current bottleneck to RTL-waveform-to-netlist
 annotation. These reports are retained as a negative methodological result,

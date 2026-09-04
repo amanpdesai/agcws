@@ -1,5 +1,22 @@
 # Decision log
 
+## 2026-09-04 — Refresh AES activity calibration after generator widening
+
+**Decision.** Replace the pre-widening 10-sample envelope (128.724--130.434)
+with the 20-sample widened-generator corpus (14.374--130.208 transitions per
+clock edge). All 20 workloads passed the useful-work gate; the minimum useful
+work was 47 blocks, above the floor of 38. The refreshed corpus covers four of
+five declared scalar targets within the base tolerance, so the pre-declared
+one-adjustment rule selects epsilon 0.02.
+**Rationale.** The old artifact was frozen before the workload generator was
+widened and normalized the Vertex study onto a 1.3% slice of the documented
+activity envelope. The calibration must describe the generator used by the
+comparative study.
+**Rejected.** Reusing the old artifact; hand-editing bounds from the narrative;
+re-tuning epsilon per design or after comparative results.
+**Consequence.** The checked-in calibration is now the required source for the
+AES Vertex matrix, and the runner rejects narrow envelopes before making calls.
+
 ## 2026-08-31 — Ibex Verilator warnings remain visible but non-fatal
 
 **Decision.** The shared Ibex RTL checker passes `-Wno-fatal` while retaining
