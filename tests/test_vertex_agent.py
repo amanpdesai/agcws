@@ -1,5 +1,6 @@
 import pytest
 import hashlib
+import json
 
 from agcws.goals import ScalarGoal
 from agcws.policies.vertex import VertexAgent, parse_candidates
@@ -47,6 +48,14 @@ def test_vertex_clears_usage_before_malformed_batch():
 def test_vertex_boundary_rejects_non_json():
     with pytest.raises(ValueError, match="valid JSON"):
         parse_candidates("not-json", 2)
+
+
+@pytest.mark.parametrize("workload", [
+    {"transfers": [{"src": 0, "dst": 4096, "length": 256}]},
+    {"program": [{"op": "nop"}]},
+])
+def test_vertex_boundary_accepts_singleton_workload_objects(workload):
+    assert parse_candidates(json.dumps(workload), 1) == [workload]
 
 
 def test_vertex_payload_serializes_nested_trial_values():

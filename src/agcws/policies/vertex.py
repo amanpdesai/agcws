@@ -55,7 +55,11 @@ def parse_candidates(text: str, n: int) -> list[dict]:
         candidates = candidates["candidates"]
     elif isinstance(candidates, dict) and isinstance(candidates.get("workloads"), list):
         candidates = candidates["workloads"]
+    elif isinstance(candidates, dict) and isinstance(candidates.get("workload"), list):
+        candidates = candidates["workload"]
     elif isinstance(candidates, dict) and "operations" in candidates:
+        candidates = [candidates]
+    elif isinstance(candidates, dict) and ("transfers" in candidates or "program" in candidates):
         candidates = [candidates]
     if not isinstance(candidates, list) or len(candidates) != n:
         raise ValueError(f"agent response must be a JSON list of exactly {n} candidates")

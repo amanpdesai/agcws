@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+import os
 import time
 from dataclasses import asdict, is_dataclass
 from pathlib import Path
@@ -14,6 +15,21 @@ from agcws.nodes.power import PowerProfile
 from agcws.nodes.validation import validate_static
 from agcws.policies.base import SearchPolicy
 from agcws.telemetry.ledger import Trial
+
+
+def _vertex_cost(tokens_in: int, tokens_out: int, model: str) -> float:
+    """Estimate Vertex text cost from explicit per-million-token settings."""
+    if not model:
+        return 0.0
+    prefix = "AGCWS_GEMINI_"
+    input_rate = os.getenv(prefix + "INPUT_USD_PER_MILLION")
+    output_rate = os.getenv(prefix + "OUTPUT_USD_PER_MILLION")
+    if input_rate is None or output_rate is None:
+        return 0.0
+    try:
+        return (tokens_in * float(input_rate) + tokens_out * float(output_rate)) / 1_000_000
+    except ValueError:
+        return 0.0
 
 
 def _jsonable(value):
@@ -100,6 +116,11 @@ def run_search(
                 claim_scope=getattr(policy, "claim_scope", "baseline"),
                 tokens_in=int(usage.get("tokens_in", 0)) if slot == 0 else 0,
                 tokens_out=int(usage.get("tokens_out", 0)) if slot == 0 else 0,
+                est_cost_usd=_vertex_cost(
+                    int(usage.get("tokens_in", 0)) if slot == 0 else 0,
+                    int(usage.get("tokens_out", 0)) if slot == 0 else 0,
+                    getattr(policy, "model", ""),
+                ),
             ))
         proposal_index += requested
     if output_dir is not None:
@@ -122,6 +143,7 @@ def run_search(
                         "claim_scope": getattr(policy, "claim_scope", "baseline"),
                         "tokens_in": sum(trial.tokens_in for trial in trials),
                         "tokens_out": sum(trial.tokens_out for trial in trials),
+                        "est_cost_usd": sum(trial.est_cost_usd for trial in trials),
                         "simulations": sum(trial.sim_count for trial in trials)})
         if hasattr(goal, "q"):
             summary["target"] = float(goal.q)

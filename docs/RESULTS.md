@@ -545,3 +545,12 @@ claim that either design has been successfully macro-mapped.
 Offline agent and hybrid summaries are tagged `heuristic_smoke_only` and are
 excluded from policy inference. Only the Vertex-backed arm is eligible for the
 cross-design agent claim.
+### Vertex semantic-context smoke
+
+The first DMA Vertex smoke exposed a response-envelope issue rather than a
+search failure: Gemini returned a singleton workload object instead of a list.
+The parser now accepts the documented singleton and hypothesis-plus-workloads
+forms while preserving strict candidate validation. A one-slot DMA smoke then
+produced a valid workload and completed the coupled activity evaluator on
+2026-09-04. The run used `gemini-2.5-flash`, 494 input tokens, 242 output
+tokens, and an estimated $0.0007532 at the configured standard text rates.
