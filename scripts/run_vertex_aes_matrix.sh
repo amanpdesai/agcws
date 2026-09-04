@@ -23,20 +23,25 @@ if ! awk -v lo="$p_min" -v hi="$p_max" 'BEGIN { exit !((hi > lo) && (hi - lo >= 
   exit 2
 fi
 
+targets=(0.10 0.25 0.50 0.75 0.90)
 mkdir -p "$root"
 printf 'using AES calibration %s: %s..%s\n' "$calibration" "$p_min" "$p_max"
-for seed in 0 1 2 3 4 5 6 7 8 9; do
-  out="$root/seed-$seed"
-  if [[ -f "$out/summary.json" ]] && jq -e --argjson budget "$budget" '.budget == $budget' "$out/summary.json" >/dev/null; then
-    continue
-  fi
-  if timeout --signal=TERM 1200s "$python_bin" scripts/run_aes_search.py \
-    out/aes-core-synthesis-final2 --policy vertex \
-    --calibration "$calibration" \
-    --budget "$budget" --seed "$seed" --out "$out"; then
-    printf 'seed %s complete\n' "$seed"
-  else
-    status=$?
-    printf 'seed %s failed (status %s); continuing\n' "$seed" "$status" >&2
-  fi
+for target in "${targets[@]}"; do
+  target_dir=${target/./p}
+  for seed in 0 1 2 3 4 5 6 7 8 9; do
+    out="$root/target-$target_dir/seed-$seed"
+    if [[ -f "$out/summary.json" ]] && jq -e --argjson budget "$budget" --argjson target "$target" \
+      '.budget == $budget and .target == $target and .epsilon == 0.02' "$out/summary.json" >/dev/null; then
+      continue
+    fi
+    if timeout --signal=TERM 1200s "$python_bin" scripts/run_aes_search.py \
+      out/aes-core-synthesis-final2 --policy vertex --target "$target" \
+      --calibration "$calibration" --epsilon 0.02 \
+      --budget "$budget" --seed "$seed" --out "$out"; then
+      printf 'target %s seed %s complete\n' "$target" "$seed"
+    else
+      status=$?
+      printf 'target %s seed %s failed (status %s); continuing\n' "$target" "$seed" "$status" >&2
+    fi
+  done
 done
