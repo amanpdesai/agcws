@@ -579,3 +579,8 @@ trials; Ibex completed 8 per seed with no valid trials. DMA and Ibex results
 are diagnostic only: strict batch parsing and useful-work compliance remain
 too weak for comparative claims. The pilot exposed this before the factorial
 matrix and consumed approximately $0.38 including calibration.
+
+The local 10-seed, 50-proposal matrix directory is not tracked and is not
+reported as a result until its summaries are deliberately archived and
+reviewed. The finalized AES scalar calibration uses epsilon 0.02 after the
+required recheck on the widened corpus (random target coverage r=0.2).

@@ -5,9 +5,10 @@
 **Decision.** Replace the pre-widening 10-sample envelope (128.724--130.434)
 with the 20-sample widened-generator corpus (14.374--130.208 transitions per
 clock edge). All 20 workloads passed the useful-work gate; the minimum useful
-work was 47 blocks, above the floor of 38. The refreshed corpus covers four of
-five declared scalar targets within the base tolerance, so the pre-declared
-one-adjustment rule selects epsilon 0.02.
+work was 47 blocks, above the floor of 38. The refreshed corpus covered four of
+five declared scalar targets at epsilon 0.05 (r=0.8), triggering the one
+permitted recheck. At epsilon 0.02 it covers one of five (r=0.2), so epsilon
+0.02 is now frozen.
 **Rationale.** The old artifact was frozen before the workload generator was
 widened and normalized the Vertex study onto a 1.3% slice of the documented
 activity envelope. The calibration must describe the generator used by the
@@ -16,6 +17,10 @@ comparative study.
 re-tuning epsilon per design or after comparative results.
 **Consequence.** The checked-in calibration is now the required source for the
 AES Vertex matrix, and the runner rejects narrow envelopes before making calls.
+
+The old r=0.2 value was measured against the obsolete narrow corpus; it is
+historical context only. The finalized r=0.2 is the epsilon-0.02 recheck on
+the widened corpus.
 
 ## 2026-08-31 — Ibex Verilator warnings remain visible but non-fatal
 
