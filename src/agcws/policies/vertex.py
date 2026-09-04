@@ -3,6 +3,8 @@ from __future__ import annotations
 
 import json
 import hashlib
+import os
+import signal
 from dataclasses import asdict, is_dataclass
 from typing import Any, Callable
 
@@ -86,7 +88,23 @@ class VertexAgent(AgentPolicy):
             payload = build_payload(adapter, goal, history, n, system_prompt)
             last_error = None
             for attempt in range(3):
-                generated = generate(model, payload)
+                timeout_s = int(os.environ.get("AGCWS_VERTEX_TIMEOUT_S", "60"))
+                previous = signal.signal(signal.SIGALRM, lambda *_: (_ for _ in ()).throw(TimeoutError("Vertex request timed out")))
+                signal.alarm(timeout_s)
+                try:
+                    generated = generate(model, payload)
+                except Exception as exc:
+                    last_error = exc
+                    generated = None
+                finally:
+                    signal.alarm(0)
+                    signal.signal(signal.SIGALRM, previous)
+                if generated is None:
+                    if attempt == 2:
+                        return []
+                    payload = json.dumps({"repair_request": f"Return 1..{n} valid workloads only.",
+                                          "error": str(last_error)})
+                    continue
                 if isinstance(generated, tuple):
                     text, usage = generated
                     self.last_usage["tokens_in"] += int(usage.get("tokens_in", 0))
