@@ -136,7 +136,9 @@ class VertexAgent(AgentPolicy):
             raise RuntimeError("install agcws[chia] to use VertexAgent") from exc
         timeout_ms = int(__import__("os").environ.get("AGCWS_VERTEX_TIMEOUT_MS", "60000"))
         client = genai.Client(vertexai=True, project=project, location=location,
-                              http_options=types.HttpOptions(timeout=timeout_ms))
+                              http_options=types.HttpOptions(
+                                  timeout=timeout_ms,
+                                  retry_options=types.HttpRetryOptions(attempts=1)))
 
         def generate(model_name: str, payload: str) -> tuple[str, dict[str, int]]:
             response = client.models.generate_content(model=model_name, contents=payload,
