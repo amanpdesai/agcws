@@ -6,7 +6,7 @@ budget=${2:-200}
 python_bin=${AGCWS_PYTHON:-.venv/bin/python}
 for seed in 0 1 2 3 4 5 6 7 8 9; do
   out="$root/seed-$seed"
-  if [[ -f "$out/summary.json" ]] && grep -q '"budget": '"$budget"',' "$out/summary.json"; then
+  if [[ -f "$out/summary.json" ]] && jq -e --argjson budget "$budget" '.budget == $budget' "$out/summary.json" >/dev/null; then
     continue
   fi
   timeout --signal=TERM 900s "$python_bin" scripts/run_aes_search.py \
