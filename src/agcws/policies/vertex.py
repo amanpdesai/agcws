@@ -95,6 +95,8 @@ class VertexAgent(AgentPolicy):
                     generated = generate(model, payload)
                 except Exception as exc:
                     last_error = exc
+                    if "timeout" in type(exc).__name__.lower() or "timeout" in str(exc).lower():
+                        return []
                     generated = None
                 finally:
                     signal.alarm(0)
