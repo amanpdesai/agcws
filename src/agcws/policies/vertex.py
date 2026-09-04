@@ -53,6 +53,8 @@ def parse_candidates(text: str, n: int) -> list[dict]:
         raise ValueError("agent response is not valid JSON") from exc
     if isinstance(candidates, dict) and isinstance(candidates.get("candidates"), list):
         candidates = candidates["candidates"]
+    elif isinstance(candidates, dict) and isinstance(candidates.get("workloads"), list):
+        candidates = candidates["workloads"]
     elif isinstance(candidates, dict) and "operations" in candidates:
         candidates = [candidates]
     if not isinstance(candidates, list) or len(candidates) != n:

@@ -15,7 +15,13 @@ class AxiDmaAdapter(DesignAdapter):
     useful_work_floor = 4096
     regions = ["read_channel", "write_channel", "descriptor_engine"]
     workload_schema = {"type": "object", "required": ["transfers"],
-                       "properties": {"transfers": {"type": "array", "maxItems": 128}},
+                       "properties": {"transfers": {"type": "array", "maxItems": 128,
+                       "items": {"type": "object", "properties": {
+                           "src": {"type": "integer", "minimum": 0}, "dst": {"type": "integer", "minimum": 0},
+                           "length": {"type": "integer", "minimum": 1, "maximum": 1048576},
+                           "outstanding": {"type": "integer", "minimum": 1, "maximum": 8},
+                           "gap_cycles": {"type": "integer", "minimum": 0, "maximum": 10000}},
+                           "required": ["src", "dst", "length"], "additionalProperties": False}}},
                        "additionalProperties": False}
     data_width_bytes = 8
     max_transfer = 1 << 20

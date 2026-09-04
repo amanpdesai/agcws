@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -16,14 +17,14 @@ from agcws.experiments.runner import run_search
 from agcws.goals.schema import ScalarGoal
 from agcws.nodes.power import PowerProfile
 from agcws.policies import (EvolutionarySearch, HybridSearch, MutationSearch,
-                            OfflineAgent, OneShotAgent, RandomSearch)
+                            OfflineAgent, OneShotAgent, RandomSearch, VertexAgent)
 
 
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--target", type=float, default=0.5)
     parser.add_argument("--policy", choices=("random", "mutation", "evolutionary",
-                                              "offline-agent", "one-shot-agent", "offline-hybrid"),
+                                              "offline-agent", "one-shot-agent", "offline-hybrid", "vertex"),
                         default="random")
     parser.add_argument("--policies", help="comma-separated policy matrix; overrides --policy")
     parser.add_argument("--p-min", type=float, required=True)
@@ -31,6 +32,9 @@ def main() -> None:
     parser.add_argument("--budget", type=int, default=8)
     parser.add_argument("--seed", type=int, default=0)
     parser.add_argument("--out", type=Path, default=Path("out/axi-dma-search"))
+    parser.add_argument("--model", default=os.environ.get("AGCWS_GEMINI_MODEL"))
+    parser.add_argument("--project", default=os.environ.get("AGCWS_GCP_PROJECT"))
+    parser.add_argument("--prompt", type=Path, default=ROOT / "prompts/agent_system_v1.txt")
     args = parser.parse_args()
     if args.policies:
         policies = [item.strip() for item in args.policies.split(",") if item.strip()]
@@ -90,7 +94,11 @@ def main() -> None:
     policies = {"random": RandomSearch, "mutation": MutationSearch,
                 "evolutionary": EvolutionarySearch, "offline-agent": OfflineAgent,
                 "one-shot-agent": OneShotAgent}
-    if args.policy == "offline-hybrid":
+    if args.policy == "vertex":
+        if not args.model or not args.project:
+            parser.error("vertex policy requires --model and --project")
+        policy = VertexAgent.from_vertex(args.prompt.read_text(), model=args.model, project=args.project)
+    elif args.policy == "offline-hybrid":
         agent = OfflineAgent(args.seed)
         policy = HybridSearch(agent.proposer, seed=args.seed,
                               model=agent.model, prompt_hash=agent.prompt_hash)

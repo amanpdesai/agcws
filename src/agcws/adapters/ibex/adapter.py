@@ -15,8 +15,19 @@ class IbexAdapter(DesignAdapter):
                             "branch targets are aligned and in range", "a reachable ecall termination is required")
     useful_work_floor = 10_000
     regions = ["fetch", "decode", "execute", "load_store"]
+    activity_region_prefixes = {
+        "fetch": ("fetch", "instr", "pc"),
+        "decode": ("decode", "opcode", "imm"),
+        "execute": ("alu", "branch", "csr"),
+        "load_store": ("load", "store", "mem", "lsu"),
+    }
     workload_schema = {"type": "object", "required": ["program"],
-                       "properties": {"program": {"type": "array", "maxItems": 200_000},
+                       "properties": {"program": {"type": "array", "maxItems": 200_000, "items": {"oneOf": [
+                                      {"type": "object", "properties": {"op": {"enum": ["nop", "add", "and", "or", "xor", "ecall"]}}, "required": ["op"], "additionalProperties": False},
+                                      {"type": "object", "properties": {"op": {"const": "addi"}, "immediate": {"type": "integer", "minimum": -2048, "maximum": 2047}}, "required": ["op", "immediate"], "additionalProperties": False},
+                                      {"type": "object", "properties": {"op": {"enum": ["lw", "sw"]}, "address": {"type": "integer", "minimum": 0}}, "required": ["op", "address"], "additionalProperties": False},
+                                      {"type": "object", "properties": {"op": {"enum": ["beq", "bne"]}, "target": {"type": "integer", "minimum": 0}}, "required": ["op", "target"], "additionalProperties": False}
+                                  ]}},
                                       "memory_size": {"type": "integer", "minimum": 4}},
                        "additionalProperties": False}
     # Matches the upstream simple-system linker: 192 KiB of RAM at 0x100000.
