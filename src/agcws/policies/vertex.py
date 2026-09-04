@@ -61,8 +61,8 @@ def parse_candidates(text: str, n: int) -> list[dict]:
         candidates = [candidates]
     elif isinstance(candidates, dict) and ("transfers" in candidates or "program" in candidates):
         candidates = [candidates]
-    if not isinstance(candidates, list) or len(candidates) != n:
-        raise ValueError(f"agent response must be a JSON list of exactly {n} candidates")
+    if not isinstance(candidates, list) or not candidates or len(candidates) > n:
+        raise ValueError(f"agent response must be a JSON list of 1..{n} candidates")
     if not all(isinstance(candidate, dict) for candidate in candidates):
         raise ValueError("every candidate must be a JSON object")
     return candidates
@@ -99,6 +99,11 @@ class VertexAgent(AgentPolicy):
                     last_error = exc
                     if attempt == 2:
                         raise
+                    payload = json.dumps({
+                        "repair_request": f"Return 1..{n} valid workloads only.",
+                        "error": str(exc),
+                        "previous_response": text,
+                    })
             raise last_error
 
         digest = hashlib.sha256(system_prompt.encode()).hexdigest()
