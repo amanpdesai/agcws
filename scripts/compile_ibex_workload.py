@@ -29,7 +29,7 @@ def assembly_for(workload: dict) -> str:
         '.type main, @function',
         'main:',
     ]
-    for index, instruction in enumerate(workload["program"]):
+    for index, instruction in enumerate(adapter.expanded_program(workload)):
         op = instruction["op"]
         if op == "nop":
             lines.append("  nop")

@@ -26,7 +26,8 @@ class IbexAdapter(DesignAdapter):
                                       {"type": "object", "properties": {"op": {"enum": ["nop", "add", "and", "or", "xor", "ecall"]}}, "required": ["op"], "additionalProperties": False},
                                       {"type": "object", "properties": {"op": {"const": "addi"}, "immediate": {"type": "integer", "minimum": -2048, "maximum": 2047}}, "required": ["op", "immediate"], "additionalProperties": False},
                                       {"type": "object", "properties": {"op": {"enum": ["lw", "sw"]}, "address": {"type": "integer", "minimum": 0}}, "required": ["op", "address"], "additionalProperties": False},
-                                      {"type": "object", "properties": {"op": {"enum": ["beq", "bne"]}, "target": {"type": "integer", "minimum": 0}}, "required": ["op", "target"], "additionalProperties": False}
+                                      {"type": "object", "properties": {"op": {"enum": ["beq", "bne"]}, "target": {"type": "integer", "minimum": 0}}, "required": ["op", "target"], "additionalProperties": False},
+                                      {"type": "object", "properties": {"op": {"const": "loop"}, "count": {"type": "integer", "minimum": 1, "maximum": 10000}, "body": {"type": "array", "minItems": 1, "maxItems": 32, "items": {"type": "object", "properties": {"op": {"enum": ["nop", "add", "and", "or", "xor", "addi", "lw", "sw"]}, "immediate": {"type": "integer", "minimum": -2048, "maximum": 2047}, "address": {"type": "integer", "minimum": 0}}, "required": ["op"], "additionalProperties": False}}}, "required": ["op", "count", "body"], "additionalProperties": False}
                                   ]}},
                                       "memory_size": {"type": "integer", "minimum": 4}},
                        "additionalProperties": False}
@@ -51,12 +52,18 @@ class IbexAdapter(DesignAdapter):
                    "beq": {"op", "target"}, "bne": {"op", "target"}}
         for instruction in program:
             op = instruction.get("op")
+            if op == "loop":
+                if not isinstance(instruction.get("count"), int) or not isinstance(instruction.get("body"), list):
+                    return Validity(False, ValidityStage.SCHEMA, "loop requires count and body")
+                if not instruction["body"] or len(instruction["body"]) > 32:
+                    return Validity(False, ValidityStage.SCHEMA, "loop body must contain 1..32 instructions")
+                continue
             if op in allowed and set(instruction) - allowed[op]:
                 return Validity(False, ValidityStage.SCHEMA, "unknown instruction field")
         return Validity(True)
 
     def validate_protocol(self, workload: dict) -> Validity:
-        program = workload["program"]
+        program = self.expanded_program(workload)
         for index, instruction in enumerate(program):
             op = instruction.get("op")
             if op not in self.supported_ops:
@@ -93,7 +100,16 @@ class IbexAdapter(DesignAdapter):
                         "program must contain a reachable termination instruction")
 
     def elaborate(self, workload: dict) -> list[dict]:
-        return workload["program"]
+        return self.expanded_program(workload)
+
+    def expanded_program(self, workload: dict) -> list[dict]:
+        expanded = []
+        for instruction in workload["program"]:
+            if instruction.get("op") == "loop":
+                expanded.extend(instruction["body"] * instruction["count"])
+            else:
+                expanded.append(instruction)
+        return expanded
 
     def useful_work(self, result: SimResult) -> float:
         return result.useful_work
