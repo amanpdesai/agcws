@@ -12,7 +12,7 @@ def test_aes_accepts_configured_workload():
     assert result.valid
 
 def test_useful_work_floor_is_hard_gate():
-    result = validate_workload(AESAdapter(), {"operations": [{"op": "configure"}]}, SimResult(True, True, True, 1))
+    result = validate_workload(AESAdapter(), {"operations": [{"op": "configure"}, {"op": "encrypt", "blocks": 1}]}, SimResult(True, True, True, 1))
     assert not result.valid and result.stage is ValidityStage.USEFUL_WORK
 
 

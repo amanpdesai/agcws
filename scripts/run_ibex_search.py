@@ -103,11 +103,18 @@ def main() -> None:
         trial_dir = args.out / "evaluations" / f"trial-{counter:05d}"
         workload_path.parent.mkdir(parents=True, exist_ok=True)
         workload_path.write_text(json.dumps(workload, indent=2, sort_keys=True) + "\n")
-        completed = subprocess.run(
-            ["bash", "scripts/run_ibex_workload.sh", str(workload_path), str(trial_dir)],
-            check=False, capture_output=True, text=True,
-            env={**os.environ, "AGCWS_PYTHON": sys.executable},
-        )
+        try:
+            completed = subprocess.run(
+                ["bash", "scripts/run_ibex_workload.sh", str(workload_path), str(trial_dir)],
+                check=False, capture_output=True, text=True,
+                timeout=float(os.environ.get("AGCWS_IBEX_EVAL_TIMEOUT_S", "120")),
+                env={**os.environ, "AGCWS_PYTHON": sys.executable},
+            )
+        except subprocess.TimeoutExpired:
+            return PowerProfile(mean_power=0.0, peak_power=0.0, useful_work=0.0,
+                                valid=False, fidelity="activity",
+                                provenance={"oracle": "ibex-simple-system-vcd",
+                                            "error": "evaluation wall-clock limit exceeded"})
         if completed.returncode:
             return PowerProfile(
                 mean_power=0.0, peak_power=0.0, useful_work=0.0, valid=False,

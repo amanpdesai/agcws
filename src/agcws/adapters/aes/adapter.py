@@ -79,6 +79,7 @@ class AESAdapter(DesignAdapter):
 
     def validate_protocol(self, workload: dict) -> Validity:
         configured = False
+        crypto = False
         for op in workload["operations"]:
             if not isinstance(op, dict) or op.get("op") not in {"configure", "encrypt", "decrypt", "idle"}:
                 return Validity(False, ValidityStage.PROTOCOL, "unknown AES operation")
@@ -90,6 +91,9 @@ class AESAdapter(DesignAdapter):
                 if int(op.get("cycles", -1)) < 0 or int(op.get("cycles", -1)) > 10000:
                     return Validity(False, ValidityStage.PROTOCOL, "idle cycles out of range")
             elif not configured: return Validity(False, ValidityStage.PROTOCOL, "configure must precede crypto")
+            else: crypto = True
+        if not crypto:
+            return Validity(False, ValidityStage.PROTOCOL, "workload must encrypt or decrypt")
         return Validity(True)
 
     def elaborate(self, workload: dict) -> list[dict]: return workload["operations"]
