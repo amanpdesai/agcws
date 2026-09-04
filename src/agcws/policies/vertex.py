@@ -108,9 +108,12 @@ class VertexAgent(AgentPolicy):
     def from_vertex(cls, system_prompt: str, *, model: str, project: str, location: str = "global"):
         try:
             from google import genai
+            from google.genai import types
         except ImportError as exc:
             raise RuntimeError("install agcws[chia] to use VertexAgent") from exc
-        client = genai.Client(vertexai=True, project=project, location=location)
+        timeout_ms = int(__import__("os").environ.get("AGCWS_VERTEX_TIMEOUT_MS", "60000"))
+        client = genai.Client(vertexai=True, project=project, location=location,
+                              http_options=types.HttpOptions(timeout=timeout_ms))
 
         def generate(model_name: str, payload: str) -> tuple[str, dict[str, int]]:
             response = client.models.generate_content(model=model_name, contents=payload,
