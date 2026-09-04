@@ -9,6 +9,10 @@ from agcws.adapters.base import DesignAdapter, SimResult, Validity, ValidityStag
 
 class IbexAdapter(DesignAdapter):
     name = "ibex"
+    design_summary = ("Ibex is a RISC-V instruction-stream processor. ALU, branch, load/store, and "
+                      "fetch behavior shape activity; memory addresses and instruction mix are the main knobs.")
+    protocol_constraints = ("instructions must be supported by the configured ISA", "loads/stores stay in mapped aligned memory",
+                            "branch targets are aligned and in range", "a reachable ecall termination is required")
     useful_work_floor = 10_000
     regions = ["fetch", "decode", "execute", "load_store"]
     workload_schema = {"type": "object", "required": ["program"],

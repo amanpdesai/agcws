@@ -25,6 +25,8 @@ class SimResult:
 
 class DesignAdapter(ABC):
     name: str
+    design_summary: str = ""
+    protocol_constraints: tuple[str, ...] = ()
     workload_schema: dict
     regions: list[str] | None = None
     useful_work_floor: float = 0.0

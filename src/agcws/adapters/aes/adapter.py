@@ -4,6 +4,11 @@ from agcws.adapters.base import DesignAdapter, SimResult, Validity, ValidityStag
 
 class AESAdapter(DesignAdapter):
     name = "opentitan_aes"
+    design_summary = ("OpenTitan AES is a command-driven block cipher. Workload knobs are key length, "
+                      "encrypt/decrypt direction, block grouping, data pattern, and idle gaps. "
+                      "The control and round/data paths are the primary activity regions.")
+    protocol_constraints = ("configure must precede encrypt/decrypt", "key length is 128, 192, or 256",
+                            "crypto operations use whole positive block counts", "idle cycles are 0..10000")
     useful_work_floor = 38
     regions = ["aes_core", "aes_control", "aes_data"]
     activity_region_prefixes = {

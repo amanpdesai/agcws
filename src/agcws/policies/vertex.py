@@ -22,12 +22,22 @@ def _jsonable(value: Any) -> Any:
 
 
 def build_payload(adapter: Any, goal: Any, history: list[Any], n: int, system_prompt: str) -> str:
+    compact_history = []
+    for trial in history[-32:]:
+        workload = _jsonable(getattr(trial, "workload", trial))
+        profile = _jsonable(getattr(trial, "profile", None))
+        validity = _jsonable(getattr(trial, "validity", None))
+        compact_history.append({"workload": workload, "achieved": profile,
+                                "residual": _jsonable(getattr(trial, "loss", None)),
+                                "validity": validity})
     return json.dumps({
         "system_prompt": system_prompt,
         "design": {"name": getattr(adapter, "name", "unknown"),
-                   "schema": getattr(adapter, "workload_schema", {})},
+                   "summary": getattr(adapter, "design_summary", ""),
+                   "schema": getattr(adapter, "workload_schema", {}),
+                   "constraints_text": "\n".join(f"- {item}" for item in getattr(adapter, "protocol_constraints", ()))},
         "goal": _jsonable(goal),
-        "history": [_jsonable(trial) for trial in history[-32:]],
+        "history": compact_history,
         "batch_size": n,
     }, sort_keys=True)
 

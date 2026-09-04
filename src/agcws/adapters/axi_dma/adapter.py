@@ -6,6 +6,12 @@ from agcws.adapters.base import DesignAdapter, SimResult, Validity, ValidityStag
 
 class AxiDmaAdapter(DesignAdapter):
     name = "verilog_axi_dma"
+    design_summary = ("verilog-axi DMA moves memory blocks through independent read and write channels. "
+                      "Activity changes with transfer lengths, descriptor count, channel concurrency, "
+                      "and backpressure gaps across the descriptor engine and channels.")
+    protocol_constraints = ("addresses are aligned and stay within mapped memory", "length is positive and <= 1 MiB",
+                            "transfers cannot cross a 4 KiB boundary", "outstanding depth is 1..8",
+                            "gap_cycles is 0..10000")
     useful_work_floor = 4096
     regions = ["read_channel", "write_channel", "descriptor_engine"]
     workload_schema = {"type": "object", "required": ["transfers"],
