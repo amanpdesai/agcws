@@ -46,6 +46,7 @@ def main() -> None:
     parser.add_argument("--model", default=os.environ.get("AGCWS_GEMINI_MODEL"))
     parser.add_argument("--project", default=os.environ.get("AGCWS_GCP_PROJECT"))
     parser.add_argument("--prompt", type=Path, default=ROOT / "prompts/agent_system_v1.txt")
+    parser.add_argument("--batch-size", type=int, default=8)
     args = parser.parse_args()
     if args.calibration is not None:
         calibration = json.loads(args.calibration.read_text())
@@ -125,7 +126,7 @@ def main() -> None:
                             fidelity="synthesis", provenance=result["provenance"])
 
     trials = run_search(AESAdapter(), policy, ScalarGoal(args.target, args.epsilon), evaluator,
-                        budget=args.budget, batch_size=8, seed=args.seed,
+                        budget=args.budget, batch_size=args.batch_size, seed=args.seed,
                         p_min=args.p_min, p_max=args.p_max, output_dir=args.out)
     print(json.dumps({"policy": args.policy, "trials": len(trials), "output": str(args.out.resolve())}, indent=2))
 

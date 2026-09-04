@@ -5,10 +5,13 @@ import json
 import hashlib
 import os
 import signal
+import logging
 from dataclasses import asdict, is_dataclass
 from typing import Any, Callable
 
 from agcws.policies.agent import AgentPolicy
+
+LOG = logging.getLogger(__name__)
 
 
 def _jsonable(value: Any) -> Any:
@@ -82,9 +85,11 @@ class VertexAgent(AgentPolicy):
     def __init__(self, generate: Callable[[str, str], str | tuple[str, dict[str, int]]], system_prompt: str, *, model: str):
         self.system_prompt = system_prompt
         self.last_usage: dict[str, int] = {"tokens_in": 0, "tokens_out": 0}
+        self.last_diagnostics: dict[str, object] = {}
 
         def propose(adapter, goal, history, n):
             self.last_usage = {"tokens_in": 0, "tokens_out": 0}
+            self.last_diagnostics = {}
             payload = build_payload(adapter, goal, history, n, system_prompt)
             last_error = None
             for attempt in range(3):
@@ -111,12 +116,15 @@ class VertexAgent(AgentPolicy):
                     text, usage = generated
                     self.last_usage["tokens_in"] += int(usage.get("tokens_in", 0))
                     self.last_usage["tokens_out"] += int(usage.get("tokens_out", 0))
+                    self.last_diagnostics = usage.get("diagnostics", {})
                 else:
                     text = generated
                 try:
                     return parse_candidates(text, n)
                 except ValueError as exc:
                     last_error = exc
+                    LOG.warning("Vertex parse failure error=%s diagnostics=%s raw=%s",
+                                exc, self.last_diagnostics, text[:4000])
                     if attempt == 2:
                         raise
                     payload = json.dumps({
@@ -137,10 +145,13 @@ class VertexAgent(AgentPolicy):
         except ImportError as exc:
             raise RuntimeError("install agcws[chia] to use VertexAgent") from exc
         timeout_ms = int(__import__("os").environ.get("AGCWS_VERTEX_TIMEOUT_MS", "60000"))
+        retry_attempts = int(os.environ.get("AGCWS_VERTEX_RETRY_ATTEMPTS", "1"))
         client = genai.Client(vertexai=True, project=project, location=location,
                               http_options=types.HttpOptions(
                                   timeout=timeout_ms,
-                                  retry_options=types.HttpRetryOptions(attempts=1)))
+                                  retry_options=types.HttpRetryOptions(attempts=retry_attempts,
+                                                                       initial_delay=1,
+                                                                       max_delay=8)))
 
         def generate(model_name: str, payload: str) -> tuple[str, dict[str, int]]:
             response = client.models.generate_content(model=model_name, contents=payload,
@@ -151,9 +162,17 @@ class VertexAgent(AgentPolicy):
                                                           "response_mime_type": "application/json",
                                                       })
             metadata = getattr(response, "usage_metadata", None)
+            candidates = getattr(response, "candidates", None) or []
+            finish_reason = getattr(candidates[0], "finish_reason", None) if candidates else None
+            feedback = getattr(response, "prompt_feedback", None)
+            diagnostics = {"finish_reason": str(finish_reason) if finish_reason is not None else None,
+                           "prompt_feedback": str(feedback) if feedback is not None else None,
+                           "raw_text": response.text or ""}
+            LOG.info("Vertex response diagnostics=%s", diagnostics)
             return response.text or "", {
                 "tokens_in": int(getattr(metadata, "prompt_token_count", 0) or 0),
                 "tokens_out": int(getattr(metadata, "candidates_token_count", 0) or 0),
+                "diagnostics": diagnostics,
             }
 
         return cls(generate, system_prompt, model=model)
