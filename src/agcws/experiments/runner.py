@@ -8,7 +8,7 @@ from dataclasses import asdict, is_dataclass
 from pathlib import Path
 from typing import Callable
 
-from agcws.adapters.base import DesignAdapter, SimResult, ValidityStage
+from agcws.adapters.base import DesignAdapter, SimResult, Validity, ValidityStage
 from agcws.analysis.metrics import summarize_run
 from agcws.goals.loss import loss
 from agcws.nodes.power import PowerProfile
@@ -82,15 +82,20 @@ def run_search(
             validity = validate_static(adapter, workload)
             profile = None
             if validity.valid:
-                profile = evaluate(workload)
-                if not profile.valid:
-                    validity = adapter.validate_result(
-                        SimResult(False, True, False, profile.useful_work)
-                    )
+                try:
+                    profile = evaluate(workload)
+                except (RuntimeError, ValueError, OSError):
+                    validity = Validity(False, ValidityStage.FUNCTIONAL,
+                                        "evaluator rejected workload")
                 else:
-                    validity = adapter.validate_result(
-                        SimResult(True, True, True, profile.useful_work)
-                    )
+                    if not profile.valid:
+                        validity = adapter.validate_result(
+                            SimResult(False, True, False, profile.useful_work)
+                        )
+                    else:
+                        validity = adapter.validate_result(
+                            SimResult(True, True, True, profile.useful_work)
+                        )
             if validity.valid and profile is not None:
                 current = loss(profile, goal, p_min=p_min, p_max=p_max)
                 best = min(best, current)
