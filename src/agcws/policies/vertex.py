@@ -149,6 +149,8 @@ class VertexAgent(AgentPolicy):
                                                           "top_p": cls.top_p,
                                                           "max_output_tokens": cls.max_output_tokens,
                                                           "response_mime_type": "application/json",
+                                                          "response_schema": {"type": "ARRAY",
+                                                                              "items": {"type": "OBJECT"}},
                                                       })
             metadata = getattr(response, "usage_metadata", None)
             return response.text or "", {
