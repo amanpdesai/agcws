@@ -1,0 +1,38 @@
+{
+  "stage": "development",
+  "design": "dma",
+  "seeds": [
+    100,
+    101,
+    102
+  ],
+  "backend": "pipelined",
+  "policies": [
+    "semantic-edits-v4"
+  ],
+  "budget": 50,
+  "batch_size": 4,
+  "epsilon": 0.02,
+  "targets": [
+    0.1,
+    0.25,
+    0.5,
+    0.75,
+    0.9
+  ],
+  "calibration": {
+    "backend": "pipelined",
+    "count": 20,
+    "valid_count": 20,
+    "power_metric": "total_transitions_per_clock_edge",
+    "p_min": 4.547597535934291,
+    "p_max": 27.705809437236592,
+    "epsilon_scalar": 0.02,
+    "epsilon_source": "AES transaction five-seed rule; no DMA retuning",
+    "useful_work_floor": 4096,
+    "corpus_sha256": "ae2819862a0eca86ac996bd6cb1d1eb1ee04aba7b33cbd1ac2341cc11c5a775d"
+  },
+  "prompt_sha256": "ede6d45403b5cfc2d28cc7c74ec64ed1859f3467f59c41e186339bf2e1be8462",
+  "model": "gemini-2.5-flash",
+  "source_commit": "0e6e47feee090195cbd1614629f629a3bcdf0165"
+}
