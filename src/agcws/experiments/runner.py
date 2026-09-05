@@ -15,6 +15,7 @@ from agcws.nodes.power import PowerProfile
 from agcws.nodes.validation import validate_static
 from agcws.policies.base import SearchPolicy
 from agcws.telemetry.ledger import Trial
+from agcws.experiments.provenance import capture_run
 
 
 def _vertex_cost(tokens_in: int, tokens_out: int, model: str) -> float:
@@ -61,6 +62,11 @@ def run_search(
     """Run exactly ``budget`` proposal slots, including invalid candidates."""
     if budget <= 0 or batch_size <= 0:
         raise ValueError("budget and batch_size must be positive")
+    if output_dir is not None:
+        output_dir.mkdir(parents=True, exist_ok=True)
+        (output_dir / 'run_manifest.json').write_text(json.dumps(
+            capture_run(adapter, policy, goal, budget, batch_size, seed, p_min, p_max),
+            sort_keys=True, indent=2) + '\n')
     trials: list[Trial] = []
     best = float("inf")
     curve: list[float] = []
@@ -154,6 +160,8 @@ def run_search(
                         "tokens_in": sum(trial.tokens_in for trial in trials),
                         "tokens_out": sum(trial.tokens_out for trial in trials),
                         "est_cost_usd": sum(trial.est_cost_usd for trial in trials),
+                        "unknown_usage_batches": sum(bool(trial.generation_diagnostics.get('usage_unknown'))
+                                                     for trial in trials),
                         "simulations": sum(trial.sim_count for trial in trials)})
         if hasattr(goal, "q"):
             summary["target"] = float(goal.q)

@@ -14,6 +14,7 @@ def main():
     parser.add_argument('--seeds', nargs='+', type=int)
     parser.add_argument('--phase', choices=['development', 'evaluation'], default='development')
     parser.add_argument('--backend', choices=['legacy', 'transactions'], default='transactions')
+    parser.add_argument('--dma-backend', choices=['legacy', 'pipelined'], default='pipelined')
     parser.add_argument('--calibration', type=Path)
     parser.add_argument('--policies', nargs='+', default=['random', 'mutation', 'evolutionary', 'coverage-guided-line', 'semantic-edits-v4'])
     parser.add_argument('--out', type=Path, required=True)
@@ -30,12 +31,13 @@ def main():
     calibration_path = args.calibration or Path(
         ('results/aes_transactions_calibration/calibration.json' if args.backend == 'transactions'
          else 'experiments/calibration/aes_activity_calibration.json')
-        if args.design == 'aes' else 'out/axi-calibration-feedback/calibration.json')
+        if args.design == 'aes' else ('results/dma_pipelined_calibration/calibration.json'
+                                     if args.dma_backend == 'pipelined' else 'out/axi-calibration-feedback/calibration.json'))
     calibration = json.loads(calibration_path.read_text())
     prompt = Path('prompts/semantic_edits_v3.txt')
     epsilon = calibration.get('epsilon_scalar', 0.02)
     manifest = {'stage': args.phase, 'design': args.design, 'seeds': args.seeds,
-                'backend': args.backend if args.design == 'aes' else 'cocotb-coupled',
+                'backend': args.backend if args.design == 'aes' else args.dma_backend,
                 'policies': args.policies, 'budget': 50, 'batch_size': 4,
                 'epsilon': epsilon, 'targets': [0.1, 0.25, 0.5, 0.75, 0.9],
                 'calibration': calibration, 'prompt_sha256': hashlib.sha256(prompt.read_bytes()).hexdigest(),
@@ -57,7 +59,7 @@ def main():
                 if not summary_path.exists():
                     command = [sys.executable, 'scripts/run_aes_search.py', 'out/aes-core-synthesis-final2']
                     if args.design == 'dma':
-                        command = [sys.executable, 'scripts/run_axi_dma_search.py']
+                        command = [sys.executable, 'scripts/run_axi_dma_search.py', '--backend', args.dma_backend]
                     else:
                         command += ['--backend', args.backend]
                     command += ['--policy', policy, '--target', str(target), '--seed', str(seed),
@@ -89,6 +91,11 @@ def main():
                 dest.mkdir(parents=True, exist_ok=True)
                 (dest / 'trials.jsonl').write_text('\n'.join(json.dumps(t) for t in compact) + '\n')
                 (dest / 'summary.json').write_text(json.dumps(summary, indent=2) + '\n')
+                run_manifest = cell / 'run_manifest.json'
+                if run_manifest.exists():
+                    (dest / 'run_manifest.json').write_text(run_manifest.read_text())
+                elif args.phase == 'evaluation':
+                    raise ValueError('held-out evaluation requires captured run provenance')
                 archived.append(summary)
                 (args.archive / 'summaries.json').write_text(json.dumps(archived, indent=2) + '\n')
                 (args.archive / 'manifest.json').write_text(json.dumps(manifest, indent=2) + '\n')

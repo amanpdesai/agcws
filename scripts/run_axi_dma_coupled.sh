@@ -13,7 +13,7 @@ python_bin=${AGCWS_PYTHON:-.venv/bin/python}
 export AGCWS_DMA_WORKLOAD=$(realpath "$workload")
 fst2vcd_bin=${AGCWS_FST2VCD:-fst2vcd}
 
-PYTHONPATH="$repo_root/third_party/harnesses${PYTHONPATH:+:$PYTHONPATH}" \
+PYTHONPATH="$repo_root/src:$repo_root/third_party/harnesses${PYTHONPATH:+:$PYTHONPATH}" \
   "$python_bin" - "$repo_root" "$out_dir" <<'PY'
 import os
 import sys
@@ -25,7 +25,7 @@ run(verilog_sources=[
     repo / "third_party/verilog-axi/rtl/axi_dma.v",
     repo / "third_party/verilog-axi/rtl/axi_dma_rd.v",
     repo / "third_party/verilog-axi/rtl/axi_dma_wr.v",
-], toplevel="axi_dma", module="axi_dma_coupled_tb", simulator="icarus",
+], toplevel="axi_dma", module=os.getenv("AGCWS_DMA_TEST_MODULE", "axi_dma_coupled_tb"), simulator="icarus",
    sim_build=str(out / "sim_build"), waves=True)
 PY
 fst=$(find "$out_dir/sim_build" -maxdepth 1 -name '*.fst' -print -quit)
@@ -39,6 +39,7 @@ PYTHONPATH="$repo_root/src" "$python_bin" "$repo_root/scripts/parse_vcd_activity
 "$python_bin" - "$workload" "$out_dir" <<'PY'
 import hashlib
 import json
+import os
 import sys
 from pathlib import Path
 
@@ -49,7 +50,7 @@ def sha256(path):
 
 payload = json.loads(workload.read_text())
 manifest = {
-    "backend": "cocotb_axi_ram_coupled",
+    "backend": os.getenv("AGCWS_DMA_TEST_MODULE", "axi_dma_coupled_tb"),
     "coupled_axi_dma_top": True,
     "workload_sha256": sha256(workload),
     "waveform": "activity.vcd",

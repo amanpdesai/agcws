@@ -26,13 +26,14 @@ from evaluate_aes_workload import evaluate
 from agcws.policies.semantic import SemanticEvolution
 from agcws.policies.semantic_edits import SemanticEdits, SemanticEditsBounded
 from agcws.policies.coverage_guided import CoverageGuidedSearch
+from agcws.policies.scalar_edits import ScalarEditEvolution
 
 
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("synthesis_dir", type=Path)
     parser.add_argument("--policy", choices=("random", "mutation", "evolutionary",
-                                              "offline-agent", "one-shot-agent", "offline-hybrid", "vertex", "semantic-evolution-v2", "semantic-edits-v3", "semantic-edits-v4", "coverage-guided-line"),
+                                              "offline-agent", "one-shot-agent", "offline-hybrid", "vertex", "semantic-evolution-v2", "semantic-edits-v3", "semantic-edits-v4", "coverage-guided-line", "scalar-edit-evolution"),
                         default="random")
     parser.add_argument("--target", type=float, default=0.5)
     # Keep the CLI default aligned with the pre-registered primary endpoint.
@@ -68,7 +69,8 @@ def main() -> None:
         parser.error("provide --calibration or both --p-min and --p-max")
     policies = {"random": RandomSearch, "mutation": MutationSearch,
                 "evolutionary": EvolutionarySearch, "offline-agent": OfflineAgent,
-                "one-shot-agent": OneShotAgent, "coverage-guided-line": CoverageGuidedSearch}
+                "one-shot-agent": OneShotAgent, "coverage-guided-line": CoverageGuidedSearch,
+                'scalar-edit-evolution': ScalarEditEvolution}
     if args.policy in ("vertex", "semantic-evolution-v2", "semantic-edits-v3", "semantic-edits-v4"):
         if not args.model or not args.project:
             parser.error("vertex policy requires --model/AGCWS_GEMINI_MODEL and --project/AGCWS_GCP_PROJECT")

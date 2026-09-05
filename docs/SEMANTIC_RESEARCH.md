@@ -71,5 +71,35 @@ Complete the development suite before selecting a frozen policy. Run DMA
 with the identical controller, then held-out evaluation. Add real one-shot
 and hybrid agents, and a matched generic scalar-edit operator to isolate the
 LLM's contribution. Coverage-guided fuzzing requires actual instrumented
-coverage; it is not yet a measured baseline. Structured goals and gate-level
+coverage; instrumented AES coverage is now running as a measured baseline,
+whereas DMA has no coverage arm. Structured goals and gate-level
 validation remain necessary for the project's broader claims.
+
+## DMA transaction controls and matched control (2026-09-05)
+
+The legacy DMA driver serialized descriptors despite exposing `outstanding`.
+Its partial baseline suite was stopped; those cells cannot establish a
+concurrency-sensitive result. The explicit `pipelined` backend now issues
+bounded groups of disjoint transfers, checks every transferred byte and
+completion tag, and measures outstanding transactions from DUT handshakes.
+Seven integration cases passed, including independent read/write backpressure
+and an exact deterministic repeat. Requested depths 1/2/4/8 produced peak
+in-flight counts 1/2/4/7 under write backpressure. Verification is archived in
+`results/dma_pipelining_verification.json`.
+
+A fresh 20-workload calibration spans 4.5476–27.7058 transitions per edge;
+all workloads pass the 4096-byte useful-work floor. DMA inherits AES's frozen
+epsilon 0.02 without retuning. The new baseline development matrix uses all
+five scalar targets and seeds 100–102; old-backend results are not pooled.
+
+`scalar-edit-evolution` is an additional non-LLM control: the same random
+initialization, top-four valid parent pool and up-to-eight scalar edits as
+semantic-edits-v4, with schema-bounded random edits instead of model advice.
+It isolates mutation-interface effects from semantic guidance. Invalid
+children consume slots normally. It is running separately on AES and alongside
+the new DMA baselines. No held-out evaluation has started yet.
+
+New runs capture source-file hashes, package versions, schema/prompt hashes,
+sampling parameters, calibration bounds and pricing configuration before
+proposal generation. Missing provider usage after transport failures is
+flagged explicitly rather than presented as a known zero-dollar call.
