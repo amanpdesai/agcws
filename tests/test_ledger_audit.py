@@ -1,4 +1,7 @@
 import copy
+import json
+import subprocess
+import sys
 
 import pytest
 
@@ -43,3 +46,25 @@ def test_audit_rejects_duplicate_proposals_ids():
     trials[1] = copy.deepcopy(trials[0])
     with pytest.raises(ValueError, match='duplicate'):
         audit_scalar_cell(summary, trials, calibration)
+
+
+def test_cpu_resume_preserves_completed_cells_and_rejects_vertex(tmp_path):
+    summary, trials, calibration = cell()
+    out, archive = tmp_path / 'out', tmp_path / 'archive'
+    directory = out / 'random/target-0.50/seed-1'
+    directory.mkdir(parents=True)
+    (directory / 'summary.json').write_text(json.dumps(summary))
+    (directory / 'trials.jsonl').write_text('\n'.join(json.dumps(t) for t in trials))
+    manifest = {'policies': ['random'], 'design': 'dma', 'backend': 'pipelined',
+                'stage': 'development', 'targets': [0.5], 'seeds': [1], 'budget': 2,
+                'batch_size': 2, 'epsilon': 0.02, 'calibration': calibration}
+    (out / 'manifest.json').write_text(json.dumps(manifest))
+    command = [sys.executable, 'scripts/resume_cpu_panel.py', '--out', str(out), '--archive', str(archive)]
+    result = subprocess.run(command, capture_output=True, text=True, check=True)
+    assert 'resumed=True' in result.stdout
+    assert json.loads((archive / 'summaries.json').read_text()) == [summary]
+    manifest['policies'] = ['semantic-edits-v4']
+    (out / 'manifest.json').write_text(json.dumps(manifest))
+    result = subprocess.run(command, capture_output=True, text=True)
+    assert result.returncode != 0
+    assert 'Vertex remains serial' in result.stderr
