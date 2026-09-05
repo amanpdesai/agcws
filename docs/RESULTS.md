@@ -584,3 +584,32 @@ The local 10-seed, 50-proposal matrix directory is not tracked and is not
 reported as a result until its summaries are deliberately archived and
 reviewed. The finalized AES scalar calibration uses epsilon 0.02 after the
 required recheck on the widened corpus (random target coverage r=0.2).
+
+## 2026-09-05 — Complete AES semantic development comparison
+
+New transaction-backend evidence is archived in
+`results/aes_transactions_development/`, with the matched edit control in
+`results/aes_transactions_development_matched/`. The combined comparison
+contains six policies × five targets × three development seeds, 50 proposal
+slots each. All 4,500 slots passed the independent ledger audit.
+
+Primary endpoint, mean best-so-far AUC (lower is better): semantic-edits-v4
+1.6073; matched scalar-edit-evolution 1.7473; random 2.1849;
+instrumented coverage-guided-line 2.8559; evolutionary 4.5760; mutation
+4.8863. Semantic and matched-edit policies each solved 14/15 runs; random
+solved 12/15. The semantic arm used an estimated $0.5549 including recorded
+thinking tokens. Invalid proposals remain charged and included.
+
+This is a descriptive **development** result: approximately 26.4% lower
+agent AUC than random and 8.0% lower than the matched edit control. There
+is no confirmatory superiority or parity claim. DMA development and the
+held-out study are unfinished; the catalog-interface candidate is queued
+for separate development evaluation. The endpoint is DUT-scoped RTL
+activity, not validated dynamic power, and scalar edits do not establish
+structural, temporal or compositional expressiveness.
+
+These data use the new transaction harness and fresh calibration archived
+with them. Do not pool them with legacy harness/calibration results above.
+Early development cells lack the later full source-hash run manifest;
+that limitation is recorded in the archive README. The historical warning
+above about unarchived results predates the current tracked result archives.
