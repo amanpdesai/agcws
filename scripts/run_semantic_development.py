@@ -20,6 +20,7 @@ def main():
     parser.add_argument('--policies', nargs='+', default=['random', 'mutation', 'evolutionary', 'coverage-guided-line', 'semantic-edits-v4'])
     parser.add_argument('--out', type=Path, required=True)
     parser.add_argument('--archive', type=Path, required=True)
+    parser.add_argument('--prepare-only', action='store_true', help='write the fixed manifest without launching any cells')
     args = parser.parse_args()
     if args.seeds is None:
         args.seeds = [100, 101, 102] if args.phase == 'development' else list(range(200, 210))
@@ -50,6 +51,9 @@ def main():
     if manifest_path.exists() and json.loads(manifest_path.read_text()) != manifest:
         raise ValueError('manifest mismatch; use a new output directory for changed configuration')
     manifest_path.write_text(json.dumps(manifest, indent=2) + '\n')
+    if args.prepare_only:
+        print(f'prepared {manifest_path}; no proposals executed', flush=True)
+        return
     archived = []
     for target in manifest['targets']:
         for seed in args.seeds:

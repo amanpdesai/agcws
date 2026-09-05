@@ -20,8 +20,10 @@ def main():
         parser.error('workers must be 1..8')
     if set(manifest['policies']) - {'random', 'mutation', 'evolutionary', 'scalar-edit-evolution', 'coverage-guided-line'}:
         parser.error('only CPU policies may use this runner; Vertex remains serial')
-    if manifest['design'] != 'dma' or manifest['backend'] != 'pipelined':
-        parser.error('this runner currently supports only pipelined DMA')
+    if (manifest['design'], manifest['backend']) not in [('dma', 'pipelined'), ('aes', 'transactions')]:
+        parser.error('requires pipelined DMA or transaction AES')
+    if manifest['design'] == 'dma' and 'coverage-guided-line' in manifest['policies']:
+        parser.error('DMA does not expose instrumented coverage')
     execution = {'workers': args.workers, 'source_commit': subprocess.check_output(
         ['git', 'rev-parse', 'HEAD'], text=True).strip(),
         'scope': 'Scheduling-only resume; original conditions retained. Wall-clock results mix serial and parallel execution.'}
@@ -36,8 +38,11 @@ def main():
         resumed = (cell / 'summary.json').exists()
         if not resumed:
             calibration = manifest['calibration']
-            command = [sys.executable, 'scripts/run_axi_dma_search.py', '--backend', 'pipelined',
-                       '--policy', policy, '--target', str(target), '--seed', str(seed),
+            command = ([sys.executable, 'scripts/run_axi_dma_search.py', '--backend', 'pipelined']
+                       if manifest['design'] == 'dma' else
+                       [sys.executable, 'scripts/run_aes_search.py', 'out/aes-core-synthesis-final2',
+                        '--backend', 'transactions'])
+            command += ['--policy', policy, '--target', str(target), '--seed', str(seed),
                        '--budget', str(manifest['budget']), '--batch-size', str(manifest['batch_size']),
                        '--epsilon', str(manifest['epsilon']), '--p-min', str(calibration['p_min']),
                        '--p-max', str(calibration['p_max']), '--out', str(cell)]

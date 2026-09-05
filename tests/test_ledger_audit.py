@@ -48,14 +48,15 @@ def test_audit_rejects_duplicate_proposals_ids():
         audit_scalar_cell(summary, trials, calibration)
 
 
-def test_cpu_resume_preserves_completed_cells_and_rejects_vertex(tmp_path):
+@pytest.mark.parametrize('design,backend', [('dma', 'pipelined'), ('aes', 'transactions')])
+def test_cpu_resume_preserves_completed_cells_and_rejects_vertex(tmp_path, design, backend):
     summary, trials, calibration = cell()
     out, archive = tmp_path / 'out', tmp_path / 'archive'
     directory = out / 'random/target-0.50/seed-1'
     directory.mkdir(parents=True)
     (directory / 'summary.json').write_text(json.dumps(summary))
     (directory / 'trials.jsonl').write_text('\n'.join(json.dumps(t) for t in trials))
-    manifest = {'policies': ['random'], 'design': 'dma', 'backend': 'pipelined',
+    manifest = {'policies': ['random'], 'design': design, 'backend': backend,
                 'stage': 'development', 'targets': [0.5], 'seeds': [1], 'budget': 2,
                 'batch_size': 2, 'epsilon': 0.02, 'calibration': calibration}
     (out / 'manifest.json').write_text(json.dumps(manifest))
@@ -68,3 +69,14 @@ def test_cpu_resume_preserves_completed_cells_and_rejects_vertex(tmp_path):
     result = subprocess.run(command, capture_output=True, text=True)
     assert result.returncode != 0
     assert 'Vertex remains serial' in result.stderr
+
+
+def test_panel_prepare_writes_manifest_without_trials(tmp_path):
+    calibration = tmp_path / 'calibration.json'
+    calibration.write_text(json.dumps({'p_min': 0, 'p_max': 1, 'epsilon_scalar': 0.02}))
+    out, archive = tmp_path / 'out', tmp_path / 'archive'
+    subprocess.run([sys.executable, 'scripts/run_semantic_development.py', '--prepare-only',
+                    '--policies', 'random', '--calibration', str(calibration),
+                    '--out', str(out), '--archive', str(archive)], check=True, capture_output=True)
+    assert [p.name for p in out.iterdir()] == ['manifest.json']
+    assert list(archive.iterdir()) == []
