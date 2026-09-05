@@ -1,5 +1,16 @@
 # Plan
 
+## Current research checkpoint — 2026-09-05
+
+The versioned semantic-search development and frozen AES/DMA evaluation are
+complete: 550 held-out cells, all five targets, ten seeds and 50 proposal
+slots per cell. Original manifests, ledgers, complete-panel inference and
+cost-uncertainty flags are tracked. See [SEMANTIC_RESULTS.md](SEMANTIC_RESULTS.md).
+This supersedes historical notes below saying Vertex credentials or
+multi-design scalar agent runs are still missing. It does not complete the
+whole project: structural/compositional/temporal agent comparisons and reliable
+proxy-to-gate power validation remain separate research work.
+
 **D1 = 2026-08-29. D23 = 2026-09-20.** Status: `TODO` / `WIP` / `DONE` / `BLOCKED` / `CUT`.
 
 Build one design vertically before widening: AES first, `axi_dma` second, Ibex third. Prove a responsive power oracle before adding the agent or more adapters.

@@ -1,5 +1,11 @@
 # AGCWS report draft
 
+Current evidence (2026-09-05): the full 550-cell AES/DMA held-out scalar
+study is archived and interpreted in [SEMANTIC_RESULTS.md](SEMANTIC_RESULTS.md).
+Use that source for the current primary table and corrected inference. Older
+pilot paths and AES-only status notes below are historical, not the current
+comparison. The measured endpoint is activity, not validated gate power.
+
 This is a report scaffold, not a final result. Numbers may enter the final
 report only from committed or archived manifests whose provenance passes
 `make audit-reproducibility` and whose experiment coverage matches

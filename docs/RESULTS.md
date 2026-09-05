@@ -689,3 +689,22 @@ were included. `results/semantic_controller_selection.json` records the
 selection and source panels. No per-design controller selection or further
 prompt tuning is permitted for this held-out evaluation. Selection itself
 is not evidence of held-out superiority.
+
+## 2026-09-05 — Complete held-out semantic study
+
+All 550 evaluation cells and 27,500 slots are complete, independently audited
+and archived. The full primary AUC table, nine corrected comparisons, validity
+and cost accounting are in [SEMANTIC_RESULTS.md](SEMANTIC_RESULTS.md), backed
+by `results/semantic_heldout_comparison.json` and the four held-out panels.
+Every cell matches the recorded source/configuration freeze.
+
+AES agent mean AUC is 2.1938 versus random 2.2393; DMA agent AUC is 2.6507
+versus random 2.0849. Parity with random is not established. Only the DMA
+mutation and matched scalar-edit comparisons support agent superiority after
+the predeclared Holm correction. Higher AES solve rate is secondary and does
+not replace the AUC result. Eight batches have unknown provider usage; the
+$4.3444 recorded agent estimate is incomplete cost accounting.
+
+Earlier dated statements that development or held-out panels are still running
+are historical checkpoints, superseded by this entry. Scalar activity results
+do not establish power prediction or structural/temporal expressiveness.

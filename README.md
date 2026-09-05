@@ -6,11 +6,13 @@ Built as a composable [CHIA](https://github.com/ucb-bar/chia) loop for the A³ C
 
 ## Status
 
-Under active development (2026-08-29 → 2026-09-20). The AES oracle and
-bounded search path are runnable; the DMA adapter and five-seed comparative
-matrix are runnable; the Ibex activity runner and five-seed activity matrix are
-complete. Ibex gate-level power integration, Vertex-backed trials, and the full
-multi-design/profile study remain in progress.
+Under active development (2026-08-29 → 2026-09-20). A complete held-out
+AES/DMA scalar study is archived: 550 runs, 27,500 proposal slots, real Vertex
+agent and classical baselines. See [results and limitations](docs/SEMANTIC_RESULTS.md).
+The agent beats two DMA baselines under the predeclared corrected tests, but
+does not establish superiority or parity against random across designs.
+The endpoint is RTL activity; power prediction, structural expressiveness,
+and the full compositional/temporal study remain unproven.
 
 See `docs/ARCHITECTURE.md` and `docs/PLAN.md`. The current evidence and claim
 boundaries are summarized in [`docs/RESULTS.md`](docs/RESULTS.md), and the
