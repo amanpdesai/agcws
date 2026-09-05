@@ -54,7 +54,8 @@ def attribute_regions(signal_transitions: dict[str, int],
     return totals
 
 
-def parse_vcd(path: Path, clock_name: str = "clk_i", windows: int = 16) -> dict:
+def parse_vcd(path: Path, clock_name: str = "clk_i", windows: int = 16,
+              scope_prefix: str | None = None) -> dict:
     """Extract deterministic transition counts without invoking EDA tools."""
     if windows <= 0:
         raise ValueError("windows must be positive")
@@ -65,11 +66,21 @@ def parse_vcd(path: Path, clock_name: str = "clk_i", windows: int = 16) -> dict:
     per_time: defaultdict[int, int] = defaultdict(int)
     edges: list[int] = []
     time, header = 0, True
+    scope = []
     for line in path.read_text(errors="replace").splitlines():
+        stripped = line.strip()
+        if header and stripped.startswith('$scope '):
+            scope.append(stripped.split()[2])
+        elif header and stripped.startswith('$upscope '):
+            scope.pop()
         match = _VAR_RE.search(line) if header else None
         if match:
             width, identifier, name = int(match[1]), match[2], match[3]
-            identifiers[identifier] = (name, width)
+            full_name = '.'.join([*scope, name])
+            if scope_prefix is None:
+                identifiers[identifier] = (name, width)
+            elif full_name.startswith(scope_prefix + '.'):
+                identifiers.setdefault(identifier, (full_name, width))
             if name.split()[-1] == clock_name:
                 clocks.add(identifier)
             continue
@@ -85,7 +96,7 @@ def parse_vcd(path: Path, clock_name: str = "clk_i", windows: int = 16) -> dict:
             else:
                 continue
             old = values.get(identifier)
-            if old is not None and old != value:
+            if old is not None and old != value and (scope_prefix is None or identifier in identifiers):
                 name = identifiers.get(identifier, (identifier, 1))[0]
                 transitions[name] += 1
                 per_time[time] += 1
@@ -93,6 +104,8 @@ def parse_vcd(path: Path, clock_name: str = "clk_i", windows: int = 16) -> dict:
             if identifier in clocks and old == "0" and value == "1":
                 edges.append(time)
     edges.sort()
+    if scope_prefix is not None and not identifiers:
+        raise ValueError(f'no VCD signals under scope {scope_prefix}')
     if not edges:
         edges = sorted(per_time)
     per_cycle = [0] * len(edges)

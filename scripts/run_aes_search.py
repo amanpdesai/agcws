@@ -14,6 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
 from agcws.adapters.aes import AESAdapter
+from agcws.adapters.aes.transactions import AESTransactionAdapter
 from agcws.experiments.runner import run_search
 from agcws.goals.schema import ScalarGoal
 from agcws.nodes.power import PowerProfile
@@ -24,13 +25,14 @@ from agcws.policies import (EvolutionarySearch, HybridSearch, MutationSearch,
 from evaluate_aes_workload import evaluate
 from agcws.policies.semantic import SemanticEvolution
 from agcws.policies.semantic_edits import SemanticEdits, SemanticEditsBounded
+from agcws.policies.coverage_guided import CoverageGuidedSearch
 
 
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("synthesis_dir", type=Path)
     parser.add_argument("--policy", choices=("random", "mutation", "evolutionary",
-                                              "offline-agent", "one-shot-agent", "offline-hybrid", "vertex", "semantic-evolution-v2", "semantic-edits-v3", "semantic-edits-v4"),
+                                              "offline-agent", "one-shot-agent", "offline-hybrid", "vertex", "semantic-evolution-v2", "semantic-edits-v3", "semantic-edits-v4", "coverage-guided-line"),
                         default="random")
     parser.add_argument("--target", type=float, default=0.5)
     # Keep the CLI default aligned with the pre-registered primary endpoint.
@@ -49,7 +51,10 @@ def main() -> None:
     parser.add_argument("--project", default=os.environ.get("AGCWS_GCP_PROJECT"))
     parser.add_argument("--prompt", type=Path, default=ROOT / "prompts/agent_system_v1.txt")
     parser.add_argument("--batch-size", type=int, default=8)
+    parser.add_argument("--backend", choices=['legacy', 'transactions'], default='legacy')
     args = parser.parse_args()
+    if args.policy == 'coverage-guided-line' and args.backend != 'transactions':
+        parser.error('coverage-guided-line requires --backend transactions')
     if args.calibration is not None:
         calibration = json.loads(args.calibration.read_text())
         if calibration.get("power_metric") != "total_transitions_per_clock_edge":
@@ -63,7 +68,7 @@ def main() -> None:
         parser.error("provide --calibration or both --p-min and --p-max")
     policies = {"random": RandomSearch, "mutation": MutationSearch,
                 "evolutionary": EvolutionarySearch, "offline-agent": OfflineAgent,
-                "one-shot-agent": OneShotAgent}
+                "one-shot-agent": OneShotAgent, "coverage-guided-line": CoverageGuidedSearch}
     if args.policy in ("vertex", "semantic-evolution-v2", "semantic-edits-v3", "semantic-edits-v4"):
         if not args.model or not args.project:
             parser.error("vertex policy requires --model/AGCWS_GEMINI_MODEL and --project/AGCWS_GCP_PROJECT")
@@ -95,7 +100,8 @@ def main() -> None:
         trial_dir = args.out / "evaluations" / f"trial-{counter:05d}"
         if args.fidelity == "activity":
             completed = subprocess.run(
-                [sys.executable, "scripts/run_aes_workload.py", str(workload_path),
+                [sys.executable, ("scripts/run_aes_transactions.py" if args.backend == 'transactions'
+                                  else "scripts/run_aes_workload.py"), str(workload_path),
                  "--out", str(trial_dir)], check=False, capture_output=True, text=True,
             )
             if completed.returncode:
@@ -109,13 +115,18 @@ def main() -> None:
                 raise RuntimeError("simulation log has no completed-work marker")
             activity = json.loads((trial_dir / "activity.json").read_text())
             edges = max(1, int(activity["clock_edges"]))
+            extra = {}
+            if args.backend == 'transactions':
+                coverage = json.loads((trial_dir / 'coverage.json').read_text())
+                extra = json.loads((trial_dir / 'provenance.json').read_text())
+                extra['coverage_hits'] = [point for point, count in coverage.items() if count > 0]
             return PowerProfile(
                 mean_power=float(activity["total_transitions"]) / edges,
                 peak_power=float(max(activity["per_cycle_toggles"] or [0])),
                 per_cycle_toggles=tuple(activity["per_cycle_toggles"]),
                 windowed=tuple(activity["window_toggles"]),
                 useful_work=float(match.group(1)), valid=True, fidelity="activity",
-                provenance={"oracle": "verilator-vcd",
+                provenance={**extra, "oracle": "verilator-vcd",
                             "metric": "total_transitions_per_clock_edge",
                             "p_min": args.p_min,
                             "p_max": args.p_max,
@@ -134,7 +145,8 @@ def main() -> None:
                             useful_work=result["useful_work"], valid=result["valid"],
                             fidelity="synthesis", provenance=result["provenance"])
 
-    trials = run_search(AESAdapter(), policy, ScalarGoal(args.target, args.epsilon), evaluator,
+    adapter = AESTransactionAdapter() if args.backend == 'transactions' else AESAdapter()
+    trials = run_search(adapter, policy, ScalarGoal(args.target, args.epsilon), evaluator,
                         budget=args.budget, batch_size=args.batch_size, seed=args.seed,
                         p_min=args.p_min, p_max=args.p_max, output_dir=args.out)
     print(json.dumps({"policy": args.policy, "trials": len(trials), "output": str(args.out.resolve())}, indent=2))

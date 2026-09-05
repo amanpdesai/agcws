@@ -1,5 +1,24 @@
 # Decision log
 
+## 2026-09-05 — Version the AES transaction oracle and recalibrate before comparison
+
+The legacy simulator ignored DSL key length and direction and reset between
+blocks. Its search results describe pacing of repeated AES-128 encryption,
+not full execution of the advertised DSL. The partial semantic development
+suite is retained with that limitation and stopped.
+
+The transaction backend executes the ordered DSL with a single initial reset,
+reference-checks every block, scopes activity to the DUT, and collects measured
+Verilator basic-block line coverage. Twenty seed-0 workloads define the new
+activity envelope 20.145905199948896–197.84064022268615; all exceed the fixed
+38-block floor (minimum 47). Five seeds of 20 random proposals each were then
+checked before comparisons: median target coverage r=1.0 at epsilon 0.05,
+and r=0.6 at epsilon 0.02 after the permitted adjustment. Epsilon 0.02 is used
+for this oracle version; the strict r>0.6 triviality condition is not met.
+The 100 reference-checked workloads and provenance are archived under
+results/aes_transactions_calibration. This new oracle cannot share bounds or
+comparative tables with legacy results.
+
 ## 2026-09-04 — Refresh AES activity calibration after generator widening
 
 **Decision.** Replace the pre-widening 10-sample envelope (128.724--130.434)

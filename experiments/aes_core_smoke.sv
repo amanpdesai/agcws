@@ -48,6 +48,9 @@ module aes_core_smoke;
   ) dut (.*);
 `endif
 
+`ifdef AGCWS_TRANSACTION_DRIVER
+  `include "aes_transactions.svh"
+`else
   initial begin
     static int blocks = 1;
     static int idle_cycles = 0;
@@ -115,4 +118,5 @@ module aes_core_smoke;
     $display("AES_CORE_WORKLOAD_DONE blocks=%0d", completed);
     $finish;
   end
+`endif
 endmodule

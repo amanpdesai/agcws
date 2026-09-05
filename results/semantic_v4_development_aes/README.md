@@ -2,6 +2,9 @@
 
 This is a partial, automatically populated development archive. Count completed
 cell directories against the manifest before interpreting aggregate results.
+The legacy suite was stopped on discovery of the simulator/DSL mismatch
+documented in docs/SEMANTIC_RESEARCH.md. It is not being extended as semantic
+evidence; transaction-backend results will use a fresh archive and calibration.
 The source command is scripts/run_semantic_development.py. The summary command
 scripts/summarize_semantic_development.py refuses incomplete matrices.
 

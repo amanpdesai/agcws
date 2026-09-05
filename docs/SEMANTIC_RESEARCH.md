@@ -49,6 +49,24 @@ summary command refuses incomplete matrices.
 
 ## Next comparisons
 
+The legacy AES development suite was stopped after discovering that its
+simulator receives only block count, pattern and idle controls: key lengths
+and encrypt/decrypt operations in the DSL were ignored, and reset occurred
+between blocks. Completed legacy cells remain useful as pacing experiments,
+but cannot establish semantic control over encryption modes or key lengths.
+
+The new transaction backend executes ordered operations with one reset per
+workload, actual key length and direction, and a cryptography reference check
+on every block. Its activity is restricted to the DUT hierarchy and its
+coverage metric is instrumented Verilator basic-block line coverage. All 28
+integration checks passed (24 key/direction/pattern combinations, idle timing,
+two deterministic repeats, and mixed key/direction sequences). A fresh
+calibration is required; legacy bounds cannot be reused.
+
+Verification evidence is in results/aes_transactions_verification.json.
+The transaction backend is selected explicitly with --backend transactions;
+legacy results are not silently changed by the new implementation.
+
 Complete the development suite before selecting a frozen policy. Run DMA
 with the identical controller, then held-out evaluation. Add real one-shot
 and hybrid agents, and a matched generic scalar-edit operator to isolate the
