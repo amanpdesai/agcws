@@ -1,0 +1,376 @@
+{
+  "scope": "Temporal capability check, not agent comparison or gate power",
+  "window": "Eight equal sample-count bins over full DUT-scoped RTL trace",
+  "cases": [
+    {
+      "name": "uniformly_paced",
+      "workload": {
+        "data_pattern": 1,
+        "operations": [
+          {
+            "op": "configure",
+            "key_len": 128
+          },
+          {
+            "op": "encrypt",
+            "blocks": 8
+          },
+          {
+            "op": "idle",
+            "cycles": 750
+          },
+          {
+            "op": "encrypt",
+            "blocks": 8
+          },
+          {
+            "op": "idle",
+            "cycles": 750
+          },
+          {
+            "op": "encrypt",
+            "blocks": 8
+          },
+          {
+            "op": "idle",
+            "cycles": 750
+          },
+          {
+            "op": "encrypt",
+            "blocks": 8
+          },
+          {
+            "op": "idle",
+            "cycles": 750
+          },
+          {
+            "op": "encrypt",
+            "blocks": 8
+          },
+          {
+            "op": "idle",
+            "cycles": 750
+          },
+          {
+            "op": "encrypt",
+            "blocks": 8
+          },
+          {
+            "op": "idle",
+            "cycles": 750
+          },
+          {
+            "op": "encrypt",
+            "blocks": 8
+          },
+          {
+            "op": "idle",
+            "cycles": 750
+          },
+          {
+            "op": "encrypt",
+            "blocks": 8
+          },
+          {
+            "op": "idle",
+            "cycles": 750
+          }
+        ]
+      },
+      "useful_work": 64,
+      "idle_cycles": 6000,
+      "deterministic_repeats": 2,
+      "clock_edges": 6774,
+      "samples": 6774,
+      "mean_transitions_per_edge": 23.35001476232654,
+      "eight_bin_transitions_per_sample": [
+        23.419621749408982,
+        23.336481700118064,
+        23.336481700118064,
+        23.336481700118064,
+        23.361702127659573,
+        23.336481700118064,
+        23.336481700118064,
+        23.336481700118064
+      ],
+      "provenance": {
+        "simulator_digest": "ef1157b0f36882b5facbad1ee4c69c8a30d34a5f72a4ec35154798793dcf7d09",
+        "verilator": "Verilator 5.048 2026-04-26 rev v5.048",
+        "workload_sha256": "39d57a92f5f4589f94028fa641dda714c2c246e8c7b6a50562b35fbe7d6c2011",
+        "backend": "aes-transactions-v1",
+        "functional_reference": "cryptography AES-ECB zero key",
+        "reset_policy": "once_per_workload",
+        "coverage": "verilator_line"
+      },
+      "activity_sha256": "cc7edfcaa41863f77b90b3e1967df3aa71ed28c4e3ea357d9202b54bcc82bbe2"
+    },
+    {
+      "name": "burst_then_idle",
+      "workload": {
+        "data_pattern": 1,
+        "operations": [
+          {
+            "op": "configure",
+            "key_len": 128
+          },
+          {
+            "op": "encrypt",
+            "blocks": 64
+          },
+          {
+            "op": "idle",
+            "cycles": 6000
+          }
+        ]
+      },
+      "useful_work": 64,
+      "idle_cycles": 6000,
+      "deterministic_repeats": 2,
+      "clock_edges": 6774,
+      "samples": 6774,
+      "mean_transitions_per_edge": 23.34174785946265,
+      "eight_bin_transitions_per_sample": [
+        172.8853427895981,
+        2.0,
+        2.0,
+        2.0,
+        2.0,
+        2.0,
+        2.0,
+        2.0
+      ],
+      "provenance": {
+        "simulator_digest": "ef1157b0f36882b5facbad1ee4c69c8a30d34a5f72a4ec35154798793dcf7d09",
+        "verilator": "Verilator 5.048 2026-04-26 rev v5.048",
+        "workload_sha256": "701cae035df8b94d7cd1c7302e16bfcf0e31f4574bcc0b1d1671d751f84b8fc7",
+        "backend": "aes-transactions-v1",
+        "functional_reference": "cryptography AES-ECB zero key",
+        "reset_policy": "once_per_workload",
+        "coverage": "verilator_line"
+      },
+      "activity_sha256": "08a7e394c22cd233ff2eeebf8d82d6f6fa1b6c1a6ab5e7727eabfd6b76b2a867"
+    },
+    {
+      "name": "low_high_low",
+      "workload": {
+        "data_pattern": 1,
+        "operations": [
+          {
+            "op": "configure",
+            "key_len": 128
+          },
+          {
+            "op": "idle",
+            "cycles": 3000
+          },
+          {
+            "op": "encrypt",
+            "blocks": 64
+          },
+          {
+            "op": "idle",
+            "cycles": 3000
+          }
+        ]
+      },
+      "useful_work": 64,
+      "idle_cycles": 6000,
+      "deterministic_repeats": 2,
+      "clock_edges": 6774,
+      "samples": 6774,
+      "mean_transitions_per_edge": 23.34174785946265,
+      "eight_bin_transitions_per_sample": [
+        2.0732860520094563,
+        2.0,
+        2.0,
+        86.4391971664699,
+        88.27304964539007,
+        2.0,
+        2.0,
+        2.0
+      ],
+      "provenance": {
+        "simulator_digest": "ef1157b0f36882b5facbad1ee4c69c8a30d34a5f72a4ec35154798793dcf7d09",
+        "verilator": "Verilator 5.048 2026-04-26 rev v5.048",
+        "workload_sha256": "04aaf5c87fdcbf7c5343cea5e2f48ba4286a5a6bfe89663455434873a000cc5e",
+        "backend": "aes-transactions-v1",
+        "functional_reference": "cryptography AES-ECB zero key",
+        "reset_policy": "once_per_workload",
+        "coverage": "verilator_line"
+      },
+      "activity_sha256": "d2b21e9e6540edd797de473f712e85c65e59f612c64d168c665545f5ff16812f"
+    },
+    {
+      "name": "alternating",
+      "workload": {
+        "data_pattern": 1,
+        "operations": [
+          {
+            "op": "configure",
+            "key_len": 128
+          },
+          {
+            "op": "encrypt",
+            "blocks": 16
+          },
+          {
+            "op": "idle",
+            "cycles": 1500
+          },
+          {
+            "op": "encrypt",
+            "blocks": 16
+          },
+          {
+            "op": "idle",
+            "cycles": 1500
+          },
+          {
+            "op": "encrypt",
+            "blocks": 16
+          },
+          {
+            "op": "idle",
+            "cycles": 1500
+          },
+          {
+            "op": "encrypt",
+            "blocks": 16
+          },
+          {
+            "op": "idle",
+            "cycles": 1500
+          }
+        ]
+      },
+      "useful_work": 64,
+      "idle_cycles": 6000,
+      "deterministic_repeats": 2,
+      "clock_edges": 6774,
+      "samples": 6774,
+      "mean_transitions_per_edge": 23.34529081783289,
+      "eight_bin_transitions_per_sample": [
+        44.77186761229314,
+        2.0,
+        44.663518299881936,
+        2.0,
+        44.71394799054374,
+        2.0,
+        44.663518299881936,
+        2.0
+      ],
+      "provenance": {
+        "simulator_digest": "ef1157b0f36882b5facbad1ee4c69c8a30d34a5f72a4ec35154798793dcf7d09",
+        "verilator": "Verilator 5.048 2026-04-26 rev v5.048",
+        "workload_sha256": "5af67fe2678e2ddcc410772a326fb0202be30a6c8519f0f257a1079fe1b89847",
+        "backend": "aes-transactions-v1",
+        "functional_reference": "cryptography AES-ECB zero key",
+        "reset_policy": "once_per_workload",
+        "coverage": "verilator_line"
+      },
+      "activity_sha256": "765b93933b7850cada76550d1fac5f9d8b150d69fbfb31886c82646da3efeb87"
+    },
+    {
+      "name": "ramp",
+      "workload": {
+        "data_pattern": 1,
+        "operations": [
+          {
+            "op": "configure",
+            "key_len": 128
+          },
+          {
+            "op": "encrypt",
+            "blocks": 2
+          },
+          {
+            "op": "idle",
+            "cycles": 1500
+          },
+          {
+            "op": "encrypt",
+            "blocks": 4
+          },
+          {
+            "op": "idle",
+            "cycles": 1300
+          },
+          {
+            "op": "encrypt",
+            "blocks": 6
+          },
+          {
+            "op": "idle",
+            "cycles": 1100
+          },
+          {
+            "op": "encrypt",
+            "blocks": 8
+          },
+          {
+            "op": "idle",
+            "cycles": 900
+          },
+          {
+            "op": "encrypt",
+            "blocks": 10
+          },
+          {
+            "op": "idle",
+            "cycles": 600
+          },
+          {
+            "op": "encrypt",
+            "blocks": 12
+          },
+          {
+            "op": "idle",
+            "cycles": 400
+          },
+          {
+            "op": "encrypt",
+            "blocks": 10
+          },
+          {
+            "op": "idle",
+            "cycles": 200
+          },
+          {
+            "op": "encrypt",
+            "blocks": 12
+          },
+          {
+            "op": "idle",
+            "cycles": 0
+          }
+        ]
+      },
+      "useful_work": 64,
+      "idle_cycles": 6000,
+      "deterministic_repeats": 2,
+      "clock_edges": 6774,
+      "samples": 6774,
+      "mean_transitions_per_edge": 23.35001476232654,
+      "eight_bin_transitions_per_sample": [
+        7.405437352245863,
+        12.672963400236128,
+        2.0,
+        18.004722550177096,
+        23.361702127659573,
+        9.343565525383708,
+        53.324675324675326,
+        60.66824085005903
+      ],
+      "provenance": {
+        "simulator_digest": "ef1157b0f36882b5facbad1ee4c69c8a30d34a5f72a4ec35154798793dcf7d09",
+        "verilator": "Verilator 5.048 2026-04-26 rev v5.048",
+        "workload_sha256": "06707936edf3da8e8cd8098a6aaadcb256daebe8c275ea389f0189db7644d9e6",
+        "backend": "aes-transactions-v1",
+        "functional_reference": "cryptography AES-ECB zero key",
+        "reset_policy": "once_per_workload",
+        "coverage": "verilator_line"
+      },
+      "activity_sha256": "8dd7d3fd2f4e8d08de375e4565f737a4f2468eabc39439d08986e19a654760db"
+    }
+  ]
+}

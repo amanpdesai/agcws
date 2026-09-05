@@ -613,3 +613,22 @@ with them. Do not pool them with legacy harness/calibration results above.
 Early development cells lack the later full source-hash run manifest;
 that limitation is recorded in the archive README. The historical warning
 above about unarchived results predates the current tracked result archives.
+
+## 2026-09-05 — Matched-window temporal capability on transaction AES
+
+`results/aes_transactions_temporal_check.json` records five hand-written
+schedules, each performing 64 reference-checked AES blocks and 6000 idle
+cycles. All run for exactly 6774 clock edges; two repeats are identical.
+Their mean DUT activity is almost unchanged (23.3417–23.3500 transitions
+per edge), while eight equal-clock-bin rates separate markedly:
+
+- Uniform pacing: approximately 23.3 throughout.
+- Burst then idle: 172.9 in the first bin, then 2.0 throughout.
+- Low–high–low: approximately 2.0 outside the middle bins, 86.4 and 88.3 inside.
+- Alternating: approximately 44.7, 2.0, repeated four times.
+- Ramp-like: uneven, with late bins 53.3 and 60.7; not a monotonic ramp.
+
+This is evidence of temporal control at matched work, duration and nearly
+matched scalar activity. It is not an agent comparison, a gate-power result,
+or proof that any policy can reproduce held-out temporal profiles. It makes
+the distinction between scalar targeting and temporal expressiveness concrete.
