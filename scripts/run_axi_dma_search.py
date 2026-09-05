@@ -19,6 +19,7 @@ from agcws.goals.schema import ScalarGoal
 from agcws.nodes.power import PowerProfile
 from agcws.policies.semantic import SemanticEvolution
 from agcws.policies.semantic_edits import SemanticEdits, SemanticEditsBounded
+from agcws.policies.semantic_catalog import SemanticCatalog
 from agcws.policies.scalar_edits import ScalarEditEvolution
 from agcws.policies import (EvolutionarySearch, HybridSearch, MutationSearch,
                             OfflineAgent, OneShotAgent, RandomSearch, VertexAgent)
@@ -28,7 +29,7 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--target", type=float, default=0.5)
     parser.add_argument("--policy", choices=("random", "mutation", "evolutionary",
-                                              "offline-agent", "one-shot-agent", "offline-hybrid", "vertex", "semantic-evolution-v2", "semantic-edits-v3", "semantic-edits-v4", "scalar-edit-evolution"),
+                                              "offline-agent", "one-shot-agent", "offline-hybrid", "vertex", "semantic-evolution-v2", "semantic-edits-v3", "semantic-edits-v4", "scalar-edit-evolution", "semantic-catalog-v5"),
                         default="random")
     parser.add_argument("--policies", help="comma-separated policy matrix; overrides --policy")
     parser.add_argument("--p-min", type=float, required=True)
@@ -106,7 +107,7 @@ def main() -> None:
     policies = {"random": RandomSearch, "mutation": MutationSearch,
                 "evolutionary": EvolutionarySearch, "offline-agent": OfflineAgent,
                 "one-shot-agent": OneShotAgent, 'scalar-edit-evolution': ScalarEditEvolution}
-    if args.policy in ("vertex", "semantic-evolution-v2", "semantic-edits-v3", "semantic-edits-v4"):
+    if args.policy in ("vertex", "semantic-evolution-v2", "semantic-edits-v3", "semantic-edits-v4", "semantic-catalog-v5"):
         if not args.model or not args.project:
             parser.error("vertex policy requires --model and --project")
         agent_class = SemanticEvolution if args.policy == "semantic-evolution-v2" else VertexAgent
@@ -114,6 +115,8 @@ def main() -> None:
             agent_class = SemanticEdits
         if args.policy == "semantic-edits-v4":
             agent_class = SemanticEditsBounded
+        if args.policy == "semantic-catalog-v5":
+            agent_class = SemanticCatalog
         policy = agent_class.from_vertex(args.prompt.read_text(), model=args.model, project=args.project)
         if isinstance(policy, SemanticEvolution):
             policy.initialize(args.seed, args.p_min, args.p_max)

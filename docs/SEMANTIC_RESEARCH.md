@@ -103,3 +103,19 @@ New runs capture source-file hashes, package versions, schema/prompt hashes,
 sampling parameters, calibration bounds and pricing configuration before
 proposal generation. Missing provider usage after transport failures is
 flagged explicitly rather than presented as a known zero-dollar call.
+
+## Catalog-interface candidate (not evaluated yet)
+
+An audit of the first eight completed transaction-backend v4 development
+cells found 69 malformed patches in 400 slots: 48 nonexistent object keys,
+13 invalid parent indices, four invalid array indices and four attempted
+container replacements. These are charged failures, not repaired proposals.
+All 96 recorded generation finish reasons were STOP, not token truncation.
+
+`semantic-catalog-v5` is a separate candidate using explicit schema-derived
+field IDs rather than invented paths. It retains the top-four parent pool,
+scalar-only representation, one-to-eight edits, sampling configuration and
+proposal accounting. Its catalog uses the same field enumeration as the
+matched non-LLM control. No evidence of improved performance exists yet;
+v4 runs continue unchanged and no held-out seed has been used to develop v5.
+Use `--prompt prompts/semantic_catalog_v5.txt` with this version.

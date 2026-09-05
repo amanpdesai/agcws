@@ -16,6 +16,7 @@ def main():
     parser.add_argument('--backend', choices=['legacy', 'transactions'], default='transactions')
     parser.add_argument('--dma-backend', choices=['legacy', 'pipelined'], default='pipelined')
     parser.add_argument('--calibration', type=Path)
+    parser.add_argument('--prompt', type=Path, default=Path('prompts/semantic_edits_v3.txt'))
     parser.add_argument('--policies', nargs='+', default=['random', 'mutation', 'evolutionary', 'coverage-guided-line', 'semantic-edits-v4'])
     parser.add_argument('--out', type=Path, required=True)
     parser.add_argument('--archive', type=Path, required=True)
@@ -34,7 +35,7 @@ def main():
         if args.design == 'aes' else ('results/dma_pipelined_calibration/calibration.json'
                                      if args.dma_backend == 'pipelined' else 'out/axi-calibration-feedback/calibration.json'))
     calibration = json.loads(calibration_path.read_text())
-    prompt = Path('prompts/semantic_edits_v3.txt')
+    prompt = args.prompt
     epsilon = calibration.get('epsilon_scalar', 0.02)
     manifest = {'stage': args.phase, 'design': args.design, 'seeds': args.seeds,
                 'backend': args.backend if args.design == 'aes' else args.dma_backend,
