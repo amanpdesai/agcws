@@ -1,0 +1,41 @@
+{
+  "stage": "development",
+  "design": "aes",
+  "seeds": [
+    100,
+    101,
+    102
+  ],
+  "policies": [
+    "random",
+    "evolutionary",
+    "semantic-edits-v4"
+  ],
+  "budget": 50,
+  "batch_size": 4,
+  "epsilon": 0.02,
+  "targets": [
+    0.1,
+    0.25,
+    0.5,
+    0.75,
+    0.9
+  ],
+  "calibration": {
+    "count": 20,
+    "epsilon_rule": ">0.6 -> 0.02; <0.1 -> 0.10; otherwise 0.05",
+    "epsilon_scalar": 0.02,
+    "epsilon_recheck": 0.02,
+    "p_max": 130.2076092062001,
+    "p_min": 14.37424727738629,
+    "power_metric": "total_transitions_per_clock_edge",
+    "random_solved_fraction": 0.2,
+    "random_solved_fraction_base": 0.8,
+    "status": "frozen_after_prescribed_random_calibration",
+    "useful_work_floor": 38,
+    "valid_count": 20
+  },
+  "prompt_sha256": "ede6d45403b5cfc2d28cc7c74ec64ed1859f3467f59c41e186339bf2e1be8462",
+  "model": "gemini-2.5-flash",
+  "source_commit": "3e76c395b448099775f96d2133dfb62ec61a5b8a"
+}
