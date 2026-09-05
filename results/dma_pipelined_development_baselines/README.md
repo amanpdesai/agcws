@@ -22,6 +22,7 @@ four managed CPU workers. Completed cells were reused without simulation.
 calibration and budgets remain unchanged; wall-clock figures must not be
 pooled as a controlled serial-performance comparison.
 
-The agent runs separately and serially and is not complete at this snapshot.
+The agent ran separately and serially; its complete comparison is in
+`results/dma_pipelined_development_agent/comparison.json`.
 These are activity-search development
 results, not held-out or gate-power results.

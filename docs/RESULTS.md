@@ -647,3 +647,18 @@ Random is the strongest observed baseline in this development panel.
 The DMA agent and catalog-interface panels are still incomplete, so there
 is no full cross-design agent comparison yet. The archive records the
 serial-to-four-worker scheduling change and prohibits a pooled runtime claim.
+
+## 2026-09-05 — Complete semantic v4 cross-design development evidence
+
+The DMA agent panel is now complete: 15 runs, 750 audited proposal slots,
+archived in `results/dma_pipelined_development_agent/`. Mean AUC is 2.5116,
+about 21.0% worse than random's 2.0764. The agent solves 12/15 versus
+random's 9/15, but this secondary metric does not overturn the primary AUC
+finding. Agent validity is 79.2%; recorded estimated cost is $0.7667 with
+two calls of unknown usage, so the cost accounting is incomplete.
+
+V4 improves development AUC against random on AES, but worsens it on DMA.
+This does not establish cross-design superiority. The catalog-interface v5
+candidate is now running on AES and then DMA with the same controller.
+Selection will follow the predeclared balanced development-AUC rule in
+`HELD_OUT_PROTOCOL.md`; held-out seeds remain unused.
