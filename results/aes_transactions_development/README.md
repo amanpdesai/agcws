@@ -27,8 +27,9 @@ Coverage guidance uses instrumented DUT line coverage, not a named mutation
 alias. V4 edits scalar fields only; it does not demonstrate structural
 workload synthesis. Cross-design and held-out evaluations are unfinished.
 
-Early development cells predate full run-manifest capture. Later manifests
-include working-tree hashes; the source commit alone is not a complete source
+Fifteen early development cells predate full run-manifest capture. The 60
+later manifests were copied from the original run outputs without reconstruction.
+They include working-tree hashes; the source commit alone is not a complete source
 snapshot. Do not present this development panel as a frozen held-out study.
 
 Recompute:
