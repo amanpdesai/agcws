@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 
 from agcws.analysis.semantic_comparison import compare
+from agcws.analysis.ledger_audit import audit_scalar_cell
 
 
 def main():
@@ -21,6 +22,8 @@ def main():
             cell = directory / row['policy'] / f"target-{row['target']:.2f}" / f"seed-{row['seed']}"
             if not (cell / 'run_manifest.json').exists() or not (cell / 'trials.jsonl').exists():
                 raise ValueError(f'missing provenance or ledger: {cell}')
+            trials = [json.loads(line) for line in (cell / 'trials.jsonl').read_text().splitlines()]
+            audit_scalar_cell(row, trials, manifest['calibration'])
         matrices[design] = manifest, rows
     result = {'primary_endpoint': 'AUC, lower is better',
               'difference_direction': 'agent minus baseline',
