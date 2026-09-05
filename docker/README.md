@@ -1,5 +1,43 @@
 # Runtime image
 
+## Managed containers and cleanup
+
+Use `bash docker/build.sh` for future builds and `bash docker/run.sh <command>`
+for container tasks. The build uses a dedicated `agcws-<uid>` builder rather
+than this shared host's default cache. The run wrapper uses `--rm`, an init
+process, the caller's UID/GID, dropped capabilities, a read-only root and
+checkout, an 8 GiB temporary filesystem, and bounded container logs.
+This host's Snap Docker rejects its init executable with `no-new-privileges`;
+the tested wrapper does not set that option or use privileged mode.
+
+The dedicated builder enables automatic cache garbage collection with a
+30 GB target and a 10 GB retained cache floor (`docker/buildkitd.toml`).
+These are garbage-collection thresholds, not a hard disk quota during a build.
+
+Only `/workspace/out` persists, at `out/container-runs/<uid>` on the host by
+default. Override `AGCWS_CONTAINER_OUTPUT`, `AGCWS_CONTAINER_IMAGE` or
+`AGCWS_CONTAINER_TMPFS_SIZE` explicitly as needed. The wrapper does not load
+host tool-path overrides or cloud credentials automatically. Existing frozen
+held-out experiments are host executions; do not silently switch them to a
+different container toolchain mid-study.
+
+```bash
+bash docker/run.sh python3 -c 'import agcws; print(agcws.__version__)'
+bash docker/prune.sh          # preview owned stopped containers/dangling images
+bash docker/prune.sh --apply  # project + caller labels; dedicated builder only
+```
+
+Pruning removes owned stopped containers/dangling images older than 24 hours,
+and unused dedicated-builder cache older than seven days while reserving
+10 GB. It never runs global system/volume/default-builder pruning. Keep the
+tagged runtime image and useful build cache for fast starts. Docker `--rm`
+does not delete bind-mounted experiment outputs; see `maintenance/README.md`.
+The wrapper was smoke-tested against the existing `agcws:dev` image; Dockerfile
+layer-cleanup changes require the next image rebuild before they take effect.
+
+See Docker's [pruning guidance](https://docs.docker.com/engine/manage-resources/pruning/)
+and [builder-specific cache pruning](https://docs.docker.com/reference/cli/docker/buildx/prune/).
+
 The image is the reproducible execution boundary for CHIA workers and EDA
 tasks. The host only needs Docker and Git. Build from the repository root:
 
@@ -70,4 +108,3 @@ check; use the mounted-checkout command above for targeted checks.
 The image also includes the optional analysis dependencies and the checked-in
 `analysis/` tools, so activity figures can be generated inside the same
 reproducible environment.
-```

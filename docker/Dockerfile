@@ -2,6 +2,8 @@
 # 2026-08-31. Dependency/tool commits below are pinned independently.
 FROM python:3.10-slim@sha256:38758a82a44d1acb9bae3dd5f7d2a55452fb44a5ceca7c4589f360f2c4aa3d0c
 
+LABEL io.agcws.project=agcws
+
 ARG OPENSTA_REPO=https://github.com/The-OpenROAD-Project/OpenSTA.git
 ARG OPENSTA_REF=c821ad1ad07031de831fd567fc626bf70d522c49
 ARG SV_ELAB_REPO=https://github.com/povik/sv-elab.git
@@ -19,22 +21,21 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     wget graphviz ca-certificates gtkwave \
     && rm -rf /var/lib/apt/lists/*
 
+COPY docker/yosys-config /usr/local/bin/yosys-config
+RUN chmod 0755 /usr/local/bin/yosys-config
+
 RUN wget -q https://raw.githubusercontent.com/davidkebo/cudd/main/cudd_versions/cudd-3.0.0.tar.gz \
     -O /tmp/cudd-3.0.0.tar.gz && \
     tar -xzf /tmp/cudd-3.0.0.tar.gz -C /tmp && \
     cd /tmp/cudd-3.0.0 && ./configure --prefix=/tmp/cudd-install && \
-    make --jobs 2 && make install
-
-COPY docker/yosys-config /usr/local/bin/yosys-config
-RUN chmod 0755 /usr/local/bin/yosys-config
-
-RUN git clone --no-checkout "$OPENSTA_REPO" /tmp/OpenSTA && \
+    make --jobs 2 && make install && \
+    git clone --no-checkout "$OPENSTA_REPO" /tmp/OpenSTA && \
     git -C /tmp/OpenSTA checkout --detach "$OPENSTA_REF" && \
     cmake -S /tmp/OpenSTA -B /tmp/OpenSTA/build -DCMAKE_BUILD_TYPE=Release \
       -DCUDD_DIR=/tmp/cudd-install -DBUILD_TESTS=OFF && \
     cmake --build /tmp/OpenSTA/build --parallel 2 && \
     install -Dm755 /tmp/OpenSTA/build/sta /usr/local/bin/sta && \
-    rm -rf /tmp/OpenSTA
+    cd / && rm -rf /tmp/OpenSTA /tmp/cudd-3.0.0 /tmp/cudd-3.0.0.tar.gz
 
 RUN git clone --recursive --no-checkout "$SV_ELAB_REPO" /tmp/sv-elab && \
     git -C /tmp/sv-elab checkout --detach "$SV_ELAB_REF" && \
@@ -47,7 +48,7 @@ RUN git clone --recursive --no-checkout "$SV_ELAB_REPO" /tmp/sv-elab && \
       -DSLANG_USE_SYSTEM_TOMLPLUSPLUS=ON -DSLANG_USE_MIMALLOC=OFF && \
     cmake --build /tmp/sv-elab/build --parallel 2 && \
     install -Dm755 /tmp/sv-elab/build/slang.so /usr/local/share/yosys/plugins/slang.so && \
-    rm -rf /tmp/sv-elab
+    rm -rf /tmp/sv-elab /tmp/boost-regex
 
 COPY tools/chia /opt/chia
 COPY pyproject.toml /opt/agcws/pyproject.toml
@@ -65,6 +66,7 @@ COPY third_party/bsg_fakeram /opt/agcws/third_party/bsg_fakeram
 COPY third_party/harnesses /opt/agcws/third_party/harnesses
 WORKDIR /opt/agcws
 RUN mkdir -p /opt/agcws/out && chmod 0777 /opt/agcws/out
+ENV PIP_NO_CACHE_DIR=1
 RUN python -m pip install --upgrade pip && \
     python -m pip install fusesoc==2.4.6 && \
     python -m pip install -e /opt/chia

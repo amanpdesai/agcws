@@ -265,3 +265,11 @@ verify:
 	$(MAKE) test lint audit-reproducibility verify-artifact validate-aes-pdk-corpus audit-memory-collateral-all check-axi-dma-rtl run-axi-memory-smoke run-axi-dma-workload
 container-smoke:
 	docker run --rm agcws:dev bash scripts/container_smoke.sh
+
+.PHONY: container-build container-prune container-prune-apply
+container-build:
+	bash docker/build.sh
+container-prune:
+	bash docker/prune.sh
+container-prune-apply:
+	bash docker/prune.sh --apply
