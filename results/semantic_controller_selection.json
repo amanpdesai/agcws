@@ -1,0 +1,233 @@
+{
+  "selected_policy": "semantic-edits-v4",
+  "model": "gemini-2.5-flash",
+  "mean_auc_by_design": {
+    "semantic-edits-v4": {
+      "aes": 1.6073460849103143,
+      "dma": 2.5116023409375092
+    },
+    "semantic-catalog-v5": {
+      "aes": 1.26037648240359,
+      "dma": 5.003629305103274
+    }
+  },
+  "balanced_mean_auc": {
+    "semantic-edits-v4": 2.0594742129239116,
+    "semantic-catalog-v5": 3.132002893753432
+  },
+  "cells_per_candidate": 30,
+  "tie_rule": "v4",
+  "scope": "Development selection only; held-out performance is unproven.",
+  "sources": [
+    {
+      "archive": "results/aes_transactions_development",
+      "manifest": {
+        "stage": "development",
+        "design": "aes",
+        "seeds": [
+          100,
+          101,
+          102
+        ],
+        "backend": "transactions",
+        "policies": [
+          "random",
+          "mutation",
+          "evolutionary",
+          "coverage-guided-line",
+          "semantic-edits-v4"
+        ],
+        "budget": 50,
+        "batch_size": 4,
+        "epsilon": 0.02,
+        "targets": [
+          0.1,
+          0.25,
+          0.5,
+          0.75,
+          0.9
+        ],
+        "calibration": {
+          "backend": "transactions",
+          "power_metric": "total_transitions_per_clock_edge",
+          "scope": "aes_core_smoke.dut",
+          "count": 20,
+          "valid_count": 20,
+          "p_min": 20.145905199948896,
+          "p_max": 197.84064022268615,
+          "useful_work_floor": 38,
+          "useful_work_min": 47,
+          "epsilon_scalar": 0.02,
+          "random_solved_fraction_base": 1.0,
+          "base_seed_fractions": [
+            0.8,
+            1.0,
+            0.6,
+            1.0,
+            1.0
+          ],
+          "final_seed_fractions": [
+            0.6,
+            0.6,
+            0.6,
+            0.8,
+            0.8
+          ],
+          "random_solved_fraction": 0.6,
+          "status": "five_seed_calibration_before_transaction_comparisons",
+          "g3_trivial": false,
+          "corpus_sha256": "11a1252f36b6514fa8e4421fc4936ebd09f6e19c64df3aadca65c8573feb5940"
+        },
+        "prompt_sha256": "ede6d45403b5cfc2d28cc7c74ec64ed1859f3467f59c41e186339bf2e1be8462",
+        "model": "gemini-2.5-flash",
+        "source_commit": "6abbcbf8098273f53ae566f0bbabc27f0bf75143"
+      },
+      "summaries_sha256": "dc2b170c0326b8955d47f84a51715bcca6c2e748c6b9a5c3a2ecbe5ac6843ae3"
+    },
+    {
+      "archive": "results/aes_catalog_development",
+      "manifest": {
+        "stage": "development",
+        "design": "aes",
+        "seeds": [
+          100,
+          101,
+          102
+        ],
+        "backend": "transactions",
+        "policies": [
+          "semantic-catalog-v5"
+        ],
+        "budget": 50,
+        "batch_size": 4,
+        "epsilon": 0.02,
+        "targets": [
+          0.1,
+          0.25,
+          0.5,
+          0.75,
+          0.9
+        ],
+        "calibration": {
+          "backend": "transactions",
+          "power_metric": "total_transitions_per_clock_edge",
+          "scope": "aes_core_smoke.dut",
+          "count": 20,
+          "valid_count": 20,
+          "p_min": 20.145905199948896,
+          "p_max": 197.84064022268615,
+          "useful_work_floor": 38,
+          "useful_work_min": 47,
+          "epsilon_scalar": 0.02,
+          "random_solved_fraction_base": 1.0,
+          "base_seed_fractions": [
+            0.8,
+            1.0,
+            0.6,
+            1.0,
+            1.0
+          ],
+          "final_seed_fractions": [
+            0.6,
+            0.6,
+            0.6,
+            0.8,
+            0.8
+          ],
+          "random_solved_fraction": 0.6,
+          "status": "five_seed_calibration_before_transaction_comparisons",
+          "g3_trivial": false,
+          "corpus_sha256": "11a1252f36b6514fa8e4421fc4936ebd09f6e19c64df3aadca65c8573feb5940"
+        },
+        "prompt_sha256": "94b0aa2897aeeb122658e233e3ad4df67df2f6249c7062fea40093339cfafc38",
+        "model": "gemini-2.5-flash",
+        "source_commit": "d069d2030162bea1310dfed53769a9b953a68cba"
+      },
+      "summaries_sha256": "9bd5f081b025edd0593b1ebd86c9f838129227755dbb5ab982b8d77b9c762755"
+    },
+    {
+      "archive": "results/dma_pipelined_development_agent",
+      "manifest": {
+        "stage": "development",
+        "design": "dma",
+        "seeds": [
+          100,
+          101,
+          102
+        ],
+        "backend": "pipelined",
+        "policies": [
+          "semantic-edits-v4"
+        ],
+        "budget": 50,
+        "batch_size": 4,
+        "epsilon": 0.02,
+        "targets": [
+          0.1,
+          0.25,
+          0.5,
+          0.75,
+          0.9
+        ],
+        "calibration": {
+          "backend": "pipelined",
+          "count": 20,
+          "valid_count": 20,
+          "power_metric": "total_transitions_per_clock_edge",
+          "p_min": 4.547597535934291,
+          "p_max": 27.705809437236592,
+          "epsilon_scalar": 0.02,
+          "epsilon_source": "AES transaction five-seed rule; no DMA retuning",
+          "useful_work_floor": 4096,
+          "corpus_sha256": "ae2819862a0eca86ac996bd6cb1d1eb1ee04aba7b33cbd1ac2341cc11c5a775d"
+        },
+        "prompt_sha256": "ede6d45403b5cfc2d28cc7c74ec64ed1859f3467f59c41e186339bf2e1be8462",
+        "model": "gemini-2.5-flash",
+        "source_commit": "0e6e47feee090195cbd1614629f629a3bcdf0165"
+      },
+      "summaries_sha256": "028459dbb62bf9f644855387ad57ff1b28b0c43b22811b7cd3cc59e54aea45ce"
+    },
+    {
+      "archive": "results/dma_catalog_development",
+      "manifest": {
+        "stage": "development",
+        "design": "dma",
+        "seeds": [
+          100,
+          101,
+          102
+        ],
+        "backend": "pipelined",
+        "policies": [
+          "semantic-catalog-v5"
+        ],
+        "budget": 50,
+        "batch_size": 4,
+        "epsilon": 0.02,
+        "targets": [
+          0.1,
+          0.25,
+          0.5,
+          0.75,
+          0.9
+        ],
+        "calibration": {
+          "backend": "pipelined",
+          "count": 20,
+          "valid_count": 20,
+          "power_metric": "total_transitions_per_clock_edge",
+          "p_min": 4.547597535934291,
+          "p_max": 27.705809437236592,
+          "epsilon_scalar": 0.02,
+          "epsilon_source": "AES transaction five-seed rule; no DMA retuning",
+          "useful_work_floor": 4096,
+          "corpus_sha256": "ae2819862a0eca86ac996bd6cb1d1eb1ee04aba7b33cbd1ac2341cc11c5a775d"
+        },
+        "prompt_sha256": "94b0aa2897aeeb122658e233e3ad4df67df2f6249c7062fea40093339cfafc38",
+        "model": "gemini-2.5-flash",
+        "source_commit": "71f416b32c0889dde9509b7568efaf72d7515e69"
+      },
+      "summaries_sha256": "7ad4fcbf2e17e5fc048134e560ee87e32d6b07b1eb20a9cfd66787894575d118"
+    }
+  ]
+}

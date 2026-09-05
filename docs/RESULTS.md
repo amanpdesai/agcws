@@ -674,3 +674,18 @@ Recorded estimated cost is $0.6743, excluding unknown usage from two calls.
 This is an AES development improvement, not a held-out or cross-design claim.
 DMA V5 is running; the predeclared selection still requires both complete
 design panels. No evaluation seeds have been used.
+
+## 2026-09-05 — Complete V5 development and cross-design selection
+
+DMA V5 completed all 15 cells and 750 audited slots, archived in
+`results/dma_catalog_development/`. Mean AUC is 5.0036 versus random's
+2.0764 and V4's 2.5116; V5 solves 4/15 with 67.5% validity. Recorded
+estimated cost is $1.1229, with five unknown-usage batches. The catalog
+interface's AES improvement did not transfer to DMA.
+
+The predeclared balanced selection chooses **semantic-edits-v4**: mean AUC
+across both designs is 2.0595 versus V5's 3.1320. All 30 cells per candidate
+were included. `results/semantic_controller_selection.json` records the
+selection and source panels. No per-design controller selection or further
+prompt tuning is permitted for this held-out evaluation. Selection itself
+is not evidence of held-out superiority.

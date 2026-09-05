@@ -1,5 +1,18 @@
 # Decision log
 
+## 2026-09-05 — Select V4 from the complete balanced development panels
+
+**Decision.** Freeze semantic-edits-v4 with Gemini 2.5 Flash for both designs'
+held-out evaluation, using the existing V3 prompt text and V4 sampling settings.
+The predeclared 30-cell balanced mean AUC is 2.0595 for V4 versus 3.1320
+for V5. Every candidate cell passed independent ledger audit before selection.
+**Rationale.** V5 improved AES but regressed substantially on DMA. Choosing V5
+only on AES would violate the common-controller comparison.
+**Consequence.** Capture prompt, executable source, package, calibration and
+pricing configuration before any seed 200–209 runs. Retain all development
+failures and unknown usage. Held-out losses or null results must be reported;
+selection does not establish superiority or equivalence.
+
 ## 2026-09-05 — Version the AES transaction oracle and recalibrate before comparison
 
 The legacy simulator ignored DSL key length and direction and reset between
