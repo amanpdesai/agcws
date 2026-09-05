@@ -54,6 +54,14 @@ inference. Unknown provider usage is explicitly flagged; reported cost is
 then a lower bound, not a complete accounting. Each evaluation cell must have
 its captured source/configuration manifest and archived compact trial ledger.
 
+CPU and agent panels may run separately. Pass all panels for each design to
+`scripts/compare_semantic_evaluation.py --aes <panels...> --dma <panels...>
+--agent <frozen-policy> --out <comparison.json>`. The loader checks matching
+conditions (including calibration, model and prompt), disjoint policies,
+complete cells and each ledger before the full-matrix inference checks.
+Original source manifests remain attached to the output; separate scheduling
+does not make wall-clock results a controlled parallel-runtime comparison.
+
 The endpoint currently measures RTL activity-profile synthesis. These
 comparisons alone do not validate power prediction, structural workload
 expressiveness, compositional targets or temporal targets. Those require
