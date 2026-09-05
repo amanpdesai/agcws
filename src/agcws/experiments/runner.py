@@ -142,6 +142,7 @@ def run_search(
                 stages[trial.validity.stage.value] += 1
         summary.update({"policy": policy.name, "design": design or adapter.name,
                         "seed": seed, "validity_failures": stages,
+                        "epsilon": float(goal.tolerance),
                         "proposals": len(trials),
                         "proposal_slots": budget,
                         "valid_trials": sum(trial.validity.valid for trial in trials),
