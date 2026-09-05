@@ -1,0 +1,57 @@
+{
+  "stage": "development",
+  "design": "aes",
+  "seeds": [
+    100,
+    101,
+    102
+  ],
+  "backend": "transactions",
+  "policies": [
+    "scalar-edit-evolution"
+  ],
+  "budget": 50,
+  "batch_size": 4,
+  "epsilon": 0.02,
+  "targets": [
+    0.1,
+    0.25,
+    0.5,
+    0.75,
+    0.9
+  ],
+  "calibration": {
+    "backend": "transactions",
+    "power_metric": "total_transitions_per_clock_edge",
+    "scope": "aes_core_smoke.dut",
+    "count": 20,
+    "valid_count": 20,
+    "p_min": 20.145905199948896,
+    "p_max": 197.84064022268615,
+    "useful_work_floor": 38,
+    "useful_work_min": 47,
+    "epsilon_scalar": 0.02,
+    "random_solved_fraction_base": 1.0,
+    "base_seed_fractions": [
+      0.8,
+      1.0,
+      0.6,
+      1.0,
+      1.0
+    ],
+    "final_seed_fractions": [
+      0.6,
+      0.6,
+      0.6,
+      0.8,
+      0.8
+    ],
+    "random_solved_fraction": 0.6,
+    "status": "five_seed_calibration_before_transaction_comparisons",
+    "g3_trivial": false,
+    "corpus_sha256": "11a1252f36b6514fa8e4421fc4936ebd09f6e19c64df3aadca65c8573feb5940"
+  },
+  "prompt_sha256": "ede6d45403b5cfc2d28cc7c74ec64ed1859f3467f59c41e186339bf2e1be8462",
+  "model": null,
+  "source_commit": "6abbcbf8098273f53ae566f0bbabc27f0bf75143"
+}
