@@ -22,13 +22,15 @@ from agcws.provenance import file_sha256, toolchain_record
 from agcws.policies import (EvolutionarySearch, HybridSearch, MutationSearch,
                             OfflineAgent, OneShotAgent, RandomSearch, VertexAgent)
 from evaluate_aes_workload import evaluate
+from agcws.policies.semantic import SemanticEvolution
+from agcws.policies.semantic_edits import SemanticEdits, SemanticEditsBounded
 
 
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("synthesis_dir", type=Path)
     parser.add_argument("--policy", choices=("random", "mutation", "evolutionary",
-                                              "offline-agent", "one-shot-agent", "offline-hybrid", "vertex"),
+                                              "offline-agent", "one-shot-agent", "offline-hybrid", "vertex", "semantic-evolution-v2", "semantic-edits-v3", "semantic-edits-v4"),
                         default="random")
     parser.add_argument("--target", type=float, default=0.5)
     # Keep the CLI default aligned with the pre-registered primary endpoint.
@@ -62,10 +64,17 @@ def main() -> None:
     policies = {"random": RandomSearch, "mutation": MutationSearch,
                 "evolutionary": EvolutionarySearch, "offline-agent": OfflineAgent,
                 "one-shot-agent": OneShotAgent}
-    if args.policy == "vertex":
+    if args.policy in ("vertex", "semantic-evolution-v2", "semantic-edits-v3", "semantic-edits-v4"):
         if not args.model or not args.project:
             parser.error("vertex policy requires --model/AGCWS_GEMINI_MODEL and --project/AGCWS_GCP_PROJECT")
-        policy = VertexAgent.from_vertex(args.prompt.read_text(), model=args.model, project=args.project)
+        agent_class = SemanticEvolution if args.policy == "semantic-evolution-v2" else VertexAgent
+        if args.policy == "semantic-edits-v3":
+            agent_class = SemanticEdits
+        if args.policy == "semantic-edits-v4":
+            agent_class = SemanticEditsBounded
+        policy = agent_class.from_vertex(args.prompt.read_text(), model=args.model, project=args.project)
+        if isinstance(policy, SemanticEvolution):
+            policy.initialize(args.seed, args.p_min, args.p_max)
     elif args.policy == "offline-hybrid":
         agent = OfflineAgent(args.seed)
         policy = HybridSearch(agent.proposer, seed=args.seed,

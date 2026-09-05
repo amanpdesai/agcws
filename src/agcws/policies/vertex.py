@@ -81,6 +81,8 @@ class VertexAgent(AgentPolicy):
     temperature = 0.7
     top_p = 0.95
     max_output_tokens = 4096
+    proposal_attempts = 3
+    thinking_budget = None
 
     def __init__(self, generate: Callable[[str, str], str | tuple[str, dict[str, int]]], system_prompt: str, *, model: str):
         self.system_prompt = system_prompt
@@ -90,9 +92,9 @@ class VertexAgent(AgentPolicy):
         def propose(adapter, goal, history, n):
             self.last_usage = {"tokens_in": 0, "tokens_out": 0}
             self.last_diagnostics = {}
-            payload = build_payload(adapter, goal, history, n, system_prompt)
+            payload = self.build_payload(adapter, goal, history, n, system_prompt)
             last_error = None
-            for attempt in range(3):
+            for attempt in range(self.proposal_attempts):
                 timeout_s = int(os.environ.get("AGCWS_VERTEX_TIMEOUT_S", "60"))
                 previous = signal.signal(signal.SIGALRM, lambda *_: (_ for _ in ()).throw(TimeoutError("Vertex request timed out")))
                 signal.alarm(timeout_s)
@@ -107,7 +109,7 @@ class VertexAgent(AgentPolicy):
                     signal.alarm(0)
                     signal.signal(signal.SIGALRM, previous)
                 if generated is None:
-                    if attempt == 2:
+                    if attempt == self.proposal_attempts - 1:
                         return []
                     payload = json.dumps({"repair_request": f"Return 1..{n} valid workloads only.",
                                           "error": str(last_error)})
@@ -125,7 +127,7 @@ class VertexAgent(AgentPolicy):
                     last_error = exc
                     LOG.warning("Vertex parse failure error=%s diagnostics=%s raw=%s",
                                 exc, self.last_diagnostics, text[:4000])
-                    if attempt == 2:
+                    if attempt == self.proposal_attempts - 1:
                         raise
                     payload = json.dumps({
                         "repair_request": f"Return 1..{n} valid workloads only.",
@@ -136,6 +138,8 @@ class VertexAgent(AgentPolicy):
 
         digest = hashlib.sha256(system_prompt.encode()).hexdigest()
         super().__init__(propose, model=model, prompt_hash=digest)
+
+    build_payload = staticmethod(build_payload)
 
     @classmethod
     def from_vertex(cls, system_prompt: str, *, model: str, project: str, location: str = "global"):
@@ -154,8 +158,11 @@ class VertexAgent(AgentPolicy):
                                                                        max_delay=8)))
 
         def generate(model_name: str, payload: str) -> tuple[str, dict[str, int]]:
+            thinking = ({"thinking_config": {"thinking_budget": cls.thinking_budget}}
+                        if cls.thinking_budget is not None else {})
             response = client.models.generate_content(model=model_name, contents=payload,
                                                       config={
+                                                          **thinking,
                                                           "temperature": cls.temperature,
                                                           "top_p": cls.top_p,
                                                           "max_output_tokens": cls.max_output_tokens,
@@ -165,13 +172,16 @@ class VertexAgent(AgentPolicy):
             candidates = getattr(response, "candidates", None) or []
             finish_reason = getattr(candidates[0], "finish_reason", None) if candidates else None
             feedback = getattr(response, "prompt_feedback", None)
+            thoughts = int(getattr(metadata, "thoughts_token_count", 0) or 0)
             diagnostics = {"finish_reason": str(finish_reason) if finish_reason is not None else None,
                            "prompt_feedback": str(feedback) if feedback is not None else None,
-                           "raw_text": response.text or ""}
+                           "raw_text": response.text or "",
+                           "thoughts_token_count": thoughts,
+                           "model_version": getattr(response, "model_version", None)}
             LOG.info("Vertex response diagnostics=%s", diagnostics)
             return response.text or "", {
                 "tokens_in": int(getattr(metadata, "prompt_token_count", 0) or 0),
-                "tokens_out": int(getattr(metadata, "candidates_token_count", 0) or 0),
+                "tokens_out": int(getattr(metadata, "candidates_token_count", 0) or 0) + thoughts,
                 "diagnostics": diagnostics,
             }
 

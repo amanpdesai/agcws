@@ -16,6 +16,8 @@ from agcws.adapters.axi_dma import AxiDmaAdapter
 from agcws.experiments.runner import run_search
 from agcws.goals.schema import ScalarGoal
 from agcws.nodes.power import PowerProfile
+from agcws.policies.semantic import SemanticEvolution
+from agcws.policies.semantic_edits import SemanticEdits, SemanticEditsBounded
 from agcws.policies import (EvolutionarySearch, HybridSearch, MutationSearch,
                             OfflineAgent, OneShotAgent, RandomSearch, VertexAgent)
 
@@ -24,12 +26,13 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--target", type=float, default=0.5)
     parser.add_argument("--policy", choices=("random", "mutation", "evolutionary",
-                                              "offline-agent", "one-shot-agent", "offline-hybrid", "vertex"),
+                                              "offline-agent", "one-shot-agent", "offline-hybrid", "vertex", "semantic-evolution-v2", "semantic-edits-v3", "semantic-edits-v4"),
                         default="random")
     parser.add_argument("--policies", help="comma-separated policy matrix; overrides --policy")
     parser.add_argument("--p-min", type=float, required=True)
     parser.add_argument("--p-max", type=float, required=True)
     parser.add_argument("--budget", type=int, default=8)
+    parser.add_argument("--epsilon", type=float, default=0.05)
     parser.add_argument("--seed", type=int, default=0)
     parser.add_argument("--out", type=Path, default=Path("out/axi-dma-search"))
     parser.add_argument("--model", default=os.environ.get("AGCWS_GEMINI_MODEL"))
@@ -95,10 +98,17 @@ def main() -> None:
     policies = {"random": RandomSearch, "mutation": MutationSearch,
                 "evolutionary": EvolutionarySearch, "offline-agent": OfflineAgent,
                 "one-shot-agent": OneShotAgent}
-    if args.policy == "vertex":
+    if args.policy in ("vertex", "semantic-evolution-v2", "semantic-edits-v3", "semantic-edits-v4"):
         if not args.model or not args.project:
             parser.error("vertex policy requires --model and --project")
-        policy = VertexAgent.from_vertex(args.prompt.read_text(), model=args.model, project=args.project)
+        agent_class = SemanticEvolution if args.policy == "semantic-evolution-v2" else VertexAgent
+        if args.policy == "semantic-edits-v3":
+            agent_class = SemanticEdits
+        if args.policy == "semantic-edits-v4":
+            agent_class = SemanticEditsBounded
+        policy = agent_class.from_vertex(args.prompt.read_text(), model=args.model, project=args.project)
+        if isinstance(policy, SemanticEvolution):
+            policy.initialize(args.seed, args.p_min, args.p_max)
     elif args.policy == "offline-hybrid":
         agent = OfflineAgent(args.seed)
         policy = HybridSearch(agent.proposer, seed=args.seed,
@@ -107,7 +117,7 @@ def main() -> None:
         policy = policies[args.policy](args.seed)
     policy.name = args.policy
     trials = run_search(AxiDmaAdapter(), policy,
-                        ScalarGoal(args.target, 0.05), evaluate, budget=args.budget,
+                        ScalarGoal(args.target, args.epsilon), evaluate, budget=args.budget,
                         batch_size=args.batch_size, seed=args.seed, p_min=args.p_min, p_max=args.p_max,
                         output_dir=args.out)
     print(json.dumps({"trials": len(trials), "policy": args.policy,

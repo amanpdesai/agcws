@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from typing import Any
 
@@ -22,6 +22,8 @@ class Trial:
     claim_scope: str = "baseline"
     est_cost_usd: float = 0.0
     timestamp: str = ""
+    generation_wall_clock_s: float = 0.0
+    generation_diagnostics: dict = field(default_factory=dict)
 
     def __post_init__(self):
         if not self.timestamp:

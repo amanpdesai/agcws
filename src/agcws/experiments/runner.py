@@ -67,12 +67,14 @@ def run_search(
     proposal_index = 0
     while proposal_index < budget:
         requested = min(batch_size, budget - proposal_index)
+        generation_started = time.monotonic()
         try:
             candidates = policy.propose(adapter, goal, trials, requested)
         except (TypeError, ValueError):
             candidates = []
         if not isinstance(candidates, (list, tuple)):
             candidates = []
+        generation_elapsed = time.monotonic() - generation_started
         usage = getattr(policy, "last_usage", {})
         for slot in range(requested):
             workload = candidates[slot] if slot < len(candidates) else {}
@@ -115,6 +117,8 @@ def run_search(
                 profile=profile,
                 loss=None if not validity.valid else current,
                 wall_clock_s=time.monotonic() - started,
+                generation_wall_clock_s=generation_elapsed if slot == 0 else 0.0,
+                generation_diagnostics=getattr(policy, "last_diagnostics", {}) if slot == 0 else {},
                 sim_count=sim_count,
                 model=getattr(policy, "model", ""),
                 prompt_hash=getattr(policy, "prompt_hash", ""),

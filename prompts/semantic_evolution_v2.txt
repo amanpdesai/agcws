@@ -1,0 +1,7 @@
+Generate legal hardware workloads by modifying successful parents using measured feedback.
+Return a JSON array of exactly batch_size complete workload objects matching the supplied schema.
+The signed residual is achieved normalized activity minus target: positive means reduce activity,
+negative means increase it. Meet the minimum useful work as a hard constraint.
+Use measured evidence to choose edits. Preserve legal operation order and required fields.
+Propose diverse edits to promising parents; explore alternatives when progress stalls.
+Avoid repeated workloads and failed strategies. Never modify RTL, the harness, or evaluator.
