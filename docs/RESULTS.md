@@ -662,3 +662,15 @@ This does not establish cross-design superiority. The catalog-interface v5
 candidate is now running on AES and then DMA with the same controller.
 Selection will follow the predeclared balanced development-AUC rule in
 `HELD_OUT_PROTOCOL.md`; held-out seeds remain unused.
+
+## 2026-09-05 — Complete AES catalog-controller development panel
+
+`results/aes_catalog_development/` contains all 15 V5 cells and 750 audited
+proposal slots. Mean AUC is 1.2604, compared with V4's 1.6073, random's
+2.1849 and instrumented line-coverage search's 2.8559 under the same
+calibration, targets, seeds and budget. V5 solves 14/15; validity is 93.1%.
+Recorded estimated cost is $0.6743, excluding unknown usage from two calls.
+
+This is an AES development improvement, not a held-out or cross-design claim.
+DMA V5 is running; the predeclared selection still requires both complete
+design panels. No evaluation seeds have been used.
