@@ -11,6 +11,10 @@ def compare(matrices, agent):
     if set(matrices) != {'aes', 'dma'}:
         raise ValueError('both held-out designs are required')
     for design, (manifest, rows) in matrices.items():
+        backend = {'aes': 'transactions', 'dma': 'pipelined'}[design]
+        if (manifest.get('design') != design or manifest.get('backend') != backend
+                or manifest.get('epsilon') != 0.02 or manifest.get('batch_size') != 4):
+            raise ValueError('frozen evaluation backend/tolerance/batch mismatch')
         if manifest['stage'] != 'evaluation' or manifest['seeds'] != list(range(200, 210)):
             raise ValueError('requires frozen evaluation seeds 200..209')
         if manifest['targets'] != [0.1, 0.25, 0.5, 0.75, 0.9] or manifest['budget'] != 50:
