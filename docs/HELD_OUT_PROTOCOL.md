@@ -62,6 +62,19 @@ complete cells and each ledger before the full-matrix inference checks.
 Original source manifests remain attached to the output; separate scheduling
 does not make wall-clock results a controlled parallel-runtime comparison.
 
+For the final report, use the stricter wrapper below. It additionally compares
+every cell's source/configuration manifest against the recorded freeze,
+archives input-file hashes, and emits descriptive AUC, solve/censoring,
+validity and cost-accounting totals alongside the same predeclared inference.
+It refuses incomplete panels and will not overwrite an existing report.
+
+```bash
+.venv/bin/python -m analysis.report_semantic_evaluation \
+  --aes results/aes_semantic_heldout_cpu results/aes_semantic_heldout_agent \
+  --dma results/dma_semantic_heldout_cpu results/dma_semantic_heldout_agent \
+  --out results/semantic_heldout_comparison.json
+```
+
 The endpoint currently measures RTL activity-profile synthesis. These
 comparisons alone do not validate power prediction, structural workload
 expressiveness, compositional targets or temporal targets. Those require
