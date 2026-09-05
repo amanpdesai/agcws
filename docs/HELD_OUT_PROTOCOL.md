@@ -8,6 +8,17 @@ prompt, schema or evaluator change requires a new version and a new evaluation;
 do not combine versions as one method. Selection is documented, not automatic
 stopping when a promising cell finishes.
 
+Controller selection is between semantic-edits-v4 and semantic-catalog-v5,
+using all five targets and development seeds 100–102 on both designs.
+Choose the lower arithmetic mean AUC across the 30 design/target/seed cells;
+the balanced panel weights both designs equally. Keep invalid proposals and
+unsolved runs. Require all cells and ledger audits before selection; do not
+choose a different controller per design. An exact numerical tie selects v4.
+Record both candidates' results and the selected prompt/model/source hashes
+before running any held-out seed. This rule was recorded before v5 development
+started, with v4 DMA still incomplete. It selects a candidate, not a favorable
+research conclusion: held-out losses and null results must still be reported.
+
 ## Fixed evaluation
 
 - AES transaction and DMA pipelined backends, each with its archived calibration.
