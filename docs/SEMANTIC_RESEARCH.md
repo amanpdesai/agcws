@@ -129,3 +129,14 @@ Completed cells were reused; proposal budgets, seeds, targets, calibration,
 policies and simulator settings did not change. Vertex remains serial.
 `execution.json` records the scheduling change. Do not pool these mixed
 serial/parallel wall-clock figures as a controlled runtime comparison.
+
+## Simulation accounting clarification
+
+Earlier runner summaries counted only valid scored trials as simulations,
+omitting completed evaluations subsequently rejected by the useful-work
+gate. New records explicitly count returned evaluator profiles (including
+rejected workloads), record evaluator attempts separately, and flag unknown
+completion after exceptions. Error details are stored outside policy context.
+The primary proposal budget, validity decisions, losses and model feedback
+are unchanged. Original records are not rewritten; use the summary's
+`simulation_count_semantics` field to distinguish accounting versions.

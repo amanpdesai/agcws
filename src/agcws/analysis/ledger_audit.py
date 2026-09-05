@@ -43,4 +43,9 @@ def audit_scalar_cell(summary, trials, calibration):
     for field in ['tokens_in', 'tokens_out', 'est_cost_usd']:
         if not math.isclose(sum(t[field] for t in trials), summary[field], rel_tol=1e-10, abs_tol=1e-12):
             raise ValueError(f'summary {field} disagrees with ledger')
+    if 'simulation_count_semantics' in summary:
+        if summary['simulations'] != sum(t['sim_count'] for t in trials):
+            raise ValueError('summary simulation count disagrees with ledger')
+        if summary['evaluation_attempts'] != sum(t['evaluation_attempts'] for t in trials):
+            raise ValueError('summary evaluator attempts disagree with ledger')
     return {'audited_slots': budget, 'auc': auc, 'solved': solved_at is not None}

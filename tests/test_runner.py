@@ -37,6 +37,8 @@ def test_runner_applies_runtime_useful_work_gate():
     assert trials[0].validity.stage.value == "USEFUL_WORK"
     assert trials[0].profile is not None
     assert trials[0].loss is None
+    assert trials[0].sim_count == 1
+    assert trials[0].evaluation_attempts == 1
 
 
 def test_runner_records_malformed_batch_as_consumed_schema_slots():
@@ -52,6 +54,22 @@ def test_runner_records_malformed_batch_as_consumed_schema_slots():
     assert len(trials) == 3
     assert not calls
     assert all(trial.validity.stage.value == "SCHEMA" for trial in trials)
+    assert all(trial.evaluation_attempts == trial.sim_count == 0 for trial in trials)
+
+
+def test_runner_distinguishes_evaluator_attempt_from_known_completion():
+    def evaluate(workload):
+        raise RuntimeError('reference check failed')
+
+    trials = run_search(AESAdapter(), RandomSearch(3), ScalarGoal(0.5), evaluate,
+                        budget=1, p_min=1, p_max=9)
+    trial = trials[0]
+    assert trial.evaluation_attempts == 1
+    assert trial.sim_count == 0
+    assert trial.loss is None
+    assert trial.evaluation_diagnostics == {'exception_type': 'RuntimeError',
+                                          'message': 'reference check failed',
+                                          'simulation_completion_unknown': True}
 
 
 def test_runner_records_non_list_policy_response_as_schema_slots():

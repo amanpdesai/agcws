@@ -24,6 +24,8 @@ class Trial:
     timestamp: str = ""
     generation_wall_clock_s: float = 0.0
     generation_diagnostics: dict = field(default_factory=dict)
+    evaluation_attempts: int = 0
+    evaluation_diagnostics: dict = field(default_factory=dict)
 
     def __post_init__(self):
         if not self.timestamp:

@@ -89,13 +89,20 @@ def run_search(
             started = time.monotonic()
             validity = validate_static(adapter, workload)
             profile = None
+            sim_count = 0
+            evaluation_attempts = 0
+            evaluation_diagnostics = {}
             if validity.valid:
+                evaluation_attempts = 1
                 try:
                     profile = evaluate(workload)
-                except (RuntimeError, ValueError, OSError):
+                except (RuntimeError, ValueError, OSError) as exc:
+                    evaluation_diagnostics = {'exception_type': type(exc).__name__,
+                                              'message': str(exc), 'simulation_completion_unknown': True}
                     validity = Validity(False, ValidityStage.FUNCTIONAL,
                                         "evaluator rejected workload")
                 else:
+                    sim_count = 1
                     if not profile.valid:
                         validity = adapter.validate_result(
                             SimResult(False, True, False, profile.useful_work)
@@ -107,10 +114,8 @@ def run_search(
             if validity.valid and profile is not None:
                 current = loss(profile, goal, p_min=p_min, p_max=p_max)
                 best = min(best, current)
-                sim_count = 1
             else:
                 current = float("inf")
-                sim_count = 0
             curve.append(best)
             trials.append(Trial(
                 trial_id=f"{policy.name}-{proposal_index + slot:05d}",
@@ -126,6 +131,8 @@ def run_search(
                 generation_wall_clock_s=generation_elapsed if slot == 0 else 0.0,
                 generation_diagnostics=getattr(policy, "last_diagnostics", {}) if slot == 0 else {},
                 sim_count=sim_count,
+                evaluation_attempts=evaluation_attempts,
+                evaluation_diagnostics=evaluation_diagnostics,
                 model=getattr(policy, "model", ""),
                 prompt_hash=getattr(policy, "prompt_hash", ""),
                 claim_scope=getattr(policy, "claim_scope", "baseline"),
@@ -162,7 +169,11 @@ def run_search(
                         "est_cost_usd": sum(trial.est_cost_usd for trial in trials),
                         "unknown_usage_batches": sum(bool(trial.generation_diagnostics.get('usage_unknown'))
                                                      for trial in trials),
-                        "simulations": sum(trial.sim_count for trial in trials)})
+                        "simulations": sum(trial.sim_count for trial in trials),
+                        "simulation_count_semantics": "evaluator_returned_profile_including_invalid_workloads",
+                        "evaluation_attempts": sum(trial.evaluation_attempts for trial in trials),
+                        "unknown_simulation_completions": sum(bool(trial.evaluation_diagnostics.get('simulation_completion_unknown'))
+                                                              for trial in trials)})
         if hasattr(goal, "q"):
             summary["target"] = float(goal.q)
         else:
