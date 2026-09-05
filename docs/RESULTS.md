@@ -632,3 +632,18 @@ This is evidence of temporal control at matched work, duration and nearly
 matched scalar activity. It is not an agent comparison, a gate-power result,
 or proof that any policy can reproduce held-out temporal profiles. It makes
 the distinction between scalar targeting and temporal expressiveness concrete.
+
+## 2026-09-05 — Complete DMA baseline development panel
+
+`results/dma_pipelined_development_baselines/` contains all 60 cells and
+3,000 audited proposal slots. Mean AUC: random 2.0764, evolutionary 4.3431,
+matched scalar-edit-evolution 5.2186, mutation 5.6657. Random and evolutionary
+each solve 9/15 runs, mutation 6/15, matched scalar edits 3/15.
+
+The matched scalar-edit control has only 21.9% valid proposals. It isolates
+the edit representation but is not a strong legal optimizer; improvements
+over it alone would confound search quality with protocol compliance.
+Random is the strongest observed baseline in this development panel.
+The DMA agent and catalog-interface panels are still incomplete, so there
+is no full cross-design agent comparison yet. The archive records the
+serial-to-four-worker scheduling change and prohibits a pooled runtime claim.

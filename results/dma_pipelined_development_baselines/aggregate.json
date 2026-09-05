@@ -1,0 +1,40 @@
+{
+  "stage": "development",
+  "complete": true,
+  "primary_endpoint": "mean_auc_lower_is_better",
+  "policies": [
+    {
+      "policy": "random",
+      "runs": 15,
+      "mean_auc": 2.0764293675920134,
+      "solve_rate": 0.6,
+      "valid_fraction": 1.0,
+      "est_cost_usd": 0.0
+    },
+    {
+      "policy": "mutation",
+      "runs": 15,
+      "mean_auc": 5.665718407659641,
+      "solve_rate": 0.4,
+      "valid_fraction": 0.9933333333333333,
+      "est_cost_usd": 0.0
+    },
+    {
+      "policy": "evolutionary",
+      "runs": 15,
+      "mean_auc": 4.34306091001317,
+      "solve_rate": 0.6,
+      "valid_fraction": 0.9946666666666667,
+      "est_cost_usd": 0.0
+    },
+    {
+      "policy": "scalar-edit-evolution",
+      "runs": 15,
+      "mean_auc": 5.218580539302613,
+      "solve_rate": 0.2,
+      "valid_fraction": 0.21866666666666668,
+      "est_cost_usd": 0.0
+    }
+  ],
+  "scope": "Development results; no confirmatory inference or parity claim."
+}
