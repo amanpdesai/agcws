@@ -1,0 +1,16 @@
+{
+  "date": "2026-09-05",
+  "previous_workers": 4,
+  "new_workers": 8,
+  "reason": "Reduce the CPU-only panel's elapsed time using available host capacity.",
+  "method": "Paused scheduler dispatch; all four in-flight children finished and their 50-slot ledgers passed audit before terminating the old scheduler. Resume reuses completed cell artifacts.",
+  "in_flight_cells_finished_and_audited": [
+    {"policy": "mutation", "target": 0.1, "seed": 205},
+    {"policy": "evolutionary", "target": 0.1, "seed": 205},
+    {"policy": "random", "target": 0.1, "seed": 206},
+    {"policy": "mutation", "target": 0.1, "seed": 206}
+  ],
+  "changed_conditions": ["CPU concurrency only"],
+  "unchanged_conditions": ["source digest", "calibration", "targets", "seeds", "policies", "50-slot budget", "batch size 4", "epsilon 0.02"],
+  "limitation": "Mixed scheduling and shared-host contention preclude treating wall-clock measurements as a controlled parallel-runtime comparison. Primary AUC remains indexed by proposed slots."
+}

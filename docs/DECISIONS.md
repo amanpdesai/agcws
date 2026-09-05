@@ -1,5 +1,17 @@
 # Decision log
 
+## 2026-09-05 — Increase held-out DMA CPU concurrency without changing cells
+
+**Decision.** Increase the CPU-only DMA scheduler from four to eight workers.
+Pause dispatch, allow the four in-flight cells to terminate normally, audit
+their full ledgers, and reuse every completed cell on resume. Vertex stays
+serial. The host had 96 CPUs and substantial available memory at handoff.
+**Consequence.** Scheduling is mixed; do not use these wall-clock values for
+a controlled parallel-runtime comparison. Source digest, policies, seeds,
+targets, calibration, tolerance and proposal budgets remain frozen.
+The handoff is recorded in
+`results/dma_semantic_heldout_cpu/scheduling_handoff.json`.
+
 ## 2026-09-05 — Select V4 from the complete balanced development panels
 
 **Decision.** Freeze semantic-edits-v4 with Gemini 2.5 Flash for both designs'
