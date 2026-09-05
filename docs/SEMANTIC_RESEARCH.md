@@ -119,3 +119,13 @@ proposal accounting. Its catalog uses the same field enumeration as the
 matched non-LLM control. No evidence of improved performance exists yet;
 v4 runs continue unchanged and no held-out seed has been used to develop v5.
 Use `--prompt prompts/semantic_catalog_v5.txt` with this version.
+
+## Managed CPU scheduling
+
+The DMA baseline development panel resumed after its eleventh completed
+cell using four managed CPU workers. The serial scheduler was stopped only
+after its in-flight cell finished and passed the independent ledger audit.
+Completed cells were reused; proposal budgets, seeds, targets, calibration,
+policies and simulator settings did not change. Vertex remains serial.
+`execution.json` records the scheduling change. Do not pool these mixed
+serial/parallel wall-clock figures as a controlled runtime comparison.
