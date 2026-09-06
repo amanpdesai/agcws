@@ -62,6 +62,16 @@ idle count: it loses schedule ordering. Prior annotation coverage demonstrates
 annotation on that older netlist, not configuration-matched power prediction
 for the current transaction study. This does not alter any activity-only result.
 
+The new matched AES smoke now passes and is archived in
+`results/aes_matched_gls_smoke_v1/`. Explicit unmasked/LUT synthesis produces
+the required 128-bit state interface. RTL and GLS use identical transaction
+program hashes, check all 64 ciphertexts and both observe 6774 clock edges.
+OpenSTA annotates 90,247 pins with zero unannotated pins on this new netlist;
+internal plus switching power is approximately 0.00445728 W for this one
+workload. This is validation-path evidence, not proxy rank agreement or an
+agent result. The standalone `validation/` implementation has its own input
+provenance and does not change the active search panel's executable sources.
+
 ## Four-arm DMA pilot completed
 
 The [audited v2 DMA pilot](../results/structural_temporal_dma_four_arm_v2/pilot.json)
