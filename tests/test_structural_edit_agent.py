@@ -1,5 +1,7 @@
 import json
 
+import pytest
+
 from agcws.adapters.aes.temporal import AESTemporalAdapter
 from agcws.experiments.runner import run_search
 from agcws.goals.schema import FixedTemporalGoal
@@ -7,6 +9,8 @@ from agcws.nodes.power import PowerProfile
 from agcws.policies.structural_edit_agent import (
     StructuralEditAgent,
     StructuralEditHybrid,
+    StructuralPopulationAgent,
+    StructuralPopulationHybrid,
 )
 from agcws.workloads.schedule import ScheduleContract, expand_schedule
 
@@ -20,7 +24,8 @@ def run(policy_class, generate):
     return run_search(adapter, policy, goal, lambda _: profile, budget=16, batch_size=4)
 
 
-def test_typed_edits_use_listed_parent_and_preserve_budgets():
+@pytest.mark.parametrize('policy_class', [StructuralEditAgent, StructuralPopulationAgent])
+def test_typed_edits_use_listed_parent_and_preserve_budgets(policy_class):
     calls = []
 
     def generate(_, text):
@@ -31,7 +36,7 @@ def test_typed_edits_use_listed_parent_and_preserve_budgets():
         return json.dumps([{'parent_id': parent['parent_id'],
                             'edit': {'op': 'swap', 'a': 0, 'b': 1}}] * 4), {'tokens_in': 100, 'tokens_out': 20}
 
-    trials = run(StructuralEditAgent, generate)
+    trials = run(policy_class, generate)
     assert len(calls) == 3 and all(t.validity.valid for t in trials)
     assert sum(t.tokens_in for t in trials) == 300
     for trial in trials:
@@ -51,7 +56,8 @@ def test_bad_parent_charged_once_with_actionable_feedback():
     assert len(trials[4].generation_diagnostics['structural_edit_failures']) == 4
 
 
-def test_hybrid_cpu_batches_are_not_reinterpreted_as_model_edits():
+@pytest.mark.parametrize('policy_class', [StructuralEditHybrid, StructuralPopulationHybrid])
+def test_hybrid_cpu_batches_are_not_reinterpreted_as_model_edits(policy_class):
     calls = []
 
     def generate(_, text):
@@ -60,7 +66,7 @@ def test_hybrid_cpu_batches_are_not_reinterpreted_as_model_edits():
         return json.dumps([{'parent_id': parent['parent_id'],
                             'edit': {'op': 'move', 'a': 0, 'b': 1}}] * 4), {'tokens_in': 100, 'tokens_out': 20}
 
-    trials = run(StructuralEditHybrid, generate)
+    trials = run(policy_class, generate)
     assert len(calls) == 2 and all(t.validity.valid for t in trials)
     assert sum(t.tokens_in for t in trials) == 200
     assert trials[8].generation_diagnostics['proposal_source'] == 'structural_evolution'

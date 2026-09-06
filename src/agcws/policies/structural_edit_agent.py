@@ -2,7 +2,9 @@
 import json
 from dataclasses import asdict
 
+from agcws.policies.structural import StructuralPopulationEvolution
 from agcws.policies.structural_agent import StructuralAgent
+from agcws.policies.structural_population import temporal_population
 from agcws.workloads.schedule import expand_schedule
 from agcws.workloads.structural_edits import apply_structural_edit
 
@@ -21,9 +23,12 @@ EDIT_CONTRACT = {
 class StructuralEditAgent(StructuralAgent):
     name = 'structural-edit-agent-v2'
 
+    def select_parents(self, history):
+        return sorted((t for t in history if t.validity.valid and t.loss is not None),
+                      key=lambda t: t.loss)[:8]
+
     def build_payload(self, adapter, goal, history, n, system_prompt):
-        selected = sorted((t for t in history if t.validity.valid and t.loss is not None),
-                          key=lambda t: t.loss)[:8]
+        selected = self.select_parents(history)
         self.parents = {f'parent_{i}': t.workload for i, t in enumerate(selected)}
         parents = []
         for i, trial in enumerate(selected):
@@ -73,3 +78,22 @@ class StructuralEditHybrid(StructuralEditAgent):
             self.last_diagnostics = {'proposal_source': 'structural_evolution'}
             return self.evolution.propose(adapter, goal, history, n)
         return super().propose(adapter, goal, history, n)
+
+
+class StructuralPopulationAgent(StructuralEditAgent):
+    name = 'structural-population-agent-v1'
+
+    def select_parents(self, history):
+        return temporal_population(history)
+
+
+class StructuralPopulationHybrid(StructuralEditHybrid):
+    name = 'structural-population-hybrid-v1'
+
+    def initialize(self, seed):
+        super().initialize(seed)
+        self.evolution = StructuralPopulationEvolution(seed)
+        return self
+
+    def select_parents(self, history):
+        return temporal_population(history)

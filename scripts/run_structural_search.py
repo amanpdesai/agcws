@@ -14,11 +14,17 @@ from agcws.adapters.axi_dma.temporal import DmaTemporalAdapter
 from agcws.experiments.runner import run_search
 from agcws.goals.schema import FixedTemporalGoal
 from agcws.nodes.power import PowerProfile
-from agcws.policies.structural import StructuralEvolution, StructuralRandom
+from agcws.policies.structural import (
+    StructuralEvolution,
+    StructuralPopulationEvolution,
+    StructuralRandom,
+)
 from agcws.policies.structural_agent import StructuralAgent, StructuralHybrid
 from agcws.policies.structural_edit_agent import (
     StructuralEditAgent,
     StructuralEditHybrid,
+    StructuralPopulationAgent,
+    StructuralPopulationHybrid,
 )
 from agcws.workloads.schedule import ScheduleContract
 
@@ -28,7 +34,8 @@ def main():
     parser.add_argument('--design', choices=['aes', 'dma'], default='aes')
     parser.add_argument('--targets', type=Path)
     parser.add_argument('--target', required=True)
-    parser.add_argument('--policy', choices=['random', 'evolutionary', 'agent', 'hybrid', 'edit-agent', 'edit-hybrid'], required=True)
+    parser.add_argument('--policy', choices=['random', 'evolutionary', 'agent', 'hybrid', 'edit-agent', 'edit-hybrid',
+                                            'population-evolution', 'population-agent', 'population-hybrid'], required=True)
     parser.add_argument('--prompt', type=Path)
     parser.add_argument('--seed', type=int, default=310)
     parser.add_argument('--budget', type=int, default=16)
@@ -106,7 +113,7 @@ def main():
                             peak_power=max(rates), windowed=rates, useful_work=useful_work,
                             valid=True, fidelity='activity', provenance=provenance)
 
-    if args.policy in ('agent', 'hybrid', 'edit-agent', 'edit-hybrid'):
+    if args.policy in ('agent', 'hybrid', 'edit-agent', 'edit-hybrid', 'population-agent', 'population-hybrid'):
         config._load_dotenv()
         required = ['AGCWS_GCP_PROJECT', 'AGCWS_GEMINI_MODEL',
                     'AGCWS_GEMINI_INPUT_USD_PER_MILLION', 'AGCWS_GEMINI_OUTPUT_USD_PER_MILLION']
@@ -115,14 +122,17 @@ def main():
         if any(float(os.environ[key]) <= 0 for key in required[2:]):
             raise ValueError('positive model token rates are required')
         cls = {'agent': StructuralAgent, 'hybrid': StructuralHybrid,
-               'edit-agent': StructuralEditAgent, 'edit-hybrid': StructuralEditHybrid}[args.policy]
-        prompt = args.prompt or Path('prompts/structural_temporal_edits_v2.txt' if args.policy.startswith('edit-')
+               'edit-agent': StructuralEditAgent, 'edit-hybrid': StructuralEditHybrid,
+               'population-agent': StructuralPopulationAgent,
+               'population-hybrid': StructuralPopulationHybrid}[args.policy]
+        prompt = args.prompt or Path('prompts/structural_temporal_edits_v2.txt' if args.policy.startswith(('edit-', 'population-'))
                                      else 'prompts/structural_temporal_v1.txt')
         policy = cls.from_vertex(prompt.read_text(), model=os.environ['AGCWS_GEMINI_MODEL'],
                                  project=os.environ['AGCWS_GCP_PROJECT'],
                                  location=os.getenv('AGCWS_GCP_LOCATION', 'global')).initialize(args.seed)
     else:
-        policy = (StructuralRandom if args.policy == 'random' else StructuralEvolution)(args.seed)
+        policy = {'random': StructuralRandom, 'evolutionary': StructuralEvolution,
+                  'population-evolution': StructuralPopulationEvolution}[args.policy](args.seed)
     run_search(adapter, policy, goal, evaluate, budget=args.budget, batch_size=4,
                seed=args.seed, output_dir=args.out)
     print((args.out / 'summary.json').read_text())

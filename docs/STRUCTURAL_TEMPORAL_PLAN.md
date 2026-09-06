@@ -1,5 +1,42 @@
 # Structural temporal study — development plan
 
+## Population comparison protocol
+
+Before running seeds 315–317, the next development panel is fixed in
+`experiments/structural_population_development.json`: both designs, two achieved
+reference profiles, seven policies, 16 proposal slots, batch four (84 cells).
+The best-eight family is compared with a new peak-window population family.
+The latter retains the lowest-loss unique schedule in each measured peak-window
+niche, then fills remaining slots with lowest-loss unique schedules, up to eight.
+Peak ties use the earliest window; loss ties retain history order. Duplicate
+proposals still consume budget even though they do not occupy multiple archive
+slots. CPU evolution, agent-only and hybrid use exactly the same selector.
+All variants retain the existing typed edit API, prompt, model, random
+initialization, loss and fixed-work/window contracts.
+
+This is an AlphaEvolve-inspired diversity ablation, not a reproduction of
+[AlphaEvolve](https://arxiv.org/abs/2506.13131). It does not evolve arbitrary
+generator code, implement island migration, or modify any design/evaluator.
+Existing CPU random-restart probability and hybrid alternation remain explicit
+algorithm differences, not additional evaluator allowances.
+
+Select one family by mean primary AUC equally weighted across design, target,
+seed and agent-only/hybrid variants; ties retain best-eight. Require every
+development cell before selection. Do not select a different family per design.
+The completed scalar study and seed-310 pilots remain separate. Seed 311's
+eight-slot CPU smoke is a mechanics check, not a panel member.
+
+After selection, freeze source/configuration and use fresh seeds 400–404 with
+32 slots for the temporal held-out comparison. Seeds 405–409 are reserved for
+a separately identified extension, not optional stopping to obtain a win.
+The profiles remain previously observed reference tasks; fresh seeds test search
+repeatability, not generalization to unseen target profiles. Any unseen-profile
+claim needs a separately fixed target corpus before evaluation.
+
+The DMA contract here remains fixed-size copies with pacing/concurrency. A
+future transfer-length/backpressure extension is not silently mixed into this
+population ablation. These restrictions bound the expressiveness claim.
+
 ## Four-arm DMA pilot completed
 
 The [audited v2 DMA pilot](../results/structural_temporal_dma_four_arm_v2/pilot.json)
