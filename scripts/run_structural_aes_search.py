@@ -14,6 +14,10 @@ from agcws.goals.schema import FixedTemporalGoal
 from agcws.nodes.power import PowerProfile
 from agcws.policies.structural import StructuralEvolution, StructuralRandom
 from agcws.policies.structural_agent import StructuralAgent, StructuralHybrid
+from agcws.policies.structural_edit_agent import (
+    StructuralEditAgent,
+    StructuralEditHybrid,
+)
 from agcws.workloads.schedule import ScheduleContract
 
 
@@ -21,8 +25,8 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--targets', type=Path, default=Path('results/structural_temporal_aes_verification.json'))
     parser.add_argument('--target', required=True)
-    parser.add_argument('--policy', choices=['random', 'evolutionary', 'agent', 'hybrid'], required=True)
-    parser.add_argument('--prompt', type=Path, default=Path('prompts/structural_temporal_v1.txt'))
+    parser.add_argument('--policy', choices=['random', 'evolutionary', 'agent', 'hybrid', 'edit-agent', 'edit-hybrid'], required=True)
+    parser.add_argument('--prompt', type=Path)
     parser.add_argument('--seed', type=int, default=310)
     parser.add_argument('--budget', type=int, default=16)
     parser.add_argument('--scale', type=float, default=200.0)
@@ -42,7 +46,7 @@ def main():
         'phase': 'development-pilot', 'source': str(args.targets),
         'source_sha256': hashlib.sha256(target_bytes).hexdigest(),
         'reference_name': args.target, 'goal': vars(goal),
-        'scope': 'AES-128 fixed-work temporal activity; no agent or gate-power claim',
+        'scope': 'AES-128 fixed-work temporal development; no superiority or gate-power claim',
     }, indent=2) + '\n')
     index = 0
 
@@ -77,7 +81,7 @@ def main():
                             peak_power=max(rates), windowed=rates, useful_work=int(match[1]),
                             valid=True, fidelity='activity', provenance=provenance)
 
-    if args.policy in ('agent', 'hybrid'):
+    if args.policy in ('agent', 'hybrid', 'edit-agent', 'edit-hybrid'):
         from agcws import config
         config._load_dotenv()
         required = ['AGCWS_GCP_PROJECT', 'AGCWS_GEMINI_MODEL',
@@ -86,8 +90,11 @@ def main():
             raise ValueError('Vertex project/model and explicit token pricing are required')
         if any(float(os.environ[key]) <= 0 for key in required[2:]):
             raise ValueError('positive model token rates are required')
-        cls = StructuralAgent if args.policy == 'agent' else StructuralHybrid
-        policy = cls.from_vertex(args.prompt.read_text(), model=os.environ['AGCWS_GEMINI_MODEL'],
+        cls = {'agent': StructuralAgent, 'hybrid': StructuralHybrid,
+               'edit-agent': StructuralEditAgent, 'edit-hybrid': StructuralEditHybrid}[args.policy]
+        prompt = args.prompt or Path('prompts/structural_temporal_edits_v2.txt' if args.policy.startswith('edit-')
+                                     else 'prompts/structural_temporal_v1.txt')
+        policy = cls.from_vertex(prompt.read_text(), model=os.environ['AGCWS_GEMINI_MODEL'],
                                  project=os.environ['AGCWS_GCP_PROJECT'],
                                  location=os.getenv('AGCWS_GCP_LOCATION', 'global')).initialize(args.seed)
     else:

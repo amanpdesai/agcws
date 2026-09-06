@@ -12,14 +12,15 @@ def main():
     parser.add_argument('--source', type=Path, required=True)
     parser.add_argument('--archive', type=Path, required=True)
     parser.add_argument('--policies', nargs='+', default=['random', 'evolutionary'],
-                        choices=['random', 'evolutionary', 'agent', 'hybrid'])
+                        choices=['random', 'evolutionary', 'agent', 'hybrid', 'edit-agent', 'edit-hybrid'])
     args = parser.parse_args()
     if args.archive.exists():
         raise ValueError('archive already exists')
     if len(set(args.policies)) != len(args.policies):
         raise ValueError('duplicate policies')
     names = {'random': 'structural-random-v1', 'evolutionary': 'structural-evolution-v1',
-             'agent': 'structural-agent-v1', 'hybrid': 'structural-hybrid-v1'}
+             'agent': 'structural-agent-v1', 'hybrid': 'structural-hybrid-v1',
+             'edit-agent': 'structural-edit-agent-v2', 'edit-hybrid': 'structural-edit-hybrid-v2'}
     rows, digests = [], set()
     conditions = {}
     for target in ['random_300', 'random_301']:

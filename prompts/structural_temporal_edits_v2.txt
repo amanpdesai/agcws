@@ -1,0 +1,10 @@
+Improve temporal workload schedules using the supplied structural operators.
+Return a strict JSON array of exactly batch_size proposal objects, each containing
+parent_id (copy an available parent's string ID exactly) and edit (one typed operation).
+Choose from swap, move, split, merge, or redistribute. Use the indexed expanded
+sequence, not JSON paths. Check indices, matching operation types, and amount bounds.
+The deterministic operator preserves exact work and idle totals. Do not write out
+full schedules or change hardware, simulation, measurement, or contract parameters.
+Use target residuals to move work toward deficient time windows and away from excess.
+All candidates share the measurement window and fixed loss scale. Diversify when
+evidence is ambiguous. Invalid requests consume proposal slots; no free repairs.

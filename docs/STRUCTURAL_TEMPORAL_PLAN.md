@@ -17,6 +17,23 @@ method advantage. Agent-only/hybrid integration and DMA transfer are next.
 
 ## CPU pilot configuration
 
+V2 is a separately named typed-edit candidate: one structural operation per
+proposal against an explicitly named parent. The parent set is the same best
+eight valid trials used by structural evolution; every expanded sequence node
+has an explicit index. Both use the identical swap/move/split/merge/redistribute
+implementation. Unknown parents, invalid indices and illegal amounts fail and
+consume slots, with the precise rejection exposed in subsequent feedback.
+This is not a return to scalar-only editing: split/merge change sequence length,
+and move/swap alter ordering. One operation per proposal matches the CPU arm.
+
+V2 keeps the two references, seed 310, budget 16, batch size 4, scale, tolerance,
+model and sampling unchanged. Its prompt is
+`prompts/structural_temporal_edits_v2.txt`; parent count is eight rather than
+the full-schedule v1 agent's four. Random/evolutionary cells are rerun under
+the same captured source as the two v2 agent arms. Compare complete pilot
+panels descriptively, retaining v1 failures. No final-evaluation claims or
+favorable stopping rule are introduced by this development iteration.
+
 The next agent-only/hybrid pilot retains the two CPU reference targets,
 seed 310, 16 slots, batch 4, scale 200 and tolerance 0.10. Both controllers
 start with the same four random candidates. Agent-only uses model proposals
