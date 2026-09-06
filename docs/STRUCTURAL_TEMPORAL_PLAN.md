@@ -1,5 +1,14 @@
 # Structural temporal study — development plan
 
+The first four-arm agent pilot is also complete at
+`results/structural_temporal_four_arm_pilot_v1/`. All 128 slots and usage are
+audited. Neither agent-only nor hybrid solves either target; only 5/24
+agent-generated slots are valid after excluding shared initialization.
+Two responses hit MAX_TOKENS; others miss exact totals. The next development
+candidate will use compact typed structural operators shared with evolution,
+explicit parent identities and indexed sequence descriptions. Preserve this
+full-schedule v1 negative result; do not scale or relabel it as successful.
+
 The CPU pilot is now complete and archived at
 `results/structural_temporal_cpu_pilot_v1/`: 64/64 valid proposals, all with
 exact work and observation duration. Random and structural evolution each
