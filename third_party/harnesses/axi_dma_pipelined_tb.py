@@ -5,7 +5,8 @@ import os
 
 import cocotb
 from cocotb.clock import Clock
-from cocotb.triggers import FallingEdge, RisingEdge
+from cocotb.triggers import FallingEdge, RisingEdge, Timer
+from cocotb.utils import get_sim_time
 from cocotbext.axi import AxiBus, AxiRam, AxiStreamFrame
 from axi_dma_coupled_tb import (DescBus, DescSource, DescTransaction, StatusBus, StatusSink,
                                  cocotbext_read_sink, cocotbext_write_source)
@@ -19,6 +20,17 @@ async def run_workload(dut):
         workload = json.load(source)
     validity = validate_static(PipelinedDmaAdapter(), workload)
     assert validity.valid, validity.reason
+    horizon = int(os.environ.get('AGCWS_DMA_OBSERVATION_CYCLES', '0'))
+    trailing_idle = int(os.environ.get('AGCWS_DMA_TRAILING_IDLE', '0'))
+    assert horizon >= 0 and trailing_idle >= 0
+    finished = False
+
+    async def observation_deadline():
+        await Timer(horizon * 10, units='ns')
+        assert finished, 'workload failed to complete within the declared observation horizon'
+
+    if horizon:
+        cocotb.start_soon(observation_deadline())
     cocotb.start_soon(Clock(dut.clk, 10, units='ns').start())
     dut.read_enable.value = 0
     dut.write_enable.value = 0
@@ -89,10 +101,22 @@ async def run_workload(dut):
             assert ram.read(transfer['dst'], transfer['length']) == data
         for task in tasks:
             await task
+    completion_ns = int(get_sim_time(units='ns'))
+    for _ in range(trailing_idle):
+        await RisingEdge(dut.clk)
     await RisingEdge(dut.clk)
     await FallingEdge(dut.clk)
+    finished = True
     watcher.cancel()
     assert observed['read_descriptors'] == observed['write_completions'] == len(workload['transfers'])
+    if horizon:
+        now = int(get_sim_time(units='ns'))
+        assert now <= horizon * 10, 'declared wait schedule exceeds observation horizon'
+        await Timer(horizon * 10 + 5 - now, units='ns')
+        observed.update(observation_cycles=horizon, completion_ns=completion_ns,
+                        trailing_idle_cycles=trailing_idle, declared_schedule_end_ns=now,
+                        padded_until_ns=int(get_sim_time(units='ns')),
+                        useful_work_bytes=sum(t['length'] for t in workload['transfers']))
     with open('observed.json', 'w') as result:
         json.dump(observed, result)
     dut._log.info('AGCWS_AXI_DMA_PIPELINED_OK transfers=%d max_inflight=%d', tag, observed['max_inflight'])

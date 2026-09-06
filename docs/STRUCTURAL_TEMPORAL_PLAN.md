@@ -1,5 +1,40 @@
 # Structural temporal study — development plan
 
+## DMA transfer checkpoint
+
+The shared schedule validator now lowers to both AES and DMA. DMA work units
+are 64-byte copies; a work operation groups up to eight units concurrently,
+waiting for completion before the next group. Splitting work therefore changes
+actual concurrency, not only a JSON field. Addresses are generated in disjoint
+source/destination pages within each group, and every returned frame, tag,
+status and destination copy is checked by the established pipelined harness.
+
+DMA uses 64 work units (4096 bytes), 6000 declared idle cycles, and a fixed
+12000-cycle observation horizon at 10 ns/clock. Trailing waits are retained;
+completed schedules pad to the common horizon. An unfinished schedule fails
+at that declared horizon and receives no activity score. This is the target's
+simulation-window contract, not an arbitrary wall-clock tool timeout.
+
+`results/structural_temporal_dma_verification.json` contains six schedules,
+each repeated twice. All match the exact work/window contract. Serial grouping
+observes one in-flight transfer; burst grouping observes four. Burst, paced,
+low/high/low and random schedules have different eight-bin activity profiles.
+Per-cycle activity and timing match between repeats; waveform hashes can differ
+because of file metadata and are retained separately. The negative horizon
+check is in `results/structural_temporal_dma_deadline_check.json`. The existing
+seven-case unbounded-window pipelining verification still matches its prior
+record exactly.
+
+The shared entry point is `scripts/run_structural_search.py --design aes|dma`;
+the prior AES entry point remains a compatibility wrapper. A DMA eight-slot
+random smoke passed every exact-work/window gate. The next matched four-arm
+DMA pilot will use the same v2 agent/hybrid prompt and settings, references
+random_300/random_301, seed 310, 16 slots and batch 4. Its fixed normalization
+scale is 40 transitions/edge (above the capability corpus peak bin rate 33.125),
+with provisional tolerance 0.10. No per-candidate rescaling or per-design
+controller tuning is introduced. Final tolerance/target selection remains a
+separate cross-design development step before any held-out evaluation.
+
 Typed-edit v2 is now complete at
 `results/structural_temporal_four_arm_pilot_v2/`: the agent's generated-slot
 validity rose from 5/24 to 20/24, without free retries. Both agent arms still
