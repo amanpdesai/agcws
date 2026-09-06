@@ -4,6 +4,12 @@ This project does **not** make executables Git submodules. Source dependencies
 are pinned as submodules; executable tools are version-checked on the host and
 ultimately pinned in the container image.
 
+Current OpenSTA update (2026-09-06): the repo selects upstream commit
+`a9a3f30ca97dc13f9ef911cae1a82c42c67379e1`, with verified native VCD time-window
+support. See [installation and evidence](OPENSTA_UPSTREAM.md). Archived studies
+retain their older tool provenance. The slice inventory below includes historical
+bring-up statuses; current completed Vertex studies are in `RESULTS.md`.
+
 ## Required for Slice 1
 
 | Dependency | Role | Current state | Reproducibility plan |

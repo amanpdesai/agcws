@@ -5,7 +5,7 @@ FROM python:3.10-slim@sha256:38758a82a44d1acb9bae3dd5f7d2a55452fb44a5ceca7c4589f
 LABEL io.agcws.project=agcws
 
 ARG OPENSTA_REPO=https://github.com/The-OpenROAD-Project/OpenSTA.git
-ARG OPENSTA_REF=c821ad1ad07031de831fd567fc626bf70d522c49
+ARG OPENSTA_REF=a9a3f30ca97dc13f9ef911cae1a82c42c67379e1
 ARG SV_ELAB_REPO=https://github.com/povik/sv-elab.git
 ARG SV_ELAB_REF=84bbdaacf59f56ff9b5e7be486f9cc7df136b385
 

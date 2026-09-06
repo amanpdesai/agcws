@@ -1,5 +1,15 @@
 # Decision log
 
+## 2026-09-06 — Adopt pinned upstream OpenSTA for future windowed validation
+
+**Decision.** Install `a9a3f30ca97dc13f9ef911cae1a82c42c67379e1` alongside
+the old executable and select it through `.env`; update Docker's source pin.
+**Evidence.** Its upstream VCD-window regression passes exactly. One AES and
+one DMA finalist retain their full-window power components and annotation counts.
+**Consequence.** Archived studies stay unchanged. Window arguments use VCD ticks
+and include both endpoints; the forthcoming temporal evaluator needs tested
+boundary ownership. See [OPENSTA_UPSTREAM.md](OPENSTA_UPSTREAM.md).
+
 ## 2026-09-06 — Close the frozen temporal milestone without claiming an agent win
 
 **Decision.** Archive all 160 cells / 5120 slots and all 16 predeclared matched

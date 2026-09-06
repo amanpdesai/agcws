@@ -1,5 +1,9 @@
 # Artifact retention
 
+Pinned native OpenSTA installation and verification are documented in
+`docs/OPENSTA_UPSTREAM.md`. `verify_opensta_windows.py` verifies the source pin,
+native window flags and upstream regression without changing `.env` or results.
+
 `results/` is research evidence. `out/` holds scratch outputs and reusable
 builds. Container removal does not remove these host files.
 
