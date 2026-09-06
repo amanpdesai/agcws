@@ -30,3 +30,20 @@ horizon and trailing idle cycles, disables the legacy diagnostic bypass,
 and requires the entire completion/timing observation record to equal RTL.
 The same Sky130 model environment variables are required. No new wall-clock
 deadline is imposed; the existing semantic observation horizon still applies.
+
+`python -m validation.structural_case --runs <held-out-run-root> --freeze
+<freeze.json> --design aes|dma --target <reference> --policy <frozen-policy>
+--synthesis <mapped-directory> --out <validation-root>` validates the fixed
+seed-400 finalist from one completed cell. It audits the cell and frozen source
+hashes, checks that the raw RTL workload/vector matches the selected trial,
+and runs GLS plus OpenSTA. A content-identical completed replay may be reused;
+changed validation inputs fail rather than silently reusing stale evidence.
+Do not launch concurrent cases with the same replay identity.
+
+Individual replays may overlap the frozen search. Final reporting still requires
+the complete held-out audit, `analysis.select_structural_finalists`, and
+`analysis.archive_structural_finalists`. The latter independently reselects all
+16 cases from the held-out archive, verifies replay artifacts, and compares
+each waveform's own timescale and start/end timestamps. Keep raw waveforms until
+that reconciliation succeeds. Full-window power remains distinct from temporal
+power-shape validation.

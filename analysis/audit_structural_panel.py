@@ -81,7 +81,12 @@ def audit_cell(cell, design, target, seed, policy, budget):
         expected = (summary['tokens_in'] * float(price['INPUT_USD_PER_MILLION'])
                     + summary['tokens_out'] * float(price['OUTPUT_USD_PER_MILLION'])) / 1e6
         require(math.isclose(expected, summary['est_cost_usd'], abs_tol=1e-12), 'pricing mismatch')
-    return {'design': design, 'reference_name': target, 'policy_alias': policy, **summary}, manifest, reference
+    timing = {}
+    for key in ('wall_clock_s', 'generation_wall_clock_s'):
+        require(all(math.isfinite(row[key]) and row[key] >= 0 for row in rows), 'invalid ledger timing')
+        timing[key] = sum(row[key] for row in rows)
+    return {'design': design, 'reference_name': target, 'policy_alias': policy,
+            **summary, 'ledger_timing_s': timing}, manifest, reference
 
 
 def build(source):

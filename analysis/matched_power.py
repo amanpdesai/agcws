@@ -12,6 +12,8 @@ def parse_report(report):
     internal, switching, leakage, power = map(float, total.groups())
     if any(not math.isfinite(v) or v < 0 for v in (internal, switching, leakage, power)):
         raise ValueError('invalid power report')
+    if int(annotated[1]) == 0 or internal + switching <= 0:
+        raise ValueError('no annotated dynamic power for active-work validation')
     if not math.isclose(internal + switching + leakage, power, rel_tol=1e-6, abs_tol=1e-12):
         raise ValueError('inconsistent power components')
     return {'internal_power_w': internal, 'switching_power_w': switching,

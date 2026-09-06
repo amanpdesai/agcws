@@ -1,8 +1,16 @@
 # Results status
 
-This file records the strongest verified results currently present in the
-repository. It is not the final paper result: the declared 10-seed,
-multi-design factorial study has not yet been completed.
+This file retains historical infrastructure and pilot observations. The completed
+two-design scalar held-out study is reported in [SEMANTIC_RESULTS.md](SEMANTIC_RESULTS.md).
+The frozen temporal study is tracked in [STRUCTURAL_TEMPORAL_PLAN.md](STRUCTURAL_TEMPORAL_PLAN.md).
+These do not constitute the entire original three-design factorial study.
+
+The older proxy-to-gate correlations below are superseded, not current findings:
+the legacy GLS driver aggregated pacing and used a masked two-share netlist,
+whereas the current RTL transaction study uses unmasked, one-share LUT AES.
+Matching a clock count alone does not repair that configuration/stimulus mismatch.
+The new matched smoke evidence is in `results/aes_matched_gls_smoke_v1/` and
+`results/dma_matched_gls_smoke_v1/`; it does not itself establish proxy correlation.
 
 ## Verified infrastructure
 
@@ -139,9 +147,10 @@ validation rather than an inner-loop evaluator.
 The GLS harness now accepts the workload's block count, pattern, key length,
 direction, and aggregate pacing. A 221-block replay compiled and launched with
 those controls, reached 307 MiB of VCD after about five minutes, and was
-stopped manually. This confirms exact replay is available but unsuitable for
-the inner loop or a full smoke matrix; correlation must use a deliberately
-bounded finalist corpus and report that scope.
+stopped manually. This was aggregate-control replay, not exact transaction replay:
+operation ordering and the current unmasked configuration were not preserved.
+Its runtime is a historical observation for that older configuration, not a
+validated estimate for the new matched transaction harness.
 
 The earlier one-block bounded run reported ρ=`0.0968280607`; it is superseded
 because constant projection removed the corpus's block-count variance. The
@@ -155,10 +164,11 @@ declared rate-vs-rate comparison: RTL transitions per cycle versus GLS dynamic
 power. Over the 34 completed rows, pooled ρ=`-0.7169173149` and block-controlled
 partial Spearman ρ=`-0.1168103321`. Per-rung correlations are `-0.0990` (1/2
 blocks), `0.2970` (4/8), and `0.2962` (16/32). These are partial diagnostics,
-not a final 20-workload result; the values show that length/window effects are
-not sufficient evidence of proxy validity.
+not a final 20-workload result. The configuration/stimulus mismatch identified
+above additionally disqualifies them as evidence for or against the current
+activity proxy, independently of incomplete sampling or window effects.
 
-An initial ladder attempt was stopped after 34 complete matched rows: it had
+An initial ladder attempt was stopped after 34 completed, but not valid matched-tier, rows: it had
 run for about 2h45 locally and was still processing the 16-block rung. Its
 partial pooled diagnostic was ρ=`-0.7169`, but it is not a result because the
 ladder was incomplete. This invalidates the earlier estimate that 32-block GLS

@@ -1,0 +1,40 @@
+import itertools
+
+import pytest
+
+from analysis.report_structural_results import render
+from analysis.structural_inference import compare
+
+
+def reports():
+    spec = {'phase': 'held-out', 'selected_family': 'best-eight', 'designs': ['aes', 'dma'],
+            'targets': ['random_300', 'random_301'], 'seeds': list(range(400, 410)),
+            'budget': 32, 'batch_size': 4,
+            'policies': ['random', 'evolutionary', 'edit-agent', 'edit-hybrid']}
+    rows = [{'design_key': d, 'reference_name': t, 'seed': s, 'policy_alias': p,
+             'auc_best_so_far': 1.0, 'solved': False, 'right_censored': True,
+             'evaluations_to_target': 32, 'valid_trials': 32, 'validity_failures': {},
+             'est_cost_usd': 0, 'unknown_usage_batches': 0,
+             'ledger_timing_s': {'wall_clock_s': 1, 'generation_wall_clock_s': 0}}
+            for d, t, s, p in itertools.product(spec['designs'], spec['targets'], spec['seeds'], spec['policies'])]
+    heldout = {'audited_cells': 160, 'audited_slots': 5120, 'spec': spec, 'rows': rows,
+               'inference': compare(rows, spec)}
+    validation = {'selected_cases': 16, 'matched_cases': 16, 'unique_replays': {'fixture': {}},
+                  'validation_wall_clock_s': 1}
+    return heldout, validation
+
+
+def test_primary_precedes_secondary_and_limits_survive():
+    heldout, validation = reports()
+    report = render(heldout, validation)
+    assert report.index('## Primary endpoint') < report.index('## Validity, cost and runtime')
+    assert 'Nonsignificance is not equivalence' in report
+    assert '160 cells / 5120 proposed slots' in report
+    assert '0/20' in report and '32.00' in report
+
+
+def test_incomplete_panel_cannot_be_rendered_as_complete():
+    heldout, validation = reports()
+    heldout['audited_cells'] = 159
+    with pytest.raises(ValueError, match='complete held-out'):
+        render(heldout, validation)
