@@ -2,6 +2,7 @@
 import argparse
 import hashlib
 import json
+import os
 import re
 import subprocess
 import sys
@@ -12,6 +13,7 @@ from agcws.experiments.runner import run_search
 from agcws.goals.schema import FixedTemporalGoal
 from agcws.nodes.power import PowerProfile
 from agcws.policies.structural import StructuralEvolution, StructuralRandom
+from agcws.policies.structural_agent import StructuralAgent, StructuralHybrid
 from agcws.workloads.schedule import ScheduleContract
 
 
@@ -19,7 +21,8 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--targets', type=Path, default=Path('results/structural_temporal_aes_verification.json'))
     parser.add_argument('--target', required=True)
-    parser.add_argument('--policy', choices=['random', 'evolutionary'], required=True)
+    parser.add_argument('--policy', choices=['random', 'evolutionary', 'agent', 'hybrid'], required=True)
+    parser.add_argument('--prompt', type=Path, default=Path('prompts/structural_temporal_v1.txt'))
     parser.add_argument('--seed', type=int, default=310)
     parser.add_argument('--budget', type=int, default=16)
     parser.add_argument('--scale', type=float, default=200.0)
@@ -74,7 +77,21 @@ def main():
                             peak_power=max(rates), windowed=rates, useful_work=int(match[1]),
                             valid=True, fidelity='activity', provenance=provenance)
 
-    policy = (StructuralRandom if args.policy == 'random' else StructuralEvolution)(args.seed)
+    if args.policy in ('agent', 'hybrid'):
+        from agcws import config
+        config._load_dotenv()
+        required = ['AGCWS_GCP_PROJECT', 'AGCWS_GEMINI_MODEL',
+                    'AGCWS_GEMINI_INPUT_USD_PER_MILLION', 'AGCWS_GEMINI_OUTPUT_USD_PER_MILLION']
+        if any(not os.getenv(key) for key in required):
+            raise ValueError('Vertex project/model and explicit token pricing are required')
+        if any(float(os.environ[key]) <= 0 for key in required[2:]):
+            raise ValueError('positive model token rates are required')
+        cls = StructuralAgent if args.policy == 'agent' else StructuralHybrid
+        policy = cls.from_vertex(args.prompt.read_text(), model=os.environ['AGCWS_GEMINI_MODEL'],
+                                 project=os.environ['AGCWS_GCP_PROJECT'],
+                                 location=os.getenv('AGCWS_GCP_LOCATION', 'global')).initialize(args.seed)
+    else:
+        policy = (StructuralRandom if args.policy == 'random' else StructuralEvolution)(args.seed)
     run_search(adapter, policy, goal, evaluate, budget=args.budget, batch_size=4,
                seed=args.seed, output_dir=args.out)
     print((args.out / 'summary.json').read_text())

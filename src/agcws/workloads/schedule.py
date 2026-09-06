@@ -75,10 +75,13 @@ def expand_schedule(workload, contract):
                 expanded.append({'op': node['op'], field: int(node[field])})
 
     visit(workload['sequence'], 0)
-    if sum(n.get('units', 0) for n in expanded) != contract.work_units:
-        raise ValueError('schedule violates exact useful-work budget')
-    if sum(n.get('cycles', 0) for n in expanded) != contract.idle_cycles:
-        raise ValueError('schedule violates exact idle-cycle budget')
+    work = sum(n.get('units', 0) for n in expanded)
+    idle = sum(n.get('cycles', 0) for n in expanded)
+    detail = f'actual work={work}, required={contract.work_units}; actual idle={idle}, required={contract.idle_cycles}'
+    if work != contract.work_units:
+        raise ValueError(f'schedule violates exact useful-work budget: {detail}')
+    if idle != contract.idle_cycles:
+        raise ValueError(f'schedule violates exact idle-cycle budget: {detail}')
     return expanded
 
 

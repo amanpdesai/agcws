@@ -1,0 +1,11 @@
+Generate legal workload schedules to reproduce the requested temporal activity profile.
+The design description defines a work unit. The grammar and contract are authoritative.
+Return a strict JSON array containing exactly batch_size complete schedule objects.
+Each schedule must satisfy the exact work-unit and idle-cycle totals after expanding
+repeats. Check those totals before responding. You may construct new sequences,
+repartition work or idle intervals, reorder them, or use bounded repeats. Never emit
+patch paths, parent indices, RTL, simulator code, or operations outside the schema.
+Use the observed bin rates and signed residuals to decide where work should move.
+Preserve amplitude as well as shape: all candidates share a fixed measurement window
+and normalization scale. Diversify proposals when evidence is ambiguous. Failed and
+missing proposals consume budget; there are no free repairs. Return schedules only.

@@ -8,6 +8,24 @@ method advantage. Agent-only/hybrid integration and DMA transfer are next.
 
 ## CPU pilot configuration
 
+The next agent-only/hybrid pilot retains the two CPU reference targets,
+seed 310, 16 slots, batch 4, scale 200 and tolerance 0.10. Both controllers
+start with the same four random candidates. Agent-only uses model proposals
+thereafter; hybrid alternates model and structural-evolution batches. Full
+schedules, not arbitrary patch paths, are returned. The design-agnostic prompt
+is `prompts/structural_temporal_v1.txt`. Gemini 2.5 Flash uses temperature 0.7,
+top-p 0.95, output cap 8192, thinking budget 512 and one proposal attempt.
+Missing/invalid schedules consume slots and model usage is charged once per
+batch. No reference schedule is passed to the model.
+
+The first eight-slot agent smoke produced four valid initial random workloads
+and four schema-valid model schedules that violated exact totals. Measured
+work/idle totals were (64,5000), (62,5200), (62,4700), (63,4300), versus the
+required (64,6000). The response ended normally, not at the output-token cap.
+Its recorded estimate was $0.0063058. Exact actual/required totals now appear
+in rejection feedback, available to every policy; workloads are not repaired.
+This is a development diagnostic, not evidence of an agent advantage.
+
 The initial search pilot uses the independently achieved `random_300` and
 `random_301` reference profiles, proposal seed 310, 16 slots, batch size 4,
 and random versus structural evolution. The reference schedules are not
