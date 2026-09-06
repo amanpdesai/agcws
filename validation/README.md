@@ -47,3 +47,20 @@ the complete held-out audit, `analysis.select_structural_finalists`, and
 each waveform's own timescale and start/end timestamps. Keep raw waveforms until
 that reconciliation succeeds. Full-window power remains distinct from temporal
 power-shape validation.
+
+The Dockerfile retains the Sky130 functional models from its pinned OpenSTA
+source and sets the two model paths inside the image. At OpenSTA commit
+`c821ad1ad07031de831fd567fc626bf70d522c49`, these files are byte-identical
+to the host models used for the matched validation:
+
+| File | SHA-256 |
+|---|---|
+| `sky130_hd.v` | `5ff4558207faf8ea0d4f35ea6d85e1ff36f57936d307423c8f234204398d1c3a` |
+| `sky130_hd_primitives.v` | `81351b44f54dd9b5e3cd07a845cbe9d90e889d29edfcbff57a527280839bbccc` |
+
+This source check does not imply that host experiments ran inside Docker or that
+the updated image has completed a full validation replay.
+The 2026-09-06 Python-3.10 container smoke was blocked before Python started
+(`exec /usr/local/bin/python: operation not permitted`); no successful image
+replay is claimed. Streaming-hash tests pass on the host without using
+Python 3.11's `hashlib.file_digest` API.

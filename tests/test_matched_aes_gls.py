@@ -1,9 +1,19 @@
+import hashlib
 import json
 from types import SimpleNamespace
 
 import pytest
 
 from validation.aes_gls import PARAMETERS, replay, sha
+
+
+@pytest.mark.parametrize('size', [0, 17, 2 * 1024 * 1024 + 3])
+def test_streaming_hash_supports_python310(tmp_path, monkeypatch, size):
+    monkeypatch.delattr(hashlib, 'file_digest', raising=False)
+    data = b'x' * size
+    path = tmp_path / 'collateral'
+    path.write_bytes(data)
+    assert sha(path) == hashlib.sha256(data).hexdigest()
 
 
 @pytest.mark.parametrize('change', ['parameters', 'netlist'])

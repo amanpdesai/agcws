@@ -70,7 +70,7 @@ def render(heldout, validation):
              'not zero compute cost.'), '',
              (f"Summed trial/evaluation time is {timing['wall_clock_s']:.2f} seconds; "
              f"summed proposal-generation time is {timing['generation_wall_clock_s']:.2f} seconds. "
-             'These ledger totals exclude process startup and are not a controlled speed benchmark: '
+             'These ledger totals exclude outer run-process startup and are not a controlled speed benchmark: '
              'shared-host load and overlapping finalist validation affect elapsed time.'), '',
              '## Predeclared finalist validation', '',
              (f"{validation['matched_cases']}/16 selected seed-400 cases have matched validation, using "
@@ -80,6 +80,22 @@ def render(heldout, validation):
              (f"Successful unique replay pipeline time totals {validation['validation_wall_clock_s']:.2f} seconds "
              '(excluding synthesis, search and failed attempts). The archive records each waveform’s own '
              'timescale/span, functional checks, annotation and power components.'), '',
+             '| Design | Target | Policy | Proposal source | Dynamic power (mW) | Annotated pins |',
+             '|---|---|---|---|---:|---:|']
+    for case in validation['cases']:
+        prefix = f"| {case['design'].upper()} | {case['target']} | {LABELS[case['policy']]} | "
+        if case['validation_status'] != 'matched':
+            text.append(prefix + 'No valid finalist | — | — |')
+            continue
+        power = validation['unique_replays'][case['replay_id']]['comparison']
+        annotated = power['annotated_pins']
+        total = annotated + power['unannotated_pins']
+        text.append(prefix + f"{case['proposal_source']} | {1000 * power['dynamic_power_w']:.6f} "
+                    f"| {annotated}/{total} |")
+    text += ['', ('Dynamic power is internal plus switching, averaged over the matched full window. '
+             'It is not temporal target error. Similar full-window means can coexist with different '
+             'activity schedules at fixed useful work and duration. Proposal source distinguishes '
+             'model improvements from shared initialization or CPU steps.'), '',
              '## Claim limits', '',
              ('The population ablation is AlphaEvolve-inspired, not AlphaEvolve itself. The selected '
              'controller applies bounded structural edits; it does not evolve arbitrary generator programs. '

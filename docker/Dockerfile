@@ -35,6 +35,8 @@ RUN wget -q https://raw.githubusercontent.com/davidkebo/cudd/main/cudd_versions/
       -DCUDD_DIR=/tmp/cudd-install -DBUILD_TESTS=OFF && \
     cmake --build /tmp/OpenSTA/build --parallel 2 && \
     install -Dm755 /tmp/OpenSTA/build/sta /usr/local/bin/sta && \
+    install -Dm644 /tmp/OpenSTA/examples/sky130_hd.v /usr/local/share/agcws/sky130_hd.v && \
+    install -Dm644 /tmp/OpenSTA/examples/sky130_hd_primitives.v /usr/local/share/agcws/sky130_hd_primitives.v && \
     cd / && rm -rf /tmp/OpenSTA /tmp/cudd-3.0.0 /tmp/cudd-3.0.0.tar.gz
 
 RUN git clone --recursive --no-checkout "$SV_ELAB_REPO" /tmp/sv-elab && \
@@ -57,6 +59,7 @@ COPY scripts /opt/agcws/scripts
 COPY experiments /opt/agcws/experiments
 COPY flows /opt/agcws/flows
 COPY analysis /opt/agcws/analysis
+COPY validation /opt/agcws/validation
 COPY prompts /opt/agcws/prompts
 COPY third_party/liberty /opt/agcws/third_party/liberty
 COPY third_party/opentitan /opt/agcws/third_party/opentitan
@@ -79,6 +82,8 @@ ENV PYTHONUNBUFFERED=1 \
     AGCWS_VERILATOR=/usr/bin/verilator \
     AGCWS_YOSYS=/usr/bin/yosys \
     AGCWS_OPENSTA=/usr/local/bin/sta \
+    AGCWS_SKY130_CELL_MODELS=/usr/local/share/agcws/sky130_hd.v \
+    AGCWS_SKY130_PRIMITIVES=/usr/local/share/agcws/sky130_hd_primitives.v \
     AGCWS_SLANG_PLUGIN=/usr/local/share/yosys/plugins/slang.so \
     AGCWS_LIBERTY=third_party/liberty/sky130hd/sky130_fd_sc_hd__tt_025C_1v80.lib \
     AGCWS_LIBERTY_NANGATE45=third_party/liberty/nangate45/Nangate45_typ.lib
