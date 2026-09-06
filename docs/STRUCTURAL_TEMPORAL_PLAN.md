@@ -1,5 +1,25 @@
 # Structural temporal study — development plan
 
+## Development selection completed
+
+All 84 cells / 1344 proposal slots completed and passed independent audit in
+`results/structural_population_development_v1/`. The declared balanced-family
+selection chooses **best-eight**, mean AUC 2.0452708295 versus 2.0697978435 for
+peak-window-population. The diversity-preserving AlphaEvolve-inspired archive
+did not improve the aggregate; retain it as a tested development alternative,
+not a held-out superiority claim or an implementation of AlphaEvolve itself.
+
+Random mean AUC is 1.99215 on AES and 1.69900 on DMA. Selected edit-agent means
+are 2.15797 / 2.07107; selected edit-hybrid means are 1.97098 / 1.98107. These
+six-run-per-design/policy development summaries do not establish parity or a
+general agent advantage. Recorded model cost is $0.3771352, with two batches of
+unknown provider usage, so accounting is incomplete. No failed proposal slots
+were removed or granted free retries.
+
+Held-out integration adds phase labels and a pre-proposal frozen-manifest guard;
+it does not modify either selected policy, the DSL, evaluator or target corpus.
+The frozen study retains the stated tolerances, fixed scales and 32-slot budget.
+
 ## Population comparison protocol
 
 Before running seeds 315–317, the next development panel is fixed in

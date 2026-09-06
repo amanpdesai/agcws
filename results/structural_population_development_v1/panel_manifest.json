@@ -1,0 +1,32 @@
+{
+  "spec": {
+    "phase": "development",
+    "designs": [
+      "aes",
+      "dma"
+    ],
+    "targets": [
+      "random_300",
+      "random_301"
+    ],
+    "seeds": [
+      315,
+      316,
+      317
+    ],
+    "budget": 16,
+    "batch_size": 4,
+    "policies": [
+      "random",
+      "evolutionary",
+      "population-evolution",
+      "edit-agent",
+      "edit-hybrid",
+      "population-agent",
+      "population-hybrid"
+    ],
+    "selection": "Choose best-eight or peak-window-population family by mean primary AUC, equally weighted across both designs, both targets, three seeds, and agent-only/hybrid variants. Ties select best-eight. Require a complete panel; do not select per design.",
+    "claim_scope": "Development on previously observed feasible reference profiles. No held-out superiority or power claim."
+  },
+  "spec_sha256": "514f4f8b57aa64e587451d8e51d97f0f1e7e47c5e11adca705d4d60eeb29b5de"
+}

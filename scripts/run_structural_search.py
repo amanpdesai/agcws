@@ -11,6 +11,8 @@ from pathlib import Path
 from agcws import config
 from agcws.adapters.aes.temporal import AESTemporalAdapter
 from agcws.adapters.axi_dma.temporal import DmaTemporalAdapter
+from agcws.experiments.freeze import verify_frozen_manifest
+from agcws.experiments.provenance import capture_run
 from agcws.experiments.runner import run_search
 from agcws.goals.schema import FixedTemporalGoal
 from agcws.nodes.power import PowerProfile
@@ -33,6 +35,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--design', choices=['aes', 'dma'], default='aes')
     parser.add_argument('--targets', type=Path)
+    parser.add_argument('--freeze', type=Path)
     parser.add_argument('--target', required=True)
     parser.add_argument('--policy', choices=['random', 'evolutionary', 'agent', 'hybrid', 'edit-agent', 'edit-hybrid',
                                             'population-evolution', 'population-agent', 'population-hybrid'], required=True)
@@ -42,9 +45,23 @@ def main():
     parser.add_argument('--scale', type=float)
     parser.add_argument('--out', type=Path, required=True)
     args = parser.parse_args()
+    freeze_bytes = args.freeze.read_bytes() if args.freeze else None
+    frozen = json.loads(freeze_bytes) if freeze_bytes else None
+    if frozen:
+        spec = frozen['spec']
+        if (spec['phase'] != 'held-out' or args.design not in spec['designs']
+                or args.target not in spec['targets'] or args.seed not in spec['seeds']
+                or args.policy not in spec['policies'] or args.budget != spec['budget']):
+            raise ValueError('request differs from frozen held-out panel')
+        for name, expected in frozen['transport'].items():
+            default = {'AGCWS_GCP_LOCATION': 'global', 'AGCWS_VERTEX_TIMEOUT_S': '60'}.get(name, '')
+            if os.getenv(name, default) != expected:
+                raise ValueError(f'frozen transport setting changed: {name}')
     args.targets = args.targets or Path(f'results/structural_temporal_{args.design}_verification.json')
     args.scale = args.scale if args.scale is not None else {'aes': 200.0, 'dma': 40.0}[args.design]
     target_bytes = args.targets.read_bytes()
+    if frozen and hashlib.sha256(target_bytes).hexdigest() != frozen['corpora'][args.design]['sha256']:
+        raise ValueError('frozen target corpus changed')
     corpus = json.loads(target_bytes)
     target = next(row for row in corpus['cases'] if row['name'] == args.target)
     contract = ScheduleContract(**corpus['contract'])
@@ -55,11 +72,12 @@ def main():
         raise ValueError('output directory exists; refusing to overwrite or silently resume')
     args.out.mkdir(parents=True)
     (args.out / 'target_manifest.json').write_text(json.dumps({
-        'phase': 'development-pilot', 'source': str(args.targets),
+        'phase': 'held-out' if frozen else 'development-pilot', 'source': str(args.targets),
+        'freeze_sha256': hashlib.sha256(freeze_bytes).hexdigest() if frozen else None,
         'source_sha256': hashlib.sha256(target_bytes).hexdigest(),
         'reference_name': args.target, 'goal': vars(goal),
         'design': args.design,
-        'scope': 'Fixed-work temporal development; no superiority or gate-power claim',
+        'scope': 'Fixed-work activity targeting; no gate-power claim',
     }, indent=2) + '\n')
     index = 0
 
@@ -133,6 +151,10 @@ def main():
     else:
         policy = {'random': StructuralRandom, 'evolutionary': StructuralEvolution,
                   'population-evolution': StructuralPopulationEvolution}[args.policy](args.seed)
+    if frozen:
+        actual = capture_run(adapter, policy, goal, args.budget, 4, args.seed, None, None)
+        verify_frozen_manifest(actual, frozen['templates'][f'{args.design}/{args.policy}'],
+                               args.seed, goal.profile)
     run_search(adapter, policy, goal, evaluate, budget=args.budget, batch_size=4,
                seed=args.seed, output_dir=args.out)
     print((args.out / 'summary.json').read_text())

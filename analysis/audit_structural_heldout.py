@@ -6,16 +6,9 @@ import json
 import shutil
 from pathlib import Path
 
+from agcws.experiments.freeze import verify_frozen_manifest
 from analysis.audit_structural_panel import FILES, audit_cell, require
 from analysis.structural_inference import compare
-
-
-def verify_frozen_manifest(actual, template, seed, profile):
-    expected = {**template, 'seed': seed, 'goal': {**template['goal'], 'profile': profile}}
-    for key, value in expected.items():
-        if key == 'source_commit':
-            continue
-        require(actual.get(key) == value, f'frozen manifest mismatch: {key}')
 
 
 def build(source, freeze_path):
