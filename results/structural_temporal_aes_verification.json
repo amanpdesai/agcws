@@ -1,0 +1,794 @@
+{
+  "scope": "Representation and fixed-window verification, not comparative search",
+  "contract": {
+    "work_units": 64,
+    "idle_cycles": 6000,
+    "max_expanded_ops": 128,
+    "max_depth": 4
+  },
+  "window": "full trace including reset; eight equal-clock bins",
+  "cases": [
+    {
+      "name": "repeat",
+      "schedule": {
+        "sequence": [
+          {
+            "op": "repeat",
+            "count": 8,
+            "body": [
+              {
+                "op": "work",
+                "units": 8
+              },
+              {
+                "op": "wait",
+                "cycles": 750
+              }
+            ]
+          }
+        ]
+      },
+      "lowered_workload": {
+        "data_pattern": 1,
+        "operations": [
+          {
+            "op": "configure",
+            "key_len": 128
+          },
+          {
+            "op": "encrypt",
+            "blocks": 8
+          },
+          {
+            "op": "idle",
+            "cycles": 750
+          },
+          {
+            "op": "encrypt",
+            "blocks": 8
+          },
+          {
+            "op": "idle",
+            "cycles": 750
+          },
+          {
+            "op": "encrypt",
+            "blocks": 8
+          },
+          {
+            "op": "idle",
+            "cycles": 750
+          },
+          {
+            "op": "encrypt",
+            "blocks": 8
+          },
+          {
+            "op": "idle",
+            "cycles": 750
+          },
+          {
+            "op": "encrypt",
+            "blocks": 8
+          },
+          {
+            "op": "idle",
+            "cycles": 750
+          },
+          {
+            "op": "encrypt",
+            "blocks": 8
+          },
+          {
+            "op": "idle",
+            "cycles": 750
+          },
+          {
+            "op": "encrypt",
+            "blocks": 8
+          },
+          {
+            "op": "idle",
+            "cycles": 750
+          },
+          {
+            "op": "encrypt",
+            "blocks": 8
+          },
+          {
+            "op": "idle",
+            "cycles": 750
+          }
+        ]
+      },
+      "clock_edges": 6774,
+      "useful_work": 64,
+      "window_rates": [
+        23.419621749408982,
+        23.336481700118064,
+        23.336481700118064,
+        23.336481700118064,
+        23.361702127659573,
+        23.336481700118064,
+        23.336481700118064,
+        23.336481700118064
+      ],
+      "activity_sha256": "cc7edfcaa41863f77b90b3e1967df3aa71ed28c4e3ea357d9202b54bcc82bbe2",
+      "provenance": {
+        "simulator_digest": "ef1157b0f36882b5facbad1ee4c69c8a30d34a5f72a4ec35154798793dcf7d09",
+        "verilator": "Verilator 5.048 2026-04-26 rev v5.048",
+        "workload_sha256": "797277b26b5ccee37813b17c32db1c8b6c835cbbfa80301b04c1487046d129d5",
+        "backend": "aes-transactions-v1",
+        "functional_reference": "cryptography AES-ECB zero key",
+        "reset_policy": "once_per_workload",
+        "coverage": "verilator_line"
+      }
+    },
+    {
+      "name": "expanded",
+      "schedule": {
+        "sequence": [
+          {
+            "op": "work",
+            "units": 8
+          },
+          {
+            "op": "wait",
+            "cycles": 750
+          },
+          {
+            "op": "work",
+            "units": 8
+          },
+          {
+            "op": "wait",
+            "cycles": 750
+          },
+          {
+            "op": "work",
+            "units": 8
+          },
+          {
+            "op": "wait",
+            "cycles": 750
+          },
+          {
+            "op": "work",
+            "units": 8
+          },
+          {
+            "op": "wait",
+            "cycles": 750
+          },
+          {
+            "op": "work",
+            "units": 8
+          },
+          {
+            "op": "wait",
+            "cycles": 750
+          },
+          {
+            "op": "work",
+            "units": 8
+          },
+          {
+            "op": "wait",
+            "cycles": 750
+          },
+          {
+            "op": "work",
+            "units": 8
+          },
+          {
+            "op": "wait",
+            "cycles": 750
+          },
+          {
+            "op": "work",
+            "units": 8
+          },
+          {
+            "op": "wait",
+            "cycles": 750
+          }
+        ]
+      },
+      "lowered_workload": {
+        "data_pattern": 1,
+        "operations": [
+          {
+            "op": "configure",
+            "key_len": 128
+          },
+          {
+            "op": "encrypt",
+            "blocks": 8
+          },
+          {
+            "op": "idle",
+            "cycles": 750
+          },
+          {
+            "op": "encrypt",
+            "blocks": 8
+          },
+          {
+            "op": "idle",
+            "cycles": 750
+          },
+          {
+            "op": "encrypt",
+            "blocks": 8
+          },
+          {
+            "op": "idle",
+            "cycles": 750
+          },
+          {
+            "op": "encrypt",
+            "blocks": 8
+          },
+          {
+            "op": "idle",
+            "cycles": 750
+          },
+          {
+            "op": "encrypt",
+            "blocks": 8
+          },
+          {
+            "op": "idle",
+            "cycles": 750
+          },
+          {
+            "op": "encrypt",
+            "blocks": 8
+          },
+          {
+            "op": "idle",
+            "cycles": 750
+          },
+          {
+            "op": "encrypt",
+            "blocks": 8
+          },
+          {
+            "op": "idle",
+            "cycles": 750
+          },
+          {
+            "op": "encrypt",
+            "blocks": 8
+          },
+          {
+            "op": "idle",
+            "cycles": 750
+          }
+        ]
+      },
+      "clock_edges": 6774,
+      "useful_work": 64,
+      "window_rates": [
+        23.419621749408982,
+        23.336481700118064,
+        23.336481700118064,
+        23.336481700118064,
+        23.361702127659573,
+        23.336481700118064,
+        23.336481700118064,
+        23.336481700118064
+      ],
+      "activity_sha256": "cc7edfcaa41863f77b90b3e1967df3aa71ed28c4e3ea357d9202b54bcc82bbe2",
+      "provenance": {
+        "simulator_digest": "ef1157b0f36882b5facbad1ee4c69c8a30d34a5f72a4ec35154798793dcf7d09",
+        "verilator": "Verilator 5.048 2026-04-26 rev v5.048",
+        "workload_sha256": "797277b26b5ccee37813b17c32db1c8b6c835cbbfa80301b04c1487046d129d5",
+        "backend": "aes-transactions-v1",
+        "functional_reference": "cryptography AES-ECB zero key",
+        "reset_policy": "once_per_workload",
+        "coverage": "verilator_line"
+      }
+    },
+    {
+      "name": "random_300",
+      "schedule": {
+        "sequence": [
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "wait",
+            "cycles": 883
+          },
+          {
+            "op": "wait",
+            "cycles": 227
+          },
+          {
+            "op": "work",
+            "units": 8
+          },
+          {
+            "op": "work",
+            "units": 4
+          },
+          {
+            "op": "wait",
+            "cycles": 773
+          },
+          {
+            "op": "wait",
+            "cycles": 487
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "work",
+            "units": 5
+          },
+          {
+            "op": "wait",
+            "cycles": 136
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "wait",
+            "cycles": 277
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "wait",
+            "cycles": 615
+          },
+          {
+            "op": "work",
+            "units": 15
+          },
+          {
+            "op": "wait",
+            "cycles": 825
+          },
+          {
+            "op": "wait",
+            "cycles": 219
+          },
+          {
+            "op": "wait",
+            "cycles": 299
+          },
+          {
+            "op": "wait",
+            "cycles": 560
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "work",
+            "units": 12
+          },
+          {
+            "op": "work",
+            "units": 10
+          },
+          {
+            "op": "wait",
+            "cycles": 699
+          }
+        ]
+      },
+      "lowered_workload": {
+        "data_pattern": 1,
+        "operations": [
+          {
+            "op": "configure",
+            "key_len": 128
+          },
+          {
+            "op": "encrypt",
+            "blocks": 1
+          },
+          {
+            "op": "idle",
+            "cycles": 883
+          },
+          {
+            "op": "idle",
+            "cycles": 227
+          },
+          {
+            "op": "encrypt",
+            "blocks": 8
+          },
+          {
+            "op": "encrypt",
+            "blocks": 4
+          },
+          {
+            "op": "idle",
+            "cycles": 773
+          },
+          {
+            "op": "idle",
+            "cycles": 487
+          },
+          {
+            "op": "encrypt",
+            "blocks": 3
+          },
+          {
+            "op": "encrypt",
+            "blocks": 5
+          },
+          {
+            "op": "idle",
+            "cycles": 136
+          },
+          {
+            "op": "encrypt",
+            "blocks": 2
+          },
+          {
+            "op": "idle",
+            "cycles": 277
+          },
+          {
+            "op": "encrypt",
+            "blocks": 1
+          },
+          {
+            "op": "encrypt",
+            "blocks": 2
+          },
+          {
+            "op": "idle",
+            "cycles": 615
+          },
+          {
+            "op": "encrypt",
+            "blocks": 15
+          },
+          {
+            "op": "idle",
+            "cycles": 825
+          },
+          {
+            "op": "idle",
+            "cycles": 219
+          },
+          {
+            "op": "idle",
+            "cycles": 299
+          },
+          {
+            "op": "idle",
+            "cycles": 560
+          },
+          {
+            "op": "encrypt",
+            "blocks": 1
+          },
+          {
+            "op": "encrypt",
+            "blocks": 12
+          },
+          {
+            "op": "encrypt",
+            "blocks": 10
+          },
+          {
+            "op": "idle",
+            "cycles": 699
+          }
+        ]
+      },
+      "clock_edges": 6774,
+      "useful_work": 64,
+      "window_rates": [
+        4.736406619385343,
+        34.0,
+        3.6198347107438016,
+        35.064935064935064,
+        42.04491725768322,
+        2.0,
+        30.278630460448642,
+        35.04604486422668
+      ],
+      "activity_sha256": "087558fa70273a87315b903c491851996bdb17af865c6dbe14ad1f50cde2bc29",
+      "provenance": {
+        "simulator_digest": "ef1157b0f36882b5facbad1ee4c69c8a30d34a5f72a4ec35154798793dcf7d09",
+        "verilator": "Verilator 5.048 2026-04-26 rev v5.048",
+        "workload_sha256": "a17d2f3caa0c45be97d59d7aec4ae333e42c876110b2625e6ec0b83a6fc21d0d",
+        "backend": "aes-transactions-v1",
+        "functional_reference": "cryptography AES-ECB zero key",
+        "reset_policy": "once_per_workload",
+        "coverage": "verilator_line"
+      }
+    },
+    {
+      "name": "random_301",
+      "schedule": {
+        "sequence": [
+          {
+            "op": "wait",
+            "cycles": 204
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "wait",
+            "cycles": 365
+          },
+          {
+            "op": "work",
+            "units": 5
+          },
+          {
+            "op": "work",
+            "units": 7
+          },
+          {
+            "op": "work",
+            "units": 17
+          },
+          {
+            "op": "work",
+            "units": 4
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "wait",
+            "cycles": 669
+          },
+          {
+            "op": "wait",
+            "cycles": 284
+          },
+          {
+            "op": "wait",
+            "cycles": 1036
+          },
+          {
+            "op": "wait",
+            "cycles": 28
+          },
+          {
+            "op": "wait",
+            "cycles": 173
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "wait",
+            "cycles": 568
+          },
+          {
+            "op": "wait",
+            "cycles": 80
+          },
+          {
+            "op": "wait",
+            "cycles": 178
+          },
+          {
+            "op": "work",
+            "units": 13
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "work",
+            "units": 4
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "wait",
+            "cycles": 266
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "wait",
+            "cycles": 10
+          },
+          {
+            "op": "wait",
+            "cycles": 367
+          },
+          {
+            "op": "work",
+            "units": 7
+          },
+          {
+            "op": "wait",
+            "cycles": 1150
+          },
+          {
+            "op": "wait",
+            "cycles": 114
+          },
+          {
+            "op": "wait",
+            "cycles": 508
+          }
+        ]
+      },
+      "lowered_workload": {
+        "data_pattern": 1,
+        "operations": [
+          {
+            "op": "configure",
+            "key_len": 128
+          },
+          {
+            "op": "idle",
+            "cycles": 204
+          },
+          {
+            "op": "encrypt",
+            "blocks": 1
+          },
+          {
+            "op": "idle",
+            "cycles": 365
+          },
+          {
+            "op": "encrypt",
+            "blocks": 5
+          },
+          {
+            "op": "encrypt",
+            "blocks": 7
+          },
+          {
+            "op": "encrypt",
+            "blocks": 17
+          },
+          {
+            "op": "encrypt",
+            "blocks": 4
+          },
+          {
+            "op": "encrypt",
+            "blocks": 1
+          },
+          {
+            "op": "idle",
+            "cycles": 669
+          },
+          {
+            "op": "idle",
+            "cycles": 284
+          },
+          {
+            "op": "idle",
+            "cycles": 1036
+          },
+          {
+            "op": "idle",
+            "cycles": 28
+          },
+          {
+            "op": "idle",
+            "cycles": 173
+          },
+          {
+            "op": "encrypt",
+            "blocks": 1
+          },
+          {
+            "op": "idle",
+            "cycles": 568
+          },
+          {
+            "op": "idle",
+            "cycles": 80
+          },
+          {
+            "op": "idle",
+            "cycles": 178
+          },
+          {
+            "op": "encrypt",
+            "blocks": 13
+          },
+          {
+            "op": "encrypt",
+            "blocks": 1
+          },
+          {
+            "op": "encrypt",
+            "blocks": 4
+          },
+          {
+            "op": "encrypt",
+            "blocks": 2
+          },
+          {
+            "op": "idle",
+            "cycles": 266
+          },
+          {
+            "op": "encrypt",
+            "blocks": 1
+          },
+          {
+            "op": "idle",
+            "cycles": 10
+          },
+          {
+            "op": "idle",
+            "cycles": 367
+          },
+          {
+            "op": "encrypt",
+            "blocks": 7
+          },
+          {
+            "op": "idle",
+            "cycles": 1150
+          },
+          {
+            "op": "idle",
+            "cycles": 114
+          },
+          {
+            "op": "idle",
+            "cycles": 508
+          }
+        ]
+      },
+      "clock_edges": 6774,
+      "useful_work": 64,
+      "window_rates": [
+        62.21513002364066,
+        35.23848878394333,
+        2.0,
+        4.675324675324675,
+        48.60992907801418,
+        30.11806375442739,
+        2.0,
+        2.0
+      ],
+      "activity_sha256": "66cf378c96b82a0c00a1bf63b6d63949ef86d1df5d8862e622439088907a2778",
+      "provenance": {
+        "simulator_digest": "ef1157b0f36882b5facbad1ee4c69c8a30d34a5f72a4ec35154798793dcf7d09",
+        "verilator": "Verilator 5.048 2026-04-26 rev v5.048",
+        "workload_sha256": "63efac8dfaa7a80ffcd1869c9e29dd3100d1db6a66c9dbd43b3cdf54e1f7e179",
+        "backend": "aes-transactions-v1",
+        "functional_reference": "cryptography AES-ECB zero key",
+        "reset_policy": "once_per_workload",
+        "coverage": "verilator_line"
+      }
+    }
+  ]
+}
