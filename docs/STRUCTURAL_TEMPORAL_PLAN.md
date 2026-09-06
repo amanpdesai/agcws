@@ -26,9 +26,9 @@ development cell before selection. Do not select a different family per design.
 The completed scalar study and seed-310 pilots remain separate. Seed 311's
 eight-slot CPU smoke is a mechanics check, not a panel member.
 
-After selection, freeze source/configuration and use fresh seeds 400–404 with
-32 slots for the temporal held-out comparison. Seeds 405–409 are reserved for
-a separately identified extension, not optional stopping to obtain a win.
+After selection, freeze source/configuration and use fresh seeds 400–409 with
+32 slots for the temporal held-out comparison. Ten seeds are fixed before
+evaluation; there is no optional extension based on significance.
 The profiles remain previously observed reference tasks; fresh seeds test search
 repeatability, not generalization to unseen target profiles. Any unseen-profile
 claim needs a separately fixed target corpus before evaluation.
@@ -36,6 +36,31 @@ claim needs a separately fixed target corpus before evaluation.
 The DMA contract here remains fixed-size copies with pacing/concurrency. A
 future transfer-length/backpressure extension is not silently mixed into this
 population ablation. These restrictions bound the expressiveness claim.
+
+Held-out seed-count amendment, before any held-out runs: the initial five-seed
+plan was insufficient for the declared two-sided exact sign-flip inference
+(minimum unadjusted p=2/32=0.0625). Use ten upfront, not a five-seed test followed
+by significance-driven extension. Compare selected agent-only and hybrid
+against random and the selected family's CPU evolutionary baseline on each
+design. Average the two paired target differences within each seed, bootstrap
+ten seed units with 10,000 replicates (fixed resampling seed 0), and apply exact
+two-sided sign flips plus joint Holm correction over eight comparisons.
+`analysis/structural_inference.py` enforces the complete 160-cell panel.
+Primary endpoint remains proposal-counted AUC; unsolved runs are censored at
+32. Validity, solve rate, cost and capped evaluations-to-target are secondary.
+Pointwise confidence intervals and nonsignificance do not establish parity.
+
+Finalist GLS preflight finding: the cached `out/aes-core-synthesis-final4`
+netlist exposes `state_init_i[255:0]`/`state_o[255:0]` and contains `gen_masks`
+logic. The current RTL transaction harness explicitly sets `SecMasking=0`,
+`SecSBoxImpl=SBoxImplLut`, and `NumShares=1`. The cached netlist is therefore
+not a configuration-matched validation oracle for these new workloads.
+Synthesize the explicit unmasked configuration, record elaboration parameters,
+and replay the same reference-checked transaction program before interpreting
+any finalist power comparison. Do not reuse the legacy GLS driver's aggregated
+idle count: it loses schedule ordering. Prior annotation coverage demonstrates
+annotation on that older netlist, not configuration-matched power prediction
+for the current transaction study. This does not alter any activity-only result.
 
 ## Four-arm DMA pilot completed
 
