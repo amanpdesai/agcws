@@ -73,6 +73,37 @@ under this protocol. Nonsignificance elsewhere is not equivalence. The
 matched scalar-edit baseline's poor DMA legality limits what beating it
 establishes; random is the more demanding comparator.
 
+With ten nonzero seed differences, the smallest two-sided exact sign-flip
+p-value is 2/1024. For the smallest-ranked of nine Holm tests, its adjusted
+floor is 18/1024 = 0.017578125. This discrete resolution and the interval widths
+limit conclusions; nonsignificance does not establish equivalence. Random's
+strong performance is consistent with broad sampling being effective on these
+scalar tasks, but neither near-optimality nor a monotonic mechanism has been
+established by this comparison.
+
+## Secondary diagnostic: equal valid evaluations
+
+Added after observing the held-out results; descriptive, not pre-registered
+inference. [The reproducible diagnostic](../results/semantic_valid_evaluation_diagnostic.json)
+verifies the original ledger hashes and compares the first K valid evaluations
+at K = 10, 20, 30, 40, 50. AUC is divided by K-1 to give mean curve error;
+these numbers are not on the proposal-AUC scale above. Each comparison uses
+only paired cells where both policies reached K within their original 50 slots.
+All omitted cells and valid counts are retained in the artifact.
+
+At K=20, against random, AES has 46/50 matched cells: agent mean curve error
+0.07413 versus random 0.07875. DMA has 48/50: agent 0.08442 versus random
+0.08091. Thus this diagnostic does not reverse the descriptive design-level
+ordering against random. DMA scalar-edit has zero matched cells at K=20;
+no comparison is reported there rather than imputing successes or failures.
+
+This is conditional on sufficient valid outputs and can introduce selection
+bias. Removing invalid indices does not remove their effect on subsequent
+adaptive histories, token use or elapsed time. It therefore does not isolate
+a causal schema-compliance effect and does not replace the primary fairness
+rule, inference or claim limits. No scalar runs or controller changes were made
+for this analysis.
+
 ## Validity and cost
 
 AES agent failures: 561 schema, 43 protocol, 0 functional, 24 useful-work.

@@ -1,5 +1,25 @@
 # Structural temporal study — development plan
 
+## Four-arm DMA pilot completed
+
+The [audited v2 DMA pilot](../results/structural_temporal_dma_four_arm_v2/pilot.json)
+contains eight cells, 128 proposal slots, two reference targets and one seed.
+Mean primary AUC: random 1.44988, evolutionary 1.40405, edit-agent 1.46364,
+edit-hybrid 1.21443. These are development observations, not superiority tests.
+All policies solve random_300 with the shared initializer at slot 3; that tie
+is not evidence of an agent contribution. Only the hybrid solves random_301
+(slot 5) in this pilot. Agent validity is 30/32 including initialization;
+hybrid validity is 29/32 including initialization and CPU proposals.
+Recorded model cost is $0.0307992, with no unknown-usage batches.
+
+The scalar held-out panel remains frozen. Its new equal-valid-evaluation
+diagnostic is explicitly post-hoc and does not authorize tuning on those seeds.
+The next comparison requires a development protocol covering both designs,
+then a frozen controller and fresh held-out seeds. The scope is activity-profile
+synthesis. Power prediction remains unvalidated; GLS annotation coverage alone
+does not license a power-targeting claim. Broad oracle work must not displace
+the temporal comparison or report writing.
+
 ## DMA transfer checkpoint
 
 The shared schedule validator now lowers to both AES and DMA. DMA work units
