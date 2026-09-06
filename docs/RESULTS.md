@@ -2,8 +2,17 @@
 
 This file retains historical infrastructure and pilot observations. The completed
 two-design scalar held-out study is reported in [SEMANTIC_RESULTS.md](SEMANTIC_RESULTS.md).
-The frozen temporal study is tracked in [STRUCTURAL_TEMPORAL_PLAN.md](STRUCTURAL_TEMPORAL_PLAN.md).
+The completed temporal study is reported in [STRUCTURAL_RESULTS.md](STRUCTURAL_RESULTS.md),
+with its development/freeze protocol in [STRUCTURAL_TEMPORAL_PLAN.md](STRUCTURAL_TEMPORAL_PLAN.md).
 These do not constitute the entire original three-design factorial study.
+
+The temporal panel passed independent audit: 160 cells / 5120 slots, two designs,
+two reference profiles, four policies and ten fresh seeds. Random has the lowest
+mean AUC on both designs; the AES agent is worse than random under the corrected
+test (Holm p = 0.03125). No agent/hybrid superiority is supported. All 16 selected
+finalists pass matched-window, reference-checked GLS; annotation is 90247/90247
+pins for unmasked AES and 36292/36296 for DMA. This validates the replay path,
+not temporal gate-power targeting or general proxy-to-power agreement.
 
 The older proxy-to-gate correlations below are superseded, not current findings:
 the legacy GLS driver aggregated pacing and used a masked two-share netlist,

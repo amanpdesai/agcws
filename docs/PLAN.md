@@ -1,6 +1,6 @@
 # Plan
 
-## Current research checkpoint — 2026-09-05
+## Current research checkpoint — 2026-09-06
 
 The versioned semantic-search development and frozen AES/DMA evaluation are
 complete: 550 held-out cells, all five targets, ten seeds and 50 proposal
@@ -8,8 +8,13 @@ slots per cell. Original manifests, ledgers, complete-panel inference and
 cost-uncertainty flags are tracked. See [SEMANTIC_RESULTS.md](SEMANTIC_RESULTS.md).
 This supersedes historical notes below saying Vertex credentials or
 multi-design scalar agent runs are still missing. It does not complete the
-whole project: structural/compositional/temporal agent comparisons and reliable
-proxy-to-gate power validation remain separate research work.
+whole project. The structural temporal milestone is now also complete:
+160 frozen cells / 5120 slots, two designs, four methods, ten fresh seeds,
+and 16 matched-window GLS finalists. See [STRUCTURAL_RESULTS.md](STRUCTURAL_RESULTS.md).
+No agent advantage over random is established. Compositional held-out evaluation,
+temporal gate-power validation, the final paper and upstream submission remain
+future work. The broad slice table below tracks the original project, not just
+these completed two-design milestones.
 
 **D1 = 2026-08-29. D23 = 2026-09-20.** Status: `TODO` / `WIP` / `DONE` / `BLOCKED` / `CUT`.
 

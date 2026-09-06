@@ -1,138 +1,91 @@
-# AGCWS report draft
+# AGCWS report scaffold
 
-Current evidence (2026-09-05): the full 550-cell AES/DMA held-out scalar
-study is archived and interpreted in [SEMANTIC_RESULTS.md](SEMANTIC_RESULTS.md).
-Use that source for the current primary table and corrected inference. Older
-pilot paths and AES-only status notes below are historical, not the current
-comparison. The measured endpoint is activity, not validated gate power.
+This is a writing outline, not the submitted four-page paper. The demonstrated
+task is goal-conditioned activity-profile synthesis with matched gate-level
+validation, not established arbitrary power-profile synthesis.
 
-This is a report scaffold, not a final result. Numbers may enter the final
-report only from committed or archived manifests whose provenance passes
-`make audit-reproducibility` and whose experiment coverage matches
-`docs/EXPERIMENTS.md`.
+## Evidence to use
 
-## Abstract
+| Study | Scope | Authoritative report |
+|---|---|---|
+| Scalar | AES/DMA, five targets, ten seeds, 550 cells / 27,500 slots | [SEMANTIC_RESULTS.md](SEMANTIC_RESULTS.md) |
+| Structural temporal | AES/DMA, two observed reference profiles, ten fresh seeds, 160 cells / 5120 slots | [STRUCTURAL_RESULTS.md](STRUCTURAL_RESULTS.md) |
+| Gate validation | Sixteen predeclared temporal finalists, matched configuration, stimulus and waveform windows | [Finalist archive](../results/structural_temporal_finalist_validation_v1/validation.json) |
 
-AGCWS studies goal-conditioned synthesis of legal hardware workloads for
-requested dynamic-power behavior. The final abstract must state which target
-classes, designs, policies, and seeds were actually run. It must not describe
-the current AES-only preliminary corpus as a multi-design result.
+Historical pilots in RESULTS.md are not pooled with these studies. The original
+three-design factorial plan is not complete; do not describe these two-design
+results as that full experiment.
 
-## 1. Problem and contribution
+## Problem and contribution
 
-Frame the contribution as arbitrary scalar, compositional, and coarse temporal
-goal conditioning over heterogeneous workload interfaces. Do not claim to be
-the first power-virus or low/high-power workload generator. Prior-art status
-must follow the verification legend in `docs/LITERATURE.md`.
+Ask whether an agent can synthesize legal workloads toward requested activity
+behavior across instruction, transaction and descriptor interfaces. Distinguish
+the research aim (power characterization) from the measured endpoint (activity).
+Do not claim automatic power-virus generation or directed switching is new.
+Use the verification constraints in LITERATURE.md before citing prior work.
 
-## 2. System
+The reusable contribution is the typed workload interface, four-stage hard
+validity gate, proposal-counted search harness, cost/provenance accounting and
+matched functional gate-validation path. More expressive schedules are
+implemented, but their existence does not demonstrate an agent advantage.
 
-Describe the CHIA node boundary, the typed agent-facing evaluator contract,
-design adapters, four-stage validity gate, proposal-counted budget, RTL proxy
-evaluator, gate-level evaluator, and
-telemetry ledger. Include the architecture diagram from `docs/ARCHITECTURE.md`.
+## Method
 
-## 3. Experimental method
+Describe the development/held-out separation and frozen, common controller.
+For the temporal study, report exact work and observation horizons, bounded
+sequence/repeat/pacing grammar, shared structural-edit operators, fixed-scale
+NRMSE and 32 charged proposal slots. Record malformed/missing slots, unknown
+usage and shared initialization rather than treating them as free retries.
 
-Report the frozen prompt hash, exact model identifiers, sampling parameters,
-seeds, budgets, tolerances, useful-work floors, simulator/synthesis/STA
-versions, Liberty hashes, container digest, and validity accounting. Explain
-that per-cycle toggle counts are a diagnostic/temporal-shape signal; OpenSTA
-power is not a per-cycle measurement.
+The diversity-preserving population was an AlphaEvolve-inspired development
+ablation. Its aggregate did not beat the best-eight family, so it was not
+selected. It is not a reproduction of AlphaEvolve or generator-code evolution.
 
-## 4. Results tables
+Use the study-specific protocols and freeze artifacts rather than substituting
+the original project-wide model, budget or target settings. Both temporal
+reference profiles were observed during development; fresh seeds do not imply
+generalization to unseen target profiles.
 
-The final version must include:
+## Results narrative
 
-1. Full policy × design × goal × seed AUC and solve-rate table.
-2. Validity rates split by schema, protocol, functional, and useful-work
-   failure.
-3. Cost, tokens, wall-clock, and evaluations-to-tolerance.
-4. Finalist proxy-to-gate agreement and proxy exploitation rate.
-5. Cross-PDK rank agreement with annotation coverage.
+Lead with predeclared best-so-far AUC and paired inference, then solve rates,
+censoring, validity and cost.
 
-The dependency-free helpers in `agcws.analysis.inference` provide exact
-paired sign-flip p-values, Holm adjustment, and matched-pairs rank-biserial
-effect sizes for these comparisons. Bootstrap confidence intervals are
-provided by `agcws.analysis.aggregate`.
+In the scalar study, no cross-design agent superiority or equivalence to random
+is established. The temporal study also favors random in mean AUC on both
+designs; AES agent-only is significantly worse than random (Holm p = 0.03125).
+No agent/hybrid superiority is supported. Do not turn nonsignificance into
+parity or claim random is optimal.
 
-Current AES scalar source: `out/aes-analysis-10seed/aggregate.json`, covering
-AES scalar targets, five policies, and exactly ten seeds per cell. It is still
-not the final multi-design factorial result.
+The temporal study has 16/16 reference-checked, matched-window GLS finalists:
+90,247/90,247 annotated pins on unmasked AES and 36,292/36,296 on DMA.
+Full-window mean dynamic power is not temporal target error. Nearly identical
+means at matched work and duration do not validate or invalidate the eight-bin
+power shape; that measurement has not been performed.
 
-Current DMA pilot sources are `out/axi-dma-matrix-calibrated-200-5seed-aggregate.json`
-and `out/axi-dma-inference-5seed.json`. They cover one scalar target, five
-policies, five seeds, and 200 proposals on the coupled activity oracle. They
-must be labeled as a preliminary single-design activity study, not a full
-multi-design factorial or gate-level conclusion. Current profile-arm evidence is
-summarized in `docs/RESULTS.md`; it remains activity-only and below the
-preregistered multi-design scope. The completed compositional policy matrix
-covers three achieved targets, five policies, three seeds, and 300 proposal
-slots per target-policy-seed cell. The temporal policy matrix covers four
-achieved targets, five policies, three seeds, and 32 proposal slots per cell.
-The machine-readable pilot aggregates are
-`out/aes-temporal-pilot-aggregate.json` and
-`out/aes-compositional-pilot-aggregate.json`; these preserve the distinct
-target identities recovered from each archived `target.json`.
+## Limitations and next experiments
 
-Current Ibex activity sources are `out/ibex-full/seeds-0-1-2-3-4-aggregate.json`
-and `out/ibex-full/seeds-0-1-2-3-4-inference.json`. They cover one scalar
-activity target, six local policies, five seeds, and 200 proposal slots per
-cell. They must be labeled as activity-only evidence because the selected Ibex
-wrapper does not yet have a valid gate-level OpenSTA power path.
+Report the superseded RTL-to-netlist annotation and configuration/window
+mismatches as methodological pitfalls, not current proxy-correlation results.
+There is no trustworthy general proxy-to-power correlation claim here.
+Functional zero-delay GLS omits timing-induced glitches and is not signoff.
 
-## 5. Figures
+The structural controller edits bounded schedules rather than arbitrary
+generator programs. DMA uses fixed-size copies with pacing/concurrency, not
+its full transfer-size/backpressure space. These experiments do not identify
+hardware size as the cause of method ordering. A richer DMA protocol task,
+generator-program evolution or another design needs fresh development and
+held-out evaluation, not tuning against this observed panel.
 
-The current reproducible convergence figure is
-`out/aes-analysis-10seed/convergence.png`. Final figures must be generated
-with `make analyze-baseline` (or an equivalent recorded command) from the
-complete declared corpus, and must include scalar convergence, temporal
-profiles, compositional attribution, cross-PDK agreement, and validity/cost
-breakdowns.
-The verified DMA pilot convergence figure is
-`out/axi-dma-analysis-5seed/convergence.png`; its source summary is stored
-beside the figure as `convergence.json`.
+The current experiments ran on the host. The updated validation container
+smoke failed before Python execution; do not claim a verified image replay.
+The final paper and upstream contribution remain separate deliverables.
 
-## 6. Limitations and negative results
+## Artifact and writing checklist
 
-State explicitly that DMA gate reports have sparse RTL-to-netlist annotation,
-Ibex core source closure and RTL execution are supported but Ibex mapped
-gate-level power is not currently established, and Vertex-backed comparative
-runs require external project/model/billing configuration. These constraints
-are methodological results, not reasons to substitute unsupported claims.
-
-The memory-backend investigation must also be reported as a negative result:
-AES has no inferred memories at its synthesized core boundary; AXI DMA's
-inferred FIFOs have independent read/write addresses and therefore cannot use
-the single-port synchronous BSG FakeRAM interface; and Ibex's discovered
-read-only memories have asynchronous reads. BSG/CACTI collateral was generated
-and audited for the discovered geometries, but no macro-mapped AXI or Ibex
-power result is claimed. Any future dual-port or asynchronous macro backend
-must be a separately identified evaluator tier.
-
-## 7. Reproduction checklist
-
-- `make verify`
-- `make research-smoke`
-- `make container-smoke`
-- `make chia-smoke chia-node-smoke`
-- `make inspect-liberties`
-- `make audit-memory-collateral-all` (after generating the three bundles)
-- `make analyze-baseline BASELINE_DIR=<complete-run-root> ANALYSIS_DIR=<analysis-root>`
-- `make aggregate-temporal-pilot`
-- `make aggregate-compositional-pilot`
-- `make aggregate-temporal-policy-matrix`
-- `make aggregate-compositional-policy-matrix`
-- `make infer-temporal-policy-matrix`
-- `make infer-compositional-policy-matrix`
-- `make plot-temporal-policy-matrix`
-- `make plot-compositional-policy-matrix`
-- finalist validation for every reported synthesis-level result
-- provenance audit and archived manifests
-
-## Finalization gate
-
-Replace this scaffold with the four-page report only after the full factorial
-study, profile-target study, statistical tests, finalist validation, and
-Vertex/Ibex status decisions are resolved or explicitly recorded in
-`docs/DECISIONS.md`.
+- Use the tracked ledgers, manifests, inference and gate reports linked above.
+- Reproduce report rendering and audits using results/README.md.
+- Preserve reported scope, effect direction, censoring and unknown usage.
+- If adding figures, derive them from the same complete frozen archives.
+- Resolve remaining citation checks before submission.
+- Keep historical Ibex, memory-backend and pilot results separately labeled.

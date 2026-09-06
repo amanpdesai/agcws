@@ -1,5 +1,23 @@
 # Decision log
 
+## 2026-09-06 — Close the frozen temporal milestone without claiming an agent win
+
+**Decision.** Archive all 160 cells / 5120 slots and all 16 predeclared matched
+GLS finalists. Report the predeclared AUC first, including the significant AES
+agent loss to random (Holm p = 0.03125); do not tune on seeds 400–409 or expand
+the panel to chase significance. The best-eight family was selected on the
+complete 84-cell development panel before these held-out runs; the
+AlphaEvolve-inspired population alternative remains a negative development ablation.
+**Claim boundary.** The demonstrated task is activity-profile synthesis with
+functional, matched-window gate validation. Full-window mean dynamic power is
+not a temporal power-shape measurement, and annotation coverage is not proof of
+proxy prediction. This narrows the reported claims, not the long-term research aim.
+**Consequence.** Any richer DMA task, generator-code evolution, new model or
+larger design needs a new development protocol and fresh held-out evaluation.
+Recorded model spend is $1.50118 with two unknown-usage batches, not a fully
+reconciled provider bill. Host execution is recorded honestly; the updated
+container smoke failed before Python execution and is not claimed as verified.
+
 ## 2026-09-05 — Increase held-out DMA CPU concurrency without changing cells
 
 **Decision.** Increase the CPU-only DMA scheduler from four to eight workers.

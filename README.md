@@ -1,6 +1,6 @@
 # Agentic Goal-Conditioned Workload Synthesis
 
-Given RTL, a legal stimulus interface, and a target dynamic-power profile, an agent synthesizes semantically valid workloads toward that behavior. Targets may be scalar, compositional, or coarse temporal.
+AGCWS investigates whether an agent can synthesize legal hardware workloads for requested activity and power behavior. The current search endpoint is RTL activity; temporal power-profile synthesis is not established.
 
 Built as a composable [CHIA](https://github.com/ucb-bar/chia) loop for the A³ CHIA Hackathon (MICRO 2026).
 
@@ -11,8 +11,20 @@ AES/DMA scalar study is archived: 550 runs, 27,500 proposal slots, real Vertex
 agent and classical baselines. See [results and limitations](docs/SEMANTIC_RESULTS.md).
 The agent beats two DMA baselines under the predeclared corrected tests, but
 does not establish superiority or parity against random across designs.
-The endpoint is RTL activity; power prediction, structural expressiveness,
-and the full compositional/temporal study remain unproven.
+A second frozen [structural temporal study](docs/STRUCTURAL_RESULTS.md) is complete:
+160 cells / 5120 slots across AES and DMA, with a shared sequence/repeat/pacing
+grammar and typed structural edits. Random has the lowest mean AUC on both
+designs; AES agent-only is significantly worse than random (Holm p = 0.03125).
+No agent/hybrid superiority or parity is established. All 16 predeclared
+finalists pass functionally checked, matched-window GLS validation, but their
+full-window mean power does not validate temporal power shapes.
+The AlphaEvolve-inspired population alternative was tested in development and
+not selected; this is not a reproduction of AlphaEvolve.
+
+Reviewable ledgers and inference are tracked in
+[`results/structural_temporal_heldout_v1/`](results/structural_temporal_heldout_v1/),
+with matched gate evidence in
+[`results/structural_temporal_finalist_validation_v1/`](results/structural_temporal_finalist_validation_v1/).
 
 See `docs/ARCHITECTURE.md` and `docs/PLAN.md`. The current evidence and claim
 boundaries are summarized in [`docs/RESULTS.md`](docs/RESULTS.md), and the
@@ -101,8 +113,8 @@ flow and copied Liberty inputs; cloud
 credentials and optional LLM integrations are exercised only in experiments.
 
 The current verified evidence inventory is maintained in
-[`docs/RESULTS.md`](docs/RESULTS.md), including the five-seed DMA aggregate,
-paired inference output, and three-seed temporal/compositional profile snapshot.
+[`docs/RESULTS.md`](docs/RESULTS.md). Historical pilots are separate from the
+completed scalar and structural temporal held-out studies.
 It also includes the `riscv64-unknown-elf` compiler/binutils pair, FuseSoC,
 and the native dependencies needed to build and run the pinned Ibex simulator.
 

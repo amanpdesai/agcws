@@ -1,0 +1,3725 @@
+{
+  "scope": "Predeclared seed-400 descriptive validation, not a general proxy-power correlation.",
+  "selection_sha256": "6a2046976f1959fdf9b84365a693d3442149351573fb55596c3703f63b60070f",
+  "selected_cases": 16,
+  "matched_cases": 16,
+  "unique_replays": {
+    "45a53ab579bb3e906cfdf9bfa42427abc1387a0a05d7af8856e5686504f0c39f": {
+      "completion": {
+        "replay": {
+          "design": "aes",
+          "workload": {
+            "sequence": [
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 52,
+                "op": "wait"
+              },
+              {
+                "cycles": 1074,
+                "op": "wait"
+              },
+              {
+                "cycles": 27,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 12
+              },
+              {
+                "cycles": 308,
+                "op": "wait"
+              },
+              {
+                "cycles": 369,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 3
+              },
+              {
+                "op": "work",
+                "units": 11
+              },
+              {
+                "cycles": 722,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 5
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 2
+              },
+              {
+                "cycles": 470,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 7
+              },
+              {
+                "cycles": 495,
+                "op": "wait"
+              },
+              {
+                "cycles": 740,
+                "op": "wait"
+              },
+              {
+                "cycles": 111,
+                "op": "wait"
+              },
+              {
+                "cycles": 151,
+                "op": "wait"
+              },
+              {
+                "cycles": 554,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 11
+              },
+              {
+                "op": "work",
+                "units": 5
+              },
+              {
+                "op": "work",
+                "units": 4
+              },
+              {
+                "cycles": 433,
+                "op": "wait"
+              },
+              {
+                "cycles": 494,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              }
+            ]
+          },
+          "observation_cycles": 6774,
+          "contract": {
+            "idle_cycles": 6000,
+            "max_depth": 4,
+            "max_expanded_ops": 128,
+            "work_units": 64
+          },
+          "source_digest": "ae31d8465bab8b454865870ac996283d69507c58e99be96ec1cfd8dd182e819c"
+        },
+        "inputs": {
+          "synthesis_manifest": "dba976cb349777fd971047d3cc01a424546a65e395c262a79a1286c91b07c32f",
+          "netlist": "55ca92c3f9950e315862874684e085ed82b3442471ad5139ea7774048f3b22a2",
+          "liberty": "92eb4e93a3d4c2563018ac81cdec2f02fdeaced9b39337ed5c141fa63e0ad8f8",
+          "cell_models": "5ff4558207faf8ea0d4f35ea6d85e1ff36f57936d307423c8f234204398d1c3a",
+          "primitive_models": "81351b44f54dd9b5e3cd07a845cbe9d90e889d29edfcbff57a527280839bbccc",
+          "rtl_workload": "639f162bfd6462b262ca686dd3cba856204ae386e2d27aec96e4d88b81edca45",
+          "validation_driver": "ca2169e5eaaa9414b319b0c1aae9c4de1f9f938c1dc114965db183a45c88fb14",
+          "design_driver": "43d6aa5f5326fee68ef446545bd8a376be394a98d17a5506fda769317f25468a"
+        },
+        "wall_clock_s": 343.3074554569321,
+        "comparison_sha256": "ebc401404da4dca81964226cd094a1ae4d95c125e9ae13a430c68bfd1a9d55d1"
+      },
+      "comparison": {
+        "scope": "One reference-checked matched AES replay; not a correlation or agent-performance result.",
+        "parameters": {
+          "SecMasking": 0,
+          "SecSBoxImpl": "aes_pkg::SBoxImplLut",
+          "EntropyWidth": 32
+        },
+        "clock_edges": 6774,
+        "blocks_checked": 64,
+        "program_sha256": "762adff6f4fa640fddcf1fa6a20658b1884b5826959a71d8c3af00db40c7f2bb",
+        "internal_power_w": 0.003531178226694,
+        "switching_power_w": 0.0009260321385227,
+        "dynamic_power_w": 0.0044572103652167,
+        "leakage_power_w": 5.031206384842e-08,
+        "total_power_w": 0.004457260482013,
+        "annotated_pins": 90247,
+        "unannotated_pins": 0,
+        "limitation": "Functional zero-delay gates; no timing-induced glitch or signoff claim.",
+        "rtl": {
+          "total_transitions": 158165,
+          "window_rates": [
+            4.736406619385343,
+            34.0,
+            39.33175914994097,
+            23.336481700118064,
+            20.692671394799053,
+            2.0,
+            57.992916174734354,
+            4.675324675324675
+          ]
+        },
+        "gls": {
+          "total_transitions": 19220461,
+          "window_rates": [
+            523.3026004728132,
+            4156.1782762691855,
+            4815.538370720189,
+            2837.4580873671785,
+            2510.5059101654847,
+            200.0,
+            7123.298701298701,
+            529.6977567886659
+          ]
+        },
+        "artifact_sha256": {
+          "workload.json": "639f162bfd6462b262ca686dd3cba856204ae386e2d27aec96e4d88b81edca45",
+          "program.txt": "762adff6f4fa640fddcf1fa6a20658b1884b5826959a71d8c3af00db40c7f2bb",
+          "gls_provenance.json": "09892034192dc3a5eeda6fcb253509f49ce15bf5f21ed3025d5c4db831444364",
+          "synthesis_manifest.json": "dba976cb349777fd971047d3cc01a424546a65e395c262a79a1286c91b07c32f",
+          "power.rpt": "1a3aad024ea269e2c943580ed2f0414bc5067470dd6e832a460a920ce430c286",
+          "gls_run.log": "a5b1df060069ea270cbc509f6f7e2e27006e093a2f218a856a974148a7e82605",
+          "rtl_run.log": "06fd98a93f531b24988cc002b4632eeaafa5be1ae3e33b59df81439e4bb60fe9"
+        }
+      },
+      "waveform_windows": {
+        "rtl": {
+          "timescale_s": 1e-12,
+          "first_timestamp": 0,
+          "last_timestamp": 67740000,
+          "start_s": 0.0,
+          "end_s": 6.774e-05,
+          "duration_s": 6.774e-05
+        },
+        "gls": {
+          "timescale_s": 1e-12,
+          "first_timestamp": 0,
+          "last_timestamp": 67740000,
+          "start_s": 0.0,
+          "end_s": 6.774e-05,
+          "duration_s": 6.774e-05
+        }
+      }
+    },
+    "e24e0496b79595409323b561ab5420c3167c87310c24ddd121b7f2e23bc479b5": {
+      "completion": {
+        "replay": {
+          "design": "aes",
+          "workload": {
+            "sequence": [
+              {
+                "cycles": 753,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 35
+              },
+              {
+                "cycles": 664,
+                "op": "wait"
+              },
+              {
+                "cycles": 1052,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 2
+              },
+              {
+                "op": "work",
+                "units": 5
+              },
+              {
+                "cycles": 943,
+                "op": "wait"
+              },
+              {
+                "cycles": 175,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 19
+              },
+              {
+                "cycles": 536,
+                "op": "wait"
+              },
+              {
+                "cycles": 915,
+                "op": "wait"
+              },
+              {
+                "cycles": 582,
+                "op": "wait"
+              },
+              {
+                "cycles": 77,
+                "op": "wait"
+              },
+              {
+                "cycles": 10,
+                "op": "wait"
+              },
+              {
+                "cycles": 293,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 3
+              }
+            ]
+          },
+          "observation_cycles": 6774,
+          "contract": {
+            "idle_cycles": 6000,
+            "max_depth": 4,
+            "max_expanded_ops": 128,
+            "work_units": 64
+          },
+          "source_digest": "ae31d8465bab8b454865870ac996283d69507c58e99be96ec1cfd8dd182e819c"
+        },
+        "inputs": {
+          "synthesis_manifest": "dba976cb349777fd971047d3cc01a424546a65e395c262a79a1286c91b07c32f",
+          "netlist": "55ca92c3f9950e315862874684e085ed82b3442471ad5139ea7774048f3b22a2",
+          "liberty": "92eb4e93a3d4c2563018ac81cdec2f02fdeaced9b39337ed5c141fa63e0ad8f8",
+          "cell_models": "5ff4558207faf8ea0d4f35ea6d85e1ff36f57936d307423c8f234204398d1c3a",
+          "primitive_models": "81351b44f54dd9b5e3cd07a845cbe9d90e889d29edfcbff57a527280839bbccc",
+          "rtl_workload": "b92a97777e16b0cbf87556949c7c0c287b57be0c16e79e80cbbc8539279ea3d9",
+          "validation_driver": "ca2169e5eaaa9414b319b0c1aae9c4de1f9f938c1dc114965db183a45c88fb14",
+          "design_driver": "43d6aa5f5326fee68ef446545bd8a376be394a98d17a5506fda769317f25468a"
+        },
+        "wall_clock_s": 351.95162066002376,
+        "comparison_sha256": "1dbd387fd15581039d9427d2326cea0cd41ece0ba224ac5b9c0734586cc28ddc"
+      },
+      "comparison": {
+        "scope": "One reference-checked matched AES replay; not a correlation or agent-performance result.",
+        "parameters": {
+          "SecMasking": 0,
+          "SecSBoxImpl": "aes_pkg::SBoxImplLut",
+          "EntropyWidth": 32
+        },
+        "clock_edges": 6774,
+        "blocks_checked": 64,
+        "program_sha256": "631319f925d989091467958782c6e1b5dfa80dfc2e3443c13d8956171e62722c",
+        "internal_power_w": 0.003531235968694,
+        "switching_power_w": 0.0009260321385227,
+        "dynamic_power_w": 0.0044572681072167,
+        "leakage_power_w": 5.037847827793e-08,
+        "total_power_w": 0.004457318224013,
+        "annotated_pins": 90247,
+        "unannotated_pins": 0,
+        "limitation": "Functional zero-delay gates; no timing-induced glitch or signoff claim.",
+        "rtl": {
+          "total_transitions": 158141,
+          "window_rates": [
+            21.39952718676123,
+            75.99645808736717,
+            2.0,
+            20.670602125147578,
+            32.21040189125296,
+            22.48642266824085,
+            2.0,
+            10.007083825265644
+          ]
+        },
+        "gls": {
+          "total_transitions": 19220416,
+          "window_rates": [
+            2546.0591016548465,
+            9388.753246753247,
+            200.0,
+            2507.7780401416767,
+            3906.5626477541373,
+            2761.7520661157023,
+            200.0,
+            1189.0578512396694
+          ]
+        },
+        "artifact_sha256": {
+          "workload.json": "b92a97777e16b0cbf87556949c7c0c287b57be0c16e79e80cbbc8539279ea3d9",
+          "program.txt": "631319f925d989091467958782c6e1b5dfa80dfc2e3443c13d8956171e62722c",
+          "gls_provenance.json": "2016318dc38ad3445741cf04e056f25c2a86e3fdee1facac37b008f529d61914",
+          "synthesis_manifest.json": "dba976cb349777fd971047d3cc01a424546a65e395c262a79a1286c91b07c32f",
+          "power.rpt": "72e9cb9cab9c21d6902dc84adc5acfe5eb09d5d7bcdc528d591032594e745d69",
+          "gls_run.log": "a5b1df060069ea270cbc509f6f7e2e27006e093a2f218a856a974148a7e82605",
+          "rtl_run.log": "b930e0e8e00d2f5693f8215253cfc023673f304dc7f7af33a592c5abb70dc16b"
+        }
+      },
+      "waveform_windows": {
+        "rtl": {
+          "timescale_s": 1e-12,
+          "first_timestamp": 0,
+          "last_timestamp": 67740000,
+          "start_s": 0.0,
+          "end_s": 6.774e-05,
+          "duration_s": 6.774e-05
+        },
+        "gls": {
+          "timescale_s": 1e-12,
+          "first_timestamp": 0,
+          "last_timestamp": 67740000,
+          "start_s": 0.0,
+          "end_s": 6.774e-05,
+          "duration_s": 6.774e-05
+        }
+      }
+    },
+    "4a41b1e8d84727bf92c3effd75cab0649f364d6eb2e2ef9760aa8e3ac3809222": {
+      "completion": {
+        "replay": {
+          "design": "aes",
+          "workload": {
+            "sequence": [
+              {
+                "cycles": 753,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 24
+              },
+              {
+                "cycles": 664,
+                "op": "wait"
+              },
+              {
+                "cycles": 1052,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 2
+              },
+              {
+                "op": "work",
+                "units": 19
+              },
+              {
+                "op": "work",
+                "units": 5
+              },
+              {
+                "cycles": 943,
+                "op": "wait"
+              },
+              {
+                "cycles": 175,
+                "op": "wait"
+              },
+              {
+                "cycles": 536,
+                "op": "wait"
+              },
+              {
+                "cycles": 915,
+                "op": "wait"
+              },
+              {
+                "cycles": 582,
+                "op": "wait"
+              },
+              {
+                "cycles": 87,
+                "op": "wait"
+              },
+              {
+                "cycles": 293,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 14
+              }
+            ]
+          },
+          "observation_cycles": 6774,
+          "contract": {
+            "idle_cycles": 6000,
+            "max_depth": 4,
+            "max_expanded_ops": 128,
+            "work_units": 64
+          },
+          "source_digest": "ae31d8465bab8b454865870ac996283d69507c58e99be96ec1cfd8dd182e819c"
+        },
+        "inputs": {
+          "synthesis_manifest": "dba976cb349777fd971047d3cc01a424546a65e395c262a79a1286c91b07c32f",
+          "netlist": "55ca92c3f9950e315862874684e085ed82b3442471ad5139ea7774048f3b22a2",
+          "liberty": "92eb4e93a3d4c2563018ac81cdec2f02fdeaced9b39337ed5c141fa63e0ad8f8",
+          "cell_models": "5ff4558207faf8ea0d4f35ea6d85e1ff36f57936d307423c8f234204398d1c3a",
+          "primitive_models": "81351b44f54dd9b5e3cd07a845cbe9d90e889d29edfcbff57a527280839bbccc",
+          "rtl_workload": "3331f2601dbd5dec4542c913f60068f49da4f1604dc1ce508221d610e709b779",
+          "validation_driver": "ca2169e5eaaa9414b319b0c1aae9c4de1f9f938c1dc114965db183a45c88fb14",
+          "design_driver": "43d6aa5f5326fee68ef446545bd8a376be394a98d17a5506fda769317f25468a"
+        },
+        "wall_clock_s": 345.06469276198186,
+        "comparison_sha256": "308fde29772afa8f1eab8a4d3394eb26dacc3a3f96486fc9761690eb0dbf9c70"
+      },
+      "comparison": {
+        "scope": "One reference-checked matched AES replay; not a correlation or agent-performance result.",
+        "parameters": {
+          "SecMasking": 0,
+          "SecSBoxImpl": "aes_pkg::SBoxImplLut",
+          "EntropyWidth": 32
+        },
+        "clock_edges": 6774,
+        "blocks_checked": 64,
+        "program_sha256": "d3f6d11395d336da98455c89e3650c81cbc89603ea4c7cc59cd7b1551085ef84",
+        "internal_power_w": 0.003531235968694,
+        "switching_power_w": 0.0009260321385227,
+        "dynamic_power_w": 0.0044572681072167,
+        "leakage_power_w": 5.037847827793e-08,
+        "total_power_w": 0.004457318224013,
+        "annotated_pins": 90247,
+        "unannotated_pins": 0,
+        "limitation": "Functional zero-delay gates; no timing-induced glitch or signoff claim.",
+        "rtl": {
+          "total_transitions": 158133,
+          "window_rates": [
+            21.39952718676123,
+            46.671782762691855,
+            2.0,
+            71.32231404958678,
+            2.0,
+            2.0,
+            2.0,
+            39.33175914994097
+          ]
+        },
+        "gls": {
+          "total_transitions": 19220401,
+          "window_rates": [
+            2546.0591016548465,
+            5762.272727272727,
+            200.0,
+            8771.69893742621,
+            200.0,
+            200.0,
+            200.0,
+            4815.538370720189
+          ]
+        },
+        "artifact_sha256": {
+          "workload.json": "3331f2601dbd5dec4542c913f60068f49da4f1604dc1ce508221d610e709b779",
+          "program.txt": "d3f6d11395d336da98455c89e3650c81cbc89603ea4c7cc59cd7b1551085ef84",
+          "gls_provenance.json": "203ea931e3416b8ccb404ad4014780ae325b42431b119dac15c28fb80ea914da",
+          "synthesis_manifest.json": "dba976cb349777fd971047d3cc01a424546a65e395c262a79a1286c91b07c32f",
+          "power.rpt": "72e9cb9cab9c21d6902dc84adc5acfe5eb09d5d7bcdc528d591032594e745d69",
+          "gls_run.log": "a5b1df060069ea270cbc509f6f7e2e27006e093a2f218a856a974148a7e82605",
+          "rtl_run.log": "f45cc99f7f930608fd455767193fa6ad1a88191171aac3edfe02ee1f89d91495"
+        }
+      },
+      "waveform_windows": {
+        "rtl": {
+          "timescale_s": 1e-12,
+          "first_timestamp": 0,
+          "last_timestamp": 67740000,
+          "start_s": 0.0,
+          "end_s": 6.774e-05,
+          "duration_s": 6.774e-05
+        },
+        "gls": {
+          "timescale_s": 1e-12,
+          "first_timestamp": 0,
+          "last_timestamp": 67740000,
+          "start_s": 0.0,
+          "end_s": 6.774e-05,
+          "duration_s": 6.774e-05
+        }
+      }
+    },
+    "c159c9bcd1dfbcef1119e098288850a2ce87c4f735a42484dd9ce72c1cb8d9dc": {
+      "completion": {
+        "replay": {
+          "design": "aes",
+          "workload": {
+            "sequence": [
+              {
+                "cycles": 703,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 35
+              },
+              {
+                "cycles": 714,
+                "op": "wait"
+              },
+              {
+                "cycles": 1052,
+                "op": "wait"
+              },
+              {
+                "cycles": 582,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 2
+              },
+              {
+                "op": "work",
+                "units": 19
+              },
+              {
+                "op": "work",
+                "units": 5
+              },
+              {
+                "cycles": 943,
+                "op": "wait"
+              },
+              {
+                "cycles": 175,
+                "op": "wait"
+              },
+              {
+                "cycles": 536,
+                "op": "wait"
+              },
+              {
+                "cycles": 915,
+                "op": "wait"
+              },
+              {
+                "cycles": 87,
+                "op": "wait"
+              },
+              {
+                "cycles": 293,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 3
+              }
+            ]
+          },
+          "observation_cycles": 6774,
+          "contract": {
+            "idle_cycles": 6000,
+            "max_depth": 4,
+            "max_expanded_ops": 128,
+            "work_units": 64
+          },
+          "source_digest": "ae31d8465bab8b454865870ac996283d69507c58e99be96ec1cfd8dd182e819c"
+        },
+        "inputs": {
+          "synthesis_manifest": "dba976cb349777fd971047d3cc01a424546a65e395c262a79a1286c91b07c32f",
+          "netlist": "55ca92c3f9950e315862874684e085ed82b3442471ad5139ea7774048f3b22a2",
+          "liberty": "92eb4e93a3d4c2563018ac81cdec2f02fdeaced9b39337ed5c141fa63e0ad8f8",
+          "cell_models": "5ff4558207faf8ea0d4f35ea6d85e1ff36f57936d307423c8f234204398d1c3a",
+          "primitive_models": "81351b44f54dd9b5e3cd07a845cbe9d90e889d29edfcbff57a527280839bbccc",
+          "rtl_workload": "a680a882dccbc92e4d39cfeef99818c6a3af61e26182c14cac7bd6aa5c3f35d6",
+          "validation_driver": "ca2169e5eaaa9414b319b0c1aae9c4de1f9f938c1dc114965db183a45c88fb14",
+          "design_driver": "43d6aa5f5326fee68ef446545bd8a376be394a98d17a5506fda769317f25468a"
+        },
+        "wall_clock_s": 342.75980906700715,
+        "comparison_sha256": "1d682668527a3f2c39bc578310502489e3935cf2612c3cb41488b048a8b0945d"
+      },
+      "comparison": {
+        "scope": "One reference-checked matched AES replay; not a correlation or agent-performance result.",
+        "parameters": {
+          "SecMasking": 0,
+          "SecSBoxImpl": "aes_pkg::SBoxImplLut",
+          "EntropyWidth": 32
+        },
+        "clock_edges": 6774,
+        "blocks_checked": 64,
+        "program_sha256": "90077dd5a233f819035051d84ec7000808dbb147533f1c3979681649c097f636",
+        "internal_power_w": 0.003531231079251,
+        "switching_power_w": 0.0009260321385227,
+        "dynamic_power_w": 0.0044572632177737,
+        "leakage_power_w": 5.037415107267e-08,
+        "total_power_w": 0.0044573135674,
+        "annotated_pins": 90247,
+        "unannotated_pins": 0,
+        "limitation": "Functional zero-delay gates; no timing-induced glitch or signoff claim.",
+        "rtl": {
+          "total_transitions": 158133,
+          "window_rates": [
+            32.46099290780142,
+            64.94805194805195,
+            2.0,
+            2.0,
+            71.40425531914893,
+            2.0,
+            2.0,
+            10.007083825265644
+          ]
+        },
+        "gls": {
+          "total_transitions": 19220401,
+          "window_rates": [
+            3931.066193853428,
+            8005.3813459268,
+            200.0,
+            200.0,
+            8781.83096926714,
+            200.0,
+            200.0,
+            1189.0578512396694
+          ]
+        },
+        "artifact_sha256": {
+          "workload.json": "a680a882dccbc92e4d39cfeef99818c6a3af61e26182c14cac7bd6aa5c3f35d6",
+          "program.txt": "90077dd5a233f819035051d84ec7000808dbb147533f1c3979681649c097f636",
+          "gls_provenance.json": "8c518fe3c68145e7f12379b08f2901c343acd82811ae8f559fe306c3bd696d86",
+          "synthesis_manifest.json": "dba976cb349777fd971047d3cc01a424546a65e395c262a79a1286c91b07c32f",
+          "power.rpt": "c5daf6c53ac1441a3edd28e9ca9949a1ed2ba8e44d9fe26ffb360597f4400dcd",
+          "gls_run.log": "a5b1df060069ea270cbc509f6f7e2e27006e093a2f218a856a974148a7e82605",
+          "rtl_run.log": "b9e63f6977875e5c7a7c0776d818dd80d956bd44d3ca2a8ff43023bc0f4f8579"
+        }
+      },
+      "waveform_windows": {
+        "rtl": {
+          "timescale_s": 1e-12,
+          "first_timestamp": 0,
+          "last_timestamp": 67740000,
+          "start_s": 0.0,
+          "end_s": 6.774e-05,
+          "duration_s": 6.774e-05
+        },
+        "gls": {
+          "timescale_s": 1e-12,
+          "first_timestamp": 0,
+          "last_timestamp": 67740000,
+          "start_s": 0.0,
+          "end_s": 6.774e-05,
+          "duration_s": 6.774e-05
+        }
+      }
+    },
+    "5931833fd4c145d561d7d0c80484ce7c21da5668f7293b432dd13118bced9f15": {
+      "completion": {
+        "replay": {
+          "design": "aes",
+          "workload": {
+            "sequence": [
+              {
+                "cycles": 245,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 5
+              },
+              {
+                "op": "work",
+                "units": 21
+              },
+              {
+                "cycles": 1043,
+                "op": "wait"
+              },
+              {
+                "cycles": 355,
+                "op": "wait"
+              },
+              {
+                "cycles": 315,
+                "op": "wait"
+              },
+              {
+                "cycles": 518,
+                "op": "wait"
+              },
+              {
+                "cycles": 332,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 38
+              },
+              {
+                "cycles": 821,
+                "op": "wait"
+              },
+              {
+                "cycles": 1552,
+                "op": "wait"
+              },
+              {
+                "cycles": 680,
+                "op": "wait"
+              },
+              {
+                "cycles": 139,
+                "op": "wait"
+              }
+            ]
+          },
+          "observation_cycles": 6774,
+          "contract": {
+            "idle_cycles": 6000,
+            "max_depth": 4,
+            "max_expanded_ops": 128,
+            "work_units": 64
+          },
+          "source_digest": "ae31d8465bab8b454865870ac996283d69507c58e99be96ec1cfd8dd182e819c"
+        },
+        "inputs": {
+          "synthesis_manifest": "dba976cb349777fd971047d3cc01a424546a65e395c262a79a1286c91b07c32f",
+          "netlist": "55ca92c3f9950e315862874684e085ed82b3442471ad5139ea7774048f3b22a2",
+          "liberty": "92eb4e93a3d4c2563018ac81cdec2f02fdeaced9b39337ed5c141fa63e0ad8f8",
+          "cell_models": "5ff4558207faf8ea0d4f35ea6d85e1ff36f57936d307423c8f234204398d1c3a",
+          "primitive_models": "81351b44f54dd9b5e3cd07a845cbe9d90e889d29edfcbff57a527280839bbccc",
+          "rtl_workload": "fd1058175ced06278bd67a2a8faf42c8ba3a44d4355f27995899aedaab10f259",
+          "validation_driver": "ca2169e5eaaa9414b319b0c1aae9c4de1f9f938c1dc114965db183a45c88fb14",
+          "design_driver": "43d6aa5f5326fee68ef446545bd8a376be394a98d17a5506fda769317f25468a"
+        },
+        "wall_clock_s": 343.1688581859926,
+        "comparison_sha256": "2b9ac097b17ebfbd2b0de8097abd217391726d626e44384990d71934ec5f9b1e"
+      },
+      "comparison": {
+        "scope": "One reference-checked matched AES replay; not a correlation or agent-performance result.",
+        "parameters": {
+          "SecMasking": 0,
+          "SecSBoxImpl": "aes_pkg::SBoxImplLut",
+          "EntropyWidth": 32
+        },
+        "clock_edges": 6774,
+        "blocks_checked": 64,
+        "program_sha256": "382ce150f1ca61b8f539d0a6bef906a64c1a581f1e517ec6381e4de5c64118db",
+        "internal_power_w": 0.003531184978783,
+        "switching_power_w": 0.0009260321385227,
+        "dynamic_power_w": 0.0044572171173057,
+        "leakage_power_w": 5.033453831516e-08,
+        "total_power_w": 0.004457267466933,
+        "annotated_pins": 90247,
+        "unannotated_pins": 0,
+        "limitation": "Functional zero-delay gates; no timing-induced glitch or signoff claim.",
+        "rtl": {
+          "total_transitions": 158125,
+          "window_rates": [
+            71.46217494089835,
+            2.0,
+            2.0,
+            59.79574970484062,
+            45.568557919621746,
+            2.0,
+            2.0,
+            2.0
+          ]
+        },
+        "gls": {
+          "total_transitions": 19220386,
+          "window_rates": [
+            8775.04609929078,
+            200.0,
+            200.0,
+            7356.709563164109,
+            5577.4988179669035,
+            200.0,
+            200.0,
+            200.0
+          ]
+        },
+        "artifact_sha256": {
+          "workload.json": "fd1058175ced06278bd67a2a8faf42c8ba3a44d4355f27995899aedaab10f259",
+          "program.txt": "382ce150f1ca61b8f539d0a6bef906a64c1a581f1e517ec6381e4de5c64118db",
+          "gls_provenance.json": "b5c84f2a77ca8dad611abe22cf7b3c58a6a781902b2606d2cd1a3dd53e200c30",
+          "synthesis_manifest.json": "dba976cb349777fd971047d3cc01a424546a65e395c262a79a1286c91b07c32f",
+          "power.rpt": "c3037e660e1ed802a7036f00f7f1314633d14f6d5175d5e019a563c205c872b2",
+          "gls_run.log": "a5b1df060069ea270cbc509f6f7e2e27006e093a2f218a856a974148a7e82605",
+          "rtl_run.log": "b0966c7bba6c9e3274bd41498956200e4002f8775304d9c849f8fc4c049d2e27"
+        }
+      },
+      "waveform_windows": {
+        "rtl": {
+          "timescale_s": 1e-12,
+          "first_timestamp": 0,
+          "last_timestamp": 67740000,
+          "start_s": 0.0,
+          "end_s": 6.774e-05,
+          "duration_s": 6.774e-05
+        },
+        "gls": {
+          "timescale_s": 1e-12,
+          "first_timestamp": 0,
+          "last_timestamp": 67740000,
+          "start_s": 0.0,
+          "end_s": 6.774e-05,
+          "duration_s": 6.774e-05
+        }
+      }
+    },
+    "85c46c445f00c5c634ff9a081e4eff7b0e226b3dde21ded86b3411f14b68aa1d": {
+      "completion": {
+        "replay": {
+          "design": "aes",
+          "workload": {
+            "sequence": [
+              {
+                "cycles": 245,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 5
+              },
+              {
+                "cycles": 821,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 17
+              },
+              {
+                "cycles": 1043,
+                "op": "wait"
+              },
+              {
+                "cycles": 355,
+                "op": "wait"
+              },
+              {
+                "cycles": 93,
+                "op": "wait"
+              },
+              {
+                "cycles": 222,
+                "op": "wait"
+              },
+              {
+                "cycles": 524,
+                "op": "wait"
+              },
+              {
+                "cycles": 332,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 38
+              },
+              {
+                "cycles": 14,
+                "op": "wait"
+              },
+              {
+                "cycles": 1552,
+                "op": "wait"
+              },
+              {
+                "cycles": 680,
+                "op": "wait"
+              },
+              {
+                "cycles": 119,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 4
+              }
+            ]
+          },
+          "observation_cycles": 6774,
+          "contract": {
+            "idle_cycles": 6000,
+            "max_depth": 4,
+            "max_expanded_ops": 128,
+            "work_units": 64
+          },
+          "source_digest": "ae31d8465bab8b454865870ac996283d69507c58e99be96ec1cfd8dd182e819c"
+        },
+        "inputs": {
+          "synthesis_manifest": "dba976cb349777fd971047d3cc01a424546a65e395c262a79a1286c91b07c32f",
+          "netlist": "55ca92c3f9950e315862874684e085ed82b3442471ad5139ea7774048f3b22a2",
+          "liberty": "92eb4e93a3d4c2563018ac81cdec2f02fdeaced9b39337ed5c141fa63e0ad8f8",
+          "cell_models": "5ff4558207faf8ea0d4f35ea6d85e1ff36f57936d307423c8f234204398d1c3a",
+          "primitive_models": "81351b44f54dd9b5e3cd07a845cbe9d90e889d29edfcbff57a527280839bbccc",
+          "rtl_workload": "07cc47e712dc23fe274f958ac0f611c134a108cf58aaa5a5cfb75ce4135df831",
+          "validation_driver": "ca2169e5eaaa9414b319b0c1aae9c4de1f9f938c1dc114965db183a45c88fb14",
+          "design_driver": "43d6aa5f5326fee68ef446545bd8a376be394a98d17a5506fda769317f25468a"
+        },
+        "wall_clock_s": 347.78482755389996,
+        "comparison_sha256": "951527e87a37fa0c9d421b9c3f0c65c953fd0a5d7bdf51e99c8f3c309746cb03"
+      },
+      "comparison": {
+        "scope": "One reference-checked matched AES replay; not a correlation or agent-performance result.",
+        "parameters": {
+          "SecMasking": 0,
+          "SecSBoxImpl": "aes_pkg::SBoxImplLut",
+          "EntropyWidth": 32
+        },
+        "clock_edges": 6774,
+        "blocks_checked": 64,
+        "program_sha256": "eea0b3f5e5bbd2fa8d0b3280002a668519a8f8d280740af85fce671a9cc94d7c",
+        "internal_power_w": 0.003531184978783,
+        "switching_power_w": 0.0009260321385227,
+        "dynamic_power_w": 0.0044572171173057,
+        "leakage_power_w": 5.033453831516e-08,
+        "total_power_w": 0.004457267466933,
+        "annotated_pins": 90247,
+        "unannotated_pins": 0,
+        "limitation": "Functional zero-delay gates; no timing-induced glitch or signoff claim.",
+        "rtl": {
+          "total_transitions": 158141,
+          "window_rates": [
+            15.412529550827424,
+            47.32939787485242,
+            2.0,
+            2.0,
+            74.91489361702128,
+            30.484061393152302,
+            2.0,
+            12.672963400236128
+          ]
+        },
+        "gls": {
+          "total_transitions": 19220416,
+          "window_rates": [
+            1843.5815602836878,
+            5804.578512396694,
+            200.0,
+            200.0,
+            9187.678486997636,
+            3750.7922077922076,
+            200.0,
+            1518.7378984651712
+          ]
+        },
+        "artifact_sha256": {
+          "workload.json": "07cc47e712dc23fe274f958ac0f611c134a108cf58aaa5a5cfb75ce4135df831",
+          "program.txt": "eea0b3f5e5bbd2fa8d0b3280002a668519a8f8d280740af85fce671a9cc94d7c",
+          "gls_provenance.json": "02c9cc426999ae47e4ceef91c032c7328042e634e574f1d70b97756c93d4039b",
+          "synthesis_manifest.json": "dba976cb349777fd971047d3cc01a424546a65e395c262a79a1286c91b07c32f",
+          "power.rpt": "c3037e660e1ed802a7036f00f7f1314633d14f6d5175d5e019a563c205c872b2",
+          "gls_run.log": "a5b1df060069ea270cbc509f6f7e2e27006e093a2f218a856a974148a7e82605",
+          "rtl_run.log": "a30e58d786d26cf6bb44ecfeb510bd5e8881dd4f46a415b6a7dd2441e3c69a80"
+        }
+      },
+      "waveform_windows": {
+        "rtl": {
+          "timescale_s": 1e-12,
+          "first_timestamp": 0,
+          "last_timestamp": 67740000,
+          "start_s": 0.0,
+          "end_s": 6.774e-05,
+          "duration_s": 6.774e-05
+        },
+        "gls": {
+          "timescale_s": 1e-12,
+          "first_timestamp": 0,
+          "last_timestamp": 67740000,
+          "start_s": 0.0,
+          "end_s": 6.774e-05,
+          "duration_s": 6.774e-05
+        }
+      }
+    },
+    "47cf7ebcfab32fca05051af8679df128d6da1ecedd5b5d7c95da3b9f95d9c15d": {
+      "completion": {
+        "replay": {
+          "design": "aes",
+          "workload": {
+            "sequence": [
+              {
+                "cycles": 245,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 13
+              },
+              {
+                "op": "work",
+                "units": 21
+              },
+              {
+                "cycles": 1043,
+                "op": "wait"
+              },
+              {
+                "cycles": 355,
+                "op": "wait"
+              },
+              {
+                "cycles": 315,
+                "op": "wait"
+              },
+              {
+                "cycles": 518,
+                "op": "wait"
+              },
+              {
+                "cycles": 332,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 30
+              },
+              {
+                "cycles": 821,
+                "op": "wait"
+              },
+              {
+                "cycles": 1552,
+                "op": "wait"
+              },
+              {
+                "cycles": 680,
+                "op": "wait"
+              },
+              {
+                "cycles": 139,
+                "op": "wait"
+              }
+            ]
+          },
+          "observation_cycles": 6774,
+          "contract": {
+            "idle_cycles": 6000,
+            "max_depth": 4,
+            "max_expanded_ops": 128,
+            "work_units": 64
+          },
+          "source_digest": "ae31d8465bab8b454865870ac996283d69507c58e99be96ec1cfd8dd182e819c"
+        },
+        "inputs": {
+          "synthesis_manifest": "dba976cb349777fd971047d3cc01a424546a65e395c262a79a1286c91b07c32f",
+          "netlist": "55ca92c3f9950e315862874684e085ed82b3442471ad5139ea7774048f3b22a2",
+          "liberty": "92eb4e93a3d4c2563018ac81cdec2f02fdeaced9b39337ed5c141fa63e0ad8f8",
+          "cell_models": "5ff4558207faf8ea0d4f35ea6d85e1ff36f57936d307423c8f234204398d1c3a",
+          "primitive_models": "81351b44f54dd9b5e3cd07a845cbe9d90e889d29edfcbff57a527280839bbccc",
+          "rtl_workload": "981b5adb805f4f4776a60bd777d9584ffff2f7646ef06efa5a733e0a757b2ed9",
+          "validation_driver": "ca2169e5eaaa9414b319b0c1aae9c4de1f9f938c1dc114965db183a45c88fb14",
+          "design_driver": "43d6aa5f5326fee68ef446545bd8a376be394a98d17a5506fda769317f25468a"
+        },
+        "wall_clock_s": 353.6644338929327,
+        "comparison_sha256": "17446a48c90b4465267394b364f939b6be73b553005fa7d4541147230618d8be"
+      },
+      "comparison": {
+        "scope": "One reference-checked matched AES replay; not a correlation or agent-performance result.",
+        "parameters": {
+          "SecMasking": 0,
+          "SecSBoxImpl": "aes_pkg::SBoxImplLut",
+          "EntropyWidth": 32
+        },
+        "clock_edges": 6774,
+        "blocks_checked": 64,
+        "program_sha256": "b3338fb7b775b33e338d8dfa4bdd8d262f0f0566d61c11eeb2dc28da3f3511a1",
+        "internal_power_w": 0.003531184978783,
+        "switching_power_w": 0.0009260321385227,
+        "dynamic_power_w": 0.0044572171173057,
+        "leakage_power_w": 5.033453831516e-08,
+        "total_power_w": 0.004457267466933,
+        "annotated_pins": 90247,
+        "unannotated_pins": 0,
+        "limitation": "Functional zero-delay gates; no timing-induced glitch or signoff claim.",
+        "rtl": {
+          "total_transitions": 158125,
+          "window_rates": [
+            92.81442080378251,
+            2.0,
+            2.0,
+            38.468713105076745,
+            45.568557919621746,
+            2.0,
+            2.0,
+            2.0
+          ]
+        },
+        "gls": {
+          "total_transitions": 19220386,
+          "window_rates": [
+            11415.604018912529,
+            200.0,
+            200.0,
+            4719.2691853600945,
+            5577.4988179669035,
+            200.0,
+            200.0,
+            200.0
+          ]
+        },
+        "artifact_sha256": {
+          "workload.json": "981b5adb805f4f4776a60bd777d9584ffff2f7646ef06efa5a733e0a757b2ed9",
+          "program.txt": "b3338fb7b775b33e338d8dfa4bdd8d262f0f0566d61c11eeb2dc28da3f3511a1",
+          "gls_provenance.json": "a991bdcbc123ccfa49935e9ac834da01686a6de8643e6989809abcb493226ee7",
+          "synthesis_manifest.json": "dba976cb349777fd971047d3cc01a424546a65e395c262a79a1286c91b07c32f",
+          "power.rpt": "c3037e660e1ed802a7036f00f7f1314633d14f6d5175d5e019a563c205c872b2",
+          "gls_run.log": "a5b1df060069ea270cbc509f6f7e2e27006e093a2f218a856a974148a7e82605",
+          "rtl_run.log": "5993d80446c2a7dc84d33faca4a004190ee372091db8f57c85414488c63f499f"
+        }
+      },
+      "waveform_windows": {
+        "rtl": {
+          "timescale_s": 1e-12,
+          "first_timestamp": 0,
+          "last_timestamp": 67740000,
+          "start_s": 0.0,
+          "end_s": 6.774e-05,
+          "duration_s": 6.774e-05
+        },
+        "gls": {
+          "timescale_s": 1e-12,
+          "first_timestamp": 0,
+          "last_timestamp": 67740000,
+          "start_s": 0.0,
+          "end_s": 6.774e-05,
+          "duration_s": 6.774e-05
+        }
+      }
+    },
+    "4ccbae0f588fb767413d5e90fce0f1135b9e90dbf74db322e585566dc915f81d": {
+      "completion": {
+        "replay": {
+          "design": "aes",
+          "workload": {
+            "sequence": [
+              {
+                "cycles": 245,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 21
+              },
+              {
+                "cycles": 1043,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 15
+              },
+              {
+                "cycles": 355,
+                "op": "wait"
+              },
+              {
+                "cycles": 315,
+                "op": "wait"
+              },
+              {
+                "cycles": 518,
+                "op": "wait"
+              },
+              {
+                "cycles": 332,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 28
+              },
+              {
+                "cycles": 821,
+                "op": "wait"
+              },
+              {
+                "cycles": 1552,
+                "op": "wait"
+              },
+              {
+                "cycles": 680,
+                "op": "wait"
+              },
+              {
+                "cycles": 139,
+                "op": "wait"
+              }
+            ]
+          },
+          "observation_cycles": 6774,
+          "contract": {
+            "idle_cycles": 6000,
+            "max_depth": 4,
+            "max_expanded_ops": 128,
+            "work_units": 64
+          },
+          "source_digest": "ae31d8465bab8b454865870ac996283d69507c58e99be96ec1cfd8dd182e819c"
+        },
+        "inputs": {
+          "synthesis_manifest": "dba976cb349777fd971047d3cc01a424546a65e395c262a79a1286c91b07c32f",
+          "netlist": "55ca92c3f9950e315862874684e085ed82b3442471ad5139ea7774048f3b22a2",
+          "liberty": "92eb4e93a3d4c2563018ac81cdec2f02fdeaced9b39337ed5c141fa63e0ad8f8",
+          "cell_models": "5ff4558207faf8ea0d4f35ea6d85e1ff36f57936d307423c8f234204398d1c3a",
+          "primitive_models": "81351b44f54dd9b5e3cd07a845cbe9d90e889d29edfcbff57a527280839bbccc",
+          "rtl_workload": "bff934108356b44281d4e19cc517a5a3b763fd6c5a5639e549387ab334cfb4be",
+          "validation_driver": "ca2169e5eaaa9414b319b0c1aae9c4de1f9f938c1dc114965db183a45c88fb14",
+          "design_driver": "43d6aa5f5326fee68ef446545bd8a376be394a98d17a5506fda769317f25468a"
+        },
+        "wall_clock_s": 348.684855527943,
+        "comparison_sha256": "dd1102d9543b287cfdb9a39f07d4409c7a1a8f0b26fbf00fd866718b10ec6759"
+      },
+      "comparison": {
+        "scope": "One reference-checked matched AES replay; not a correlation or agent-performance result.",
+        "parameters": {
+          "SecMasking": 0,
+          "SecSBoxImpl": "aes_pkg::SBoxImplLut",
+          "EntropyWidth": 32
+        },
+        "clock_edges": 6774,
+        "blocks_checked": 64,
+        "program_sha256": "f43b84f0736894dac6c84cba369fe80e806e84223e1bbbeab62e4be0d571c818",
+        "internal_power_w": 0.003531184978783,
+        "switching_power_w": 0.0009260321385227,
+        "dynamic_power_w": 0.0044572171173057,
+        "leakage_power_w": 5.033453831516e-08,
+        "total_power_w": 0.004457267466933,
+        "annotated_pins": 90247,
+        "unannotated_pins": 0,
+        "limitation": "Functional zero-delay gates; no timing-induced glitch or signoff claim.",
+        "rtl": {
+          "total_transitions": 158133,
+          "window_rates": [
+            58.11702127659574,
+            34.64817001180638,
+            9.349468713105077,
+            33.13695395513577,
+            45.568557919621746,
+            2.0,
+            2.0,
+            2.0
+          ]
+        },
+        "gls": {
+          "total_transitions": 19220401,
+          "window_rates": [
+            7124.6973995271865,
+            4198.4663518299885,
+            1146.7520661157025,
+            4059.909090909091,
+            5577.4988179669035,
+            200.0,
+            200.0,
+            200.0
+          ]
+        },
+        "artifact_sha256": {
+          "workload.json": "bff934108356b44281d4e19cc517a5a3b763fd6c5a5639e549387ab334cfb4be",
+          "program.txt": "f43b84f0736894dac6c84cba369fe80e806e84223e1bbbeab62e4be0d571c818",
+          "gls_provenance.json": "73a5e316f52ab2db7a2e28d0685a5d3dcff4828115e1b5ef49c598274fa91ad7",
+          "synthesis_manifest.json": "dba976cb349777fd971047d3cc01a424546a65e395c262a79a1286c91b07c32f",
+          "power.rpt": "c3037e660e1ed802a7036f00f7f1314633d14f6d5175d5e019a563c205c872b2",
+          "gls_run.log": "a5b1df060069ea270cbc509f6f7e2e27006e093a2f218a856a974148a7e82605",
+          "rtl_run.log": "99998887a220c9509042750cab58d305693fd0c2561d52af7c7823df2a5f6593"
+        }
+      },
+      "waveform_windows": {
+        "rtl": {
+          "timescale_s": 1e-12,
+          "first_timestamp": 0,
+          "last_timestamp": 67740000,
+          "start_s": 0.0,
+          "end_s": 6.774e-05,
+          "duration_s": 6.774e-05
+        },
+        "gls": {
+          "timescale_s": 1e-12,
+          "first_timestamp": 0,
+          "last_timestamp": 67740000,
+          "start_s": 0.0,
+          "end_s": 6.774e-05,
+          "duration_s": 6.774e-05
+        }
+      }
+    },
+    "70dd19d422f6911f3dcfa58e6dd6cfaa2b3e6dea68fef16921e9c614c61a4d50": {
+      "completion": {
+        "replay": {
+          "design": "dma",
+          "workload": {
+            "sequence": [
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 52,
+                "op": "wait"
+              },
+              {
+                "cycles": 1074,
+                "op": "wait"
+              },
+              {
+                "cycles": 27,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 12
+              },
+              {
+                "cycles": 308,
+                "op": "wait"
+              },
+              {
+                "cycles": 369,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 3
+              },
+              {
+                "op": "work",
+                "units": 11
+              },
+              {
+                "cycles": 722,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 5
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 2
+              },
+              {
+                "cycles": 470,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 7
+              },
+              {
+                "cycles": 495,
+                "op": "wait"
+              },
+              {
+                "cycles": 740,
+                "op": "wait"
+              },
+              {
+                "cycles": 111,
+                "op": "wait"
+              },
+              {
+                "cycles": 151,
+                "op": "wait"
+              },
+              {
+                "cycles": 554,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 11
+              },
+              {
+                "op": "work",
+                "units": 5
+              },
+              {
+                "op": "work",
+                "units": 4
+              },
+              {
+                "cycles": 433,
+                "op": "wait"
+              },
+              {
+                "cycles": 494,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              }
+            ]
+          },
+          "observation_cycles": 12000,
+          "contract": {
+            "idle_cycles": 6000,
+            "max_depth": 4,
+            "max_expanded_ops": 128,
+            "work_units": 64
+          },
+          "source_digest": "ae31d8465bab8b454865870ac996283d69507c58e99be96ec1cfd8dd182e819c"
+        },
+        "inputs": {
+          "synthesis_manifest": "6b7fccfaf0bf04df499466e6c5478ef8292740bd88a757d7b9607728bed583b2",
+          "netlist": "c41ff6349e5a7ad1d564b6f2783a800a914e509f11c5738bd8b320a73ea44bd9",
+          "liberty": "92eb4e93a3d4c2563018ac81cdec2f02fdeaced9b39337ed5c141fa63e0ad8f8",
+          "cell_models": "5ff4558207faf8ea0d4f35ea6d85e1ff36f57936d307423c8f234204398d1c3a",
+          "primitive_models": "81351b44f54dd9b5e3cd07a845cbe9d90e889d29edfcbff57a527280839bbccc",
+          "rtl_workload": "e6870bbc29658bd6834da23e237a3bb9fbc6409d45ff9beef9665cced5a779a8",
+          "validation_driver": "ca2169e5eaaa9414b319b0c1aae9c4de1f9f938c1dc114965db183a45c88fb14",
+          "design_driver": "60523150d8631a4bed593a12efc65ba29dfabae9d3bb8d2d7c89cff8c8f93296"
+        },
+        "wall_clock_s": 16.620029194978997,
+        "comparison_sha256": "eefb5099f960820f7c7c45834ebdd307b8fc6e91b7ac7d9a99e2b4aeb103bfbd"
+      },
+      "comparison": {
+        "scope": "One reference-checked matched DMA replay; not a correlation or agent-performance result.",
+        "observed": {
+          "read_descriptors": 64,
+          "write_completions": 64,
+          "max_inflight": 4,
+          "observation_cycles": 12000,
+          "completion_ns": 76020,
+          "trailing_idle_cycles": 0,
+          "declared_schedule_end_ns": 76035,
+          "padded_until_ns": 120005,
+          "useful_work_bytes": 4096
+        },
+        "clock_edges": 12000,
+        "internal_power_w": 0.0203793309629,
+        "switching_power_w": 0.0001157941151178,
+        "dynamic_power_w": 0.0204951250780178,
+        "leakage_power_w": 5.557739513051e-08,
+        "total_power_w": 0.0204951800406,
+        "annotated_pins": 36292,
+        "unannotated_pins": 4,
+        "limitation": "Functional zero-delay gates; no timing-induced glitch or signoff claim.",
+        "rtl": {
+          "total_transitions": 70741,
+          "window_rates": [
+            8.377333333333333,
+            8.809333333333333,
+            9.290666666666667,
+            2.0,
+            12.208666666666666,
+            2.474666666666667,
+            2.0,
+            1.9993333333333334
+          ]
+        },
+        "gls": {
+          "total_transitions": 2524022,
+          "window_rates": [
+            354.54066666666665,
+            364.1193333333333,
+            383.92,
+            6.0,
+            530.4746666666666,
+            31.626666666666665,
+            6.0,
+            5.998
+          ]
+        },
+        "artifact_sha256": {
+          "workload.json": "e6870bbc29658bd6834da23e237a3bb9fbc6409d45ff9beef9665cced5a779a8",
+          "observed.json": "b3cd34d1e88b0975a07b7e4cf50847a3773654fef881a49ab886145972ee705b",
+          "gls_provenance.json": "99fcdcd5fe49ec053b39bd7279ad3b0db8c2db0e8cde9337773f606d081c42e2",
+          "synthesis_manifest.json": "6b7fccfaf0bf04df499466e6c5478ef8292740bd88a757d7b9607728bed583b2",
+          "power.rpt": "4d4692ef979ce1ddf3c4285a79313e504258171f83af94b221a256e37e0da027",
+          "gls_driver.log": "69b38835fb0a9b4151973e0b48f3057a954c1c9c09699ded52696b70ff8b1a2b"
+        }
+      },
+      "waveform_windows": {
+        "rtl": {
+          "timescale_s": 1e-12,
+          "first_timestamp": 0,
+          "last_timestamp": 120005001,
+          "start_s": 0.0,
+          "end_s": 0.000120005001,
+          "duration_s": 0.000120005001
+        },
+        "gls": {
+          "timescale_s": 1e-12,
+          "first_timestamp": 0,
+          "last_timestamp": 120005001,
+          "start_s": 0.0,
+          "end_s": 0.000120005001,
+          "duration_s": 0.000120005001
+        }
+      }
+    },
+    "71d5f0d762696d6ffb0942a92982af73f035068259e0d9e842b625b68a6c5668": {
+      "completion": {
+        "replay": {
+          "design": "dma",
+          "workload": {
+            "sequence": [
+              {
+                "op": "work",
+                "units": 20
+              },
+              {
+                "cycles": 3525,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 24
+              },
+              {
+                "cycles": 2475,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 18
+              }
+            ]
+          },
+          "observation_cycles": 12000,
+          "contract": {
+            "idle_cycles": 6000,
+            "max_depth": 4,
+            "max_expanded_ops": 128,
+            "work_units": 64
+          },
+          "source_digest": "ae31d8465bab8b454865870ac996283d69507c58e99be96ec1cfd8dd182e819c"
+        },
+        "inputs": {
+          "synthesis_manifest": "6b7fccfaf0bf04df499466e6c5478ef8292740bd88a757d7b9607728bed583b2",
+          "netlist": "c41ff6349e5a7ad1d564b6f2783a800a914e509f11c5738bd8b320a73ea44bd9",
+          "liberty": "92eb4e93a3d4c2563018ac81cdec2f02fdeaced9b39337ed5c141fa63e0ad8f8",
+          "cell_models": "5ff4558207faf8ea0d4f35ea6d85e1ff36f57936d307423c8f234204398d1c3a",
+          "primitive_models": "81351b44f54dd9b5e3cd07a845cbe9d90e889d29edfcbff57a527280839bbccc",
+          "rtl_workload": "a3a688568c8722aec71181ae70453d71523d6ed50d730066acf86d82304fff86",
+          "validation_driver": "ca2169e5eaaa9414b319b0c1aae9c4de1f9f938c1dc114965db183a45c88fb14",
+          "design_driver": "60523150d8631a4bed593a12efc65ba29dfabae9d3bb8d2d7c89cff8c8f93296"
+        },
+        "wall_clock_s": 16.28861057094764,
+        "comparison_sha256": "a1d141c1ae453392e113b5cca11917b539336137d95a3056e2749821652eb66e"
+      },
+      "comparison": {
+        "scope": "One reference-checked matched DMA replay; not a correlation or agent-performance result.",
+        "observed": {
+          "read_descriptors": 64,
+          "write_completions": 64,
+          "max_inflight": 4,
+          "observation_cycles": 12000,
+          "completion_ns": 74620,
+          "trailing_idle_cycles": 0,
+          "declared_schedule_end_ns": 74635,
+          "padded_until_ns": 120005,
+          "useful_work_bytes": 4096
+        },
+        "clock_edges": 12000,
+        "internal_power_w": 0.02037914469838,
+        "switching_power_w": 0.0001157573715318,
+        "dynamic_power_w": 0.0204949020699118,
+        "leakage_power_w": 5.525255275529e-08,
+        "total_power_w": 0.02049495838583,
+        "annotated_pins": 36292,
+        "unannotated_pins": 4,
+        "limitation": "Functional zero-delay gates; no timing-induced glitch or signoff claim.",
+        "rtl": {
+          "total_transitions": 70695,
+          "window_rates": [
+            11.777333333333333,
+            2.0,
+            12.902666666666667,
+            3.722,
+            10.728,
+            2.0,
+            2.0,
+            1.9993333333333334
+          ]
+        },
+        "gls": {
+          "total_transitions": 2524104,
+          "window_rates": [
+            534.2186666666666,
+            6.0,
+            571.6593333333333,
+            96.57933333333334,
+            456.27866666666665,
+            6.0,
+            6.0,
+            5.998
+          ]
+        },
+        "artifact_sha256": {
+          "workload.json": "a3a688568c8722aec71181ae70453d71523d6ed50d730066acf86d82304fff86",
+          "observed.json": "fab129f37a7f4e7a90596c1be781ee4d29926dc87e77d56ad27764762233da14",
+          "gls_provenance.json": "65c911623a5623acd6b841a92730cfcbb522f2778e68a50a937844830b717f50",
+          "synthesis_manifest.json": "6b7fccfaf0bf04df499466e6c5478ef8292740bd88a757d7b9607728bed583b2",
+          "power.rpt": "c9b2c20852ae2d185c4d48d27efbf6b72a976383ed3d114cfb57f82cff2bf07d",
+          "gls_driver.log": "a6fbbe0467920bcec7cc1555ea329776a98535363c1e45e96d8cde88000bd00e"
+        }
+      },
+      "waveform_windows": {
+        "rtl": {
+          "timescale_s": 1e-12,
+          "first_timestamp": 0,
+          "last_timestamp": 120005001,
+          "start_s": 0.0,
+          "end_s": 0.000120005001,
+          "duration_s": 0.000120005001
+        },
+        "gls": {
+          "timescale_s": 1e-12,
+          "first_timestamp": 0,
+          "last_timestamp": 120005001,
+          "start_s": 0.0,
+          "end_s": 0.000120005001,
+          "duration_s": 0.000120005001
+        }
+      }
+    },
+    "5a304583339f2b84b719fc69112e47a0ab2998d9040409f75df3dadb76876e21": {
+      "completion": {
+        "replay": {
+          "design": "dma",
+          "workload": {
+            "sequence": [
+              {
+                "op": "work",
+                "units": 14
+              },
+              {
+                "cycles": 230,
+                "op": "wait"
+              },
+              {
+                "cycles": 814,
+                "op": "wait"
+              },
+              {
+                "cycles": 1130,
+                "op": "wait"
+              },
+              {
+                "cycles": 1740,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 3
+              },
+              {
+                "op": "work",
+                "units": 10
+              },
+              {
+                "cycles": 140,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 5
+              },
+              {
+                "cycles": 938,
+                "op": "wait"
+              },
+              {
+                "cycles": 364,
+                "op": "wait"
+              },
+              {
+                "cycles": 64,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 2
+              },
+              {
+                "op": "work",
+                "units": 6
+              },
+              {
+                "cycles": 580,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 6
+              },
+              {
+                "op": "work",
+                "units": 2
+              },
+              {
+                "op": "work",
+                "units": 9
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 5
+              }
+            ]
+          },
+          "observation_cycles": 12000,
+          "contract": {
+            "idle_cycles": 6000,
+            "max_depth": 4,
+            "max_expanded_ops": 128,
+            "work_units": 64
+          },
+          "source_digest": "ae31d8465bab8b454865870ac996283d69507c58e99be96ec1cfd8dd182e819c"
+        },
+        "inputs": {
+          "synthesis_manifest": "6b7fccfaf0bf04df499466e6c5478ef8292740bd88a757d7b9607728bed583b2",
+          "netlist": "c41ff6349e5a7ad1d564b6f2783a800a914e509f11c5738bd8b320a73ea44bd9",
+          "liberty": "92eb4e93a3d4c2563018ac81cdec2f02fdeaced9b39337ed5c141fa63e0ad8f8",
+          "cell_models": "5ff4558207faf8ea0d4f35ea6d85e1ff36f57936d307423c8f234204398d1c3a",
+          "primitive_models": "81351b44f54dd9b5e3cd07a845cbe9d90e889d29edfcbff57a527280839bbccc",
+          "rtl_workload": "97dc0bdfc0dfe9ac60048ef98931c15d3ced5f691a7ad5ba0d5b160a5ed51fea",
+          "validation_driver": "ca2169e5eaaa9414b319b0c1aae9c4de1f9f938c1dc114965db183a45c88fb14",
+          "design_driver": "60523150d8631a4bed593a12efc65ba29dfabae9d3bb8d2d7c89cff8c8f93296"
+        },
+        "wall_clock_s": 15.477410883060656,
+        "comparison_sha256": "b1c391605afbcea039bf889825d5484bc31569f858a089c82ee653947cb617d3"
+      },
+      "comparison": {
+        "scope": "One reference-checked matched DMA replay; not a correlation or agent-performance result.",
+        "observed": {
+          "read_descriptors": 64,
+          "write_completions": 64,
+          "max_inflight": 4,
+          "observation_cycles": 12000,
+          "completion_ns": 75740,
+          "trailing_idle_cycles": 0,
+          "declared_schedule_end_ns": 75755,
+          "padded_until_ns": 120005,
+          "useful_work_bytes": 4096
+        },
+        "clock_edges": 12000,
+        "internal_power_w": 0.02037916518748,
+        "switching_power_w": 0.0001157856313512,
+        "dynamic_power_w": 0.020494950818831202,
+        "leakage_power_w": 5.529093627388e-08,
+        "total_power_w": 0.0204950068146,
+        "annotated_pins": 36292,
+        "unannotated_pins": 4,
+        "limitation": "Functional zero-delay gates; no timing-induced glitch or signoff claim.",
+        "rtl": {
+          "total_transitions": 70729,
+          "window_rates": [
+            8.863333333333333,
+            2.0,
+            7.600666666666666,
+            5.155333333333333,
+            15.957333333333333,
+            3.576,
+            2.0,
+            1.9993333333333334
+          ]
+        },
+        "gls": {
+          "total_transitions": 2523928,
+          "window_rates": [
+            380.24533333333335,
+            6.0,
+            299.8206666666667,
+            173.216,
+            719.7093333333333,
+            91.62733333333334,
+            6.0,
+            5.998
+          ]
+        },
+        "artifact_sha256": {
+          "workload.json": "97dc0bdfc0dfe9ac60048ef98931c15d3ced5f691a7ad5ba0d5b160a5ed51fea",
+          "observed.json": "8e1dca62dbf2bbb1c32b5c79de3bfd81501f733f7b5c8ed93ab89e329f658efe",
+          "gls_provenance.json": "c96e8b866d7c10285322dfb0fae83dfbf10afe7c14fc819b6ccca5fc36d9e170",
+          "synthesis_manifest.json": "6b7fccfaf0bf04df499466e6c5478ef8292740bd88a757d7b9607728bed583b2",
+          "power.rpt": "2efd7d6ba4fe16a48f1de4f5243316abd0346785b4669964877ee741a19ebe41",
+          "gls_driver.log": "690e4c9864f75bd7aae3aa6c45dd90fa98214b3c5467e1737b0f4ac2713632b7"
+        }
+      },
+      "waveform_windows": {
+        "rtl": {
+          "timescale_s": 1e-12,
+          "first_timestamp": 0,
+          "last_timestamp": 120005001,
+          "start_s": 0.0,
+          "end_s": 0.000120005001,
+          "duration_s": 0.000120005001
+        },
+        "gls": {
+          "timescale_s": 1e-12,
+          "first_timestamp": 0,
+          "last_timestamp": 120005001,
+          "start_s": 0.0,
+          "end_s": 0.000120005001,
+          "duration_s": 0.000120005001
+        }
+      }
+    },
+    "3be60c35cb1a17f732d5abad3310a58a02323088deed76fa6e5ba60ce041189e": {
+      "completion": {
+        "replay": {
+          "design": "dma",
+          "workload": {
+            "sequence": [
+              {
+                "op": "work",
+                "units": 13
+              },
+              {
+                "cycles": 230,
+                "op": "wait"
+              },
+              {
+                "cycles": 814,
+                "op": "wait"
+              },
+              {
+                "cycles": 1130,
+                "op": "wait"
+              },
+              {
+                "cycles": 1740,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 3
+              },
+              {
+                "cycles": 140,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 5
+              },
+              {
+                "cycles": 938,
+                "op": "wait"
+              },
+              {
+                "cycles": 47,
+                "op": "wait"
+              },
+              {
+                "cycles": 317,
+                "op": "wait"
+              },
+              {
+                "cycles": 64,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 10
+              },
+              {
+                "op": "work",
+                "units": 10
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 2
+              },
+              {
+                "op": "work",
+                "units": 6
+              },
+              {
+                "cycles": 580,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 6
+              },
+              {
+                "op": "work",
+                "units": 2
+              },
+              {
+                "op": "work",
+                "units": 5
+              }
+            ]
+          },
+          "observation_cycles": 12000,
+          "contract": {
+            "idle_cycles": 6000,
+            "max_depth": 4,
+            "max_expanded_ops": 128,
+            "work_units": 64
+          },
+          "source_digest": "ae31d8465bab8b454865870ac996283d69507c58e99be96ec1cfd8dd182e819c"
+        },
+        "inputs": {
+          "synthesis_manifest": "6b7fccfaf0bf04df499466e6c5478ef8292740bd88a757d7b9607728bed583b2",
+          "netlist": "c41ff6349e5a7ad1d564b6f2783a800a914e509f11c5738bd8b320a73ea44bd9",
+          "liberty": "92eb4e93a3d4c2563018ac81cdec2f02fdeaced9b39337ed5c141fa63e0ad8f8",
+          "cell_models": "5ff4558207faf8ea0d4f35ea6d85e1ff36f57936d307423c8f234204398d1c3a",
+          "primitive_models": "81351b44f54dd9b5e3cd07a845cbe9d90e889d29edfcbff57a527280839bbccc",
+          "rtl_workload": "4f589634eff0c0035d98d2b864ae6d33429a27243fde5549c6c1f6a1e4543aff",
+          "validation_driver": "ca2169e5eaaa9414b319b0c1aae9c4de1f9f938c1dc114965db183a45c88fb14",
+          "design_driver": "60523150d8631a4bed593a12efc65ba29dfabae9d3bb8d2d7c89cff8c8f93296"
+        },
+        "wall_clock_s": 16.34481381403748,
+        "comparison_sha256": "4570a0878e6b478f9ab9962e47ce144ddbb2d4a7816d841477fe561abd573fec"
+      },
+      "comparison": {
+        "scope": "One reference-checked matched DMA replay; not a correlation or agent-performance result.",
+        "observed": {
+          "read_descriptors": 64,
+          "write_completions": 64,
+          "max_inflight": 4,
+          "observation_cycles": 12000,
+          "completion_ns": 75740,
+          "trailing_idle_cycles": 0,
+          "declared_schedule_end_ns": 75755,
+          "padded_until_ns": 120005,
+          "useful_work_bytes": 4096
+        },
+        "clock_edges": 12000,
+        "internal_power_w": 0.02037930674851,
+        "switching_power_w": 0.0001157856167993,
+        "dynamic_power_w": 0.0204950923653093,
+        "leakage_power_w": 5.577070893992e-08,
+        "total_power_w": 0.02049514837563,
+        "annotated_pins": 36292,
+        "unannotated_pins": 4,
+        "limitation": "Functional zero-delay gates; no timing-induced glitch or signoff claim.",
+        "rtl": {
+          "total_transitions": 70743,
+          "window_rates": [
+            8.378666666666666,
+            2.0,
+            5.033333333333333,
+            4.87,
+            19.304,
+            3.576,
+            2.0,
+            1.9993333333333334
+          ]
+        },
+        "gls": {
+          "total_transitions": 2523934,
+          "window_rates": [
+            354.51,
+            6.0,
+            163.684,
+            157.69466666666668,
+            897.1066666666667,
+            91.62733333333334,
+            6.0,
+            5.998
+          ]
+        },
+        "artifact_sha256": {
+          "workload.json": "4f589634eff0c0035d98d2b864ae6d33429a27243fde5549c6c1f6a1e4543aff",
+          "observed.json": "8e1dca62dbf2bbb1c32b5c79de3bfd81501f733f7b5c8ed93ab89e329f658efe",
+          "gls_provenance.json": "50785db70e916a911979fd49561a3f5cd05b32ef9d9aaf5d747a8222ed65b1d9",
+          "synthesis_manifest.json": "6b7fccfaf0bf04df499466e6c5478ef8292740bd88a757d7b9607728bed583b2",
+          "power.rpt": "0cf9650f4f6d0482dc0d88cdd378d56c032700804aebf6be61fac518fd4da62a",
+          "gls_driver.log": "efa870d3dab5c55d10cad0988a30735b1e8bb9e349d5f0d7a8637884b61df022"
+        }
+      },
+      "waveform_windows": {
+        "rtl": {
+          "timescale_s": 1e-12,
+          "first_timestamp": 0,
+          "last_timestamp": 120005001,
+          "start_s": 0.0,
+          "end_s": 0.000120005001,
+          "duration_s": 0.000120005001
+        },
+        "gls": {
+          "timescale_s": 1e-12,
+          "first_timestamp": 0,
+          "last_timestamp": 120005001,
+          "start_s": 0.0,
+          "end_s": 0.000120005001,
+          "duration_s": 0.000120005001
+        }
+      }
+    },
+    "188130546abfd2412a4e33c4a07450f2e4f0575d30ba0eea91576c3d07b065bd": {
+      "completion": {
+        "replay": {
+          "design": "dma",
+          "workload": {
+            "sequence": [
+              {
+                "cycles": 396,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 6
+              },
+              {
+                "op": "work",
+                "units": 12
+              },
+              {
+                "op": "work",
+                "units": 2
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 3507,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 3
+              },
+              {
+                "op": "work",
+                "units": 7
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 5
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 3
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 701,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 9
+              },
+              {
+                "cycles": 71,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 8
+              },
+              {
+                "op": "work",
+                "units": 2
+              },
+              {
+                "op": "work",
+                "units": 2
+              },
+              {
+                "cycles": 1325,
+                "op": "wait"
+              }
+            ]
+          },
+          "observation_cycles": 12000,
+          "contract": {
+            "idle_cycles": 6000,
+            "max_depth": 4,
+            "max_expanded_ops": 128,
+            "work_units": 64
+          },
+          "source_digest": "ae31d8465bab8b454865870ac996283d69507c58e99be96ec1cfd8dd182e819c"
+        },
+        "inputs": {
+          "synthesis_manifest": "6b7fccfaf0bf04df499466e6c5478ef8292740bd88a757d7b9607728bed583b2",
+          "netlist": "c41ff6349e5a7ad1d564b6f2783a800a914e509f11c5738bd8b320a73ea44bd9",
+          "liberty": "92eb4e93a3d4c2563018ac81cdec2f02fdeaced9b39337ed5c141fa63e0ad8f8",
+          "cell_models": "5ff4558207faf8ea0d4f35ea6d85e1ff36f57936d307423c8f234204398d1c3a",
+          "primitive_models": "81351b44f54dd9b5e3cd07a845cbe9d90e889d29edfcbff57a527280839bbccc",
+          "rtl_workload": "eab197057b66542c07091535d5f305cb3367162b6505678173c4f067f0b25d8a",
+          "validation_driver": "ca2169e5eaaa9414b319b0c1aae9c4de1f9f938c1dc114965db183a45c88fb14",
+          "design_driver": "60523150d8631a4bed593a12efc65ba29dfabae9d3bb8d2d7c89cff8c8f93296"
+        },
+        "wall_clock_s": 16.576531789964065,
+        "comparison_sha256": "19309aad872810c9aeb4abc8e65a42a2202827afc755cfbae679ba5c1503b4e1"
+      },
+      "comparison": {
+        "scope": "One reference-checked matched DMA replay; not a correlation or agent-performance result.",
+        "observed": {
+          "read_descriptors": 64,
+          "write_completions": 64,
+          "max_inflight": 4,
+          "observation_cycles": 12000,
+          "completion_ns": 63330,
+          "trailing_idle_cycles": 1325,
+          "declared_schedule_end_ns": 76595,
+          "padded_until_ns": 120005,
+          "useful_work_bytes": 4096
+        },
+        "clock_edges": 12000,
+        "internal_power_w": 0.02037934213877,
+        "switching_power_w": 0.000115808667033,
+        "dynamic_power_w": 0.020495150805803,
+        "leakage_power_w": 5.55930022017e-08,
+        "total_power_w": 0.02049520611763,
+        "annotated_pins": 36292,
+        "unannotated_pins": 4,
+        "limitation": "Functional zero-delay gates; no timing-induced glitch or signoff claim.",
+        "rtl": {
+          "total_transitions": 70723,
+          "window_rates": [
+            12.274666666666667,
+            2.0,
+            3.41,
+            15.274666666666667,
+            8.189333333333334,
+            2.0,
+            2.0,
+            1.9993333333333334
+          ]
+        },
+        "gls": {
+          "total_transitions": 2523989,
+          "window_rates": [
+            559.362,
+            6.0,
+            80.33933333333333,
+            692.19,
+            326.768,
+            6.0,
+            6.0,
+            5.998
+          ]
+        },
+        "artifact_sha256": {
+          "workload.json": "eab197057b66542c07091535d5f305cb3367162b6505678173c4f067f0b25d8a",
+          "observed.json": "3bab1dc6595a8bc4860445ed18e9aa7e28e9cc55f90453ac4fa9ef51b5eea800",
+          "gls_provenance.json": "60cf8a931e290f7f4efecd7344e40f91827cde6d1edc16f03df493fb13973879",
+          "synthesis_manifest.json": "6b7fccfaf0bf04df499466e6c5478ef8292740bd88a757d7b9607728bed583b2",
+          "power.rpt": "8d748ea9372613774b56f9ef3896fa3cdeaa293f09e544ae260e97f96b4c73dd",
+          "gls_driver.log": "6e7d86f2820c10058421b50552024929478f4ae117206493f3f0fa25235a0808"
+        }
+      },
+      "waveform_windows": {
+        "rtl": {
+          "timescale_s": 1e-12,
+          "first_timestamp": 0,
+          "last_timestamp": 120005001,
+          "start_s": 0.0,
+          "end_s": 0.000120005001,
+          "duration_s": 0.000120005001
+        },
+        "gls": {
+          "timescale_s": 1e-12,
+          "first_timestamp": 0,
+          "last_timestamp": 120005001,
+          "start_s": 0.0,
+          "end_s": 0.000120005001,
+          "duration_s": 0.000120005001
+        }
+      }
+    },
+    "ad634f28623db326f52f50b0001f6f134b4baa0fa85cba0f8834067fb3f86592": {
+      "completion": {
+        "replay": {
+          "design": "dma",
+          "workload": {
+            "sequence": [
+              {
+                "cycles": 753,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 35
+              },
+              {
+                "cycles": 664,
+                "op": "wait"
+              },
+              {
+                "cycles": 1052,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 2
+              },
+              {
+                "op": "work",
+                "units": 5
+              },
+              {
+                "cycles": 943,
+                "op": "wait"
+              },
+              {
+                "cycles": 175,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 19
+              },
+              {
+                "cycles": 536,
+                "op": "wait"
+              },
+              {
+                "cycles": 915,
+                "op": "wait"
+              },
+              {
+                "cycles": 582,
+                "op": "wait"
+              },
+              {
+                "cycles": 77,
+                "op": "wait"
+              },
+              {
+                "cycles": 10,
+                "op": "wait"
+              },
+              {
+                "cycles": 293,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 3
+              }
+            ]
+          },
+          "observation_cycles": 12000,
+          "contract": {
+            "idle_cycles": 6000,
+            "max_depth": 4,
+            "max_expanded_ops": 128,
+            "work_units": 64
+          },
+          "source_digest": "ae31d8465bab8b454865870ac996283d69507c58e99be96ec1cfd8dd182e819c"
+        },
+        "inputs": {
+          "synthesis_manifest": "6b7fccfaf0bf04df499466e6c5478ef8292740bd88a757d7b9607728bed583b2",
+          "netlist": "c41ff6349e5a7ad1d564b6f2783a800a914e509f11c5738bd8b320a73ea44bd9",
+          "liberty": "92eb4e93a3d4c2563018ac81cdec2f02fdeaced9b39337ed5c141fa63e0ad8f8",
+          "cell_models": "5ff4558207faf8ea0d4f35ea6d85e1ff36f57936d307423c8f234204398d1c3a",
+          "primitive_models": "81351b44f54dd9b5e3cd07a845cbe9d90e889d29edfcbff57a527280839bbccc",
+          "rtl_workload": "8987b63668a62429317577db06207be8a8951ed0134de8eebe5a75b7d17a859a",
+          "validation_driver": "ca2169e5eaaa9414b319b0c1aae9c4de1f9f938c1dc114965db183a45c88fb14",
+          "design_driver": "60523150d8631a4bed593a12efc65ba29dfabae9d3bb8d2d7c89cff8c8f93296"
+        },
+        "wall_clock_s": 15.307350802933797,
+        "comparison_sha256": "7741b1ce9cc5afc91614069a273d7248aa00be2d99bbd031a29b7c697d2ea8d3"
+      },
+      "comparison": {
+        "scope": "One reference-checked matched DMA replay; not a correlation or agent-performance result.",
+        "observed": {
+          "read_descriptors": 64,
+          "write_completions": 64,
+          "max_inflight": 4,
+          "observation_cycles": 12000,
+          "completion_ns": 74620,
+          "trailing_idle_cycles": 0,
+          "declared_schedule_end_ns": 74635,
+          "padded_until_ns": 120005,
+          "useful_work_bytes": 4096
+        },
+        "clock_edges": 12000,
+        "internal_power_w": 0.02037933655083,
+        "switching_power_w": 0.0001157563237939,
+        "dynamic_power_w": 0.0204950928746239,
+        "leakage_power_w": 5.559043714243e-08,
+        "total_power_w": 0.02049514837563,
+        "annotated_pins": 36292,
+        "unannotated_pins": 4,
+        "limitation": "Functional zero-delay gates; no timing-induced glitch or signoff claim.",
+        "rtl": {
+          "total_transitions": 70723,
+          "window_rates": [
+            18.708,
+            2.3573333333333335,
+            5.408666666666667,
+            11.232666666666667,
+            3.442,
+            2.0,
+            2.0,
+            1.9993333333333334
+          ]
+        },
+        "gls": {
+          "total_transitions": 2523987,
+          "window_rates": [
+            898.3513333333333,
+            23.138666666666666,
+            181.13,
+            480.606,
+            81.432,
+            6.0,
+            6.0,
+            5.998
+          ]
+        },
+        "artifact_sha256": {
+          "workload.json": "8987b63668a62429317577db06207be8a8951ed0134de8eebe5a75b7d17a859a",
+          "observed.json": "fab129f37a7f4e7a90596c1be781ee4d29926dc87e77d56ad27764762233da14",
+          "gls_provenance.json": "6546249863b5f89f55bd973322e37e78a7dafcd89e10aeb083c3d89e5e288cae",
+          "synthesis_manifest.json": "6b7fccfaf0bf04df499466e6c5478ef8292740bd88a757d7b9607728bed583b2",
+          "power.rpt": "351adb2daa02ea741230df3fa38c1b2bc9f41274dbbe4e48b7f836ade3d38c4d",
+          "gls_driver.log": "e5e0cdf6ed918df7a06145aa86f59f147fa7719d9e6c201a460f417ede26fb61"
+        }
+      },
+      "waveform_windows": {
+        "rtl": {
+          "timescale_s": 1e-12,
+          "first_timestamp": 0,
+          "last_timestamp": 120005001,
+          "start_s": 0.0,
+          "end_s": 0.000120005001,
+          "duration_s": 0.000120005001
+        },
+        "gls": {
+          "timescale_s": 1e-12,
+          "first_timestamp": 0,
+          "last_timestamp": 120005001,
+          "start_s": 0.0,
+          "end_s": 0.000120005001,
+          "duration_s": 0.000120005001
+        }
+      }
+    },
+    "410f2f1aa78f552043ad88f465c2478c33b81a695a0cdf0edcc5fe73bf9d21c6": {
+      "completion": {
+        "replay": {
+          "design": "dma",
+          "workload": {
+            "sequence": [
+              {
+                "op": "work",
+                "units": 11
+              },
+              {
+                "op": "work",
+                "units": 10
+              },
+              {
+                "op": "work",
+                "units": 4
+              },
+              {
+                "op": "work",
+                "units": 13
+              },
+              {
+                "cycles": 230,
+                "op": "wait"
+              },
+              {
+                "cycles": 814,
+                "op": "wait"
+              },
+              {
+                "cycles": 1130,
+                "op": "wait"
+              },
+              {
+                "cycles": 1740,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 3
+              },
+              {
+                "cycles": 140,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 5
+              },
+              {
+                "cycles": 938,
+                "op": "wait"
+              },
+              {
+                "cycles": 364,
+                "op": "wait"
+              },
+              {
+                "cycles": 64,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 2
+              },
+              {
+                "op": "work",
+                "units": 6
+              },
+              {
+                "cycles": 580,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 6
+              },
+              {
+                "op": "work",
+                "units": 2
+              },
+              {
+                "op": "work",
+                "units": 1
+              }
+            ]
+          },
+          "observation_cycles": 12000,
+          "contract": {
+            "idle_cycles": 6000,
+            "max_depth": 4,
+            "max_expanded_ops": 128,
+            "work_units": 64
+          },
+          "source_digest": "ae31d8465bab8b454865870ac996283d69507c58e99be96ec1cfd8dd182e819c"
+        },
+        "inputs": {
+          "synthesis_manifest": "6b7fccfaf0bf04df499466e6c5478ef8292740bd88a757d7b9607728bed583b2",
+          "netlist": "c41ff6349e5a7ad1d564b6f2783a800a914e509f11c5738bd8b320a73ea44bd9",
+          "liberty": "92eb4e93a3d4c2563018ac81cdec2f02fdeaced9b39337ed5c141fa63e0ad8f8",
+          "cell_models": "5ff4558207faf8ea0d4f35ea6d85e1ff36f57936d307423c8f234204398d1c3a",
+          "primitive_models": "81351b44f54dd9b5e3cd07a845cbe9d90e889d29edfcbff57a527280839bbccc",
+          "rtl_workload": "c6dd885637b6ce9856ae97c66798288a358a8982c8f5f135243365296c018a97",
+          "validation_driver": "ca2169e5eaaa9414b319b0c1aae9c4de1f9f938c1dc114965db183a45c88fb14",
+          "design_driver": "60523150d8631a4bed593a12efc65ba29dfabae9d3bb8d2d7c89cff8c8f93296"
+        },
+        "wall_clock_s": 15.508224279969,
+        "comparison_sha256": "e4004abb0a891aa9b1846bb3c1cba83d8dacfc16b74a6a817aa17cdd4a6f7adb"
+      },
+      "comparison": {
+        "scope": "One reference-checked matched DMA replay; not a correlation or agent-performance result.",
+        "observed": {
+          "read_descriptors": 64,
+          "write_completions": 64,
+          "max_inflight": 4,
+          "observation_cycles": 12000,
+          "completion_ns": 75740,
+          "trailing_idle_cycles": 0,
+          "declared_schedule_end_ns": 75755,
+          "padded_until_ns": 120005,
+          "useful_work_bytes": 4096
+        },
+        "clock_edges": 12000,
+        "internal_power_w": 0.02037918567657,
+        "switching_power_w": 0.0001157862279797,
+        "dynamic_power_w": 0.0204949719045497,
+        "leakage_power_w": 5.502927180601e-08,
+        "total_power_w": 0.0204950273037,
+        "annotated_pins": 36292,
+        "unannotated_pins": 4,
+        "limitation": "Functional zero-delay gates; no timing-induced glitch or signoff claim.",
+        "rtl": {
+          "total_transitions": 70757,
+          "window_rates": [
+            20.535333333333334,
+            2.0,
+            2.0,
+            5.8933333333333335,
+            9.831333333333333,
+            2.9113333333333333,
+            2.0,
+            1.9993333333333334
+          ]
+        },
+        "gls": {
+          "total_transitions": 2523995,
+          "window_rates": [
+            990.6673333333333,
+            6.0,
+            6.0,
+            205.71666666666667,
+            408.296,
+            53.983333333333334,
+            6.0,
+            5.998
+          ]
+        },
+        "artifact_sha256": {
+          "workload.json": "c6dd885637b6ce9856ae97c66798288a358a8982c8f5f135243365296c018a97",
+          "observed.json": "8e1dca62dbf2bbb1c32b5c79de3bfd81501f733f7b5c8ed93ab89e329f658efe",
+          "gls_provenance.json": "3b5331af15a6a41141e33f1e6183e49de34f1d33d70c063ddc5b00edf331128f",
+          "synthesis_manifest.json": "6b7fccfaf0bf04df499466e6c5478ef8292740bd88a757d7b9607728bed583b2",
+          "power.rpt": "d823381e3820ebb40a50c798ac6f9b816b69b2a13d8b5be0df78a7b4b6a53dba",
+          "gls_driver.log": "4357711c9ec4b2bac271a41243359d4f4679be3ff7979f444d11c29fa651f091"
+        }
+      },
+      "waveform_windows": {
+        "rtl": {
+          "timescale_s": 1e-12,
+          "first_timestamp": 0,
+          "last_timestamp": 120005001,
+          "start_s": 0.0,
+          "end_s": 0.000120005001,
+          "duration_s": 0.000120005001
+        },
+        "gls": {
+          "timescale_s": 1e-12,
+          "first_timestamp": 0,
+          "last_timestamp": 120005001,
+          "start_s": 0.0,
+          "end_s": 0.000120005001,
+          "duration_s": 0.000120005001
+        }
+      }
+    },
+    "5ba997d06dae41377fc4df5bb9268a40d2460fbb46634f6b048e50b90625cbab": {
+      "completion": {
+        "replay": {
+          "design": "dma",
+          "workload": {
+            "sequence": [
+              {
+                "op": "work",
+                "units": 23
+              },
+              {
+                "op": "work",
+                "units": 14
+              },
+              {
+                "cycles": 4375,
+                "op": "wait"
+              },
+              {
+                "cycles": 278,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 27
+              },
+              {
+                "cycles": 1347,
+                "op": "wait"
+              }
+            ]
+          },
+          "observation_cycles": 12000,
+          "contract": {
+            "idle_cycles": 6000,
+            "max_depth": 4,
+            "max_expanded_ops": 128,
+            "work_units": 64
+          },
+          "source_digest": "ae31d8465bab8b454865870ac996283d69507c58e99be96ec1cfd8dd182e819c"
+        },
+        "inputs": {
+          "synthesis_manifest": "6b7fccfaf0bf04df499466e6c5478ef8292740bd88a757d7b9607728bed583b2",
+          "netlist": "c41ff6349e5a7ad1d564b6f2783a800a914e509f11c5738bd8b320a73ea44bd9",
+          "liberty": "92eb4e93a3d4c2563018ac81cdec2f02fdeaced9b39337ed5c141fa63e0ad8f8",
+          "cell_models": "5ff4558207faf8ea0d4f35ea6d85e1ff36f57936d307423c8f234204398d1c3a",
+          "primitive_models": "81351b44f54dd9b5e3cd07a845cbe9d90e889d29edfcbff57a527280839bbccc",
+          "rtl_workload": "2d5ef1d74426be19535c490fbe106c6e5e97d0bf97a91083d20ab0fe9ac153d3",
+          "validation_driver": "ca2169e5eaaa9414b319b0c1aae9c4de1f9f938c1dc114965db183a45c88fb14",
+          "design_driver": "60523150d8631a4bed593a12efc65ba29dfabae9d3bb8d2d7c89cff8c8f93296"
+        },
+        "wall_clock_s": 15.62619993800763,
+        "comparison_sha256": "e2305faeb06d043491eac230a86727d6ca44ca107e351dc3833fa6e8604ec83d"
+      },
+      "comparison": {
+        "scope": "One reference-checked matched DMA replay; not a correlation or agent-performance result.",
+        "observed": {
+          "read_descriptors": 64,
+          "write_completions": 64,
+          "max_inflight": 4,
+          "observation_cycles": 12000,
+          "completion_ns": 60590,
+          "trailing_idle_cycles": 1347,
+          "declared_schedule_end_ns": 74075,
+          "padded_until_ns": 120005,
+          "useful_work_bytes": 4096
+        },
+        "clock_edges": 12000,
+        "internal_power_w": 0.02037929184735,
+        "switching_power_w": 0.0001157420338131,
+        "dynamic_power_w": 0.0204950338811631,
+        "leakage_power_w": 5.528701407798e-08,
+        "total_power_w": 0.02049509063363,
+        "annotated_pins": 36292,
+        "unannotated_pins": 4,
+        "limitation": "Functional zero-delay gates; no timing-induced glitch or signoff claim.",
+        "rtl": {
+          "total_transitions": 70699,
+          "window_rates": [
+            20.034666666666666,
+            2.0,
+            2.0,
+            13.926,
+            3.172,
+            2.0,
+            2.0,
+            1.9993333333333334
+          ]
+        },
+        "gls": {
+          "total_transitions": 2524059,
+          "window_rates": [
+            965.4873333333334,
+            6.0,
+            6.0,
+            618.312,
+            68.90666666666667,
+            6.0,
+            6.0,
+            5.998
+          ]
+        },
+        "artifact_sha256": {
+          "workload.json": "2d5ef1d74426be19535c490fbe106c6e5e97d0bf97a91083d20ab0fe9ac153d3",
+          "observed.json": "8b33511e0b4e218d8e192d8feb64dab1dfefc885331d49823b432ebe8ca0f4a1",
+          "gls_provenance.json": "55220619063302dd6b3219421ebde2ea746dce5398e68593a9168240659af1a0",
+          "synthesis_manifest.json": "6b7fccfaf0bf04df499466e6c5478ef8292740bd88a757d7b9607728bed583b2",
+          "power.rpt": "ecef91bb14884174e8b2fdfe0daa222542c1f6b03e9ad1000fade875d0f85e61",
+          "gls_driver.log": "09b180b424695103ae6905526103351d6f41e71d3fab04a041f85cb1eb71d0e0"
+        }
+      },
+      "waveform_windows": {
+        "rtl": {
+          "timescale_s": 1e-12,
+          "first_timestamp": 0,
+          "last_timestamp": 120005001,
+          "start_s": 0.0,
+          "end_s": 0.000120005001,
+          "duration_s": 0.000120005001
+        },
+        "gls": {
+          "timescale_s": 1e-12,
+          "first_timestamp": 0,
+          "last_timestamp": 120005001,
+          "start_s": 0.0,
+          "end_s": 0.000120005001,
+          "duration_s": 0.000120005001
+        }
+      }
+    }
+  },
+  "cases": [
+    {
+      "design": "aes",
+      "target": "random_300",
+      "policy": "random",
+      "seed": 400,
+      "run": "aes/random_300/seed-400/random",
+      "replay_id": "45a53ab579bb3e906cfdf9bfa42427abc1387a0a05d7af8856e5686504f0c39f",
+      "proposal_index": 10,
+      "evaluation_index": 9,
+      "loss": 0.10546443189406782,
+      "proposal_source": "cpu",
+      "activity_profile": {
+        "by_region": null,
+        "fidelity": "activity",
+        "mean_power": 23.34883377620313,
+        "peak_power": 57.992916174734354,
+        "per_cycle_toggles": null,
+        "provenance": {
+          "activity_sha256": "4024ecc99aaa006ff33cb4e6a57171193ce94d2a14467011930b88a943a78a2b",
+          "backend": "aes-transactions-v1",
+          "clock_edges": 6774,
+          "coverage": "verilator_line",
+          "functional_reference": "cryptography AES-ECB zero key",
+          "metric": "DUT transitions per clock edge",
+          "reset_policy": "once_per_workload",
+          "simulator_digest": "ef1157b0f36882b5facbad1ee4c69c8a30d34a5f72a4ec35154798793dcf7d09",
+          "verilator": "Verilator 5.048 2026-04-26 rev v5.048",
+          "window": "full trace including reset; equal-clock bins",
+          "workload_sha256": "639f162bfd6462b262ca686dd3cba856204ae386e2d27aec96e4d88b81edca45"
+        },
+        "useful_work": 64,
+        "valid": true,
+        "windowed": [
+          4.736406619385343,
+          34.0,
+          39.33175914994097,
+          23.336481700118064,
+          20.692671394799053,
+          2.0,
+          57.992916174734354,
+          4.675324675324675
+        ]
+      },
+      "validation_status": "matched",
+      "cache_reused": false,
+      "rtl_waveform_window": {
+        "timescale_s": 1e-12,
+        "first_timestamp": 0,
+        "last_timestamp": 67740000,
+        "start_s": 0.0,
+        "end_s": 6.774e-05,
+        "duration_s": 6.774e-05
+      }
+    },
+    {
+      "design": "aes",
+      "target": "random_300",
+      "policy": "evolutionary",
+      "seed": 400,
+      "run": "aes/random_300/seed-400/evolutionary",
+      "replay_id": "e24e0496b79595409323b561ab5420c3167c87310c24ddd121b7f2e23bc479b5",
+      "proposal_index": 27,
+      "evaluation_index": 26,
+      "loss": 0.11448559517825352,
+      "proposal_source": "cpu",
+      "activity_profile": {
+        "by_region": null,
+        "fidelity": "activity",
+        "mean_power": 23.34529081783289,
+        "peak_power": 75.99645808736717,
+        "per_cycle_toggles": null,
+        "provenance": {
+          "activity_sha256": "8e32b9c97b3989f5b956663aa74196ed96c222bb8e65064d5558a037b2c6e37b",
+          "backend": "aes-transactions-v1",
+          "clock_edges": 6774,
+          "coverage": "verilator_line",
+          "functional_reference": "cryptography AES-ECB zero key",
+          "metric": "DUT transitions per clock edge",
+          "reset_policy": "once_per_workload",
+          "simulator_digest": "ef1157b0f36882b5facbad1ee4c69c8a30d34a5f72a4ec35154798793dcf7d09",
+          "verilator": "Verilator 5.048 2026-04-26 rev v5.048",
+          "window": "full trace including reset; equal-clock bins",
+          "workload_sha256": "b92a97777e16b0cbf87556949c7c0c287b57be0c16e79e80cbbc8539279ea3d9"
+        },
+        "useful_work": 64,
+        "valid": true,
+        "windowed": [
+          21.39952718676123,
+          75.99645808736717,
+          2.0,
+          20.670602125147578,
+          32.21040189125296,
+          22.48642266824085,
+          2.0,
+          10.007083825265644
+        ]
+      },
+      "validation_status": "matched",
+      "cache_reused": false,
+      "rtl_waveform_window": {
+        "timescale_s": 1e-12,
+        "first_timestamp": 0,
+        "last_timestamp": 67740000,
+        "start_s": 0.0,
+        "end_s": 6.774e-05,
+        "duration_s": 6.774e-05
+      }
+    },
+    {
+      "design": "aes",
+      "target": "random_300",
+      "policy": "edit-agent",
+      "seed": 400,
+      "run": "aes/random_300/seed-400/edit-agent",
+      "replay_id": "4a41b1e8d84727bf92c3effd75cab0649f364d6eb2e2ef9760aa8e3ac3809222",
+      "proposal_index": 29,
+      "evaluation_index": 18,
+      "loss": 0.11425162398444605,
+      "proposal_source": "model",
+      "activity_profile": {
+        "by_region": null,
+        "fidelity": "activity",
+        "mean_power": 23.344109831709478,
+        "peak_power": 71.32231404958678,
+        "per_cycle_toggles": null,
+        "provenance": {
+          "activity_sha256": "8426075dcf002093d9213830e5c26da361a12e9920c5fa10ff6a6df19b1f7754",
+          "backend": "aes-transactions-v1",
+          "clock_edges": 6774,
+          "coverage": "verilator_line",
+          "functional_reference": "cryptography AES-ECB zero key",
+          "metric": "DUT transitions per clock edge",
+          "reset_policy": "once_per_workload",
+          "simulator_digest": "ef1157b0f36882b5facbad1ee4c69c8a30d34a5f72a4ec35154798793dcf7d09",
+          "verilator": "Verilator 5.048 2026-04-26 rev v5.048",
+          "window": "full trace including reset; equal-clock bins",
+          "workload_sha256": "3331f2601dbd5dec4542c913f60068f49da4f1604dc1ce508221d610e709b779"
+        },
+        "useful_work": 64,
+        "valid": true,
+        "windowed": [
+          21.39952718676123,
+          46.671782762691855,
+          2.0,
+          71.32231404958678,
+          2.0,
+          2.0,
+          2.0,
+          39.33175914994097
+        ]
+      },
+      "validation_status": "matched",
+      "cache_reused": false,
+      "rtl_waveform_window": {
+        "timescale_s": 1e-12,
+        "first_timestamp": 0,
+        "last_timestamp": 67740000,
+        "start_s": 0.0,
+        "end_s": 6.774e-05,
+        "duration_s": 6.774e-05
+      }
+    },
+    {
+      "design": "aes",
+      "target": "random_300",
+      "policy": "edit-hybrid",
+      "seed": 400,
+      "run": "aes/random_300/seed-400/edit-hybrid",
+      "replay_id": "c159c9bcd1dfbcef1119e098288850a2ce87c4f735a42484dd9ce72c1cb8d9dc",
+      "proposal_index": 29,
+      "evaluation_index": 27,
+      "loss": 0.1263792610757683,
+      "proposal_source": "model",
+      "activity_profile": {
+        "by_region": null,
+        "fidelity": "activity",
+        "mean_power": 23.344109831709478,
+        "peak_power": 71.40425531914893,
+        "per_cycle_toggles": null,
+        "provenance": {
+          "activity_sha256": "7250c99c2b221f8b026ba2a24804a2ebfac49e04d178ea177baf6a599e4d69e3",
+          "backend": "aes-transactions-v1",
+          "clock_edges": 6774,
+          "coverage": "verilator_line",
+          "functional_reference": "cryptography AES-ECB zero key",
+          "metric": "DUT transitions per clock edge",
+          "reset_policy": "once_per_workload",
+          "simulator_digest": "ef1157b0f36882b5facbad1ee4c69c8a30d34a5f72a4ec35154798793dcf7d09",
+          "verilator": "Verilator 5.048 2026-04-26 rev v5.048",
+          "window": "full trace including reset; equal-clock bins",
+          "workload_sha256": "a680a882dccbc92e4d39cfeef99818c6a3af61e26182c14cac7bd6aa5c3f35d6"
+        },
+        "useful_work": 64,
+        "valid": true,
+        "windowed": [
+          32.46099290780142,
+          64.94805194805195,
+          2.0,
+          2.0,
+          71.40425531914893,
+          2.0,
+          2.0,
+          10.007083825265644
+        ]
+      },
+      "validation_status": "matched",
+      "cache_reused": false,
+      "rtl_waveform_window": {
+        "timescale_s": 1e-12,
+        "first_timestamp": 0,
+        "last_timestamp": 67740000,
+        "start_s": 0.0,
+        "end_s": 6.774e-05,
+        "duration_s": 6.774e-05
+      }
+    },
+    {
+      "design": "aes",
+      "target": "random_301",
+      "policy": "random",
+      "seed": 400,
+      "run": "aes/random_301/seed-400/random",
+      "replay_id": "5931833fd4c145d561d7d0c80484ce7c21da5668f7293b432dd13118bced9f15",
+      "proposal_index": 3,
+      "evaluation_index": 2,
+      "loss": 0.12535501684712477,
+      "proposal_source": "cpu",
+      "activity_profile": {
+        "by_region": null,
+        "fidelity": "activity",
+        "mean_power": 23.342928845586066,
+        "peak_power": 71.46217494089835,
+        "per_cycle_toggles": null,
+        "provenance": {
+          "activity_sha256": "e140b606e6158a69d47e0c741f3408e0d12e8d0581afedd6f2bb2daddb815bf4",
+          "backend": "aes-transactions-v1",
+          "clock_edges": 6774,
+          "coverage": "verilator_line",
+          "functional_reference": "cryptography AES-ECB zero key",
+          "metric": "DUT transitions per clock edge",
+          "reset_policy": "once_per_workload",
+          "simulator_digest": "ef1157b0f36882b5facbad1ee4c69c8a30d34a5f72a4ec35154798793dcf7d09",
+          "verilator": "Verilator 5.048 2026-04-26 rev v5.048",
+          "window": "full trace including reset; equal-clock bins",
+          "workload_sha256": "fd1058175ced06278bd67a2a8faf42c8ba3a44d4355f27995899aedaab10f259"
+        },
+        "useful_work": 64,
+        "valid": true,
+        "windowed": [
+          71.46217494089835,
+          2.0,
+          2.0,
+          59.79574970484062,
+          45.568557919621746,
+          2.0,
+          2.0,
+          2.0
+        ]
+      },
+      "validation_status": "matched",
+      "cache_reused": false,
+      "rtl_waveform_window": {
+        "timescale_s": 1e-12,
+        "first_timestamp": 0,
+        "last_timestamp": 67740000,
+        "start_s": 0.0,
+        "end_s": 6.774e-05,
+        "duration_s": 6.774e-05
+      }
+    },
+    {
+      "design": "aes",
+      "target": "random_301",
+      "policy": "evolutionary",
+      "seed": 400,
+      "run": "aes/random_301/seed-400/evolutionary",
+      "replay_id": "85c46c445f00c5c634ff9a081e4eff7b0e226b3dde21ded86b3411f14b68aa1d",
+      "proposal_index": 29,
+      "evaluation_index": 28,
+      "loss": 0.09921296722823017,
+      "proposal_source": "cpu",
+      "activity_profile": {
+        "by_region": null,
+        "fidelity": "activity",
+        "mean_power": 23.34529081783289,
+        "peak_power": 74.91489361702128,
+        "per_cycle_toggles": null,
+        "provenance": {
+          "activity_sha256": "8e439282f5b6cc906ea6f3783d70d82a802e45a4b5faac01a69845e0450b3625",
+          "backend": "aes-transactions-v1",
+          "clock_edges": 6774,
+          "coverage": "verilator_line",
+          "functional_reference": "cryptography AES-ECB zero key",
+          "metric": "DUT transitions per clock edge",
+          "reset_policy": "once_per_workload",
+          "simulator_digest": "ef1157b0f36882b5facbad1ee4c69c8a30d34a5f72a4ec35154798793dcf7d09",
+          "verilator": "Verilator 5.048 2026-04-26 rev v5.048",
+          "window": "full trace including reset; equal-clock bins",
+          "workload_sha256": "07cc47e712dc23fe274f958ac0f611c134a108cf58aaa5a5cfb75ce4135df831"
+        },
+        "useful_work": 64,
+        "valid": true,
+        "windowed": [
+          15.412529550827424,
+          47.32939787485242,
+          2.0,
+          2.0,
+          74.91489361702128,
+          30.484061393152302,
+          2.0,
+          12.672963400236128
+        ]
+      },
+      "validation_status": "matched",
+      "cache_reused": false,
+      "rtl_waveform_window": {
+        "timescale_s": 1e-12,
+        "first_timestamp": 0,
+        "last_timestamp": 67740000,
+        "start_s": 0.0,
+        "end_s": 6.774e-05,
+        "duration_s": 6.774e-05
+      }
+    },
+    {
+      "design": "aes",
+      "target": "random_301",
+      "policy": "edit-agent",
+      "seed": 400,
+      "run": "aes/random_301/seed-400/edit-agent",
+      "replay_id": "47cf7ebcfab32fca05051af8679df128d6da1ecedd5b5d7c95da3b9f95d9c15d",
+      "proposal_index": 22,
+      "evaluation_index": 19,
+      "loss": 0.11156531554252824,
+      "proposal_source": "model",
+      "activity_profile": {
+        "by_region": null,
+        "fidelity": "activity",
+        "mean_power": 23.342928845586066,
+        "peak_power": 92.81442080378251,
+        "per_cycle_toggles": null,
+        "provenance": {
+          "activity_sha256": "1df9a4628470ef50edb56c964d3d5dd455842bf67b4750c52d81a5d43d1ede6a",
+          "backend": "aes-transactions-v1",
+          "clock_edges": 6774,
+          "coverage": "verilator_line",
+          "functional_reference": "cryptography AES-ECB zero key",
+          "metric": "DUT transitions per clock edge",
+          "reset_policy": "once_per_workload",
+          "simulator_digest": "ef1157b0f36882b5facbad1ee4c69c8a30d34a5f72a4ec35154798793dcf7d09",
+          "verilator": "Verilator 5.048 2026-04-26 rev v5.048",
+          "window": "full trace including reset; equal-clock bins",
+          "workload_sha256": "981b5adb805f4f4776a60bd777d9584ffff2f7646ef06efa5a733e0a757b2ed9"
+        },
+        "useful_work": 64,
+        "valid": true,
+        "windowed": [
+          92.81442080378251,
+          2.0,
+          2.0,
+          38.468713105076745,
+          45.568557919621746,
+          2.0,
+          2.0,
+          2.0
+        ]
+      },
+      "validation_status": "matched",
+      "cache_reused": false,
+      "rtl_waveform_window": {
+        "timescale_s": 1e-12,
+        "first_timestamp": 0,
+        "last_timestamp": 67740000,
+        "start_s": 0.0,
+        "end_s": 6.774e-05,
+        "duration_s": 6.774e-05
+      }
+    },
+    {
+      "design": "aes",
+      "target": "random_301",
+      "policy": "edit-hybrid",
+      "seed": 400,
+      "run": "aes/random_301/seed-400/edit-hybrid",
+      "replay_id": "4ccbae0f588fb767413d5e90fce0f1135b9e90dbf74db322e585566dc915f81d",
+      "proposal_index": 21,
+      "evaluation_index": 20,
+      "loss": 0.07248054590290934,
+      "proposal_source": "model",
+      "activity_profile": {
+        "by_region": null,
+        "fidelity": "activity",
+        "mean_power": 23.344109831709478,
+        "peak_power": 58.11702127659574,
+        "per_cycle_toggles": null,
+        "provenance": {
+          "activity_sha256": "411ad91a50ab4f028cd28d691ada4ee35061b269abcd01c93644c08a705ba37b",
+          "backend": "aes-transactions-v1",
+          "clock_edges": 6774,
+          "coverage": "verilator_line",
+          "functional_reference": "cryptography AES-ECB zero key",
+          "metric": "DUT transitions per clock edge",
+          "reset_policy": "once_per_workload",
+          "simulator_digest": "ef1157b0f36882b5facbad1ee4c69c8a30d34a5f72a4ec35154798793dcf7d09",
+          "verilator": "Verilator 5.048 2026-04-26 rev v5.048",
+          "window": "full trace including reset; equal-clock bins",
+          "workload_sha256": "bff934108356b44281d4e19cc517a5a3b763fd6c5a5639e549387ab334cfb4be"
+        },
+        "useful_work": 64,
+        "valid": true,
+        "windowed": [
+          58.11702127659574,
+          34.64817001180638,
+          9.349468713105077,
+          33.13695395513577,
+          45.568557919621746,
+          2.0,
+          2.0,
+          2.0
+        ]
+      },
+      "validation_status": "matched",
+      "cache_reused": false,
+      "rtl_waveform_window": {
+        "timescale_s": 1e-12,
+        "first_timestamp": 0,
+        "last_timestamp": 67740000,
+        "start_s": 0.0,
+        "end_s": 6.774e-05,
+        "duration_s": 6.774e-05
+      }
+    },
+    {
+      "design": "dma",
+      "target": "random_300",
+      "policy": "random",
+      "seed": 400,
+      "run": "dma/random_300/seed-400/random",
+      "replay_id": "70dd19d422f6911f3dcfa58e6dd6cfaa2b3e6dea68fef16921e9c614c61a4d50",
+      "proposal_index": 10,
+      "evaluation_index": 9,
+      "loss": 0.034848759542725,
+      "proposal_source": "cpu",
+      "activity_profile": {
+        "by_region": null,
+        "fidelity": "activity",
+        "mean_power": 5.895083333333333,
+        "peak_power": 12.208666666666666,
+        "per_cycle_toggles": null,
+        "provenance": {
+          "activity": "activity.json",
+          "activity_sha256": "246b9419c66bfeccf83d6e01b12e48824473ec6f320c92e4c56dc324eb425ff3",
+          "backend": "axi_dma_pipelined_tb",
+          "clock_edges": 12000,
+          "coupled_axi_dma_top": true,
+          "metric": "DUT transitions per clock edge",
+          "observed": {
+            "completion_ns": 76020,
+            "declared_schedule_end_ns": 76035,
+            "max_inflight": 4,
+            "observation_cycles": 12000,
+            "padded_until_ns": 120005,
+            "read_descriptors": 64,
+            "trailing_idle_cycles": 0,
+            "useful_work_bytes": 4096,
+            "write_completions": 64
+          },
+          "transfers": 64,
+          "useful_work_bytes": 4096,
+          "waveform": "activity.vcd",
+          "waveform_sha256": "c7102049a43eb49904e5e7fb244774afc30a19718e7481616fe5996a0e9d6987",
+          "window": "full trace including reset; equal-clock bins",
+          "workload_sha256": "e6870bbc29658bd6834da23e237a3bb9fbc6409d45ff9beef9665cced5a779a8"
+        },
+        "useful_work": 4096,
+        "valid": true,
+        "windowed": [
+          8.377333333333333,
+          8.809333333333333,
+          9.290666666666667,
+          2.0,
+          12.208666666666666,
+          2.474666666666667,
+          2.0,
+          1.9993333333333334
+        ]
+      },
+      "validation_status": "matched",
+      "cache_reused": false,
+      "rtl_waveform_window": {
+        "timescale_s": 1e-12,
+        "first_timestamp": 0,
+        "last_timestamp": 120005001,
+        "start_s": 0.0,
+        "end_s": 0.000120005001,
+        "duration_s": 0.000120005001
+      }
+    },
+    {
+      "design": "dma",
+      "target": "random_300",
+      "policy": "evolutionary",
+      "seed": 400,
+      "run": "dma/random_300/seed-400/evolutionary",
+      "replay_id": "71d5f0d762696d6ffb0942a92982af73f035068259e0d9e842b625b68a6c5668",
+      "proposal_index": 17,
+      "evaluation_index": 16,
+      "loss": 0.05375866661396199,
+      "proposal_source": "cpu",
+      "activity_profile": {
+        "by_region": null,
+        "fidelity": "activity",
+        "mean_power": 5.89125,
+        "peak_power": 12.902666666666667,
+        "per_cycle_toggles": null,
+        "provenance": {
+          "activity": "activity.json",
+          "activity_sha256": "0824d45cb674433fcd705a59f5539e25182e4791f5aa73fc323e62769f385017",
+          "backend": "axi_dma_pipelined_tb",
+          "clock_edges": 12000,
+          "coupled_axi_dma_top": true,
+          "metric": "DUT transitions per clock edge",
+          "observed": {
+            "completion_ns": 74620,
+            "declared_schedule_end_ns": 74635,
+            "max_inflight": 4,
+            "observation_cycles": 12000,
+            "padded_until_ns": 120005,
+            "read_descriptors": 64,
+            "trailing_idle_cycles": 0,
+            "useful_work_bytes": 4096,
+            "write_completions": 64
+          },
+          "transfers": 64,
+          "useful_work_bytes": 4096,
+          "waveform": "activity.vcd",
+          "waveform_sha256": "b876379a361fe4e94eb8eafdd2c31daad86c3670cad679ce24e1402cf982c35b",
+          "window": "full trace including reset; equal-clock bins",
+          "workload_sha256": "a3a688568c8722aec71181ae70453d71523d6ed50d730066acf86d82304fff86"
+        },
+        "useful_work": 4096,
+        "valid": true,
+        "windowed": [
+          11.777333333333333,
+          2.0,
+          12.902666666666667,
+          3.722,
+          10.728,
+          2.0,
+          2.0,
+          1.9993333333333334
+        ]
+      },
+      "validation_status": "matched",
+      "cache_reused": false,
+      "rtl_waveform_window": {
+        "timescale_s": 1e-12,
+        "first_timestamp": 0,
+        "last_timestamp": 120005001,
+        "start_s": 0.0,
+        "end_s": 0.000120005001,
+        "duration_s": 0.000120005001
+      }
+    },
+    {
+      "design": "dma",
+      "target": "random_300",
+      "policy": "edit-agent",
+      "seed": 400,
+      "run": "dma/random_300/seed-400/edit-agent",
+      "replay_id": "5a304583339f2b84b719fc69112e47a0ab2998d9040409f75df3dadb76876e21",
+      "proposal_index": 22,
+      "evaluation_index": 18,
+      "loss": 0.06413158294128997,
+      "proposal_source": "model",
+      "activity_profile": {
+        "by_region": null,
+        "fidelity": "activity",
+        "mean_power": 5.894083333333334,
+        "peak_power": 15.957333333333333,
+        "per_cycle_toggles": null,
+        "provenance": {
+          "activity": "activity.json",
+          "activity_sha256": "070c125e0797a4b66f5d64740e4c18e5f7756828446b3385e51854db5500412f",
+          "backend": "axi_dma_pipelined_tb",
+          "clock_edges": 12000,
+          "coupled_axi_dma_top": true,
+          "metric": "DUT transitions per clock edge",
+          "observed": {
+            "completion_ns": 75740,
+            "declared_schedule_end_ns": 75755,
+            "max_inflight": 4,
+            "observation_cycles": 12000,
+            "padded_until_ns": 120005,
+            "read_descriptors": 64,
+            "trailing_idle_cycles": 0,
+            "useful_work_bytes": 4096,
+            "write_completions": 64
+          },
+          "transfers": 64,
+          "useful_work_bytes": 4096,
+          "waveform": "activity.vcd",
+          "waveform_sha256": "e12432ce8795250f90107879f8b56a2efefd7e6c34901fbb2a89e390155c413c",
+          "window": "full trace including reset; equal-clock bins",
+          "workload_sha256": "97dc0bdfc0dfe9ac60048ef98931c15d3ced5f691a7ad5ba0d5b160a5ed51fea"
+        },
+        "useful_work": 4096,
+        "valid": true,
+        "windowed": [
+          8.863333333333333,
+          2.0,
+          7.600666666666666,
+          5.155333333333333,
+          15.957333333333333,
+          3.576,
+          2.0,
+          1.9993333333333334
+        ]
+      },
+      "validation_status": "matched",
+      "cache_reused": false,
+      "rtl_waveform_window": {
+        "timescale_s": 1e-12,
+        "first_timestamp": 0,
+        "last_timestamp": 120005001,
+        "start_s": 0.0,
+        "end_s": 0.000120005001,
+        "duration_s": 0.000120005001
+      }
+    },
+    {
+      "design": "dma",
+      "target": "random_300",
+      "policy": "edit-hybrid",
+      "seed": 400,
+      "run": "dma/random_300/seed-400/edit-hybrid",
+      "replay_id": "3be60c35cb1a17f732d5abad3310a58a02323088deed76fa6e5ba60ce041189e",
+      "proposal_index": 30,
+      "evaluation_index": 28,
+      "loss": 0.09201125950121539,
+      "proposal_source": "model",
+      "activity_profile": {
+        "by_region": null,
+        "fidelity": "activity",
+        "mean_power": 5.89525,
+        "peak_power": 19.304,
+        "per_cycle_toggles": null,
+        "provenance": {
+          "activity": "activity.json",
+          "activity_sha256": "40ba9d41c988a2875f71417a76571655509c562036971a2e4291b01a7db31a97",
+          "backend": "axi_dma_pipelined_tb",
+          "clock_edges": 12000,
+          "coupled_axi_dma_top": true,
+          "metric": "DUT transitions per clock edge",
+          "observed": {
+            "completion_ns": 75740,
+            "declared_schedule_end_ns": 75755,
+            "max_inflight": 4,
+            "observation_cycles": 12000,
+            "padded_until_ns": 120005,
+            "read_descriptors": 64,
+            "trailing_idle_cycles": 0,
+            "useful_work_bytes": 4096,
+            "write_completions": 64
+          },
+          "transfers": 64,
+          "useful_work_bytes": 4096,
+          "waveform": "activity.vcd",
+          "waveform_sha256": "9ef82f6f65d8e6b649fa673955d67ab8c473f7fb6c1985c95281ecab7f41087e",
+          "window": "full trace including reset; equal-clock bins",
+          "workload_sha256": "4f589634eff0c0035d98d2b864ae6d33429a27243fde5549c6c1f6a1e4543aff"
+        },
+        "useful_work": 4096,
+        "valid": true,
+        "windowed": [
+          8.378666666666666,
+          2.0,
+          5.033333333333333,
+          4.87,
+          19.304,
+          3.576,
+          2.0,
+          1.9993333333333334
+        ]
+      },
+      "validation_status": "matched",
+      "cache_reused": false,
+      "rtl_waveform_window": {
+        "timescale_s": 1e-12,
+        "first_timestamp": 0,
+        "last_timestamp": 120005001,
+        "start_s": 0.0,
+        "end_s": 0.000120005001,
+        "duration_s": 0.000120005001
+      }
+    },
+    {
+      "design": "dma",
+      "target": "random_301",
+      "policy": "random",
+      "seed": 400,
+      "run": "dma/random_301/seed-400/random",
+      "replay_id": "188130546abfd2412a4e33c4a07450f2e4f0575d30ba0eea91576c3d07b065bd",
+      "proposal_index": 21,
+      "evaluation_index": 20,
+      "loss": 0.08151202067111873,
+      "proposal_source": "cpu",
+      "activity_profile": {
+        "by_region": null,
+        "fidelity": "activity",
+        "mean_power": 5.893583333333333,
+        "peak_power": 15.274666666666667,
+        "per_cycle_toggles": null,
+        "provenance": {
+          "activity": "activity.json",
+          "activity_sha256": "084dc629beb56fbc14cb1b7c78cb12e7c4ff7362ccecfcff3cff664e9362d71d",
+          "backend": "axi_dma_pipelined_tb",
+          "clock_edges": 12000,
+          "coupled_axi_dma_top": true,
+          "metric": "DUT transitions per clock edge",
+          "observed": {
+            "completion_ns": 63330,
+            "declared_schedule_end_ns": 76595,
+            "max_inflight": 4,
+            "observation_cycles": 12000,
+            "padded_until_ns": 120005,
+            "read_descriptors": 64,
+            "trailing_idle_cycles": 1325,
+            "useful_work_bytes": 4096,
+            "write_completions": 64
+          },
+          "transfers": 64,
+          "useful_work_bytes": 4096,
+          "waveform": "activity.vcd",
+          "waveform_sha256": "6e6dadbf74ec9e499ede04be49fc001261b4a80e74ab23bba28c9dbbefb79aad",
+          "window": "full trace including reset; equal-clock bins",
+          "workload_sha256": "eab197057b66542c07091535d5f305cb3367162b6505678173c4f067f0b25d8a"
+        },
+        "useful_work": 4096,
+        "valid": true,
+        "windowed": [
+          12.274666666666667,
+          2.0,
+          3.41,
+          15.274666666666667,
+          8.189333333333334,
+          2.0,
+          2.0,
+          1.9993333333333334
+        ]
+      },
+      "validation_status": "matched",
+      "cache_reused": false,
+      "rtl_waveform_window": {
+        "timescale_s": 1e-12,
+        "first_timestamp": 0,
+        "last_timestamp": 120005001,
+        "start_s": 0.0,
+        "end_s": 0.000120005001,
+        "duration_s": 0.000120005001
+      }
+    },
+    {
+      "design": "dma",
+      "target": "random_301",
+      "policy": "evolutionary",
+      "seed": 400,
+      "run": "dma/random_301/seed-400/evolutionary",
+      "replay_id": "ad634f28623db326f52f50b0001f6f134b4baa0fa85cba0f8834067fb3f86592",
+      "proposal_index": 23,
+      "evaluation_index": 22,
+      "loss": 0.046663334702478736,
+      "proposal_source": "cpu",
+      "activity_profile": {
+        "by_region": null,
+        "fidelity": "activity",
+        "mean_power": 5.893583333333333,
+        "peak_power": 18.708,
+        "per_cycle_toggles": null,
+        "provenance": {
+          "activity": "activity.json",
+          "activity_sha256": "9072bb47438a91c9f065f20fd30ccabd7774c0913704ddab2d6aecd7bae5d9cf",
+          "backend": "axi_dma_pipelined_tb",
+          "clock_edges": 12000,
+          "coupled_axi_dma_top": true,
+          "metric": "DUT transitions per clock edge",
+          "observed": {
+            "completion_ns": 74620,
+            "declared_schedule_end_ns": 74635,
+            "max_inflight": 4,
+            "observation_cycles": 12000,
+            "padded_until_ns": 120005,
+            "read_descriptors": 64,
+            "trailing_idle_cycles": 0,
+            "useful_work_bytes": 4096,
+            "write_completions": 64
+          },
+          "transfers": 64,
+          "useful_work_bytes": 4096,
+          "waveform": "activity.vcd",
+          "waveform_sha256": "b8ba1999767fdb4451f3782b855b1db4e17110bccd80b8306c979708a6d0ffd1",
+          "window": "full trace including reset; equal-clock bins",
+          "workload_sha256": "8987b63668a62429317577db06207be8a8951ed0134de8eebe5a75b7d17a859a"
+        },
+        "useful_work": 4096,
+        "valid": true,
+        "windowed": [
+          18.708,
+          2.3573333333333335,
+          5.408666666666667,
+          11.232666666666667,
+          3.442,
+          2.0,
+          2.0,
+          1.9993333333333334
+        ]
+      },
+      "validation_status": "matched",
+      "cache_reused": false,
+      "rtl_waveform_window": {
+        "timescale_s": 1e-12,
+        "first_timestamp": 0,
+        "last_timestamp": 120005001,
+        "start_s": 0.0,
+        "end_s": 0.000120005001,
+        "duration_s": 0.000120005001
+      }
+    },
+    {
+      "design": "dma",
+      "target": "random_301",
+      "policy": "edit-agent",
+      "seed": 400,
+      "run": "dma/random_301/seed-400/edit-agent",
+      "replay_id": "410f2f1aa78f552043ad88f465c2478c33b81a695a0cdf0edcc5fe73bf9d21c6",
+      "proposal_index": 25,
+      "evaluation_index": 21,
+      "loss": 0.11039871080416755,
+      "proposal_source": "model",
+      "activity_profile": {
+        "by_region": null,
+        "fidelity": "activity",
+        "mean_power": 5.896416666666667,
+        "peak_power": 20.535333333333334,
+        "per_cycle_toggles": null,
+        "provenance": {
+          "activity": "activity.json",
+          "activity_sha256": "3b7003c072939ac252e4cb251c8ec2aef04c85dca7eea337a2073275918275d8",
+          "backend": "axi_dma_pipelined_tb",
+          "clock_edges": 12000,
+          "coupled_axi_dma_top": true,
+          "metric": "DUT transitions per clock edge",
+          "observed": {
+            "completion_ns": 75740,
+            "declared_schedule_end_ns": 75755,
+            "max_inflight": 4,
+            "observation_cycles": 12000,
+            "padded_until_ns": 120005,
+            "read_descriptors": 64,
+            "trailing_idle_cycles": 0,
+            "useful_work_bytes": 4096,
+            "write_completions": 64
+          },
+          "transfers": 64,
+          "useful_work_bytes": 4096,
+          "waveform": "activity.vcd",
+          "waveform_sha256": "4cbea88e7a995fe49ccb099062a6e83fd17098935c42ad5b1c3206aa96180436",
+          "window": "full trace including reset; equal-clock bins",
+          "workload_sha256": "c6dd885637b6ce9856ae97c66798288a358a8982c8f5f135243365296c018a97"
+        },
+        "useful_work": 4096,
+        "valid": true,
+        "windowed": [
+          20.535333333333334,
+          2.0,
+          2.0,
+          5.8933333333333335,
+          9.831333333333333,
+          2.9113333333333333,
+          2.0,
+          1.9993333333333334
+        ]
+      },
+      "validation_status": "matched",
+      "cache_reused": false,
+      "rtl_waveform_window": {
+        "timescale_s": 1e-12,
+        "first_timestamp": 0,
+        "last_timestamp": 120005001,
+        "start_s": 0.0,
+        "end_s": 0.000120005001,
+        "duration_s": 0.000120005001
+      }
+    },
+    {
+      "design": "dma",
+      "target": "random_301",
+      "policy": "edit-hybrid",
+      "seed": 400,
+      "run": "dma/random_301/seed-400/edit-hybrid",
+      "replay_id": "5ba997d06dae41377fc4df5bb9268a40d2460fbb46634f6b048e50b90625cbab",
+      "proposal_index": 19,
+      "evaluation_index": 15,
+      "loss": 0.01980295818249834,
+      "proposal_source": "model",
+      "activity_profile": {
+        "by_region": null,
+        "fidelity": "activity",
+        "mean_power": 5.891583333333333,
+        "peak_power": 20.034666666666666,
+        "per_cycle_toggles": null,
+        "provenance": {
+          "activity": "activity.json",
+          "activity_sha256": "b3508fe2f26594a589d418d1a55752d60e14795898e875c11a461d57e61956b1",
+          "backend": "axi_dma_pipelined_tb",
+          "clock_edges": 12000,
+          "coupled_axi_dma_top": true,
+          "metric": "DUT transitions per clock edge",
+          "observed": {
+            "completion_ns": 60590,
+            "declared_schedule_end_ns": 74075,
+            "max_inflight": 4,
+            "observation_cycles": 12000,
+            "padded_until_ns": 120005,
+            "read_descriptors": 64,
+            "trailing_idle_cycles": 1347,
+            "useful_work_bytes": 4096,
+            "write_completions": 64
+          },
+          "transfers": 64,
+          "useful_work_bytes": 4096,
+          "waveform": "activity.vcd",
+          "waveform_sha256": "86a669172e6f20069fefb07263f055707c040b7b4d8e2fb9aa27961b74c3f211",
+          "window": "full trace including reset; equal-clock bins",
+          "workload_sha256": "2d5ef1d74426be19535c490fbe106c6e5e97d0bf97a91083d20ab0fe9ac153d3"
+        },
+        "useful_work": 4096,
+        "valid": true,
+        "windowed": [
+          20.034666666666666,
+          2.0,
+          2.0,
+          13.926,
+          3.172,
+          2.0,
+          2.0,
+          1.9993333333333334
+        ]
+      },
+      "validation_status": "matched",
+      "cache_reused": false,
+      "rtl_waveform_window": {
+        "timescale_s": 1e-12,
+        "first_timestamp": 0,
+        "last_timestamp": 120005001,
+        "start_s": 0.0,
+        "end_s": 0.000120005001,
+        "duration_s": 0.000120005001
+      }
+    }
+  ],
+  "validation_wall_clock_s": 2904.1357243806124,
+  "cost_scope": "Measured successful unique replay pipeline time; excludes search, synthesis and failed attempts.",
+  "limitations": [
+    "Full-window mean power does not validate an eight-bin power shape.",
+    "Zero-delay functional gates omit timing-induced glitches.",
+    "Duplicate finalists are not independent measurements."
+  ]
+}

@@ -14,7 +14,7 @@ def reports():
     rows = [{'design_key': d, 'reference_name': t, 'seed': s, 'policy_alias': p,
              'auc_best_so_far': 1.0, 'solved': False, 'right_censored': True,
              'evaluations_to_target': 32, 'valid_trials': 32, 'validity_failures': {},
-             'est_cost_usd': 0, 'unknown_usage_batches': 0,
+             'est_cost_usd': 0, 'unknown_usage_batches': 0, 'tokens_in': 0, 'tokens_out': 0,
              'ledger_timing_s': {'wall_clock_s': 1, 'generation_wall_clock_s': 0}}
             for d, t, s, p in itertools.product(spec['designs'], spec['targets'], spec['seeds'], spec['policies'])]
     heldout = {'audited_cells': 160, 'audited_slots': 5120, 'spec': spec, 'rows': rows,
@@ -45,3 +45,11 @@ def test_incomplete_panel_cannot_be_rendered_as_complete():
     heldout['audited_cells'] = 159
     with pytest.raises(ValueError, match='complete held-out'):
         render(heldout, validation)
+
+
+def test_significant_agent_loss_is_reported_not_hidden_as_no_win():
+    heldout, validation = reports()
+    row = heldout['inference']['comparisons'][0]
+    row['mean_auc_difference'] = 0.4
+    row['holm_p_value'] = 0.03
+    assert '0.03000 | Baseline better' in render(heldout, validation)

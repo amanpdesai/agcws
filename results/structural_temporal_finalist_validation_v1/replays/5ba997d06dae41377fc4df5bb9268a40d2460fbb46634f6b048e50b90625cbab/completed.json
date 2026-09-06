@@ -1,0 +1,53 @@
+{
+  "replay": {
+    "design": "dma",
+    "workload": {
+      "sequence": [
+        {
+          "op": "work",
+          "units": 23
+        },
+        {
+          "op": "work",
+          "units": 14
+        },
+        {
+          "cycles": 4375,
+          "op": "wait"
+        },
+        {
+          "cycles": 278,
+          "op": "wait"
+        },
+        {
+          "op": "work",
+          "units": 27
+        },
+        {
+          "cycles": 1347,
+          "op": "wait"
+        }
+      ]
+    },
+    "observation_cycles": 12000,
+    "contract": {
+      "idle_cycles": 6000,
+      "max_depth": 4,
+      "max_expanded_ops": 128,
+      "work_units": 64
+    },
+    "source_digest": "ae31d8465bab8b454865870ac996283d69507c58e99be96ec1cfd8dd182e819c"
+  },
+  "inputs": {
+    "synthesis_manifest": "6b7fccfaf0bf04df499466e6c5478ef8292740bd88a757d7b9607728bed583b2",
+    "netlist": "c41ff6349e5a7ad1d564b6f2783a800a914e509f11c5738bd8b320a73ea44bd9",
+    "liberty": "92eb4e93a3d4c2563018ac81cdec2f02fdeaced9b39337ed5c141fa63e0ad8f8",
+    "cell_models": "5ff4558207faf8ea0d4f35ea6d85e1ff36f57936d307423c8f234204398d1c3a",
+    "primitive_models": "81351b44f54dd9b5e3cd07a845cbe9d90e889d29edfcbff57a527280839bbccc",
+    "rtl_workload": "2d5ef1d74426be19535c490fbe106c6e5e97d0bf97a91083d20ab0fe9ac153d3",
+    "validation_driver": "ca2169e5eaaa9414b319b0c1aae9c4de1f9f938c1dc114965db183a45c88fb14",
+    "design_driver": "60523150d8631a4bed593a12efc65ba29dfabae9d3bb8d2d7c89cff8c8f93296"
+  },
+  "wall_clock_s": 15.62619993800763,
+  "comparison_sha256": "e2305faeb06d043491eac230a86727d6ca44ca107e351dc3833fa6e8604ec83d"
+}

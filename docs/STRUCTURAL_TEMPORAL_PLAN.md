@@ -1,5 +1,16 @@
 # Structural temporal study — development plan
 
+## Held-out study completed — 2026-09-06
+
+All 160 frozen cells / 5120 slots passed independent ledger and manifest audit.
+All 16 predeclared seed-400 finalists passed matched-window GLS reconciliation.
+See [STRUCTURAL_RESULTS.md](STRUCTURAL_RESULTS.md) for the primary endpoint,
+corrected inference, validity/cost accounting and per-finalist measurements.
+No held-out result was used to change the controller, budget or task panel.
+Random has the lowest mean AUC on both designs; AES agent-only is significantly
+worse than random. No agent/hybrid superiority or parity is established.
+The population ablation and pilots below remain development evidence.
+
 ## Development selection completed
 
 All 84 cells / 1344 proposal slots completed and passed independent audit in

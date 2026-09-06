@@ -1,0 +1,2125 @@
+{
+  "rule": "Best valid trial in seed 400 per design/target/policy; earliest proposal breaks ties.",
+  "scope": "Descriptive finalists selected without gate scores; no proxy-generalization claim.",
+  "heldout_report_sha256": "e8ac3b6ebd982c9b29e928bb230549acb8672bc9b4eea46c8146ebb663b398f2",
+  "cases": [
+    {
+      "design": "aes",
+      "target": "random_300",
+      "policy": "random",
+      "seed": 400,
+      "run": "aes/random_300/seed-400/random",
+      "replay_id": "45a53ab579bb3e906cfdf9bfa42427abc1387a0a05d7af8856e5686504f0c39f",
+      "proposal_index": 10,
+      "evaluation_index": 9,
+      "loss": 0.10546443189406782,
+      "proposal_source": "cpu",
+      "activity_profile": {
+        "by_region": null,
+        "fidelity": "activity",
+        "mean_power": 23.34883377620313,
+        "peak_power": 57.992916174734354,
+        "per_cycle_toggles": null,
+        "provenance": {
+          "activity_sha256": "4024ecc99aaa006ff33cb4e6a57171193ce94d2a14467011930b88a943a78a2b",
+          "backend": "aes-transactions-v1",
+          "clock_edges": 6774,
+          "coverage": "verilator_line",
+          "functional_reference": "cryptography AES-ECB zero key",
+          "metric": "DUT transitions per clock edge",
+          "reset_policy": "once_per_workload",
+          "simulator_digest": "ef1157b0f36882b5facbad1ee4c69c8a30d34a5f72a4ec35154798793dcf7d09",
+          "verilator": "Verilator 5.048 2026-04-26 rev v5.048",
+          "window": "full trace including reset; equal-clock bins",
+          "workload_sha256": "639f162bfd6462b262ca686dd3cba856204ae386e2d27aec96e4d88b81edca45"
+        },
+        "useful_work": 64,
+        "valid": true,
+        "windowed": [
+          4.736406619385343,
+          34.0,
+          39.33175914994097,
+          23.336481700118064,
+          20.692671394799053,
+          2.0,
+          57.992916174734354,
+          4.675324675324675
+        ]
+      }
+    },
+    {
+      "design": "aes",
+      "target": "random_300",
+      "policy": "evolutionary",
+      "seed": 400,
+      "run": "aes/random_300/seed-400/evolutionary",
+      "replay_id": "e24e0496b79595409323b561ab5420c3167c87310c24ddd121b7f2e23bc479b5",
+      "proposal_index": 27,
+      "evaluation_index": 26,
+      "loss": 0.11448559517825352,
+      "proposal_source": "cpu",
+      "activity_profile": {
+        "by_region": null,
+        "fidelity": "activity",
+        "mean_power": 23.34529081783289,
+        "peak_power": 75.99645808736717,
+        "per_cycle_toggles": null,
+        "provenance": {
+          "activity_sha256": "8e32b9c97b3989f5b956663aa74196ed96c222bb8e65064d5558a037b2c6e37b",
+          "backend": "aes-transactions-v1",
+          "clock_edges": 6774,
+          "coverage": "verilator_line",
+          "functional_reference": "cryptography AES-ECB zero key",
+          "metric": "DUT transitions per clock edge",
+          "reset_policy": "once_per_workload",
+          "simulator_digest": "ef1157b0f36882b5facbad1ee4c69c8a30d34a5f72a4ec35154798793dcf7d09",
+          "verilator": "Verilator 5.048 2026-04-26 rev v5.048",
+          "window": "full trace including reset; equal-clock bins",
+          "workload_sha256": "b92a97777e16b0cbf87556949c7c0c287b57be0c16e79e80cbbc8539279ea3d9"
+        },
+        "useful_work": 64,
+        "valid": true,
+        "windowed": [
+          21.39952718676123,
+          75.99645808736717,
+          2.0,
+          20.670602125147578,
+          32.21040189125296,
+          22.48642266824085,
+          2.0,
+          10.007083825265644
+        ]
+      }
+    },
+    {
+      "design": "aes",
+      "target": "random_300",
+      "policy": "edit-agent",
+      "seed": 400,
+      "run": "aes/random_300/seed-400/edit-agent",
+      "replay_id": "4a41b1e8d84727bf92c3effd75cab0649f364d6eb2e2ef9760aa8e3ac3809222",
+      "proposal_index": 29,
+      "evaluation_index": 18,
+      "loss": 0.11425162398444605,
+      "proposal_source": "model",
+      "activity_profile": {
+        "by_region": null,
+        "fidelity": "activity",
+        "mean_power": 23.344109831709478,
+        "peak_power": 71.32231404958678,
+        "per_cycle_toggles": null,
+        "provenance": {
+          "activity_sha256": "8426075dcf002093d9213830e5c26da361a12e9920c5fa10ff6a6df19b1f7754",
+          "backend": "aes-transactions-v1",
+          "clock_edges": 6774,
+          "coverage": "verilator_line",
+          "functional_reference": "cryptography AES-ECB zero key",
+          "metric": "DUT transitions per clock edge",
+          "reset_policy": "once_per_workload",
+          "simulator_digest": "ef1157b0f36882b5facbad1ee4c69c8a30d34a5f72a4ec35154798793dcf7d09",
+          "verilator": "Verilator 5.048 2026-04-26 rev v5.048",
+          "window": "full trace including reset; equal-clock bins",
+          "workload_sha256": "3331f2601dbd5dec4542c913f60068f49da4f1604dc1ce508221d610e709b779"
+        },
+        "useful_work": 64,
+        "valid": true,
+        "windowed": [
+          21.39952718676123,
+          46.671782762691855,
+          2.0,
+          71.32231404958678,
+          2.0,
+          2.0,
+          2.0,
+          39.33175914994097
+        ]
+      }
+    },
+    {
+      "design": "aes",
+      "target": "random_300",
+      "policy": "edit-hybrid",
+      "seed": 400,
+      "run": "aes/random_300/seed-400/edit-hybrid",
+      "replay_id": "c159c9bcd1dfbcef1119e098288850a2ce87c4f735a42484dd9ce72c1cb8d9dc",
+      "proposal_index": 29,
+      "evaluation_index": 27,
+      "loss": 0.1263792610757683,
+      "proposal_source": "model",
+      "activity_profile": {
+        "by_region": null,
+        "fidelity": "activity",
+        "mean_power": 23.344109831709478,
+        "peak_power": 71.40425531914893,
+        "per_cycle_toggles": null,
+        "provenance": {
+          "activity_sha256": "7250c99c2b221f8b026ba2a24804a2ebfac49e04d178ea177baf6a599e4d69e3",
+          "backend": "aes-transactions-v1",
+          "clock_edges": 6774,
+          "coverage": "verilator_line",
+          "functional_reference": "cryptography AES-ECB zero key",
+          "metric": "DUT transitions per clock edge",
+          "reset_policy": "once_per_workload",
+          "simulator_digest": "ef1157b0f36882b5facbad1ee4c69c8a30d34a5f72a4ec35154798793dcf7d09",
+          "verilator": "Verilator 5.048 2026-04-26 rev v5.048",
+          "window": "full trace including reset; equal-clock bins",
+          "workload_sha256": "a680a882dccbc92e4d39cfeef99818c6a3af61e26182c14cac7bd6aa5c3f35d6"
+        },
+        "useful_work": 64,
+        "valid": true,
+        "windowed": [
+          32.46099290780142,
+          64.94805194805195,
+          2.0,
+          2.0,
+          71.40425531914893,
+          2.0,
+          2.0,
+          10.007083825265644
+        ]
+      }
+    },
+    {
+      "design": "aes",
+      "target": "random_301",
+      "policy": "random",
+      "seed": 400,
+      "run": "aes/random_301/seed-400/random",
+      "replay_id": "5931833fd4c145d561d7d0c80484ce7c21da5668f7293b432dd13118bced9f15",
+      "proposal_index": 3,
+      "evaluation_index": 2,
+      "loss": 0.12535501684712477,
+      "proposal_source": "cpu",
+      "activity_profile": {
+        "by_region": null,
+        "fidelity": "activity",
+        "mean_power": 23.342928845586066,
+        "peak_power": 71.46217494089835,
+        "per_cycle_toggles": null,
+        "provenance": {
+          "activity_sha256": "e140b606e6158a69d47e0c741f3408e0d12e8d0581afedd6f2bb2daddb815bf4",
+          "backend": "aes-transactions-v1",
+          "clock_edges": 6774,
+          "coverage": "verilator_line",
+          "functional_reference": "cryptography AES-ECB zero key",
+          "metric": "DUT transitions per clock edge",
+          "reset_policy": "once_per_workload",
+          "simulator_digest": "ef1157b0f36882b5facbad1ee4c69c8a30d34a5f72a4ec35154798793dcf7d09",
+          "verilator": "Verilator 5.048 2026-04-26 rev v5.048",
+          "window": "full trace including reset; equal-clock bins",
+          "workload_sha256": "fd1058175ced06278bd67a2a8faf42c8ba3a44d4355f27995899aedaab10f259"
+        },
+        "useful_work": 64,
+        "valid": true,
+        "windowed": [
+          71.46217494089835,
+          2.0,
+          2.0,
+          59.79574970484062,
+          45.568557919621746,
+          2.0,
+          2.0,
+          2.0
+        ]
+      }
+    },
+    {
+      "design": "aes",
+      "target": "random_301",
+      "policy": "evolutionary",
+      "seed": 400,
+      "run": "aes/random_301/seed-400/evolutionary",
+      "replay_id": "85c46c445f00c5c634ff9a081e4eff7b0e226b3dde21ded86b3411f14b68aa1d",
+      "proposal_index": 29,
+      "evaluation_index": 28,
+      "loss": 0.09921296722823017,
+      "proposal_source": "cpu",
+      "activity_profile": {
+        "by_region": null,
+        "fidelity": "activity",
+        "mean_power": 23.34529081783289,
+        "peak_power": 74.91489361702128,
+        "per_cycle_toggles": null,
+        "provenance": {
+          "activity_sha256": "8e439282f5b6cc906ea6f3783d70d82a802e45a4b5faac01a69845e0450b3625",
+          "backend": "aes-transactions-v1",
+          "clock_edges": 6774,
+          "coverage": "verilator_line",
+          "functional_reference": "cryptography AES-ECB zero key",
+          "metric": "DUT transitions per clock edge",
+          "reset_policy": "once_per_workload",
+          "simulator_digest": "ef1157b0f36882b5facbad1ee4c69c8a30d34a5f72a4ec35154798793dcf7d09",
+          "verilator": "Verilator 5.048 2026-04-26 rev v5.048",
+          "window": "full trace including reset; equal-clock bins",
+          "workload_sha256": "07cc47e712dc23fe274f958ac0f611c134a108cf58aaa5a5cfb75ce4135df831"
+        },
+        "useful_work": 64,
+        "valid": true,
+        "windowed": [
+          15.412529550827424,
+          47.32939787485242,
+          2.0,
+          2.0,
+          74.91489361702128,
+          30.484061393152302,
+          2.0,
+          12.672963400236128
+        ]
+      }
+    },
+    {
+      "design": "aes",
+      "target": "random_301",
+      "policy": "edit-agent",
+      "seed": 400,
+      "run": "aes/random_301/seed-400/edit-agent",
+      "replay_id": "47cf7ebcfab32fca05051af8679df128d6da1ecedd5b5d7c95da3b9f95d9c15d",
+      "proposal_index": 22,
+      "evaluation_index": 19,
+      "loss": 0.11156531554252824,
+      "proposal_source": "model",
+      "activity_profile": {
+        "by_region": null,
+        "fidelity": "activity",
+        "mean_power": 23.342928845586066,
+        "peak_power": 92.81442080378251,
+        "per_cycle_toggles": null,
+        "provenance": {
+          "activity_sha256": "1df9a4628470ef50edb56c964d3d5dd455842bf67b4750c52d81a5d43d1ede6a",
+          "backend": "aes-transactions-v1",
+          "clock_edges": 6774,
+          "coverage": "verilator_line",
+          "functional_reference": "cryptography AES-ECB zero key",
+          "metric": "DUT transitions per clock edge",
+          "reset_policy": "once_per_workload",
+          "simulator_digest": "ef1157b0f36882b5facbad1ee4c69c8a30d34a5f72a4ec35154798793dcf7d09",
+          "verilator": "Verilator 5.048 2026-04-26 rev v5.048",
+          "window": "full trace including reset; equal-clock bins",
+          "workload_sha256": "981b5adb805f4f4776a60bd777d9584ffff2f7646ef06efa5a733e0a757b2ed9"
+        },
+        "useful_work": 64,
+        "valid": true,
+        "windowed": [
+          92.81442080378251,
+          2.0,
+          2.0,
+          38.468713105076745,
+          45.568557919621746,
+          2.0,
+          2.0,
+          2.0
+        ]
+      }
+    },
+    {
+      "design": "aes",
+      "target": "random_301",
+      "policy": "edit-hybrid",
+      "seed": 400,
+      "run": "aes/random_301/seed-400/edit-hybrid",
+      "replay_id": "4ccbae0f588fb767413d5e90fce0f1135b9e90dbf74db322e585566dc915f81d",
+      "proposal_index": 21,
+      "evaluation_index": 20,
+      "loss": 0.07248054590290934,
+      "proposal_source": "model",
+      "activity_profile": {
+        "by_region": null,
+        "fidelity": "activity",
+        "mean_power": 23.344109831709478,
+        "peak_power": 58.11702127659574,
+        "per_cycle_toggles": null,
+        "provenance": {
+          "activity_sha256": "411ad91a50ab4f028cd28d691ada4ee35061b269abcd01c93644c08a705ba37b",
+          "backend": "aes-transactions-v1",
+          "clock_edges": 6774,
+          "coverage": "verilator_line",
+          "functional_reference": "cryptography AES-ECB zero key",
+          "metric": "DUT transitions per clock edge",
+          "reset_policy": "once_per_workload",
+          "simulator_digest": "ef1157b0f36882b5facbad1ee4c69c8a30d34a5f72a4ec35154798793dcf7d09",
+          "verilator": "Verilator 5.048 2026-04-26 rev v5.048",
+          "window": "full trace including reset; equal-clock bins",
+          "workload_sha256": "bff934108356b44281d4e19cc517a5a3b763fd6c5a5639e549387ab334cfb4be"
+        },
+        "useful_work": 64,
+        "valid": true,
+        "windowed": [
+          58.11702127659574,
+          34.64817001180638,
+          9.349468713105077,
+          33.13695395513577,
+          45.568557919621746,
+          2.0,
+          2.0,
+          2.0
+        ]
+      }
+    },
+    {
+      "design": "dma",
+      "target": "random_300",
+      "policy": "random",
+      "seed": 400,
+      "run": "dma/random_300/seed-400/random",
+      "replay_id": "70dd19d422f6911f3dcfa58e6dd6cfaa2b3e6dea68fef16921e9c614c61a4d50",
+      "proposal_index": 10,
+      "evaluation_index": 9,
+      "loss": 0.034848759542725,
+      "proposal_source": "cpu",
+      "activity_profile": {
+        "by_region": null,
+        "fidelity": "activity",
+        "mean_power": 5.895083333333333,
+        "peak_power": 12.208666666666666,
+        "per_cycle_toggles": null,
+        "provenance": {
+          "activity": "activity.json",
+          "activity_sha256": "246b9419c66bfeccf83d6e01b12e48824473ec6f320c92e4c56dc324eb425ff3",
+          "backend": "axi_dma_pipelined_tb",
+          "clock_edges": 12000,
+          "coupled_axi_dma_top": true,
+          "metric": "DUT transitions per clock edge",
+          "observed": {
+            "completion_ns": 76020,
+            "declared_schedule_end_ns": 76035,
+            "max_inflight": 4,
+            "observation_cycles": 12000,
+            "padded_until_ns": 120005,
+            "read_descriptors": 64,
+            "trailing_idle_cycles": 0,
+            "useful_work_bytes": 4096,
+            "write_completions": 64
+          },
+          "transfers": 64,
+          "useful_work_bytes": 4096,
+          "waveform": "activity.vcd",
+          "waveform_sha256": "c7102049a43eb49904e5e7fb244774afc30a19718e7481616fe5996a0e9d6987",
+          "window": "full trace including reset; equal-clock bins",
+          "workload_sha256": "e6870bbc29658bd6834da23e237a3bb9fbc6409d45ff9beef9665cced5a779a8"
+        },
+        "useful_work": 4096,
+        "valid": true,
+        "windowed": [
+          8.377333333333333,
+          8.809333333333333,
+          9.290666666666667,
+          2.0,
+          12.208666666666666,
+          2.474666666666667,
+          2.0,
+          1.9993333333333334
+        ]
+      }
+    },
+    {
+      "design": "dma",
+      "target": "random_300",
+      "policy": "evolutionary",
+      "seed": 400,
+      "run": "dma/random_300/seed-400/evolutionary",
+      "replay_id": "71d5f0d762696d6ffb0942a92982af73f035068259e0d9e842b625b68a6c5668",
+      "proposal_index": 17,
+      "evaluation_index": 16,
+      "loss": 0.05375866661396199,
+      "proposal_source": "cpu",
+      "activity_profile": {
+        "by_region": null,
+        "fidelity": "activity",
+        "mean_power": 5.89125,
+        "peak_power": 12.902666666666667,
+        "per_cycle_toggles": null,
+        "provenance": {
+          "activity": "activity.json",
+          "activity_sha256": "0824d45cb674433fcd705a59f5539e25182e4791f5aa73fc323e62769f385017",
+          "backend": "axi_dma_pipelined_tb",
+          "clock_edges": 12000,
+          "coupled_axi_dma_top": true,
+          "metric": "DUT transitions per clock edge",
+          "observed": {
+            "completion_ns": 74620,
+            "declared_schedule_end_ns": 74635,
+            "max_inflight": 4,
+            "observation_cycles": 12000,
+            "padded_until_ns": 120005,
+            "read_descriptors": 64,
+            "trailing_idle_cycles": 0,
+            "useful_work_bytes": 4096,
+            "write_completions": 64
+          },
+          "transfers": 64,
+          "useful_work_bytes": 4096,
+          "waveform": "activity.vcd",
+          "waveform_sha256": "b876379a361fe4e94eb8eafdd2c31daad86c3670cad679ce24e1402cf982c35b",
+          "window": "full trace including reset; equal-clock bins",
+          "workload_sha256": "a3a688568c8722aec71181ae70453d71523d6ed50d730066acf86d82304fff86"
+        },
+        "useful_work": 4096,
+        "valid": true,
+        "windowed": [
+          11.777333333333333,
+          2.0,
+          12.902666666666667,
+          3.722,
+          10.728,
+          2.0,
+          2.0,
+          1.9993333333333334
+        ]
+      }
+    },
+    {
+      "design": "dma",
+      "target": "random_300",
+      "policy": "edit-agent",
+      "seed": 400,
+      "run": "dma/random_300/seed-400/edit-agent",
+      "replay_id": "5a304583339f2b84b719fc69112e47a0ab2998d9040409f75df3dadb76876e21",
+      "proposal_index": 22,
+      "evaluation_index": 18,
+      "loss": 0.06413158294128997,
+      "proposal_source": "model",
+      "activity_profile": {
+        "by_region": null,
+        "fidelity": "activity",
+        "mean_power": 5.894083333333334,
+        "peak_power": 15.957333333333333,
+        "per_cycle_toggles": null,
+        "provenance": {
+          "activity": "activity.json",
+          "activity_sha256": "070c125e0797a4b66f5d64740e4c18e5f7756828446b3385e51854db5500412f",
+          "backend": "axi_dma_pipelined_tb",
+          "clock_edges": 12000,
+          "coupled_axi_dma_top": true,
+          "metric": "DUT transitions per clock edge",
+          "observed": {
+            "completion_ns": 75740,
+            "declared_schedule_end_ns": 75755,
+            "max_inflight": 4,
+            "observation_cycles": 12000,
+            "padded_until_ns": 120005,
+            "read_descriptors": 64,
+            "trailing_idle_cycles": 0,
+            "useful_work_bytes": 4096,
+            "write_completions": 64
+          },
+          "transfers": 64,
+          "useful_work_bytes": 4096,
+          "waveform": "activity.vcd",
+          "waveform_sha256": "e12432ce8795250f90107879f8b56a2efefd7e6c34901fbb2a89e390155c413c",
+          "window": "full trace including reset; equal-clock bins",
+          "workload_sha256": "97dc0bdfc0dfe9ac60048ef98931c15d3ced5f691a7ad5ba0d5b160a5ed51fea"
+        },
+        "useful_work": 4096,
+        "valid": true,
+        "windowed": [
+          8.863333333333333,
+          2.0,
+          7.600666666666666,
+          5.155333333333333,
+          15.957333333333333,
+          3.576,
+          2.0,
+          1.9993333333333334
+        ]
+      }
+    },
+    {
+      "design": "dma",
+      "target": "random_300",
+      "policy": "edit-hybrid",
+      "seed": 400,
+      "run": "dma/random_300/seed-400/edit-hybrid",
+      "replay_id": "3be60c35cb1a17f732d5abad3310a58a02323088deed76fa6e5ba60ce041189e",
+      "proposal_index": 30,
+      "evaluation_index": 28,
+      "loss": 0.09201125950121539,
+      "proposal_source": "model",
+      "activity_profile": {
+        "by_region": null,
+        "fidelity": "activity",
+        "mean_power": 5.89525,
+        "peak_power": 19.304,
+        "per_cycle_toggles": null,
+        "provenance": {
+          "activity": "activity.json",
+          "activity_sha256": "40ba9d41c988a2875f71417a76571655509c562036971a2e4291b01a7db31a97",
+          "backend": "axi_dma_pipelined_tb",
+          "clock_edges": 12000,
+          "coupled_axi_dma_top": true,
+          "metric": "DUT transitions per clock edge",
+          "observed": {
+            "completion_ns": 75740,
+            "declared_schedule_end_ns": 75755,
+            "max_inflight": 4,
+            "observation_cycles": 12000,
+            "padded_until_ns": 120005,
+            "read_descriptors": 64,
+            "trailing_idle_cycles": 0,
+            "useful_work_bytes": 4096,
+            "write_completions": 64
+          },
+          "transfers": 64,
+          "useful_work_bytes": 4096,
+          "waveform": "activity.vcd",
+          "waveform_sha256": "9ef82f6f65d8e6b649fa673955d67ab8c473f7fb6c1985c95281ecab7f41087e",
+          "window": "full trace including reset; equal-clock bins",
+          "workload_sha256": "4f589634eff0c0035d98d2b864ae6d33429a27243fde5549c6c1f6a1e4543aff"
+        },
+        "useful_work": 4096,
+        "valid": true,
+        "windowed": [
+          8.378666666666666,
+          2.0,
+          5.033333333333333,
+          4.87,
+          19.304,
+          3.576,
+          2.0,
+          1.9993333333333334
+        ]
+      }
+    },
+    {
+      "design": "dma",
+      "target": "random_301",
+      "policy": "random",
+      "seed": 400,
+      "run": "dma/random_301/seed-400/random",
+      "replay_id": "188130546abfd2412a4e33c4a07450f2e4f0575d30ba0eea91576c3d07b065bd",
+      "proposal_index": 21,
+      "evaluation_index": 20,
+      "loss": 0.08151202067111873,
+      "proposal_source": "cpu",
+      "activity_profile": {
+        "by_region": null,
+        "fidelity": "activity",
+        "mean_power": 5.893583333333333,
+        "peak_power": 15.274666666666667,
+        "per_cycle_toggles": null,
+        "provenance": {
+          "activity": "activity.json",
+          "activity_sha256": "084dc629beb56fbc14cb1b7c78cb12e7c4ff7362ccecfcff3cff664e9362d71d",
+          "backend": "axi_dma_pipelined_tb",
+          "clock_edges": 12000,
+          "coupled_axi_dma_top": true,
+          "metric": "DUT transitions per clock edge",
+          "observed": {
+            "completion_ns": 63330,
+            "declared_schedule_end_ns": 76595,
+            "max_inflight": 4,
+            "observation_cycles": 12000,
+            "padded_until_ns": 120005,
+            "read_descriptors": 64,
+            "trailing_idle_cycles": 1325,
+            "useful_work_bytes": 4096,
+            "write_completions": 64
+          },
+          "transfers": 64,
+          "useful_work_bytes": 4096,
+          "waveform": "activity.vcd",
+          "waveform_sha256": "6e6dadbf74ec9e499ede04be49fc001261b4a80e74ab23bba28c9dbbefb79aad",
+          "window": "full trace including reset; equal-clock bins",
+          "workload_sha256": "eab197057b66542c07091535d5f305cb3367162b6505678173c4f067f0b25d8a"
+        },
+        "useful_work": 4096,
+        "valid": true,
+        "windowed": [
+          12.274666666666667,
+          2.0,
+          3.41,
+          15.274666666666667,
+          8.189333333333334,
+          2.0,
+          2.0,
+          1.9993333333333334
+        ]
+      }
+    },
+    {
+      "design": "dma",
+      "target": "random_301",
+      "policy": "evolutionary",
+      "seed": 400,
+      "run": "dma/random_301/seed-400/evolutionary",
+      "replay_id": "ad634f28623db326f52f50b0001f6f134b4baa0fa85cba0f8834067fb3f86592",
+      "proposal_index": 23,
+      "evaluation_index": 22,
+      "loss": 0.046663334702478736,
+      "proposal_source": "cpu",
+      "activity_profile": {
+        "by_region": null,
+        "fidelity": "activity",
+        "mean_power": 5.893583333333333,
+        "peak_power": 18.708,
+        "per_cycle_toggles": null,
+        "provenance": {
+          "activity": "activity.json",
+          "activity_sha256": "9072bb47438a91c9f065f20fd30ccabd7774c0913704ddab2d6aecd7bae5d9cf",
+          "backend": "axi_dma_pipelined_tb",
+          "clock_edges": 12000,
+          "coupled_axi_dma_top": true,
+          "metric": "DUT transitions per clock edge",
+          "observed": {
+            "completion_ns": 74620,
+            "declared_schedule_end_ns": 74635,
+            "max_inflight": 4,
+            "observation_cycles": 12000,
+            "padded_until_ns": 120005,
+            "read_descriptors": 64,
+            "trailing_idle_cycles": 0,
+            "useful_work_bytes": 4096,
+            "write_completions": 64
+          },
+          "transfers": 64,
+          "useful_work_bytes": 4096,
+          "waveform": "activity.vcd",
+          "waveform_sha256": "b8ba1999767fdb4451f3782b855b1db4e17110bccd80b8306c979708a6d0ffd1",
+          "window": "full trace including reset; equal-clock bins",
+          "workload_sha256": "8987b63668a62429317577db06207be8a8951ed0134de8eebe5a75b7d17a859a"
+        },
+        "useful_work": 4096,
+        "valid": true,
+        "windowed": [
+          18.708,
+          2.3573333333333335,
+          5.408666666666667,
+          11.232666666666667,
+          3.442,
+          2.0,
+          2.0,
+          1.9993333333333334
+        ]
+      }
+    },
+    {
+      "design": "dma",
+      "target": "random_301",
+      "policy": "edit-agent",
+      "seed": 400,
+      "run": "dma/random_301/seed-400/edit-agent",
+      "replay_id": "410f2f1aa78f552043ad88f465c2478c33b81a695a0cdf0edcc5fe73bf9d21c6",
+      "proposal_index": 25,
+      "evaluation_index": 21,
+      "loss": 0.11039871080416755,
+      "proposal_source": "model",
+      "activity_profile": {
+        "by_region": null,
+        "fidelity": "activity",
+        "mean_power": 5.896416666666667,
+        "peak_power": 20.535333333333334,
+        "per_cycle_toggles": null,
+        "provenance": {
+          "activity": "activity.json",
+          "activity_sha256": "3b7003c072939ac252e4cb251c8ec2aef04c85dca7eea337a2073275918275d8",
+          "backend": "axi_dma_pipelined_tb",
+          "clock_edges": 12000,
+          "coupled_axi_dma_top": true,
+          "metric": "DUT transitions per clock edge",
+          "observed": {
+            "completion_ns": 75740,
+            "declared_schedule_end_ns": 75755,
+            "max_inflight": 4,
+            "observation_cycles": 12000,
+            "padded_until_ns": 120005,
+            "read_descriptors": 64,
+            "trailing_idle_cycles": 0,
+            "useful_work_bytes": 4096,
+            "write_completions": 64
+          },
+          "transfers": 64,
+          "useful_work_bytes": 4096,
+          "waveform": "activity.vcd",
+          "waveform_sha256": "4cbea88e7a995fe49ccb099062a6e83fd17098935c42ad5b1c3206aa96180436",
+          "window": "full trace including reset; equal-clock bins",
+          "workload_sha256": "c6dd885637b6ce9856ae97c66798288a358a8982c8f5f135243365296c018a97"
+        },
+        "useful_work": 4096,
+        "valid": true,
+        "windowed": [
+          20.535333333333334,
+          2.0,
+          2.0,
+          5.8933333333333335,
+          9.831333333333333,
+          2.9113333333333333,
+          2.0,
+          1.9993333333333334
+        ]
+      }
+    },
+    {
+      "design": "dma",
+      "target": "random_301",
+      "policy": "edit-hybrid",
+      "seed": 400,
+      "run": "dma/random_301/seed-400/edit-hybrid",
+      "replay_id": "5ba997d06dae41377fc4df5bb9268a40d2460fbb46634f6b048e50b90625cbab",
+      "proposal_index": 19,
+      "evaluation_index": 15,
+      "loss": 0.01980295818249834,
+      "proposal_source": "model",
+      "activity_profile": {
+        "by_region": null,
+        "fidelity": "activity",
+        "mean_power": 5.891583333333333,
+        "peak_power": 20.034666666666666,
+        "per_cycle_toggles": null,
+        "provenance": {
+          "activity": "activity.json",
+          "activity_sha256": "b3508fe2f26594a589d418d1a55752d60e14795898e875c11a461d57e61956b1",
+          "backend": "axi_dma_pipelined_tb",
+          "clock_edges": 12000,
+          "coupled_axi_dma_top": true,
+          "metric": "DUT transitions per clock edge",
+          "observed": {
+            "completion_ns": 60590,
+            "declared_schedule_end_ns": 74075,
+            "max_inflight": 4,
+            "observation_cycles": 12000,
+            "padded_until_ns": 120005,
+            "read_descriptors": 64,
+            "trailing_idle_cycles": 1347,
+            "useful_work_bytes": 4096,
+            "write_completions": 64
+          },
+          "transfers": 64,
+          "useful_work_bytes": 4096,
+          "waveform": "activity.vcd",
+          "waveform_sha256": "86a669172e6f20069fefb07263f055707c040b7b4d8e2fb9aa27961b74c3f211",
+          "window": "full trace including reset; equal-clock bins",
+          "workload_sha256": "2d5ef1d74426be19535c490fbe106c6e5e97d0bf97a91083d20ab0fe9ac153d3"
+        },
+        "useful_work": 4096,
+        "valid": true,
+        "windowed": [
+          20.034666666666666,
+          2.0,
+          2.0,
+          13.926,
+          3.172,
+          2.0,
+          2.0,
+          1.9993333333333334
+        ]
+      }
+    }
+  ],
+  "unique_replays": {
+    "45a53ab579bb3e906cfdf9bfa42427abc1387a0a05d7af8856e5686504f0c39f": {
+      "design": "aes",
+      "workload": {
+        "sequence": [
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "cycles": 52,
+            "op": "wait"
+          },
+          {
+            "cycles": 1074,
+            "op": "wait"
+          },
+          {
+            "cycles": 27,
+            "op": "wait"
+          },
+          {
+            "op": "work",
+            "units": 12
+          },
+          {
+            "cycles": 308,
+            "op": "wait"
+          },
+          {
+            "cycles": 369,
+            "op": "wait"
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "work",
+            "units": 11
+          },
+          {
+            "cycles": 722,
+            "op": "wait"
+          },
+          {
+            "op": "work",
+            "units": 5
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "cycles": 470,
+            "op": "wait"
+          },
+          {
+            "op": "work",
+            "units": 7
+          },
+          {
+            "cycles": 495,
+            "op": "wait"
+          },
+          {
+            "cycles": 740,
+            "op": "wait"
+          },
+          {
+            "cycles": 111,
+            "op": "wait"
+          },
+          {
+            "cycles": 151,
+            "op": "wait"
+          },
+          {
+            "cycles": 554,
+            "op": "wait"
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "work",
+            "units": 11
+          },
+          {
+            "op": "work",
+            "units": 5
+          },
+          {
+            "op": "work",
+            "units": 4
+          },
+          {
+            "cycles": 433,
+            "op": "wait"
+          },
+          {
+            "cycles": 494,
+            "op": "wait"
+          },
+          {
+            "op": "work",
+            "units": 1
+          }
+        ]
+      },
+      "observation_cycles": 6774,
+      "contract": {
+        "idle_cycles": 6000,
+        "max_depth": 4,
+        "max_expanded_ops": 128,
+        "work_units": 64
+      },
+      "source_digest": "ae31d8465bab8b454865870ac996283d69507c58e99be96ec1cfd8dd182e819c"
+    },
+    "e24e0496b79595409323b561ab5420c3167c87310c24ddd121b7f2e23bc479b5": {
+      "design": "aes",
+      "workload": {
+        "sequence": [
+          {
+            "cycles": 753,
+            "op": "wait"
+          },
+          {
+            "op": "work",
+            "units": 35
+          },
+          {
+            "cycles": 664,
+            "op": "wait"
+          },
+          {
+            "cycles": 1052,
+            "op": "wait"
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "work",
+            "units": 5
+          },
+          {
+            "cycles": 943,
+            "op": "wait"
+          },
+          {
+            "cycles": 175,
+            "op": "wait"
+          },
+          {
+            "op": "work",
+            "units": 19
+          },
+          {
+            "cycles": 536,
+            "op": "wait"
+          },
+          {
+            "cycles": 915,
+            "op": "wait"
+          },
+          {
+            "cycles": 582,
+            "op": "wait"
+          },
+          {
+            "cycles": 77,
+            "op": "wait"
+          },
+          {
+            "cycles": 10,
+            "op": "wait"
+          },
+          {
+            "cycles": 293,
+            "op": "wait"
+          },
+          {
+            "op": "work",
+            "units": 3
+          }
+        ]
+      },
+      "observation_cycles": 6774,
+      "contract": {
+        "idle_cycles": 6000,
+        "max_depth": 4,
+        "max_expanded_ops": 128,
+        "work_units": 64
+      },
+      "source_digest": "ae31d8465bab8b454865870ac996283d69507c58e99be96ec1cfd8dd182e819c"
+    },
+    "4a41b1e8d84727bf92c3effd75cab0649f364d6eb2e2ef9760aa8e3ac3809222": {
+      "design": "aes",
+      "workload": {
+        "sequence": [
+          {
+            "cycles": 753,
+            "op": "wait"
+          },
+          {
+            "op": "work",
+            "units": 24
+          },
+          {
+            "cycles": 664,
+            "op": "wait"
+          },
+          {
+            "cycles": 1052,
+            "op": "wait"
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "work",
+            "units": 19
+          },
+          {
+            "op": "work",
+            "units": 5
+          },
+          {
+            "cycles": 943,
+            "op": "wait"
+          },
+          {
+            "cycles": 175,
+            "op": "wait"
+          },
+          {
+            "cycles": 536,
+            "op": "wait"
+          },
+          {
+            "cycles": 915,
+            "op": "wait"
+          },
+          {
+            "cycles": 582,
+            "op": "wait"
+          },
+          {
+            "cycles": 87,
+            "op": "wait"
+          },
+          {
+            "cycles": 293,
+            "op": "wait"
+          },
+          {
+            "op": "work",
+            "units": 14
+          }
+        ]
+      },
+      "observation_cycles": 6774,
+      "contract": {
+        "idle_cycles": 6000,
+        "max_depth": 4,
+        "max_expanded_ops": 128,
+        "work_units": 64
+      },
+      "source_digest": "ae31d8465bab8b454865870ac996283d69507c58e99be96ec1cfd8dd182e819c"
+    },
+    "c159c9bcd1dfbcef1119e098288850a2ce87c4f735a42484dd9ce72c1cb8d9dc": {
+      "design": "aes",
+      "workload": {
+        "sequence": [
+          {
+            "cycles": 703,
+            "op": "wait"
+          },
+          {
+            "op": "work",
+            "units": 35
+          },
+          {
+            "cycles": 714,
+            "op": "wait"
+          },
+          {
+            "cycles": 1052,
+            "op": "wait"
+          },
+          {
+            "cycles": 582,
+            "op": "wait"
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "work",
+            "units": 19
+          },
+          {
+            "op": "work",
+            "units": 5
+          },
+          {
+            "cycles": 943,
+            "op": "wait"
+          },
+          {
+            "cycles": 175,
+            "op": "wait"
+          },
+          {
+            "cycles": 536,
+            "op": "wait"
+          },
+          {
+            "cycles": 915,
+            "op": "wait"
+          },
+          {
+            "cycles": 87,
+            "op": "wait"
+          },
+          {
+            "cycles": 293,
+            "op": "wait"
+          },
+          {
+            "op": "work",
+            "units": 3
+          }
+        ]
+      },
+      "observation_cycles": 6774,
+      "contract": {
+        "idle_cycles": 6000,
+        "max_depth": 4,
+        "max_expanded_ops": 128,
+        "work_units": 64
+      },
+      "source_digest": "ae31d8465bab8b454865870ac996283d69507c58e99be96ec1cfd8dd182e819c"
+    },
+    "5931833fd4c145d561d7d0c80484ce7c21da5668f7293b432dd13118bced9f15": {
+      "design": "aes",
+      "workload": {
+        "sequence": [
+          {
+            "cycles": 245,
+            "op": "wait"
+          },
+          {
+            "op": "work",
+            "units": 5
+          },
+          {
+            "op": "work",
+            "units": 21
+          },
+          {
+            "cycles": 1043,
+            "op": "wait"
+          },
+          {
+            "cycles": 355,
+            "op": "wait"
+          },
+          {
+            "cycles": 315,
+            "op": "wait"
+          },
+          {
+            "cycles": 518,
+            "op": "wait"
+          },
+          {
+            "cycles": 332,
+            "op": "wait"
+          },
+          {
+            "op": "work",
+            "units": 38
+          },
+          {
+            "cycles": 821,
+            "op": "wait"
+          },
+          {
+            "cycles": 1552,
+            "op": "wait"
+          },
+          {
+            "cycles": 680,
+            "op": "wait"
+          },
+          {
+            "cycles": 139,
+            "op": "wait"
+          }
+        ]
+      },
+      "observation_cycles": 6774,
+      "contract": {
+        "idle_cycles": 6000,
+        "max_depth": 4,
+        "max_expanded_ops": 128,
+        "work_units": 64
+      },
+      "source_digest": "ae31d8465bab8b454865870ac996283d69507c58e99be96ec1cfd8dd182e819c"
+    },
+    "85c46c445f00c5c634ff9a081e4eff7b0e226b3dde21ded86b3411f14b68aa1d": {
+      "design": "aes",
+      "workload": {
+        "sequence": [
+          {
+            "cycles": 245,
+            "op": "wait"
+          },
+          {
+            "op": "work",
+            "units": 5
+          },
+          {
+            "cycles": 821,
+            "op": "wait"
+          },
+          {
+            "op": "work",
+            "units": 17
+          },
+          {
+            "cycles": 1043,
+            "op": "wait"
+          },
+          {
+            "cycles": 355,
+            "op": "wait"
+          },
+          {
+            "cycles": 93,
+            "op": "wait"
+          },
+          {
+            "cycles": 222,
+            "op": "wait"
+          },
+          {
+            "cycles": 524,
+            "op": "wait"
+          },
+          {
+            "cycles": 332,
+            "op": "wait"
+          },
+          {
+            "op": "work",
+            "units": 38
+          },
+          {
+            "cycles": 14,
+            "op": "wait"
+          },
+          {
+            "cycles": 1552,
+            "op": "wait"
+          },
+          {
+            "cycles": 680,
+            "op": "wait"
+          },
+          {
+            "cycles": 119,
+            "op": "wait"
+          },
+          {
+            "op": "work",
+            "units": 4
+          }
+        ]
+      },
+      "observation_cycles": 6774,
+      "contract": {
+        "idle_cycles": 6000,
+        "max_depth": 4,
+        "max_expanded_ops": 128,
+        "work_units": 64
+      },
+      "source_digest": "ae31d8465bab8b454865870ac996283d69507c58e99be96ec1cfd8dd182e819c"
+    },
+    "47cf7ebcfab32fca05051af8679df128d6da1ecedd5b5d7c95da3b9f95d9c15d": {
+      "design": "aes",
+      "workload": {
+        "sequence": [
+          {
+            "cycles": 245,
+            "op": "wait"
+          },
+          {
+            "op": "work",
+            "units": 13
+          },
+          {
+            "op": "work",
+            "units": 21
+          },
+          {
+            "cycles": 1043,
+            "op": "wait"
+          },
+          {
+            "cycles": 355,
+            "op": "wait"
+          },
+          {
+            "cycles": 315,
+            "op": "wait"
+          },
+          {
+            "cycles": 518,
+            "op": "wait"
+          },
+          {
+            "cycles": 332,
+            "op": "wait"
+          },
+          {
+            "op": "work",
+            "units": 30
+          },
+          {
+            "cycles": 821,
+            "op": "wait"
+          },
+          {
+            "cycles": 1552,
+            "op": "wait"
+          },
+          {
+            "cycles": 680,
+            "op": "wait"
+          },
+          {
+            "cycles": 139,
+            "op": "wait"
+          }
+        ]
+      },
+      "observation_cycles": 6774,
+      "contract": {
+        "idle_cycles": 6000,
+        "max_depth": 4,
+        "max_expanded_ops": 128,
+        "work_units": 64
+      },
+      "source_digest": "ae31d8465bab8b454865870ac996283d69507c58e99be96ec1cfd8dd182e819c"
+    },
+    "4ccbae0f588fb767413d5e90fce0f1135b9e90dbf74db322e585566dc915f81d": {
+      "design": "aes",
+      "workload": {
+        "sequence": [
+          {
+            "cycles": 245,
+            "op": "wait"
+          },
+          {
+            "op": "work",
+            "units": 21
+          },
+          {
+            "cycles": 1043,
+            "op": "wait"
+          },
+          {
+            "op": "work",
+            "units": 15
+          },
+          {
+            "cycles": 355,
+            "op": "wait"
+          },
+          {
+            "cycles": 315,
+            "op": "wait"
+          },
+          {
+            "cycles": 518,
+            "op": "wait"
+          },
+          {
+            "cycles": 332,
+            "op": "wait"
+          },
+          {
+            "op": "work",
+            "units": 28
+          },
+          {
+            "cycles": 821,
+            "op": "wait"
+          },
+          {
+            "cycles": 1552,
+            "op": "wait"
+          },
+          {
+            "cycles": 680,
+            "op": "wait"
+          },
+          {
+            "cycles": 139,
+            "op": "wait"
+          }
+        ]
+      },
+      "observation_cycles": 6774,
+      "contract": {
+        "idle_cycles": 6000,
+        "max_depth": 4,
+        "max_expanded_ops": 128,
+        "work_units": 64
+      },
+      "source_digest": "ae31d8465bab8b454865870ac996283d69507c58e99be96ec1cfd8dd182e819c"
+    },
+    "70dd19d422f6911f3dcfa58e6dd6cfaa2b3e6dea68fef16921e9c614c61a4d50": {
+      "design": "dma",
+      "workload": {
+        "sequence": [
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "cycles": 52,
+            "op": "wait"
+          },
+          {
+            "cycles": 1074,
+            "op": "wait"
+          },
+          {
+            "cycles": 27,
+            "op": "wait"
+          },
+          {
+            "op": "work",
+            "units": 12
+          },
+          {
+            "cycles": 308,
+            "op": "wait"
+          },
+          {
+            "cycles": 369,
+            "op": "wait"
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "work",
+            "units": 11
+          },
+          {
+            "cycles": 722,
+            "op": "wait"
+          },
+          {
+            "op": "work",
+            "units": 5
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "cycles": 470,
+            "op": "wait"
+          },
+          {
+            "op": "work",
+            "units": 7
+          },
+          {
+            "cycles": 495,
+            "op": "wait"
+          },
+          {
+            "cycles": 740,
+            "op": "wait"
+          },
+          {
+            "cycles": 111,
+            "op": "wait"
+          },
+          {
+            "cycles": 151,
+            "op": "wait"
+          },
+          {
+            "cycles": 554,
+            "op": "wait"
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "work",
+            "units": 11
+          },
+          {
+            "op": "work",
+            "units": 5
+          },
+          {
+            "op": "work",
+            "units": 4
+          },
+          {
+            "cycles": 433,
+            "op": "wait"
+          },
+          {
+            "cycles": 494,
+            "op": "wait"
+          },
+          {
+            "op": "work",
+            "units": 1
+          }
+        ]
+      },
+      "observation_cycles": 12000,
+      "contract": {
+        "idle_cycles": 6000,
+        "max_depth": 4,
+        "max_expanded_ops": 128,
+        "work_units": 64
+      },
+      "source_digest": "ae31d8465bab8b454865870ac996283d69507c58e99be96ec1cfd8dd182e819c"
+    },
+    "71d5f0d762696d6ffb0942a92982af73f035068259e0d9e842b625b68a6c5668": {
+      "design": "dma",
+      "workload": {
+        "sequence": [
+          {
+            "op": "work",
+            "units": 20
+          },
+          {
+            "cycles": 3525,
+            "op": "wait"
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "work",
+            "units": 24
+          },
+          {
+            "cycles": 2475,
+            "op": "wait"
+          },
+          {
+            "op": "work",
+            "units": 18
+          }
+        ]
+      },
+      "observation_cycles": 12000,
+      "contract": {
+        "idle_cycles": 6000,
+        "max_depth": 4,
+        "max_expanded_ops": 128,
+        "work_units": 64
+      },
+      "source_digest": "ae31d8465bab8b454865870ac996283d69507c58e99be96ec1cfd8dd182e819c"
+    },
+    "5a304583339f2b84b719fc69112e47a0ab2998d9040409f75df3dadb76876e21": {
+      "design": "dma",
+      "workload": {
+        "sequence": [
+          {
+            "op": "work",
+            "units": 14
+          },
+          {
+            "cycles": 230,
+            "op": "wait"
+          },
+          {
+            "cycles": 814,
+            "op": "wait"
+          },
+          {
+            "cycles": 1130,
+            "op": "wait"
+          },
+          {
+            "cycles": 1740,
+            "op": "wait"
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "work",
+            "units": 10
+          },
+          {
+            "cycles": 140,
+            "op": "wait"
+          },
+          {
+            "op": "work",
+            "units": 5
+          },
+          {
+            "cycles": 938,
+            "op": "wait"
+          },
+          {
+            "cycles": 364,
+            "op": "wait"
+          },
+          {
+            "cycles": 64,
+            "op": "wait"
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "work",
+            "units": 6
+          },
+          {
+            "cycles": 580,
+            "op": "wait"
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "work",
+            "units": 6
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "work",
+            "units": 9
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "work",
+            "units": 5
+          }
+        ]
+      },
+      "observation_cycles": 12000,
+      "contract": {
+        "idle_cycles": 6000,
+        "max_depth": 4,
+        "max_expanded_ops": 128,
+        "work_units": 64
+      },
+      "source_digest": "ae31d8465bab8b454865870ac996283d69507c58e99be96ec1cfd8dd182e819c"
+    },
+    "3be60c35cb1a17f732d5abad3310a58a02323088deed76fa6e5ba60ce041189e": {
+      "design": "dma",
+      "workload": {
+        "sequence": [
+          {
+            "op": "work",
+            "units": 13
+          },
+          {
+            "cycles": 230,
+            "op": "wait"
+          },
+          {
+            "cycles": 814,
+            "op": "wait"
+          },
+          {
+            "cycles": 1130,
+            "op": "wait"
+          },
+          {
+            "cycles": 1740,
+            "op": "wait"
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "cycles": 140,
+            "op": "wait"
+          },
+          {
+            "op": "work",
+            "units": 5
+          },
+          {
+            "cycles": 938,
+            "op": "wait"
+          },
+          {
+            "cycles": 47,
+            "op": "wait"
+          },
+          {
+            "cycles": 317,
+            "op": "wait"
+          },
+          {
+            "cycles": 64,
+            "op": "wait"
+          },
+          {
+            "op": "work",
+            "units": 10
+          },
+          {
+            "op": "work",
+            "units": 10
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "work",
+            "units": 6
+          },
+          {
+            "cycles": 580,
+            "op": "wait"
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "work",
+            "units": 6
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "work",
+            "units": 5
+          }
+        ]
+      },
+      "observation_cycles": 12000,
+      "contract": {
+        "idle_cycles": 6000,
+        "max_depth": 4,
+        "max_expanded_ops": 128,
+        "work_units": 64
+      },
+      "source_digest": "ae31d8465bab8b454865870ac996283d69507c58e99be96ec1cfd8dd182e819c"
+    },
+    "188130546abfd2412a4e33c4a07450f2e4f0575d30ba0eea91576c3d07b065bd": {
+      "design": "dma",
+      "workload": {
+        "sequence": [
+          {
+            "cycles": 396,
+            "op": "wait"
+          },
+          {
+            "op": "work",
+            "units": 6
+          },
+          {
+            "op": "work",
+            "units": 12
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "cycles": 3507,
+            "op": "wait"
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "work",
+            "units": 7
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "work",
+            "units": 5
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "cycles": 701,
+            "op": "wait"
+          },
+          {
+            "op": "work",
+            "units": 9
+          },
+          {
+            "cycles": 71,
+            "op": "wait"
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "work",
+            "units": 8
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "cycles": 1325,
+            "op": "wait"
+          }
+        ]
+      },
+      "observation_cycles": 12000,
+      "contract": {
+        "idle_cycles": 6000,
+        "max_depth": 4,
+        "max_expanded_ops": 128,
+        "work_units": 64
+      },
+      "source_digest": "ae31d8465bab8b454865870ac996283d69507c58e99be96ec1cfd8dd182e819c"
+    },
+    "ad634f28623db326f52f50b0001f6f134b4baa0fa85cba0f8834067fb3f86592": {
+      "design": "dma",
+      "workload": {
+        "sequence": [
+          {
+            "cycles": 753,
+            "op": "wait"
+          },
+          {
+            "op": "work",
+            "units": 35
+          },
+          {
+            "cycles": 664,
+            "op": "wait"
+          },
+          {
+            "cycles": 1052,
+            "op": "wait"
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "work",
+            "units": 5
+          },
+          {
+            "cycles": 943,
+            "op": "wait"
+          },
+          {
+            "cycles": 175,
+            "op": "wait"
+          },
+          {
+            "op": "work",
+            "units": 19
+          },
+          {
+            "cycles": 536,
+            "op": "wait"
+          },
+          {
+            "cycles": 915,
+            "op": "wait"
+          },
+          {
+            "cycles": 582,
+            "op": "wait"
+          },
+          {
+            "cycles": 77,
+            "op": "wait"
+          },
+          {
+            "cycles": 10,
+            "op": "wait"
+          },
+          {
+            "cycles": 293,
+            "op": "wait"
+          },
+          {
+            "op": "work",
+            "units": 3
+          }
+        ]
+      },
+      "observation_cycles": 12000,
+      "contract": {
+        "idle_cycles": 6000,
+        "max_depth": 4,
+        "max_expanded_ops": 128,
+        "work_units": 64
+      },
+      "source_digest": "ae31d8465bab8b454865870ac996283d69507c58e99be96ec1cfd8dd182e819c"
+    },
+    "410f2f1aa78f552043ad88f465c2478c33b81a695a0cdf0edcc5fe73bf9d21c6": {
+      "design": "dma",
+      "workload": {
+        "sequence": [
+          {
+            "op": "work",
+            "units": 11
+          },
+          {
+            "op": "work",
+            "units": 10
+          },
+          {
+            "op": "work",
+            "units": 4
+          },
+          {
+            "op": "work",
+            "units": 13
+          },
+          {
+            "cycles": 230,
+            "op": "wait"
+          },
+          {
+            "cycles": 814,
+            "op": "wait"
+          },
+          {
+            "cycles": 1130,
+            "op": "wait"
+          },
+          {
+            "cycles": 1740,
+            "op": "wait"
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "cycles": 140,
+            "op": "wait"
+          },
+          {
+            "op": "work",
+            "units": 5
+          },
+          {
+            "cycles": 938,
+            "op": "wait"
+          },
+          {
+            "cycles": 364,
+            "op": "wait"
+          },
+          {
+            "cycles": 64,
+            "op": "wait"
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "work",
+            "units": 6
+          },
+          {
+            "cycles": 580,
+            "op": "wait"
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "work",
+            "units": 6
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "work",
+            "units": 1
+          }
+        ]
+      },
+      "observation_cycles": 12000,
+      "contract": {
+        "idle_cycles": 6000,
+        "max_depth": 4,
+        "max_expanded_ops": 128,
+        "work_units": 64
+      },
+      "source_digest": "ae31d8465bab8b454865870ac996283d69507c58e99be96ec1cfd8dd182e819c"
+    },
+    "5ba997d06dae41377fc4df5bb9268a40d2460fbb46634f6b048e50b90625cbab": {
+      "design": "dma",
+      "workload": {
+        "sequence": [
+          {
+            "op": "work",
+            "units": 23
+          },
+          {
+            "op": "work",
+            "units": 14
+          },
+          {
+            "cycles": 4375,
+            "op": "wait"
+          },
+          {
+            "cycles": 278,
+            "op": "wait"
+          },
+          {
+            "op": "work",
+            "units": 27
+          },
+          {
+            "cycles": 1347,
+            "op": "wait"
+          }
+        ]
+      },
+      "observation_cycles": 12000,
+      "contract": {
+        "idle_cycles": 6000,
+        "max_depth": 4,
+        "max_expanded_ops": 128,
+        "work_units": 64
+      },
+      "source_digest": "ae31d8465bab8b454865870ac996283d69507c58e99be96ec1cfd8dd182e819c"
+    }
+  }
+}

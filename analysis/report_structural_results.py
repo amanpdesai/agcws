@@ -44,13 +44,16 @@ def render(heldout, validation):
              'Intervals are pointwise 95% bootstrap intervals (10,000 replicates). Exact two-sided '
              'sign flips use joint Holm correction over eight comparisons. '
              'Nonsignificance is not equivalence or proof of parity.'), '',
-             '| Design | Method vs baseline | AUC difference | 95% interval | Holm p | Superiority supported |',
+             '| Design | Method vs baseline | AUC difference | 95% interval | Holm p | Significant direction |',
              '|---|---|---:|---|---:|---|']
     for row in heldout['inference']['comparisons']:
         low, high = row['pointwise_bootstrap_95_interval']
+        direction = 'None'
+        if row['holm_p_value'] < 0.05:
+            direction = 'Method better' if row['mean_auc_difference'] < 0 else 'Baseline better'
         text.append(f"| {row['design'].upper()} | {LABELS[row['method']]} vs {LABELS[row['baseline']]} "
                     f"| {row['mean_auc_difference']:.5f} | [{low:.5f}, {high:.5f}] "
-                    f"| {row['holm_p_value']:.5f} | {'Yes' if row['superiority_supported'] else 'No'} |")
+                    f"| {row['holm_p_value']:.5f} | {direction} |")
     text += ['', '## Validity, cost and runtime', '',
              '| Design | Policy | Schema | Protocol | Functional | Useful work | Estimated USD | Unknown usage batches |',
              '|---|---|---:|---:|---:|---:|---:|---:|']
@@ -68,6 +71,8 @@ def render(heldout, validation):
              f"{sum(r['unknown_usage_batches'] for r in rows)} batches have unknown provider usage. "
              'Unknown usage makes accounting incomplete, not zero-cost. CPU policies have no LLM charges, '
              'not zero compute cost.'), '',
+             (f"Recorded model usage totals {sum(r['tokens_in'] for r in rows)} input tokens and "
+              f"{sum(r['tokens_out'] for r in rows)} output tokens; unknown-usage batches are excluded."), '',
              (f"Summed trial/evaluation time is {timing['wall_clock_s']:.2f} seconds; "
              f"summed proposal-generation time is {timing['generation_wall_clock_s']:.2f} seconds. "
              'These ledger totals exclude outer run-process startup and are not a controlled speed benchmark: '
