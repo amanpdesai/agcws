@@ -82,6 +82,22 @@ pins remain explicitly listed as unannotated. Both designs now have matched
 validation smoke evidence, but selected held-out finalists must still be
 replayed before any claim about their gate behavior.
 
+Held-out finalist rule, declared before held-out evaluation: take seed 400 for
+each of the two designs, two reference targets and four frozen policies. Select
+the lowest-loss valid trial within each run, breaking ties by earliest proposal.
+This gives 16 selected cases; retain an explicit missing-finalist entry if a
+run has no valid trial rather than substituting another seed. Deduplicate
+identical workload/configuration/window hashes for expensive GLS execution,
+while keeping every case-to-replay mapping and its actual proposal source
+(initialization, CPU or model). Do not choose finalists using gate scores.
+
+Report exact useful work, window agreement, functional checks, annotation,
+internal/switching/leakage components, and measured validation cost for every
+selected case. This small, potentially duplicate set is descriptive validation,
+not a new pooled cross-design correlation or evidence that RTL activity predicts
+gate power generally. Full-window mean gate power does not validate an eight-bin
+temporal power shape; that stronger claim remains outside this result.
+
 ## Four-arm DMA pilot completed
 
 The [audited v2 DMA pilot](../results/structural_temporal_dma_four_arm_v2/pilot.json)
