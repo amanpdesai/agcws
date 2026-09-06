@@ -2,10 +2,11 @@
 import hashlib
 import json
 import os
-from pathlib import Path
 import subprocess
 import sys
+from dataclasses import asdict, is_dataclass
 from importlib.metadata import PackageNotFoundError, version
+from pathlib import Path
 
 
 def capture_run(adapter, policy, goal, budget, batch_size, seed, p_min, p_max):
@@ -32,6 +33,7 @@ def capture_run(adapter, policy, goal, budget, batch_size, seed, p_min, p_max):
             'python': sys.version, 'packages': packages,
             'source_digest': hashlib.sha256(json.dumps(hashes, sort_keys=True).encode()).hexdigest(),
             'adapter': type(adapter).__name__, 'policy': policy.name,
+            'workload_contract': asdict(adapter.contract) if is_dataclass(getattr(adapter, 'contract', None)) else None,
             'schema_sha256': hashlib.sha256(json.dumps(adapter.workload_schema, sort_keys=True).encode()).hexdigest(),
             'goal': vars(goal), 'budget': budget, 'batch_size': batch_size, 'seed': seed,
             'p_min': p_min, 'p_max': p_max, 'useful_work_floor': adapter.useful_work_floor,

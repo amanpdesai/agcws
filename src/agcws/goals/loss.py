@@ -2,7 +2,13 @@
 from __future__ import annotations
 
 import math
-from agcws.goals.schema import CompositionalGoal, ScalarGoal, TemporalGoal
+
+from agcws.goals.schema import (
+    CompositionalGoal,
+    FixedTemporalGoal,
+    ScalarGoal,
+    TemporalGoal,
+)
 from agcws.nodes.power import PowerProfile
 
 
@@ -36,6 +42,15 @@ def compositional_loss(profile: PowerProfile, goal: CompositionalGoal, lam: floa
 
 
 def loss(profile: PowerProfile, goal, *, p_min: float | None = None, p_max: float | None = None) -> float:
+    if isinstance(goal, FixedTemporalGoal):
+        observed = profile.windowed
+        if (observed is None or len(observed) != goal.windows
+                or any(not math.isfinite(x) or x < 0 for x in observed)
+                or (profile.provenance or {}).get('clock_edges') != goal.observation_cycles):
+            raise ValueError('temporal measurement window or rates do not match goal')
+        error = math.sqrt(sum(((a - b) / goal.scale) ** 2
+                              for a, b in zip(observed, goal.profile)) / goal.windows)
+        return min(1.0, error)
     if isinstance(goal, ScalarGoal):
         if p_min is None or p_max is None:
             raise ValueError("scalar loss requires an empirical envelope")

@@ -40,7 +40,7 @@ class ScheduleContract:
             raise ValueError('invalid schedule contract')
 
 
-def expand_schedule(workload, contract):
+def validate_schedule_shape(workload, contract):
     """Reject oversized trees before recursive schema validation or expansion."""
     pending, count = [(workload, 0)], 0
     while pending:
@@ -55,6 +55,10 @@ def expand_schedule(workload, contract):
     error = next(Draft202012Validator(SCHEDULE_SCHEMA).iter_errors(workload), None)
     if error:
         raise ValueError(error.message)
+
+
+def expand_schedule(workload, contract):
+    validate_schedule_shape(workload, contract)
     expanded = []
 
     def visit(nodes, depth):

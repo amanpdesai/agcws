@@ -1,2 +1,3 @@
-from .schema import CompositionalGoal, Goal, ScalarGoal, TemporalGoal
-__all__ = ["Goal", "ScalarGoal", "CompositionalGoal", "TemporalGoal"]
+from .schema import CompositionalGoal, FixedTemporalGoal, Goal, ScalarGoal, TemporalGoal
+
+__all__ = ["CompositionalGoal", "FixedTemporalGoal", "Goal", "ScalarGoal", "TemporalGoal"]

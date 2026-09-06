@@ -1,5 +1,27 @@
 # Structural temporal study — development plan
 
+## CPU pilot configuration
+
+The initial search pilot uses the independently achieved `random_300` and
+`random_301` reference profiles, proposal seed 310, 16 slots, batch size 4,
+and random versus structural evolution. The reference schedules are not
+passed to the policies. Evolution uses the best eight valid parents, 20%
+random exploration and shared swap/move/split/merge/redistribute operators.
+These operators preserve exact work/idle budgets without retrying proposals.
+
+The new fixed-rate endpoint is `min(1, RMSE(bin rates, target rates) / 200)`;
+scale 200 transitions/edge and tolerance 0.10 are provisional pilot settings,
+recorded before this comparison. Capping at 1 aligns the worst valid score
+with the existing invalid-prefix AUC penalty; it does not normalize by the
+candidate's peak. Raw bin rates remain archived, so uncapped errors can be
+inspected. The fixed horizon is 6774 edges including reset. The prior
+candidate-peak-normalized temporal loss is unchanged for historical replay.
+
+This is a two-target, one-seed development check, not the final study or
+evidence that any method is superior. The first standalone random smoke
+under `out/structural-temporal-cpu-pilot/` is plumbing evidence only; the
+matched pilot panel is versioned separately with identical captured source.
+
 Started 2026-09-06. This is a new research track, not a revision of the
 completed scalar held-out results. No success or model advantage is assumed.
 
