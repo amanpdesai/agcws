@@ -1,5 +1,13 @@
 # Structural temporal study — development plan
 
+Typed-edit v2 is now complete at
+`results/structural_temporal_four_arm_pilot_v2/`: the agent's generated-slot
+validity rose from 5/24 to 20/24, without free retries. Both agent arms still
+solve 0/2 targets; random has the lowest pilot mean AUC. This is an interface
+improvement, not a performance win. Next transfer the same controller to DMA
+before more AES tuning or a larger matrix. The observed pilot is development
+data and cannot become the held-out result.
+
 The first four-arm agent pilot is also complete at
 `results/structural_temporal_four_arm_pilot_v1/`. All 128 slots and usage are
 audited. Neither agent-only nor hybrid solves either target; only 5/24
