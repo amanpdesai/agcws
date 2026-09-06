@@ -72,6 +72,16 @@ workload. This is validation-path evidence, not proxy rank agreement or an
 agent result. The standalone `validation/` implementation has its own input
 provenance and does not change the active search panel's executable sources.
 
+The DMA matched smoke also passes, archived at
+`results/dma_matched_gls_smoke_v1/`: the identical pipelined test checks 64
+completed copies / 4096 bytes, identical maximum concurrency and completion
+timing, and exactly 12,000 observed clock edges. GLS simulator time in its
+log is 9.32 seconds for this workload; this is not a controlled cross-method
+runtime benchmark. OpenSTA annotates 36,292 of 36,296 pins; four user-sideband
+pins remain explicitly listed as unannotated. Both designs now have matched
+validation smoke evidence, but selected held-out finalists must still be
+replayed before any claim about their gate behavior.
+
 ## Four-arm DMA pilot completed
 
 The [audited v2 DMA pilot](../results/structural_temporal_dma_four_arm_v2/pilot.json)

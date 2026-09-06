@@ -22,3 +22,11 @@ content-addressed; the replay must match the supplied observation horizon.
 This is functional, zero-delay gate simulation. It does not measure glitches
 from timing delays or constitute signoff power. OpenSTA evaluation and matched
 window/annotation audits remain separate validation steps.
+
+`python -m validation.dma_gls --rtl <completed-evaluation-directory>
+--synthesis <mapped-directory> --out <new-directory>` replays the original
+DMA workload through `axi_dma_pipelined_tb`. It preserves the observation
+horizon and trailing idle cycles, disables the legacy diagnostic bypass,
+and requires the entire completion/timing observation record to equal RTL.
+The same Sky130 model environment variables are required. No new wall-clock
+deadline is imposed; the existing semantic observation horizon still applies.
