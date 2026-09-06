@@ -1,0 +1,340 @@
+\documentclass[10pt,letterpaper]{article}
+\usepackage[margin=0.7in]{geometry}
+\usepackage{multicol,booktabs,amsmath,graphicx,xcolor,microtype}
+\usepackage[hidelinks]{hyperref}
+\setlength{\columnsep}{0.25in}
+\setlength{\parindent}{0.8em}
+\setlength{\parskip}{3pt}
+\newcommand{\heading}[1]{\par\vspace{4pt}\noindent\textbf{#1}\par}
+\newcommand{\artifact}[1]{\texttt{\small #1}}
+\pagestyle{plain}
+\begin{document}
+\begin{center}
+{\Large\bfseries Goal-Conditioned Activity-Profile Synthesis:\\
+Agent Search, Random Baselines, and Windowed Gate Validation}\par
+\vspace{5pt}
+Aman Desai\par
+\small Working research draft --- 6 September 2026
+\end{center}
+\begin{multicols}{2}
+\heading{Abstract}
+Can an agent construct legal hardware workloads that approach a requested
+activity profile, rather than maximize stress? We implement a typed,
+proposal-budgeted harness and evaluate a frozen Gemini controller against
+classical search on AES and AXI DMA. Two development/held-out protocols cover
+710 cells and 32,620 charged proposal slots. The scalar agent has a small,
+nonsignificant numerical advantage over random on AES and a disadvantage on
+DMA. In a fresh structural/temporal study, random has the lowest mean AUC on
+both designs; the AES agent is significantly worse after multiplicity
+correction. These results do not establish agent superiority or equivalence.
+We separately validate sixteen predeclared temporal finalists using matched
+functional gate simulation and native eight-window OpenSTA activity reads.
+This separates power shape from nearly identical full-window means. The
+contribution is a reproducible evaluation and measurement method, with a
+bounded negative finding about the tested controllers---not a claim that
+agents cannot synthesize useful hardware workloads.
+
+\heading{1. Question and scope}
+Hardware activity depends on stimulus, but finding a workload for an arbitrary
+requested behavior differs from finding a maximum-power stressmark. Automated
+stressmark generation predates LLMs [1]; surrogate-assisted genetic search
+also targets CPU power viruses [2]. We therefore make no first-to-generate
+directed-power-workloads claim. Our question concerns target-conditioned
+search under a common legal representation and an auditable budget.
+
+The original motivation was that semantic reasoning might help with long,
+design-specific action sequences. The experiments here test a narrower
+question: can a controller choose effective bounded scalar or structural
+edits when an adapter supplies the low-level implementation? All methods
+receive the same workload language. Expressiveness belongs to that language;
+an agent does not gain expressiveness merely by using it.
+
+The measured search endpoint is RTL transition activity, not watts. Gate
+power is a post-search validation tier. We retain this distinction even when
+a selected workload's gate profile follows its reference. Such evidence does
+not retrospectively make the search power-guided or validate a universal
+activity-to-power predictor.
+
+\heading{2. Interface and evaluation}
+Each design adapter defines a typed workload schema, protocol constraints,
+deterministic lowering, functional checks, and useful work. Schema and protocol
+checks precede simulation; functional correctness and a hard useful-work gate
+follow it. Invalid workloads receive no power score. Rejected, missing, and
+duplicate proposals still consume budget. This prevents cheap malformed
+outputs from obtaining unlimited retries. Simulations, tokens, cost, tool
+identities, and source hashes are recorded separately.
+
+The scalar adapter exposes workload parameters. The structural adapter adds
+bounded sequence/repeat/pacing schedules and shared structural edits. AES
+executes 64 blocks over 6,774 clock edges; DMA completes 4,096 bytes over
+12,000 edges. Each structural contract includes 6,000 idle cycles. Work and
+observation horizon are fixed, so temporal shape cannot be improved simply
+by shortening the measurement or eliminating useful computation. DMA uses
+fixed-size copies with pacing/concurrency, not its entire transfer-length
+and backpressure space.
+
+The model receives a common template containing design metadata, the schema,
+constraints, goal, and compact feedback. In the temporal study, four shared
+random proposals initialize each run. The agent then gets seven feedback
+rounds of four proposals; the hybrid alternates four model rounds with three
+CPU rounds. This is closed-loop search, not a one-shot test. The frozen
+configuration uses Gemini 2.5 Flash, temperature 0.7, top-p 0.95, 512 thinking
+tokens, and an 8,192-token output limit. A malformed batch is charged, not
+silently resampled until it succeeds.
+
+Reusable simulator, activity, synthesis, and power components are separated
+from research drivers, following CHIA's composable-loop motivation [3]. The
+reported studies ran through host Python drivers; they are not evidence of
+a deployed Ray/CHIA execution or a successfully replayed container artifact.
+\end{multicols}
+\clearpage
+
+\begin{center}\large\bfseries Frozen comparisons: primary endpoints first\end{center}
+\begin{multicols}{2}
+\heading{3. Development and held-out protocols}
+The scalar protocol selects one controller on a balanced development panel,
+then freezes it before seeds 200--209. AES has six policies and DMA five;
+each uses five targets $q\in\{.10,.25,.50,.75,.90\}$, 50 proposal slots,
+batch size four, and tolerance .02. The resulting 550 cells contain 27,500
+slots. Calibration and implementation hashes are archived; historical pilot
+results with different envelopes are not pooled with them.
+
+The later structural study uses fresh seeds 400--409, two achieved reference
+profiles per design, four policies, and 32 slots per run: 160 cells and 5,120
+slots. Development selected the best-eight population family. A
+diversity-preserving population ablation did not win selection. This was
+inspired by population-based agent search, not a reproduction of AlphaEvolve
+or evolution of arbitrary generator programs. Targets were observed in
+development: fresh seeds are not unseen-target generalization.
+
+The primary endpoint is trapezoidal area under the best-so-far error curve
+over charged proposal indices. Scalar error is envelope-normalized; temporal
+error is the predeclared capped, fixed-scale NRMSE (scales 200 for AES and 40
+for DMA). Temporal tolerance is .10. Unsolved runs remain right-censored,
+contributing 50 or 32 to capped evaluations-to-target. That cap is not an
+estimate of eventual solution time.
+
+For inference, target-paired AUC differences are averaged within each seed,
+leaving ten seed units. We use 10,000-replicate paired bootstrap intervals
+and exact two-sided sign-flip tests. Holm correction covers nine scalar or
+eight temporal comparisons, separately. Intervals are pointwise, not
+simultaneous. With ten units, these tests have coarse resolution; failure
+to reject is not equivalence.
+
+\heading{4. Scalar results}
+\begin{center}\small
+\begin{tabular}{lrr}
+\toprule Policy & AES AUC & DMA AUC\\\midrule
+Random & 2.2393 & 2.0849\\
+Mutation & 4.5159 & 4.0012\\
+Evolutionary & 4.5674 & 3.2367\\
+Scalar-edit & 3.5316 & 6.5367\\
+Coverage-guided & 3.3627 & ---\\
+Agent & 2.1938 & 2.6507\\\bottomrule
+\end{tabular}\end{center}
+The AES agent--random difference is $-0.0455$, CI $[-0.6579,0.6310]$,
+Holm $p=.8965$. DMA's difference is $+0.5658$, CI $[0.0787,1.0669]$,
+Holm $p=.1992$. Only DMA comparisons against mutation and scalar-edit support
+agent superiority. The latter baseline is valid in only 22.92\% of slots,
+which limits the importance of that win. Random is the stronger comparator.
+Agent/random solve counts are 43/38 out of 50 on AES and 36/38 on DMA.
+\columnbreak
+\heading{5. Structural/temporal results}
+\begin{center}\small
+\begin{tabular}{llrr}
+\toprule Design & Policy & AUC & Solved\\\midrule
+AES & Random & 3.3125 & 15/20\\
+ & Evolutionary & 3.7610 & 12/20\\
+ & Agent & 3.7027 & 8/20\\
+ & Hybrid & 3.6745 & 9/20\\\midrule
+DMA & Random & 2.4924 & 20/20\\
+ & Evolutionary & 2.6550 & 18/20\\
+ & Agent & 2.7371 & 14/20\\
+ & Hybrid & 2.7784 & 18/20\\\bottomrule
+\end{tabular}\end{center}
+Random has the lowest mean AUC on both designs. The AES agent--random
+difference is $+0.3902$, CI $[0.2107,0.5703]$, Holm $p=.03125$: the baseline
+is better. None of the other seven corrected comparisons supports superiority
+in either direction. In particular, hybrid search does not establish an
+advantage over random or evolution. These are results for the specified
+controller, grammar, targets, and budgets, not random-search optimality.
+
+\heading{6. Compliance, feedback, and cost}
+Temporal agent validity is 562/640 on AES and 573/640 on DMA; random and
+evolutionary are 640/640. All temporal failures are labeled SCHEMA, but this
+includes unknown edit operations, illegal field sets, type mismatches,
+redistribution errors, and missing outputs. It does not mean every failure
+was malformed JSON. Zero downstream failures cannot establish that the model
+understood all hardware constraints: invalid edits were rejected upstream,
+and the adapters supplied much of the legality machinery. The scalar study
+also contains protocol and useful-work failures.
+
+A post-hoc equal-valid-evaluations analysis retains only paired cells that
+reach a chosen valid budget within the original proposal budget. At $K=16$
+all 20 temporal pairs per design survive: agent/random mean curve errors are
+.12811/.11946 on AES and .10168/.09593 on DMA. The descriptive ordering does
+not reverse. The hybrid also remains above random. This diagnostic does not
+replace primary AUC or isolate a causal compliance effect: failures already
+changed adaptive history, and larger $K$ can select a nonrepresentative subset.
+
+Recorded configured-rate model cost is approximately \$4.3444 for scalar and
+\$1.5012 for temporal, with eight and two unknown-usage batches respectively.
+These are incomplete usage estimates, not reconciled cloud bills. Temporal
+usage records 2,431,745 input and 308,664 output tokens. CPU policies incur
+no LLM charges, not zero compute cost. Summed temporal evaluation and
+proposal-generation times are 7,591 and 2,665 seconds; shared-host concurrency
+precludes interpreting these as controlled speed comparisons. No larger-model
+study was added after inspecting the held-out outcomes.
+\end{multicols}
+\clearpage
+
+\begin{center}\large\bfseries From full-window averages to temporal gate profiles\end{center}
+\IfFileExists{window_profiles.pdf}{\begin{center}\includegraphics[width=.96\textwidth]{window_profiles.pdf}\end{center}}{}
+\begin{multicols}{2}
+\heading{7. Matched gate measurement}
+The best valid seed-400 trial per design/target/policy was selected without
+gate scores; ties use earliest proposal. All sixteen passed matched functional
+GLS. Unmasked AES has 90,247/90,247 annotated pins; DMA has 36,292/36,296
+(four missing sideband pins). Configuration, stimulus order, work, and each
+waveform's own horizon are reconciled. Zero-delay models omit timing glitches.
+
+Historical RTL-to-netlist annotation recovered only 203/154,059 pins in a
+different AES configuration; this is not a matched comparison with current
+unmasked AES. Legacy correlations contaminated by configuration or window
+normalization are superseded, not supporting evidence.
+
+Full-window means are nearly identical: 4.4572 mW on AES and 20.495 mW on
+DMA. Equal means cannot distinguish shape, although fixed work and duration
+alone do not mathematically guarantee equal energy.
+
+We use pinned upstream OpenSTA [4] native VCD time bounds and retain the
+original waveforms. Eight bins follow the frozen rising-edge sample
+partition. Internal boundaries fall one VCD tick before the indexed edge;
+we reject any boundary containing a waveform timestamp. Inclusive native
+endpoints therefore cannot double-count a transition. Each waveform's own
+timescale and exact duration are retained, including reset. RTL and GLS grids
+must match, and all bin durations must sum to the original span.
+
+\heading{8. Independent checks and endpoint}
+Known traces at 1 ps and 10 ps timescales independently check transition
+counts, carried-in state, high-time fractions, and boundary ownership.
+Fresh OpenSTA processes prevent stale annotation between windows. Every
+read records internal, switching, leakage, total power, and annotation.
+Dynamic power is internal plus switching, not total including leakage.
+
+The first case exposed float32 design-total accumulation: weighted switching
+differed from full-window switching by 20.78 ppm. Independently summing the
+same 22,901 leaf powers in double precision reduced the discrepancy to
+0.016 ppm. The unchanged $10^{-5}$ relative additive check uses the leaf sum;
+reported profiles retain the native design totals. Conditional internal-power
+estimation need not be additive in averaged activity, so its discrepancy is
+reported rather than forced away.
+
+The four achieved schedules are replayed through GLS to define watt-valued
+targets $R_i$. For finalist $P_i$ and duration $d_i$, the descriptive metric is
+\[
+E_{\mathrm{gate}}=\sqrt{\frac{\sum_i d_i(P_i-R_i)^2}{\sum_i d_iR_i^2}}.
+\]
+The denominator is reference-only; candidate-peak normalization is not used.
+This gate error is distinct from the frozen activity loss. There is no new
+gate solved threshold or policy significance test on selected finalists.
+\IfFileExists{window_findings.tex}{\input{window_findings.tex}}{}
+\end{multicols}
+\clearpage
+
+\begin{center}\large\bfseries Interpretation, limitations, and reproducible evidence\end{center}
+\begin{multicols}{2}
+\heading{9. What the experiments establish}
+The scalar and structural protocols independently fail to establish a general
+agent advantage over random, with a corrected significant agent loss on
+temporal AES. This narrows the empirical hypothesis; it does not show that
+agents cannot create useful schedules. They generated valid finalists and
+often solved activity targets. The missing result is superiority over equally
+expressive, properly budgeted baselines.
+
+Strong random search and weaker local/evolutionary refinement are consistent
+with broad sampling being effective in these bounded spaces. They do not
+prove that activity is monotonic in block count, that random is near-optimal,
+or that hardware size explains the ordering. The temporal experiment fixes
+work and duration, so the scalar block-count explanation cannot simply be
+carried over to it. A causal account requires additional controlled ablations.
+
+The legal adapter is both a strength and a boundary. It makes comparisons
+reproducible, enforces hard anti-idle constraints, and reduces implementation
+errors. It may also remove some long protocol-prerequisite reasoning that
+motivated the original hypothesis. That possibility is an interpretation,
+not a measured finding that fairness ``designed the hypothesis away.'' A
+shared grammar does not forbid semantic advantage; it lets an advantage in
+search, if present, be distinguished from privileged access to a better API.
+
+\heading{10. Limits and future work}
+Only two designs enter the frozen comparative studies. Ibex infrastructure
+and pilots are not substituted for a completed third-design panel.
+Compositional goals are not evaluated here. The temporal targets are achieved
+development profiles, not arbitrary unseen requests. Thirty-two or fifty
+slots test bounded search, not unlimited reasoning; Flash is one model
+configuration. These limits preclude a blanket conclusion about all agents,
+larger models, deeper search, or complex SoCs.
+
+More demanding protocol-depth tasks, generator-program evolution, or
+larger-model/deeper-budget studies remain plausible future experiments.
+They require fresh development and held-out evaluation, not retuning this
+observed panel until an agent wins. Classical baselines must receive the same
+representation and evaluator budget. A development-only probe would be
+exploratory evidence, not an extension of the confirmatory result.
+
+Windowed validation is descriptive evidence on selected cases. It cannot
+establish universal RTL-to-gate prediction, power-directed optimization,
+silicon accuracy, or signoff power. Sky130 Liberty characterization and
+complete annotation do not supply parasitics or timing-induced glitches.
+Near-identical full-window means do not imply identical temporal profiles;
+conversely, a low selected-case gate error is not an independent policy win.
+
+\heading{11. Artifact and reproducibility}
+The repository archives compact ledgers, source/configuration manifests,
+frozen calibration and target corpora, paired inference, selected workload
+identities, raw power reports, and hashes. Large VCDs remain scratch artifacts;
+replay commands and their hashes are provided rather than committing waves.
+The four-page PDF and its source are included with data-derived figures.
+
+The scalar, temporal, and windowed reports under \artifact{docs/} link their
+authoritative archives. Window measurements are versioned separately, so no
+later oracle change rewrites a frozen search result. Local audits verify
+ledgers and regenerate descriptive reports without model calls.
+
+The current evidence comes from host execution. A container configuration
+exists, but its latest validation smoke failed before Python started; a
+successful full image replay is not claimed. Completing that portability
+check, venue formatting, and the upstream contribution remain submission
+work, not hidden completed deliverables.
+
+\heading{Conclusion}
+Within two frozen, bounded workload studies, a feedback-driven agent does not
+establish general superiority over strong random search. The artifact makes
+that result inspectable and separates it from gate-measurement validity.
+Matched native-window validation addresses temporal power shape without
+confusing activity, total energy, and full-window mean power. The appropriate
+next scientific question is where semantic search helps beyond these bounded
+adapters, not how to relabel the observed losses as wins.
+
+\heading{References}
+\footnotesize
+\noindent[1] A. M. Joshi, L. Eeckhout, L. K. John, and C. Isen.
+\emph{Automated Microprocessor Stressmark Generation}. HPCA, 2008,
+pp. 229--239. \href{https://doi.org/10.1109/HPCA.2008.4658642}{doi:10.1109/HPCA.2008.4658642}.
+
+\noindent[2] P. Chatzimiltis, G. Antoniou, H. Volos, and Y. Sazeides.
+\emph{SAGA: A Surrogate Assisted Genetic Algorithm for Fast CPU Power Virus
+Generation}. ISPASS, 2025, pp. 309--319.
+\href{https://www.cs.ucy.ac.cy/carch/xi/ISPASS2025_Pres_1.pdf}{Author presentation};
+\href{https://doi.org/10.1109/ISPASS64960.2025.00036}{doi:10.1109/ISPASS64960.2025.00036}.
+
+\noindent[3] A. Cui et al. \emph{CHIA: An open-source framework for principled,
+agentic AI-driven hardware/software co-design research}. 2026.
+\href{https://arxiv.org/abs/2606.27350v3}{arXiv:2606.27350v3}.
+
+\noindent[4] Parallax Software / The OpenROAD Project. \emph{OpenSTA},
+revision \texttt{a9a3f30ca9}, 2026.
+\href{https://github.com/The-OpenROAD-Project/OpenSTA/tree/a9a3f30ca97dc13f9ef911cae1a82c42c67379e1}{Pinned source and native VCD window tests}.
+\end{multicols}
+\end{document}

@@ -1,5 +1,41 @@
 # Finalist validation
 
+## Native eight-window measurements
+
+The completed panel is in `results/windowed_power_v1/`. Use
+`python -m analysis.audit_windowed_archive` for compact review without tools.
+The frozen search scripts retain their full-window behavior; this separate
+versioned validation layer supplies native `-begin_time` / `-end_time` bounds.
+
+For a new measurement directory and already matched waveforms:
+
+```bash
+.venv/bin/python -m validation.window_power \
+  --waveform <GLS-VCD> --rtl-waveform <matched-RTL-VCD> \
+  --synthesis <mapped-directory> --clock clk_i --scope aes_core_smoke/dut \
+  --expected-edges 6774 --out <new-directory>
+```
+
+DMA uses `--clock clk --scope axi_dma --expected-edges 12000`. Tools and Liberty
+come from the existing `.env` configuration. This v1 measurement contract uses
+a 10 ns clock and exactly eight bins, not arbitrary clock frequencies or goals.
+`validation.window_matrix` runs the declared selection with bounded workers;
+its defaults resolve the recorded experiment roots, not new workloads. It
+refuses existing output directories. `validation.reference_power` replays each
+original achieved reference and verifies its lowering and functional record.
+Reference GLS needs the cell-model environment paths described below.
+
+See `docs/WINDOWED_POWER_PROTOCOL.md` for event-free cuts, carried-in state,
+leaf-sum precision checks and reference-only normalization. Independent native
+semantics tests can be repeated with:
+
+```bash
+.venv/bin/python -m validation.check_window_semantics \
+  --source <pinned-OpenSTA-source> --out <new-directory>
+```
+
+## Matched replay tier
+
 This directory is separate from the frozen search implementation. Its programs
 record their own input hashes and do not modify workload generators, policies,
 validators or RTL. A completed activity search is not a validated power result.

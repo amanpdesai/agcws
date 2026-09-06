@@ -1,5 +1,25 @@
 # Decision log
 
+## 2026-09-06 — Windowed validation, not another model-selection study
+
+**Decision.** Preserve both frozen activity studies. Evaluate eight native gate
+windows for exactly the sixteen predeclared finalists and four original achieved
+references, then write the four-page draft. No new model/depth sweep or gate
+superiority test. `WINDOWED_POWER_PROTOCOL.md` fixes cuts and reference-RMS error.
+**Finding.** All twenty waveforms pass; the 180 reports expose temporal shapes
+hidden by full-window averages. Within each design/target group, finalist
+activity-error ordering is retained at gate level. This is selected-case
+validation, not general proxy validity or agent advantage.
+**Precision correction.** The first native aggregate switching check missed by
+20.78 ppm. Independent double-precision summation of 22,901 native leaf powers
+reduced it to 0.016 ppm; the unchanged 1e-5 check uses leaf sums. Original design
+totals remain the reported profiles. Initial diagnostic evidence is preserved.
+**Consequence.** Report activity-profile synthesis with selected-case windowed
+gate validation. The four-page draft retains the significant temporal AES agent
+loss and the nonsignificant scalar AES numerical advantage. Adapter abstraction
+may reduce protocol difficulty; neither causation nor universal agent inability
+is established. Equal-valid temporal analysis is explicitly post-hoc and conditional.
+
 ## 2026-09-06 — Adopt pinned upstream OpenSTA for future windowed validation
 
 **Decision.** Install `a9a3f30ca97dc13f9ef911cae1a82c42c67379e1` alongside

@@ -11,10 +11,14 @@ multi-design scalar agent runs are still missing. It does not complete the
 whole project. The structural temporal milestone is now also complete:
 160 frozen cells / 5120 slots, two designs, four methods, ten fresh seeds,
 and 16 matched-window GLS finalists. See [STRUCTURAL_RESULTS.md](STRUCTURAL_RESULTS.md).
-No agent advantage over random is established. Compositional held-out evaluation,
-temporal gate-power validation, the final paper and upstream submission remain
-future work. The broad slice table below tracks the original project, not just
-these completed two-design milestones.
+No agent advantage over random is established. Native eight-window gate-power
+validation is complete for all sixteen finalists and four achieved references
+(180 reports); see [WINDOWED_POWER_RESULTS.md](WINDOWED_POWER_RESULTS.md).
+A [four-page working draft](../paper/report.pdf) now integrates both frozen
+studies and the windowed measurements. Venue formatting, author review, a
+successful current-image replay, and upstream submission remain. Compositional
+held-out evaluation is not part of these completed results. The broad slice
+table below tracks the original project, not just these two-design milestones.
 
 **D1 = 2026-08-29. D23 = 2026-09-20.** Status: `TODO` / `WIP` / `DONE` / `BLOCKED` / `CUT`.
 
@@ -34,7 +38,7 @@ Build one design vertically before widening: AES first, `axi_dma` second, Ibex t
 | 9 | Compositional/temporal targets (G4) | D16 | WIP |
 | 10 | Statistics and figures | D21 | WIP |
 | 11 | Container and upstream PR prep | D21 | WIP |
-| 12 | Four-page report | D23 | TODO |
+| 12 | Four-page report draft complete; author/venue review pending | D23 | WIP |
 
 Record non-obvious choices in `DECISIONS.md`, unknowns in `RISKS.md`, and never commit waveform artifacts.
 

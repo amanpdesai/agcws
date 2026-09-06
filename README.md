@@ -1,6 +1,6 @@
 # Agentic Goal-Conditioned Workload Synthesis
 
-AGCWS investigates whether an agent can synthesize legal hardware workloads for requested activity and power behavior. The current search endpoint is RTL activity; temporal power-profile synthesis is not established.
+AGCWS investigates whether an agent can synthesize legal hardware workloads for requested activity and power behavior. Search uses RTL activity; matched windowed gate power validates selected temporal finalists, not a power-guided agent advantage.
 
 Built as a composable [CHIA](https://github.com/ucb-bar/chia) loop for the A³ CHIA Hackathon (MICRO 2026).
 
@@ -16,8 +16,12 @@ A second frozen [structural temporal study](docs/STRUCTURAL_RESULTS.md) is compl
 grammar and typed structural edits. Random has the lowest mean AUC on both
 designs; AES agent-only is significantly worse than random (Holm p = 0.03125).
 No agent/hybrid superiority or parity is established. All 16 predeclared
-finalists pass functionally checked, matched-window GLS validation, but their
-full-window mean power does not validate temporal power shapes.
+finalists pass functionally checked, matched-window GLS validation. A separate
+[eight-window power validation](docs/WINDOWED_POWER_RESULTS.md) now covers those
+16 finalists and four achieved references: 180 native OpenSTA reports, with
+independent boundary/state, duration, annotation and numerical checks.
+Selected-case activity-error rankings agree with gate-error rankings within
+each target/design group; no general proxy or agent-superiority claim follows.
 The AlphaEvolve-inspired population alternative was tested in development and
 not selected; this is not a reproduction of AlphaEvolve.
 
@@ -28,7 +32,8 @@ with matched gate evidence in
 
 See `docs/ARCHITECTURE.md` and `docs/PLAN.md`. The current evidence and claim
 boundaries are summarized in [`docs/RESULTS.md`](docs/RESULTS.md), and the
-report-ready structure is in [`docs/REPORT.md`](docs/REPORT.md).
+four-page working draft is [`paper/report.pdf`](paper/report.pdf), with source
+and build instructions in [`paper/README.md`](paper/README.md).
 
 Install the optional plotting dependency with `make analysis-install` before
 running `make plot-activity` in a fresh environment.

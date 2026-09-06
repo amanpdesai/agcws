@@ -3,6 +3,34 @@
 This directory contains compact review artifacts from completed experiments.
 Large waveforms, logs, and per-trial scratch files remain under ignored `out/`.
 
+## Eight-window gate validation
+
+`windowed_power_v1/` contains 16 predeclared finalists and four matched achieved
+references: eight native windows plus a full-span report each (180 reports).
+It includes exact durations, raw Tcl/reports, input hashes, reference replay
+checks and executed measurement-source snapshots. Working sources received
+style and synthetic-fixture filename cleanup afterward; snapshots preserve the
+code actually measured.
+`window_semantics_v1/` holds tiny synthetic traces as `.vcd.txt` test inputs,
+not design waveforms, with independent state/density/duty checks at two timescales.
+
+Review without simulators, cloud calls or the large local VCDs:
+
+```bash
+.venv/bin/python -m analysis.audit_windowed_archive
+.venv/bin/python -m analysis.report_windowed_power
+```
+
+The renderer regenerates `docs/WINDOWED_POWER_RESULTS.md` and the four-panel
+figure used in `paper/report.pdf`. The compact audit checks report arithmetic,
+hashes, original selection, reference normalization and annotation; independently
+regenerating the measurements requires the raw/replayed waveforms and toolchain.
+See `validation/README.md` and `docs/WINDOWED_POWER_PROTOCOL.md`.
+
+`structural_valid_evaluation_diagnostic_v1.json` is a post-hoc conditional
+equal-valid-evaluation analysis, not a replacement for proposal-counted inference.
+Regenerate to a new output path with `python -m analysis.structural_valid_diagnostic --out <new.json>`.
+
 ## Frozen structural temporal study
 
 `structural_temporal_heldout_v1/` contains the 160 independently audited cells

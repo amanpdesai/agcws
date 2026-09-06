@@ -1,8 +1,10 @@
-# AGCWS report scaffold
+# AGCWS report and evidence index
 
-This is a writing outline, not the submitted four-page paper. The demonstrated
-task is goal-conditioned activity-profile synthesis with matched gate-level
-validation, not established arbitrary power-profile synthesis.
+The [four-page working draft](../paper/report.pdf) and [editable source](../paper/report.tex)
+are complete; [build instructions](../paper/README.md) record the toolchain.
+It is not a submitted or venue-formatted final paper. The demonstrated task is
+goal-conditioned activity-profile synthesis with selected-case windowed gate
+validation, not established arbitrary power-guided agent superiority.
 
 ## Evidence to use
 
@@ -11,6 +13,7 @@ validation, not established arbitrary power-profile synthesis.
 | Scalar | AES/DMA, five targets, ten seeds, 550 cells / 27,500 slots | [SEMANTIC_RESULTS.md](SEMANTIC_RESULTS.md) |
 | Structural temporal | AES/DMA, two observed reference profiles, ten fresh seeds, 160 cells / 5120 slots | [STRUCTURAL_RESULTS.md](STRUCTURAL_RESULTS.md) |
 | Gate validation | Sixteen predeclared temporal finalists, matched configuration, stimulus and waveform windows | [Finalist archive](../results/structural_temporal_finalist_validation_v1/validation.json) |
+| Windowed power | Sixteen finalists plus four achieved references, eight bins plus full window, 180 native reports | [WINDOWED_POWER_RESULTS.md](WINDOWED_POWER_RESULTS.md) |
 
 Historical pilots in RESULTS.md are not pooled with these studies. The original
 three-design factorial plan is not complete; do not describe these two-design
@@ -61,7 +64,9 @@ The temporal study has 16/16 reference-checked, matched-window GLS finalists:
 90,247/90,247 annotated pins on unmasked AES and 36,292/36,296 on DMA.
 Full-window mean dynamic power is not temporal target error. Nearly identical
 means at matched work and duration do not validate or invalidate the eight-bin
-power shape; that measurement has not been performed.
+power shape. That separate measurement is now complete and preserves
+selected-case activity-error ordering within all four design/target groups.
+This is not a general proxy predictor or another policy-inference panel.
 
 ## Limitations and next experiments
 
