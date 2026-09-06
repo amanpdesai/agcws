@@ -1,5 +1,11 @@
 # Structural temporal study — development plan
 
+The CPU pilot is now complete and archived at
+`results/structural_temporal_cpu_pilot_v1/`: 64/64 valid proposals, all with
+exact work and observation duration. Random and structural evolution each
+solve one of the two development targets. This confirms mechanics, not a
+method advantage. Agent-only/hybrid integration and DMA transfer are next.
+
 ## CPU pilot configuration
 
 The initial search pilot uses the independently achieved `random_300` and
