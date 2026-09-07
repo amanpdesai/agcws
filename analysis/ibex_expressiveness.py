@@ -2,9 +2,11 @@
 
 import argparse
 import collections
+import hashlib
 import itertools
 import json
 import math
+import re
 import shutil
 import statistics
 from pathlib import Path
@@ -172,6 +174,8 @@ def archive(root, destination):
             "result.json",
             "run/functional.json",
             "run/profile.json",
+            "run/program.S",
+            "run/ibex_simple_system.log",
         ):
             path = source / name
             if path.exists():
@@ -226,6 +230,36 @@ def verify(destination):
             for t in trials
             if t["cache_id"]
         }
+        for trial in trials:
+            identifier = trial["cache_id"]
+            if not identifier:
+                continue
+            record_root = destination / "evaluations" / identifier
+            program = json.loads((record_root / "program.json").read_text())
+            expected_id = hashlib.sha256(
+                json.dumps(
+                    {
+                        "program": program,
+                        "measurement": manifest["measurement_fingerprint"],
+                    },
+                    sort_keys=True,
+                ).encode()
+            ).hexdigest()
+            if expected_id != identifier or program != trial["program"]:
+                raise ValueError("program/cache provenance mismatch")
+            if trial["valid"]:
+                functional = json.loads(
+                    (record_root / "run/functional.json").read_text()
+                )
+                output = (record_root / "run/ibex_simple_system.log").read_text()
+                match = re.search(r"AGCWS_STATE ([0-9A-Fa-f ]+)\n", output)
+                expected = functional["expected"]
+                if (
+                    not match
+                    or [int(x, 16) for x in match[1].split()]
+                    != expected["registers"] + expected["memory"]
+                ):
+                    raise ValueError("architectural state evidence mismatch")
         audit_cell(manifest, summary, trials, records)
         shared = [t["program"] for t in trials[: manifest["shared_initial_slots"]]]
         if seed in initial and initial[seed] != shared:

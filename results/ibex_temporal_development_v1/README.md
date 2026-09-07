@@ -11,7 +11,8 @@ Do not treat the manifest alone as completed results. Completion requires all
 Execution note (2026-09-07): after verifying 96 logical CPUs and a load near 27,
 six later cells (`target_3`, agent/mutation, seeds 600–602) were started through
 separate supervised foreground sessions alongside the original three-worker
-queue. Maximum concurrency is nine. No controller, target, budget, source or
+queue. As those workers finished, the six `target_2` agent/mutation cells used
+the freed capacity. Maximum concurrency is nine. No controller, target, budget, source or
 model setting changed. The original queue skips these directories rather than
 duplicating them; completion is determined from audited artifacts after both
 sets of sessions finish, not from a queue status alone. Wall-clock figures
