@@ -15,6 +15,11 @@ activity consequences are hypotheses to test, not guaranteed power behavior.
 - The experiment enables twelve performance counters. Extra instruction-memory
   delay is zero by default, on top of the RAM access itself. Do not invent cache
   misses, out-of-order scheduling or DRAM contention in this configuration.
+- The pinned source also contains CHERIoT and compressed-instruction support.
+  The simple-system connection ties `cheriot_enable_i` to `IbexMuBiOff`
+  (`ibex_simple_system.sv`, line 315). This workload compiler uses RV32IM/Zicsr
+  and disables compressed encodings; do not infer that unused ISA extensions
+  are absent from the source or exercised by these programs.
 
 ## Mechanisms worth investigating
 
