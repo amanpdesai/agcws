@@ -1,0 +1,552 @@
+{
+  "phase": "fixed-context-development",
+  "source_commit": "1ad0f0d93a8c82af31a9cde336d095b48213d39b",
+  "sources": {
+    "docker/run.sh": "90118b16e7f44b458628bbef9cddb61b0f6e96e981d714172fba107a865f3384",
+    "docs/IBEX_CAPABILITY_V1_PROTOCOL.md": "c7747964da4333efcd3c16abc6c28329e7e72c0aa64feb992745c925fb89652d",
+    "docs/IBEX_CONTRACT_V4_REVISION2.md": "ee74a6da1bc99de8d7e93a89a2bbf3d063f953f6baf98bb70576a95500cc386b",
+    "docs/IBEX_TEMPORAL_V3_DEVELOPMENT.md": "884fb08cad18fe9b6df05b04f461e8e5b88b818cdeb22667dc11370bdc4221ca",
+    "docs/IBEX_TEMPORAL_V4_PLAN.md": "4dfaf8c671115735be60264a3090b73a556552196ea3fd4db5027c4d522924e1",
+    "docs/IBEX_V4_PREDICTION_GATE.md": "db04a61adc1e1acba636cba8f28064314b78aef6ef3973f1149e1fd58855dfb5",
+    "experiments/ibex_capability_v1/__init__.py": "464f5e675110c7c13281764cd8dd254a79b7e73ae6dcc4d0383d47e4d239ffbe",
+    "experiments/ibex_capability_v1/study.py": "b6b0e761545b8ee6aa8350507f7c9611bf49ed66b45de375d077026e1f3d4d21",
+    "experiments/ibex_temporal_v1/activity.py": "f270c4973117a188af616d488974af794aacfc3cd45fdd3951247249bd9a341a",
+    "experiments/ibex_temporal_v1/evaluate.py": "9b193971efeb57cf22e44f19bafcc5793ed74c7d8b844bbc3a039d07d3ba53f5",
+    "experiments/ibex_temporal_v1/gate.py": "e19a7c29a1ad3f1174bb42e930660e2b9fabfdb0877d71b975bde7d194d731c5",
+    "experiments/ibex_temporal_v1/panel.py": "f89f0d6f6f884d8315d5936d34238c9f628ec176a0082f4e211c8af376cbafcc",
+    "experiments/ibex_temporal_v1/program.py": "d94236fbcf1378eebe3fb01ec420405d5d75efa6796eb659d3e1208f18cccfab",
+    "experiments/ibex_temporal_v1/search.py": "48a97537ec71e94c579a0dece9ae1f753d141c3da8097634d45d7b8d337b4df8",
+    "experiments/ibex_temporal_v1/witnesses.py": "0c7a8c5b8e2be9b76945a08e189253185c008c5d32a46c29c4a46418aa02d76a",
+    "experiments/ibex_temporal_v2/compiler.py": "b337431879727a29c33ec08ea7806918f7d146d3e4fd0423f21cf8251ee7a18d",
+    "experiments/ibex_temporal_v2/evaluate.py": "0b7c695cc4dac37b897eba10473e9df251632d4a42a582bce8d2dc6ae37d38f0",
+    "experiments/ibex_temporal_v2/gate.py": "6b24bf1c2dcf0015ae4ea7803a37ca349ad0669433565bb46eb2c86e97532fb4",
+    "experiments/ibex_temporal_v2/panel.py": "97214baa0ad0bcce4982ef20146e57e82b0a4a36afb29b8f14d7f5815fc9b2c7",
+    "experiments/ibex_temporal_v2/program.py": "ad5a541e3bfbb1e977d582d5a9170642c392cbe0ddea3c3d63d8cf30b16d650f",
+    "experiments/ibex_temporal_v2/search.py": "bf8e993321a98315b5baaae60df5f6e21988bfd50cec51a6246815ccdc876567",
+    "experiments/ibex_temporal_v3/agent.py": "4e06ed93b78cadd02858b35d04a299df7346f3888ce646852061285b24e93f54",
+    "experiments/ibex_temporal_v3/context.py": "3646fe3ba94cec0860b9861b81531db76c04a9e159d5d39bfe5d6f2e538aa866",
+    "experiments/ibex_temporal_v3/coverage.py": "55f33d18a9ac11504296c01e74694ccf3d1e90e2482db78cfec27500b71a93a4",
+    "experiments/ibex_temporal_v3/evaluate.py": "55397fff1b447a49d118662b9ea67150bc9f5b2c07350d6fe2ce00e598b48950",
+    "experiments/ibex_temporal_v3/feedback.py": "e2b9c9c8884c7e71aa7be35a073e21226be0d747f2f3696ada046dc86ad23a1d",
+    "experiments/ibex_temporal_v3/gate.py": "0606f1d5d01d37152ab76aa5534fb140914e793c2d79b748e37898a7a87781fd",
+    "experiments/ibex_temporal_v3/panel.py": "25800cb1deb5e24a76538c7bd8294599429485db56dfaee9e44eb253c7dba3bd",
+    "experiments/ibex_temporal_v3/program.py": "9051d86baf215451200bca7fcacaf2f0cb1fea06d3c1aee4c51e084f8fa6b25f",
+    "experiments/ibex_temporal_v3/search.py": "0eb10382d02912aa0677ddbd6a17564895eb93d6c0d2738c9911453a613e48e7",
+    "experiments/ibex_temporal_v4/__init__.py": "ffa6ed1d5729324bfc63716ecf960cc112ca6c3c635a30931fc74ddeedacd78e",
+    "experiments/ibex_temporal_v4/cache.py": "6e3882795e086d1b7adcce463401f78854b7882c3605a0c87c64c84023e1685b",
+    "experiments/ibex_temporal_v4/compiler.py": "cfa7f4a5c8d2263f589c75f3897553a752fa9648378972a5ef6e6a32cce85019",
+    "experiments/ibex_temporal_v4/contract.py": "a143758367e6dd88f3e6ab91fd10d15203292a5557a837973f61559b071f6deb",
+    "experiments/ibex_temporal_v4/contract_study.py": "24012b226c0b568ae52f1b368bdb18ecb46963defca2f2717d9a4b6606f28419",
+    "experiments/ibex_temporal_v4/contract_study_v2.py": "1ca3321ef55ca530c4d9330f4c4e2d4b2cf7a7e9704828e6fa48371a051a1b40",
+    "experiments/ibex_temporal_v4/evaluate.py": "12961bfb13b2a08334c140df079af53b8f899a1842ad3118ef69c654cfe71315",
+    "experiments/ibex_temporal_v4/events.py": "a5c75777d8d3bf824032de47c2fb943d2d4a46d3af70e08bd61405a9fe10688a",
+    "experiments/ibex_temporal_v4/gate.py": "2811844e498e94fa682f0bb604e57da82e61a361ce83d59e26ecd604603d3379",
+    "experiments/ibex_temporal_v4/grounded_agent.py": "3238b441314c2a1c4a82da443587b887be276bbcc125d0b3640160dac8998d5a",
+    "experiments/ibex_temporal_v4/native_schema.py": "dc9c46152f51d2f225502c51caebcd9c38368f5878b37828eb22a99c876efa3b",
+    "experiments/ibex_temporal_v4/notebook.py": "256b692498e1acf3d99e7a40b6c7ad4a270bc8869b29873cec3a86458f8421a2",
+    "experiments/ibex_temporal_v4/panel.py": "7b72007ddda6915b688ce3ad5027e72debbdebd9b556b80ee866f72e8639cbc7",
+    "experiments/ibex_temporal_v4/prediction_gate.py": "532f945272866f91252ef8b27375460b8f7dd362dbfe3a3910122e5941efe780",
+    "experiments/ibex_temporal_v4/search.py": "01cbc62f4495506a89bcd26801b6d3a61cded79136703535401990bd5b469b32",
+    "experiments/ibex_temporal_v4/transport.py": "6647030d11b6098f50d75ee977c476ab847e4eefe6c850ad0cdf65b4d27c8cfb",
+    "scripts/build_ibex_context.py": "234d1af59ae6df53603a3fafe956f6f1ff3824428af4238ae2732f0c2d114fc7",
+    "specs/ibex.md": "0a81cfa00848aff710216e0a49a877839155ba656a2edc03decce88f68cd9268",
+    "src/agcws/config.py": "4713aa413b5e08b0b382fef6c52be3275dd6f13471220f5cf38acddca306be26",
+    "src/agcws/policies/source_context.py": "53c69932b6df5289e2c4aa50595cb4ae7b4a71e0420c7748f4b3483659fd8a30",
+    "src/agcws/policies/vertex.py": "56b76b78d6dfd94d336da82dc6d71938fdd2578138b02797ae7cdb47ee6f8544",
+    "src/agcws/provenance.py": "6857eda6486bd4efd1f163f8a5572bc0f8eab4fd69922203a17a1216c7195c2d"
+  },
+  "previous_manifest_sha256": "c371fea193047ebd4105e90b5246cdfffbfc65053cd8e5a118961ba3cbcc369e",
+  "schema_sha256": "b01f0cf35b6bad45f8d9fba1ec51a861275207ab5b07454f1e183152f26c82a8",
+  "contexts": {
+    "target_0-600": {
+      "target": "target_0",
+      "seed": 600,
+      "parent_history_sha256": "0df18242051b8655653d3a0e2b9c5907a28a4b584ab14499785a16947a88c71a",
+      "history_sha256": "6f879ff9af1274a92870eb4e1b5fea343b08a24d3ec6804f7ade36c08ac3208e",
+      "payload_sha256": "f8d9d756557b6c4c29565c0f98548875427a21825d5ecfb5be0a614f7c8692e2"
+    },
+    "target_0-601": {
+      "target": "target_0",
+      "seed": 601,
+      "parent_history_sha256": "a7561853ad53f2a1363e09cb6c4e2e85227f1bda07b15e1840787fdaa0a4ca26",
+      "history_sha256": "1a0789d530c1012679da0e97e5f9507bc521d00759f46b695a1382f0106dcb1f",
+      "payload_sha256": "36e7621b4ebe451820a9c4d6e3b9c0ab98c8af7712916d1b25c47535329c508e"
+    },
+    "target_0-602": {
+      "target": "target_0",
+      "seed": 602,
+      "parent_history_sha256": "652b4ec77dadc390c888db315b102fff50eaf7859318c16cee1d599ac04e3e3f",
+      "history_sha256": "a3ac52aeb2f68c29c5f1d2d7e6a7492e6b8d893fe82d11ec1580f31fd5e4bfe1",
+      "payload_sha256": "6d9597fd7323d05b04ee104302701f1286d9afe6e2f8b433e1bd106246e79644"
+    },
+    "target_1-600": {
+      "target": "target_1",
+      "seed": 600,
+      "parent_history_sha256": "4c18f6eb41a1d86c2550c9ce8c3a268b7eb32961e3745c857c1b7585a257df55",
+      "history_sha256": "57b74da4ec7dccacc8e9c4c4d613316767facab6a42aa169588b593a6c108a0a",
+      "payload_sha256": "bb2d6ccbf70526e66751532079907f4bf0de916676f24cbad5917d328e980c05"
+    },
+    "target_1-601": {
+      "target": "target_1",
+      "seed": 601,
+      "parent_history_sha256": "db69a9b1810bbbc0cdcbcea86a6dc5b1e838fdbeb5d860dacd2657bb1661f6b9",
+      "history_sha256": "32e11a28c5bd6e53aa88cb6f3c014edac29d93fc9ad70db26abe6e31d8ac3028",
+      "payload_sha256": "e6b864b578c0b23d900c90a58ba2d95187fe82a4390bad0616938f1e348f368d"
+    },
+    "target_1-602": {
+      "target": "target_1",
+      "seed": 602,
+      "parent_history_sha256": "2b1a87477158a77a14c15c3b761b8a94477745a364d983bd775a46127533cbb8",
+      "history_sha256": "20b94baed5c2a246e9855507a9d86834d5c527a605276eac557cae4dfde548ac",
+      "payload_sha256": "d1a4d20fd8ea0596de9497b3368bb19dd09c76eef5168fdafac0ca35990c8775"
+    },
+    "target_2-600": {
+      "target": "target_2",
+      "seed": 600,
+      "parent_history_sha256": "410c203a3b428b47b4f4482d70ed5224e2bf214ebf4c7668aa308fa08845d257",
+      "history_sha256": "133e23e08a6cd2ff5535a5da6ec79359aa4e9a792491979b9fa2def00ccd9424",
+      "payload_sha256": "8d4aa6a6e2e9837e732080afbfbdc55c71af271df053b78ae6547532f0d870fb"
+    },
+    "target_2-601": {
+      "target": "target_2",
+      "seed": 601,
+      "parent_history_sha256": "bc9cb72f99a577bda7a43a9a3f4dd6c5b949d287f075db02017dda68f92f1f7c",
+      "history_sha256": "4bd374af50bdb08c3d199c3611c41c136fc1a4eda9337921cc31fde3c7f74df0",
+      "payload_sha256": "40b00586d22632b06ab87dc271cb3fdc74c91f4c7224b6080d4087a07d6b0fee"
+    },
+    "target_2-602": {
+      "target": "target_2",
+      "seed": 602,
+      "parent_history_sha256": "0cae0386b90a9f091f3cf44a2a934a8546a779324fcc7bb154dcabe57938a482",
+      "history_sha256": "adb6180c1226840eb7a478e9a4fdefde9ea4cd4acfdd04078b88f13b3bede0a8",
+      "payload_sha256": "db6b8521819f4349582b98e01bbb86bc7dd4cf13bf05e924918206c5a85b30fe"
+    },
+    "target_3-600": {
+      "target": "target_3",
+      "seed": 600,
+      "parent_history_sha256": "9b623fdaebf4c2433e8904fbe768803dc9dcae45f7104b1604510039d6c90c62",
+      "history_sha256": "51cb0fab18eee89349e7171c3c7613b75186bfac7473bbf226986f494483f377",
+      "payload_sha256": "95ae7c7b9ccff3d745a0deccacc1b06d69c0f5a3df8c8bd2c39d9dd45a6bd91f"
+    },
+    "target_3-601": {
+      "target": "target_3",
+      "seed": 601,
+      "parent_history_sha256": "15de7228412f8adcb87f46db879afae4b09eb7ca602348abc45bb313b2e1ee22",
+      "history_sha256": "a15681e874634a4c984f5a6e194b2f295ff396da71f4f4c30e0ceb15aa44311c",
+      "payload_sha256": "79f9bf5f536ebd4ab16da1e74f23ecce4929ee34db56f63b5a1d68feb5603a6a"
+    },
+    "target_3-602": {
+      "target": "target_3",
+      "seed": 602,
+      "parent_history_sha256": "cd7f62c49efc39bcc05ed03630e62d5afd53471af79c170bb0dd33f6d1d97587",
+      "history_sha256": "294d504f7ce413217fd1b8e4400aa36a61e24a6f1d21f4c80f31e47707877d7d",
+      "payload_sha256": "0a63404ca91a1918cf8e9b1151518c32a2b48a1ff05cceefd1435950f94e16f4"
+    }
+  },
+  "cells": [
+    {
+      "context": "target_0-600",
+      "arm": "flash-512",
+      "seed": 17000
+    },
+    {
+      "context": "target_0-600",
+      "arm": "flash-4096",
+      "seed": 17001
+    },
+    {
+      "context": "target_0-600",
+      "arm": "pro-512",
+      "seed": 17002
+    },
+    {
+      "context": "target_0-600",
+      "arm": "pro-4096",
+      "seed": 17003
+    },
+    {
+      "context": "target_0-600",
+      "arm": "random",
+      "seed": 17004
+    },
+    {
+      "context": "target_0-600",
+      "arm": "coverage",
+      "seed": 17005
+    },
+    {
+      "context": "target_0-601",
+      "arm": "flash-4096",
+      "seed": 17101
+    },
+    {
+      "context": "target_0-601",
+      "arm": "pro-512",
+      "seed": 17102
+    },
+    {
+      "context": "target_0-601",
+      "arm": "pro-4096",
+      "seed": 17103
+    },
+    {
+      "context": "target_0-601",
+      "arm": "flash-512",
+      "seed": 17100
+    },
+    {
+      "context": "target_0-601",
+      "arm": "random",
+      "seed": 17104
+    },
+    {
+      "context": "target_0-601",
+      "arm": "coverage",
+      "seed": 17105
+    },
+    {
+      "context": "target_0-602",
+      "arm": "pro-512",
+      "seed": 17202
+    },
+    {
+      "context": "target_0-602",
+      "arm": "pro-4096",
+      "seed": 17203
+    },
+    {
+      "context": "target_0-602",
+      "arm": "flash-512",
+      "seed": 17200
+    },
+    {
+      "context": "target_0-602",
+      "arm": "flash-4096",
+      "seed": 17201
+    },
+    {
+      "context": "target_0-602",
+      "arm": "random",
+      "seed": 17204
+    },
+    {
+      "context": "target_0-602",
+      "arm": "coverage",
+      "seed": 17205
+    },
+    {
+      "context": "target_1-600",
+      "arm": "pro-4096",
+      "seed": 17303
+    },
+    {
+      "context": "target_1-600",
+      "arm": "flash-512",
+      "seed": 17300
+    },
+    {
+      "context": "target_1-600",
+      "arm": "flash-4096",
+      "seed": 17301
+    },
+    {
+      "context": "target_1-600",
+      "arm": "pro-512",
+      "seed": 17302
+    },
+    {
+      "context": "target_1-600",
+      "arm": "random",
+      "seed": 17304
+    },
+    {
+      "context": "target_1-600",
+      "arm": "coverage",
+      "seed": 17305
+    },
+    {
+      "context": "target_1-601",
+      "arm": "flash-512",
+      "seed": 17400
+    },
+    {
+      "context": "target_1-601",
+      "arm": "flash-4096",
+      "seed": 17401
+    },
+    {
+      "context": "target_1-601",
+      "arm": "pro-512",
+      "seed": 17402
+    },
+    {
+      "context": "target_1-601",
+      "arm": "pro-4096",
+      "seed": 17403
+    },
+    {
+      "context": "target_1-601",
+      "arm": "random",
+      "seed": 17404
+    },
+    {
+      "context": "target_1-601",
+      "arm": "coverage",
+      "seed": 17405
+    },
+    {
+      "context": "target_1-602",
+      "arm": "flash-4096",
+      "seed": 17501
+    },
+    {
+      "context": "target_1-602",
+      "arm": "pro-512",
+      "seed": 17502
+    },
+    {
+      "context": "target_1-602",
+      "arm": "pro-4096",
+      "seed": 17503
+    },
+    {
+      "context": "target_1-602",
+      "arm": "flash-512",
+      "seed": 17500
+    },
+    {
+      "context": "target_1-602",
+      "arm": "random",
+      "seed": 17504
+    },
+    {
+      "context": "target_1-602",
+      "arm": "coverage",
+      "seed": 17505
+    },
+    {
+      "context": "target_2-600",
+      "arm": "pro-512",
+      "seed": 17602
+    },
+    {
+      "context": "target_2-600",
+      "arm": "pro-4096",
+      "seed": 17603
+    },
+    {
+      "context": "target_2-600",
+      "arm": "flash-512",
+      "seed": 17600
+    },
+    {
+      "context": "target_2-600",
+      "arm": "flash-4096",
+      "seed": 17601
+    },
+    {
+      "context": "target_2-600",
+      "arm": "random",
+      "seed": 17604
+    },
+    {
+      "context": "target_2-600",
+      "arm": "coverage",
+      "seed": 17605
+    },
+    {
+      "context": "target_2-601",
+      "arm": "pro-4096",
+      "seed": 17703
+    },
+    {
+      "context": "target_2-601",
+      "arm": "flash-512",
+      "seed": 17700
+    },
+    {
+      "context": "target_2-601",
+      "arm": "flash-4096",
+      "seed": 17701
+    },
+    {
+      "context": "target_2-601",
+      "arm": "pro-512",
+      "seed": 17702
+    },
+    {
+      "context": "target_2-601",
+      "arm": "random",
+      "seed": 17704
+    },
+    {
+      "context": "target_2-601",
+      "arm": "coverage",
+      "seed": 17705
+    },
+    {
+      "context": "target_2-602",
+      "arm": "flash-512",
+      "seed": 17800
+    },
+    {
+      "context": "target_2-602",
+      "arm": "flash-4096",
+      "seed": 17801
+    },
+    {
+      "context": "target_2-602",
+      "arm": "pro-512",
+      "seed": 17802
+    },
+    {
+      "context": "target_2-602",
+      "arm": "pro-4096",
+      "seed": 17803
+    },
+    {
+      "context": "target_2-602",
+      "arm": "random",
+      "seed": 17804
+    },
+    {
+      "context": "target_2-602",
+      "arm": "coverage",
+      "seed": 17805
+    },
+    {
+      "context": "target_3-600",
+      "arm": "flash-4096",
+      "seed": 17901
+    },
+    {
+      "context": "target_3-600",
+      "arm": "pro-512",
+      "seed": 17902
+    },
+    {
+      "context": "target_3-600",
+      "arm": "pro-4096",
+      "seed": 17903
+    },
+    {
+      "context": "target_3-600",
+      "arm": "flash-512",
+      "seed": 17900
+    },
+    {
+      "context": "target_3-600",
+      "arm": "random",
+      "seed": 17904
+    },
+    {
+      "context": "target_3-600",
+      "arm": "coverage",
+      "seed": 17905
+    },
+    {
+      "context": "target_3-601",
+      "arm": "pro-512",
+      "seed": 18002
+    },
+    {
+      "context": "target_3-601",
+      "arm": "pro-4096",
+      "seed": 18003
+    },
+    {
+      "context": "target_3-601",
+      "arm": "flash-512",
+      "seed": 18000
+    },
+    {
+      "context": "target_3-601",
+      "arm": "flash-4096",
+      "seed": 18001
+    },
+    {
+      "context": "target_3-601",
+      "arm": "random",
+      "seed": 18004
+    },
+    {
+      "context": "target_3-601",
+      "arm": "coverage",
+      "seed": 18005
+    },
+    {
+      "context": "target_3-602",
+      "arm": "pro-4096",
+      "seed": 18103
+    },
+    {
+      "context": "target_3-602",
+      "arm": "flash-512",
+      "seed": 18100
+    },
+    {
+      "context": "target_3-602",
+      "arm": "flash-4096",
+      "seed": 18101
+    },
+    {
+      "context": "target_3-602",
+      "arm": "pro-512",
+      "seed": 18102
+    },
+    {
+      "context": "target_3-602",
+      "arm": "random",
+      "seed": 18104
+    },
+    {
+      "context": "target_3-602",
+      "arm": "coverage",
+      "seed": 18105
+    }
+  ],
+  "arms": {
+    "flash-512": {
+      "model": "gemini-2.5-flash",
+      "thinking_budget": 512,
+      "temperature": 0.7,
+      "top_p": 0.95,
+      "max_output_tokens": 16384,
+      "input_rate": 0.3,
+      "output_rate": 2.5
+    },
+    "flash-4096": {
+      "model": "gemini-2.5-flash",
+      "thinking_budget": 4096,
+      "temperature": 0.7,
+      "top_p": 0.95,
+      "max_output_tokens": 16384,
+      "input_rate": 0.3,
+      "output_rate": 2.5
+    },
+    "pro-512": {
+      "model": "gemini-2.5-pro",
+      "thinking_budget": 512,
+      "temperature": 0.7,
+      "top_p": 0.95,
+      "max_output_tokens": 16384,
+      "input_rate": 1.25,
+      "output_rate": 10.0
+    },
+    "pro-4096": {
+      "model": "gemini-2.5-pro",
+      "thinking_budget": 4096,
+      "temperature": 0.7,
+      "top_p": 0.95,
+      "max_output_tokens": 16384,
+      "input_rate": 1.25,
+      "output_rate": 10.0
+    }
+  },
+  "measurement_fingerprint": "d30727e568aadf9e413525cce64182f50f431c584c4b173e6f52bd6648193b0a",
+  "reservation_usd": 12.355199999999998,
+  "ceiling_usd": 20,
+  "requested_slots_per_cell": 2,
+  "api_attempts": 1,
+  "max_workers": 4
+}
