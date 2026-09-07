@@ -1,6 +1,8 @@
 # Ibex temporal context/correction ablation — development protocol
 
-Status: implementation and gates; **not frozen and no comparative calls yet**.
+Status: ready for the source/manifest freeze; no comparative calls have been made.
+Once hashed in the committed manifest, this document is immutable. Run status
+and results belong in the results README and a separate report.
 This extends the completed v2 diagnostic without changing its source or results.
 
 ## Question and arms
@@ -50,12 +52,29 @@ context, not autonomous RTL discovery. Request a brief testable window predictio
 with source references; retain responses without treating citations as proof of
 comprehension. Count the human-written specification as per-design engineering.
 
+The treatment contains eight fixed excerpts selected in `context.py`, retrieved
+through `SourceReader` with a 24,000-character cap (17,538 characters retrieved).
+Freeze the bundle, ranges and resulting payload hash. Each source-arm call
+includes the same excerpts and receipts; no unmetered retrieval or extra model
+call occurs outside the proposal loop.
+
 Enhanced feedback adds exact schema paths, allocation, completion time/margin,
 per-window retirement classes and gaps, and changes relative to a declared
 reference candidate. Gaps are not attributed to specific stall mechanisms.
 The controller presents a bounded archive of distinct measured behaviors and
 requests both refinement and exploration within the same two-slot batch.
 This entire package is the correction treatment; its components are not isolated.
+
+The behavior descriptor is eight retirement-gap quartiles plus the dominant
+class among ALU/multiply/divide/load/store, ties resolved in that order. Quartiles
+include their lower boundary; 100% maps to the top quartile. A cell retains its
+lowest-loss candidate, earliest on ties. Coverage restarts with probability 0.2;
+otherwise it samples uniformly among the least-visited occupied cells, then
+applies one of ten structural/value mutation choices. Unavailable structural
+choices fall back to a memory-seed edit, not a free retry. Correction payloads
+retain two best candidates, two archive representatives (lexicographic cell
+order), and the last four trials, deduplicated by slot. Reference deltas use the
+declared best prior candidate, not inferred ancestry.
 
 ## Endpoints and freeze
 
