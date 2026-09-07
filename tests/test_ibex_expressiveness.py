@@ -4,9 +4,11 @@ import random
 import pytest
 
 from experiments.ibex_temporal_v1 import search as search_module
+from experiments.ibex_temporal_v2 import search as search_v2
 
 
-def test_search_charges_short_batches_and_right_censors(tmp_path, monkeypatch):
+@pytest.mark.parametrize("module", [search_module, search_v2])
+def test_search_charges_short_batches_and_right_censors(tmp_path, monkeypatch, module):
     class FakeAgent:
         def __init__(self):
             self.last_usage = {"tokens_in": 3, "tokens_out": 5}
@@ -34,14 +36,14 @@ def test_search_charges_short_batches_and_right_censors(tmp_path, monkeypatch):
     }
     path = tmp_path / "manifest.json"
     path.write_text(json.dumps(manifest))
-    monkeypatch.setattr(search_module, "ProgramAgent", FakeAgent)
+    monkeypatch.setattr(module, "ProgramAgent", FakeAgent)
     monkeypatch.setenv("AGCWS_GCP_PROJECT", "test")
     monkeypatch.setattr(
-        search_module,
+        module,
         "measured",
         lambda *args: ({"valid": False, "stage": "SCHEMA", "reason": "test"}, False),
     )
-    search_module.search(path, tmp_path, "t", "agent", 600)
+    module.search(path, tmp_path, "t", "agent", 600)
     output = tmp_path / "panel/t/seed-600/agent"
     summary = json.loads((output / "summary.json").read_text())
     trials = [
