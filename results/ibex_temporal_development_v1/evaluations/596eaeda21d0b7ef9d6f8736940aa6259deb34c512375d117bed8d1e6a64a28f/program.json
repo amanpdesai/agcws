@@ -1,0 +1,87 @@
+{
+  "memory_seed": 2000000003,
+  "registers": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "segments": [
+    {
+      "body": [
+        {
+          "a": 0,
+          "b": 1,
+          "dst": 0,
+          "op": "add"
+        },
+        {
+          "a": 0,
+          "b": 1,
+          "dst": 1,
+          "op": "add"
+        }
+      ],
+      "iterations": 512,
+      "release": 0
+    },
+    {
+      "body": [
+        {
+          "a": 0,
+          "b": 1,
+          "dst": 2,
+          "op": "divu"
+        },
+        {
+          "a": 0,
+          "b": 1,
+          "dst": 3,
+          "op": "divu"
+        }
+      ],
+      "iterations": 512,
+      "release": 25000
+    },
+    {
+      "body": [
+        {
+          "a": 0,
+          "b": 1,
+          "dst": 4,
+          "op": "divu"
+        },
+        {
+          "a": 0,
+          "b": 1,
+          "dst": 5,
+          "op": "divu"
+        }
+      ],
+      "iterations": 512,
+      "release": 50000
+    },
+    {
+      "body": [
+        {
+          "a": 0,
+          "b": 1,
+          "dst": 6,
+          "op": "add"
+        },
+        {
+          "a": 0,
+          "b": 1,
+          "dst": 7,
+          "op": "add"
+        }
+      ],
+      "iterations": 512,
+      "release": 75000
+    }
+  ]
+}

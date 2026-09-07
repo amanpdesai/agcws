@@ -1,0 +1,51 @@
+{
+  "memory_seed": 1234567892,
+  "registers": [
+    7,
+    6,
+    5,
+    4,
+    3,
+    2,
+    1,
+    0
+  ],
+  "segments": [
+    {
+      "body": [
+        {
+          "a": 0,
+          "b": 1,
+          "dst": 2,
+          "op": "and"
+        },
+        {
+          "a": 2,
+          "b": 3,
+          "dst": 4,
+          "op": "add"
+        }
+      ],
+      "iterations": 1024,
+      "release": 0
+    },
+    {
+      "body": [
+        {
+          "a": 4,
+          "b": 5,
+          "dst": 6,
+          "op": "xor"
+        },
+        {
+          "a": 6,
+          "b": 7,
+          "dst": 0,
+          "op": "or"
+        }
+      ],
+      "iterations": 1024,
+      "release": 100000
+    }
+  ]
+}

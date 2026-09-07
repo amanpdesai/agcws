@@ -1,0 +1,196 @@
+.section .text
+.option norvc
+.global main
+main:
+  csrwi mcountinhibit, 0
+  la s1, data_words
+  li a0, 17
+  li a1, 17
+  li a2, 17
+  li a3, 17
+  li a4, 17
+  li a5, 17
+  li a6, 17
+  li a7, 17
+  csrr s10, mcycle
+.global measure_start
+measure_start:
+  addi s11, zero, 1
+  li s9, 0
+  add s9, s9, s10
+.Lrelease0:
+  csrr t0, mcycle
+  bltu t0, s9, .Lrelease0
+  li t6, 256
+.Lloop0:
+  add a0, a0, a1
+  xor a1, a2, a3
+  add a2, a4, a5
+  xor a3, a6, a7
+  addi t6, t6, -1
+  bnez t6, .Lloop0
+  li s9, 20000
+  add s9, s9, s10
+.Lrelease1:
+  csrr t0, mcycle
+  bltu t0, s9, .Lrelease1
+  li t6, 256
+.Lloop1:
+  srl a4, a0, a1
+  srl a5, a2, a3
+  srl a6, a4, a5
+  srl a7, a6, a7
+  addi t6, t6, -1
+  bnez t6, .Lloop1
+  li s9, 40000
+  add s9, s9, s10
+.Lrelease2:
+  csrr t0, mcycle
+  bltu t0, s9, .Lrelease2
+  li t6, 256
+.Lloop2:
+  bnez a0, .Lskip2_0
+  mv a0, a1
+.Lskip2_0:
+  bnez a2, .Lskip2_1
+  mv a1, a3
+.Lskip2_1:
+  bnez a4, .Lskip2_2
+  mv a2, a5
+.Lskip2_2:
+  bnez a6, .Lskip2_3
+  mv a3, a7
+.Lskip2_3:
+  addi t6, t6, -1
+  bnez t6, .Lloop2
+  li s9, 60000
+  add s9, s9, s10
+.Lrelease3:
+  csrr t0, mcycle
+  bltu t0, s9, .Lrelease3
+  li t6, 256
+.Lloop3:
+  divu a4, a0, a1
+  divu a5, a2, a3
+  divu a6, a4, a5
+  divu a7, a6, a7
+  addi t6, t6, -1
+  bnez t6, .Lloop3
+.global body_complete
+body_complete:
+  addi s11, zero, 2
+  li s9, 200064
+  add s9, s9, s10
+.Lwait:
+  csrr t0, mcycle
+  bltu t0, s9, .Lwait
+.global measure_stop
+measure_stop:
+  la t0, snapshot
+  sw a0, 0(t0)
+  sw a1, 4(t0)
+  sw a2, 8(t0)
+  sw a3, 12(t0)
+  sw a4, 16(t0)
+  sw a5, 20(t0)
+  sw a6, 24(t0)
+  sw a7, 28(t0)
+  la a0, state_label
+  call puts
+  la s2, snapshot
+  li s3, 8
+.Lprint_regs:
+  lw a0, 0(s2)
+  call puthex
+  li a0, 32
+  call putchar
+  addi s2, s2, 4
+  addi s3, s3, -1
+  bnez s3, .Lprint_regs
+  la s2, data_words
+  li s3, 64
+.Lprint_mem:
+  lw a0, 0(s2)
+  call puthex
+  li a0, 32
+  call putchar
+  addi s2, s2, 4
+  addi s3, s3, -1
+  bnez s3, .Lprint_mem
+  li a0, 10
+  call putchar
+  call sim_halt
+.Lhalt:
+  j .Lhalt
+.section .rodata
+state_label: .asciz "AGCWS_STATE "
+.section .data
+.balign 4
+data_words:
+  .word 1122334455
+  .word 3776770224
+  .word 2136238697
+  .word 495707170
+  .word 3150142939
+  .word 1509611412
+  .word 4164047181
+  .word 2523515654
+  .word 882984127
+  .word 3537419896
+  .word 1896888369
+  .word 256356842
+  .word 2910792611
+  .word 1270261084
+  .word 3924696853
+  .word 2284165326
+  .word 643633799
+  .word 3298069568
+  .word 1657538041
+  .word 17006514
+  .word 2671442283
+  .word 1030910756
+  .word 3685346525
+  .word 2044814998
+  .word 404283471
+  .word 3058719240
+  .word 1418187713
+  .word 4072623482
+  .word 2432091955
+  .word 791560428
+  .word 3445996197
+  .word 1805464670
+  .word 164933143
+  .word 2819368912
+  .word 1178837385
+  .word 3833273154
+  .word 2192741627
+  .word 552210100
+  .word 3206645869
+  .word 1566114342
+  .word 4220550111
+  .word 2580018584
+  .word 939487057
+  .word 3593922826
+  .word 1953391299
+  .word 312859772
+  .word 2967295541
+  .word 1326764014
+  .word 3981199783
+  .word 2340668256
+  .word 700136729
+  .word 3354572498
+  .word 1714040971
+  .word 73509444
+  .word 2727945213
+  .word 1087413686
+  .word 3741849455
+  .word 2101317928
+  .word 460786401
+  .word 3115222170
+  .word 1474690643
+  .word 4129126412
+  .word 2488594885
+  .word 848063358
+.section .bss
+.balign 4
+snapshot: .space 32

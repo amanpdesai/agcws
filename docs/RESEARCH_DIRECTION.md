@@ -143,3 +143,13 @@ This would help distinguish information limitations from controller limitations.
 It would not by itself prove greater temporal coverage, long-protocol reasoning,
 or agent superiority. Those still require fresh target families and held-out
 evaluation. No such pilot has been launched, and neither frozen study changes.
+
+## 2026-09-07 — Programmable CPU extension completed
+
+A separate [Ibex full-program development pilot](IBEX_EXPRESSIVENESS_RESULTS.md)
+is now complete: 36 cells and 576 slots. This is not the workspace/anonymized
+factorial proposed above. The CPU interface admits distinct temporal activity
+profiles, but the agent does not beat broad random sampling. Exact work-count
+violations dominate agent failures, so a common work-allocation representation
+is the next development question before any confirmatory scaling. The earlier
+AES/DMA studies and their claims remain unchanged.

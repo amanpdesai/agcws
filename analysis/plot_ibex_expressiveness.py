@@ -50,13 +50,21 @@ def plot(root, output):
             axis.set_title(f"{target} / {policy}", fontsize=10)
             axis.grid(alpha=0.15)
             axis.set_xticks(range(1, 9))
-    axes[0, 0].legend(title="development seed", fontsize=7)
+    handles, labels = axes[0, 0].get_legend_handles_labels()
+    figure.legend(
+        handles,
+        labels,
+        loc="upper center",
+        bbox_to_anchor=(0.5, 0.965),
+        ncol=4,
+        fontsize=8,
+    )
     figure.supxlabel("Equal-duration measurement bin")
     figure.supylabel("Core bit transitions per clock edge (not watts)")
     figure.suptitle(
         "Ibex development: all 36 within-budget finalists; no held-out claim"
     )
-    figure.tight_layout(rect=[0.02, 0.02, 1, 0.97])
+    figure.tight_layout(rect=[0.02, 0.02, 1, 0.93])
     output.parent.mkdir(parents=True, exist_ok=True)
     figure.savefig(output, metadata={"Date": None})
     plt.close(figure)

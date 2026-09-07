@@ -539,3 +539,23 @@ making MyHDL/VPI a hidden dependency of search experiments or contaminating the
 pinned submodule with generated artifacts.
 **Consequence.** Passing the reference test does not close the AGCWS coupled
 DMA milestone or authorize coupled-DMA power claims.
+
+## 2026-09-07 — Separate programmable-Ibex development pilot
+
+**Decision.** Preserve both frozen AES/DMA studies and use the existing pinned
+Ibex CPU for a new full-program temporal pilot. Freeze four independent achieved
+targets, three development seeds, sixteen proposal slots and three policies
+before comparison (`e5d753c`). Use real loops and an independent architectural
+reference. The new constraint is 4,096 semantic operations within 200,000 cycles;
+it does not amend the older retired-instruction floor or calibration.
+**Rationale.** AES is a useful bounded negative case, not evidence about all
+hardware. A programmable CPU exposes instruction/operand dependencies without
+adding a fourth RTL dependency or selecting a design because it promises a win.
+**Finding.** All 36 cells completed. Random has lower mean AUC than the agent;
+95 agent slots violate the benchmark's work-count rule. This is not a positive
+expressiveness or power result. See `IBEX_EXPRESSIVENESS_RESULTS.md` for the
+complete outcome, evidence and limitations.
+**Consequence.** Do not scale this controller into a confirmatory study unchanged.
+Any shared work-allocation helper, model/depth change or new target construction
+belongs to a new development version, followed by a fresh held-out protocol if
+warranted. Never repair these results retrospectively or only for the agent.

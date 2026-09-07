@@ -4,9 +4,10 @@ This is a new exploratory pilot, not a replacement for either frozen AES/DMA
 study. The protocol and manifest were committed at `e5d753c` before any
 comparative run. The manifest defines 36 cells and 576 requested proposal slots.
 
-Current state: feasibility gate passed; comparative execution is in progress.
-Do not treat the manifest alone as completed results. Completion requires all
-36 per-cell summaries, ledgers, `aggregate.json` and the archive hash index.
+Completed: all 36 cells and 576 slots are archived and audited. See
+[the research assessment](../../docs/IBEX_EXPRESSIVENESS_RESULTS.md).
+Mean AUC (lower better): random 4.8318, mutation 5.6622, agent 5.5126.
+No agent superiority or held-out claim is supported.
 
 Execution note (2026-09-07): after verifying 96 logical CPUs and a load near 27,
 six later cells (`target_3`, agent/mutation, seeds 600–602) were started through

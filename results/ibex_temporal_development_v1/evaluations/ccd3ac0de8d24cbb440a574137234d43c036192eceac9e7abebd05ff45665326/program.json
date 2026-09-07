@@ -1,0 +1,133 @@
+{
+  "memory_seed": 987654321,
+  "registers": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "segments": [
+    {
+      "body": [
+        {
+          "a": 0,
+          "b": 1,
+          "dst": 2,
+          "op": "add"
+        },
+        {
+          "a": 2,
+          "b": 3,
+          "dst": 4,
+          "op": "add"
+        },
+        {
+          "a": 4,
+          "b": 5,
+          "dst": 6,
+          "op": "add"
+        },
+        {
+          "a": 6,
+          "dst": 0,
+          "op": "load"
+        }
+      ],
+      "iterations": 256,
+      "release": 0
+    },
+    {
+      "body": [
+        {
+          "a": 0,
+          "b": 1,
+          "dst": 2,
+          "op": "xor"
+        },
+        {
+          "a": 2,
+          "b": 3,
+          "dst": 4,
+          "op": "xor"
+        },
+        {
+          "a": 4,
+          "b": 5,
+          "dst": 6,
+          "op": "xor"
+        },
+        {
+          "a": 6,
+          "b": 7,
+          "op": "store"
+        }
+      ],
+      "iterations": 256,
+      "release": 40000
+    },
+    {
+      "body": [
+        {
+          "a": 0,
+          "b": 0,
+          "dst": 1,
+          "op": "cmovz"
+        },
+        {
+          "a": 1,
+          "b": 1,
+          "dst": 2,
+          "op": "cmovz"
+        },
+        {
+          "a": 2,
+          "b": 2,
+          "dst": 3,
+          "op": "cmovz"
+        },
+        {
+          "a": 3,
+          "b": 3,
+          "dst": 4,
+          "op": "cmovz"
+        }
+      ],
+      "iterations": 256,
+      "release": 80000
+    },
+    {
+      "body": [
+        {
+          "a": 0,
+          "b": 1,
+          "dst": 2,
+          "op": "sll"
+        },
+        {
+          "a": 2,
+          "b": 3,
+          "dst": 4,
+          "op": "srl"
+        },
+        {
+          "a": 4,
+          "b": 5,
+          "dst": 6,
+          "op": "mul"
+        },
+        {
+          "a": 6,
+          "b": 7,
+          "dst": 0,
+          "op": "mul"
+        }
+      ],
+      "iterations": 256,
+      "release": 120000
+    }
+  ]
+}

@@ -164,6 +164,16 @@ def archive(root, destination):
         shutil.copy2(path, target)
     shutil.copy2(root / "gate.json", destination / "gate.json")
     shutil.copytree(root / "gate-inputs", destination / "witnesses", dirs_exist_ok=True)
+    for source in sorted((root / "gate").iterdir()):
+        target = destination / "gate-evidence" / source.name
+        target.mkdir(parents=True, exist_ok=True)
+        for name in (
+            "functional.json",
+            "profile.json",
+            "program.S",
+            "ibex_simple_system.log",
+        ):
+            shutil.copy2(source / name, target / name)
     identifiers = {t["cache_id"] for _, rows in cells for t in rows if t["cache_id"]}
     for identifier in sorted(identifiers):
         target = destination / "evaluations" / identifier
@@ -208,6 +218,32 @@ def verify(destination):
             != target["witness_sha256"]
         ):
             raise ValueError("target witness mismatch")
+        profile = json.loads(
+            (destination / "gate-evidence" / name / "profile.json").read_text()
+        )
+        if profile["window_rates"] != target["rates"]:
+            raise ValueError("target profile differs from measured witness")
+    gate = json.loads((destination / "gate.json").read_text())
+    for name, profile in gate.items():
+        directory = destination / "gate-evidence" / name
+        if profile != json.loads((directory / "profile.json").read_text()):
+            raise ValueError("gate aggregate mismatch")
+        expected = json.loads((directory / "functional.json").read_text())["expected"]
+        match = re.search(
+            r"AGCWS_STATE ([0-9A-Fa-f ]+)\n",
+            (directory / "ibex_simple_system.log").read_text(),
+        )
+        if (
+            not match
+            or [int(x, 16) for x in match[1].split()]
+            != expected["registers"] + expected["memory"]
+        ):
+            raise ValueError("witness architectural state mismatch")
+    if (
+        gate["check_all"]["window_bit_transitions"]
+        != gate["repeat_check"]["window_bit_transitions"]
+    ):
+        raise ValueError("repeatability gate failed")
     cells, initial = [], {}
     for target, seed, policy in itertools.product(
         manifest["targets"], manifest["seeds"], manifest["policies"]
