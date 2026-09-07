@@ -1,0 +1,433 @@
+{
+  "raw_text": "{\n  \"hypothesis\": \"Adjusting segment 0 to include a divu operation and segment 1 to reduce its release cycle should lower rates in bins 2 and 6 by introducing more stalls and shifting work earlier, while the second candidate focuses on consolidating divu operations to a single segment and adjusting weights to further reduce spikes.\",\n  \"candidates\": [\n    {\n      \"program\": {\n        \"memory_seed\": 3062472912,\n        \"registers\": [0, 4294967295, 0, 2662913795, 0, 4294967295, 0, 1],\n        \"segments\": [\n          {\n            \"body\": [\n              {\n                \"a\": 6,\n                \"b\": 1,\n                \"dst\": 2,\n                \"op\": \"xor\"\n              },\n              {\n                \"a\": 2,\n                \"b\": 1,\n                \"dst\": 4,\n                \"op\": \"srl\"\n              },\n              {\n                \"a\": 2,\n                \"b\": 0,\n                \"dst\": 6,\n                \"op\": \"xor\"\n              },\n              {\n                \"a\": 7,\n                \"b\": 0,\n                \"dst\": 2,\n                \"op\": \"mul\"\n              },\n              {\n                \"a\": 4,\n                \"b\": 0,\n                \"dst\": 3,\n                \"op\": \"mul\"\n              },\n              {\n                \"a\": 1,\n                \"dst\": 6,\n                \"op\": \"load\"\n              },\n              {\n                \"a\": 6,\n                \"b\": 1,\n                \"dst\": 5,\n                \"op\": \"cmovz\"\n              },\n              {\n                \"a\": 7,\n                \"dst\": 4,\n                \"op\": \"load\"\n              },\n              {\n                \"a\": 3,\n                \"b\": 3,\n                \"dst\": 1,\n                \"op\": \"divu\"\n              }\n            ],\n            \"release\": 26942,\n            \"weight\": 616\n          },\n          {\n            \"body\": [\n              {\n                \"a\": 2,\n                \"b\": 0,\n                \"dst\": 7,\n                \"op\": \"sll\"\n              },\n              {\n                \"a\": 1,\n                \"b\": 4,\n                \"dst\": 1,\n                \"op\": \"srl\"\n              }\n            ],\n            \"release\": 50000,\n            \"weight\": 800\n          },\n          {\n            \"body\": [\n              {\n                \"a\": 4,\n                \"dst\": 6,\n                \"op\": \"load\"\n              },\n              {\n                \"a\": 1,\n                \"dst\": 2,\n                \"op\": \"load\"\n              }\n            ],\n            \"release\": 105645,\n            \"weight\": 392\n          },\n          {\n            \"body\": [\n              {\n                \"a\": 2,\n                \"b\": 1,\n                \"dst\": 5,\n                \"op\": \"cmovz\"\n              },\n              {\n                \"a\": 0,\n                \"b\": 0,\n                \"dst\": 6,\n                \"op\": \"cmovz\"\n              },\n              {\n                \"a\": 2,\n                \"b\": 1,\n                \"dst\": 4,\n                \"op\": \"cmovz\"\n              },\n              {\n                \"a\": 2,\n                \"b\": 0,\n                \"dst\": 5,\n                \"op\": \"cmovz\"\n              }\n            ],\n            \"release\": 116314,\n            \"weight\": 784\n          },\n          {\n            \"body\": [\n              {\n                \"a\": 2,\n                \"b\": 1,\n                \"dst\": 1,\n                \"op\": \"divu\"\n              },\n              {\n                \"a\": 4,\n                \"b\": 0,\n                \"dst\": 5,\n                \"op\": \"divu\"\n              },\n              {\n                \"a\": 6,\n                \"b\": 6,\n                \"dst\": 6,\n                \"op\": \"divu\"\n              },\n              {\n                \"a\": 7,\n                \"b\": 7,\n                \"dst\": 6,\n                \"op\": \"divu\"\n              },\n              {\n                \"a\": 4,\n                \"b\": 2,\n                \"dst\": 6,\n                \"op\": \"divu\"\n              },\n              {\n                \"a\": 2,\n                \"b\": 5,\n                \"dst\": 4,\n                \"op\": \"divu\"\n              },\n              {\n                \"a\": 5,\n                \"b\": 2,\n                \"dst\": 5,\n                \"op\": \"divu\"\n              }\n            ],\n            \"release\": 158118,\n            \"weight\": 1504\n          }\n        ]\n      },\n      \"reason\": \"The reference program has high rates in bins 2 and 6. Segment 0's body is mostly ALU ops. Adding a divu operation to segment 0's body should increase stall cycles and lower the rate in bin 2. Also, moving segment 1's release earlier should shift some work from later bins to earlier ones, potentially reducing the rate in bin 6. This aligns with the goal of reducing peaks in bins 2 and 6. The overall divu count is maintained to target the lower rates.\"\n    },\n    {\n      \"program\": {\n        \"memory_seed\": 3062472912,\n        \"registers\": [0, 4294967295, 0, 2662913795, 0, 4294967295, 0, 1],\n        \"segments\": [\n          {\n            \"body\": [\n              {\n                \"a\": 6,\n                \"b\": 1,\n                \"dst\": 2,\n                \"op\": \"xor\"\n              },\n              {\n                \"a\": 2,\n                \"b\": 1,\n                \"dst\": 4,\n                \"op\": \"srl\"\n              },\n              {\n                \"a\": 2,\n                \"b\": 0,\n                \"dst\": 6,\n                \"op\": \"xor\"\n              },\n              {\n                \"a\": 7,\n                \"b\": 0,\n                \"dst\": 2,\n                \"op\": \"mul\"\n              },\n              {\n                \"a\": 4,\n                \"b\": 0,\n                \"dst\": 3,\n                \"op\": \"mul\"\n              },\n              {\n                \"a\": 1,\n                \"dst\": 6,\n                \"op\": \"load\"\n              },\n              {\n                \"a\": 6,\n                \"b\": 1,\n                \"dst\": 5,\n                \"op\": \"cmovz\"\n              },\n              {\n                \"a\": 7,\n                \"dst\": 4,\n                \"op\": \"load\"\n              }\n            ],\n            \"release\": 26942,\n            \"weight\": 600\n          },\n          {\n            \"body\": [\n              {\n                \"a\": 2,\n                \"b\": 0,\n                \"dst\": 7,\n                \"op\": \"sll\"\n              },\n              {\n                \"a\": 1,\n                \"b\": 4,\n                \"dst\": 1,\n                \"op\": \"srl\"\n              }\n            ],\n            \"release\": 102374,\n            \"weight\": 700\n          },\n          {\n            \"body\": [\n              {\n                \"a\": 4,\n                \"dst\": 6,\n                \"op\": \"load\"\n              },\n              {\n                \"a\": 1,\n                \"dst\": 2,\n                \"op\": \"load\"\n              }\n            ],\n            \"release\": 105645,\n            \"weight\": 400\n          },\n          {\n            \"body\": [\n              {\n                \"a\": 2,\n                \"b\": 1,\n                \"dst\": 5,\n                \"op\": \"cmovz\"\n              },\n              {\n                \"a\": 0,\n                \"b\": 0,\n                \"dst\": 6,\n                \"op\": \"cmovz\"\n              },\n              {\n                \"a\": 2,\n                \"b\": 1,\n                \"dst\": 4,\n                \"op\": \"cmovz\"\n              },\n              {\n                \"a\": 2,\n                \"b\": 0,\n                \"dst\": 5,\n                \"op\": \"cmovz\"\n              }\n            ],\n            \"release\": 116314,\n            \"weight\": 800\n          },\n          {\n            \"body\": [\n              {\n                \"a\": 3,\n                \"b\": 3,\n                \"dst\": 1,\n                \"op\": \"divu\"\n              },\n              {\n                \"a\": 2,\n                \"b\": 1,\n                \"dst\": 1,\n                \"op\": \"divu\"\n              },\n              {\n                \"a\": 4,\n                \"b\": 0,\n                \"dst\": 5,\n                \"op\": \"divu\"\n              },\n              {\n                \"a\": 6,\n                \"b\": 6,\n                \"dst\": 6,\n                \"op\": \"divu\"\n              },\n              {\n                \"a\": 7,\n                \"b\": 7,\n                \"dst\": 6,\n                \"op\": \"divu\"\n              },\n              {\n                \"a\": 4,\n                \"b\": 2,\n                \"dst\": 6,\n                \"op\": \"divu\"\n              },\n              {\n                \"a\": 2,\n                \"b\": 5,\n                \"dst\": 4,\n                \"op\": \"divu\"\n              },\n              {\n                \"a\": 5,\n                \"b\": 2,\n                \"dst\": 5,\n                \"op\": \"divu\"\n              },\n              {\n                \"a\": 1,\n                \"b\": 0,\n                \"dst\": 7,\n                \"op\": \"divu\"\n              },\n              {\n                \"a\": 7,\n                \"b\": 2,\n                \"dst\": 1,\n                \"op\": \"divu\"\n              },\n              {\n                \"a\": 3,\n                \"b\": 5,\n                \"dst\": 0,\n                \"op\": \"divu\"\n              }\n            ],\n            \"release\": 158118,\n            \"weight\": 1596\n          }\n        ]\n      },\n      \"reason\": \"This program consolidates all divu operations into segment 4, which is released late. This should create a more pronounced spike in divu-related stalls towards the end, aiming to significantly lower rates in bins 6 and 7, which are currently too high. Weights for other segments are slightly adjusted to maintain overall allocation while shifting focus to the divu segment for rate control.\"\n    }\n  ]\n}",
+  "tokens_in": 11560,
+  "tokens_out": 3276,
+  "thinking_tokens": 513,
+  "usage_unknown": false,
+  "est_cost_usd": 0.011658,
+  "finish_reasons": [
+    "FinishReason.STOP"
+  ],
+  "prompt_feedback": null,
+  "model_version": "gemini-2.5-flash",
+  "decoded": {
+    "response_error": "'registers' is a required property",
+    "hypothesis": "Adjusting segment 0 to include a divu operation and segment 1 to reduce its release cycle should lower rates in bins 2 and 6 by introducing more stalls and shifting work earlier, while the second candidate focuses on consolidating divu operations to a single segment and adjusting weights to further reduce spikes.",
+    "slots": [
+      {
+        "submitted": {
+          "program": {
+            "memory_seed": 3062472912,
+            "registers": [
+              0,
+              4294967295,
+              0,
+              2662913795,
+              0,
+              4294967295,
+              0,
+              1
+            ],
+            "segments": [
+              {
+                "body": [
+                  {
+                    "a": 6,
+                    "b": 1,
+                    "dst": 2,
+                    "op": "xor"
+                  },
+                  {
+                    "a": 2,
+                    "b": 1,
+                    "dst": 4,
+                    "op": "srl"
+                  },
+                  {
+                    "a": 2,
+                    "b": 0,
+                    "dst": 6,
+                    "op": "xor"
+                  },
+                  {
+                    "a": 7,
+                    "b": 0,
+                    "dst": 2,
+                    "op": "mul"
+                  },
+                  {
+                    "a": 4,
+                    "b": 0,
+                    "dst": 3,
+                    "op": "mul"
+                  },
+                  {
+                    "a": 1,
+                    "dst": 6,
+                    "op": "load"
+                  },
+                  {
+                    "a": 6,
+                    "b": 1,
+                    "dst": 5,
+                    "op": "cmovz"
+                  },
+                  {
+                    "a": 7,
+                    "dst": 4,
+                    "op": "load"
+                  },
+                  {
+                    "a": 3,
+                    "b": 3,
+                    "dst": 1,
+                    "op": "divu"
+                  }
+                ],
+                "release": 26942,
+                "weight": 616
+              },
+              {
+                "body": [
+                  {
+                    "a": 2,
+                    "b": 0,
+                    "dst": 7,
+                    "op": "sll"
+                  },
+                  {
+                    "a": 1,
+                    "b": 4,
+                    "dst": 1,
+                    "op": "srl"
+                  }
+                ],
+                "release": 50000,
+                "weight": 800
+              },
+              {
+                "body": [
+                  {
+                    "a": 4,
+                    "dst": 6,
+                    "op": "load"
+                  },
+                  {
+                    "a": 1,
+                    "dst": 2,
+                    "op": "load"
+                  }
+                ],
+                "release": 105645,
+                "weight": 392
+              },
+              {
+                "body": [
+                  {
+                    "a": 2,
+                    "b": 1,
+                    "dst": 5,
+                    "op": "cmovz"
+                  },
+                  {
+                    "a": 0,
+                    "b": 0,
+                    "dst": 6,
+                    "op": "cmovz"
+                  },
+                  {
+                    "a": 2,
+                    "b": 1,
+                    "dst": 4,
+                    "op": "cmovz"
+                  },
+                  {
+                    "a": 2,
+                    "b": 0,
+                    "dst": 5,
+                    "op": "cmovz"
+                  }
+                ],
+                "release": 116314,
+                "weight": 784
+              },
+              {
+                "body": [
+                  {
+                    "a": 2,
+                    "b": 1,
+                    "dst": 1,
+                    "op": "divu"
+                  },
+                  {
+                    "a": 4,
+                    "b": 0,
+                    "dst": 5,
+                    "op": "divu"
+                  },
+                  {
+                    "a": 6,
+                    "b": 6,
+                    "dst": 6,
+                    "op": "divu"
+                  },
+                  {
+                    "a": 7,
+                    "b": 7,
+                    "dst": 6,
+                    "op": "divu"
+                  },
+                  {
+                    "a": 4,
+                    "b": 2,
+                    "dst": 6,
+                    "op": "divu"
+                  },
+                  {
+                    "a": 2,
+                    "b": 5,
+                    "dst": 4,
+                    "op": "divu"
+                  },
+                  {
+                    "a": 5,
+                    "b": 2,
+                    "dst": 5,
+                    "op": "divu"
+                  }
+                ],
+                "release": 158118,
+                "weight": 1504
+              }
+            ]
+          },
+          "reason": "The reference program has high rates in bins 2 and 6. Segment 0's body is mostly ALU ops. Adding a divu operation to segment 0's body should increase stall cycles and lower the rate in bin 2. Also, moving segment 1's release earlier should shift some work from later bins to earlier ones, potentially reducing the rate in bin 6. This aligns with the goal of reducing peaks in bins 2 and 6. The overall divu count is maintained to target the lower rates."
+        },
+        "canonical": null,
+        "program_error": "'registers' is a required property",
+        "prediction": null,
+        "prediction_error": null
+      },
+      {
+        "submitted": {
+          "program": {
+            "memory_seed": 3062472912,
+            "registers": [
+              0,
+              4294967295,
+              0,
+              2662913795,
+              0,
+              4294967295,
+              0,
+              1
+            ],
+            "segments": [
+              {
+                "body": [
+                  {
+                    "a": 6,
+                    "b": 1,
+                    "dst": 2,
+                    "op": "xor"
+                  },
+                  {
+                    "a": 2,
+                    "b": 1,
+                    "dst": 4,
+                    "op": "srl"
+                  },
+                  {
+                    "a": 2,
+                    "b": 0,
+                    "dst": 6,
+                    "op": "xor"
+                  },
+                  {
+                    "a": 7,
+                    "b": 0,
+                    "dst": 2,
+                    "op": "mul"
+                  },
+                  {
+                    "a": 4,
+                    "b": 0,
+                    "dst": 3,
+                    "op": "mul"
+                  },
+                  {
+                    "a": 1,
+                    "dst": 6,
+                    "op": "load"
+                  },
+                  {
+                    "a": 6,
+                    "b": 1,
+                    "dst": 5,
+                    "op": "cmovz"
+                  },
+                  {
+                    "a": 7,
+                    "dst": 4,
+                    "op": "load"
+                  }
+                ],
+                "release": 26942,
+                "weight": 600
+              },
+              {
+                "body": [
+                  {
+                    "a": 2,
+                    "b": 0,
+                    "dst": 7,
+                    "op": "sll"
+                  },
+                  {
+                    "a": 1,
+                    "b": 4,
+                    "dst": 1,
+                    "op": "srl"
+                  }
+                ],
+                "release": 102374,
+                "weight": 700
+              },
+              {
+                "body": [
+                  {
+                    "a": 4,
+                    "dst": 6,
+                    "op": "load"
+                  },
+                  {
+                    "a": 1,
+                    "dst": 2,
+                    "op": "load"
+                  }
+                ],
+                "release": 105645,
+                "weight": 400
+              },
+              {
+                "body": [
+                  {
+                    "a": 2,
+                    "b": 1,
+                    "dst": 5,
+                    "op": "cmovz"
+                  },
+                  {
+                    "a": 0,
+                    "b": 0,
+                    "dst": 6,
+                    "op": "cmovz"
+                  },
+                  {
+                    "a": 2,
+                    "b": 1,
+                    "dst": 4,
+                    "op": "cmovz"
+                  },
+                  {
+                    "a": 2,
+                    "b": 0,
+                    "dst": 5,
+                    "op": "cmovz"
+                  }
+                ],
+                "release": 116314,
+                "weight": 800
+              },
+              {
+                "body": [
+                  {
+                    "a": 3,
+                    "b": 3,
+                    "dst": 1,
+                    "op": "divu"
+                  },
+                  {
+                    "a": 2,
+                    "b": 1,
+                    "dst": 1,
+                    "op": "divu"
+                  },
+                  {
+                    "a": 4,
+                    "b": 0,
+                    "dst": 5,
+                    "op": "divu"
+                  },
+                  {
+                    "a": 6,
+                    "b": 6,
+                    "dst": 6,
+                    "op": "divu"
+                  },
+                  {
+                    "a": 7,
+                    "b": 7,
+                    "dst": 6,
+                    "op": "divu"
+                  },
+                  {
+                    "a": 4,
+                    "b": 2,
+                    "dst": 6,
+                    "op": "divu"
+                  },
+                  {
+                    "a": 2,
+                    "b": 5,
+                    "dst": 4,
+                    "op": "divu"
+                  },
+                  {
+                    "a": 5,
+                    "b": 2,
+                    "dst": 5,
+                    "op": "divu"
+                  },
+                  {
+                    "a": 1,
+                    "b": 0,
+                    "dst": 7,
+                    "op": "divu"
+                  },
+                  {
+                    "a": 7,
+                    "b": 2,
+                    "dst": 1,
+                    "op": "divu"
+                  },
+                  {
+                    "a": 3,
+                    "b": 5,
+                    "dst": 0,
+                    "op": "divu"
+                  }
+                ],
+                "release": 158118,
+                "weight": 1596
+              }
+            ]
+          },
+          "reason": "This program consolidates all divu operations into segment 4, which is released late. This should create a more pronounced spike in divu-related stalls towards the end, aiming to significantly lower rates in bins 6 and 7, which are currently too high. Weights for other segments are slightly adjusted to maintain overall allocation while shifting focus to the divu segment for rate control."
+        },
+        "canonical": null,
+        "program_error": "'registers' is a required property",
+        "prediction": null,
+        "prediction_error": null
+      }
+    ]
+  },
+  "call": {
+    "name": "target_2-600-original",
+    "target": "target_2",
+    "seed": 600,
+    "arm": "original",
+    "payload_sha256": "06ad95a4196daa11d1cdaa11881e9e776799c94b08a80bd94420db05d5567aea",
+    "history_sha256": "6e821a4df708dff587e0961a3922899d00a0c7b3057123be3519eae5a5e9a02b"
+  }
+}

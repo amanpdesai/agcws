@@ -1,0 +1,773 @@
+{
+  "raw_text": "{\n  \"hypothesis\": \"The previous programs failed due to excessive `divu` operations, which significantly increased `body_completion_cycles` past the deadline. Replacing `divu` with `add` or `or` will reduce cycle count and allow completion. Candidate 1 removes `divu` and uses simple ops; Candidate 2 reduces division-heavy segments and shifts weight to simpler operations to finish within the deadline while still maintaining some instruction mix variation.\",\n  \"candidates\": [\n    {\n      \"memory_seed\": 3329196734,\n      \"registers\": [\n        4294967295,\n        3391942914,\n        4294967295,\n        1553030968,\n        17,\n        17,\n        4294967295,\n        0\n      ],\n      \"segments\": [\n        {\n          \"body\": [\n            {\n              \"a\": 3,\n              \"b\": 5,\n              \"op\": \"store\"\n            },\n            {\n              \"a\": 2,\n              \"dst\": 2,\n              \"op\": \"load\"\n            },\n            {\n              \"a\": 7,\n              \"dst\": 0,\n              \"op\": \"load\"\n            },\n            {\n              \"a\": 6,\n              \"dst\": 2,\n              \"op\": \"load\"\n            },\n            {\n              \"a\": 5,\n              \"b\": 0,\n              \"dst\": 7,\n              \"op\": \"add\"\n            }\n          ],\n          \"release\": 10284,\n          \"weight\": 760\n        },\n        {\n          \"body\": [\n            {\n              \"a\": 5,\n              \"b\": 0,\n              \"dst\": 2,\n              \"op\": \"and\"\n            },\n            {\n              \"a\": 6,\n              \"b\": 1,\n              \"dst\": 5,\n              \"op\": \"add\"\n            }\n          ],\n          \"release\": 27105,\n          \"weight\": 480\n        },\n        {\n          \"body\": [\n            {\n              \"a\": 3,\n              \"b\": 0,\n              \"dst\": 3,\n              \"op\": \"add\"\n            },\n            {\n              \"a\": 1,\n              \"b\": 0,\n              \"dst\": 7,\n              \"op\": \"add\"\n            },\n            {\n              \"a\": 5,\n              \"b\": 1,\n              \"dst\": 3,\n              \"op\": \"add\"\n            }\n          ],\n          \"release\": 99499,\n          \"weight\": 136\n        },\n        {\n          \"body\": [\n            {\n              \"a\": 5,\n              \"b\": 3,\n              \"dst\": 2,\n              \"op\": \"or\"\n            },\n            {\n              \"a\": 2,\n              \"b\": 1,\n              \"dst\": 1,\n              \"op\": \"and\"\n            }\n          ],\n          \"release\": 125616,\n          \"weight\": 520\n        },\n        {\n          \"body\": [\n            {\n              \"a\": 1,\n              \"b\": 3,\n              \"op\": \"store\"\n            },\n            {\n              \"a\": 0,\n              \"b\": 1,\n              \"dst\": 0,\n              \"op\": \"cmovz\"\n            },\n            {\n              \"a\": 6,\n              \"b\": 4,\n              \"dst\": 3,\n              \"op\": \"add\"\n            },\n            {\n              \"a\": 1,\n              \"b\": 2,\n              \"dst\": 1,\n              \"op\": \"or\"\n            }\n          ],\n          \"release\": 142089,\n          \"weight\": 280\n        },\n        {\n          \"body\": [\n            {\n              \"a\": 0,\n              \"b\": 2,\n              \"dst\": 2,\n              \"op\": \"or\"\n            },\n            {\n              \"a\": 5,\n              \"b\": 0,\n              \"dst\": 7,\n              \"op\": \"add\"\n            }\n          ],\n          \"release\": 150553,\n          \"weight\": 840\n        },\n        {\n          \"body\": [\n            {\n              \"a\": 4,\n              \"b\": 0,\n              \"dst\": 3,\n              \"op\": \"add\"\n            },\n            {\n              \"a\": 5,\n              \"b\": 1,\n              \"dst\": 3,\n              \"op\": \"add\"\n            },\n            {\n              \"a\": 0,\n              \"b\": 1,\n              \"dst\": 4,\n              \"op\": \"add\"\n            },\n            {\n              \"a\": 2,\n              \"b\": 0,\n              \"dst\": 3,\n              \"op\": \"add\"\n            }\n          ],\n          \"release\": 157844,\n          \"weight\": 1080\n        }\n      ]\n    },\n    {\n      \"memory_seed\": 3329196734,\n      \"registers\": [\n        4294967295,\n        3391942914,\n        4294967295,\n        1553030968,\n        17,\n        17,\n        4294967295,\n        0\n      ],\n      \"segments\": [\n        {\n          \"body\": [\n            {\n              \"a\": 3,\n              \"b\": 5,\n              \"op\": \"store\"\n            },\n            {\n              \"a\": 2,\n              \"dst\": 2,\n              \"op\": \"load\"\n            },\n            {\n              \"a\": 7,\n              \"dst\": 0,\n              \"op\": \"load\"\n            },\n            {\n              \"a\": 6,\n              \"dst\": 2,\n              \"op\": \"load\"\n            },\n            {\n              \"a\": 5,\n              \"b\": 0,\n              \"dst\": 7,\n              \"op\": \"add\"\n            }\n          ],\n          \"release\": 10284,\n          \"weight\": 800\n        },\n        {\n          \"body\": [\n            {\n              \"a\": 5,\n              \"b\": 0,\n              \"dst\": 2,\n              \"op\": \"and\"\n            },\n            {\n              \"a\": 6,\n              \"b\": 1,\n              \"dst\": 5,\n              \"op\": \"add\"\n            }\n          ],\n          \"release\": 27105,\n          \"weight\": 520\n        },\n        {\n          \"body\": [\n            {\n              \"a\": 3,\n              \"b\": 0,\n              \"dst\": 3,\n              \"op\": \"divu\"\n            },\n            {\n              \"a\": 1,\n              \"b\": 0,\n              \"dst\": 7,\n              \"op\": \"add\"\n            },\n            {\n              \"a\": 5,\n              \"b\": 1,\n              \"dst\": 3,\n              \"op\": \"add\"\n            }\n          ],\n          \"release\": 99499,\n          \"weight\": 100\n        },\n        {\n          \"body\": [\n            {\n              \"a\": 5,\n              \"b\": 3,\n              \"dst\": 2,\n              \"op\": \"or\"\n            },\n            {\n              \"a\": 2,\n              \"b\": 1,\n              \"dst\": 1,\n              \"op\": \"and\"\n            }\n          ],\n          \"release\": 125616,\n          \"weight\": 560\n        },\n        {\n          \"body\": [\n            {\n              \"a\": 1,\n              \"b\": 3,\n              \"op\": \"store\"\n            },\n            {\n              \"a\": 0,\n              \"b\": 1,\n              \"dst\": 0,\n              \"op\": \"cmovz\"\n            },\n            {\n              \"a\": 6,\n              \"b\": 4,\n              \"dst\": 3,\n              \"op\": \"divu\"\n            },\n            {\n              \"a\": 1,\n              \"b\": 2,\n              \"dst\": 1,\n              \"op\": \"or\"\n            }\n          ],\n          \"release\": 142089,\n          \"weight\": 280\n        },\n        {\n          \"body\": [\n            {\n              \"a\": 0,\n              \"b\": 2,\n              \"dst\": 2,\n              \"op\": \"or\"\n            },\n            {\n              \"a\": 5,\n              \"b\": 0,\n              \"dst\": 7,\n              \"op\": \"add\"\n            }\n          ],\n          \"release\": 150553,\n          \"weight\": 840\n        },\n        {\n          \"body\": [\n            {\n              \"a\": 4,\n              \"b\": 0,\n              \"dst\": 3,\n              \"op\": \"add\"\n            },\n            {\n              \"a\": 5,\n              \"b\": 1,\n              \"dst\": 3,\n              \"op\": \"add\"\n            },\n            {\n              \"a\": 0,\n              \"b\": 1,\n              \"dst\": 4,\n              \"op\": \"divu\"\n            },\n            {\n              \"a\": 2,\n              \"b\": 0,\n              \"dst\": 3,\n              \"op\": \"add\"\n            }\n          ],\n          \"release\": 157844,\n          \"weight\": 1000\n        }\n      ]\n    }\n  ]\n}",
+  "tokens_in": 10677,
+  "tokens_out": 2973,
+  "thinking_tokens": 512,
+  "usage_unknown": false,
+  "est_cost_usd": 0.0106356,
+  "finish_reasons": [
+    "FinishReason.STOP"
+  ],
+  "prompt_feedback": null,
+  "model_version": "gemini-2.5-flash",
+  "decoded": {
+    "response_error": null,
+    "hypothesis": "The previous programs failed due to excessive `divu` operations, which significantly increased `body_completion_cycles` past the deadline. Replacing `divu` with `add` or `or` will reduce cycle count and allow completion. Candidate 1 removes `divu` and uses simple ops; Candidate 2 reduces division-heavy segments and shifts weight to simpler operations to finish within the deadline while still maintaining some instruction mix variation.",
+    "slots": [
+      {
+        "submitted": {
+          "memory_seed": 3329196734,
+          "registers": [
+            4294967295,
+            3391942914,
+            4294967295,
+            1553030968,
+            17,
+            17,
+            4294967295,
+            0
+          ],
+          "segments": [
+            {
+              "body": [
+                {
+                  "a": 3,
+                  "b": 5,
+                  "op": "store"
+                },
+                {
+                  "a": 2,
+                  "dst": 2,
+                  "op": "load"
+                },
+                {
+                  "a": 7,
+                  "dst": 0,
+                  "op": "load"
+                },
+                {
+                  "a": 6,
+                  "dst": 2,
+                  "op": "load"
+                },
+                {
+                  "a": 5,
+                  "b": 0,
+                  "dst": 7,
+                  "op": "add"
+                }
+              ],
+              "release": 10284,
+              "weight": 760
+            },
+            {
+              "body": [
+                {
+                  "a": 5,
+                  "b": 0,
+                  "dst": 2,
+                  "op": "and"
+                },
+                {
+                  "a": 6,
+                  "b": 1,
+                  "dst": 5,
+                  "op": "add"
+                }
+              ],
+              "release": 27105,
+              "weight": 480
+            },
+            {
+              "body": [
+                {
+                  "a": 3,
+                  "b": 0,
+                  "dst": 3,
+                  "op": "add"
+                },
+                {
+                  "a": 1,
+                  "b": 0,
+                  "dst": 7,
+                  "op": "add"
+                },
+                {
+                  "a": 5,
+                  "b": 1,
+                  "dst": 3,
+                  "op": "add"
+                }
+              ],
+              "release": 99499,
+              "weight": 136
+            },
+            {
+              "body": [
+                {
+                  "a": 5,
+                  "b": 3,
+                  "dst": 2,
+                  "op": "or"
+                },
+                {
+                  "a": 2,
+                  "b": 1,
+                  "dst": 1,
+                  "op": "and"
+                }
+              ],
+              "release": 125616,
+              "weight": 520
+            },
+            {
+              "body": [
+                {
+                  "a": 1,
+                  "b": 3,
+                  "op": "store"
+                },
+                {
+                  "a": 0,
+                  "b": 1,
+                  "dst": 0,
+                  "op": "cmovz"
+                },
+                {
+                  "a": 6,
+                  "b": 4,
+                  "dst": 3,
+                  "op": "add"
+                },
+                {
+                  "a": 1,
+                  "b": 2,
+                  "dst": 1,
+                  "op": "or"
+                }
+              ],
+              "release": 142089,
+              "weight": 280
+            },
+            {
+              "body": [
+                {
+                  "a": 0,
+                  "b": 2,
+                  "dst": 2,
+                  "op": "or"
+                },
+                {
+                  "a": 5,
+                  "b": 0,
+                  "dst": 7,
+                  "op": "add"
+                }
+              ],
+              "release": 150553,
+              "weight": 840
+            },
+            {
+              "body": [
+                {
+                  "a": 4,
+                  "b": 0,
+                  "dst": 3,
+                  "op": "add"
+                },
+                {
+                  "a": 5,
+                  "b": 1,
+                  "dst": 3,
+                  "op": "add"
+                },
+                {
+                  "a": 0,
+                  "b": 1,
+                  "dst": 4,
+                  "op": "add"
+                },
+                {
+                  "a": 2,
+                  "b": 0,
+                  "dst": 3,
+                  "op": "add"
+                }
+              ],
+              "release": 157844,
+              "weight": 1080
+            }
+          ]
+        },
+        "canonical": {
+          "memory_seed": 3329196734,
+          "registers": [
+            4294967295,
+            3391942914,
+            4294967295,
+            1553030968,
+            17,
+            17,
+            4294967295,
+            0
+          ],
+          "segments": [
+            {
+              "body": [
+                {
+                  "a": 3,
+                  "b": 5,
+                  "op": "store"
+                },
+                {
+                  "a": 2,
+                  "dst": 2,
+                  "op": "load"
+                },
+                {
+                  "a": 7,
+                  "dst": 0,
+                  "op": "load"
+                },
+                {
+                  "a": 6,
+                  "dst": 2,
+                  "op": "load"
+                },
+                {
+                  "a": 5,
+                  "b": 0,
+                  "dst": 7,
+                  "op": "add"
+                }
+              ],
+              "release": 10284,
+              "weight": 760
+            },
+            {
+              "body": [
+                {
+                  "a": 5,
+                  "b": 0,
+                  "dst": 2,
+                  "op": "and"
+                },
+                {
+                  "a": 6,
+                  "b": 1,
+                  "dst": 5,
+                  "op": "add"
+                }
+              ],
+              "release": 27105,
+              "weight": 480
+            },
+            {
+              "body": [
+                {
+                  "a": 3,
+                  "b": 0,
+                  "dst": 3,
+                  "op": "add"
+                },
+                {
+                  "a": 1,
+                  "b": 0,
+                  "dst": 7,
+                  "op": "add"
+                },
+                {
+                  "a": 5,
+                  "b": 1,
+                  "dst": 3,
+                  "op": "add"
+                }
+              ],
+              "release": 99499,
+              "weight": 136
+            },
+            {
+              "body": [
+                {
+                  "a": 5,
+                  "b": 3,
+                  "dst": 2,
+                  "op": "or"
+                },
+                {
+                  "a": 2,
+                  "b": 1,
+                  "dst": 1,
+                  "op": "and"
+                }
+              ],
+              "release": 125616,
+              "weight": 520
+            },
+            {
+              "body": [
+                {
+                  "a": 1,
+                  "b": 3,
+                  "op": "store"
+                },
+                {
+                  "a": 0,
+                  "b": 1,
+                  "dst": 0,
+                  "op": "cmovz"
+                },
+                {
+                  "a": 6,
+                  "b": 4,
+                  "dst": 3,
+                  "op": "add"
+                },
+                {
+                  "a": 1,
+                  "b": 2,
+                  "dst": 1,
+                  "op": "or"
+                }
+              ],
+              "release": 142089,
+              "weight": 280
+            },
+            {
+              "body": [
+                {
+                  "a": 0,
+                  "b": 2,
+                  "dst": 2,
+                  "op": "or"
+                },
+                {
+                  "a": 5,
+                  "b": 0,
+                  "dst": 7,
+                  "op": "add"
+                }
+              ],
+              "release": 150553,
+              "weight": 840
+            },
+            {
+              "body": [
+                {
+                  "a": 4,
+                  "b": 0,
+                  "dst": 3,
+                  "op": "add"
+                },
+                {
+                  "a": 5,
+                  "b": 1,
+                  "dst": 3,
+                  "op": "add"
+                },
+                {
+                  "a": 0,
+                  "b": 1,
+                  "dst": 4,
+                  "op": "add"
+                },
+                {
+                  "a": 2,
+                  "b": 0,
+                  "dst": 3,
+                  "op": "add"
+                }
+              ],
+              "release": 157844,
+              "weight": 1080
+            }
+          ]
+        },
+        "program_error": null,
+        "prediction": null,
+        "prediction_error": null
+      },
+      {
+        "submitted": {
+          "memory_seed": 3329196734,
+          "registers": [
+            4294967295,
+            3391942914,
+            4294967295,
+            1553030968,
+            17,
+            17,
+            4294967295,
+            0
+          ],
+          "segments": [
+            {
+              "body": [
+                {
+                  "a": 3,
+                  "b": 5,
+                  "op": "store"
+                },
+                {
+                  "a": 2,
+                  "dst": 2,
+                  "op": "load"
+                },
+                {
+                  "a": 7,
+                  "dst": 0,
+                  "op": "load"
+                },
+                {
+                  "a": 6,
+                  "dst": 2,
+                  "op": "load"
+                },
+                {
+                  "a": 5,
+                  "b": 0,
+                  "dst": 7,
+                  "op": "add"
+                }
+              ],
+              "release": 10284,
+              "weight": 800
+            },
+            {
+              "body": [
+                {
+                  "a": 5,
+                  "b": 0,
+                  "dst": 2,
+                  "op": "and"
+                },
+                {
+                  "a": 6,
+                  "b": 1,
+                  "dst": 5,
+                  "op": "add"
+                }
+              ],
+              "release": 27105,
+              "weight": 520
+            },
+            {
+              "body": [
+                {
+                  "a": 3,
+                  "b": 0,
+                  "dst": 3,
+                  "op": "divu"
+                },
+                {
+                  "a": 1,
+                  "b": 0,
+                  "dst": 7,
+                  "op": "add"
+                },
+                {
+                  "a": 5,
+                  "b": 1,
+                  "dst": 3,
+                  "op": "add"
+                }
+              ],
+              "release": 99499,
+              "weight": 100
+            },
+            {
+              "body": [
+                {
+                  "a": 5,
+                  "b": 3,
+                  "dst": 2,
+                  "op": "or"
+                },
+                {
+                  "a": 2,
+                  "b": 1,
+                  "dst": 1,
+                  "op": "and"
+                }
+              ],
+              "release": 125616,
+              "weight": 560
+            },
+            {
+              "body": [
+                {
+                  "a": 1,
+                  "b": 3,
+                  "op": "store"
+                },
+                {
+                  "a": 0,
+                  "b": 1,
+                  "dst": 0,
+                  "op": "cmovz"
+                },
+                {
+                  "a": 6,
+                  "b": 4,
+                  "dst": 3,
+                  "op": "divu"
+                },
+                {
+                  "a": 1,
+                  "b": 2,
+                  "dst": 1,
+                  "op": "or"
+                }
+              ],
+              "release": 142089,
+              "weight": 280
+            },
+            {
+              "body": [
+                {
+                  "a": 0,
+                  "b": 2,
+                  "dst": 2,
+                  "op": "or"
+                },
+                {
+                  "a": 5,
+                  "b": 0,
+                  "dst": 7,
+                  "op": "add"
+                }
+              ],
+              "release": 150553,
+              "weight": 840
+            },
+            {
+              "body": [
+                {
+                  "a": 4,
+                  "b": 0,
+                  "dst": 3,
+                  "op": "add"
+                },
+                {
+                  "a": 5,
+                  "b": 1,
+                  "dst": 3,
+                  "op": "add"
+                },
+                {
+                  "a": 0,
+                  "b": 1,
+                  "dst": 4,
+                  "op": "divu"
+                },
+                {
+                  "a": 2,
+                  "b": 0,
+                  "dst": 3,
+                  "op": "add"
+                }
+              ],
+              "release": 157844,
+              "weight": 1000
+            }
+          ]
+        },
+        "canonical": {
+          "memory_seed": 3329196734,
+          "registers": [
+            4294967295,
+            3391942914,
+            4294967295,
+            1553030968,
+            17,
+            17,
+            4294967295,
+            0
+          ],
+          "segments": [
+            {
+              "body": [
+                {
+                  "a": 3,
+                  "b": 5,
+                  "op": "store"
+                },
+                {
+                  "a": 2,
+                  "dst": 2,
+                  "op": "load"
+                },
+                {
+                  "a": 7,
+                  "dst": 0,
+                  "op": "load"
+                },
+                {
+                  "a": 6,
+                  "dst": 2,
+                  "op": "load"
+                },
+                {
+                  "a": 5,
+                  "b": 0,
+                  "dst": 7,
+                  "op": "add"
+                }
+              ],
+              "release": 10284,
+              "weight": 800
+            },
+            {
+              "body": [
+                {
+                  "a": 5,
+                  "b": 0,
+                  "dst": 2,
+                  "op": "and"
+                },
+                {
+                  "a": 6,
+                  "b": 1,
+                  "dst": 5,
+                  "op": "add"
+                }
+              ],
+              "release": 27105,
+              "weight": 520
+            },
+            {
+              "body": [
+                {
+                  "a": 3,
+                  "b": 0,
+                  "dst": 3,
+                  "op": "divu"
+                },
+                {
+                  "a": 1,
+                  "b": 0,
+                  "dst": 7,
+                  "op": "add"
+                },
+                {
+                  "a": 5,
+                  "b": 1,
+                  "dst": 3,
+                  "op": "add"
+                }
+              ],
+              "release": 99499,
+              "weight": 100
+            },
+            {
+              "body": [
+                {
+                  "a": 5,
+                  "b": 3,
+                  "dst": 2,
+                  "op": "or"
+                },
+                {
+                  "a": 2,
+                  "b": 1,
+                  "dst": 1,
+                  "op": "and"
+                }
+              ],
+              "release": 125616,
+              "weight": 560
+            },
+            {
+              "body": [
+                {
+                  "a": 1,
+                  "b": 3,
+                  "op": "store"
+                },
+                {
+                  "a": 0,
+                  "b": 1,
+                  "dst": 0,
+                  "op": "cmovz"
+                },
+                {
+                  "a": 6,
+                  "b": 4,
+                  "dst": 3,
+                  "op": "divu"
+                },
+                {
+                  "a": 1,
+                  "b": 2,
+                  "dst": 1,
+                  "op": "or"
+                }
+              ],
+              "release": 142089,
+              "weight": 280
+            },
+            {
+              "body": [
+                {
+                  "a": 0,
+                  "b": 2,
+                  "dst": 2,
+                  "op": "or"
+                },
+                {
+                  "a": 5,
+                  "b": 0,
+                  "dst": 7,
+                  "op": "add"
+                }
+              ],
+              "release": 150553,
+              "weight": 840
+            },
+            {
+              "body": [
+                {
+                  "a": 4,
+                  "b": 0,
+                  "dst": 3,
+                  "op": "add"
+                },
+                {
+                  "a": 5,
+                  "b": 1,
+                  "dst": 3,
+                  "op": "add"
+                },
+                {
+                  "a": 0,
+                  "b": 1,
+                  "dst": 4,
+                  "op": "divu"
+                },
+                {
+                  "a": 2,
+                  "b": 0,
+                  "dst": 3,
+                  "op": "add"
+                }
+              ],
+              "release": 157844,
+              "weight": 1000
+            }
+          ]
+        },
+        "program_error": null,
+        "prediction": null,
+        "prediction_error": null
+      }
+    ]
+  },
+  "call": {
+    "name": "target_3-602-original",
+    "target": "target_3",
+    "seed": 602,
+    "arm": "original",
+    "payload_sha256": "18f62135d3a86d014e5042e725c0fb8e7e838ae9738da93e8f1ed925e25c4114",
+    "history_sha256": "889099c0b1d6794cd8f7940a84566e1f7b968040039a5f7f0ec36894a63e2d0b"
+  }
+}

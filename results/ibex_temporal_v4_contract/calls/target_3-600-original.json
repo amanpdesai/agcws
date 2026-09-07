@@ -1,0 +1,801 @@
+{
+  "raw_text": "{\n  \"hypothesis\": \"The previous attempts struggled with the low rate in bin 5 and the high rates in bins 6 and 7. The issue in slot 5/6 was the use of `mul` operations, which are fast. Slot 1 and 3 used `divu` which are slow and resulted in lower rates in later bins. For candidate 1, I will revert to the `mul` heavy program from slot 5/6, but significantly increase the `release` time of the last segment to push its execution later, hoping to lower its activity in earlier bins and increase it in later ones, particularly bin 5. For candidate 2, I will use `divu` operations, but distribute them more evenly across segments and adjust segment `release` times to try and target the profile more directly, focusing on lowering bin 5's rate by moving its activity later and increasing bin 6 and 7's rates by making them more active.\",\n  \"candidates\": [\n    {\n      \"memory_seed\": 3062472912,\n      \"registers\": [\n        0,\n        4294967295,\n        0,\n        2662913795,\n        0,\n        4294967295,\n        0,\n        1\n      ],\n      \"segments\": [\n        {\n          \"body\": [\n            {\n              \"a\": 6,\n              \"b\": 1,\n              \"dst\": 2,\n              \"op\": \"xor\"\n            },\n            {\n              \"a\": 2,\n              \"b\": 1,\n              \"dst\": 4,\n              \"op\": \"srl\"\n            },\n            {\n              \"a\": 2,\n              \"b\": 0,\n              \"dst\": 6,\n              \"op\": \"xor\"\n            },\n            {\n              \"a\": 7,\n              \"b\": 0,\n              \"dst\": 2,\n              \"op\": \"mul\"\n            },\n            {\n              \"a\": 4,\n              \"b\": 0,\n              \"dst\": 3,\n              \"op\": \"mul\"\n            },\n            {\n              \"a\": 1,\n              \"dst\": 6,\n              \"op\": \"load\"\n            },\n            {\n              \"a\": 6,\n              \"b\": 1,\n              \"dst\": 5,\n              \"op\": \"cmovz\"\n            },\n            {\n              \"a\": 7,\n              \"dst\": 4,\n              \"op\": \"load\"\n            }\n          ],\n          \"release\": 26942,\n          \"weight\": 700\n        },\n        {\n          \"body\": [\n            {\n              \"a\": 2,\n              \"b\": 0,\n              \"dst\": 7,\n              \"op\": \"sll\"\n            },\n            {\n              \"a\": 1,\n              \"b\": 4,\n              \"dst\": 1,\n              \"op\": \"srl\"\n            },\n            {\n              \"a\": 3,\n              \"b\": 3,\n              \"dst\": 1,\n              \"op\": \"mul\"\n            }\n          ],\n          \"release\": 102374,\n          \"weight\": 800\n        },\n        {\n          \"body\": [\n            {\n              \"a\": 4,\n              \"dst\": 6,\n              \"op\": \"load\"\n            },\n            {\n              \"a\": 1,\n              \"dst\": 2,\n              \"op\": \"load\"\n            }\n          ],\n          \"release\": 105645,\n          \"weight\": 400\n        },\n        {\n          \"body\": [\n            {\n              \"a\": 2,\n              \"b\": 1,\n              \"dst\": 5,\n              \"op\": \"cmovz\"\n            },\n            {\n              \"a\": 0,\n              \"b\": 0,\n              \"dst\": 6,\n              \"op\": \"cmovz\"\n            },\n            {\n              \"a\": 2,\n              \"b\": 1,\n              \"dst\": 4,\n              \"op\": \"cmovz\"\n            },\n            {\n              \"a\": 2,\n              \"b\": 0,\n              \"dst\": 5,\n              \"op\": \"cmovz\"\n            }\n          ],\n          \"release\": 116314,\n          \"weight\": 700\n        },\n        {\n          \"body\": [\n            {\n              \"a\": 3,\n              \"b\": 3,\n              \"dst\": 1,\n              \"op\": \"mul\"\n            },\n            {\n              \"a\": 2,\n              \"b\": 1,\n              \"dst\": 1,\n              \"op\": \"mul\"\n            },\n            {\n              \"a\": 4,\n              \"b\": 0,\n              \"dst\": 5,\n              \"op\": \"mul\"\n            },\n            {\n              \"a\": 6,\n              \"b\": 6,\n              \"dst\": 6,\n              \"op\": \"mul\"\n            },\n            {\n              \"a\": 7,\n              \"b\": 7,\n              \"dst\": 6,\n              \"op\": \"mul\"\n            },\n            {\n              \"a\": 4,\n              \"b\": 2,\n              \"dst\": 6,\n              \"op\": \"mul\"\n            },\n            {\n              \"a\": 2,\n              \"b\": 5,\n              \"dst\": 4,\n              \"op\": \"mul\"\n            },\n            {\n              \"a\": 5,\n              \"b\": 2,\n              \"dst\": 5,\n              \"op\": \"mul\"\n            }\n          ],\n          \"release\": 180000,\n          \"weight\": 1496\n        }\n      ]\n    },\n    {\n      \"memory_seed\": 3062472912,\n      \"registers\": [\n        0,\n        4294967295,\n        0,\n        2662913795,\n        0,\n        4294967295,\n        0,\n        1\n      ],\n      \"segments\": [\n        {\n          \"body\": [\n            {\n              \"a\": 6,\n              \"b\": 1,\n              \"dst\": 2,\n              \"op\": \"xor\"\n            },\n            {\n              \"a\": 2,\n              \"b\": 1,\n              \"dst\": 4,\n              \"op\": \"srl\"\n            },\n            {\n              \"a\": 2,\n              \"b\": 0,\n              \"dst\": 6,\n              \"op\": \"xor\"\n            },\n            {\n              \"a\": 7,\n              \"b\": 0,\n              \"dst\": 2,\n              \"op\": \"mul\"\n            },\n            {\n              \"a\": 4,\n              \"b\": 0,\n              \"dst\": 3,\n              \"op\": \"mul\"\n            },\n            {\n              \"a\": 1,\n              \"dst\": 6,\n              \"op\": \"load\"\n            },\n            {\n              \"a\": 6,\n              \"b\": 1,\n              \"dst\": 5,\n              \"op\": \"cmovz\"\n            },\n            {\n              \"a\": 7,\n              \"dst\": 4,\n              \"op\": \"load\"\n            }\n          ],\n          \"release\": 26942,\n          \"weight\": 600\n        },\n        {\n          \"body\": [\n            {\n              \"a\": 2,\n              \"b\": 0,\n              \"dst\": 7,\n              \"op\": \"sll\"\n            },\n            {\n              \"a\": 1,\n              \"b\": 4,\n              \"dst\": 1,\n              \"op\": \"srl\"\n            },\n            {\n              \"a\": 3,\n              \"b\": 3,\n              \"dst\": 1,\n              \"op\": \"divu\"\n            }\n          ],\n          \"release\": 102374,\n          \"weight\": 800\n        },\n        {\n          \"body\": [\n            {\n              \"a\": 4,\n              \"dst\": 6,\n              \"op\": \"load\"\n            },\n            {\n              \"a\": 1,\n              \"dst\": 2,\n              \"op\": \"load\"\n            }\n          ],\n          \"release\": 105645,\n          \"weight\": 400\n        },\n        {\n          \"body\": [\n            {\n              \"a\": 2,\n              \"b\": 1,\n              \"dst\": 5,\n              \"op\": \"cmovz\"\n            },\n            {\n              \"a\": 0,\n              \"b\": 0,\n              \"dst\": 6,\n              \"op\": \"cmovz\"\n            },\n            {\n              \"a\": 2,\n              \"b\": 1,\n              \"dst\": 4,\n              \"op\": \"cmovz\"\n            },\n            {\n              \"a\": 2,\n              \"b\": 0,\n              \"dst\": 5,\n              \"op\": \"cmovz\"\n            }\n          ],\n          \"release\": 116314,\n          \"weight\": 700\n        },\n        {\n          \"body\": [\n            {\n              \"a\": 3,\n              \"b\": 3,\n              \"dst\": 1,\n              \"op\": \"divu\"\n            },\n            {\n              \"a\": 2,\n              \"b\": 1,\n              \"dst\": 1,\n              \"op\": \"divu\"\n            },\n            {\n              \"a\": 4,\n              \"b\": 0,\n              \"dst\": 5,\n              \"op\": \"divu\"\n            },\n            {\n              \"a\": 6,\n              \"b\": 6,\n              \"dst\": 6,\n              \"op\": \"divu\"\n            },\n            {\n              \"a\": 7,\n              \"b\": 7,\n              \"dst\": 6,\n              \"op\": \"divu\"\n            },\n            {\n              \"a\": 4,\n              \"b\": 2,\n              \"dst\": 6,\n              \"op\": \"divu\"\n            },\n            {\n              \"a\": 2,\n              \"b\": 5,\n              \"dst\": 4,\n              \"op\": \"divu\"\n            },\n            {\n              \"a\": 5,\n              \"b\": 2,\n              \"dst\": 5,\n              \"op\": \"divu\"\n            }\n          ],\n          \"release\": 150000,\n          \"weight\": 1596\n        }\n      ]\n    }\n  ]\n}",
+  "tokens_in": 11599,
+  "tokens_out": 3170,
+  "thinking_tokens": 513,
+  "usage_unknown": false,
+  "est_cost_usd": 0.0114047,
+  "finish_reasons": [
+    "FinishReason.STOP"
+  ],
+  "prompt_feedback": null,
+  "model_version": "gemini-2.5-flash",
+  "decoded": {
+    "response_error": null,
+    "hypothesis": "The previous attempts struggled with the low rate in bin 5 and the high rates in bins 6 and 7. The issue in slot 5/6 was the use of `mul` operations, which are fast. Slot 1 and 3 used `divu` which are slow and resulted in lower rates in later bins. For candidate 1, I will revert to the `mul` heavy program from slot 5/6, but significantly increase the `release` time of the last segment to push its execution later, hoping to lower its activity in earlier bins and increase it in later ones, particularly bin 5. For candidate 2, I will use `divu` operations, but distribute them more evenly across segments and adjust segment `release` times to try and target the profile more directly, focusing on lowering bin 5's rate by moving its activity later and increasing bin 6 and 7's rates by making them more active.",
+    "slots": [
+      {
+        "submitted": {
+          "memory_seed": 3062472912,
+          "registers": [
+            0,
+            4294967295,
+            0,
+            2662913795,
+            0,
+            4294967295,
+            0,
+            1
+          ],
+          "segments": [
+            {
+              "body": [
+                {
+                  "a": 6,
+                  "b": 1,
+                  "dst": 2,
+                  "op": "xor"
+                },
+                {
+                  "a": 2,
+                  "b": 1,
+                  "dst": 4,
+                  "op": "srl"
+                },
+                {
+                  "a": 2,
+                  "b": 0,
+                  "dst": 6,
+                  "op": "xor"
+                },
+                {
+                  "a": 7,
+                  "b": 0,
+                  "dst": 2,
+                  "op": "mul"
+                },
+                {
+                  "a": 4,
+                  "b": 0,
+                  "dst": 3,
+                  "op": "mul"
+                },
+                {
+                  "a": 1,
+                  "dst": 6,
+                  "op": "load"
+                },
+                {
+                  "a": 6,
+                  "b": 1,
+                  "dst": 5,
+                  "op": "cmovz"
+                },
+                {
+                  "a": 7,
+                  "dst": 4,
+                  "op": "load"
+                }
+              ],
+              "release": 26942,
+              "weight": 700
+            },
+            {
+              "body": [
+                {
+                  "a": 2,
+                  "b": 0,
+                  "dst": 7,
+                  "op": "sll"
+                },
+                {
+                  "a": 1,
+                  "b": 4,
+                  "dst": 1,
+                  "op": "srl"
+                },
+                {
+                  "a": 3,
+                  "b": 3,
+                  "dst": 1,
+                  "op": "mul"
+                }
+              ],
+              "release": 102374,
+              "weight": 800
+            },
+            {
+              "body": [
+                {
+                  "a": 4,
+                  "dst": 6,
+                  "op": "load"
+                },
+                {
+                  "a": 1,
+                  "dst": 2,
+                  "op": "load"
+                }
+              ],
+              "release": 105645,
+              "weight": 400
+            },
+            {
+              "body": [
+                {
+                  "a": 2,
+                  "b": 1,
+                  "dst": 5,
+                  "op": "cmovz"
+                },
+                {
+                  "a": 0,
+                  "b": 0,
+                  "dst": 6,
+                  "op": "cmovz"
+                },
+                {
+                  "a": 2,
+                  "b": 1,
+                  "dst": 4,
+                  "op": "cmovz"
+                },
+                {
+                  "a": 2,
+                  "b": 0,
+                  "dst": 5,
+                  "op": "cmovz"
+                }
+              ],
+              "release": 116314,
+              "weight": 700
+            },
+            {
+              "body": [
+                {
+                  "a": 3,
+                  "b": 3,
+                  "dst": 1,
+                  "op": "mul"
+                },
+                {
+                  "a": 2,
+                  "b": 1,
+                  "dst": 1,
+                  "op": "mul"
+                },
+                {
+                  "a": 4,
+                  "b": 0,
+                  "dst": 5,
+                  "op": "mul"
+                },
+                {
+                  "a": 6,
+                  "b": 6,
+                  "dst": 6,
+                  "op": "mul"
+                },
+                {
+                  "a": 7,
+                  "b": 7,
+                  "dst": 6,
+                  "op": "mul"
+                },
+                {
+                  "a": 4,
+                  "b": 2,
+                  "dst": 6,
+                  "op": "mul"
+                },
+                {
+                  "a": 2,
+                  "b": 5,
+                  "dst": 4,
+                  "op": "mul"
+                },
+                {
+                  "a": 5,
+                  "b": 2,
+                  "dst": 5,
+                  "op": "mul"
+                }
+              ],
+              "release": 180000,
+              "weight": 1496
+            }
+          ]
+        },
+        "canonical": {
+          "memory_seed": 3062472912,
+          "registers": [
+            0,
+            4294967295,
+            0,
+            2662913795,
+            0,
+            4294967295,
+            0,
+            1
+          ],
+          "segments": [
+            {
+              "body": [
+                {
+                  "a": 6,
+                  "b": 1,
+                  "dst": 2,
+                  "op": "xor"
+                },
+                {
+                  "a": 2,
+                  "b": 1,
+                  "dst": 4,
+                  "op": "srl"
+                },
+                {
+                  "a": 2,
+                  "b": 0,
+                  "dst": 6,
+                  "op": "xor"
+                },
+                {
+                  "a": 7,
+                  "b": 0,
+                  "dst": 2,
+                  "op": "mul"
+                },
+                {
+                  "a": 4,
+                  "b": 0,
+                  "dst": 3,
+                  "op": "mul"
+                },
+                {
+                  "a": 1,
+                  "dst": 6,
+                  "op": "load"
+                },
+                {
+                  "a": 6,
+                  "b": 1,
+                  "dst": 5,
+                  "op": "cmovz"
+                },
+                {
+                  "a": 7,
+                  "dst": 4,
+                  "op": "load"
+                }
+              ],
+              "release": 26942,
+              "weight": 700
+            },
+            {
+              "body": [
+                {
+                  "a": 2,
+                  "b": 0,
+                  "dst": 7,
+                  "op": "sll"
+                },
+                {
+                  "a": 1,
+                  "b": 4,
+                  "dst": 1,
+                  "op": "srl"
+                },
+                {
+                  "a": 3,
+                  "b": 3,
+                  "dst": 1,
+                  "op": "mul"
+                }
+              ],
+              "release": 102374,
+              "weight": 800
+            },
+            {
+              "body": [
+                {
+                  "a": 4,
+                  "dst": 6,
+                  "op": "load"
+                },
+                {
+                  "a": 1,
+                  "dst": 2,
+                  "op": "load"
+                }
+              ],
+              "release": 105645,
+              "weight": 400
+            },
+            {
+              "body": [
+                {
+                  "a": 2,
+                  "b": 1,
+                  "dst": 5,
+                  "op": "cmovz"
+                },
+                {
+                  "a": 0,
+                  "b": 0,
+                  "dst": 6,
+                  "op": "cmovz"
+                },
+                {
+                  "a": 2,
+                  "b": 1,
+                  "dst": 4,
+                  "op": "cmovz"
+                },
+                {
+                  "a": 2,
+                  "b": 0,
+                  "dst": 5,
+                  "op": "cmovz"
+                }
+              ],
+              "release": 116314,
+              "weight": 700
+            },
+            {
+              "body": [
+                {
+                  "a": 3,
+                  "b": 3,
+                  "dst": 1,
+                  "op": "mul"
+                },
+                {
+                  "a": 2,
+                  "b": 1,
+                  "dst": 1,
+                  "op": "mul"
+                },
+                {
+                  "a": 4,
+                  "b": 0,
+                  "dst": 5,
+                  "op": "mul"
+                },
+                {
+                  "a": 6,
+                  "b": 6,
+                  "dst": 6,
+                  "op": "mul"
+                },
+                {
+                  "a": 7,
+                  "b": 7,
+                  "dst": 6,
+                  "op": "mul"
+                },
+                {
+                  "a": 4,
+                  "b": 2,
+                  "dst": 6,
+                  "op": "mul"
+                },
+                {
+                  "a": 2,
+                  "b": 5,
+                  "dst": 4,
+                  "op": "mul"
+                },
+                {
+                  "a": 5,
+                  "b": 2,
+                  "dst": 5,
+                  "op": "mul"
+                }
+              ],
+              "release": 180000,
+              "weight": 1496
+            }
+          ]
+        },
+        "program_error": null,
+        "prediction": null,
+        "prediction_error": null
+      },
+      {
+        "submitted": {
+          "memory_seed": 3062472912,
+          "registers": [
+            0,
+            4294967295,
+            0,
+            2662913795,
+            0,
+            4294967295,
+            0,
+            1
+          ],
+          "segments": [
+            {
+              "body": [
+                {
+                  "a": 6,
+                  "b": 1,
+                  "dst": 2,
+                  "op": "xor"
+                },
+                {
+                  "a": 2,
+                  "b": 1,
+                  "dst": 4,
+                  "op": "srl"
+                },
+                {
+                  "a": 2,
+                  "b": 0,
+                  "dst": 6,
+                  "op": "xor"
+                },
+                {
+                  "a": 7,
+                  "b": 0,
+                  "dst": 2,
+                  "op": "mul"
+                },
+                {
+                  "a": 4,
+                  "b": 0,
+                  "dst": 3,
+                  "op": "mul"
+                },
+                {
+                  "a": 1,
+                  "dst": 6,
+                  "op": "load"
+                },
+                {
+                  "a": 6,
+                  "b": 1,
+                  "dst": 5,
+                  "op": "cmovz"
+                },
+                {
+                  "a": 7,
+                  "dst": 4,
+                  "op": "load"
+                }
+              ],
+              "release": 26942,
+              "weight": 600
+            },
+            {
+              "body": [
+                {
+                  "a": 2,
+                  "b": 0,
+                  "dst": 7,
+                  "op": "sll"
+                },
+                {
+                  "a": 1,
+                  "b": 4,
+                  "dst": 1,
+                  "op": "srl"
+                },
+                {
+                  "a": 3,
+                  "b": 3,
+                  "dst": 1,
+                  "op": "divu"
+                }
+              ],
+              "release": 102374,
+              "weight": 800
+            },
+            {
+              "body": [
+                {
+                  "a": 4,
+                  "dst": 6,
+                  "op": "load"
+                },
+                {
+                  "a": 1,
+                  "dst": 2,
+                  "op": "load"
+                }
+              ],
+              "release": 105645,
+              "weight": 400
+            },
+            {
+              "body": [
+                {
+                  "a": 2,
+                  "b": 1,
+                  "dst": 5,
+                  "op": "cmovz"
+                },
+                {
+                  "a": 0,
+                  "b": 0,
+                  "dst": 6,
+                  "op": "cmovz"
+                },
+                {
+                  "a": 2,
+                  "b": 1,
+                  "dst": 4,
+                  "op": "cmovz"
+                },
+                {
+                  "a": 2,
+                  "b": 0,
+                  "dst": 5,
+                  "op": "cmovz"
+                }
+              ],
+              "release": 116314,
+              "weight": 700
+            },
+            {
+              "body": [
+                {
+                  "a": 3,
+                  "b": 3,
+                  "dst": 1,
+                  "op": "divu"
+                },
+                {
+                  "a": 2,
+                  "b": 1,
+                  "dst": 1,
+                  "op": "divu"
+                },
+                {
+                  "a": 4,
+                  "b": 0,
+                  "dst": 5,
+                  "op": "divu"
+                },
+                {
+                  "a": 6,
+                  "b": 6,
+                  "dst": 6,
+                  "op": "divu"
+                },
+                {
+                  "a": 7,
+                  "b": 7,
+                  "dst": 6,
+                  "op": "divu"
+                },
+                {
+                  "a": 4,
+                  "b": 2,
+                  "dst": 6,
+                  "op": "divu"
+                },
+                {
+                  "a": 2,
+                  "b": 5,
+                  "dst": 4,
+                  "op": "divu"
+                },
+                {
+                  "a": 5,
+                  "b": 2,
+                  "dst": 5,
+                  "op": "divu"
+                }
+              ],
+              "release": 150000,
+              "weight": 1596
+            }
+          ]
+        },
+        "canonical": {
+          "memory_seed": 3062472912,
+          "registers": [
+            0,
+            4294967295,
+            0,
+            2662913795,
+            0,
+            4294967295,
+            0,
+            1
+          ],
+          "segments": [
+            {
+              "body": [
+                {
+                  "a": 6,
+                  "b": 1,
+                  "dst": 2,
+                  "op": "xor"
+                },
+                {
+                  "a": 2,
+                  "b": 1,
+                  "dst": 4,
+                  "op": "srl"
+                },
+                {
+                  "a": 2,
+                  "b": 0,
+                  "dst": 6,
+                  "op": "xor"
+                },
+                {
+                  "a": 7,
+                  "b": 0,
+                  "dst": 2,
+                  "op": "mul"
+                },
+                {
+                  "a": 4,
+                  "b": 0,
+                  "dst": 3,
+                  "op": "mul"
+                },
+                {
+                  "a": 1,
+                  "dst": 6,
+                  "op": "load"
+                },
+                {
+                  "a": 6,
+                  "b": 1,
+                  "dst": 5,
+                  "op": "cmovz"
+                },
+                {
+                  "a": 7,
+                  "dst": 4,
+                  "op": "load"
+                }
+              ],
+              "release": 26942,
+              "weight": 600
+            },
+            {
+              "body": [
+                {
+                  "a": 2,
+                  "b": 0,
+                  "dst": 7,
+                  "op": "sll"
+                },
+                {
+                  "a": 1,
+                  "b": 4,
+                  "dst": 1,
+                  "op": "srl"
+                },
+                {
+                  "a": 3,
+                  "b": 3,
+                  "dst": 1,
+                  "op": "divu"
+                }
+              ],
+              "release": 102374,
+              "weight": 800
+            },
+            {
+              "body": [
+                {
+                  "a": 4,
+                  "dst": 6,
+                  "op": "load"
+                },
+                {
+                  "a": 1,
+                  "dst": 2,
+                  "op": "load"
+                }
+              ],
+              "release": 105645,
+              "weight": 400
+            },
+            {
+              "body": [
+                {
+                  "a": 2,
+                  "b": 1,
+                  "dst": 5,
+                  "op": "cmovz"
+                },
+                {
+                  "a": 0,
+                  "b": 0,
+                  "dst": 6,
+                  "op": "cmovz"
+                },
+                {
+                  "a": 2,
+                  "b": 1,
+                  "dst": 4,
+                  "op": "cmovz"
+                },
+                {
+                  "a": 2,
+                  "b": 0,
+                  "dst": 5,
+                  "op": "cmovz"
+                }
+              ],
+              "release": 116314,
+              "weight": 700
+            },
+            {
+              "body": [
+                {
+                  "a": 3,
+                  "b": 3,
+                  "dst": 1,
+                  "op": "divu"
+                },
+                {
+                  "a": 2,
+                  "b": 1,
+                  "dst": 1,
+                  "op": "divu"
+                },
+                {
+                  "a": 4,
+                  "b": 0,
+                  "dst": 5,
+                  "op": "divu"
+                },
+                {
+                  "a": 6,
+                  "b": 6,
+                  "dst": 6,
+                  "op": "divu"
+                },
+                {
+                  "a": 7,
+                  "b": 7,
+                  "dst": 6,
+                  "op": "divu"
+                },
+                {
+                  "a": 4,
+                  "b": 2,
+                  "dst": 6,
+                  "op": "divu"
+                },
+                {
+                  "a": 2,
+                  "b": 5,
+                  "dst": 4,
+                  "op": "divu"
+                },
+                {
+                  "a": 5,
+                  "b": 2,
+                  "dst": 5,
+                  "op": "divu"
+                }
+              ],
+              "release": 150000,
+              "weight": 1596
+            }
+          ]
+        },
+        "program_error": null,
+        "prediction": null,
+        "prediction_error": null
+      }
+    ]
+  },
+  "call": {
+    "name": "target_3-600-original",
+    "target": "target_3",
+    "seed": 600,
+    "arm": "original",
+    "payload_sha256": "573c859e396faea0f9e4828fa3a8253d63208e3cb85a661e922b6bced1602f4a",
+    "history_sha256": "59046530482ef6552c20900fa776b702fc3e0a32eb1ee93f8ad89bb5be6d5078"
+  }
+}
