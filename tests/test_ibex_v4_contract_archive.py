@@ -7,11 +7,18 @@ import pytest
 from analysis.ibex_contract_v4 import verify
 
 
-def test_complete_failed_gate_is_reproducible_and_not_ready():
-    report = verify(Path("results/ibex_temporal_v4_contract"))
+@pytest.mark.parametrize(
+    "directory,ready",
+    [
+        ("ibex_temporal_v4_contract", False),
+        ("ibex_temporal_v4_contract_v2", True),
+    ],
+)
+def test_complete_contract_gate_is_reproducible(directory, ready):
+    report = verify(Path("results") / directory)
     assert report["calls_verified"] == 24
     assert report["slots_verified"] == 48
-    assert not report["ready"]
+    assert report["ready"] == ready
 
 
 def test_archive_rejects_changed_raw_response(tmp_path):

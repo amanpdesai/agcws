@@ -1,0 +1,821 @@
+{
+  "raw_text": "{\n  \"hypothesis\": \"The low rates in bin 2 and 6 of the reference program are due to the many divu operations in segment 2 and segment 6. Reducing the number of divu operations in these segments will increase the activity in those bins. Candidate 1 removes divu operations from segment 2 and 6, replacing them with cheaper ops to attempt to raise their rates. Candidate 2 attempts to balance the remaining division operations to improve overall profile conformity.\",\n  \"candidates\": [\n    {\n      \"registers\": [4294967295, 3391942914, 4294967295, 1553030968, 17, 17, 4294967295, 0],\n      \"memory_seed\": 3329196734,\n      \"segments\": [\n        {\n          \"weight\": 760,\n          \"release\": 10284,\n          \"body\": [\n            {\n              \"op\": \"store\",\n              \"a\": 3,\n              \"b\": 5\n            },\n            {\n              \"op\": \"load\",\n              \"a\": 2,\n              \"dst\": 2\n            },\n            {\n              \"op\": \"load\",\n              \"a\": 7,\n              \"dst\": 0\n            },\n            {\n              \"op\": \"load\",\n              \"a\": 6,\n              \"dst\": 2\n            }\n          ]\n        },\n        {\n          \"weight\": 480,\n          \"release\": 27105,\n          \"body\": [\n            {\n              \"op\": \"and\",\n              \"a\": 5,\n              \"b\": 0,\n              \"dst\": 2\n            }\n          ]\n        },\n        {\n          \"weight\": 136,\n          \"release\": 99499,\n          \"body\": [\n            {\n              \"op\": \"add\",\n              \"a\": 5,\n              \"b\": 0,\n              \"dst\": 7\n            },\n            {\n              \"op\": \"add\",\n              \"a\": 6,\n              \"b\": 1,\n              \"dst\": 5\n            },\n            {\n              \"op\": \"add\",\n              \"a\": 3,\n              \"b\": 0,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"add\",\n              \"a\": 1,\n              \"b\": 0,\n              \"dst\": 7\n            },\n            {\n              \"op\": \"add\",\n              \"a\": 5,\n              \"b\": 1,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"add\",\n              \"a\": 5,\n              \"b\": 0,\n              \"dst\": 7\n            },\n            {\n              \"op\": \"add\",\n              \"a\": 6,\n              \"b\": 1,\n              \"dst\": 4\n            },\n            {\n              \"op\": \"add\",\n              \"a\": 5,\n              \"b\": 0,\n              \"dst\": 7\n            }\n          ]\n        },\n        {\n          \"weight\": 520,\n          \"release\": 125616,\n          \"body\": [\n            {\n              \"op\": \"or\",\n              \"a\": 5,\n              \"b\": 3,\n              \"dst\": 2\n            },\n            {\n              \"op\": \"and\",\n              \"a\": 2,\n              \"b\": 1,\n              \"dst\": 1\n            }\n          ]\n        },\n        {\n          \"weight\": 280,\n          \"release\": 142089,\n          \"body\": [\n            {\n              \"op\": \"store\",\n              \"a\": 1,\n              \"b\": 3\n            },\n            {\n              \"op\": \"cmovz\",\n              \"a\": 0,\n              \"b\": 1,\n              \"dst\": 0\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 6,\n              \"b\": 4,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"or\",\n              \"a\": 1,\n              \"b\": 2,\n              \"dst\": 1\n            }\n          ]\n        },\n        {\n          \"weight\": 840,\n          \"release\": 150553,\n          \"body\": [\n            {\n              \"op\": \"or\",\n              \"a\": 0,\n              \"b\": 2,\n              \"dst\": 2\n            }\n          ]\n        },\n        {\n          \"weight\": 1080,\n          \"release\": 157844,\n          \"body\": [\n            {\n              \"op\": \"add\",\n              \"a\": 4,\n              \"b\": 0,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"add\",\n              \"a\": 5,\n              \"b\": 1,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"add\",\n              \"a\": 0,\n              \"b\": 1,\n              \"dst\": 4\n            },\n            {\n              \"op\": \"add\",\n              \"a\": 2,\n              \"b\": 0,\n              \"dst\": 3\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"registers\": [4294967295, 3391942914, 4294967295, 1553030968, 17, 17, 4294967295, 0],\n      \"memory_seed\": 3329196734,\n      \"segments\": [\n        {\n          \"weight\": 760,\n          \"release\": 10284,\n          \"body\": [\n            {\n              \"op\": \"store\",\n              \"a\": 3,\n              \"b\": 5\n            },\n            {\n              \"op\": \"load\",\n              \"a\": 2,\n              \"dst\": 2\n            },\n            {\n              \"op\": \"load\",\n              \"a\": 7,\n              \"dst\": 0\n            },\n            {\n              \"op\": \"load\",\n              \"a\": 6,\n              \"dst\": 2\n            }\n          ]\n        },\n        {\n          \"weight\": 480,\n          \"release\": 27105,\n          \"body\": [\n            {\n              \"op\": \"and\",\n              \"a\": 5,\n              \"b\": 0,\n              \"dst\": 2\n            }\n          ]\n        },\n        {\n          \"weight\": 136,\n          \"release\": 99499,\n          \"body\": [\n            {\n              \"op\": \"divu\",\n              \"a\": 5,\n              \"b\": 0,\n              \"dst\": 7\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 6,\n              \"b\": 1,\n              \"dst\": 5\n            },\n            {\n              \"op\": \"add\",\n              \"a\": 3,\n              \"b\": 0,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"add\",\n              \"a\": 1,\n              \"b\": 0,\n              \"dst\": 7\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 5,\n              \"b\": 1,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 5,\n              \"b\": 0,\n              \"dst\": 7\n            },\n            {\n              \"op\": \"add\",\n              \"a\": 6,\n              \"b\": 1,\n              \"dst\": 4\n            },\n            {\n              \"op\": \"add\",\n              \"a\": 5,\n              \"b\": 0,\n              \"dst\": 7\n            }\n          ]\n        },\n        {\n          \"weight\": 520,\n          \"release\": 125616,\n          \"body\": [\n            {\n              \"op\": \"or\",\n              \"a\": 5,\n              \"b\": 3,\n              \"dst\": 2\n            },\n            {\n              \"op\": \"and\",\n              \"a\": 2,\n              \"b\": 1,\n              \"dst\": 1\n            }\n          ]\n        },\n        {\n          \"weight\": 280,\n          \"release\": 142089,\n          \"body\": [\n            {\n              \"op\": \"store\",\n              \"a\": 1,\n              \"b\": 3\n            },\n            {\n              \"op\": \"cmovz\",\n              \"a\": 0,\n              \"b\": 1,\n              \"dst\": 0\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 6,\n              \"b\": 4,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"or\",\n              \"a\": 1,\n              \"b\": 2,\n              \"dst\": 1\n            }\n          ]\n        },\n        {\n          \"weight\": 840,\n          \"release\": 150553,\n          \"body\": [\n            {\n              \"op\": \"or\",\n              \"a\": 0,\n              \"b\": 2,\n              \"dst\": 2\n            }\n          ]\n        },\n        {\n          \"weight\": 1080,\n          \"release\": 157844,\n          \"body\": [\n            {\n              \"op\": \"divu\",\n              \"a\": 4,\n              \"b\": 0,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 5,\n              \"b\": 1,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"add\",\n              \"a\": 0,\n              \"b\": 1,\n              \"dst\": 4\n            },\n            {\n              \"op\": \"add\",\n              \"a\": 2,\n              \"b\": 0,\n              \"dst\": 3\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+  "tokens_in": 12800,
+  "tokens_out": 3075,
+  "thinking_tokens": 509,
+  "usage_unknown": false,
+  "est_cost_usd": 0.0115275,
+  "finish_reasons": [
+    "FinishReason.STOP"
+  ],
+  "prompt_feedback": null,
+  "model_version": "gemini-2.5-flash",
+  "decoded": {
+    "response_error": null,
+    "hypothesis": "The low rates in bin 2 and 6 of the reference program are due to the many divu operations in segment 2 and segment 6. Reducing the number of divu operations in these segments will increase the activity in those bins. Candidate 1 removes divu operations from segment 2 and 6, replacing them with cheaper ops to attempt to raise their rates. Candidate 2 attempts to balance the remaining division operations to improve overall profile conformity.",
+    "slots": [
+      {
+        "submitted": {
+          "registers": [
+            4294967295,
+            3391942914,
+            4294967295,
+            1553030968,
+            17,
+            17,
+            4294967295,
+            0
+          ],
+          "memory_seed": 3329196734,
+          "segments": [
+            {
+              "weight": 760,
+              "release": 10284,
+              "body": [
+                {
+                  "op": "store",
+                  "a": 3,
+                  "b": 5
+                },
+                {
+                  "op": "load",
+                  "a": 2,
+                  "dst": 2
+                },
+                {
+                  "op": "load",
+                  "a": 7,
+                  "dst": 0
+                },
+                {
+                  "op": "load",
+                  "a": 6,
+                  "dst": 2
+                }
+              ]
+            },
+            {
+              "weight": 480,
+              "release": 27105,
+              "body": [
+                {
+                  "op": "and",
+                  "a": 5,
+                  "b": 0,
+                  "dst": 2
+                }
+              ]
+            },
+            {
+              "weight": 136,
+              "release": 99499,
+              "body": [
+                {
+                  "op": "add",
+                  "a": 5,
+                  "b": 0,
+                  "dst": 7
+                },
+                {
+                  "op": "add",
+                  "a": 6,
+                  "b": 1,
+                  "dst": 5
+                },
+                {
+                  "op": "add",
+                  "a": 3,
+                  "b": 0,
+                  "dst": 3
+                },
+                {
+                  "op": "add",
+                  "a": 1,
+                  "b": 0,
+                  "dst": 7
+                },
+                {
+                  "op": "add",
+                  "a": 5,
+                  "b": 1,
+                  "dst": 3
+                },
+                {
+                  "op": "add",
+                  "a": 5,
+                  "b": 0,
+                  "dst": 7
+                },
+                {
+                  "op": "add",
+                  "a": 6,
+                  "b": 1,
+                  "dst": 4
+                },
+                {
+                  "op": "add",
+                  "a": 5,
+                  "b": 0,
+                  "dst": 7
+                }
+              ]
+            },
+            {
+              "weight": 520,
+              "release": 125616,
+              "body": [
+                {
+                  "op": "or",
+                  "a": 5,
+                  "b": 3,
+                  "dst": 2
+                },
+                {
+                  "op": "and",
+                  "a": 2,
+                  "b": 1,
+                  "dst": 1
+                }
+              ]
+            },
+            {
+              "weight": 280,
+              "release": 142089,
+              "body": [
+                {
+                  "op": "store",
+                  "a": 1,
+                  "b": 3
+                },
+                {
+                  "op": "cmovz",
+                  "a": 0,
+                  "b": 1,
+                  "dst": 0
+                },
+                {
+                  "op": "divu",
+                  "a": 6,
+                  "b": 4,
+                  "dst": 3
+                },
+                {
+                  "op": "or",
+                  "a": 1,
+                  "b": 2,
+                  "dst": 1
+                }
+              ]
+            },
+            {
+              "weight": 840,
+              "release": 150553,
+              "body": [
+                {
+                  "op": "or",
+                  "a": 0,
+                  "b": 2,
+                  "dst": 2
+                }
+              ]
+            },
+            {
+              "weight": 1080,
+              "release": 157844,
+              "body": [
+                {
+                  "op": "add",
+                  "a": 4,
+                  "b": 0,
+                  "dst": 3
+                },
+                {
+                  "op": "add",
+                  "a": 5,
+                  "b": 1,
+                  "dst": 3
+                },
+                {
+                  "op": "add",
+                  "a": 0,
+                  "b": 1,
+                  "dst": 4
+                },
+                {
+                  "op": "add",
+                  "a": 2,
+                  "b": 0,
+                  "dst": 3
+                }
+              ]
+            }
+          ]
+        },
+        "canonical": {
+          "registers": [
+            4294967295,
+            3391942914,
+            4294967295,
+            1553030968,
+            17,
+            17,
+            4294967295,
+            0
+          ],
+          "memory_seed": 3329196734,
+          "segments": [
+            {
+              "weight": 760,
+              "release": 10284,
+              "body": [
+                {
+                  "op": "store",
+                  "a": 3,
+                  "b": 5
+                },
+                {
+                  "op": "load",
+                  "a": 2,
+                  "dst": 2
+                },
+                {
+                  "op": "load",
+                  "a": 7,
+                  "dst": 0
+                },
+                {
+                  "op": "load",
+                  "a": 6,
+                  "dst": 2
+                }
+              ]
+            },
+            {
+              "weight": 480,
+              "release": 27105,
+              "body": [
+                {
+                  "op": "and",
+                  "a": 5,
+                  "b": 0,
+                  "dst": 2
+                }
+              ]
+            },
+            {
+              "weight": 136,
+              "release": 99499,
+              "body": [
+                {
+                  "op": "add",
+                  "a": 5,
+                  "b": 0,
+                  "dst": 7
+                },
+                {
+                  "op": "add",
+                  "a": 6,
+                  "b": 1,
+                  "dst": 5
+                },
+                {
+                  "op": "add",
+                  "a": 3,
+                  "b": 0,
+                  "dst": 3
+                },
+                {
+                  "op": "add",
+                  "a": 1,
+                  "b": 0,
+                  "dst": 7
+                },
+                {
+                  "op": "add",
+                  "a": 5,
+                  "b": 1,
+                  "dst": 3
+                },
+                {
+                  "op": "add",
+                  "a": 5,
+                  "b": 0,
+                  "dst": 7
+                },
+                {
+                  "op": "add",
+                  "a": 6,
+                  "b": 1,
+                  "dst": 4
+                },
+                {
+                  "op": "add",
+                  "a": 5,
+                  "b": 0,
+                  "dst": 7
+                }
+              ]
+            },
+            {
+              "weight": 520,
+              "release": 125616,
+              "body": [
+                {
+                  "op": "or",
+                  "a": 5,
+                  "b": 3,
+                  "dst": 2
+                },
+                {
+                  "op": "and",
+                  "a": 2,
+                  "b": 1,
+                  "dst": 1
+                }
+              ]
+            },
+            {
+              "weight": 280,
+              "release": 142089,
+              "body": [
+                {
+                  "op": "store",
+                  "a": 1,
+                  "b": 3
+                },
+                {
+                  "op": "cmovz",
+                  "a": 0,
+                  "b": 1,
+                  "dst": 0
+                },
+                {
+                  "op": "divu",
+                  "a": 6,
+                  "b": 4,
+                  "dst": 3
+                },
+                {
+                  "op": "or",
+                  "a": 1,
+                  "b": 2,
+                  "dst": 1
+                }
+              ]
+            },
+            {
+              "weight": 840,
+              "release": 150553,
+              "body": [
+                {
+                  "op": "or",
+                  "a": 0,
+                  "b": 2,
+                  "dst": 2
+                }
+              ]
+            },
+            {
+              "weight": 1080,
+              "release": 157844,
+              "body": [
+                {
+                  "op": "add",
+                  "a": 4,
+                  "b": 0,
+                  "dst": 3
+                },
+                {
+                  "op": "add",
+                  "a": 5,
+                  "b": 1,
+                  "dst": 3
+                },
+                {
+                  "op": "add",
+                  "a": 0,
+                  "b": 1,
+                  "dst": 4
+                },
+                {
+                  "op": "add",
+                  "a": 2,
+                  "b": 0,
+                  "dst": 3
+                }
+              ]
+            }
+          ]
+        },
+        "program_error": null,
+        "prediction": null,
+        "prediction_error": null
+      },
+      {
+        "submitted": {
+          "registers": [
+            4294967295,
+            3391942914,
+            4294967295,
+            1553030968,
+            17,
+            17,
+            4294967295,
+            0
+          ],
+          "memory_seed": 3329196734,
+          "segments": [
+            {
+              "weight": 760,
+              "release": 10284,
+              "body": [
+                {
+                  "op": "store",
+                  "a": 3,
+                  "b": 5
+                },
+                {
+                  "op": "load",
+                  "a": 2,
+                  "dst": 2
+                },
+                {
+                  "op": "load",
+                  "a": 7,
+                  "dst": 0
+                },
+                {
+                  "op": "load",
+                  "a": 6,
+                  "dst": 2
+                }
+              ]
+            },
+            {
+              "weight": 480,
+              "release": 27105,
+              "body": [
+                {
+                  "op": "and",
+                  "a": 5,
+                  "b": 0,
+                  "dst": 2
+                }
+              ]
+            },
+            {
+              "weight": 136,
+              "release": 99499,
+              "body": [
+                {
+                  "op": "divu",
+                  "a": 5,
+                  "b": 0,
+                  "dst": 7
+                },
+                {
+                  "op": "divu",
+                  "a": 6,
+                  "b": 1,
+                  "dst": 5
+                },
+                {
+                  "op": "add",
+                  "a": 3,
+                  "b": 0,
+                  "dst": 3
+                },
+                {
+                  "op": "add",
+                  "a": 1,
+                  "b": 0,
+                  "dst": 7
+                },
+                {
+                  "op": "divu",
+                  "a": 5,
+                  "b": 1,
+                  "dst": 3
+                },
+                {
+                  "op": "divu",
+                  "a": 5,
+                  "b": 0,
+                  "dst": 7
+                },
+                {
+                  "op": "add",
+                  "a": 6,
+                  "b": 1,
+                  "dst": 4
+                },
+                {
+                  "op": "add",
+                  "a": 5,
+                  "b": 0,
+                  "dst": 7
+                }
+              ]
+            },
+            {
+              "weight": 520,
+              "release": 125616,
+              "body": [
+                {
+                  "op": "or",
+                  "a": 5,
+                  "b": 3,
+                  "dst": 2
+                },
+                {
+                  "op": "and",
+                  "a": 2,
+                  "b": 1,
+                  "dst": 1
+                }
+              ]
+            },
+            {
+              "weight": 280,
+              "release": 142089,
+              "body": [
+                {
+                  "op": "store",
+                  "a": 1,
+                  "b": 3
+                },
+                {
+                  "op": "cmovz",
+                  "a": 0,
+                  "b": 1,
+                  "dst": 0
+                },
+                {
+                  "op": "divu",
+                  "a": 6,
+                  "b": 4,
+                  "dst": 3
+                },
+                {
+                  "op": "or",
+                  "a": 1,
+                  "b": 2,
+                  "dst": 1
+                }
+              ]
+            },
+            {
+              "weight": 840,
+              "release": 150553,
+              "body": [
+                {
+                  "op": "or",
+                  "a": 0,
+                  "b": 2,
+                  "dst": 2
+                }
+              ]
+            },
+            {
+              "weight": 1080,
+              "release": 157844,
+              "body": [
+                {
+                  "op": "divu",
+                  "a": 4,
+                  "b": 0,
+                  "dst": 3
+                },
+                {
+                  "op": "divu",
+                  "a": 5,
+                  "b": 1,
+                  "dst": 3
+                },
+                {
+                  "op": "add",
+                  "a": 0,
+                  "b": 1,
+                  "dst": 4
+                },
+                {
+                  "op": "add",
+                  "a": 2,
+                  "b": 0,
+                  "dst": 3
+                }
+              ]
+            }
+          ]
+        },
+        "canonical": {
+          "registers": [
+            4294967295,
+            3391942914,
+            4294967295,
+            1553030968,
+            17,
+            17,
+            4294967295,
+            0
+          ],
+          "memory_seed": 3329196734,
+          "segments": [
+            {
+              "weight": 760,
+              "release": 10284,
+              "body": [
+                {
+                  "op": "store",
+                  "a": 3,
+                  "b": 5
+                },
+                {
+                  "op": "load",
+                  "a": 2,
+                  "dst": 2
+                },
+                {
+                  "op": "load",
+                  "a": 7,
+                  "dst": 0
+                },
+                {
+                  "op": "load",
+                  "a": 6,
+                  "dst": 2
+                }
+              ]
+            },
+            {
+              "weight": 480,
+              "release": 27105,
+              "body": [
+                {
+                  "op": "and",
+                  "a": 5,
+                  "b": 0,
+                  "dst": 2
+                }
+              ]
+            },
+            {
+              "weight": 136,
+              "release": 99499,
+              "body": [
+                {
+                  "op": "divu",
+                  "a": 5,
+                  "b": 0,
+                  "dst": 7
+                },
+                {
+                  "op": "divu",
+                  "a": 6,
+                  "b": 1,
+                  "dst": 5
+                },
+                {
+                  "op": "add",
+                  "a": 3,
+                  "b": 0,
+                  "dst": 3
+                },
+                {
+                  "op": "add",
+                  "a": 1,
+                  "b": 0,
+                  "dst": 7
+                },
+                {
+                  "op": "divu",
+                  "a": 5,
+                  "b": 1,
+                  "dst": 3
+                },
+                {
+                  "op": "divu",
+                  "a": 5,
+                  "b": 0,
+                  "dst": 7
+                },
+                {
+                  "op": "add",
+                  "a": 6,
+                  "b": 1,
+                  "dst": 4
+                },
+                {
+                  "op": "add",
+                  "a": 5,
+                  "b": 0,
+                  "dst": 7
+                }
+              ]
+            },
+            {
+              "weight": 520,
+              "release": 125616,
+              "body": [
+                {
+                  "op": "or",
+                  "a": 5,
+                  "b": 3,
+                  "dst": 2
+                },
+                {
+                  "op": "and",
+                  "a": 2,
+                  "b": 1,
+                  "dst": 1
+                }
+              ]
+            },
+            {
+              "weight": 280,
+              "release": 142089,
+              "body": [
+                {
+                  "op": "store",
+                  "a": 1,
+                  "b": 3
+                },
+                {
+                  "op": "cmovz",
+                  "a": 0,
+                  "b": 1,
+                  "dst": 0
+                },
+                {
+                  "op": "divu",
+                  "a": 6,
+                  "b": 4,
+                  "dst": 3
+                },
+                {
+                  "op": "or",
+                  "a": 1,
+                  "b": 2,
+                  "dst": 1
+                }
+              ]
+            },
+            {
+              "weight": 840,
+              "release": 150553,
+              "body": [
+                {
+                  "op": "or",
+                  "a": 0,
+                  "b": 2,
+                  "dst": 2
+                }
+              ]
+            },
+            {
+              "weight": 1080,
+              "release": 157844,
+              "body": [
+                {
+                  "op": "divu",
+                  "a": 4,
+                  "b": 0,
+                  "dst": 3
+                },
+                {
+                  "op": "divu",
+                  "a": 5,
+                  "b": 1,
+                  "dst": 3
+                },
+                {
+                  "op": "add",
+                  "a": 0,
+                  "b": 1,
+                  "dst": 4
+                },
+                {
+                  "op": "add",
+                  "a": 2,
+                  "b": 0,
+                  "dst": 3
+                }
+              ]
+            }
+          ]
+        },
+        "program_error": null,
+        "prediction": null,
+        "prediction_error": null
+      }
+    ]
+  },
+  "call": {
+    "name": "target_2-602-contract",
+    "target": "target_2",
+    "seed": 602,
+    "arm": "contract",
+    "payload_sha256": "df314c0d6f5a5ad0329960c3bbdf0e3e84e301362a2afb0508cfd26d5e247180",
+    "history_sha256": "4cf3bca576eda5216fbc3d179854e263b3e807ed7e45a4a2d2282858e4057280"
+  }
+}

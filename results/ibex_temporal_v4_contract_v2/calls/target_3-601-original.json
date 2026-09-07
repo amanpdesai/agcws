@@ -1,0 +1,314 @@
+{
+  "raw_text": "{\n  \"hypothesis\": \"To increase the rate in bin 5 and reduce rates in other bins, I will reduce the total operations allocated to segment 0 and segment 3 in the reference program, and change the instruction mix in segment 0 to include more 'divu' operations to increase stall cycles.\",\n  \"candidates\": [\n    {\n      \"program\": {\n        \"memory_seed\": 999465599,\n        \"registers\": [1, 1, 17, 4294967295, 1076035761, 4294967295, 1, 4294967295],\n        \"segments\": [\n          {\n            \"body\": [\n              {\n                \"a\": 7,\n                \"b\": 5,\n                \"dst\": 5,\n                \"op\": \"add\"\n              },\n              {\n                \"a\": 3,\n                \"b\": 3,\n                \"op\": \"store\"\n              },\n              {\n                \"a\": 4,\n                \"b\": 6,\n                \"dst\": 5,\n                \"op\": \"divu\"\n              },\n              {\n                \"a\": 3,\n                \"b\": 3,\n                \"op\": \"store\"\n              },\n              {\n                \"a\": 6,\n                \"b\": 3,\n                \"dst\": 0,\n                \"op\": \"divu\"\n              },\n              {\n                \"a\": 0,\n                \"dst\": 0,\n                \"op\": \"load\"\n              },\n              {\n                \"a\": 1,\n                \"b\": 6,\n                \"op\": \"store\"\n              },\n              {\n                \"a\": 4,\n                \"b\": 7,\n                \"dst\": 3,\n                \"op\": \"srl\"\n              }\n            ],\n            \"release\": 9569,\n            \"weight\": 1800\n          },\n          {\n            \"body\": [\n              {\n                \"a\": 4,\n                \"b\": 0,\n                \"dst\": 3,\n                \"op\": \"cmovz\"\n              }\n            ],\n            \"release\": 28578,\n            \"weight\": 88\n          },\n          {\n            \"body\": [\n              {\n                \"a\": 5,\n                \"b\": 0,\n                \"dst\": 3,\n                \"op\": \"cmovz\"\n              }\n            ],\n            \"release\": 99114,\n            \"weight\": 480\n          },\n          {\n            \"body\": [\n              {\n                \"a\": 5,\n                \"dst\": 0,\n                \"op\": \"load\"\n              },\n              {\n                \"a\": 0,\n                \"b\": 3,\n                \"dst\": 4,\n                \"op\": \"xor\"\n              },\n              {\n                \"a\": 4,\n                \"b\": 5,\n                \"dst\": 4,\n                \"op\": \"srl\"\n              },\n              {\n                \"a\": 4,\n                \"b\": 5,\n                \"dst\": 2,\n                \"op\": \"cmovz\"\n              },\n              {\n                \"a\": 7,\n                \"b\": 7,\n                \"dst\": 7,\n                \"op\": \"divu\"\n              },\n              {\n                \"a\": 3,\n                \"b\": 3,\n                \"dst\": 2,\n                \"op\": \"add\"\n              },\n              {\n                \"a\": 3,\n                \"b\": 7,\n                \"dst\": 3,\n                \"op\": \"cmovz\"\n              },\n              {\n                \"a\": 3,\n                \"b\": 4,\n                \"dst\": 0,\n                \"op\": \"xor\"\n              }\n            ],\n            \"release\": 122339,\n            \"weight\": 1000\n          }\n        ]\n      }\n    },\n    {\n      \"program\": {\n        \"memory_seed\": 2886339993,\n        \"registers\": [1108300482, 978658013, 31, 1, 0, 17, 17, 1765682813],\n        \"segments\": [\n          {\n            \"body\": [\n              {\n                \"a\": 0,\n                \"b\": 3,\n                \"dst\": 7,\n                \"op\": \"add\"\n              },\n              {\n                \"a\": 5,\n                \"b\": 2,\n                \"dst\": 1,\n                \"op\": \"add\"\n              },\n              {\n                \"a\": 3,\n                \"b\": 5,\n                \"dst\": 1,\n                \"op\": \"add\"\n              },\n              {\n                \"a\": 7,\n                \"b\": 6,\n                \"dst\": 3,\n                \"op\": \"add\"\n              }\n            ],\n            \"release\": 97010,\n            \"weight\": 800\n          },\n          {\n            \"body\": [\n              {\n                \"a\": 4,\n                \"b\": 0,\n                \"dst\": 3,\n                \"op\": \"cmovz\"\n              },\n              {\n                \"a\": 5,\n                \"b\": 0,\n                \"dst\": 3,\n                \"op\": \"add\"\n              }\n            ],\n            \"release\": 155206,\n            \"weight\": 1000\n          },\n          {\n            \"body\": [\n              {\n                \"a\": 6,\n                \"b\": 1,\n                \"dst\": 5,\n                \"op\": \"sll\"\n              },\n              {\n                \"a\": 6,\n                \"b\": 4,\n                \"dst\": 4,\n                \"op\": \"add\"\n              },\n              {\n                \"a\": 6,\n                \"b\": 4,\n                \"dst\": 4,\n                \"op\": \"add\"\n              },\n              {\n                \"a\": 4,\n                \"b\": 3,\n                \"dst\": 4,\n                \"op\": \"srl\"\n              },\n              {\n                \"a\": 4,\n                \"b\": 0,\n                \"dst\": 2,\n                \"op\": \"or\"\n              }\n            ],\n            \"release\": 175183,\n            \"weight\": 1000\n          },\n          {\n            \"body\": [\n              {\n                \"a\": 4,\n                \"b\": 3,\n                \"dst\": 4,\n                \"op\": \"srl\"\n              },\n              {\n                \"a\": 4,\n                \"b\": 0,\n                \"dst\": 2,\n                \"op\": \"or\"\n              },\n              {\n                \"a\": 4,\n                \"b\": 0,\n                \"dst\": 2,\n                \"op\": \"add\"\n              },\n              {\n                \"a\": 4,\n                \"b\": 0,\n                \"dst\": 2,\n                \"op\": \"add\"\n              }\n            ],\n            \"release\": 177229,\n            \"weight\": 1296\n          }\n        ]\n      }\n    }\n  ]\n}",
+  "tokens_in": 10289,
+  "tokens_out": 2323,
+  "thinking_tokens": 512,
+  "usage_unknown": false,
+  "est_cost_usd": 0.008894200000000001,
+  "finish_reasons": [
+    "FinishReason.STOP"
+  ],
+  "prompt_feedback": null,
+  "model_version": "gemini-2.5-flash",
+  "decoded": {
+    "response_error": "'registers' is a required property",
+    "hypothesis": "To increase the rate in bin 5 and reduce rates in other bins, I will reduce the total operations allocated to segment 0 and segment 3 in the reference program, and change the instruction mix in segment 0 to include more 'divu' operations to increase stall cycles.",
+    "slots": [
+      {
+        "submitted": {
+          "program": {
+            "memory_seed": 999465599,
+            "registers": [
+              1,
+              1,
+              17,
+              4294967295,
+              1076035761,
+              4294967295,
+              1,
+              4294967295
+            ],
+            "segments": [
+              {
+                "body": [
+                  {
+                    "a": 7,
+                    "b": 5,
+                    "dst": 5,
+                    "op": "add"
+                  },
+                  {
+                    "a": 3,
+                    "b": 3,
+                    "op": "store"
+                  },
+                  {
+                    "a": 4,
+                    "b": 6,
+                    "dst": 5,
+                    "op": "divu"
+                  },
+                  {
+                    "a": 3,
+                    "b": 3,
+                    "op": "store"
+                  },
+                  {
+                    "a": 6,
+                    "b": 3,
+                    "dst": 0,
+                    "op": "divu"
+                  },
+                  {
+                    "a": 0,
+                    "dst": 0,
+                    "op": "load"
+                  },
+                  {
+                    "a": 1,
+                    "b": 6,
+                    "op": "store"
+                  },
+                  {
+                    "a": 4,
+                    "b": 7,
+                    "dst": 3,
+                    "op": "srl"
+                  }
+                ],
+                "release": 9569,
+                "weight": 1800
+              },
+              {
+                "body": [
+                  {
+                    "a": 4,
+                    "b": 0,
+                    "dst": 3,
+                    "op": "cmovz"
+                  }
+                ],
+                "release": 28578,
+                "weight": 88
+              },
+              {
+                "body": [
+                  {
+                    "a": 5,
+                    "b": 0,
+                    "dst": 3,
+                    "op": "cmovz"
+                  }
+                ],
+                "release": 99114,
+                "weight": 480
+              },
+              {
+                "body": [
+                  {
+                    "a": 5,
+                    "dst": 0,
+                    "op": "load"
+                  },
+                  {
+                    "a": 0,
+                    "b": 3,
+                    "dst": 4,
+                    "op": "xor"
+                  },
+                  {
+                    "a": 4,
+                    "b": 5,
+                    "dst": 4,
+                    "op": "srl"
+                  },
+                  {
+                    "a": 4,
+                    "b": 5,
+                    "dst": 2,
+                    "op": "cmovz"
+                  },
+                  {
+                    "a": 7,
+                    "b": 7,
+                    "dst": 7,
+                    "op": "divu"
+                  },
+                  {
+                    "a": 3,
+                    "b": 3,
+                    "dst": 2,
+                    "op": "add"
+                  },
+                  {
+                    "a": 3,
+                    "b": 7,
+                    "dst": 3,
+                    "op": "cmovz"
+                  },
+                  {
+                    "a": 3,
+                    "b": 4,
+                    "dst": 0,
+                    "op": "xor"
+                  }
+                ],
+                "release": 122339,
+                "weight": 1000
+              }
+            ]
+          }
+        },
+        "canonical": null,
+        "program_error": "'registers' is a required property",
+        "prediction": null,
+        "prediction_error": null
+      },
+      {
+        "submitted": {
+          "program": {
+            "memory_seed": 2886339993,
+            "registers": [
+              1108300482,
+              978658013,
+              31,
+              1,
+              0,
+              17,
+              17,
+              1765682813
+            ],
+            "segments": [
+              {
+                "body": [
+                  {
+                    "a": 0,
+                    "b": 3,
+                    "dst": 7,
+                    "op": "add"
+                  },
+                  {
+                    "a": 5,
+                    "b": 2,
+                    "dst": 1,
+                    "op": "add"
+                  },
+                  {
+                    "a": 3,
+                    "b": 5,
+                    "dst": 1,
+                    "op": "add"
+                  },
+                  {
+                    "a": 7,
+                    "b": 6,
+                    "dst": 3,
+                    "op": "add"
+                  }
+                ],
+                "release": 97010,
+                "weight": 800
+              },
+              {
+                "body": [
+                  {
+                    "a": 4,
+                    "b": 0,
+                    "dst": 3,
+                    "op": "cmovz"
+                  },
+                  {
+                    "a": 5,
+                    "b": 0,
+                    "dst": 3,
+                    "op": "add"
+                  }
+                ],
+                "release": 155206,
+                "weight": 1000
+              },
+              {
+                "body": [
+                  {
+                    "a": 6,
+                    "b": 1,
+                    "dst": 5,
+                    "op": "sll"
+                  },
+                  {
+                    "a": 6,
+                    "b": 4,
+                    "dst": 4,
+                    "op": "add"
+                  },
+                  {
+                    "a": 6,
+                    "b": 4,
+                    "dst": 4,
+                    "op": "add"
+                  },
+                  {
+                    "a": 4,
+                    "b": 3,
+                    "dst": 4,
+                    "op": "srl"
+                  },
+                  {
+                    "a": 4,
+                    "b": 0,
+                    "dst": 2,
+                    "op": "or"
+                  }
+                ],
+                "release": 175183,
+                "weight": 1000
+              },
+              {
+                "body": [
+                  {
+                    "a": 4,
+                    "b": 3,
+                    "dst": 4,
+                    "op": "srl"
+                  },
+                  {
+                    "a": 4,
+                    "b": 0,
+                    "dst": 2,
+                    "op": "or"
+                  },
+                  {
+                    "a": 4,
+                    "b": 0,
+                    "dst": 2,
+                    "op": "add"
+                  },
+                  {
+                    "a": 4,
+                    "b": 0,
+                    "dst": 2,
+                    "op": "add"
+                  }
+                ],
+                "release": 177229,
+                "weight": 1296
+              }
+            ]
+          }
+        },
+        "canonical": null,
+        "program_error": "'registers' is a required property",
+        "prediction": null,
+        "prediction_error": null
+      }
+    ]
+  },
+  "call": {
+    "name": "target_3-601-original",
+    "target": "target_3",
+    "seed": 601,
+    "arm": "original",
+    "payload_sha256": "33f2f6aff63df3a2cb282a3f6acb3451de3b5bdab4f990c5d07a219cd9ce959a",
+    "history_sha256": "498750c2d265546af380f3f1570a6af046901db181f5cad912635f394f581592"
+  }
+}

@@ -1,0 +1,328 @@
+{
+  "raw_text": "{\n  \"hypothesis\": \"Reducing the body length of segment 4 in candidate 0 and segment 0 in candidate 1, and adjusting release times, should bring rates closer to the target profile by allowing more operations to fit within the cycle budget and distributing work more evenly. Candidate 0 specifically targets increasing the last two bins, while candidate 1 focuses on overall rate distribution by modifying the division-heavy segment.\",\n  \"candidates\": [\n    {\n      \"program\": {\n        \"memory_seed\": 3062472912,\n        \"registers\": [\n          0,\n          4294967295,\n          0,\n          2662913795,\n          0,\n          4294967295,\n          0,\n          1\n        ],\n        \"segments\": [\n          {\n            \"body\": [\n              {\n                \"a\": 6,\n                \"b\": 1,\n                \"dst\": 2,\n                \"op\": \"xor\"\n              },\n              {\n                \"a\": 2,\n                \"b\": 1,\n                \"dst\": 4,\n                \"op\": \"srl\"\n              },\n              {\n                \"a\": 2,\n                \"b\": 0,\n                \"dst\": 6,\n                \"op\": \"xor\"\n              },\n              {\n                \"a\": 7,\n                \"b\": 0,\n                \"dst\": 2,\n                \"op\": \"mul\"\n              },\n              {\n                \"a\": 4,\n                \"b\": 0,\n                \"dst\": 3,\n                \"op\": \"mul\"\n              },\n              {\n                \"a\": 1,\n                \"dst\": 6,\n                \"op\": \"load\"\n              },\n              {\n                \"a\": 6,\n                \"b\": 1,\n                \"dst\": 5,\n                \"op\": \"cmovz\"\n              },\n              {\n                \"a\": 7,\n                \"dst\": 4,\n                \"op\": \"load\"\n              }\n            ],\n            \"release\": 26942,\n            \"weight\": 616\n          },\n          {\n            \"body\": [\n              {\n                \"a\": 2,\n                \"b\": 0,\n                \"dst\": 7,\n                \"op\": \"sll\"\n              },\n              {\n                \"a\": 1,\n                \"b\": 4,\n                \"dst\": 1,\n                \"op\": \"srl\"\n              }\n            ],\n            \"release\": 102374,\n            \"weight\": 800\n          },\n          {\n            \"body\": [\n              {\n                \"a\": 4,\n                \"dst\": 6,\n                \"op\": \"load\"\n              },\n              {\n                \"a\": 1,\n                \"dst\": 2,\n                \"op\": \"load\"\n              }\n            ],\n            \"release\": 105645,\n            \"weight\": 392\n          },\n          {\n            \"body\": [\n              {\n                \"a\": 2,\n                \"b\": 1,\n                \"dst\": 5,\n                \"op\": \"cmovz\"\n              },\n              {\n                \"a\": 0,\n                \"b\": 0,\n                \"dst\": 6,\n                \"op\": \"cmovz\"\n              },\n              {\n                \"a\": 2,\n                \"b\": 1,\n                \"dst\": 4,\n                \"op\": \"cmovz\"\n              },\n              {\n                \"a\": 2,\n                \"b\": 0,\n                \"dst\": 5,\n                \"op\": \"cmovz\"\n              }\n            ],\n            \"release\": 116314,\n            \"weight\": 784\n          },\n          {\n            \"body\": [\n              {\n                \"a\": 3,\n                \"b\": 3,\n                \"dst\": 1,\n                \"op\": \"divu\"\n              },\n              {\n                \"a\": 2,\n                \"b\": 1,\n                \"dst\": 1,\n                \"op\": \"divu\"\n              },\n              {\n                \"a\": 4,\n                \"b\": 0,\n                \"dst\": 5,\n                \"op\": \"divu\"\n              },\n              {\n                \"a\": 6,\n                \"b\": 6,\n                \"dst\": 6,\n                \"op\": \"divu\"\n              },\n              {\n                \"a\": 7,\n                \"b\": 7,\n                \"dst\": 6,\n                \"op\": \"divu\"\n              },\n              {\n                \"a\": 4,\n                \"b\": 2,\n                \"dst\": 6,\n                \"op\": \"divu\"\n              },\n              {\n                \"a\": 2,\n                \"b\": 5,\n                \"dst\": 4,\n                \"op\": \"divu\"\n              }\n            ],\n            \"release\": 158118,\n            \"weight\": 1000\n          },\n          {\n            \"body\": [\n              {\n                \"a\": 1,\n                \"b\": 3,\n                \"dst\": 0,\n                \"op\": \"mul\"\n              },\n              {\n                \"a\": 0,\n                \"b\": 5,\n                \"dst\": 7,\n                \"op\": \"add\"\n              },\n              {\n                \"a\": 7,\n                \"b\": 2,\n                \"dst\": 1,\n                \"op\": \"srl\"\n              },\n              {\n                \"a\": 1,\n                \"b\": 0,\n                \"op\": \"store\"\n              }\n            ],\n            \"release\": 170000,\n            \"weight\": 504\n          }\n        ]\n      },\n      \"reference_slot\": 1,\n      \"slot\": 3\n    },\n    {\n      \"program\": {\n        \"memory_seed\": 4043725751,\n        \"registers\": [\n          1,\n          1,\n          0,\n          17,\n          4294967295,\n          31,\n          17,\n          31\n        ],\n        \"segments\": [\n          {\n            \"body\": [\n              {\n                \"a\": 4,\n                \"b\": 3,\n                \"dst\": 6,\n                \"op\": \"divu\"\n              },\n              {\n                \"a\": 6,\n                \"b\": 2,\n                \"dst\": 0,\n                \"op\": \"mul\"\n              },\n              {\n                \"a\": 0,\n                \"b\": 1,\n                \"dst\": 1,\n                \"op\": \"add\"\n              },\n              {\n                \"a\": 1,\n                \"dst\": 2,\n                \"op\": \"load\"\n              },\n              {\n                \"a\": 2,\n                \"b\": 3,\n                \"op\": \"store\"\n              },\n              {\n                \"a\": 3,\n                \"b\": 0,\n                \"dst\": 4,\n                \"op\": \"xor\"\n              },\n              {\n                \"a\": 4,\n                \"b\": 5,\n                \"dst\": 5,\n                \"op\": \"sll\"\n              },\n              {\n                \"a\": 5,\n                \"b\": 6,\n                \"dst\": 6,\n                \"op\": \"srl\"\n              },\n              {\n                \"a\": 7,\n                \"b\": 7,\n                \"dst\": 7,\n                \"op\": \"mul\"\n              }\n            ],\n            \"release\": 29922,\n            \"weight\": 4096\n          }\n        ]\n      },\n      \"reference_slot\": 2,\n      \"slot\": 4\n    }\n  ]\n}",
+  "tokens_in": 8366,
+  "tokens_out": 2443,
+  "thinking_tokens": 512,
+  "usage_unknown": false,
+  "est_cost_usd": 0.0086173,
+  "finish_reasons": [
+    "FinishReason.STOP"
+  ],
+  "prompt_feedback": null,
+  "model_version": "gemini-2.5-flash",
+  "decoded": {
+    "response_error": "'registers' is a required property",
+    "hypothesis": "Reducing the body length of segment 4 in candidate 0 and segment 0 in candidate 1, and adjusting release times, should bring rates closer to the target profile by allowing more operations to fit within the cycle budget and distributing work more evenly. Candidate 0 specifically targets increasing the last two bins, while candidate 1 focuses on overall rate distribution by modifying the division-heavy segment.",
+    "slots": [
+      {
+        "submitted": {
+          "program": {
+            "memory_seed": 3062472912,
+            "registers": [
+              0,
+              4294967295,
+              0,
+              2662913795,
+              0,
+              4294967295,
+              0,
+              1
+            ],
+            "segments": [
+              {
+                "body": [
+                  {
+                    "a": 6,
+                    "b": 1,
+                    "dst": 2,
+                    "op": "xor"
+                  },
+                  {
+                    "a": 2,
+                    "b": 1,
+                    "dst": 4,
+                    "op": "srl"
+                  },
+                  {
+                    "a": 2,
+                    "b": 0,
+                    "dst": 6,
+                    "op": "xor"
+                  },
+                  {
+                    "a": 7,
+                    "b": 0,
+                    "dst": 2,
+                    "op": "mul"
+                  },
+                  {
+                    "a": 4,
+                    "b": 0,
+                    "dst": 3,
+                    "op": "mul"
+                  },
+                  {
+                    "a": 1,
+                    "dst": 6,
+                    "op": "load"
+                  },
+                  {
+                    "a": 6,
+                    "b": 1,
+                    "dst": 5,
+                    "op": "cmovz"
+                  },
+                  {
+                    "a": 7,
+                    "dst": 4,
+                    "op": "load"
+                  }
+                ],
+                "release": 26942,
+                "weight": 616
+              },
+              {
+                "body": [
+                  {
+                    "a": 2,
+                    "b": 0,
+                    "dst": 7,
+                    "op": "sll"
+                  },
+                  {
+                    "a": 1,
+                    "b": 4,
+                    "dst": 1,
+                    "op": "srl"
+                  }
+                ],
+                "release": 102374,
+                "weight": 800
+              },
+              {
+                "body": [
+                  {
+                    "a": 4,
+                    "dst": 6,
+                    "op": "load"
+                  },
+                  {
+                    "a": 1,
+                    "dst": 2,
+                    "op": "load"
+                  }
+                ],
+                "release": 105645,
+                "weight": 392
+              },
+              {
+                "body": [
+                  {
+                    "a": 2,
+                    "b": 1,
+                    "dst": 5,
+                    "op": "cmovz"
+                  },
+                  {
+                    "a": 0,
+                    "b": 0,
+                    "dst": 6,
+                    "op": "cmovz"
+                  },
+                  {
+                    "a": 2,
+                    "b": 1,
+                    "dst": 4,
+                    "op": "cmovz"
+                  },
+                  {
+                    "a": 2,
+                    "b": 0,
+                    "dst": 5,
+                    "op": "cmovz"
+                  }
+                ],
+                "release": 116314,
+                "weight": 784
+              },
+              {
+                "body": [
+                  {
+                    "a": 3,
+                    "b": 3,
+                    "dst": 1,
+                    "op": "divu"
+                  },
+                  {
+                    "a": 2,
+                    "b": 1,
+                    "dst": 1,
+                    "op": "divu"
+                  },
+                  {
+                    "a": 4,
+                    "b": 0,
+                    "dst": 5,
+                    "op": "divu"
+                  },
+                  {
+                    "a": 6,
+                    "b": 6,
+                    "dst": 6,
+                    "op": "divu"
+                  },
+                  {
+                    "a": 7,
+                    "b": 7,
+                    "dst": 6,
+                    "op": "divu"
+                  },
+                  {
+                    "a": 4,
+                    "b": 2,
+                    "dst": 6,
+                    "op": "divu"
+                  },
+                  {
+                    "a": 2,
+                    "b": 5,
+                    "dst": 4,
+                    "op": "divu"
+                  }
+                ],
+                "release": 158118,
+                "weight": 1000
+              },
+              {
+                "body": [
+                  {
+                    "a": 1,
+                    "b": 3,
+                    "dst": 0,
+                    "op": "mul"
+                  },
+                  {
+                    "a": 0,
+                    "b": 5,
+                    "dst": 7,
+                    "op": "add"
+                  },
+                  {
+                    "a": 7,
+                    "b": 2,
+                    "dst": 1,
+                    "op": "srl"
+                  },
+                  {
+                    "a": 1,
+                    "b": 0,
+                    "op": "store"
+                  }
+                ],
+                "release": 170000,
+                "weight": 504
+              }
+            ]
+          },
+          "reference_slot": 1,
+          "slot": 3
+        },
+        "canonical": null,
+        "program_error": "'registers' is a required property",
+        "prediction": null,
+        "prediction_error": null
+      },
+      {
+        "submitted": {
+          "program": {
+            "memory_seed": 4043725751,
+            "registers": [
+              1,
+              1,
+              0,
+              17,
+              4294967295,
+              31,
+              17,
+              31
+            ],
+            "segments": [
+              {
+                "body": [
+                  {
+                    "a": 4,
+                    "b": 3,
+                    "dst": 6,
+                    "op": "divu"
+                  },
+                  {
+                    "a": 6,
+                    "b": 2,
+                    "dst": 0,
+                    "op": "mul"
+                  },
+                  {
+                    "a": 0,
+                    "b": 1,
+                    "dst": 1,
+                    "op": "add"
+                  },
+                  {
+                    "a": 1,
+                    "dst": 2,
+                    "op": "load"
+                  },
+                  {
+                    "a": 2,
+                    "b": 3,
+                    "op": "store"
+                  },
+                  {
+                    "a": 3,
+                    "b": 0,
+                    "dst": 4,
+                    "op": "xor"
+                  },
+                  {
+                    "a": 4,
+                    "b": 5,
+                    "dst": 5,
+                    "op": "sll"
+                  },
+                  {
+                    "a": 5,
+                    "b": 6,
+                    "dst": 6,
+                    "op": "srl"
+                  },
+                  {
+                    "a": 7,
+                    "b": 7,
+                    "dst": 7,
+                    "op": "mul"
+                  }
+                ],
+                "release": 29922,
+                "weight": 4096
+              }
+            ]
+          },
+          "reference_slot": 2,
+          "slot": 4
+        },
+        "canonical": null,
+        "program_error": "'registers' is a required property",
+        "prediction": null,
+        "prediction_error": null
+      }
+    ]
+  },
+  "call": {
+    "name": "target_1-600-original",
+    "target": "target_1",
+    "seed": 600,
+    "arm": "original",
+    "payload_sha256": "63e13693ca785b5f0bba39d1f32116a1e6e1b9c35df822d48b4ee47114435bb6",
+    "history_sha256": "d070ae927c874c082806c81ba06f0229b0f95ada88dfbf3c73dbc6f221519526"
+  }
+}

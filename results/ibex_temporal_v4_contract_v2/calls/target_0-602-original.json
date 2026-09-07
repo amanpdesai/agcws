@@ -1,0 +1,627 @@
+{
+  "raw_text": "{\n  \"hypothesis\": \"The previous attempts with 'cmovz' instructions were too branch-heavy and did not match the target profile, especially in bins 3-6. We will refine the reference program (slot 4) by introducing a mix of ALU operations and loads/stores to better match the profile, while also adjusting segment release times to spread activity. For the second candidate, we will explore a program with a higher proportion of 'divu' operations, as their characteristic stall patterns might help shape the profile, particularly in the lower-activity bins, and use a different pacing strategy.\",\n  \"candidates\": [\n    {\n      \"memory_seed\": 3329196734,\n      \"registers\": [\n        4294967295,\n        3391942914,\n        4294967295,\n        1553030968,\n        17,\n        17,\n        4294967295,\n        0\n      ],\n      \"segments\": [\n        {\n          \"body\": [\n            {\n              \"a\": 3,\n              \"b\": 5,\n              \"op\": \"store\"\n            },\n            {\n              \"a\": 2,\n              \"dst\": 2,\n              \"op\": \"load\"\n            },\n            {\n              \"a\": 7,\n              \"dst\": 0,\n              \"op\": \"load\"\n            },\n            {\n              \"a\": 6,\n              \"dst\": 2,\n              \"op\": \"load\"\n            }\n          ],\n          \"release\": 0,\n          \"weight\": 500\n        },\n        {\n          \"body\": [\n            {\n              \"a\": 5,\n              \"b\": 0,\n              \"dst\": 2,\n              \"op\": \"and\"\n            }\n          ],\n          \"release\": 15000,\n          \"weight\": 500\n        },\n        {\n          \"body\": [\n            {\n              \"a\": 5,\n              \"b\": 0,\n              \"dst\": 7,\n              \"op\": \"add\"\n            },\n            {\n              \"a\": 6,\n              \"b\": 1,\n              \"dst\": 5,\n              \"op\": \"sll\"\n            },\n            {\n              \"a\": 3,\n              \"b\": 0,\n              \"dst\": 3,\n              \"op\": \"xor\"\n            },\n            {\n              \"a\": 1,\n              \"b\": 0,\n              \"dst\": 7,\n              \"op\": \"mul\"\n            },\n            {\n              \"a\": 5,\n              \"b\": 1,\n              \"dst\": 3,\n              \"op\": \"srl\"\n            },\n            {\n              \"a\": 5,\n              \"b\": 0,\n              \"dst\": 7,\n              \"op\": \"add\"\n            },\n            {\n              \"a\": 6,\n              \"b\": 1,\n              \"dst\": 4,\n              \"op\": \"or\"\n            },\n            {\n              \"a\": 5,\n              \"b\": 0,\n              \"dst\": 7,\n              \"op\": \"xor\"\n            }\n          ],\n          \"release\": 30000,\n          \"weight\": 100\n        },\n        {\n          \"body\": [\n            {\n              \"a\": 5,\n              \"b\": 3,\n              \"dst\": 2,\n              \"op\": \"or\"\n            },\n            {\n              \"a\": 2,\n              \"b\": 1,\n              \"dst\": 1,\n              \"op\": \"and\"\n            }\n          ],\n          \"release\": 50000,\n          \"weight\": 500\n        },\n        {\n          \"body\": [\n            {\n              \"a\": 1,\n              \"b\": 3,\n              \"op\": \"store\"\n            },\n            {\n              \"a\": 0,\n              \"b\": 1,\n              \"dst\": 0,\n              \"op\": \"cmovz\"\n            },\n            {\n              \"a\": 6,\n              \"b\": 4,\n              \"dst\": 3,\n              \"op\": \"add\"\n            },\n            {\n              \"a\": 1,\n              \"b\": 2,\n              \"dst\": 1,\n              \"op\": \"or\"\n            }\n          ],\n          \"release\": 70000,\n          \"weight\": 300\n        },\n        {\n          \"body\": [\n            {\n              \"a\": 0,\n              \"b\": 2,\n              \"dst\": 2,\n              \"op\": \"or\"\n            }\n          ],\n          \"release\": 90000,\n          \"weight\": 800\n        },\n        {\n          \"body\": [\n            {\n              \"a\": 4,\n              \"b\": 0,\n              \"dst\": 3,\n              \"op\": \"add\"\n            },\n            {\n              \"a\": 5,\n              \"b\": 1,\n              \"dst\": 3,\n              \"op\": \"sll\"\n            },\n            {\n              \"a\": 0,\n              \"b\": 1,\n              \"dst\": 4,\n              \"op\": \"xor\"\n            },\n            {\n              \"a\": 2,\n              \"b\": 0,\n              \"dst\": 3,\n              \"op\": \"mul\"\n            }\n          ],\n          \"release\": 110000,\n          \"weight\": 1496\n        }\n      ]\n    },\n    {\n      \"memory_seed\": 3341289835,\n      \"registers\": [\n        1,\n        31,\n        4032293290,\n        0,\n        0,\n        1,\n        3024829961,\n        17\n      ],\n      \"segments\": [\n        {\n          \"body\": [\n            {\n              \"a\": 5,\n              \"b\": 1,\n              \"dst\": 3,\n              \"op\": \"cmovz\"\n            },\n            {\n              \"a\": 6,\n              \"b\": 1,\n              \"dst\": 3,\n              \"op\": \"cmovz\"\n            },\n            {\n              \"a\": 5,\n              \"b\": 0,\n              \"dst\": 6,\n              \"op\": \"cmovz\"\n            },\n            {\n              \"a\": 4,\n              \"b\": 1,\n              \"dst\": 7,\n              \"op\": \"cmovz\"\n            },\n            {\n              \"a\": 3,\n              \"b\": 1,\n              \"dst\": 6,\n              \"op\": \"cmovz\"\n            },\n            {\n              \"a\": 1,\n              \"b\": 0,\n              \"dst\": 7,\n              \"op\": \"cmovz\"\n            },\n            {\n              \"a\": 0,\n              \"b\": 1,\n              \"dst\": 5,\n              \"op\": \"cmovz\"\n            },\n            {\n              \"a\": 1,\n              \"b\": 0,\n              \"dst\": 2,\n              \"op\": \"cmovz\"\n            }\n          ],\n          \"release\": 0,\n          \"weight\": 2000\n        },\n        {\n          \"body\": [\n            {\n              \"a\": 3,\n              \"b\": 0,\n              \"dst\": 4,\n              \"op\": \"divu\"\n            },\n            {\n              \"a\": 7,\n              \"b\": 2,\n              \"dst\": 6,\n              \"op\": \"divu\"\n            },\n            {\n              \"a\": 7,\n              \"b\": 2,\n              \"dst\": 3,\n              \"op\": \"divu\"\n            },\n            {\n              \"a\": 3,\n              \"b\": 1,\n              \"dst\": 7,\n              \"op\": \"divu\"\n            }\n          ],\n          \"release\": 15000,\n          \"weight\": 2096\n        }\n      ]\n    }\n  ]\n}",
+  "tokens_in": 11140,
+  "tokens_out": 2530,
+  "thinking_tokens": 508,
+  "usage_unknown": false,
+  "est_cost_usd": 0.009667,
+  "finish_reasons": [
+    "FinishReason.STOP"
+  ],
+  "prompt_feedback": null,
+  "model_version": "gemini-2.5-flash",
+  "decoded": {
+    "response_error": null,
+    "hypothesis": "The previous attempts with 'cmovz' instructions were too branch-heavy and did not match the target profile, especially in bins 3-6. We will refine the reference program (slot 4) by introducing a mix of ALU operations and loads/stores to better match the profile, while also adjusting segment release times to spread activity. For the second candidate, we will explore a program with a higher proportion of 'divu' operations, as their characteristic stall patterns might help shape the profile, particularly in the lower-activity bins, and use a different pacing strategy.",
+    "slots": [
+      {
+        "submitted": {
+          "memory_seed": 3329196734,
+          "registers": [
+            4294967295,
+            3391942914,
+            4294967295,
+            1553030968,
+            17,
+            17,
+            4294967295,
+            0
+          ],
+          "segments": [
+            {
+              "body": [
+                {
+                  "a": 3,
+                  "b": 5,
+                  "op": "store"
+                },
+                {
+                  "a": 2,
+                  "dst": 2,
+                  "op": "load"
+                },
+                {
+                  "a": 7,
+                  "dst": 0,
+                  "op": "load"
+                },
+                {
+                  "a": 6,
+                  "dst": 2,
+                  "op": "load"
+                }
+              ],
+              "release": 0,
+              "weight": 500
+            },
+            {
+              "body": [
+                {
+                  "a": 5,
+                  "b": 0,
+                  "dst": 2,
+                  "op": "and"
+                }
+              ],
+              "release": 15000,
+              "weight": 500
+            },
+            {
+              "body": [
+                {
+                  "a": 5,
+                  "b": 0,
+                  "dst": 7,
+                  "op": "add"
+                },
+                {
+                  "a": 6,
+                  "b": 1,
+                  "dst": 5,
+                  "op": "sll"
+                },
+                {
+                  "a": 3,
+                  "b": 0,
+                  "dst": 3,
+                  "op": "xor"
+                },
+                {
+                  "a": 1,
+                  "b": 0,
+                  "dst": 7,
+                  "op": "mul"
+                },
+                {
+                  "a": 5,
+                  "b": 1,
+                  "dst": 3,
+                  "op": "srl"
+                },
+                {
+                  "a": 5,
+                  "b": 0,
+                  "dst": 7,
+                  "op": "add"
+                },
+                {
+                  "a": 6,
+                  "b": 1,
+                  "dst": 4,
+                  "op": "or"
+                },
+                {
+                  "a": 5,
+                  "b": 0,
+                  "dst": 7,
+                  "op": "xor"
+                }
+              ],
+              "release": 30000,
+              "weight": 100
+            },
+            {
+              "body": [
+                {
+                  "a": 5,
+                  "b": 3,
+                  "dst": 2,
+                  "op": "or"
+                },
+                {
+                  "a": 2,
+                  "b": 1,
+                  "dst": 1,
+                  "op": "and"
+                }
+              ],
+              "release": 50000,
+              "weight": 500
+            },
+            {
+              "body": [
+                {
+                  "a": 1,
+                  "b": 3,
+                  "op": "store"
+                },
+                {
+                  "a": 0,
+                  "b": 1,
+                  "dst": 0,
+                  "op": "cmovz"
+                },
+                {
+                  "a": 6,
+                  "b": 4,
+                  "dst": 3,
+                  "op": "add"
+                },
+                {
+                  "a": 1,
+                  "b": 2,
+                  "dst": 1,
+                  "op": "or"
+                }
+              ],
+              "release": 70000,
+              "weight": 300
+            },
+            {
+              "body": [
+                {
+                  "a": 0,
+                  "b": 2,
+                  "dst": 2,
+                  "op": "or"
+                }
+              ],
+              "release": 90000,
+              "weight": 800
+            },
+            {
+              "body": [
+                {
+                  "a": 4,
+                  "b": 0,
+                  "dst": 3,
+                  "op": "add"
+                },
+                {
+                  "a": 5,
+                  "b": 1,
+                  "dst": 3,
+                  "op": "sll"
+                },
+                {
+                  "a": 0,
+                  "b": 1,
+                  "dst": 4,
+                  "op": "xor"
+                },
+                {
+                  "a": 2,
+                  "b": 0,
+                  "dst": 3,
+                  "op": "mul"
+                }
+              ],
+              "release": 110000,
+              "weight": 1496
+            }
+          ]
+        },
+        "canonical": {
+          "memory_seed": 3329196734,
+          "registers": [
+            4294967295,
+            3391942914,
+            4294967295,
+            1553030968,
+            17,
+            17,
+            4294967295,
+            0
+          ],
+          "segments": [
+            {
+              "body": [
+                {
+                  "a": 3,
+                  "b": 5,
+                  "op": "store"
+                },
+                {
+                  "a": 2,
+                  "dst": 2,
+                  "op": "load"
+                },
+                {
+                  "a": 7,
+                  "dst": 0,
+                  "op": "load"
+                },
+                {
+                  "a": 6,
+                  "dst": 2,
+                  "op": "load"
+                }
+              ],
+              "release": 0,
+              "weight": 500
+            },
+            {
+              "body": [
+                {
+                  "a": 5,
+                  "b": 0,
+                  "dst": 2,
+                  "op": "and"
+                }
+              ],
+              "release": 15000,
+              "weight": 500
+            },
+            {
+              "body": [
+                {
+                  "a": 5,
+                  "b": 0,
+                  "dst": 7,
+                  "op": "add"
+                },
+                {
+                  "a": 6,
+                  "b": 1,
+                  "dst": 5,
+                  "op": "sll"
+                },
+                {
+                  "a": 3,
+                  "b": 0,
+                  "dst": 3,
+                  "op": "xor"
+                },
+                {
+                  "a": 1,
+                  "b": 0,
+                  "dst": 7,
+                  "op": "mul"
+                },
+                {
+                  "a": 5,
+                  "b": 1,
+                  "dst": 3,
+                  "op": "srl"
+                },
+                {
+                  "a": 5,
+                  "b": 0,
+                  "dst": 7,
+                  "op": "add"
+                },
+                {
+                  "a": 6,
+                  "b": 1,
+                  "dst": 4,
+                  "op": "or"
+                },
+                {
+                  "a": 5,
+                  "b": 0,
+                  "dst": 7,
+                  "op": "xor"
+                }
+              ],
+              "release": 30000,
+              "weight": 100
+            },
+            {
+              "body": [
+                {
+                  "a": 5,
+                  "b": 3,
+                  "dst": 2,
+                  "op": "or"
+                },
+                {
+                  "a": 2,
+                  "b": 1,
+                  "dst": 1,
+                  "op": "and"
+                }
+              ],
+              "release": 50000,
+              "weight": 500
+            },
+            {
+              "body": [
+                {
+                  "a": 1,
+                  "b": 3,
+                  "op": "store"
+                },
+                {
+                  "a": 0,
+                  "b": 1,
+                  "dst": 0,
+                  "op": "cmovz"
+                },
+                {
+                  "a": 6,
+                  "b": 4,
+                  "dst": 3,
+                  "op": "add"
+                },
+                {
+                  "a": 1,
+                  "b": 2,
+                  "dst": 1,
+                  "op": "or"
+                }
+              ],
+              "release": 70000,
+              "weight": 300
+            },
+            {
+              "body": [
+                {
+                  "a": 0,
+                  "b": 2,
+                  "dst": 2,
+                  "op": "or"
+                }
+              ],
+              "release": 90000,
+              "weight": 800
+            },
+            {
+              "body": [
+                {
+                  "a": 4,
+                  "b": 0,
+                  "dst": 3,
+                  "op": "add"
+                },
+                {
+                  "a": 5,
+                  "b": 1,
+                  "dst": 3,
+                  "op": "sll"
+                },
+                {
+                  "a": 0,
+                  "b": 1,
+                  "dst": 4,
+                  "op": "xor"
+                },
+                {
+                  "a": 2,
+                  "b": 0,
+                  "dst": 3,
+                  "op": "mul"
+                }
+              ],
+              "release": 110000,
+              "weight": 1496
+            }
+          ]
+        },
+        "program_error": null,
+        "prediction": null,
+        "prediction_error": null
+      },
+      {
+        "submitted": {
+          "memory_seed": 3341289835,
+          "registers": [
+            1,
+            31,
+            4032293290,
+            0,
+            0,
+            1,
+            3024829961,
+            17
+          ],
+          "segments": [
+            {
+              "body": [
+                {
+                  "a": 5,
+                  "b": 1,
+                  "dst": 3,
+                  "op": "cmovz"
+                },
+                {
+                  "a": 6,
+                  "b": 1,
+                  "dst": 3,
+                  "op": "cmovz"
+                },
+                {
+                  "a": 5,
+                  "b": 0,
+                  "dst": 6,
+                  "op": "cmovz"
+                },
+                {
+                  "a": 4,
+                  "b": 1,
+                  "dst": 7,
+                  "op": "cmovz"
+                },
+                {
+                  "a": 3,
+                  "b": 1,
+                  "dst": 6,
+                  "op": "cmovz"
+                },
+                {
+                  "a": 1,
+                  "b": 0,
+                  "dst": 7,
+                  "op": "cmovz"
+                },
+                {
+                  "a": 0,
+                  "b": 1,
+                  "dst": 5,
+                  "op": "cmovz"
+                },
+                {
+                  "a": 1,
+                  "b": 0,
+                  "dst": 2,
+                  "op": "cmovz"
+                }
+              ],
+              "release": 0,
+              "weight": 2000
+            },
+            {
+              "body": [
+                {
+                  "a": 3,
+                  "b": 0,
+                  "dst": 4,
+                  "op": "divu"
+                },
+                {
+                  "a": 7,
+                  "b": 2,
+                  "dst": 6,
+                  "op": "divu"
+                },
+                {
+                  "a": 7,
+                  "b": 2,
+                  "dst": 3,
+                  "op": "divu"
+                },
+                {
+                  "a": 3,
+                  "b": 1,
+                  "dst": 7,
+                  "op": "divu"
+                }
+              ],
+              "release": 15000,
+              "weight": 2096
+            }
+          ]
+        },
+        "canonical": {
+          "memory_seed": 3341289835,
+          "registers": [
+            1,
+            31,
+            4032293290,
+            0,
+            0,
+            1,
+            3024829961,
+            17
+          ],
+          "segments": [
+            {
+              "body": [
+                {
+                  "a": 5,
+                  "b": 1,
+                  "dst": 3,
+                  "op": "cmovz"
+                },
+                {
+                  "a": 6,
+                  "b": 1,
+                  "dst": 3,
+                  "op": "cmovz"
+                },
+                {
+                  "a": 5,
+                  "b": 0,
+                  "dst": 6,
+                  "op": "cmovz"
+                },
+                {
+                  "a": 4,
+                  "b": 1,
+                  "dst": 7,
+                  "op": "cmovz"
+                },
+                {
+                  "a": 3,
+                  "b": 1,
+                  "dst": 6,
+                  "op": "cmovz"
+                },
+                {
+                  "a": 1,
+                  "b": 0,
+                  "dst": 7,
+                  "op": "cmovz"
+                },
+                {
+                  "a": 0,
+                  "b": 1,
+                  "dst": 5,
+                  "op": "cmovz"
+                },
+                {
+                  "a": 1,
+                  "b": 0,
+                  "dst": 2,
+                  "op": "cmovz"
+                }
+              ],
+              "release": 0,
+              "weight": 2000
+            },
+            {
+              "body": [
+                {
+                  "a": 3,
+                  "b": 0,
+                  "dst": 4,
+                  "op": "divu"
+                },
+                {
+                  "a": 7,
+                  "b": 2,
+                  "dst": 6,
+                  "op": "divu"
+                },
+                {
+                  "a": 7,
+                  "b": 2,
+                  "dst": 3,
+                  "op": "divu"
+                },
+                {
+                  "a": 3,
+                  "b": 1,
+                  "dst": 7,
+                  "op": "divu"
+                }
+              ],
+              "release": 15000,
+              "weight": 2096
+            }
+          ]
+        },
+        "program_error": null,
+        "prediction": null,
+        "prediction_error": null
+      }
+    ]
+  },
+  "call": {
+    "name": "target_0-602-original",
+    "target": "target_0",
+    "seed": 602,
+    "arm": "original",
+    "payload_sha256": "a253cd738559b19304fcaf748ba4fc01d8997a323f86c185aaaabb1faf9c9dbf",
+    "history_sha256": "2dbc3900d9627738d34dbccf4d59ab3436eb9dc897ac26f9ecd79b5dd94c930f"
+  }
+}
