@@ -609,3 +609,20 @@ held-out superiority or RTL activity as watts.
 version before controller selection. Do not spend held-out data repairing these
 failures. Full evidence, limitations and reproduction commands are in
 `IBEX_TEMPORAL_V3_RESULTS.md`.
+
+## 2026-09-07 — Separate response-contract readiness from temporal grounding
+
+**Decision.** Preserve the failed full-native-schema gate (twelve API rejections).
+Freeze an explicit simplified-serving-schema revision before further calls; keep
+the full local validator unchanged. The revision reaches 23/24 valid programs
+against 16/24 for the original contract on the same twelve fixed contexts.
+Archive both outcomes; unknown usage on rejected requests is not zero billing.
+**Rationale.** A clearer response boundary is prerequisite infrastructure, not
+evidence of improved temporal reasoning. Server-schema complexity is distinct
+from workload legality and model capability.
+**Consequence.** After two instruction-preserving real-CPU gates and a separately
+frozen prediction preflight, freeze the 48-cell v4 temporal panel at `61c1af43`.
+Both agent arms use the same response contract; only the grounded package exposes
+executed phase/operand feedback and a bounded prediction/outcome notebook.
+Retain requested-slot accounting, prior targets/seeds and primary temporal AUC.
+The panel is running; no v4 temporal outcome or held-out claim is declared here.
