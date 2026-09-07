@@ -11,6 +11,14 @@ from analysis.ibex_expressiveness import archive as base_archive
 from analysis.ibex_expressiveness import verify as base_verify
 
 
+def has_integral_float(value):
+    if isinstance(value, dict):
+        return any(has_integral_float(v) for v in value.values())
+    if isinstance(value, list):
+        return any(has_integral_float(v) for v in value)
+    return isinstance(value, float) and value.is_integer()
+
+
 def readiness(destination):
     manifest = json.loads((destination / "manifest.json").read_text())
     generated = []
@@ -41,6 +49,9 @@ def readiness(destination):
         "model_generated_valid_fraction": fraction,
         "work_count_rejections": work_rejections,
         "functional_failures": counts["FUNCTIONAL"],
+        "integral_float_encoding_slots": sum(
+            has_integral_float(row.get("program", {})) for row in generated
+        ),
         "ready": fraction >= threshold["model_valid_fraction_min"]
         and work_rejections <= threshold["work_count_rejections_max"]
         and counts["FUNCTIONAL"] <= threshold["functional_failures_max"],
@@ -59,6 +70,11 @@ def archive(root, destination):
             destination / "gate-evidence" / name,
             dirs_exist_ok=True,
         )
+        for seed in manifest["seeds"]:
+            relative = Path("panel") / name / f"seed-{seed}" / "random/trials.jsonl"
+            target = destination / "v1_random" / relative
+            target.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(previous / relative, target)
     shutil.copy2(previous / "manifest.json", destination / "v1_manifest.json")
     shutil.copy2(
         previous / "gate-evidence/check_all/profile.json",
@@ -91,7 +107,32 @@ def verify(destination):
     report = readiness(destination)
     if report != json.loads((destination / "readiness.json").read_text()):
         raise ValueError("readiness arithmetic mismatch")
-    return {**result, "readiness": report}
+    from experiments.ibex_temporal_v2.program import from_v1
+
+    matched = 0
+    for path in sorted(
+        (destination / "v1_random/panel").glob("*/*/random/trials.jsonl")
+    ):
+        relative = path.relative_to(destination / "v1_random")
+        old = [json.loads(line) for line in path.read_text().splitlines()]
+        new = [
+            json.loads(line)
+            for line in (destination / relative).read_text().splitlines()
+        ]
+        if len(old) != len(new):
+            raise ValueError("random replay proposal count differs")
+        for a, b in zip(old, new):
+            if from_v1(a["program"]) != b["program"] or any(
+                a[k] != b[k]
+                for k in ("slot", "valid", "stage", "rates", "loss", "best_loss")
+            ):
+                raise ValueError("v1 random replay differs under v2 embedding")
+            matched += 1
+    manifest = json.loads((destination / "manifest.json").read_text())
+    expected = len(manifest["targets"]) * len(manifest["seeds"]) * manifest["budget"]
+    if matched != expected:
+        raise ValueError("incomplete random replay evidence")
+    return {**result, "readiness": report, "identical_v1_random_slots": matched}
 
 
 if __name__ == "__main__":

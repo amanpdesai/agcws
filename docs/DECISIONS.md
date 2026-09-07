@@ -559,3 +559,30 @@ complete outcome, evidence and limitations.
 Any shared work-allocation helper, model/depth change or new target construction
 belongs to a new development version, followed by a fresh held-out protocol if
 warranted. Never repair these results retrospectively or only for the agent.
+
+## 2026-09-07 — Shared work allocation before richer temporal feedback
+
+**Decision.** Freeze a separate v2 development comparison at `1eb5106` before
+model calls. Every policy uses positive segment weights and a deterministic
+4,096-operation allocator. Partial body iterations have explicit prefix semantics;
+the compiler never pads with no-ops or relaxes the 200,000-cycle completion gate.
+Keep the v1 targets, seeds, model and proposal budget for this diagnostic only.
+**Rationale.** Work-count arithmetic rejected 95 v1 agent slots. Removing that
+representation failure for every policy tests a narrower question than changing
+the model, context and controller simultaneously. Mutation's new weight operator
+is disclosed; this is not a pure cross-version mutation ablation.
+**Verification.** CPU gate checks cover partial iterations and allocations shorter
+than a body. Embedded v1 code and measured activity match exactly. The comparison
+must reach 80% model-generated validity, with no work-count or architectural
+failures, before the interface is recommended for further research.
+**Consequence.** Richer RTL context, behavioral feedback and coverage-guided search
+remain a subsequent controlled development step. A hashed source-reader scaffold
+exists but is not connected to the frozen v2 agent. No repository-root access is
+permitted: stored target witnesses would leak reference answers.
+
+**Finding.** All 36 v2 cells completed. Model-generated validity is 157/168
+(93.45%); the readiness threshold passes. No work-count or architectural failures
+occurred. Agent mean AUC is 4.554168 versus random 4.831839, but both solve 3/12
+cells on previously observed development targets. This authorizes further
+development, not a confirmatory claim. See `IBEX_PROPOSAL_V2_RESULTS.md` for the
+full result, remaining numeric-encoding edge case and temporal claim limits.

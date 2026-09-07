@@ -727,3 +727,19 @@ $4.3444 recorded agent estimate is incomplete cost accounting.
 Earlier dated statements that development or held-out panels are still running
 are historical checkpoints, superseded by this entry. Scalar activity results
 do not establish power prediction or structural/temporal expressiveness.
+
+## 2026-09-07 — Programmable CPU temporal development and allocation diagnostic
+
+The separate [v1 CPU pilot](IBEX_EXPRESSIVENESS_RESULTS.md) completed 36 cells
+and 576 slots. Agent model-generated validity was 37.5%; work-count arithmetic
+rejected 95 slots. Random had lower mean AUC. Those results remain unchanged.
+
+The frozen [v2 allocation diagnostic](IBEX_PROPOSAL_V2_RESULTS.md) also completed
+all 36 cells and 576 slots. A shared exact-work allocator raises model-generated
+validity to 157/168 (93.45%), with zero work-count or architectural failures.
+All 192 random control slots reproduce v1 measurements exactly. Agent mean AUC
+is 4.554168 versus random 4.831839 and mutation 5.126319; agent and random both
+solve 3/12 cells. This is encouraging development evidence, not held-out
+superiority, intrinsic expressiveness or gate-power evidence. The hard temporal
+targets remain unsolved. Full compact records are tracked under
+`results/ibex_proposal_v2_development/`.

@@ -2,7 +2,7 @@ import json
 
 import pytest
 
-from analysis.ibex_proposal_v2 import readiness
+from analysis.ibex_proposal_v2 import has_integral_float, readiness
 
 
 def write_panel(root, stages):
@@ -57,3 +57,9 @@ def test_incomplete_model_panel_cannot_pass(tmp_path):
     path.write_text("\n".join(path.read_text().splitlines()[:-1]))
     with pytest.raises(ValueError, match="incomplete"):
         readiness(tmp_path)
+
+
+def test_numeric_encoding_diagnostic_does_not_confuse_integers_and_floats():
+    assert has_integral_float({"segments": [{"weight": 1.0}]})
+    assert not has_integral_float({"segments": [{"weight": 1}]})
+    assert not has_integral_float({"weight": 1.5})
