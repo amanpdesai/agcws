@@ -1,6 +1,16 @@
 # Results status
 
 Latest programmable-Ibex development evidence:
+[v4 grounded temporal study](IBEX_TEMPORAL_V4_RESULTS.md), complete at 48 cells
+and 768 slots. Random AUC is 4.831839, base agent 4.990451, coverage 5.123888,
+grounded agent 5.234116. The clearer response contract improves interface readiness,
+but execution diagnostics plus a prediction/outcome notebook do not improve
+temporal search. All policies solve only the near-flat target. The full compact
+archive and all 48 finalist profiles are tracked under
+`results/ibex_temporal_v4_development/`. This is development, not held-out or
+gate-power superiority.
+
+Previous programmable-Ibex development evidence:
 [v3 context/correction ablation](IBEX_TEMPORAL_V3_RESULTS.md), complete at 72 cells
 and 1,152 slots. Base-agent mean AUC is 4.566393 versus random 4.831839; added
 context/correction does not improve the base mean. All solves are on the near-flat

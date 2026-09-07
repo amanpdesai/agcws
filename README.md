@@ -25,6 +25,12 @@ each target/design group; no general proxy or agent-superiority claim follows.
 The AlphaEvolve-inspired population alternative was tested in development and
 not selected; this is not a reproduction of AlphaEvolve.
 
+The latest [programmable-Ibex grounding development study](docs/IBEX_TEMPORAL_V4_RESULTS.md)
+is complete: 48 cells, 768 slots, executed phase/operand diagnostics and persistent
+prediction feedback. The response interface is more reliable, but the grounded
+agent does not beat random or improve non-flat target coverage. Its complete
+compact archive and every finalist are tracked; this is not held-out confirmation.
+
 Reviewable ledgers and inference are tracked in
 [`results/structural_temporal_heldout_v1/`](results/structural_temporal_heldout_v1/),
 with matched gate evidence in

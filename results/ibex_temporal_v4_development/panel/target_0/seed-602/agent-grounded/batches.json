@@ -1,0 +1,4196 @@
+[
+  {
+    "first_slot": 1,
+    "requested_slots": 2,
+    "tokens_in": 0,
+    "tokens_out": 0,
+    "est_cost_usd": 0.0,
+    "usage_unknown": false
+  },
+  {
+    "first_slot": 3,
+    "requested_slots": 2,
+    "raw_text": "{\n  \"hypothesis\": \"The previous attempt (slot 2) had a good overall profile shape but was too high in the middle bins (3-6) and too low in the first two and last two bins. The cmovz instructions, while low activity, were spread out. The goal is to concentrate higher activity (like divu) in the early and late bins and reduce activity in the middle. For candidate 1, I will make segment 0 much smaller and place it earlier, and move segment 1 earlier as well, making it larger and focusing on divu in the early bins to increase the initial activity. For candidate 2, I will experiment with a new multi-segment structure, using divu in the first and last segments to boost activity there, and using lower-activity ops like cmovz and and in the middle to reduce activity.\",\n  \"candidates\": [\n    {\n      \"registers\": [\n        1,\n        31,\n        4032293290,\n        0,\n        0,\n        1,\n        3024829961,\n        17\n      ],\n      \"memory_seed\": 3341289835,\n      \"segments\": [\n        {\n          \"weight\": 1000,\n          \"release\": 1000,\n          \"body\": [\n            {\n              \"op\": \"divu\",\n              \"a\": 5,\n              \"b\": 0,\n              \"dst\": 7\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 6,\n              \"b\": 1,\n              \"dst\": 5\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 3,\n              \"b\": 0,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 1,\n              \"b\": 0,\n              \"dst\": 7\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 5,\n              \"b\": 1,\n              \"dst\": 3\n            }\n          ]\n        },\n        {\n          \"weight\": 1000,\n          \"release\": 20000,\n          \"body\": [\n            {\n              \"op\": \"cmovz\",\n              \"a\": 5,\n              \"b\": 1,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"cmovz\",\n              \"a\": 6,\n              \"b\": 1,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"cmovz\",\n              \"a\": 5,\n              \"b\": 0,\n              \"dst\": 6\n            },\n            {\n              \"op\": \"cmovz\",\n              \"a\": 4,\n              \"b\": 1,\n              \"dst\": 7\n            }\n          ]\n        },\n        {\n          \"weight\": 2096,\n          \"release\": 100000,\n          \"body\": [\n            {\n              \"op\": \"divu\",\n              \"a\": 4,\n              \"b\": 0,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 5,\n              \"b\": 1,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 0,\n              \"b\": 1,\n              \"dst\": 4\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 2,\n              \"b\": 0,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 7,\n              \"b\": 2,\n              \"dst\": 6\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 7,\n              \"b\": 2,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 3,\n              \"b\": 1,\n              \"dst\": 7\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"registers\": [\n        4294967295,\n        3391942914,\n        4294967295,\n        1553030968,\n        17,\n        17,\n        4294967295,\n        0\n      ],\n      \"memory_seed\": 3329196734,\n      \"segments\": [\n        {\n          \"weight\": 1000,\n          \"release\": 1000,\n          \"body\": [\n            {\n              \"op\": \"divu\",\n              \"a\": 5,\n              \"b\": 0,\n              \"dst\": 7\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 6,\n              \"b\": 1,\n              \"dst\": 5\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 3,\n              \"b\": 0,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 1,\n              \"b\": 0,\n              \"dst\": 7\n            }\n          ]\n        },\n        {\n          \"weight\": 500,\n          \"release\": 30000,\n          \"body\": [\n            {\n              \"op\": \"cmovz\",\n              \"a\": 3,\n              \"b\": 5,\n              \"dst\": 2\n            },\n            {\n              \"op\": \"cmovz\",\n              \"a\": 2,\n              \"b\": 1,\n              \"dst\": 1\n            }\n          ]\n        },\n        {\n          \"weight\": 500,\n          \"release\": 60000,\n          \"body\": [\n            {\n              \"op\": \"and\",\n              \"a\": 5,\n              \"b\": 0,\n              \"dst\": 2\n            },\n            {\n              \"op\": \"or\",\n              \"a\": 1,\n              \"b\": 2,\n              \"dst\": 1\n            }\n          ]\n        },\n        {\n          \"weight\": 500,\n          \"release\": 90000,\n          \"body\": [\n            {\n              \"op\": \"cmovz\",\n              \"a\": 0,\n              \"b\": 1,\n              \"dst\": 0\n            },\n            {\n              \"op\": \"cmovz\",\n              \"a\": 6,\n              \"b\": 4,\n              \"dst\": 3\n            }\n          ]\n        },\n        {\n          \"weight\": 1596,\n          \"release\": 120000,\n          \"body\": [\n            {\n              \"op\": \"divu\",\n              \"a\": 4,\n              \"b\": 0,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 5,\n              \"b\": 1,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 0,\n              \"b\": 1,\n              \"dst\": 4\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 2,\n              \"b\": 0,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 7,\n              \"b\": 2,\n              \"dst\": 6\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 7,\n              \"b\": 2,\n              \"dst\": 3\n            }\n          ]\n        }\n      ]\n    }\n  ],\n  \"predictions\": [\n    {\n      \"reference_slot\": 2,\n      \"changed_factor\": \"Reduced early cmovz, added early divu, moved more divu to later segment\",\n      \"window_directions\": [\n        1,\n        1,\n        -1,\n        -1,\n        -1,\n        -1,\n        1,\n        1\n      ]\n    },\n    {\n      \"reference_slot\": 2,\n      \"changed_factor\": \"New multi-segment structure with early and late divu, middle cmovz/and/or\",\n      \"window_directions\": [\n        1,\n        1,\n        -1,\n        -1,\n        -1,\n        -1,\n        1,\n        1\n      ]\n    }\n  ]\n}",
+    "tokens_in": 10322,
+    "tokens_out": 2612,
+    "thinking_tokens": 495,
+    "usage_unknown": false,
+    "est_cost_usd": 0.0096266,
+    "finish_reasons": [
+      "FinishReason.STOP"
+    ],
+    "prompt_feedback": null,
+    "model_version": "gemini-2.5-flash",
+    "decoded": {
+      "response_error": null,
+      "hypothesis": "The previous attempt (slot 2) had a good overall profile shape but was too high in the middle bins (3-6) and too low in the first two and last two bins. The cmovz instructions, while low activity, were spread out. The goal is to concentrate higher activity (like divu) in the early and late bins and reduce activity in the middle. For candidate 1, I will make segment 0 much smaller and place it earlier, and move segment 1 earlier as well, making it larger and focusing on divu in the early bins to increase the initial activity. For candidate 2, I will experiment with a new multi-segment structure, using divu in the first and last segments to boost activity there, and using lower-activity ops like cmovz and and in the middle to reduce activity.",
+      "slots": [
+        {
+          "submitted": {
+            "registers": [
+              1,
+              31,
+              4032293290,
+              0,
+              0,
+              1,
+              3024829961,
+              17
+            ],
+            "memory_seed": 3341289835,
+            "segments": [
+              {
+                "weight": 1000,
+                "release": 1000,
+                "body": [
+                  {
+                    "op": "divu",
+                    "a": 5,
+                    "b": 0,
+                    "dst": 7
+                  },
+                  {
+                    "op": "divu",
+                    "a": 6,
+                    "b": 1,
+                    "dst": 5
+                  },
+                  {
+                    "op": "divu",
+                    "a": 3,
+                    "b": 0,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 1,
+                    "b": 0,
+                    "dst": 7
+                  },
+                  {
+                    "op": "divu",
+                    "a": 5,
+                    "b": 1,
+                    "dst": 3
+                  }
+                ]
+              },
+              {
+                "weight": 1000,
+                "release": 20000,
+                "body": [
+                  {
+                    "op": "cmovz",
+                    "a": 5,
+                    "b": 1,
+                    "dst": 3
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 6,
+                    "b": 1,
+                    "dst": 3
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 5,
+                    "b": 0,
+                    "dst": 6
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 4,
+                    "b": 1,
+                    "dst": 7
+                  }
+                ]
+              },
+              {
+                "weight": 2096,
+                "release": 100000,
+                "body": [
+                  {
+                    "op": "divu",
+                    "a": 4,
+                    "b": 0,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 5,
+                    "b": 1,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 0,
+                    "b": 1,
+                    "dst": 4
+                  },
+                  {
+                    "op": "divu",
+                    "a": 2,
+                    "b": 0,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 7,
+                    "b": 2,
+                    "dst": 6
+                  },
+                  {
+                    "op": "divu",
+                    "a": 7,
+                    "b": 2,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 3,
+                    "b": 1,
+                    "dst": 7
+                  }
+                ]
+              }
+            ]
+          },
+          "canonical": {
+            "registers": [
+              1,
+              31,
+              4032293290,
+              0,
+              0,
+              1,
+              3024829961,
+              17
+            ],
+            "memory_seed": 3341289835,
+            "segments": [
+              {
+                "weight": 1000,
+                "release": 1000,
+                "body": [
+                  {
+                    "op": "divu",
+                    "a": 5,
+                    "b": 0,
+                    "dst": 7
+                  },
+                  {
+                    "op": "divu",
+                    "a": 6,
+                    "b": 1,
+                    "dst": 5
+                  },
+                  {
+                    "op": "divu",
+                    "a": 3,
+                    "b": 0,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 1,
+                    "b": 0,
+                    "dst": 7
+                  },
+                  {
+                    "op": "divu",
+                    "a": 5,
+                    "b": 1,
+                    "dst": 3
+                  }
+                ]
+              },
+              {
+                "weight": 1000,
+                "release": 20000,
+                "body": [
+                  {
+                    "op": "cmovz",
+                    "a": 5,
+                    "b": 1,
+                    "dst": 3
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 6,
+                    "b": 1,
+                    "dst": 3
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 5,
+                    "b": 0,
+                    "dst": 6
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 4,
+                    "b": 1,
+                    "dst": 7
+                  }
+                ]
+              },
+              {
+                "weight": 2096,
+                "release": 100000,
+                "body": [
+                  {
+                    "op": "divu",
+                    "a": 4,
+                    "b": 0,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 5,
+                    "b": 1,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 0,
+                    "b": 1,
+                    "dst": 4
+                  },
+                  {
+                    "op": "divu",
+                    "a": 2,
+                    "b": 0,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 7,
+                    "b": 2,
+                    "dst": 6
+                  },
+                  {
+                    "op": "divu",
+                    "a": 7,
+                    "b": 2,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 3,
+                    "b": 1,
+                    "dst": 7
+                  }
+                ]
+              }
+            ]
+          },
+          "program_error": null,
+          "prediction": {
+            "reference_slot": 2,
+            "changed_factor": "Reduced early cmovz, added early divu, moved more divu to later segment",
+            "window_directions": [
+              1,
+              1,
+              -1,
+              -1,
+              -1,
+              -1,
+              1,
+              1
+            ]
+          },
+          "prediction_error": null
+        },
+        {
+          "submitted": {
+            "registers": [
+              4294967295,
+              3391942914,
+              4294967295,
+              1553030968,
+              17,
+              17,
+              4294967295,
+              0
+            ],
+            "memory_seed": 3329196734,
+            "segments": [
+              {
+                "weight": 1000,
+                "release": 1000,
+                "body": [
+                  {
+                    "op": "divu",
+                    "a": 5,
+                    "b": 0,
+                    "dst": 7
+                  },
+                  {
+                    "op": "divu",
+                    "a": 6,
+                    "b": 1,
+                    "dst": 5
+                  },
+                  {
+                    "op": "divu",
+                    "a": 3,
+                    "b": 0,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 1,
+                    "b": 0,
+                    "dst": 7
+                  }
+                ]
+              },
+              {
+                "weight": 500,
+                "release": 30000,
+                "body": [
+                  {
+                    "op": "cmovz",
+                    "a": 3,
+                    "b": 5,
+                    "dst": 2
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 2,
+                    "b": 1,
+                    "dst": 1
+                  }
+                ]
+              },
+              {
+                "weight": 500,
+                "release": 60000,
+                "body": [
+                  {
+                    "op": "and",
+                    "a": 5,
+                    "b": 0,
+                    "dst": 2
+                  },
+                  {
+                    "op": "or",
+                    "a": 1,
+                    "b": 2,
+                    "dst": 1
+                  }
+                ]
+              },
+              {
+                "weight": 500,
+                "release": 90000,
+                "body": [
+                  {
+                    "op": "cmovz",
+                    "a": 0,
+                    "b": 1,
+                    "dst": 0
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 6,
+                    "b": 4,
+                    "dst": 3
+                  }
+                ]
+              },
+              {
+                "weight": 1596,
+                "release": 120000,
+                "body": [
+                  {
+                    "op": "divu",
+                    "a": 4,
+                    "b": 0,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 5,
+                    "b": 1,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 0,
+                    "b": 1,
+                    "dst": 4
+                  },
+                  {
+                    "op": "divu",
+                    "a": 2,
+                    "b": 0,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 7,
+                    "b": 2,
+                    "dst": 6
+                  },
+                  {
+                    "op": "divu",
+                    "a": 7,
+                    "b": 2,
+                    "dst": 3
+                  }
+                ]
+              }
+            ]
+          },
+          "canonical": {
+            "registers": [
+              4294967295,
+              3391942914,
+              4294967295,
+              1553030968,
+              17,
+              17,
+              4294967295,
+              0
+            ],
+            "memory_seed": 3329196734,
+            "segments": [
+              {
+                "weight": 1000,
+                "release": 1000,
+                "body": [
+                  {
+                    "op": "divu",
+                    "a": 5,
+                    "b": 0,
+                    "dst": 7
+                  },
+                  {
+                    "op": "divu",
+                    "a": 6,
+                    "b": 1,
+                    "dst": 5
+                  },
+                  {
+                    "op": "divu",
+                    "a": 3,
+                    "b": 0,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 1,
+                    "b": 0,
+                    "dst": 7
+                  }
+                ]
+              },
+              {
+                "weight": 500,
+                "release": 30000,
+                "body": [
+                  {
+                    "op": "cmovz",
+                    "a": 3,
+                    "b": 5,
+                    "dst": 2
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 2,
+                    "b": 1,
+                    "dst": 1
+                  }
+                ]
+              },
+              {
+                "weight": 500,
+                "release": 60000,
+                "body": [
+                  {
+                    "op": "and",
+                    "a": 5,
+                    "b": 0,
+                    "dst": 2
+                  },
+                  {
+                    "op": "or",
+                    "a": 1,
+                    "b": 2,
+                    "dst": 1
+                  }
+                ]
+              },
+              {
+                "weight": 500,
+                "release": 90000,
+                "body": [
+                  {
+                    "op": "cmovz",
+                    "a": 0,
+                    "b": 1,
+                    "dst": 0
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 6,
+                    "b": 4,
+                    "dst": 3
+                  }
+                ]
+              },
+              {
+                "weight": 1596,
+                "release": 120000,
+                "body": [
+                  {
+                    "op": "divu",
+                    "a": 4,
+                    "b": 0,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 5,
+                    "b": 1,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 0,
+                    "b": 1,
+                    "dst": 4
+                  },
+                  {
+                    "op": "divu",
+                    "a": 2,
+                    "b": 0,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 7,
+                    "b": 2,
+                    "dst": 6
+                  },
+                  {
+                    "op": "divu",
+                    "a": 7,
+                    "b": 2,
+                    "dst": 3
+                  }
+                ]
+              }
+            ]
+          },
+          "program_error": null,
+          "prediction": {
+            "reference_slot": 2,
+            "changed_factor": "New multi-segment structure with early and late divu, middle cmovz/and/or",
+            "window_directions": [
+              1,
+              1,
+              -1,
+              -1,
+              -1,
+              -1,
+              1,
+              1
+            ]
+          },
+          "prediction_error": null
+        }
+      ]
+    },
+    "payload_sha256": "9026cd19014ae4a1986a401524c3ebe6908cea03826410d1d8de5790f79a02a7"
+  },
+  {
+    "first_slot": 5,
+    "requested_slots": 2,
+    "raw_text": "{\n  \"hypothesis\": \"The goal profile has high activity in bins 1, 2, 7, 8 and low activity in bins 3, 4, 5, 6. The reference slot 2 program was heavily front-loaded with cmovz operations, leading to high activity in early bins and then tapering off. The divu operations are needed for higher activity in later bins. We will try to increase divu operations in later segments and adjust cmovz/other ALU operations to match the profile.\",\n  \"candidates\": [\n    {\n      \"registers\": [\n        1,\n        31,\n        4032293290,\n        0,\n        0,\n        1,\n        3024829961,\n        17\n      ],\n      \"memory_seed\": 3341289835,\n      \"segments\": [\n        {\n          \"weight\": 1000,\n          \"release\": 1000,\n          \"body\": [\n            {\n              \"op\": \"divu\",\n              \"a\": 5,\n              \"b\": 0,\n              \"dst\": 7\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 6,\n              \"b\": 1,\n              \"dst\": 5\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 3,\n              \"b\": 0,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 1,\n              \"b\": 0,\n              \"dst\": 7\n            }\n          ]\n        },\n        {\n          \"weight\": 1000,\n          \"release\": 20000,\n          \"body\": [\n            {\n              \"op\": \"cmovz\",\n              \"a\": 5,\n              \"b\": 1,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"cmovz\",\n              \"a\": 6,\n              \"b\": 1,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"cmovz\",\n              \"a\": 5,\n              \"b\": 0,\n              \"dst\": 6\n            },\n            {\n              \"op\": \"cmovz\",\n              \"a\": 4,\n              \"b\": 1,\n              \"dst\": 7\n            }\n          ]\n        },\n        {\n          \"weight\": 2096,\n          \"release\": 100000,\n          \"body\": [\n            {\n              \"op\": \"divu\",\n              \"a\": 4,\n              \"b\": 0,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 5,\n              \"b\": 1,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 0,\n              \"b\": 1,\n              \"dst\": 4\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 2,\n              \"b\": 0,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 7,\n              \"b\": 2,\n              \"dst\": 6\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 7,\n              \"b\": 2,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 3,\n              \"b\": 1,\n              \"dst\": 7\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"registers\": [\n        4294967295,\n        3391942914,\n        4294967295,\n        1553030968,\n        17,\n        17,\n        4294967295,\n        0\n      ],\n      \"memory_seed\": 3329196734,\n      \"segments\": [\n        {\n          \"weight\": 1000,\n          \"release\": 1000,\n          \"body\": [\n            {\n              \"op\": \"divu\",\n              \"a\": 5,\n              \"b\": 0,\n              \"dst\": 7\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 6,\n              \"b\": 1,\n              \"dst\": 5\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 3,\n              \"b\": 0,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 1,\n              \"b\": 0,\n              \"dst\": 7\n            }\n          ]\n        },\n        {\n          \"weight\": 500,\n          \"release\": 30000,\n          \"body\": [\n            {\n              \"op\": \"cmovz\",\n              \"a\": 3,\n              \"b\": 5,\n              \"dst\": 2\n            },\n            {\n              \"op\": \"cmovz\",\n              \"a\": 2,\n              \"b\": 1,\n              \"dst\": 1\n            }\n          ]\n        },\n        {\n          \"weight\": 500,\n          \"release\": 60000,\n          \"body\": [\n            {\n              \"op\": \"and\",\n              \"a\": 5,\n              \"b\": 0,\n              \"dst\": 2\n            },\n            {\n              \"op\": \"or\",\n              \"a\": 1,\n              \"b\": 2,\n              \"dst\": 1\n            }\n          ]\n        },\n        {\n          \"weight\": 500,\n          \"release\": 90000,\n          \"body\": [\n            {\n              \"op\": \"cmovz\",\n              \"a\": 0,\n              \"b\": 1,\n              \"dst\": 0\n            },\n            {\n              \"op\": \"cmovz\",\n              \"a\": 6,\n              \"b\": 4,\n              \"dst\": 3\n            }\n          ]\n        },\n        {\n          \"weight\": 1596,\n          \"release\": 120000,\n          \"body\": [\n            {\n              \"op\": \"divu\",\n              \"a\": 4,\n              \"b\": 0,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 5,\n              \"b\": 1,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 0,\n              \"b\": 1,\n              \"dst\": 4\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 2,\n              \"b\": 0,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 7,\n              \"b\": 2,\n              \"dst\": 6\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 7,\n              \"b\": 2,\n              \"dst\": 3\n            }\n          ]\n        }\n      ]\n    }\n  ],\n  \"predictions\": [\n    {\n      \"reference_slot\": 2,\n      \"changed_factor\": \"Reduced early cmovz, added early divu, moved more divu to later segment\",\n      \"window_directions\": [\n        1,\n        1,\n        -1,\n        -1,\n        -1,\n        -1,\n        1,\n        1\n      ]\n    },\n    {\n      \"reference_slot\": 2,\n      \"changed_factor\": \"New multi-segment structure with early and late divu, middle cmovz/and/or\",\n      \"window_directions\": [\n        1,\n        1,\n        -1,\n        -1,\n        -1,\n        -1,\n        1,\n        1\n      ]\n    }\n  ]\n}",
+    "tokens_in": 19184,
+    "tokens_out": 2519,
+    "thinking_tokens": 509,
+    "usage_unknown": false,
+    "est_cost_usd": 0.012052700000000001,
+    "finish_reasons": [
+      "FinishReason.STOP"
+    ],
+    "prompt_feedback": null,
+    "model_version": "gemini-2.5-flash",
+    "decoded": {
+      "response_error": null,
+      "hypothesis": "The goal profile has high activity in bins 1, 2, 7, 8 and low activity in bins 3, 4, 5, 6. The reference slot 2 program was heavily front-loaded with cmovz operations, leading to high activity in early bins and then tapering off. The divu operations are needed for higher activity in later bins. We will try to increase divu operations in later segments and adjust cmovz/other ALU operations to match the profile.",
+      "slots": [
+        {
+          "submitted": {
+            "registers": [
+              1,
+              31,
+              4032293290,
+              0,
+              0,
+              1,
+              3024829961,
+              17
+            ],
+            "memory_seed": 3341289835,
+            "segments": [
+              {
+                "weight": 1000,
+                "release": 1000,
+                "body": [
+                  {
+                    "op": "divu",
+                    "a": 5,
+                    "b": 0,
+                    "dst": 7
+                  },
+                  {
+                    "op": "divu",
+                    "a": 6,
+                    "b": 1,
+                    "dst": 5
+                  },
+                  {
+                    "op": "divu",
+                    "a": 3,
+                    "b": 0,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 1,
+                    "b": 0,
+                    "dst": 7
+                  }
+                ]
+              },
+              {
+                "weight": 1000,
+                "release": 20000,
+                "body": [
+                  {
+                    "op": "cmovz",
+                    "a": 5,
+                    "b": 1,
+                    "dst": 3
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 6,
+                    "b": 1,
+                    "dst": 3
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 5,
+                    "b": 0,
+                    "dst": 6
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 4,
+                    "b": 1,
+                    "dst": 7
+                  }
+                ]
+              },
+              {
+                "weight": 2096,
+                "release": 100000,
+                "body": [
+                  {
+                    "op": "divu",
+                    "a": 4,
+                    "b": 0,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 5,
+                    "b": 1,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 0,
+                    "b": 1,
+                    "dst": 4
+                  },
+                  {
+                    "op": "divu",
+                    "a": 2,
+                    "b": 0,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 7,
+                    "b": 2,
+                    "dst": 6
+                  },
+                  {
+                    "op": "divu",
+                    "a": 7,
+                    "b": 2,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 3,
+                    "b": 1,
+                    "dst": 7
+                  }
+                ]
+              }
+            ]
+          },
+          "canonical": {
+            "registers": [
+              1,
+              31,
+              4032293290,
+              0,
+              0,
+              1,
+              3024829961,
+              17
+            ],
+            "memory_seed": 3341289835,
+            "segments": [
+              {
+                "weight": 1000,
+                "release": 1000,
+                "body": [
+                  {
+                    "op": "divu",
+                    "a": 5,
+                    "b": 0,
+                    "dst": 7
+                  },
+                  {
+                    "op": "divu",
+                    "a": 6,
+                    "b": 1,
+                    "dst": 5
+                  },
+                  {
+                    "op": "divu",
+                    "a": 3,
+                    "b": 0,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 1,
+                    "b": 0,
+                    "dst": 7
+                  }
+                ]
+              },
+              {
+                "weight": 1000,
+                "release": 20000,
+                "body": [
+                  {
+                    "op": "cmovz",
+                    "a": 5,
+                    "b": 1,
+                    "dst": 3
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 6,
+                    "b": 1,
+                    "dst": 3
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 5,
+                    "b": 0,
+                    "dst": 6
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 4,
+                    "b": 1,
+                    "dst": 7
+                  }
+                ]
+              },
+              {
+                "weight": 2096,
+                "release": 100000,
+                "body": [
+                  {
+                    "op": "divu",
+                    "a": 4,
+                    "b": 0,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 5,
+                    "b": 1,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 0,
+                    "b": 1,
+                    "dst": 4
+                  },
+                  {
+                    "op": "divu",
+                    "a": 2,
+                    "b": 0,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 7,
+                    "b": 2,
+                    "dst": 6
+                  },
+                  {
+                    "op": "divu",
+                    "a": 7,
+                    "b": 2,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 3,
+                    "b": 1,
+                    "dst": 7
+                  }
+                ]
+              }
+            ]
+          },
+          "program_error": null,
+          "prediction": {
+            "reference_slot": 2,
+            "changed_factor": "Reduced early cmovz, added early divu, moved more divu to later segment",
+            "window_directions": [
+              1,
+              1,
+              -1,
+              -1,
+              -1,
+              -1,
+              1,
+              1
+            ]
+          },
+          "prediction_error": null
+        },
+        {
+          "submitted": {
+            "registers": [
+              4294967295,
+              3391942914,
+              4294967295,
+              1553030968,
+              17,
+              17,
+              4294967295,
+              0
+            ],
+            "memory_seed": 3329196734,
+            "segments": [
+              {
+                "weight": 1000,
+                "release": 1000,
+                "body": [
+                  {
+                    "op": "divu",
+                    "a": 5,
+                    "b": 0,
+                    "dst": 7
+                  },
+                  {
+                    "op": "divu",
+                    "a": 6,
+                    "b": 1,
+                    "dst": 5
+                  },
+                  {
+                    "op": "divu",
+                    "a": 3,
+                    "b": 0,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 1,
+                    "b": 0,
+                    "dst": 7
+                  }
+                ]
+              },
+              {
+                "weight": 500,
+                "release": 30000,
+                "body": [
+                  {
+                    "op": "cmovz",
+                    "a": 3,
+                    "b": 5,
+                    "dst": 2
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 2,
+                    "b": 1,
+                    "dst": 1
+                  }
+                ]
+              },
+              {
+                "weight": 500,
+                "release": 60000,
+                "body": [
+                  {
+                    "op": "and",
+                    "a": 5,
+                    "b": 0,
+                    "dst": 2
+                  },
+                  {
+                    "op": "or",
+                    "a": 1,
+                    "b": 2,
+                    "dst": 1
+                  }
+                ]
+              },
+              {
+                "weight": 500,
+                "release": 90000,
+                "body": [
+                  {
+                    "op": "cmovz",
+                    "a": 0,
+                    "b": 1,
+                    "dst": 0
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 6,
+                    "b": 4,
+                    "dst": 3
+                  }
+                ]
+              },
+              {
+                "weight": 1596,
+                "release": 120000,
+                "body": [
+                  {
+                    "op": "divu",
+                    "a": 4,
+                    "b": 0,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 5,
+                    "b": 1,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 0,
+                    "b": 1,
+                    "dst": 4
+                  },
+                  {
+                    "op": "divu",
+                    "a": 2,
+                    "b": 0,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 7,
+                    "b": 2,
+                    "dst": 6
+                  },
+                  {
+                    "op": "divu",
+                    "a": 7,
+                    "b": 2,
+                    "dst": 3
+                  }
+                ]
+              }
+            ]
+          },
+          "canonical": {
+            "registers": [
+              4294967295,
+              3391942914,
+              4294967295,
+              1553030968,
+              17,
+              17,
+              4294967295,
+              0
+            ],
+            "memory_seed": 3329196734,
+            "segments": [
+              {
+                "weight": 1000,
+                "release": 1000,
+                "body": [
+                  {
+                    "op": "divu",
+                    "a": 5,
+                    "b": 0,
+                    "dst": 7
+                  },
+                  {
+                    "op": "divu",
+                    "a": 6,
+                    "b": 1,
+                    "dst": 5
+                  },
+                  {
+                    "op": "divu",
+                    "a": 3,
+                    "b": 0,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 1,
+                    "b": 0,
+                    "dst": 7
+                  }
+                ]
+              },
+              {
+                "weight": 500,
+                "release": 30000,
+                "body": [
+                  {
+                    "op": "cmovz",
+                    "a": 3,
+                    "b": 5,
+                    "dst": 2
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 2,
+                    "b": 1,
+                    "dst": 1
+                  }
+                ]
+              },
+              {
+                "weight": 500,
+                "release": 60000,
+                "body": [
+                  {
+                    "op": "and",
+                    "a": 5,
+                    "b": 0,
+                    "dst": 2
+                  },
+                  {
+                    "op": "or",
+                    "a": 1,
+                    "b": 2,
+                    "dst": 1
+                  }
+                ]
+              },
+              {
+                "weight": 500,
+                "release": 90000,
+                "body": [
+                  {
+                    "op": "cmovz",
+                    "a": 0,
+                    "b": 1,
+                    "dst": 0
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 6,
+                    "b": 4,
+                    "dst": 3
+                  }
+                ]
+              },
+              {
+                "weight": 1596,
+                "release": 120000,
+                "body": [
+                  {
+                    "op": "divu",
+                    "a": 4,
+                    "b": 0,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 5,
+                    "b": 1,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 0,
+                    "b": 1,
+                    "dst": 4
+                  },
+                  {
+                    "op": "divu",
+                    "a": 2,
+                    "b": 0,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 7,
+                    "b": 2,
+                    "dst": 6
+                  },
+                  {
+                    "op": "divu",
+                    "a": 7,
+                    "b": 2,
+                    "dst": 3
+                  }
+                ]
+              }
+            ]
+          },
+          "program_error": null,
+          "prediction": {
+            "reference_slot": 2,
+            "changed_factor": "New multi-segment structure with early and late divu, middle cmovz/and/or",
+            "window_directions": [
+              1,
+              1,
+              -1,
+              -1,
+              -1,
+              -1,
+              1,
+              1
+            ]
+          },
+          "prediction_error": null
+        }
+      ]
+    },
+    "payload_sha256": "85ae2002a1fc46b7c0ee57fb25a532627e0bca1d61971fc3d907a12aab63585b"
+  },
+  {
+    "first_slot": 7,
+    "requested_slots": 2,
+    "raw_text": "{\n  \"hypothesis\": \"The goal profile requires high activity in bins 0, 1, 6, 7 and low activity in bins 2, 3, 4, 5. The previous attempts (slots 3 and 4) tried to achieve this by using early divu operations and moving cmovz operations. However, the early divu operations caused a significant drop in activity across most bins, especially in the middle. The current candidates will focus on tuning the segment releases and instruction mix, particularly by reducing early divu and balancing operations across segments, to better match the target profile. Candidate 1 will use segment 3 as a base, adjusting divu placement and cmovz count. Candidate 2 will try a different segment structure based on slot 4, aiming for more consistent activity distribution.\",\n  \"candidates\": [\n    {\n      \"registers\": [\n        1,\n        31,\n        4032293290,\n        0,\n        0,\n        1,\n        3024829961,\n        17\n      ],\n      \"memory_seed\": 3341289835,\n      \"segments\": [\n        {\n          \"weight\": 800,\n          \"release\": 1000,\n          \"body\": [\n            {\n              \"op\": \"divu\",\n              \"a\": 5,\n              \"b\": 0,\n              \"dst\": 7\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 6,\n              \"b\": 1,\n              \"dst\": 5\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 3,\n              \"b\": 0,\n              \"dst\": 3\n            }\n          ]\n        },\n        {\n          \"weight\": 1000,\n          \"release\": 20000,\n          \"body\": [\n            {\n              \"op\": \"cmovz\",\n              \"a\": 5,\n              \"b\": 1,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"cmovz\",\n              \"a\": 6,\n              \"b\": 1,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"cmovz\",\n              \"a\": 5,\n              \"b\": 0,\n              \"dst\": 6\n            },\n            {\n              \"op\": \"cmovz\",\n              \"a\": 4,\n              \"b\": 1,\n              \"dst\": 7\n            }\n          ]\n        },\n        {\n          \"weight\": 1200,\n          \"release\": 40000,\n          \"body\": [\n            {\n              \"op\": \"add\",\n              \"a\": 0,\n              \"b\": 1,\n              \"dst\": 0\n            },\n            {\n              \"op\": \"xor\",\n              \"a\": 2,\n              \"b\": 3,\n              \"dst\": 4\n            },\n            {\n              \"op\": \"and\",\n              \"a\": 5,\n              \"b\": 6,\n              \"dst\": 7\n            }\n          ]\n        },\n        {\n          \"weight\": 1096,\n          \"release\": 100000,\n          \"body\": [\n            {\n              \"op\": \"divu\",\n              \"a\": 4,\n              \"b\": 0,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 5,\n              \"b\": 1,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 0,\n              \"b\": 1,\n              \"dst\": 4\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 2,\n              \"b\": 0,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 7,\n              \"b\": 2,\n              \"dst\": 6\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 7,\n              \"b\": 2,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 3,\n              \"b\": 1,\n              \"dst\": 7\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"registers\": [\n        4294967295,\n        3391942914,\n        4294967295,\n        1553030968,\n        17,\n        17,\n        4294967295,\n        0\n      ],\n      \"memory_seed\": 3329196734,\n      \"segments\": [\n        {\n          \"weight\": 800,\n          \"release\": 1000,\n          \"body\": [\n            {\n              \"op\": \"divu\",\n              \"a\": 5,\n              \"b\": 0,\n              \"dst\": 7\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 6,\n              \"b\": 1,\n              \"dst\": 5\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 3,\n              \"b\": 0,\n              \"dst\": 3\n            }\n          ]\n        },\n        {\n          \"weight\": 500,\n          \"release\": 30000,\n          \"body\": [\n            {\n              \"op\": \"cmovz\",\n              \"a\": 3,\n              \"b\": 5,\n              \"dst\": 2\n            },\n            {\n              \"op\": \"cmovz\",\n              \"a\": 2,\n              \"b\": 1,\n              \"dst\": 1\n            }\n          ]\n        },\n        {\n          \"weight\": 500,\n          \"release\": 60000,\n          \"body\": [\n            {\n              \"op\": \"and\",\n              \"a\": 5,\n              \"b\": 0,\n              \"dst\": 2\n            },\n            {\n              \"op\": \"or\",\n              \"a\": 1,\n              \"b\": 2,\n              \"dst\": 1\n            }\n          ]\n        },\n        {\n          \"weight\": 500,\n          \"release\": 90000,\n          \"body\": [\n            {\n              \"op\": \"cmovz\",\n              \"a\": 0,\n              \"b\": 1,\n              \"dst\": 0\n            },\n            {\n              \"op\": \"cmovz\",\n              \"a\": 6,\n              \"b\": 4,\n              \"dst\": 3\n            }\n          ]\n        },\n        {\n          \"weight\": 1796,\n          \"release\": 120000,\n          \"body\": [\n            {\n              \"op\": \"divu\",\n              \"a\": 4,\n              \"b\": 0,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 5,\n              \"b\": 1,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 0,\n              \"b\": 1,\n              \"dst\": 4\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 2,\n              \"b\": 0,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 7,\n              \"b\": 2,\n              \"dst\": 6\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 7,\n              \"b\": 2,\n              \"dst\": 3\n            }\n          ]\n        }\n      ]\n    }\n  ],\n  \"predictions\": [\n    {\n      \"reference_slot\": 3,\n      \"changed_factor\": \"Reduced early divu count, introduced middle ALU segment, increased late divu weight\",\n      \"window_directions\": [\n        0,\n        0,\n        -1,\n        -1,\n        -1,\n        -1,\n        0,\n        0\n      ]\n    },\n    {\n      \"reference_slot\": 4,\n      \"changed_factor\": \"Reduced early divu weight, increased late divu weight, removed one divu from the last segment\",\n      \"window_directions\": [\n        0,\n        0,\n        -1,\n        -1,\n        -1,\n        -1,\n        0,\n        0\n      ]\n    }\n  ]\n}",
+    "tokens_in": 28001,
+    "tokens_out": 2648,
+    "thinking_tokens": 509,
+    "usage_unknown": false,
+    "est_cost_usd": 0.015020299999999999,
+    "finish_reasons": [
+      "FinishReason.STOP"
+    ],
+    "prompt_feedback": null,
+    "model_version": "gemini-2.5-flash",
+    "decoded": {
+      "response_error": null,
+      "hypothesis": "The goal profile requires high activity in bins 0, 1, 6, 7 and low activity in bins 2, 3, 4, 5. The previous attempts (slots 3 and 4) tried to achieve this by using early divu operations and moving cmovz operations. However, the early divu operations caused a significant drop in activity across most bins, especially in the middle. The current candidates will focus on tuning the segment releases and instruction mix, particularly by reducing early divu and balancing operations across segments, to better match the target profile. Candidate 1 will use segment 3 as a base, adjusting divu placement and cmovz count. Candidate 2 will try a different segment structure based on slot 4, aiming for more consistent activity distribution.",
+      "slots": [
+        {
+          "submitted": {
+            "registers": [
+              1,
+              31,
+              4032293290,
+              0,
+              0,
+              1,
+              3024829961,
+              17
+            ],
+            "memory_seed": 3341289835,
+            "segments": [
+              {
+                "weight": 800,
+                "release": 1000,
+                "body": [
+                  {
+                    "op": "divu",
+                    "a": 5,
+                    "b": 0,
+                    "dst": 7
+                  },
+                  {
+                    "op": "divu",
+                    "a": 6,
+                    "b": 1,
+                    "dst": 5
+                  },
+                  {
+                    "op": "divu",
+                    "a": 3,
+                    "b": 0,
+                    "dst": 3
+                  }
+                ]
+              },
+              {
+                "weight": 1000,
+                "release": 20000,
+                "body": [
+                  {
+                    "op": "cmovz",
+                    "a": 5,
+                    "b": 1,
+                    "dst": 3
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 6,
+                    "b": 1,
+                    "dst": 3
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 5,
+                    "b": 0,
+                    "dst": 6
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 4,
+                    "b": 1,
+                    "dst": 7
+                  }
+                ]
+              },
+              {
+                "weight": 1200,
+                "release": 40000,
+                "body": [
+                  {
+                    "op": "add",
+                    "a": 0,
+                    "b": 1,
+                    "dst": 0
+                  },
+                  {
+                    "op": "xor",
+                    "a": 2,
+                    "b": 3,
+                    "dst": 4
+                  },
+                  {
+                    "op": "and",
+                    "a": 5,
+                    "b": 6,
+                    "dst": 7
+                  }
+                ]
+              },
+              {
+                "weight": 1096,
+                "release": 100000,
+                "body": [
+                  {
+                    "op": "divu",
+                    "a": 4,
+                    "b": 0,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 5,
+                    "b": 1,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 0,
+                    "b": 1,
+                    "dst": 4
+                  },
+                  {
+                    "op": "divu",
+                    "a": 2,
+                    "b": 0,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 7,
+                    "b": 2,
+                    "dst": 6
+                  },
+                  {
+                    "op": "divu",
+                    "a": 7,
+                    "b": 2,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 3,
+                    "b": 1,
+                    "dst": 7
+                  }
+                ]
+              }
+            ]
+          },
+          "canonical": {
+            "registers": [
+              1,
+              31,
+              4032293290,
+              0,
+              0,
+              1,
+              3024829961,
+              17
+            ],
+            "memory_seed": 3341289835,
+            "segments": [
+              {
+                "weight": 800,
+                "release": 1000,
+                "body": [
+                  {
+                    "op": "divu",
+                    "a": 5,
+                    "b": 0,
+                    "dst": 7
+                  },
+                  {
+                    "op": "divu",
+                    "a": 6,
+                    "b": 1,
+                    "dst": 5
+                  },
+                  {
+                    "op": "divu",
+                    "a": 3,
+                    "b": 0,
+                    "dst": 3
+                  }
+                ]
+              },
+              {
+                "weight": 1000,
+                "release": 20000,
+                "body": [
+                  {
+                    "op": "cmovz",
+                    "a": 5,
+                    "b": 1,
+                    "dst": 3
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 6,
+                    "b": 1,
+                    "dst": 3
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 5,
+                    "b": 0,
+                    "dst": 6
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 4,
+                    "b": 1,
+                    "dst": 7
+                  }
+                ]
+              },
+              {
+                "weight": 1200,
+                "release": 40000,
+                "body": [
+                  {
+                    "op": "add",
+                    "a": 0,
+                    "b": 1,
+                    "dst": 0
+                  },
+                  {
+                    "op": "xor",
+                    "a": 2,
+                    "b": 3,
+                    "dst": 4
+                  },
+                  {
+                    "op": "and",
+                    "a": 5,
+                    "b": 6,
+                    "dst": 7
+                  }
+                ]
+              },
+              {
+                "weight": 1096,
+                "release": 100000,
+                "body": [
+                  {
+                    "op": "divu",
+                    "a": 4,
+                    "b": 0,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 5,
+                    "b": 1,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 0,
+                    "b": 1,
+                    "dst": 4
+                  },
+                  {
+                    "op": "divu",
+                    "a": 2,
+                    "b": 0,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 7,
+                    "b": 2,
+                    "dst": 6
+                  },
+                  {
+                    "op": "divu",
+                    "a": 7,
+                    "b": 2,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 3,
+                    "b": 1,
+                    "dst": 7
+                  }
+                ]
+              }
+            ]
+          },
+          "program_error": null,
+          "prediction": {
+            "reference_slot": 3,
+            "changed_factor": "Reduced early divu count, introduced middle ALU segment, increased late divu weight",
+            "window_directions": [
+              0,
+              0,
+              -1,
+              -1,
+              -1,
+              -1,
+              0,
+              0
+            ]
+          },
+          "prediction_error": null
+        },
+        {
+          "submitted": {
+            "registers": [
+              4294967295,
+              3391942914,
+              4294967295,
+              1553030968,
+              17,
+              17,
+              4294967295,
+              0
+            ],
+            "memory_seed": 3329196734,
+            "segments": [
+              {
+                "weight": 800,
+                "release": 1000,
+                "body": [
+                  {
+                    "op": "divu",
+                    "a": 5,
+                    "b": 0,
+                    "dst": 7
+                  },
+                  {
+                    "op": "divu",
+                    "a": 6,
+                    "b": 1,
+                    "dst": 5
+                  },
+                  {
+                    "op": "divu",
+                    "a": 3,
+                    "b": 0,
+                    "dst": 3
+                  }
+                ]
+              },
+              {
+                "weight": 500,
+                "release": 30000,
+                "body": [
+                  {
+                    "op": "cmovz",
+                    "a": 3,
+                    "b": 5,
+                    "dst": 2
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 2,
+                    "b": 1,
+                    "dst": 1
+                  }
+                ]
+              },
+              {
+                "weight": 500,
+                "release": 60000,
+                "body": [
+                  {
+                    "op": "and",
+                    "a": 5,
+                    "b": 0,
+                    "dst": 2
+                  },
+                  {
+                    "op": "or",
+                    "a": 1,
+                    "b": 2,
+                    "dst": 1
+                  }
+                ]
+              },
+              {
+                "weight": 500,
+                "release": 90000,
+                "body": [
+                  {
+                    "op": "cmovz",
+                    "a": 0,
+                    "b": 1,
+                    "dst": 0
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 6,
+                    "b": 4,
+                    "dst": 3
+                  }
+                ]
+              },
+              {
+                "weight": 1796,
+                "release": 120000,
+                "body": [
+                  {
+                    "op": "divu",
+                    "a": 4,
+                    "b": 0,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 5,
+                    "b": 1,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 0,
+                    "b": 1,
+                    "dst": 4
+                  },
+                  {
+                    "op": "divu",
+                    "a": 2,
+                    "b": 0,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 7,
+                    "b": 2,
+                    "dst": 6
+                  },
+                  {
+                    "op": "divu",
+                    "a": 7,
+                    "b": 2,
+                    "dst": 3
+                  }
+                ]
+              }
+            ]
+          },
+          "canonical": {
+            "registers": [
+              4294967295,
+              3391942914,
+              4294967295,
+              1553030968,
+              17,
+              17,
+              4294967295,
+              0
+            ],
+            "memory_seed": 3329196734,
+            "segments": [
+              {
+                "weight": 800,
+                "release": 1000,
+                "body": [
+                  {
+                    "op": "divu",
+                    "a": 5,
+                    "b": 0,
+                    "dst": 7
+                  },
+                  {
+                    "op": "divu",
+                    "a": 6,
+                    "b": 1,
+                    "dst": 5
+                  },
+                  {
+                    "op": "divu",
+                    "a": 3,
+                    "b": 0,
+                    "dst": 3
+                  }
+                ]
+              },
+              {
+                "weight": 500,
+                "release": 30000,
+                "body": [
+                  {
+                    "op": "cmovz",
+                    "a": 3,
+                    "b": 5,
+                    "dst": 2
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 2,
+                    "b": 1,
+                    "dst": 1
+                  }
+                ]
+              },
+              {
+                "weight": 500,
+                "release": 60000,
+                "body": [
+                  {
+                    "op": "and",
+                    "a": 5,
+                    "b": 0,
+                    "dst": 2
+                  },
+                  {
+                    "op": "or",
+                    "a": 1,
+                    "b": 2,
+                    "dst": 1
+                  }
+                ]
+              },
+              {
+                "weight": 500,
+                "release": 90000,
+                "body": [
+                  {
+                    "op": "cmovz",
+                    "a": 0,
+                    "b": 1,
+                    "dst": 0
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 6,
+                    "b": 4,
+                    "dst": 3
+                  }
+                ]
+              },
+              {
+                "weight": 1796,
+                "release": 120000,
+                "body": [
+                  {
+                    "op": "divu",
+                    "a": 4,
+                    "b": 0,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 5,
+                    "b": 1,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 0,
+                    "b": 1,
+                    "dst": 4
+                  },
+                  {
+                    "op": "divu",
+                    "a": 2,
+                    "b": 0,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 7,
+                    "b": 2,
+                    "dst": 6
+                  },
+                  {
+                    "op": "divu",
+                    "a": 7,
+                    "b": 2,
+                    "dst": 3
+                  }
+                ]
+              }
+            ]
+          },
+          "program_error": null,
+          "prediction": {
+            "reference_slot": 4,
+            "changed_factor": "Reduced early divu weight, increased late divu weight, removed one divu from the last segment",
+            "window_directions": [
+              0,
+              0,
+              -1,
+              -1,
+              -1,
+              -1,
+              0,
+              0
+            ]
+          },
+          "prediction_error": null
+        }
+      ]
+    },
+    "payload_sha256": "bd8bf95f95d979027c7f1a96b3020987967ddea9c803816a9709ab312965a50f"
+  },
+  {
+    "first_slot": 9,
+    "requested_slots": 2,
+    "raw_text": "{\n  \"hypothesis\": \"Candidate 1 aims to further reduce activity in bins 2-5 and slightly increase activity in bins 0-1 and 6-7 by adjusting segment weights and instruction mix. Candidate 2 explores a new segment structure, consolidating CMOVZ and ALU ops into a single middle segment, and adjusting DIVU weights and placement to target the goal profile.\",\n  \"candidates\": [\n    {\n      \"registers\": [\n        1,\n        31,\n        4032293290,\n        0,\n        0,\n        1,\n        3024829961,\n        17\n      ],\n      \"memory_seed\": 3341289835,\n      \"segments\": [\n        {\n          \"weight\": 800,\n          \"release\": 1000,\n          \"body\": [\n            {\n              \"op\": \"divu\",\n              \"a\": 5,\n              \"b\": 0,\n              \"dst\": 7\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 6,\n              \"b\": 1,\n              \"dst\": 5\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 3,\n              \"b\": 0,\n              \"dst\": 3\n            }\n          ]\n        },\n        {\n          \"weight\": 800,\n          \"release\": 20000,\n          \"body\": [\n            {\n              \"op\": \"cmovz\",\n              \"a\": 5,\n              \"b\": 1,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"cmovz\",\n              \"a\": 6,\n              \"b\": 1,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"cmovz\",\n              \"a\": 5,\n              \"b\": 0,\n              \"dst\": 6\n            },\n            {\n              \"op\": \"cmovz\",\n              \"a\": 4,\n              \"b\": 1,\n              \"dst\": 7\n            }\n          ]\n        },\n        {\n          \"weight\": 1000,\n          \"release\": 40000,\n          \"body\": [\n            {\n              \"op\": \"add\",\n              \"a\": 0,\n              \"b\": 1,\n              \"dst\": 0\n            },\n            {\n              \"op\": \"xor\",\n              \"a\": 2,\n              \"b\": 3,\n              \"dst\": 4\n            },\n            {\n              \"op\": \"and\",\n              \"a\": 5,\n              \"b\": 6,\n              \"dst\": 7\n            }\n          ]\n        },\n        {\n          \"weight\": 1496,\n          \"release\": 100000,\n          \"body\": [\n            {\n              \"op\": \"divu\",\n              \"a\": 4,\n              \"b\": 0,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 5,\n              \"b\": 1,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 0,\n              \"b\": 1,\n              \"dst\": 4\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 2,\n              \"b\": 0,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 7,\n              \"b\": 2,\n              \"dst\": 6\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 7,\n              \"b\": 2,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 3,\n              \"b\": 1,\n              \"dst\": 7\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"registers\": [\n        1,\n        31,\n        4032293290,\n        0,\n        0,\n        1,\n        3024829961,\n        17\n      ],\n      \"memory_seed\": 3341289835,\n      \"segments\": [\n        {\n          \"weight\": 1200,\n          \"release\": 1000,\n          \"body\": [\n            {\n              \"op\": \"divu\",\n              \"a\": 5,\n              \"b\": 0,\n              \"dst\": 7\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 6,\n              \"b\": 1,\n              \"dst\": 5\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 3,\n              \"b\": 0,\n              \"dst\": 3\n            }\n          ]\n        },\n        {\n          \"weight\": 1000,\n          \"release\": 40000,\n          \"body\": [\n            {\n              \"op\": \"cmovz\",\n              \"a\": 5,\n              \"b\": 1,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"cmovz\",\n              \"a\": 6,\n              \"b\": 1,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"cmovz\",\n              \"a\": 5,\n              \"b\": 0,\n              \"dst\": 6\n            },\n            {\n              \"op\": \"cmovz\",\n              \"a\": 4,\n              \"b\": 1,\n              \"dst\": 7\n            },\n            {\n              \"op\": \"add\",\n              \"a\": 0,\n              \"b\": 1,\n              \"dst\": 0\n            },\n            {\n              \"op\": \"xor\",\n              \"a\": 2,\n              \"b\": 3,\n              \"dst\": 4\n            },\n            {\n              \"op\": \"and\",\n              \"a\": 5,\n              \"b\": 6,\n              \"dst\": 7\n            }\n          ]\n        },\n        {\n          \"weight\": 1896,\n          \"release\": 100000,\n          \"body\": [\n            {\n              \"op\": \"divu\",\n              \"a\": 4,\n              \"b\": 0,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 5,\n              \"b\": 1,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 0,\n              \"b\": 1,\n              \"dst\": 4\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 2,\n              \"b\": 0,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 7,\n              \"b\": 2,\n              \"dst\": 6\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 7,\n              \"b\": 2,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 3,\n              \"b\": 1,\n              \"dst\": 7\n            }\n          ]\n        }\n      ]\n    }\n  ],\n  \"predictions\": [\n    {\n      \"reference_slot\": 7,\n      \"changed_factor\": \"Reduced middle cmovz segment weight, increased late divu segment weight to shift activity towards ends, maintained early divu and middle ALU segment weights.\",\n      \"window_directions\": [\n        1,\n        1,\n        -1,\n        -1,\n        -1,\n        -1,\n        1,\n        1\n      ]\n    },\n    {\n      \"reference_slot\": 7,\n      \"changed_factor\": \"Increased early divu weight, merged cmovz and ALU ops into a single middle segment, increased late divu weight, removed one divu from the last segment.\",\n      \"window_directions\": [\n        1,\n        1,\n        -1,\n        -1,\n        -1,\n        -1,\n        1,\n        1\n      ]\n    }\n  ]\n}",
+    "tokens_in": 29103,
+    "tokens_out": 2562,
+    "thinking_tokens": 513,
+    "usage_unknown": false,
+    "est_cost_usd": 0.015135899999999999,
+    "finish_reasons": [
+      "FinishReason.STOP"
+    ],
+    "prompt_feedback": null,
+    "model_version": "gemini-2.5-flash",
+    "decoded": {
+      "response_error": null,
+      "hypothesis": "Candidate 1 aims to further reduce activity in bins 2-5 and slightly increase activity in bins 0-1 and 6-7 by adjusting segment weights and instruction mix. Candidate 2 explores a new segment structure, consolidating CMOVZ and ALU ops into a single middle segment, and adjusting DIVU weights and placement to target the goal profile.",
+      "slots": [
+        {
+          "submitted": {
+            "registers": [
+              1,
+              31,
+              4032293290,
+              0,
+              0,
+              1,
+              3024829961,
+              17
+            ],
+            "memory_seed": 3341289835,
+            "segments": [
+              {
+                "weight": 800,
+                "release": 1000,
+                "body": [
+                  {
+                    "op": "divu",
+                    "a": 5,
+                    "b": 0,
+                    "dst": 7
+                  },
+                  {
+                    "op": "divu",
+                    "a": 6,
+                    "b": 1,
+                    "dst": 5
+                  },
+                  {
+                    "op": "divu",
+                    "a": 3,
+                    "b": 0,
+                    "dst": 3
+                  }
+                ]
+              },
+              {
+                "weight": 800,
+                "release": 20000,
+                "body": [
+                  {
+                    "op": "cmovz",
+                    "a": 5,
+                    "b": 1,
+                    "dst": 3
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 6,
+                    "b": 1,
+                    "dst": 3
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 5,
+                    "b": 0,
+                    "dst": 6
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 4,
+                    "b": 1,
+                    "dst": 7
+                  }
+                ]
+              },
+              {
+                "weight": 1000,
+                "release": 40000,
+                "body": [
+                  {
+                    "op": "add",
+                    "a": 0,
+                    "b": 1,
+                    "dst": 0
+                  },
+                  {
+                    "op": "xor",
+                    "a": 2,
+                    "b": 3,
+                    "dst": 4
+                  },
+                  {
+                    "op": "and",
+                    "a": 5,
+                    "b": 6,
+                    "dst": 7
+                  }
+                ]
+              },
+              {
+                "weight": 1496,
+                "release": 100000,
+                "body": [
+                  {
+                    "op": "divu",
+                    "a": 4,
+                    "b": 0,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 5,
+                    "b": 1,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 0,
+                    "b": 1,
+                    "dst": 4
+                  },
+                  {
+                    "op": "divu",
+                    "a": 2,
+                    "b": 0,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 7,
+                    "b": 2,
+                    "dst": 6
+                  },
+                  {
+                    "op": "divu",
+                    "a": 7,
+                    "b": 2,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 3,
+                    "b": 1,
+                    "dst": 7
+                  }
+                ]
+              }
+            ]
+          },
+          "canonical": {
+            "registers": [
+              1,
+              31,
+              4032293290,
+              0,
+              0,
+              1,
+              3024829961,
+              17
+            ],
+            "memory_seed": 3341289835,
+            "segments": [
+              {
+                "weight": 800,
+                "release": 1000,
+                "body": [
+                  {
+                    "op": "divu",
+                    "a": 5,
+                    "b": 0,
+                    "dst": 7
+                  },
+                  {
+                    "op": "divu",
+                    "a": 6,
+                    "b": 1,
+                    "dst": 5
+                  },
+                  {
+                    "op": "divu",
+                    "a": 3,
+                    "b": 0,
+                    "dst": 3
+                  }
+                ]
+              },
+              {
+                "weight": 800,
+                "release": 20000,
+                "body": [
+                  {
+                    "op": "cmovz",
+                    "a": 5,
+                    "b": 1,
+                    "dst": 3
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 6,
+                    "b": 1,
+                    "dst": 3
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 5,
+                    "b": 0,
+                    "dst": 6
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 4,
+                    "b": 1,
+                    "dst": 7
+                  }
+                ]
+              },
+              {
+                "weight": 1000,
+                "release": 40000,
+                "body": [
+                  {
+                    "op": "add",
+                    "a": 0,
+                    "b": 1,
+                    "dst": 0
+                  },
+                  {
+                    "op": "xor",
+                    "a": 2,
+                    "b": 3,
+                    "dst": 4
+                  },
+                  {
+                    "op": "and",
+                    "a": 5,
+                    "b": 6,
+                    "dst": 7
+                  }
+                ]
+              },
+              {
+                "weight": 1496,
+                "release": 100000,
+                "body": [
+                  {
+                    "op": "divu",
+                    "a": 4,
+                    "b": 0,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 5,
+                    "b": 1,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 0,
+                    "b": 1,
+                    "dst": 4
+                  },
+                  {
+                    "op": "divu",
+                    "a": 2,
+                    "b": 0,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 7,
+                    "b": 2,
+                    "dst": 6
+                  },
+                  {
+                    "op": "divu",
+                    "a": 7,
+                    "b": 2,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 3,
+                    "b": 1,
+                    "dst": 7
+                  }
+                ]
+              }
+            ]
+          },
+          "program_error": null,
+          "prediction": {
+            "reference_slot": 7,
+            "changed_factor": "Reduced middle cmovz segment weight, increased late divu segment weight to shift activity towards ends, maintained early divu and middle ALU segment weights.",
+            "window_directions": [
+              1,
+              1,
+              -1,
+              -1,
+              -1,
+              -1,
+              1,
+              1
+            ]
+          },
+          "prediction_error": null
+        },
+        {
+          "submitted": {
+            "registers": [
+              1,
+              31,
+              4032293290,
+              0,
+              0,
+              1,
+              3024829961,
+              17
+            ],
+            "memory_seed": 3341289835,
+            "segments": [
+              {
+                "weight": 1200,
+                "release": 1000,
+                "body": [
+                  {
+                    "op": "divu",
+                    "a": 5,
+                    "b": 0,
+                    "dst": 7
+                  },
+                  {
+                    "op": "divu",
+                    "a": 6,
+                    "b": 1,
+                    "dst": 5
+                  },
+                  {
+                    "op": "divu",
+                    "a": 3,
+                    "b": 0,
+                    "dst": 3
+                  }
+                ]
+              },
+              {
+                "weight": 1000,
+                "release": 40000,
+                "body": [
+                  {
+                    "op": "cmovz",
+                    "a": 5,
+                    "b": 1,
+                    "dst": 3
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 6,
+                    "b": 1,
+                    "dst": 3
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 5,
+                    "b": 0,
+                    "dst": 6
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 4,
+                    "b": 1,
+                    "dst": 7
+                  },
+                  {
+                    "op": "add",
+                    "a": 0,
+                    "b": 1,
+                    "dst": 0
+                  },
+                  {
+                    "op": "xor",
+                    "a": 2,
+                    "b": 3,
+                    "dst": 4
+                  },
+                  {
+                    "op": "and",
+                    "a": 5,
+                    "b": 6,
+                    "dst": 7
+                  }
+                ]
+              },
+              {
+                "weight": 1896,
+                "release": 100000,
+                "body": [
+                  {
+                    "op": "divu",
+                    "a": 4,
+                    "b": 0,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 5,
+                    "b": 1,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 0,
+                    "b": 1,
+                    "dst": 4
+                  },
+                  {
+                    "op": "divu",
+                    "a": 2,
+                    "b": 0,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 7,
+                    "b": 2,
+                    "dst": 6
+                  },
+                  {
+                    "op": "divu",
+                    "a": 7,
+                    "b": 2,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 3,
+                    "b": 1,
+                    "dst": 7
+                  }
+                ]
+              }
+            ]
+          },
+          "canonical": {
+            "registers": [
+              1,
+              31,
+              4032293290,
+              0,
+              0,
+              1,
+              3024829961,
+              17
+            ],
+            "memory_seed": 3341289835,
+            "segments": [
+              {
+                "weight": 1200,
+                "release": 1000,
+                "body": [
+                  {
+                    "op": "divu",
+                    "a": 5,
+                    "b": 0,
+                    "dst": 7
+                  },
+                  {
+                    "op": "divu",
+                    "a": 6,
+                    "b": 1,
+                    "dst": 5
+                  },
+                  {
+                    "op": "divu",
+                    "a": 3,
+                    "b": 0,
+                    "dst": 3
+                  }
+                ]
+              },
+              {
+                "weight": 1000,
+                "release": 40000,
+                "body": [
+                  {
+                    "op": "cmovz",
+                    "a": 5,
+                    "b": 1,
+                    "dst": 3
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 6,
+                    "b": 1,
+                    "dst": 3
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 5,
+                    "b": 0,
+                    "dst": 6
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 4,
+                    "b": 1,
+                    "dst": 7
+                  },
+                  {
+                    "op": "add",
+                    "a": 0,
+                    "b": 1,
+                    "dst": 0
+                  },
+                  {
+                    "op": "xor",
+                    "a": 2,
+                    "b": 3,
+                    "dst": 4
+                  },
+                  {
+                    "op": "and",
+                    "a": 5,
+                    "b": 6,
+                    "dst": 7
+                  }
+                ]
+              },
+              {
+                "weight": 1896,
+                "release": 100000,
+                "body": [
+                  {
+                    "op": "divu",
+                    "a": 4,
+                    "b": 0,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 5,
+                    "b": 1,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 0,
+                    "b": 1,
+                    "dst": 4
+                  },
+                  {
+                    "op": "divu",
+                    "a": 2,
+                    "b": 0,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 7,
+                    "b": 2,
+                    "dst": 6
+                  },
+                  {
+                    "op": "divu",
+                    "a": 7,
+                    "b": 2,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 3,
+                    "b": 1,
+                    "dst": 7
+                  }
+                ]
+              }
+            ]
+          },
+          "program_error": null,
+          "prediction": {
+            "reference_slot": 7,
+            "changed_factor": "Increased early divu weight, merged cmovz and ALU ops into a single middle segment, increased late divu weight, removed one divu from the last segment.",
+            "window_directions": [
+              1,
+              1,
+              -1,
+              -1,
+              -1,
+              -1,
+              1,
+              1
+            ]
+          },
+          "prediction_error": null
+        }
+      ]
+    },
+    "payload_sha256": "9d3bf73f3ab90e5f93024a27ce4e47941bb3603320e1ad3a1d5282189cc8fa9f"
+  },
+  {
+    "first_slot": 11,
+    "requested_slots": 2,
+    "raw_text": "{\n  \"hypothesis\": \"The goal profile requires high activity in the early and late bins, with low activity in the middle. The current best program (slot 7) has high activity in bins 2,3,6,7 and low in 0,1,4,5. The current program from slot 7 has a profile of [190, 568, 756, 766, 127, 335, 727, 742]. The goal is [679, 714, 230, 228, 233, 226, 704, 731]. This means we need to significantly increase activity in bins 0 and 1, decrease activity in bins 2 and 3, slightly increase activity in bins 4 and 5, and maintain similar activity in bins 6 and 7. The current program has a divu-cmovz-ALU-divu structure. The high activity in bins 2 and 3 likely comes from the polling loops for segments 2 and 3. Shifting more operations to earlier segments and reducing activity in the middle polling phases could help. Candidate 1 will focus on increasing early divu weight and decreasing middle segment weights. Candidate 2 will explore a different segment structure by merging the middle segments and adjusting weights to push more operations to the start and end.\",\n  \"candidates\": [\n    {\n      \"registers\": [\n        1,\n        31,\n        4032293290,\n        0,\n        0,\n        1,\n        3024829961,\n        17\n      ],\n      \"memory_seed\": 3341289835,\n      \"segments\": [\n        {\n          \"weight\": 2000,\n          \"release\": 1000,\n          \"body\": [\n            {\n              \"op\": \"divu\",\n              \"a\": 5,\n              \"b\": 0,\n              \"dst\": 7\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 6,\n              \"b\": 1,\n              \"dst\": 5\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 3,\n              \"b\": 0,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 1,\n              \"b\": 0,\n              \"dst\": 7\n            }\n          ]\n        },\n        {\n          \"weight\": 500,\n          \"release\": 20000,\n          \"body\": [\n            {\n              \"op\": \"cmovz\",\n              \"a\": 5,\n              \"b\": 1,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"cmovz\",\n              \"a\": 6,\n              \"b\": 1,\n              \"dst\": 3\n            }\n          ]\n        },\n        {\n          \"weight\": 500,\n          \"release\": 40000,\n          \"body\": [\n            {\n              \"op\": \"add\",\n              \"a\": 0,\n              \"b\": 1,\n              \"dst\": 0\n            },\n            {\n              \"op\": \"xor\",\n              \"a\": 2,\n              \"b\": 3,\n              \"dst\": 4\n            }\n          ]\n        },\n        {\n          \"weight\": 1096,\n          \"release\": 100000,\n          \"body\": [\n            {\n              \"op\": \"divu\",\n              \"a\": 4,\n              \"b\": 0,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 5,\n              \"b\": 1,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 0,\n              \"b\": 1,\n              \"dst\": 4\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 2,\n              \"b\": 0,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 7,\n              \"b\": 2,\n              \"dst\": 6\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 7,\n              \"b\": 2,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 3,\n              \"b\": 1,\n              \"dst\": 7\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"registers\": [\n        1,\n        31,\n        4032293290,\n        0,\n        0,\n        1,\n        3024829961,\n        17\n      ],\n      \"memory_seed\": 3341289835,\n      \"segments\": [\n        {\n          \"weight\": 1800,\n          \"release\": 1000,\n          \"body\": [\n            {\n              \"op\": \"divu\",\n              \"a\": 5,\n              \"b\": 0,\n              \"dst\": 7\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 6,\n              \"b\": 1,\n              \"dst\": 5\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 3,\n              \"b\": 0,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 1,\n              \"b\": 0,\n              \"dst\": 7\n            }\n          ]\n        },\n        {\n          \"weight\": 400,\n          \"release\": 30000,\n          \"body\": [\n            {\n              \"op\": \"cmovz\",\n              \"a\": 5,\n              \"b\": 1,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"cmovz\",\n              \"a\": 6,\n              \"b\": 1,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"add\",\n              \"a\": 0,\n              \"b\": 1,\n              \"dst\": 0\n            },\n            {\n              \"op\": \"xor\",\n              \"a\": 2,\n              \"b\": 3,\n              \"dst\": 4\n            }\n          ]\n        },\n        {\n          \"weight\": 1896,\n          \"release\": 100000,\n          \"body\": [\n            {\n              \"op\": \"divu\",\n              \"a\": 4,\n              \"b\": 0,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 5,\n              \"b\": 1,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 0,\n              \"b\": 1,\n              \"dst\": 4\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 2,\n              \"b\": 0,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 7,\n              \"b\": 2,\n              \"dst\": 6\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 7,\n              \"b\": 2,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 3,\n              \"b\": 1,\n              \"dst\": 7\n            }\n          ]\n        }\n      ]\n    }\n  ],\n  \"predictions\": [\n    {\n      \"reference_slot\": 7,\n      \"changed_factor\": \"Increased early divu weight (from 800 to 2000), decreased middle cmovz and ALU segment weights (from 1000 to 500, and 1200 to 500 respectively), kept late divu weight the same. Added one divu to the early segment to increase its operational density.\",\n      \"window_directions\": [\n        1,\n        1,\n        -1,\n        -1,\n        0,\n        0,\n        0,\n        0\n      ]\n    },\n    {\n      \"reference_slot\": 7,\n      \"changed_factor\": \"Increased early divu weight (from 800 to 1800), merged middle cmovz and ALU segments into a single segment with reduced weight (from 1000+1200=2200 to 400) and adjusted release, increased late divu weight (from 1096 to 1896).\",\n      \"window_directions\": [\n        1,\n        1,\n        -1,\n        -1,\n        -1,\n        -1,\n        0,\n        0\n      ]\n    }\n  ]\n}",
+    "tokens_in": 28081,
+    "tokens_out": 2726,
+    "thinking_tokens": 513,
+    "usage_unknown": false,
+    "est_cost_usd": 0.015239299999999999,
+    "finish_reasons": [
+      "FinishReason.STOP"
+    ],
+    "prompt_feedback": null,
+    "model_version": "gemini-2.5-flash",
+    "decoded": {
+      "response_error": null,
+      "hypothesis": "The goal profile requires high activity in the early and late bins, with low activity in the middle. The current best program (slot 7) has high activity in bins 2,3,6,7 and low in 0,1,4,5. The current program from slot 7 has a profile of [190, 568, 756, 766, 127, 335, 727, 742]. The goal is [679, 714, 230, 228, 233, 226, 704, 731]. This means we need to significantly increase activity in bins 0 and 1, decrease activity in bins 2 and 3, slightly increase activity in bins 4 and 5, and maintain similar activity in bins 6 and 7. The current program has a divu-cmovz-ALU-divu structure. The high activity in bins 2 and 3 likely comes from the polling loops for segments 2 and 3. Shifting more operations to earlier segments and reducing activity in the middle polling phases could help. Candidate 1 will focus on increasing early divu weight and decreasing middle segment weights. Candidate 2 will explore a different segment structure by merging the middle segments and adjusting weights to push more operations to the start and end.",
+      "slots": [
+        {
+          "submitted": {
+            "registers": [
+              1,
+              31,
+              4032293290,
+              0,
+              0,
+              1,
+              3024829961,
+              17
+            ],
+            "memory_seed": 3341289835,
+            "segments": [
+              {
+                "weight": 2000,
+                "release": 1000,
+                "body": [
+                  {
+                    "op": "divu",
+                    "a": 5,
+                    "b": 0,
+                    "dst": 7
+                  },
+                  {
+                    "op": "divu",
+                    "a": 6,
+                    "b": 1,
+                    "dst": 5
+                  },
+                  {
+                    "op": "divu",
+                    "a": 3,
+                    "b": 0,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 1,
+                    "b": 0,
+                    "dst": 7
+                  }
+                ]
+              },
+              {
+                "weight": 500,
+                "release": 20000,
+                "body": [
+                  {
+                    "op": "cmovz",
+                    "a": 5,
+                    "b": 1,
+                    "dst": 3
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 6,
+                    "b": 1,
+                    "dst": 3
+                  }
+                ]
+              },
+              {
+                "weight": 500,
+                "release": 40000,
+                "body": [
+                  {
+                    "op": "add",
+                    "a": 0,
+                    "b": 1,
+                    "dst": 0
+                  },
+                  {
+                    "op": "xor",
+                    "a": 2,
+                    "b": 3,
+                    "dst": 4
+                  }
+                ]
+              },
+              {
+                "weight": 1096,
+                "release": 100000,
+                "body": [
+                  {
+                    "op": "divu",
+                    "a": 4,
+                    "b": 0,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 5,
+                    "b": 1,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 0,
+                    "b": 1,
+                    "dst": 4
+                  },
+                  {
+                    "op": "divu",
+                    "a": 2,
+                    "b": 0,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 7,
+                    "b": 2,
+                    "dst": 6
+                  },
+                  {
+                    "op": "divu",
+                    "a": 7,
+                    "b": 2,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 3,
+                    "b": 1,
+                    "dst": 7
+                  }
+                ]
+              }
+            ]
+          },
+          "canonical": {
+            "registers": [
+              1,
+              31,
+              4032293290,
+              0,
+              0,
+              1,
+              3024829961,
+              17
+            ],
+            "memory_seed": 3341289835,
+            "segments": [
+              {
+                "weight": 2000,
+                "release": 1000,
+                "body": [
+                  {
+                    "op": "divu",
+                    "a": 5,
+                    "b": 0,
+                    "dst": 7
+                  },
+                  {
+                    "op": "divu",
+                    "a": 6,
+                    "b": 1,
+                    "dst": 5
+                  },
+                  {
+                    "op": "divu",
+                    "a": 3,
+                    "b": 0,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 1,
+                    "b": 0,
+                    "dst": 7
+                  }
+                ]
+              },
+              {
+                "weight": 500,
+                "release": 20000,
+                "body": [
+                  {
+                    "op": "cmovz",
+                    "a": 5,
+                    "b": 1,
+                    "dst": 3
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 6,
+                    "b": 1,
+                    "dst": 3
+                  }
+                ]
+              },
+              {
+                "weight": 500,
+                "release": 40000,
+                "body": [
+                  {
+                    "op": "add",
+                    "a": 0,
+                    "b": 1,
+                    "dst": 0
+                  },
+                  {
+                    "op": "xor",
+                    "a": 2,
+                    "b": 3,
+                    "dst": 4
+                  }
+                ]
+              },
+              {
+                "weight": 1096,
+                "release": 100000,
+                "body": [
+                  {
+                    "op": "divu",
+                    "a": 4,
+                    "b": 0,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 5,
+                    "b": 1,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 0,
+                    "b": 1,
+                    "dst": 4
+                  },
+                  {
+                    "op": "divu",
+                    "a": 2,
+                    "b": 0,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 7,
+                    "b": 2,
+                    "dst": 6
+                  },
+                  {
+                    "op": "divu",
+                    "a": 7,
+                    "b": 2,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 3,
+                    "b": 1,
+                    "dst": 7
+                  }
+                ]
+              }
+            ]
+          },
+          "program_error": null,
+          "prediction": {
+            "reference_slot": 7,
+            "changed_factor": "Increased early divu weight (from 800 to 2000), decreased middle cmovz and ALU segment weights (from 1000 to 500, and 1200 to 500 respectively), kept late divu weight the same. Added one divu to the early segment to increase its operational density.",
+            "window_directions": [
+              1,
+              1,
+              -1,
+              -1,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "prediction_error": null
+        },
+        {
+          "submitted": {
+            "registers": [
+              1,
+              31,
+              4032293290,
+              0,
+              0,
+              1,
+              3024829961,
+              17
+            ],
+            "memory_seed": 3341289835,
+            "segments": [
+              {
+                "weight": 1800,
+                "release": 1000,
+                "body": [
+                  {
+                    "op": "divu",
+                    "a": 5,
+                    "b": 0,
+                    "dst": 7
+                  },
+                  {
+                    "op": "divu",
+                    "a": 6,
+                    "b": 1,
+                    "dst": 5
+                  },
+                  {
+                    "op": "divu",
+                    "a": 3,
+                    "b": 0,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 1,
+                    "b": 0,
+                    "dst": 7
+                  }
+                ]
+              },
+              {
+                "weight": 400,
+                "release": 30000,
+                "body": [
+                  {
+                    "op": "cmovz",
+                    "a": 5,
+                    "b": 1,
+                    "dst": 3
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 6,
+                    "b": 1,
+                    "dst": 3
+                  },
+                  {
+                    "op": "add",
+                    "a": 0,
+                    "b": 1,
+                    "dst": 0
+                  },
+                  {
+                    "op": "xor",
+                    "a": 2,
+                    "b": 3,
+                    "dst": 4
+                  }
+                ]
+              },
+              {
+                "weight": 1896,
+                "release": 100000,
+                "body": [
+                  {
+                    "op": "divu",
+                    "a": 4,
+                    "b": 0,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 5,
+                    "b": 1,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 0,
+                    "b": 1,
+                    "dst": 4
+                  },
+                  {
+                    "op": "divu",
+                    "a": 2,
+                    "b": 0,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 7,
+                    "b": 2,
+                    "dst": 6
+                  },
+                  {
+                    "op": "divu",
+                    "a": 7,
+                    "b": 2,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 3,
+                    "b": 1,
+                    "dst": 7
+                  }
+                ]
+              }
+            ]
+          },
+          "canonical": {
+            "registers": [
+              1,
+              31,
+              4032293290,
+              0,
+              0,
+              1,
+              3024829961,
+              17
+            ],
+            "memory_seed": 3341289835,
+            "segments": [
+              {
+                "weight": 1800,
+                "release": 1000,
+                "body": [
+                  {
+                    "op": "divu",
+                    "a": 5,
+                    "b": 0,
+                    "dst": 7
+                  },
+                  {
+                    "op": "divu",
+                    "a": 6,
+                    "b": 1,
+                    "dst": 5
+                  },
+                  {
+                    "op": "divu",
+                    "a": 3,
+                    "b": 0,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 1,
+                    "b": 0,
+                    "dst": 7
+                  }
+                ]
+              },
+              {
+                "weight": 400,
+                "release": 30000,
+                "body": [
+                  {
+                    "op": "cmovz",
+                    "a": 5,
+                    "b": 1,
+                    "dst": 3
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 6,
+                    "b": 1,
+                    "dst": 3
+                  },
+                  {
+                    "op": "add",
+                    "a": 0,
+                    "b": 1,
+                    "dst": 0
+                  },
+                  {
+                    "op": "xor",
+                    "a": 2,
+                    "b": 3,
+                    "dst": 4
+                  }
+                ]
+              },
+              {
+                "weight": 1896,
+                "release": 100000,
+                "body": [
+                  {
+                    "op": "divu",
+                    "a": 4,
+                    "b": 0,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 5,
+                    "b": 1,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 0,
+                    "b": 1,
+                    "dst": 4
+                  },
+                  {
+                    "op": "divu",
+                    "a": 2,
+                    "b": 0,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 7,
+                    "b": 2,
+                    "dst": 6
+                  },
+                  {
+                    "op": "divu",
+                    "a": 7,
+                    "b": 2,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 3,
+                    "b": 1,
+                    "dst": 7
+                  }
+                ]
+              }
+            ]
+          },
+          "program_error": null,
+          "prediction": {
+            "reference_slot": 7,
+            "changed_factor": "Increased early divu weight (from 800 to 1800), merged middle cmovz and ALU segments into a single segment with reduced weight (from 1000+1200=2200 to 400) and adjusted release, increased late divu weight (from 1096 to 1896).",
+            "window_directions": [
+              1,
+              1,
+              -1,
+              -1,
+              -1,
+              -1,
+              0,
+              0
+            ]
+          },
+          "prediction_error": null
+        }
+      ]
+    },
+    "payload_sha256": "5791aeecf5d70150454cf59bc052daa70e2d5e5666831ffbb5aafe083ffe60d0"
+  },
+  {
+    "first_slot": 13,
+    "requested_slots": 2,
+    "raw_text": "{\n  \"hypothesis\": \"Candidate one attempts to smooth the activity profile by moving some divu ops from the first segment to the second (cmovz) segment, increasing the weight of the second segment, and slightly decreasing the weight of the final divu segment. Candidate two aims for a more drastic shift by significantly increasing the weights of the early divu and late divu segments while decreasing the middle cmovz segment's weight, and adjusting releases to push activity towards the ends, as well as modifying the instruction mix within segments.\",\n  \"candidates\": [\n    {\n      \"registers\": [1, 31, 4032293290, 0, 0, 1, 3024829961, 17],\n      \"memory_seed\": 3341289835,\n      \"segments\": [\n        {\n          \"weight\": 1000,\n          \"release\": 1000,\n          \"body\": [\n            {\n              \"op\": \"divu\",\n              \"a\": 5,\n              \"b\": 0,\n              \"dst\": 7\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 6,\n              \"b\": 1,\n              \"dst\": 5\n            }\n          ]\n        },\n        {\n          \"weight\": 1400,\n          \"release\": 20000,\n          \"body\": [\n            {\n              \"op\": \"cmovz\",\n              \"a\": 5,\n              \"b\": 1,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"cmovz\",\n              \"a\": 6,\n              \"b\": 1,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"cmovz\",\n              \"a\": 5,\n              \"b\": 0,\n              \"dst\": 6\n            },\n            {\n              \"op\": \"cmovz\",\n              \"a\": 4,\n              \"b\": 1,\n              \"dst\": 7\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 3,\n              \"b\": 0,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 1,\n              \"b\": 0,\n              \"dst\": 7\n            }\n          ]\n        },\n        {\n          \"weight\": 1200,\n          \"release\": 40000,\n          \"body\": [\n            {\n              \"op\": \"add\",\n              \"a\": 0,\n              \"b\": 1,\n              \"dst\": 0\n            },\n            {\n              \"op\": \"xor\",\n              \"a\": 2,\n              \"b\": 3,\n              \"dst\": 4\n            },\n            {\n              \"op\": \"and\",\n              \"a\": 5,\n              \"b\": 6,\n              \"dst\": 7\n            }\n          ]\n        },\n        {\n          \"weight\": 1000,\n          \"release\": 100000,\n          \"body\": [\n            {\n              \"op\": \"divu\",\n              \"a\": 4,\n              \"b\": 0,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 5,\n              \"b\": 1,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 0,\n              \"b\": 1,\n              \"dst\": 4\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 2,\n              \"b\": 0,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 7,\n              \"b\": 2,\n              \"dst\": 6\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 7,\n              \"b\": 2,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 3,\n              \"b\": 1,\n              \"dst\": 7\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"registers\": [1, 31, 4032293290, 0, 0, 1, 3024829961, 17],\n      \"memory_seed\": 3341289835,\n      \"segments\": [\n        {\n          \"weight\": 2000,\n          \"release\": 1000,\n          \"body\": [\n            {\n              \"op\": \"divu\",\n              \"a\": 5,\n              \"b\": 0,\n              \"dst\": 7\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 6,\n              \"b\": 1,\n              \"dst\": 5\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 3,\n              \"b\": 0,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 1,\n              \"b\": 0,\n              \"dst\": 7\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 5,\n              \"b\": 1,\n              \"dst\": 3\n            }\n          ]\n        },\n        {\n          \"weight\": 200,\n          \"release\": 30000,\n          \"body\": [\n            {\n              \"op\": \"cmovz\",\n              \"a\": 5,\n              \"b\": 1,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"cmovz\",\n              \"a\": 6,\n              \"b\": 1,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"add\",\n              \"a\": 0,\n              \"b\": 1,\n              \"dst\": 0\n            },\n            {\n              \"op\": \"xor\",\n              \"a\": 2,\n              \"b\": 3,\n              \"dst\": 4\n            }\n          ]\n        },\n        {\n          \"weight\": 1896,\n          \"release\": 100000,\n          \"body\": [\n            {\n              \"op\": \"divu\",\n              \"a\": 4,\n              \"b\": 0,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 5,\n              \"b\": 1,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 0,\n              \"b\": 1,\n              \"dst\": 4\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 2,\n              \"b\": 0,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 7,\n              \"b\": 2,\n              \"dst\": 6\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 7,\n              \"b\": 2,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 3,\n              \"b\": 1,\n              \"dst\": 7\n            }\n          ]\n        }\n      ]\n    }\n  ],\n  \"predictions\": [\n    {\n      \"reference_slot\": 7,\n      \"changed_factor\": \"Moved two divu ops from early segment to cmovz segment, increased cmovz segment weight, and slightly decreased final divu segment weight to smooth the profile.\",\n      \"window_directions\": [\n        0,\n        1,\n        -1,\n        -1,\n        -1,\n        -1,\n        0,\n        0\n      ]\n    },\n    {\n      \"reference_slot\": 7,\n      \"changed_factor\": \"Increased early divu weight, drastically reduced middle cmovz/ALU segment weight and adjusted release, increased late divu weight, and modified instruction mix in segments to push activity to ends.\",\n      \"window_directions\": [\n        1,\n        1,\n        -1,\n        -1,\n        -1,\n        -1,\n        1,\n        1\n      ]\n    }\n  ]\n}",
+    "tokens_in": 27518,
+    "tokens_out": 2482,
+    "thinking_tokens": 415,
+    "usage_unknown": false,
+    "est_cost_usd": 0.0144604,
+    "finish_reasons": [
+      "FinishReason.STOP"
+    ],
+    "prompt_feedback": null,
+    "model_version": "gemini-2.5-flash",
+    "decoded": {
+      "response_error": null,
+      "hypothesis": "Candidate one attempts to smooth the activity profile by moving some divu ops from the first segment to the second (cmovz) segment, increasing the weight of the second segment, and slightly decreasing the weight of the final divu segment. Candidate two aims for a more drastic shift by significantly increasing the weights of the early divu and late divu segments while decreasing the middle cmovz segment's weight, and adjusting releases to push activity towards the ends, as well as modifying the instruction mix within segments.",
+      "slots": [
+        {
+          "submitted": {
+            "registers": [
+              1,
+              31,
+              4032293290,
+              0,
+              0,
+              1,
+              3024829961,
+              17
+            ],
+            "memory_seed": 3341289835,
+            "segments": [
+              {
+                "weight": 1000,
+                "release": 1000,
+                "body": [
+                  {
+                    "op": "divu",
+                    "a": 5,
+                    "b": 0,
+                    "dst": 7
+                  },
+                  {
+                    "op": "divu",
+                    "a": 6,
+                    "b": 1,
+                    "dst": 5
+                  }
+                ]
+              },
+              {
+                "weight": 1400,
+                "release": 20000,
+                "body": [
+                  {
+                    "op": "cmovz",
+                    "a": 5,
+                    "b": 1,
+                    "dst": 3
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 6,
+                    "b": 1,
+                    "dst": 3
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 5,
+                    "b": 0,
+                    "dst": 6
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 4,
+                    "b": 1,
+                    "dst": 7
+                  },
+                  {
+                    "op": "divu",
+                    "a": 3,
+                    "b": 0,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 1,
+                    "b": 0,
+                    "dst": 7
+                  }
+                ]
+              },
+              {
+                "weight": 1200,
+                "release": 40000,
+                "body": [
+                  {
+                    "op": "add",
+                    "a": 0,
+                    "b": 1,
+                    "dst": 0
+                  },
+                  {
+                    "op": "xor",
+                    "a": 2,
+                    "b": 3,
+                    "dst": 4
+                  },
+                  {
+                    "op": "and",
+                    "a": 5,
+                    "b": 6,
+                    "dst": 7
+                  }
+                ]
+              },
+              {
+                "weight": 1000,
+                "release": 100000,
+                "body": [
+                  {
+                    "op": "divu",
+                    "a": 4,
+                    "b": 0,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 5,
+                    "b": 1,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 0,
+                    "b": 1,
+                    "dst": 4
+                  },
+                  {
+                    "op": "divu",
+                    "a": 2,
+                    "b": 0,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 7,
+                    "b": 2,
+                    "dst": 6
+                  },
+                  {
+                    "op": "divu",
+                    "a": 7,
+                    "b": 2,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 3,
+                    "b": 1,
+                    "dst": 7
+                  }
+                ]
+              }
+            ]
+          },
+          "canonical": {
+            "registers": [
+              1,
+              31,
+              4032293290,
+              0,
+              0,
+              1,
+              3024829961,
+              17
+            ],
+            "memory_seed": 3341289835,
+            "segments": [
+              {
+                "weight": 1000,
+                "release": 1000,
+                "body": [
+                  {
+                    "op": "divu",
+                    "a": 5,
+                    "b": 0,
+                    "dst": 7
+                  },
+                  {
+                    "op": "divu",
+                    "a": 6,
+                    "b": 1,
+                    "dst": 5
+                  }
+                ]
+              },
+              {
+                "weight": 1400,
+                "release": 20000,
+                "body": [
+                  {
+                    "op": "cmovz",
+                    "a": 5,
+                    "b": 1,
+                    "dst": 3
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 6,
+                    "b": 1,
+                    "dst": 3
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 5,
+                    "b": 0,
+                    "dst": 6
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 4,
+                    "b": 1,
+                    "dst": 7
+                  },
+                  {
+                    "op": "divu",
+                    "a": 3,
+                    "b": 0,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 1,
+                    "b": 0,
+                    "dst": 7
+                  }
+                ]
+              },
+              {
+                "weight": 1200,
+                "release": 40000,
+                "body": [
+                  {
+                    "op": "add",
+                    "a": 0,
+                    "b": 1,
+                    "dst": 0
+                  },
+                  {
+                    "op": "xor",
+                    "a": 2,
+                    "b": 3,
+                    "dst": 4
+                  },
+                  {
+                    "op": "and",
+                    "a": 5,
+                    "b": 6,
+                    "dst": 7
+                  }
+                ]
+              },
+              {
+                "weight": 1000,
+                "release": 100000,
+                "body": [
+                  {
+                    "op": "divu",
+                    "a": 4,
+                    "b": 0,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 5,
+                    "b": 1,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 0,
+                    "b": 1,
+                    "dst": 4
+                  },
+                  {
+                    "op": "divu",
+                    "a": 2,
+                    "b": 0,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 7,
+                    "b": 2,
+                    "dst": 6
+                  },
+                  {
+                    "op": "divu",
+                    "a": 7,
+                    "b": 2,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 3,
+                    "b": 1,
+                    "dst": 7
+                  }
+                ]
+              }
+            ]
+          },
+          "program_error": null,
+          "prediction": {
+            "reference_slot": 7,
+            "changed_factor": "Moved two divu ops from early segment to cmovz segment, increased cmovz segment weight, and slightly decreased final divu segment weight to smooth the profile.",
+            "window_directions": [
+              0,
+              1,
+              -1,
+              -1,
+              -1,
+              -1,
+              0,
+              0
+            ]
+          },
+          "prediction_error": null
+        },
+        {
+          "submitted": {
+            "registers": [
+              1,
+              31,
+              4032293290,
+              0,
+              0,
+              1,
+              3024829961,
+              17
+            ],
+            "memory_seed": 3341289835,
+            "segments": [
+              {
+                "weight": 2000,
+                "release": 1000,
+                "body": [
+                  {
+                    "op": "divu",
+                    "a": 5,
+                    "b": 0,
+                    "dst": 7
+                  },
+                  {
+                    "op": "divu",
+                    "a": 6,
+                    "b": 1,
+                    "dst": 5
+                  },
+                  {
+                    "op": "divu",
+                    "a": 3,
+                    "b": 0,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 1,
+                    "b": 0,
+                    "dst": 7
+                  },
+                  {
+                    "op": "divu",
+                    "a": 5,
+                    "b": 1,
+                    "dst": 3
+                  }
+                ]
+              },
+              {
+                "weight": 200,
+                "release": 30000,
+                "body": [
+                  {
+                    "op": "cmovz",
+                    "a": 5,
+                    "b": 1,
+                    "dst": 3
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 6,
+                    "b": 1,
+                    "dst": 3
+                  },
+                  {
+                    "op": "add",
+                    "a": 0,
+                    "b": 1,
+                    "dst": 0
+                  },
+                  {
+                    "op": "xor",
+                    "a": 2,
+                    "b": 3,
+                    "dst": 4
+                  }
+                ]
+              },
+              {
+                "weight": 1896,
+                "release": 100000,
+                "body": [
+                  {
+                    "op": "divu",
+                    "a": 4,
+                    "b": 0,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 5,
+                    "b": 1,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 0,
+                    "b": 1,
+                    "dst": 4
+                  },
+                  {
+                    "op": "divu",
+                    "a": 2,
+                    "b": 0,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 7,
+                    "b": 2,
+                    "dst": 6
+                  },
+                  {
+                    "op": "divu",
+                    "a": 7,
+                    "b": 2,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 3,
+                    "b": 1,
+                    "dst": 7
+                  }
+                ]
+              }
+            ]
+          },
+          "canonical": {
+            "registers": [
+              1,
+              31,
+              4032293290,
+              0,
+              0,
+              1,
+              3024829961,
+              17
+            ],
+            "memory_seed": 3341289835,
+            "segments": [
+              {
+                "weight": 2000,
+                "release": 1000,
+                "body": [
+                  {
+                    "op": "divu",
+                    "a": 5,
+                    "b": 0,
+                    "dst": 7
+                  },
+                  {
+                    "op": "divu",
+                    "a": 6,
+                    "b": 1,
+                    "dst": 5
+                  },
+                  {
+                    "op": "divu",
+                    "a": 3,
+                    "b": 0,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 1,
+                    "b": 0,
+                    "dst": 7
+                  },
+                  {
+                    "op": "divu",
+                    "a": 5,
+                    "b": 1,
+                    "dst": 3
+                  }
+                ]
+              },
+              {
+                "weight": 200,
+                "release": 30000,
+                "body": [
+                  {
+                    "op": "cmovz",
+                    "a": 5,
+                    "b": 1,
+                    "dst": 3
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 6,
+                    "b": 1,
+                    "dst": 3
+                  },
+                  {
+                    "op": "add",
+                    "a": 0,
+                    "b": 1,
+                    "dst": 0
+                  },
+                  {
+                    "op": "xor",
+                    "a": 2,
+                    "b": 3,
+                    "dst": 4
+                  }
+                ]
+              },
+              {
+                "weight": 1896,
+                "release": 100000,
+                "body": [
+                  {
+                    "op": "divu",
+                    "a": 4,
+                    "b": 0,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 5,
+                    "b": 1,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 0,
+                    "b": 1,
+                    "dst": 4
+                  },
+                  {
+                    "op": "divu",
+                    "a": 2,
+                    "b": 0,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 7,
+                    "b": 2,
+                    "dst": 6
+                  },
+                  {
+                    "op": "divu",
+                    "a": 7,
+                    "b": 2,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 3,
+                    "b": 1,
+                    "dst": 7
+                  }
+                ]
+              }
+            ]
+          },
+          "program_error": null,
+          "prediction": {
+            "reference_slot": 7,
+            "changed_factor": "Increased early divu weight, drastically reduced middle cmovz/ALU segment weight and adjusted release, increased late divu weight, and modified instruction mix in segments to push activity to ends.",
+            "window_directions": [
+              1,
+              1,
+              -1,
+              -1,
+              -1,
+              -1,
+              1,
+              1
+            ]
+          },
+          "prediction_error": null
+        }
+      ]
+    },
+    "payload_sha256": "91d6250e2ef6f77c281477d1d377ecb39f2cd175501eb3331642cab25b7bec4c"
+  },
+  {
+    "first_slot": 15,
+    "requested_slots": 2,
+    "raw_text": "{\n  \"hypothesis\": \"Candidate 1 aims to further reduce activity in bins 3-6 by decreasing the weight of the middle ALU segment and increasing the weight of the last divu segment. It also slightly increases the first divu segment's weight to maintain early activity. Candidate 2 attempts to simplify the segment structure by merging the first two segments and adjusting weights to push activity towards the ends, while maintaining the overall instruction mix.\",\n  \"candidates\": [\n    {\n      \"registers\": [1, 31, 4032293290, 0, 0, 1, 3024829961, 17],\n      \"memory_seed\": 3341289835,\n      \"segments\": [\n        {\n          \"weight\": 900,\n          \"release\": 1000,\n          \"body\": [\n            {\n              \"op\": \"divu\",\n              \"a\": 5,\n              \"b\": 0,\n              \"dst\": 7\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 6,\n              \"b\": 1,\n              \"dst\": 5\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 3,\n              \"b\": 0,\n              \"dst\": 3\n            }\n          ]\n        },\n        {\n          \"weight\": 1000,\n          \"release\": 20000,\n          \"body\": [\n            {\n              \"op\": \"cmovz\",\n              \"a\": 5,\n              \"b\": 1,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"cmovz\",\n              \"a\": 6,\n              \"b\": 1,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"cmovz\",\n              \"a\": 5,\n              \"b\": 0,\n              \"dst\": 6\n            },\n            {\n              \"op\": \"cmovz\",\n              \"a\": 4,\n              \"b\": 1,\n              \"dst\": 7\n            }\n          ]\n        },\n        {\n          \"weight\": 800,\n          \"release\": 40000,\n          \"body\": [\n            {\n              \"op\": \"add\",\n              \"a\": 0,\n              \"b\": 1,\n              \"dst\": 0\n            },\n            {\n              \"op\": \"xor\",\n              \"a\": 2,\n              \"b\": 3,\n              \"dst\": 4\n            },\n            {\n              \"op\": \"and\",\n              \"a\": 5,\n              \"b\": 6,\n              \"dst\": 7\n            }\n          ]\n        },\n        {\n          \"weight\": 1800,\n          \"release\": 100000,\n          \"body\": [\n            {\n              \"op\": \"divu\",\n              \"a\": 4,\n              \"b\": 0,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 5,\n              \"b\": 1,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 0,\n              \"b\": 1,\n              \"dst\": 4\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 2,\n              \"b\": 0,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 7,\n              \"b\": 2,\n              \"dst\": 6\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 7,\n              \"b\": 2,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 3,\n              \"b\": 1,\n              \"dst\": 7\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"registers\": [1, 31, 4032293290, 0, 0, 1, 3024829961, 17],\n      \"memory_seed\": 3341289835,\n      \"segments\": [\n        {\n          \"weight\": 1800,\n          \"release\": 1000,\n          \"body\": [\n            {\n              \"op\": \"divu\",\n              \"a\": 5,\n              \"b\": 0,\n              \"dst\": 7\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 6,\n              \"b\": 1,\n              \"dst\": 5\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 3,\n              \"b\": 0,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"cmovz\",\n              \"a\": 5,\n              \"b\": 1,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"cmovz\",\n              \"a\": 6,\n              \"b\": 1,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"cmovz\",\n              \"a\": 5,\n              \"b\": 0,\n              \"dst\": 6\n            },\n            {\n              \"op\": \"cmovz\",\n              \"a\": 4,\n              \"b\": 1,\n              \"dst\": 7\n            }\n          ]\n        },\n        {\n          \"weight\": 400,\n          \"release\": 30000,\n          \"body\": [\n            {\n              \"op\": \"add\",\n              \"a\": 0,\n              \"b\": 1,\n              \"dst\": 0\n            },\n            {\n              \"op\": \"xor\",\n              \"a\": 2,\n              \"b\": 3,\n              \"dst\": 4\n            },\n            {\n              \"op\": \"and\",\n              \"a\": 5,\n              \"b\": 6,\n              \"dst\": 7\n            }\n          ]\n        },\n        {\n          \"weight\": 1896,\n          \"release\": 100000,\n          \"body\": [\n            {\n              \"op\": \"divu\",\n              \"a\": 4,\n              \"b\": 0,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 5,\n              \"b\": 1,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 0,\n              \"b\": 1,\n              \"dst\": 4\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 2,\n              \"b\": 0,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 7,\n              \"b\": 2,\n              \"dst\": 6\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 7,\n              \"b\": 2,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 3,\n              \"b\": 1,\n              \"dst\": 7\n            }\n          ]\n        }\n      ]\n    }\n  ],\n  \"predictions\": [\n    {\n      \"reference_slot\": 7,\n      \"changed_factor\": \"Increased early divu weight, reduced middle ALU segment weight, increased late divu segment weight to further shift activity towards ends.\",\n      \"window_directions\": [\n        1,\n        0,\n        0,\n        -1,\n        -1,\n        -1,\n        1,\n        1\n      ]\n    },\n    {\n      \"reference_slot\": 7,\n      \"changed_factor\": \"Merged early divu and cmovz segments, increased their combined weight and adjusted release, greatly reduced middle ALU segment weight, increased late divu weight. Adjusted operations to balance impact.\",\n      \"window_directions\": [\n        1,\n        1,\n        -1,\n        -1,\n        -1,\n        -1,\n        1,\n        1\n      ]\n    }\n  ]\n}",
+    "tokens_in": 28283,
+    "tokens_out": 2543,
+    "thinking_tokens": 509,
+    "usage_unknown": false,
+    "est_cost_usd": 0.0148424,
+    "finish_reasons": [
+      "FinishReason.STOP"
+    ],
+    "prompt_feedback": null,
+    "model_version": "gemini-2.5-flash",
+    "decoded": {
+      "response_error": null,
+      "hypothesis": "Candidate 1 aims to further reduce activity in bins 3-6 by decreasing the weight of the middle ALU segment and increasing the weight of the last divu segment. It also slightly increases the first divu segment's weight to maintain early activity. Candidate 2 attempts to simplify the segment structure by merging the first two segments and adjusting weights to push activity towards the ends, while maintaining the overall instruction mix.",
+      "slots": [
+        {
+          "submitted": {
+            "registers": [
+              1,
+              31,
+              4032293290,
+              0,
+              0,
+              1,
+              3024829961,
+              17
+            ],
+            "memory_seed": 3341289835,
+            "segments": [
+              {
+                "weight": 900,
+                "release": 1000,
+                "body": [
+                  {
+                    "op": "divu",
+                    "a": 5,
+                    "b": 0,
+                    "dst": 7
+                  },
+                  {
+                    "op": "divu",
+                    "a": 6,
+                    "b": 1,
+                    "dst": 5
+                  },
+                  {
+                    "op": "divu",
+                    "a": 3,
+                    "b": 0,
+                    "dst": 3
+                  }
+                ]
+              },
+              {
+                "weight": 1000,
+                "release": 20000,
+                "body": [
+                  {
+                    "op": "cmovz",
+                    "a": 5,
+                    "b": 1,
+                    "dst": 3
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 6,
+                    "b": 1,
+                    "dst": 3
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 5,
+                    "b": 0,
+                    "dst": 6
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 4,
+                    "b": 1,
+                    "dst": 7
+                  }
+                ]
+              },
+              {
+                "weight": 800,
+                "release": 40000,
+                "body": [
+                  {
+                    "op": "add",
+                    "a": 0,
+                    "b": 1,
+                    "dst": 0
+                  },
+                  {
+                    "op": "xor",
+                    "a": 2,
+                    "b": 3,
+                    "dst": 4
+                  },
+                  {
+                    "op": "and",
+                    "a": 5,
+                    "b": 6,
+                    "dst": 7
+                  }
+                ]
+              },
+              {
+                "weight": 1800,
+                "release": 100000,
+                "body": [
+                  {
+                    "op": "divu",
+                    "a": 4,
+                    "b": 0,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 5,
+                    "b": 1,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 0,
+                    "b": 1,
+                    "dst": 4
+                  },
+                  {
+                    "op": "divu",
+                    "a": 2,
+                    "b": 0,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 7,
+                    "b": 2,
+                    "dst": 6
+                  },
+                  {
+                    "op": "divu",
+                    "a": 7,
+                    "b": 2,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 3,
+                    "b": 1,
+                    "dst": 7
+                  }
+                ]
+              }
+            ]
+          },
+          "canonical": {
+            "registers": [
+              1,
+              31,
+              4032293290,
+              0,
+              0,
+              1,
+              3024829961,
+              17
+            ],
+            "memory_seed": 3341289835,
+            "segments": [
+              {
+                "weight": 900,
+                "release": 1000,
+                "body": [
+                  {
+                    "op": "divu",
+                    "a": 5,
+                    "b": 0,
+                    "dst": 7
+                  },
+                  {
+                    "op": "divu",
+                    "a": 6,
+                    "b": 1,
+                    "dst": 5
+                  },
+                  {
+                    "op": "divu",
+                    "a": 3,
+                    "b": 0,
+                    "dst": 3
+                  }
+                ]
+              },
+              {
+                "weight": 1000,
+                "release": 20000,
+                "body": [
+                  {
+                    "op": "cmovz",
+                    "a": 5,
+                    "b": 1,
+                    "dst": 3
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 6,
+                    "b": 1,
+                    "dst": 3
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 5,
+                    "b": 0,
+                    "dst": 6
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 4,
+                    "b": 1,
+                    "dst": 7
+                  }
+                ]
+              },
+              {
+                "weight": 800,
+                "release": 40000,
+                "body": [
+                  {
+                    "op": "add",
+                    "a": 0,
+                    "b": 1,
+                    "dst": 0
+                  },
+                  {
+                    "op": "xor",
+                    "a": 2,
+                    "b": 3,
+                    "dst": 4
+                  },
+                  {
+                    "op": "and",
+                    "a": 5,
+                    "b": 6,
+                    "dst": 7
+                  }
+                ]
+              },
+              {
+                "weight": 1800,
+                "release": 100000,
+                "body": [
+                  {
+                    "op": "divu",
+                    "a": 4,
+                    "b": 0,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 5,
+                    "b": 1,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 0,
+                    "b": 1,
+                    "dst": 4
+                  },
+                  {
+                    "op": "divu",
+                    "a": 2,
+                    "b": 0,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 7,
+                    "b": 2,
+                    "dst": 6
+                  },
+                  {
+                    "op": "divu",
+                    "a": 7,
+                    "b": 2,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 3,
+                    "b": 1,
+                    "dst": 7
+                  }
+                ]
+              }
+            ]
+          },
+          "program_error": null,
+          "prediction": {
+            "reference_slot": 7,
+            "changed_factor": "Increased early divu weight, reduced middle ALU segment weight, increased late divu segment weight to further shift activity towards ends.",
+            "window_directions": [
+              1,
+              0,
+              0,
+              -1,
+              -1,
+              -1,
+              1,
+              1
+            ]
+          },
+          "prediction_error": null
+        },
+        {
+          "submitted": {
+            "registers": [
+              1,
+              31,
+              4032293290,
+              0,
+              0,
+              1,
+              3024829961,
+              17
+            ],
+            "memory_seed": 3341289835,
+            "segments": [
+              {
+                "weight": 1800,
+                "release": 1000,
+                "body": [
+                  {
+                    "op": "divu",
+                    "a": 5,
+                    "b": 0,
+                    "dst": 7
+                  },
+                  {
+                    "op": "divu",
+                    "a": 6,
+                    "b": 1,
+                    "dst": 5
+                  },
+                  {
+                    "op": "divu",
+                    "a": 3,
+                    "b": 0,
+                    "dst": 3
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 5,
+                    "b": 1,
+                    "dst": 3
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 6,
+                    "b": 1,
+                    "dst": 3
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 5,
+                    "b": 0,
+                    "dst": 6
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 4,
+                    "b": 1,
+                    "dst": 7
+                  }
+                ]
+              },
+              {
+                "weight": 400,
+                "release": 30000,
+                "body": [
+                  {
+                    "op": "add",
+                    "a": 0,
+                    "b": 1,
+                    "dst": 0
+                  },
+                  {
+                    "op": "xor",
+                    "a": 2,
+                    "b": 3,
+                    "dst": 4
+                  },
+                  {
+                    "op": "and",
+                    "a": 5,
+                    "b": 6,
+                    "dst": 7
+                  }
+                ]
+              },
+              {
+                "weight": 1896,
+                "release": 100000,
+                "body": [
+                  {
+                    "op": "divu",
+                    "a": 4,
+                    "b": 0,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 5,
+                    "b": 1,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 0,
+                    "b": 1,
+                    "dst": 4
+                  },
+                  {
+                    "op": "divu",
+                    "a": 2,
+                    "b": 0,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 7,
+                    "b": 2,
+                    "dst": 6
+                  },
+                  {
+                    "op": "divu",
+                    "a": 7,
+                    "b": 2,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 3,
+                    "b": 1,
+                    "dst": 7
+                  }
+                ]
+              }
+            ]
+          },
+          "canonical": {
+            "registers": [
+              1,
+              31,
+              4032293290,
+              0,
+              0,
+              1,
+              3024829961,
+              17
+            ],
+            "memory_seed": 3341289835,
+            "segments": [
+              {
+                "weight": 1800,
+                "release": 1000,
+                "body": [
+                  {
+                    "op": "divu",
+                    "a": 5,
+                    "b": 0,
+                    "dst": 7
+                  },
+                  {
+                    "op": "divu",
+                    "a": 6,
+                    "b": 1,
+                    "dst": 5
+                  },
+                  {
+                    "op": "divu",
+                    "a": 3,
+                    "b": 0,
+                    "dst": 3
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 5,
+                    "b": 1,
+                    "dst": 3
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 6,
+                    "b": 1,
+                    "dst": 3
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 5,
+                    "b": 0,
+                    "dst": 6
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 4,
+                    "b": 1,
+                    "dst": 7
+                  }
+                ]
+              },
+              {
+                "weight": 400,
+                "release": 30000,
+                "body": [
+                  {
+                    "op": "add",
+                    "a": 0,
+                    "b": 1,
+                    "dst": 0
+                  },
+                  {
+                    "op": "xor",
+                    "a": 2,
+                    "b": 3,
+                    "dst": 4
+                  },
+                  {
+                    "op": "and",
+                    "a": 5,
+                    "b": 6,
+                    "dst": 7
+                  }
+                ]
+              },
+              {
+                "weight": 1896,
+                "release": 100000,
+                "body": [
+                  {
+                    "op": "divu",
+                    "a": 4,
+                    "b": 0,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 5,
+                    "b": 1,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 0,
+                    "b": 1,
+                    "dst": 4
+                  },
+                  {
+                    "op": "divu",
+                    "a": 2,
+                    "b": 0,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 7,
+                    "b": 2,
+                    "dst": 6
+                  },
+                  {
+                    "op": "divu",
+                    "a": 7,
+                    "b": 2,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 3,
+                    "b": 1,
+                    "dst": 7
+                  }
+                ]
+              }
+            ]
+          },
+          "program_error": null,
+          "prediction": {
+            "reference_slot": 7,
+            "changed_factor": "Merged early divu and cmovz segments, increased their combined weight and adjusted release, greatly reduced middle ALU segment weight, increased late divu weight. Adjusted operations to balance impact.",
+            "window_directions": [
+              1,
+              1,
+              -1,
+              -1,
+              -1,
+              -1,
+              1,
+              1
+            ]
+          },
+          "prediction_error": null
+        }
+      ]
+    },
+    "payload_sha256": "53580b86ecb327652880ae6dcb3efa184cc9554645ba1767aa889cb03deec18c"
+  }
+]

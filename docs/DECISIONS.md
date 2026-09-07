@@ -626,3 +626,21 @@ Both agent arms use the same response contract; only the grounded package expose
 executed phase/operand feedback and a bounded prediction/outcome notebook.
 Retain requested-slot accounting, prior targets/seeds and primary temporal AUC.
 The panel is running; no v4 temporal outcome or held-out claim is declared here.
+
+## 2026-09-07 — Complete v4 grounding development; do not promote the controller
+
+**Finding.** All 48 cells / 768 slots completed with unchanged comparison settings.
+Random AUC 4.831839, base 4.990451, coverage 5.123888, grounded 5.234116. Every
+solve remains on the near-flat target. Grounded direction agreement is 471/1248
+scorable bins, versus base 481/1264; this is not evidence of better predictions.
+The panel costs $1.7545606 estimated, with 168 STOP responses and no unknown usage.
+**Decision.** Retain the improved response contract and trace-grounded diagnostics,
+but do not claim improved temporal performance or promote this controller into
+held-out evaluation unchanged. Archive all outcomes and all finalist profiles.
+**Rationale.** Correct output and richer context are not sufficient for useful
+action-to-window reasoning. The response revision passed its separate readiness
+gate; the temporal package did not improve the primary development endpoint.
+**Consequence.** Any further iteration should isolate a shared, reference-based
+action-to-window tool and test predicted changes before another search panel.
+This is a recommendation, not an implemented feature. Prior frozen and held-out
+studies remain unchanged; full details are in `IBEX_TEMPORAL_V4_RESULTS.md`.

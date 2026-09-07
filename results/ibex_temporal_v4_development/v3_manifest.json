@@ -1,0 +1,189 @@
+{
+  "targets": {
+    "target_0": {
+      "rates": [
+        679.1112,
+        714.49892,
+        230.12484,
+        228.541,
+        233.152,
+        226.16112,
+        704.9678,
+        731.63268
+      ],
+      "witness_sha256": "f3e0274eb3d78399794d8df239ca9419a8565a2206ad0ec34e65b8cbdc5a3fc5"
+    },
+    "target_1": {
+      "rates": [
+        682.55588,
+        727.99744,
+        690.06968,
+        712.73212,
+        729.67608,
+        718.92332,
+        710.9868,
+        734.8654
+      ],
+      "witness_sha256": "bf58c94435e5c78f53b5867640b85d3cc24c949d4ab07f05afeb34251626d675"
+    },
+    "target_2": {
+      "rates": [
+        669.3832,
+        704.65316,
+        228.65816,
+        694.92932,
+        702.65,
+        713.87404,
+        238.50524,
+        754.61488
+      ],
+      "witness_sha256": "150ebcca443eb84d15b5540b1a6e5ce43efea74c586d80c94f4da26fb09d9fa4"
+    },
+    "target_3": {
+      "rates": [
+        686.3124,
+        705.27976,
+        691.78392,
+        688.40124,
+        706.34252,
+        230.98132,
+        719.38224,
+        739.87572
+      ],
+      "witness_sha256": "0e4c4a007ac5b3e36165bbb67f1334f8442975e521824b79ee953c62d84d4f6e"
+    }
+  },
+  "scale": 528.45376,
+  "tolerance": 0.1,
+  "minimum_target_separation": 0.3276575684533404,
+  "tolerance_rule": "min(0.10, minimum pairwise witness normalized RMSE / 3)",
+  "seeds": [
+    600,
+    601,
+    602
+  ],
+  "budget": 16,
+  "batch_size": 2,
+  "shared_initial_slots": 2,
+  "measurement": {
+    "binary_sha256": "d8628e9b588350c0a55412dd224f527798c24bac6455fad17deb816c3dd14391",
+    "image_id": "sha256:9e0cb9653e368644baf5c5bd6a936f80bb12adb813baa18403fd96c5ea4f7d5a",
+    "ibex_commit": "8b8ee086aef72e0833b7f0493d9d33f1e4d3c8e2",
+    "configuration": "simple_system defaults, RV32MFast, ICache=0, MHPMCounterNum=12"
+  },
+  "model": "gemini-2.5-flash",
+  "input_rate": 0.3,
+  "output_rate": 2.5,
+  "pricing_units": "estimated USD per million input/output tokens, includes thinking output",
+  "temperature": 0.7,
+  "top_p": 0.95,
+  "thinking_budget": 512,
+  "max_output_tokens": 8192,
+  "transport": "120s HTTP deadline; no process alarm; one attempt, no free repair",
+  "phase": "development-only",
+  "version": "temporal-context-correction-v3",
+  "v2_manifest_sha256": "e269ef68775dcb5f55f89dc128d7fc8fbf54d6502eb2a4fb90669d401ab5da58",
+  "gate_sha256": "2324f80171a64aac826ed8ece3c682a8e6775366f2eecdbb071761ec894c5111",
+  "policies": [
+    "random",
+    "coverage",
+    "agent-base",
+    "agent-context",
+    "agent-correction",
+    "agent-combined"
+  ],
+  "prompts": {
+    "random": "b2826d4ab40687a3cde9f29798ac554e64f48e53830ea8f419052e18e77bc4ff",
+    "coverage": "b2826d4ab40687a3cde9f29798ac554e64f48e53830ea8f419052e18e77bc4ff",
+    "agent-base": "b2826d4ab40687a3cde9f29798ac554e64f48e53830ea8f419052e18e77bc4ff",
+    "agent-context": "a7748e95b754877f2a2b8bfe79c5daac363ea779bde6f288fb1570b5eccae494",
+    "agent-correction": "2c83f71a8c59e193f750bdd87d5ca367a3bb37c88b72df8e571533135669d69e",
+    "agent-combined": "dc018f6b1bb88d8266b7bf5c7bf1138b36402ecad923fde171ca4d796c3c1952"
+  },
+  "context_root": "out/ibex-source-context-v3",
+  "context_sha256": "80aa3989bfcb702b1a946708cb740764188be97aae1dddeca719a6f00510f399",
+  "context_excerpts": [
+    [
+      "specs/ibex.md",
+      1,
+      56
+    ],
+    [
+      "third_party/ibex/examples/simple_system/rtl/ibex_simple_system.sv",
+      1,
+      72
+    ],
+    [
+      "third_party/ibex/examples/simple_system/rtl/ibex_simple_system.sv",
+      303,
+      316
+    ],
+    [
+      "third_party/ibex/rtl/ibex_core.sv",
+      184,
+      203
+    ],
+    [
+      "third_party/ibex/rtl/ibex_cs_registers.sv",
+      1891,
+      1910
+    ],
+    [
+      "third_party/ibex/rtl/ibex_multdiv_fast.sv",
+      408,
+      529
+    ],
+    [
+      "third_party/ibex/rtl/ibex_load_store_unit.sv",
+      420,
+      486
+    ],
+    [
+      "third_party/ibex/rtl/ibex_load_store_unit.sv",
+      533,
+      545
+    ]
+  ],
+  "context_char_budget": 24000,
+  "context_payload_sha256": "49319d1590abfcdfc2568f7d0c3935d05abd7c411c0aa9995cbf9de7f6d5467c",
+  "descriptor": "eight retirement-gap quartiles plus dominant alu/multiply/divide/load/store class",
+  "coverage_restart_probability": 0.2,
+  "coverage_parent_rule": "uniform among least-visited occupied cells; retain lowest-loss elite",
+  "sources": {
+    "experiments/ibex_temporal_v1/activity.py": "f270c4973117a188af616d488974af794aacfc3cd45fdd3951247249bd9a341a",
+    "experiments/ibex_temporal_v1/evaluate.py": "9b193971efeb57cf22e44f19bafcc5793ed74c7d8b844bbc3a039d07d3ba53f5",
+    "experiments/ibex_temporal_v1/gate.py": "e19a7c29a1ad3f1174bb42e930660e2b9fabfdb0877d71b975bde7d194d731c5",
+    "experiments/ibex_temporal_v1/panel.py": "f89f0d6f6f884d8315d5936d34238c9f628ec176a0082f4e211c8af376cbafcc",
+    "experiments/ibex_temporal_v1/program.py": "d94236fbcf1378eebe3fb01ec420405d5d75efa6796eb659d3e1208f18cccfab",
+    "experiments/ibex_temporal_v1/search.py": "48a97537ec71e94c579a0dece9ae1f753d141c3da8097634d45d7b8d337b4df8",
+    "experiments/ibex_temporal_v1/witnesses.py": "0c7a8c5b8e2be9b76945a08e189253185c008c5d32a46c29c4a46418aa02d76a",
+    "experiments/ibex_temporal_v2/compiler.py": "b337431879727a29c33ec08ea7806918f7d146d3e4fd0423f21cf8251ee7a18d",
+    "experiments/ibex_temporal_v2/evaluate.py": "0b7c695cc4dac37b897eba10473e9df251632d4a42a582bce8d2dc6ae37d38f0",
+    "experiments/ibex_temporal_v2/gate.py": "6b24bf1c2dcf0015ae4ea7803a37ca349ad0669433565bb46eb2c86e97532fb4",
+    "experiments/ibex_temporal_v2/panel.py": "97214baa0ad0bcce4982ef20146e57e82b0a4a36afb29b8f14d7f5815fc9b2c7",
+    "experiments/ibex_temporal_v2/program.py": "ad5a541e3bfbb1e977d582d5a9170642c392cbe0ddea3c3d63d8cf30b16d650f",
+    "experiments/ibex_temporal_v2/search.py": "bf8e993321a98315b5baaae60df5f6e21988bfd50cec51a6246815ccdc876567",
+    "experiments/ibex_temporal_v3/agent.py": "4e06ed93b78cadd02858b35d04a299df7346f3888ce646852061285b24e93f54",
+    "experiments/ibex_temporal_v3/context.py": "3646fe3ba94cec0860b9861b81531db76c04a9e159d5d39bfe5d6f2e538aa866",
+    "experiments/ibex_temporal_v3/coverage.py": "55f33d18a9ac11504296c01e74694ccf3d1e90e2482db78cfec27500b71a93a4",
+    "experiments/ibex_temporal_v3/evaluate.py": "55397fff1b447a49d118662b9ea67150bc9f5b2c07350d6fe2ce00e598b48950",
+    "experiments/ibex_temporal_v3/feedback.py": "e2b9c9c8884c7e71aa7be35a073e21226be0d747f2f3696ada046dc86ad23a1d",
+    "experiments/ibex_temporal_v3/gate.py": "0606f1d5d01d37152ab76aa5534fb140914e793c2d79b748e37898a7a87781fd",
+    "experiments/ibex_temporal_v3/panel.py": "25800cb1deb5e24a76538c7bd8294599429485db56dfaee9e44eb253c7dba3bd",
+    "experiments/ibex_temporal_v3/program.py": "9051d86baf215451200bca7fcacaf2f0cb1fea06d3c1aee4c51e084f8fa6b25f",
+    "experiments/ibex_temporal_v3/search.py": "0eb10382d02912aa0677ddbd6a17564895eb93d6c0d2738c9911453a613e48e7",
+    "src/agcws/policies/vertex.py": "56b76b78d6dfd94d336da82dc6d71938fdd2578138b02797ae7cdb47ee6f8544",
+    "src/agcws/policies/source_context.py": "53c69932b6df5289e2c4aa50595cb4ae7b4a71e0420c7748f4b3483659fd8a30",
+    "src/agcws/provenance.py": "6857eda6486bd4efd1f163f8a5572bc0f8eab4fd69922203a17a1216c7195c2d",
+    "src/agcws/config.py": "4713aa413b5e08b0b382fef6c52be3275dd6f13471220f5cf38acddca306be26",
+    "docker/run.sh": "90118b16e7f44b458628bbef9cddb61b0f6e96e981d714172fba107a865f3384",
+    "scripts/build_ibex_context.py": "234d1af59ae6df53603a3fafe956f6f1ff3824428af4238ae2732f0c2d114fc7",
+    "specs/ibex.md": "0a81cfa00848aff710216e0a49a877839155ba656a2edc03decce88f68cd9268",
+    "docs/IBEX_TEMPORAL_V3_DEVELOPMENT.md": "884fb08cad18fe9b6df05b04f461e8e5b88b818cdeb22667dc11370bdc4221ca"
+  },
+  "packages": {
+    "google-genai": "2.8.0",
+    "jsonschema": "4.26.0"
+  },
+  "measurement_fingerprint": "e89a6e327c88980b18dea5d7696dfc46f18492f230f53cf9b4cad75e470b688c"
+}
