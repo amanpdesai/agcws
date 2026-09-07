@@ -1,5 +1,9 @@
 # Plan
 
+Current research extension: [staged hypothesis roadmap](RESEARCH_DIRECTIONS.md)
+and [model × reasoning fixed-context probe](IBEX_CAPABILITY_V1_PROTOCOL.md).
+These are new development stages; prior frozen studies are not being amended.
+
 The post-results [research assessment](RESEARCH_DIRECTION.md) separates
 demonstrated waveform feasibility from unproven agent superiority and proposes
 a fresh complexity-controlled extension. It does not amend either frozen study.

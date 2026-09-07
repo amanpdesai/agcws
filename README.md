@@ -31,6 +31,10 @@ prediction feedback. The response interface is more reliable, but the grounded
 agent does not beat random or improve non-flat target coverage. Its complete
 compact archive and every finalist are tracked; this is not held-out confirmation.
 
+The next development stage is a controlled model × reasoning probe, not a rewrite
+of those results. See the [research roadmap](docs/RESEARCH_DIRECTIONS.md) and
+[frozen-context protocol](docs/IBEX_CAPABILITY_V1_PROTOCOL.md).
+
 Reviewable ledgers and inference are tracked in
 [`results/structural_temporal_heldout_v1/`](results/structural_temporal_heldout_v1/),
 with matched gate evidence in

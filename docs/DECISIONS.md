@@ -644,3 +644,20 @@ gate; the temporal package did not improve the primary development endpoint.
 action-to-window tool and test predicted changes before another search panel.
 This is a recommendation, not an implemented feature. Prior frozen and held-out
 studies remain unchanged; full details are in `IBEX_TEMPORAL_V4_RESULTS.md`.
+
+## 2026-09-07 — Isolate model capability and reasoning before another search package
+
+**Decision.** Compare Gemini 2.5 Flash/Pro × 512/4,096 thinking allowances on
+twelve fixed observed Ibex histories, with random/coverage next-batch controls.
+One batch of two per arm/context; unchanged v4 grounded payload and CPU oracle.
+Common output cap 16,384 avoids forcing the larger thinking arm against the old
+8,192-token cap. Preserve actual token usage and every failed proposal.
+**Rationale.** Existing results do not isolate model capability, reasoning budget
+or search depth. More source text did not establish comprehension, and a small
+development mean ordering does not prove general superiority, harm or equivalence.
+**Consequence.** This stage measures conditional next-batch improvement, not new
+on-policy AUC or held-out performance. Freeze before calls, gate model access on
+the first context, cap the conservative reservation at $20, and report all arms.
+Larger search budgets, adaptive RTL reading, generator evolution and architectural
+complexity have separate stages in `RESEARCH_DIRECTIONS.md`; none launches
+automatically after this probe.
