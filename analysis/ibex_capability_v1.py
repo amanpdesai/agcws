@@ -344,6 +344,12 @@ def audit(root):
                     ):
                         raise ValueError("CPU state mismatch")
                     check_feedback(t["feedback"], record["profile"])
+                    if record["profile"]["clock_edges"] != 200000 or record["profile"][
+                        "window_rates"
+                    ] != [
+                        v / 25000 for v in record["profile"]["window_bit_transitions"]
+                    ]:
+                        raise ValueError("activity rate arithmetic mismatch")
                     check_execution(t["execution"], t["feedback"])
                     if t["rates"] != record["profile"][
                         "window_rates"
