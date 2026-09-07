@@ -10,6 +10,8 @@ import shutil
 import statistics
 from pathlib import Path
 
+import jsonschema
+
 from agcws.provenance import file_sha256
 from analysis.ibex_expressiveness import audit_cell, describe
 from analysis.ibex_temporal_v3 import check_feedback
@@ -17,6 +19,7 @@ from experiments.ibex_temporal_v3.coverage import descriptor
 from experiments.ibex_temporal_v3.program import canonical, interpret
 from experiments.ibex_temporal_v3.search import key
 from experiments.ibex_temporal_v4.contract import decode
+from experiments.ibex_temporal_v4.compiler import assembly
 from experiments.ibex_temporal_v4.grounded_agent import payload
 from experiments.ibex_temporal_v4.notebook import assess
 
@@ -262,6 +265,8 @@ def audit(root):
                     for k in ("valid", "stage", "feedback", "execution", "allocation")
                 ):
                     raise ValueError("trial differs from evaluation record")
+                if (cache / "run/program.S").read_text() != assembly(p):
+                    raise ValueError("compiled assembly differs from candidate")
                 if t["valid"]:
                     functional = read(cache / "run/functional.json")
                     expected = interpret(p)
@@ -300,6 +305,21 @@ def audit(root):
                         raise ValueError("CPU output state mismatch")
                     check_feedback(t["feedback"], record["profile"])
                     check_execution(t["execution"], t["feedback"])
+            else:
+                try:
+                    canonical(t["program"])
+                except jsonschema.ValidationError as exc:
+                    if (
+                        t["stage"] != "SCHEMA"
+                        or t["reason"] != exc.message
+                        or t["schema_path"] != list(exc.absolute_path)
+                    ):
+                        raise ValueError("schema rejection mismatch") from exc
+                except ValueError as exc:
+                    if t["stage"] != "PROTOCOL" or t["reason"] != str(exc):
+                        raise ValueError("protocol rejection mismatch") from exc
+                else:
+                    raise ValueError("statically valid proposal missing evaluation")
         shared = [t["program"] for t in trials[:2]]
         if summary["seed"] in initial and initial[summary["seed"]] != shared:
             raise ValueError("unequal shared initialization")
