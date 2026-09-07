@@ -1,8 +1,15 @@
 import itertools
+import json
+import shutil
+from pathlib import Path
 
 import pytest
 
-from analysis.ibex_temporal_v4 import check_execution, describe_panel
+from analysis.ibex_temporal_v4 import (
+    check_execution,
+    check_prerequisites,
+    describe_panel,
+)
 from experiments.ibex_temporal_v3.feedback import CLASSES
 
 
@@ -93,3 +100,23 @@ def test_descriptive_predictions_keep_missing_denominator_and_remove_union_cover
     assert "grid_profiles" not in result["policies"]["agent"]
     with pytest.raises(ValueError, match="incomplete"):
         describe_panel(manifest, cells[:-1])
+
+
+def test_frozen_readiness_prerequisites_are_reproducible_and_tamper_evident(tmp_path):
+    manifest = json.loads(
+        Path("results/ibex_temporal_v4_development/manifest.json").read_text()
+    )
+    for name in (
+        "ibex_temporal_v4_gate",
+        "ibex_temporal_v4_gate_tiny",
+        "ibex_temporal_v4_prediction_gate",
+    ):
+        shutil.copytree(Path("results") / name, tmp_path / "prerequisites" / name)
+    check_prerequisites(tmp_path, manifest)
+    path = (
+        tmp_path
+        / "prerequisites/ibex_temporal_v4_prediction_gate/inputs/prediction.json"
+    )
+    path.write_text("{}\n")
+    with pytest.raises(ValueError, match="input mismatch"):
+        check_prerequisites(tmp_path, manifest)

@@ -113,8 +113,51 @@ def check_execution(execution, feedback):
             raise ValueError("divide event arithmetic mismatch")
 
 
+def check_prerequisites(root, manifest):
+    for name, digest in manifest["cpu_gates"].items():
+        path = root / "prerequisites" / Path(name).parent.name / "gate.json"
+        if file_sha256(path) != digest:
+            raise ValueError("CPU gate differs from frozen prerequisite")
+        for relative, expected in read(path)["evidence"].items():
+            item = path.parent / relative
+            if not item.resolve().is_relative_to(path.parent.resolve()):
+                raise ValueError("unsafe CPU gate evidence path")
+            if file_sha256(item) != expected:
+                raise ValueError("CPU gate evidence mismatch")
+        if (path.parent / "original/loadable.bin").read_bytes() != (
+            path.parent / "annotated/loadable.bin"
+        ).read_bytes():
+            raise ValueError("CPU instrumentation changed executable")
+    gate = root / "prerequisites/ibex_temporal_v4_prediction_gate"
+    result = read(gate / "result.json")
+    if file_sha256(gate / "result.json") != manifest["prediction_gate_sha256"]:
+        raise ValueError("prediction gate differs from frozen prerequisite")
+    settings = read(gate / "manifest.json")
+    for path, digest in (
+        ("schema.json", settings["schema_sha256"]),
+        ("inputs/prediction.json", settings["calls"][0]["payload_sha256"]),
+    ):
+        if file_sha256(gate / path) != digest:
+            raise ValueError("prediction gate input mismatch")
+    decoded = decode(result["raw_text"], 2, True)
+    if (
+        decoded != result["decoded"]
+        or not result["ready"]
+        or result["usage_unknown"]
+        or decoded["response_error"] is not None
+        or any(
+            s["canonical"] is None
+            or s["prediction"] is None
+            or s["prediction"]["reference_slot"] != 1
+            for s in decoded["slots"]
+        )
+    ):
+        raise ValueError("prediction readiness not reproducible")
+
+
 def audit(root):
     manifest = read(root / "manifest.json")
+    check_prerequisites(root, manifest)
     previous = root / "v3_manifest.json"
     if file_sha256(previous) != manifest["previous_manifest_sha256"]:
         raise ValueError("v3 manifest mismatch")
@@ -342,6 +385,14 @@ def archive(root, destination):
 
     previous = Path("results/ibex_temporal_v3_development")
     copy(previous / "manifest.json", "v3_manifest.json")
+    prerequisites = [Path(p).parent for p in manifest["cpu_gates"]]
+    prerequisites.append(Path("results/ibex_temporal_v4_prediction_gate"))
+    for directory in prerequisites:
+        for p in directory.rglob("*"):
+            if p.is_file():
+                copy(
+                    p, Path("prerequisites") / directory.name / p.relative_to(directory)
+                )
     for name in manifest["targets"]:
         copy(
             previous / "witnesses" / f"{name}.json", Path("witnesses") / f"{name}.json"
