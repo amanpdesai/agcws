@@ -36,6 +36,19 @@ would still leak the answers. Whitelist a separate bundle that excludes those
 directories, credentials, prior hidden solutions and evaluator internals that
 could be exploited. Candidate code executes separately from source-reading tools.
 
+Scaffolding now exists, but is **not connected to the frozen v2 agent**:
+`scripts/build_ibex_context.py --out out/ibex-source-context-v1` copies eleven
+explicit spec/RTL/configuration files, preserving source headers. The bounded
+`SourceReader` verifies a caller-pinned manifest hash, checks file hashes on every
+read, and records inclusive line ranges and character usage. Its default 40,000
+character allowance is a development setting, not a frozen token budget.
+An ablation must pin that budget and the bundle digest before calls.
+
+The reader rejects unlisted paths and symlink escapes. Read-only file modes are
+not an execution sandbox: expose only the reader API, never a repository shell.
+Mandatory mechanism reads and prediction checks still need controller wiring;
+retrieval scaffolding is not evidence that an agent used RTL effectively.
+
 ## Corrective feedback to implement and test
 
 - Allocated operation counts per segment, including partial iterations.

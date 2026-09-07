@@ -239,7 +239,25 @@ def verify(destination):
             != expected["registers"] + expected["memory"]
         ):
             raise ValueError("witness architectural state mismatch")
-    if (
+    if manifest.get("version") == "weighted-work-v2":
+        previous = destination / "v1_manifest.json"
+        if file_sha256(previous) != manifest["v1_manifest_sha256"]:
+            raise ValueError("v1 manifest provenance mismatch")
+        old = json.loads(previous.read_text())
+        for field in ("targets", "scale", "tolerance", "measurement"):
+            if manifest[field] != old[field]:
+                raise ValueError(f"v1 comparison configuration changed: {field}")
+        if file_sha256(destination / "gate.json") != manifest["gate_sha256"]:
+            raise ValueError("v2 gate provenance mismatch")
+        previous_profile = json.loads(
+            (destination / "v1_check_all_profile.json").read_text()
+        )
+        if (
+            gate["embedded"]["window_bit_transitions"]
+            != previous_profile["window_bit_transitions"]
+        ):
+            raise ValueError("v1 embedding measurement differs")
+    elif (
         gate["check_all"]["window_bit_transitions"]
         != gate["repeat_check"]["window_bit_transitions"]
     ):
@@ -283,6 +301,17 @@ def verify(destination):
             ).hexdigest()
             if expected_id != identifier or program != trial["program"]:
                 raise ValueError("program/cache provenance mismatch")
+            if manifest.get("version") == "weighted-work-v2":
+                from experiments.ibex_temporal_v2.program import allocation
+
+                assigned = allocation(program)
+                if (
+                    trial["allocation"] != assigned
+                    or records[identifier]["allocation"] != assigned
+                    or sum(assigned) != 4096
+                    or min(assigned) < 1
+                ):
+                    raise ValueError("allocation evidence mismatch")
             if trial["valid"]:
                 functional = json.loads(
                     (record_root / "run/functional.json").read_text()
@@ -290,6 +319,29 @@ def verify(destination):
                 output = (record_root / "run/ibex_simple_system.log").read_text()
                 match = re.search(r"AGCWS_STATE ([0-9A-Fa-f ]+)\n", output)
                 expected = functional["expected"]
+                if manifest.get("version") == "weighted-work-v2":
+                    from experiments.ibex_temporal_v2.program import interpret
+
+                    if expected != interpret(program):
+                        raise ValueError("v2 reference state mismatch")
+                    inputs = functional["inputs"]
+                    binaries = [
+                        v
+                        for k, v in inputs.items()
+                        if k.endswith("/Vibex_simple_system")
+                    ]
+                    if binaries != [manifest["measurement"]["binary_sha256"]]:
+                        raise ValueError("simulator binary provenance mismatch")
+                    for name in (
+                        "experiments/ibex_temporal_v2/program.py",
+                        "experiments/ibex_temporal_v2/compiler.py",
+                        "experiments/ibex_temporal_v2/evaluate.py",
+                    ):
+                        hashes = [v for k, v in inputs.items() if k.endswith(name)]
+                        if hashes != [manifest["sources"][name]]:
+                            raise ValueError(
+                                f"evaluated source provenance mismatch: {name}"
+                            )
                 if (
                     not match
                     or [int(x, 16) for x in match[1].split()]
