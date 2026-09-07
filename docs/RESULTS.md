@@ -1,5 +1,13 @@
 # Results status
 
+Latest programmable-Ibex development evidence:
+[v3 context/correction ablation](IBEX_TEMPORAL_V3_RESULTS.md), complete at 72 cells
+and 1,152 slots. Base-agent mean AUC is 4.566393 versus random 4.831839; added
+context/correction does not improve the base mean. All solves are on the near-flat
+target. This is observed development data, not a held-out win or a power claim.
+The complete compact archive and all finalist profiles are tracked under
+`results/ibex_temporal_v3_development/`.
+
 This file retains historical infrastructure and pilot observations. The completed
 two-design scalar held-out study is reported in [SEMANTIC_RESULTS.md](SEMANTIC_RESULTS.md).
 The completed temporal study is reported in [STRUCTURAL_RESULTS.md](STRUCTURAL_RESULTS.md),

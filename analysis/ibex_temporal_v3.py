@@ -10,6 +10,8 @@ import shutil
 import statistics
 from pathlib import Path
 
+import jsonschema
+
 from agcws.provenance import file_sha256
 from analysis.ibex_expressiveness import audit_cell, describe
 from experiments.ibex_temporal_v3.context import load_context
@@ -69,6 +71,25 @@ def describe_panel(manifest, cells):
                 "VALID" if t["valid"] else t["stage"] for t in generated
             )
         )
+        wrappers = [
+            t
+            for t in generated
+            if t["stage"] == "SCHEMA"
+            and isinstance(t.get("program"), dict)
+            and isinstance(t["program"].get("program"), dict)
+        ]
+        nested_schema_ok = 0
+        for trial in wrappers:
+            try:
+                canonical(trial["program"]["program"])
+                nested_schema_ok += 1
+            except jsonschema.ValidationError:
+                pass
+        report["posthoc_wrapper_diagnostic"] = {
+            "rejected_nested_program_envelopes": len(wrappers),
+            "nested_program_passes_static_schema": nested_schema_ok,
+            "scope": "diagnostic only; no unwrapping, simulation, rescoring or slot refund",
+        }
         report["tokens_in"] = sum(t["tokens_in"] for _, ts in selected for t in ts)
         report["tokens_out_including_thinking"] = sum(
             t["tokens_out"] for _, ts in selected for t in ts

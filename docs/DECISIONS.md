@@ -586,3 +586,26 @@ occurred. Agent mean AUC is 4.554168 versus random 4.831839, but both solve 3/12
 cells on previously observed development targets. This authorizes further
 development, not a confirmatory claim. See `IBEX_PROPOSAL_V2_RESULTS.md` for the
 full result, remaining numeric-encoding edge case and temporal claim limits.
+
+## 2026-09-07 — Complete v3 ablation; preserve failures and retain base candidate
+
+**Decision.** The frozen 72-cell programmable-Ibex temporal panel is complete.
+Keep its six arms and every charged failure unchanged. Retain the base agent as
+the development candidate, not as a confirmed winner. Fresh held-out target
+families and seeds remain reserved for a later frozen selection.
+**Finding.** Base AUC 4.566393, random 4.831839, coverage 5.123888, context
+5.058827, correction 5.727038, combined 5.430726. Every solve is on target_1;
+random has the greatest mean per-run behavior coverage. The correction arms
+frequently emit a nested program envelope (94 correction, 72 combined rejected
+slots). Post-hoc static inspection is disclosed and does not change their scores.
+**Rationale.** Extra information and an exploration instruction are not evidence
+of improved search. Response-shape regressions prevent a clean interpretation as
+a test of hardware reasoning. The 2×2 design isolates the two packages, not every
+component of the correction package.
+**Rejected.** Unwrapping candidates after the study; refunding rejected slots;
+selecting favorable waveform examples; reporting development differences as
+held-out superiority or RTL activity as watts.
+**Consequence.** Any output-contract revision needs a separate development
+version before controller selection. Do not spend held-out data repairing these
+failures. Full evidence, limitations and reproduction commands are in
+`IBEX_TEMPORAL_V3_RESULTS.md`.

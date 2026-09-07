@@ -94,6 +94,24 @@ def test_factorial_contrasts_and_per_run_coverage():
         assert report["mean_behavior_cells_per_run"] == 1
         assert "grid_profiles" not in report
         assert report["generated_slots"] == 4
+        assert (
+            report["posthoc_wrapper_diagnostic"]["rejected_nested_program_envelopes"]
+            == 0
+        )
+    from experiments.ibex_temporal_v3.program import random_program
+    import random
+
+    cells[0][1][1].update(
+        valid=False,
+        stage="SCHEMA",
+        program={"program": random_program(random.Random(3)), "reference_slot": 1},
+    )
+    diagnosed = describe_panel(manifest, cells)["policies"]["random"]
+    assert (
+        diagnosed["posthoc_wrapper_diagnostic"]["nested_program_passes_static_schema"]
+        == 1
+    )
+    assert diagnosed["generated_validity"]["SCHEMA"] == 1
     with pytest.raises(ValueError, match="incomplete"):
         describe_panel(manifest, cells[:-1])
 
