@@ -186,9 +186,80 @@ def archive(root, destination):
     print(json.dumps(report, indent=2))
 
 
+def verify(destination):
+    index = json.loads((destination / "sha256.json").read_text())
+    for name, digest in index.items():
+        path = destination / name
+        if not path.resolve().is_relative_to(destination.resolve()):
+            raise ValueError("archive index escapes its directory")
+        if file_sha256(path) != digest:
+            raise ValueError(f"archive hash mismatch: {name}")
+    manifest = json.loads((destination / "manifest.json").read_text())
+    for name, digest in manifest["sources"].items():
+        if file_sha256(destination / "sources" / name) != digest:
+            raise ValueError(f"frozen source mismatch: {name}")
+    for name, target in manifest["targets"].items():
+        if (
+            file_sha256(destination / "witnesses" / f"{name}.json")
+            != target["witness_sha256"]
+        ):
+            raise ValueError("target witness mismatch")
+    cells, initial = [], {}
+    for target, seed, policy in itertools.product(
+        manifest["targets"], manifest["seeds"], manifest["policies"]
+    ):
+        directory = destination / "panel" / target / f"seed-{seed}" / policy
+        run = json.loads((directory / "manifest.json").read_text())
+        if run["study_sha256"] != file_sha256(destination / "manifest.json"):
+            raise ValueError("mixed study manifests")
+        summary = json.loads((directory / "summary.json").read_text())
+        trials = [
+            json.loads(line)
+            for line in (directory / "trials.jsonl").read_text().splitlines()
+        ]
+        records = {
+            t["cache_id"]: json.loads(
+                (
+                    destination / "evaluations" / t["cache_id"] / "result.json"
+                ).read_text()
+            )
+            for t in trials
+            if t["cache_id"]
+        }
+        audit_cell(manifest, summary, trials, records)
+        shared = [t["program"] for t in trials[: manifest["shared_initial_slots"]]]
+        if seed in initial and initial[seed] != shared:
+            raise ValueError("initialization differs between paired runs")
+        initial[seed] = shared
+        batches = json.loads((directory / "batches.json").read_text())
+        if sum(b["requested_slots"] for b in batches) != manifest["budget"]:
+            raise ValueError("batch budget mismatch")
+        for field in ("tokens_in", "tokens_out"):
+            if sum(t[field] for t in trials) != sum(b[field] for b in batches):
+                raise ValueError("token accounting mismatch")
+        if any(t["prompt_sha256"] != manifest["prompt_sha256"] for t in trials):
+            raise ValueError("prompt changed between runs")
+        cells.append((summary, trials))
+    report = describe(manifest, cells)
+    if report != json.loads((destination / "aggregate.json").read_text()):
+        raise ValueError("aggregate mismatch")
+    return {
+        "verified_cells": len(cells),
+        "verified_slots": sum(len(t) for _, t in cells),
+        "verified_files": len(index),
+        "scope": "archive integrity and arithmetic; not a simulation rerun",
+    }
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--root", type=Path, required=True)
+    parser.add_argument("--root", type=Path)
     parser.add_argument("--archive", type=Path, required=True)
+    parser.add_argument("--verify", action="store_true")
     args = parser.parse_args()
-    archive(args.root, args.archive)
+    if args.verify:
+        print(json.dumps(verify(args.archive), indent=2))
+    elif args.root is None:
+        parser.error("--root is required for archival")
+    else:
+        archive(args.root, args.archive)

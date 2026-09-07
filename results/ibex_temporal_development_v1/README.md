@@ -22,6 +22,7 @@ bash docker/run.sh fusesoc --cores-root=/workspace/third_party/ibex run --target
 .venv/bin/python -m experiments.ibex_temporal_v1.gate --root out/ibex-expressiveness-v1
 .venv/bin/python -m experiments.ibex_temporal_v1.panel run --root out/ibex-expressiveness-v1 --manifest results/ibex_temporal_development_v1/manifest.json --workers 3
 .venv/bin/python -m analysis.ibex_expressiveness --root out/ibex-expressiveness-v1 --archive results/ibex_temporal_development_v1
+.venv/bin/python -m analysis.ibex_expressiveness --archive results/ibex_temporal_development_v1 --verify
 ```
 
 The gate expects a fresh output directory. The panel skips completed cells but

@@ -1,8 +1,9 @@
 import itertools
+import json
 
 import pytest
 
-from analysis.ibex_expressiveness import audit_cell, describe
+from analysis.ibex_expressiveness import audit_cell, describe, verify
 
 
 def panel():
@@ -85,3 +86,16 @@ def test_cell_audit_rejects_fabricated_auc():
     summary["auc"] = 0
     with pytest.raises(ValueError, match="AUC mismatch"):
         audit_cell(manifest, summary, rows, {})
+
+
+def test_archive_rejects_changed_files_before_reading_results(tmp_path):
+    (tmp_path / "file.json").write_text("{}")
+    (tmp_path / "sha256.json").write_text(json.dumps({"file.json": "wrong"}))
+    with pytest.raises(ValueError, match="archive hash mismatch"):
+        verify(tmp_path)
+
+
+def test_archive_index_cannot_escape_root(tmp_path):
+    (tmp_path / "sha256.json").write_text(json.dumps({"../outside": "wrong"}))
+    with pytest.raises(ValueError, match="escapes"):
+        verify(tmp_path)
