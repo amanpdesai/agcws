@@ -1,0 +1,397 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "hypothesis",
+    "candidates"
+  ],
+  "properties": {
+    "hypothesis": {
+      "type": "string"
+    },
+    "candidates": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+        "type": "object",
+        "required": [
+          "registers",
+          "memory_seed",
+          "segments"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "registers": {
+            "type": "array",
+            "minItems": 8,
+            "maxItems": 8,
+            "items": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4294967295
+            }
+          },
+          "memory_seed": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 4294967295
+          },
+          "segments": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 8,
+            "items": {
+              "type": "object",
+              "required": [
+                "weight",
+                "release",
+                "body"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "release": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 200000
+                },
+                "body": {
+                  "type": "array",
+                  "minItems": 1,
+                  "maxItems": 8,
+                  "items": {
+                    "oneOf": [
+                      {
+                        "type": "object",
+                        "required": [
+                          "op",
+                          "dst",
+                          "a",
+                          "b"
+                        ],
+                        "properties": {
+                          "op": {
+                            "const": "add"
+                          },
+                          "dst": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 7
+                          },
+                          "a": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 7
+                          },
+                          "b": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 7
+                          }
+                        },
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "required": [
+                          "op",
+                          "dst",
+                          "a",
+                          "b"
+                        ],
+                        "properties": {
+                          "op": {
+                            "const": "xor"
+                          },
+                          "dst": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 7
+                          },
+                          "a": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 7
+                          },
+                          "b": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 7
+                          }
+                        },
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "required": [
+                          "op",
+                          "dst",
+                          "a",
+                          "b"
+                        ],
+                        "properties": {
+                          "op": {
+                            "const": "and"
+                          },
+                          "dst": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 7
+                          },
+                          "a": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 7
+                          },
+                          "b": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 7
+                          }
+                        },
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "required": [
+                          "op",
+                          "dst",
+                          "a",
+                          "b"
+                        ],
+                        "properties": {
+                          "op": {
+                            "const": "or"
+                          },
+                          "dst": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 7
+                          },
+                          "a": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 7
+                          },
+                          "b": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 7
+                          }
+                        },
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "required": [
+                          "op",
+                          "dst",
+                          "a",
+                          "b"
+                        ],
+                        "properties": {
+                          "op": {
+                            "const": "sll"
+                          },
+                          "dst": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 7
+                          },
+                          "a": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 7
+                          },
+                          "b": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 7
+                          }
+                        },
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "required": [
+                          "op",
+                          "dst",
+                          "a",
+                          "b"
+                        ],
+                        "properties": {
+                          "op": {
+                            "const": "srl"
+                          },
+                          "dst": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 7
+                          },
+                          "a": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 7
+                          },
+                          "b": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 7
+                          }
+                        },
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "required": [
+                          "op",
+                          "dst",
+                          "a",
+                          "b"
+                        ],
+                        "properties": {
+                          "op": {
+                            "const": "mul"
+                          },
+                          "dst": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 7
+                          },
+                          "a": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 7
+                          },
+                          "b": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 7
+                          }
+                        },
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "required": [
+                          "op",
+                          "dst",
+                          "a",
+                          "b"
+                        ],
+                        "properties": {
+                          "op": {
+                            "const": "divu"
+                          },
+                          "dst": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 7
+                          },
+                          "a": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 7
+                          },
+                          "b": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 7
+                          }
+                        },
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "required": [
+                          "op",
+                          "dst",
+                          "a",
+                          "b"
+                        ],
+                        "properties": {
+                          "op": {
+                            "const": "cmovz"
+                          },
+                          "dst": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 7
+                          },
+                          "a": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 7
+                          },
+                          "b": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 7
+                          }
+                        },
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "required": [
+                          "op",
+                          "dst",
+                          "a"
+                        ],
+                        "properties": {
+                          "op": {
+                            "const": "load"
+                          },
+                          "dst": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 7
+                          },
+                          "a": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 7
+                          }
+                        },
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "required": [
+                          "op",
+                          "a",
+                          "b"
+                        ],
+                        "properties": {
+                          "op": {
+                            "const": "store"
+                          },
+                          "a": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 7
+                          },
+                          "b": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 7
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    ]
+                  }
+                },
+                "weight": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 4096
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
