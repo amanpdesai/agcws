@@ -9,6 +9,7 @@ from analysis.ibex_temporal_v4 import (
     check_execution,
     check_prerequisites,
     describe_panel,
+    trajectory_summary,
 )
 from experiments.ibex_temporal_v3.feedback import CLASSES
 
@@ -120,3 +121,24 @@ def test_frozen_readiness_prerequisites_are_reproducible_and_tamper_evident(tmp_
     path.write_text("{}\n")
     with pytest.raises(ValueError, match="input mismatch"):
         check_prerequisites(tmp_path, manifest)
+
+
+def test_trajectory_counts_repetition_not_container_replacement_as_focused():
+    def trial(slot, program, edits):
+        return {
+            "slot": slot,
+            "valid": True,
+            "canonical_program": program,
+            "prediction_assessment": {"scorable": True, "actual_changes": edits},
+        }
+
+    data = [
+        trial(1, {"x": 1}, []),
+        trial(2, {"x": 2}, []),
+        trial(3, {"x": 2}, [{"before": 1, "after": 2}]),
+        trial(4, {"x": 3}, [{"before": [1], "after": [2, 3]}]),
+    ]
+    result = trajectory_summary([(None, data)])
+    assert result["by_round"]["1"]["duplicate_valid_programs"] == 1
+    assert result["by_batch_position"]["first"]["one_scalar_leaf_edit"] == 1
+    assert result["by_batch_position"]["second"]["one_scalar_leaf_edit"] == 0

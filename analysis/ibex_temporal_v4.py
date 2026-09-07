@@ -38,6 +38,36 @@ def directories(root, manifest):
     ]
 
 
+def trajectory_summary(selected):
+    rounds = collections.defaultdict(collections.Counter)
+    roles = collections.defaultdict(collections.Counter)
+    for _, trials in selected:
+        seen = set()
+        for t in trials:
+            encoded = json.dumps(t.get("canonical_program"), sort_keys=True)
+            if t["slot"] > 2:
+                r = rounds[str((t["slot"] - 3) // 2 + 1)]
+                role = roles["first" if t["slot"] % 2 else "second"]
+                assessment = t["prediction_assessment"]
+                for counter in (r, role):
+                    counter["requested_slots"] += 1
+                    counter["valid"] += t["valid"]
+                    counter["duplicate_valid_programs"] += (
+                        t["valid"] and encoded in seen
+                    )
+                    counter["scorable_predictions"] += assessment["scorable"]
+                    if assessment["scorable"]:
+                        edits = assessment["actual_changes"]
+                        counter["one_scalar_leaf_edit"] += (
+                            len(edits) == 1
+                            and not isinstance(edits[0]["before"], (list, dict))
+                            and not isinstance(edits[0]["after"], (list, dict))
+                        )
+            if t["valid"]:
+                seen.add(encoded)
+    return {"by_round": dict(rounds), "by_batch_position": dict(roles)}
+
+
 def describe_panel(manifest, cells):
     result = describe(manifest, cells)
     for policy, report in result["policies"].items():
@@ -83,6 +113,7 @@ def describe_panel(manifest, cells):
         report["tokens_out_including_thinking"] = sum(
             t["tokens_out"] for _, ts in selected for t in ts
         )
+        report["trajectory"] = trajectory_summary(selected)
     result["limitations"] = [
         "observed development targets/seeds; no held-out inference",
         "grounding is a package of execution feedback, notebook and instructions",
