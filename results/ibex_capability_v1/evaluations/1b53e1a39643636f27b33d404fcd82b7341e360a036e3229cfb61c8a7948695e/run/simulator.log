@@ -1,0 +1,39 @@
+Program header number 0 in `/workspace/out/cache/1b53e1a39643636f27b33d404fcd82b7341e360a036e3229cfb61c8a7948695e/run/program.elf' is not of type PT_LOAD; ignoring.
+Program header number 3 in `/workspace/out/cache/1b53e1a39643636f27b33d404fcd82b7341e360a036e3229cfb61c8a7948695e/run/program.elf' is not of type PT_LOAD; ignoring.
+Simulation of Ibex
+==================
+
+Tracing can be toggled by sending SIGUSR1 to this process:
+$ kill -USR1 18
+
+Simulation running, end by pressing CTRL-c.
+Tracing enabled.
+Writing simulation traces to sim.fst
+TOP.ibex_simple_system.u_top.u_ibex_tracer.unnamedblk2.unnamedblk3: Writing execution trace to trace_core_00000000.log
+Terminating simulation by software request.
+- src/lowrisc_ibex_sim_shared_0/rtl/sim/simulator_ctrl.sv:93: Verilog $finish
+Received $finish() from Verilog, shutting down simulation.
+
+Simulation statistics
+=====================
+Executed cycles:  238013
+Wallclock time:   5.077 s
+Simulation speed: 46880.6 cycles/s (46.8806 kHz)
+Trace file size:  17148446 B
+
+You can view the simulation traces by calling
+$ gtkwave sim.fst
+
+Performance Counters
+====================
+Cycles:                     238009
+Instructions Retired:       115620
+LSU Busy:                   12437
+Fetch Wait:                 42974
+Loads:                      7089
+Stores:                     5348
+Jumps:                      1907
+Conditional Branches:       43717
+Taken Conditional Branches: 42970
+Compressed Instructions:    0
+Multiply Wait:              500

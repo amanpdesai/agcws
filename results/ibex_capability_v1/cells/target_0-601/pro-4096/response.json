@@ -1,0 +1,483 @@
+{
+  "raw_text": "{\n  \"hypothesis\": \"The 'hourglass' activity profile requires a sharp contrast between high-activity and low-activity periods. This can be achieved by concentrating computationally expensive operations (like `mul` and `divu`) in the first and last segments with high weights, while the middle segments are made extremely lightweight with minimal weights and simple instructions. The release times of these middle segments must be carefully scheduled to fall within the target low-activity window, minimizing the duration of high-activity polling loops that would otherwise fill the middle bins. Previous attempts either suffered from unpredictable `divu` stalls or failed to create a sufficient activity differential between segments. This new approach uses a massive weight disparity and strategic release scheduling to enforce a quiet period.\",\n  \"candidates\": [\n    {\n      \"registers\": [\n        1,\n        1,\n        1,\n        1,\n        1,\n        1,\n        1,\n        1\n      ],\n      \"memory_seed\": 123456789,\n      \"segments\": [\n        {\n          \"weight\": 2046,\n          \"release\": 0,\n          \"body\": [\n            {\n              \"op\": \"add\",\n              \"a\": 0,\n              \"b\": 1,\n              \"dst\": 2\n            },\n            {\n              \"op\": \"mul\",\n              \"a\": 3,\n              \"b\": 4,\n              \"dst\": 5\n            },\n            {\n              \"op\": \"add\",\n              \"a\": 6,\n              \"b\": 7,\n              \"dst\": 0\n            },\n            {\n              \"op\": \"mul\",\n              \"a\": 1,\n              \"b\": 2,\n              \"dst\": 3\n            }\n          ]\n        },\n        {\n          \"weight\": 1,\n          \"release\": 75000,\n          \"body\": [\n            {\n              \"op\": \"xor\",\n              \"a\": 0,\n              \"b\": 1,\n              \"dst\": 2\n            },\n            {\n              \"op\": \"and\",\n              \"a\": 3,\n              \"b\": 4,\n              \"dst\": 5\n            }\n          ]\n        },\n        {\n          \"weight\": 1,\n          \"release\": 100000,\n          \"body\": [\n            {\n              \"op\": \"xor\",\n              \"a\": 0,\n              \"b\": 1,\n              \"dst\": 2\n            },\n            {\n              \"op\": \"and\",\n              \"a\": 3,\n              \"b\": 4,\n              \"dst\": 5\n            }\n          ]\n        },\n        {\n          \"weight\": 2046,\n          \"release\": 150000,\n          \"body\": [\n            {\n              \"op\": \"add\",\n              \"a\": 0,\n              \"b\": 1,\n              \"dst\": 2\n            },\n            {\n              \"op\": \"mul\",\n              \"a\": 3,\n              \"b\": 4,\n              \"dst\": 5\n            },\n            {\n              \"op\": \"add\",\n              \"a\": 6,\n              \"b\": 7,\n              \"dst\": 0\n            },\n            {\n              \"op\": \"mul\",\n              \"a\": 1,\n              \"b\": 2,\n              \"dst\": 3\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"registers\": [\n        1,\n        1,\n        1,\n        4294967295,\n        1,\n        1,\n        1,\n        1\n      ],\n      \"memory_seed\": 123456789,\n      \"segments\": [\n        {\n          \"weight\": 1946,\n          \"release\": 0,\n          \"body\": [\n            {\n              \"op\": \"mul\",\n              \"a\": 0,\n              \"b\": 1,\n              \"dst\": 2\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 2,\n              \"b\": 3,\n              \"dst\": 4\n            },\n            {\n              \"op\": \"mul\",\n              \"a\": 5,\n              \"b\": 6,\n              \"dst\": 7\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 7,\n              \"b\": 3,\n              \"dst\": 0\n            }\n          ]\n        },\n        {\n          \"weight\": 100,\n          \"release\": 75000,\n          \"body\": [\n            {\n              \"op\": \"xor\",\n              \"a\": 0,\n              \"b\": 1,\n              \"dst\": 2\n            }\n          ]\n        },\n        {\n          \"weight\": 1,\n          \"release\": 100000,\n          \"body\": [\n            {\n              \"op\": \"add\",\n              \"a\": 0,\n              \"b\": 1,\n              \"dst\": 2\n            }\n          ]\n        },\n        {\n          \"weight\": 2047,\n          \"release\": 150000,\n          \"body\": [\n            {\n              \"op\": \"mul\",\n              \"a\": 0,\n              \"b\": 1,\n              \"dst\": 2\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 2,\n              \"b\": 3,\n              \"dst\": 4\n            },\n            {\n              \"op\": \"mul\",\n              \"a\": 5,\n              \"b\": 6,\n              \"dst\": 7\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 7,\n              \"b\": 3,\n              \"dst\": 0\n            }\n          ]\n        }\n      ]\n    }\n  ],\n  \"predictions\": [\n    {\n      \"reference_slot\": 6,\n      \"changed_factor\": \"Drastically increased weight differential between outer (mul) and inner (xor/and) segments to 2046:1. Pushed inner segment releases later (75k, 100k) to create a large polling gap after segment 0, aiming to starve bins 3-6 of activity.\",\n      \"window_directions\": [\n        1,\n        1,\n        -1,\n        -1,\n        -1,\n        -1,\n        1,\n        1\n      ]\n    },\n    {\n      \"reference_slot\": 6,\n      \"changed_factor\": \"Exploratory use of controlled `divu` by zero (register 3) for high activity in outer segments, combined with `mul`. Middle segments are kept minimal. This tests if zero-divisor `divu` provides a predictable high-activity alternative to `mul` or stalling `divu`.\",\n      \"window_directions\": [\n        1,\n        1,\n        -1,\n        -1,\n        -1,\n        -1,\n        1,\n        1\n      ]\n    }\n  ]\n}",
+  "tokens_in": 23246,
+  "tokens_out": 5054,
+  "thinking_tokens": 3353,
+  "usage_unknown": false,
+  "est_cost_usd": 0.0795975,
+  "finish_reasons": [
+    "FinishReason.STOP"
+  ],
+  "prompt_feedback": null,
+  "model_version": "gemini-2.5-pro",
+  "request_wall_clock_s": 41.72653121908661,
+  "long_context_tier": false,
+  "cell": {
+    "context": "target_0-601",
+    "arm": "pro-4096",
+    "seed": 17103
+  },
+  "manifest_sha256": "c3080f0a569efab9a12393fb5771d16db8fa4285cdbcebc46d6047f227388860",
+  "decoded": {
+    "response_error": null,
+    "hypothesis": "The 'hourglass' activity profile requires a sharp contrast between high-activity and low-activity periods. This can be achieved by concentrating computationally expensive operations (like `mul` and `divu`) in the first and last segments with high weights, while the middle segments are made extremely lightweight with minimal weights and simple instructions. The release times of these middle segments must be carefully scheduled to fall within the target low-activity window, minimizing the duration of high-activity polling loops that would otherwise fill the middle bins. Previous attempts either suffered from unpredictable `divu` stalls or failed to create a sufficient activity differential between segments. This new approach uses a massive weight disparity and strategic release scheduling to enforce a quiet period.",
+    "slots": [
+      {
+        "submitted": {
+          "registers": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "memory_seed": 123456789,
+          "segments": [
+            {
+              "weight": 2046,
+              "release": 0,
+              "body": [
+                {
+                  "op": "add",
+                  "a": 0,
+                  "b": 1,
+                  "dst": 2
+                },
+                {
+                  "op": "mul",
+                  "a": 3,
+                  "b": 4,
+                  "dst": 5
+                },
+                {
+                  "op": "add",
+                  "a": 6,
+                  "b": 7,
+                  "dst": 0
+                },
+                {
+                  "op": "mul",
+                  "a": 1,
+                  "b": 2,
+                  "dst": 3
+                }
+              ]
+            },
+            {
+              "weight": 1,
+              "release": 75000,
+              "body": [
+                {
+                  "op": "xor",
+                  "a": 0,
+                  "b": 1,
+                  "dst": 2
+                },
+                {
+                  "op": "and",
+                  "a": 3,
+                  "b": 4,
+                  "dst": 5
+                }
+              ]
+            },
+            {
+              "weight": 1,
+              "release": 100000,
+              "body": [
+                {
+                  "op": "xor",
+                  "a": 0,
+                  "b": 1,
+                  "dst": 2
+                },
+                {
+                  "op": "and",
+                  "a": 3,
+                  "b": 4,
+                  "dst": 5
+                }
+              ]
+            },
+            {
+              "weight": 2046,
+              "release": 150000,
+              "body": [
+                {
+                  "op": "add",
+                  "a": 0,
+                  "b": 1,
+                  "dst": 2
+                },
+                {
+                  "op": "mul",
+                  "a": 3,
+                  "b": 4,
+                  "dst": 5
+                },
+                {
+                  "op": "add",
+                  "a": 6,
+                  "b": 7,
+                  "dst": 0
+                },
+                {
+                  "op": "mul",
+                  "a": 1,
+                  "b": 2,
+                  "dst": 3
+                }
+              ]
+            }
+          ]
+        },
+        "canonical": {
+          "registers": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "memory_seed": 123456789,
+          "segments": [
+            {
+              "weight": 2046,
+              "release": 0,
+              "body": [
+                {
+                  "op": "add",
+                  "a": 0,
+                  "b": 1,
+                  "dst": 2
+                },
+                {
+                  "op": "mul",
+                  "a": 3,
+                  "b": 4,
+                  "dst": 5
+                },
+                {
+                  "op": "add",
+                  "a": 6,
+                  "b": 7,
+                  "dst": 0
+                },
+                {
+                  "op": "mul",
+                  "a": 1,
+                  "b": 2,
+                  "dst": 3
+                }
+              ]
+            },
+            {
+              "weight": 1,
+              "release": 75000,
+              "body": [
+                {
+                  "op": "xor",
+                  "a": 0,
+                  "b": 1,
+                  "dst": 2
+                },
+                {
+                  "op": "and",
+                  "a": 3,
+                  "b": 4,
+                  "dst": 5
+                }
+              ]
+            },
+            {
+              "weight": 1,
+              "release": 100000,
+              "body": [
+                {
+                  "op": "xor",
+                  "a": 0,
+                  "b": 1,
+                  "dst": 2
+                },
+                {
+                  "op": "and",
+                  "a": 3,
+                  "b": 4,
+                  "dst": 5
+                }
+              ]
+            },
+            {
+              "weight": 2046,
+              "release": 150000,
+              "body": [
+                {
+                  "op": "add",
+                  "a": 0,
+                  "b": 1,
+                  "dst": 2
+                },
+                {
+                  "op": "mul",
+                  "a": 3,
+                  "b": 4,
+                  "dst": 5
+                },
+                {
+                  "op": "add",
+                  "a": 6,
+                  "b": 7,
+                  "dst": 0
+                },
+                {
+                  "op": "mul",
+                  "a": 1,
+                  "b": 2,
+                  "dst": 3
+                }
+              ]
+            }
+          ]
+        },
+        "program_error": null,
+        "prediction": {
+          "reference_slot": 6,
+          "changed_factor": "Drastically increased weight differential between outer (mul) and inner (xor/and) segments to 2046:1. Pushed inner segment releases later (75k, 100k) to create a large polling gap after segment 0, aiming to starve bins 3-6 of activity.",
+          "window_directions": [
+            1,
+            1,
+            -1,
+            -1,
+            -1,
+            -1,
+            1,
+            1
+          ]
+        },
+        "prediction_error": null
+      },
+      {
+        "submitted": {
+          "registers": [
+            1,
+            1,
+            1,
+            4294967295,
+            1,
+            1,
+            1,
+            1
+          ],
+          "memory_seed": 123456789,
+          "segments": [
+            {
+              "weight": 1946,
+              "release": 0,
+              "body": [
+                {
+                  "op": "mul",
+                  "a": 0,
+                  "b": 1,
+                  "dst": 2
+                },
+                {
+                  "op": "divu",
+                  "a": 2,
+                  "b": 3,
+                  "dst": 4
+                },
+                {
+                  "op": "mul",
+                  "a": 5,
+                  "b": 6,
+                  "dst": 7
+                },
+                {
+                  "op": "divu",
+                  "a": 7,
+                  "b": 3,
+                  "dst": 0
+                }
+              ]
+            },
+            {
+              "weight": 100,
+              "release": 75000,
+              "body": [
+                {
+                  "op": "xor",
+                  "a": 0,
+                  "b": 1,
+                  "dst": 2
+                }
+              ]
+            },
+            {
+              "weight": 1,
+              "release": 100000,
+              "body": [
+                {
+                  "op": "add",
+                  "a": 0,
+                  "b": 1,
+                  "dst": 2
+                }
+              ]
+            },
+            {
+              "weight": 2047,
+              "release": 150000,
+              "body": [
+                {
+                  "op": "mul",
+                  "a": 0,
+                  "b": 1,
+                  "dst": 2
+                },
+                {
+                  "op": "divu",
+                  "a": 2,
+                  "b": 3,
+                  "dst": 4
+                },
+                {
+                  "op": "mul",
+                  "a": 5,
+                  "b": 6,
+                  "dst": 7
+                },
+                {
+                  "op": "divu",
+                  "a": 7,
+                  "b": 3,
+                  "dst": 0
+                }
+              ]
+            }
+          ]
+        },
+        "canonical": {
+          "registers": [
+            1,
+            1,
+            1,
+            4294967295,
+            1,
+            1,
+            1,
+            1
+          ],
+          "memory_seed": 123456789,
+          "segments": [
+            {
+              "weight": 1946,
+              "release": 0,
+              "body": [
+                {
+                  "op": "mul",
+                  "a": 0,
+                  "b": 1,
+                  "dst": 2
+                },
+                {
+                  "op": "divu",
+                  "a": 2,
+                  "b": 3,
+                  "dst": 4
+                },
+                {
+                  "op": "mul",
+                  "a": 5,
+                  "b": 6,
+                  "dst": 7
+                },
+                {
+                  "op": "divu",
+                  "a": 7,
+                  "b": 3,
+                  "dst": 0
+                }
+              ]
+            },
+            {
+              "weight": 100,
+              "release": 75000,
+              "body": [
+                {
+                  "op": "xor",
+                  "a": 0,
+                  "b": 1,
+                  "dst": 2
+                }
+              ]
+            },
+            {
+              "weight": 1,
+              "release": 100000,
+              "body": [
+                {
+                  "op": "add",
+                  "a": 0,
+                  "b": 1,
+                  "dst": 2
+                }
+              ]
+            },
+            {
+              "weight": 2047,
+              "release": 150000,
+              "body": [
+                {
+                  "op": "mul",
+                  "a": 0,
+                  "b": 1,
+                  "dst": 2
+                },
+                {
+                  "op": "divu",
+                  "a": 2,
+                  "b": 3,
+                  "dst": 4
+                },
+                {
+                  "op": "mul",
+                  "a": 5,
+                  "b": 6,
+                  "dst": 7
+                },
+                {
+                  "op": "divu",
+                  "a": 7,
+                  "b": 3,
+                  "dst": 0
+                }
+              ]
+            }
+          ]
+        },
+        "program_error": null,
+        "prediction": {
+          "reference_slot": 6,
+          "changed_factor": "Exploratory use of controlled `divu` by zero (register 3) for high activity in outer segments, combined with `mul`. Middle segments are kept minimal. This tests if zero-divisor `divu` provides a predictable high-activity alternative to `mul` or stalling `divu`.",
+          "window_directions": [
+            1,
+            1,
+            -1,
+            -1,
+            -1,
+            -1,
+            1,
+            1
+          ]
+        },
+        "prediction_error": null
+      }
+    ]
+  }
+}

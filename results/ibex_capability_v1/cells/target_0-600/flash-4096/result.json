@@ -1,0 +1,1290 @@
+{
+  "cell": {
+    "context": "target_0-600",
+    "arm": "flash-4096",
+    "seed": 17001
+  },
+  "trials": [
+    {
+      "slot": 7,
+      "program": {
+        "registers": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "memory_seed": 123456789,
+        "segments": [
+          {
+            "weight": 1024,
+            "release": 20000,
+            "body": [
+              {
+                "op": "add",
+                "a": 0,
+                "b": 1,
+                "dst": 0
+              },
+              {
+                "op": "sll",
+                "a": 4,
+                "b": 1,
+                "dst": 4
+              }
+            ]
+          },
+          {
+            "weight": 1024,
+            "release": 40000,
+            "body": [
+              {
+                "op": "load",
+                "a": 6,
+                "dst": 6
+              },
+              {
+                "op": "store",
+                "a": 7,
+                "b": 0
+              },
+              {
+                "op": "add",
+                "a": 0,
+                "b": 1,
+                "dst": 0
+              }
+            ]
+          },
+          {
+            "weight": 512,
+            "release": 60000,
+            "body": [
+              {
+                "op": "mul",
+                "a": 1,
+                "b": 2,
+                "dst": 1
+              },
+              {
+                "op": "and",
+                "a": 3,
+                "b": 4,
+                "dst": 3
+              }
+            ]
+          },
+          {
+            "weight": 1536,
+            "release": 80000,
+            "body": [
+              {
+                "op": "divu",
+                "a": 7,
+                "b": 0,
+                "dst": 7
+              },
+              {
+                "op": "add",
+                "a": 0,
+                "b": 1,
+                "dst": 0
+              }
+            ]
+          }
+        ]
+      },
+      "canonical_program": {
+        "registers": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "memory_seed": 123456789,
+        "segments": [
+          {
+            "weight": 1024,
+            "release": 20000,
+            "body": [
+              {
+                "op": "add",
+                "a": 0,
+                "b": 1,
+                "dst": 0
+              },
+              {
+                "op": "sll",
+                "a": 4,
+                "b": 1,
+                "dst": 4
+              }
+            ]
+          },
+          {
+            "weight": 1024,
+            "release": 40000,
+            "body": [
+              {
+                "op": "load",
+                "a": 6,
+                "dst": 6
+              },
+              {
+                "op": "store",
+                "a": 7,
+                "b": 0
+              },
+              {
+                "op": "add",
+                "a": 0,
+                "b": 1,
+                "dst": 0
+              }
+            ]
+          },
+          {
+            "weight": 512,
+            "release": 60000,
+            "body": [
+              {
+                "op": "mul",
+                "a": 1,
+                "b": 2,
+                "dst": 1
+              },
+              {
+                "op": "and",
+                "a": 3,
+                "b": 4,
+                "dst": 3
+              }
+            ]
+          },
+          {
+            "weight": 1536,
+            "release": 80000,
+            "body": [
+              {
+                "op": "divu",
+                "a": 7,
+                "b": 0,
+                "dst": 7
+              },
+              {
+                "op": "add",
+                "a": 0,
+                "b": 1,
+                "dst": 0
+              }
+            ]
+          }
+        ]
+      },
+      "prediction": {
+        "reference_slot": 6,
+        "changed_factor": "Reduced ALU ops in segments 0 and 2, removed xor from segment 0, removed cmovz from segment 2. Increased divu weight in segment 3, removed xor from segment 3. Aiming to decrease bins 2, 4, 5, 7 and increase 0, 1, 3, 6.",
+        "window_directions": [
+          1,
+          0,
+          -1,
+          1,
+          -1,
+          -1,
+          0,
+          -1
+        ]
+      },
+      "prediction_error": null,
+      "rates": [
+        696.412,
+        727.48328,
+        725.68816,
+        281.6936,
+        445.9428,
+        705.57784,
+        711.75836,
+        726.79528
+      ],
+      "loss": 0.48432956742207983,
+      "cache_hit": false,
+      "valid": true,
+      "stage": null,
+      "reason": "",
+      "schema_path": null,
+      "cache_id": "d777e96b1a525a3f62c29e478822abffa5e1f5d9f4e18f298178ad6d6627d7e1",
+      "feedback": {
+        "begin_tick": 286,
+        "end_tick": 400286,
+        "cycles_per_bin": 25000,
+        "retired_classes": [
+          {
+            "alu": 1544,
+            "multiply": 0,
+            "divide": 0,
+            "load": 0,
+            "store": 0,
+            "branch": 5993,
+            "jump": 0,
+            "csr": 5481,
+            "other": 0
+          },
+          {
+            "alu": 2735,
+            "multiply": 0,
+            "divide": 0,
+            "load": 342,
+            "store": 341,
+            "branch": 5311,
+            "jump": 0,
+            "csr": 4970,
+            "other": 0
+          },
+          {
+            "alu": 516,
+            "multiply": 256,
+            "divide": 0,
+            "load": 0,
+            "store": 0,
+            "branch": 5994,
+            "jump": 0,
+            "csr": 5738,
+            "other": 0
+          },
+          {
+            "alu": 953,
+            "multiply": 0,
+            "divide": 476,
+            "load": 0,
+            "store": 0,
+            "branch": 1727,
+            "jump": 0,
+            "csr": 1251,
+            "other": 0
+          },
+          {
+            "alu": 588,
+            "multiply": 0,
+            "divide": 292,
+            "load": 0,
+            "store": 0,
+            "branch": 3477,
+            "jump": 0,
+            "csr": 3185,
+            "other": 0
+          },
+          {
+            "alu": 0,
+            "multiply": 0,
+            "divide": 0,
+            "load": 0,
+            "store": 0,
+            "branch": 6250,
+            "jump": 0,
+            "csr": 6250,
+            "other": 0
+          },
+          {
+            "alu": 0,
+            "multiply": 0,
+            "divide": 0,
+            "load": 0,
+            "store": 0,
+            "branch": 6250,
+            "jump": 0,
+            "csr": 6250,
+            "other": 0
+          },
+          {
+            "alu": 0,
+            "multiply": 0,
+            "divide": 0,
+            "load": 0,
+            "store": 0,
+            "branch": 6250,
+            "jump": 0,
+            "csr": 6250,
+            "other": 0
+          }
+        ],
+        "retired_per_bin": [
+          13018,
+          13699,
+          12504,
+          4407,
+          7542,
+          12500,
+          12500,
+          12500
+        ],
+        "cycles_without_retirement": [
+          11982,
+          11301,
+          12496,
+          20593,
+          17458,
+          12500,
+          12500,
+          12500
+        ],
+        "interpretation": "includes polling/control overhead; gaps are not attributed stall causes",
+        "body_completion_cycles": 112257,
+        "body_overrun_cycles": 0,
+        "body_completed_before_deadline": true,
+        "deadline_margin_cycles": 87743,
+        "allocation": [
+          1024,
+          1024,
+          512,
+          1536
+        ],
+        "trace_file": "trace_core_00000000.log"
+      },
+      "execution": {
+        "begin_tick": 286,
+        "end_tick": 400286,
+        "bins": [
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 5991,
+            "branch_not_taken_from_operands": 2,
+            "retired_by_phase": {
+              "measurement_setup": 1,
+              "segment_0_setup": 3,
+              "segment_0_poll": 10000,
+              "segment_0_body": 2049,
+              "segment_1_setup": 3,
+              "segment_1_poll": 962
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 5309,
+            "branch_not_taken_from_operands": 2,
+            "retired_by_phase": {
+              "segment_1_poll": 7502,
+              "segment_1_body": 3756,
+              "segment_2_setup": 3,
+              "segment_2_poll": 2438
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 5992,
+            "branch_not_taken_from_operands": 2,
+            "retired_by_phase": {
+              "segment_2_poll": 5002,
+              "segment_2_body": 1025,
+              "segment_3_setup": 3,
+              "segment_3_poll": 6474
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 476,
+            "divide_zero_numerator": 475,
+            "branch_taken_from_operands": 1726,
+            "branch_not_taken_from_operands": 1,
+            "retired_by_phase": {
+              "segment_3_poll": 2502,
+              "segment_3_body": 1905
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 292,
+            "divide_zero_numerator": 292,
+            "branch_taken_from_operands": 3476,
+            "branch_not_taken_from_operands": 1,
+            "retired_by_phase": {
+              "segment_3_body": 1168,
+              "body_complete": 6374
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 6250,
+            "branch_not_taken_from_operands": 0,
+            "retired_by_phase": {
+              "body_complete": 12500
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 6250,
+            "branch_not_taken_from_operands": 0,
+            "retired_by_phase": {
+              "body_complete": 12500
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 6250,
+            "branch_not_taken_from_operands": 0,
+            "retired_by_phase": {
+              "body_complete": 12500
+            }
+          }
+        ],
+        "phases": {
+          "measurement_setup": {
+            "first_retired_cycle": 0,
+            "last_retired_cycle": 0,
+            "retired": 1
+          },
+          "segment_0_setup": {
+            "first_retired_cycle": 1,
+            "last_retired_cycle": 3,
+            "retired": 3
+          },
+          "segment_0_poll": {
+            "first_retired_cycle": 4,
+            "last_retired_cycle": 20001,
+            "retired": 10000
+          },
+          "segment_0_body": {
+            "first_retired_cycle": 20002,
+            "last_retired_cycle": 23072,
+            "retired": 2049
+          },
+          "segment_1_setup": {
+            "first_retired_cycle": 23073,
+            "last_retired_cycle": 23075,
+            "retired": 3
+          },
+          "segment_1_poll": {
+            "first_retired_cycle": 23076,
+            "last_retired_cycle": 40001,
+            "retired": 8464
+          },
+          "segment_1_body": {
+            "first_retired_cycle": 40002,
+            "last_retired_cycle": 45120,
+            "retired": 3756
+          },
+          "segment_2_setup": {
+            "first_retired_cycle": 45121,
+            "last_retired_cycle": 45123,
+            "retired": 3
+          },
+          "segment_2_poll": {
+            "first_retired_cycle": 45124,
+            "last_retired_cycle": 60001,
+            "retired": 7440
+          },
+          "segment_2_body": {
+            "first_retired_cycle": 60002,
+            "last_retired_cycle": 62048,
+            "retired": 1025
+          },
+          "segment_3_setup": {
+            "first_retired_cycle": 62049,
+            "last_retired_cycle": 62051,
+            "retired": 3
+          },
+          "segment_3_poll": {
+            "first_retired_cycle": 62052,
+            "last_retired_cycle": 80001,
+            "retired": 8976
+          },
+          "segment_3_body": {
+            "first_retired_cycle": 80002,
+            "last_retired_cycle": 112256,
+            "retired": 3073
+          },
+          "body_complete": {
+            "first_retired_cycle": 112257,
+            "last_retired_cycle": 199999,
+            "retired": 43874
+          }
+        },
+        "scope": "retired PCs and source operand values; phase bounds are retirement times, not issue times or attributed stall cycles"
+      },
+      "prediction_assessment": {
+        "slot": 7,
+        "prediction": {
+          "reference_slot": 6,
+          "changed_factor": "Reduced ALU ops in segments 0 and 2, removed xor from segment 0, removed cmovz from segment 2. Increased divu weight in segment 3, removed xor from segment 3. Aiming to decrease bins 2, 4, 5, 7 and increase 0, 1, 3, 6.",
+          "window_directions": [
+            1,
+            0,
+            -1,
+            1,
+            -1,
+            -1,
+            0,
+            -1
+          ]
+        },
+        "scorable": true,
+        "reason": "measured",
+        "actual_changes": [
+          {
+            "path": [
+              "segments",
+              0,
+              "body"
+            ],
+            "before": [
+              {
+                "op": "add",
+                "a": 0,
+                "b": 1,
+                "dst": 0
+              },
+              {
+                "op": "xor",
+                "a": 2,
+                "b": 3,
+                "dst": 2
+              },
+              {
+                "op": "sll",
+                "a": 4,
+                "b": 1,
+                "dst": 4
+              },
+              {
+                "op": "srl",
+                "a": 5,
+                "b": 1,
+                "dst": 5
+              }
+            ],
+            "after": [
+              {
+                "op": "add",
+                "a": 0,
+                "b": 1,
+                "dst": 0
+              },
+              {
+                "op": "sll",
+                "a": 4,
+                "b": 1,
+                "dst": 4
+              }
+            ]
+          },
+          {
+            "path": [
+              "segments",
+              2,
+              "body"
+            ],
+            "before": [
+              {
+                "op": "mul",
+                "a": 1,
+                "b": 2,
+                "dst": 1
+              },
+              {
+                "op": "and",
+                "a": 3,
+                "b": 4,
+                "dst": 3
+              },
+              {
+                "op": "cmovz",
+                "a": 5,
+                "b": 6,
+                "dst": 5
+              }
+            ],
+            "after": [
+              {
+                "op": "mul",
+                "a": 1,
+                "b": 2,
+                "dst": 1
+              },
+              {
+                "op": "and",
+                "a": 3,
+                "b": 4,
+                "dst": 3
+              }
+            ]
+          },
+          {
+            "path": [
+              "segments",
+              2,
+              "weight"
+            ],
+            "before": 1024,
+            "after": 512
+          },
+          {
+            "path": [
+              "segments",
+              3,
+              "weight"
+            ],
+            "before": 1024,
+            "after": 1536
+          }
+        ],
+        "normalized_delta": [
+          0.010641687931220365,
+          0.029280821088301122,
+          0.042422330385160065,
+          0.01228262620366251,
+          -0.5006926623059698,
+          -0.06335699078004471,
+          -0.06339074964666716,
+          -0.06340793185008273
+        ],
+        "neutral_band": 0.01,
+        "observed_directions": [
+          1,
+          1,
+          1,
+          1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "matched_bins": 5,
+        "total_bins": 8,
+        "all_directions_supported": false
+      }
+    },
+    {
+      "slot": 8,
+      "program": {
+        "registers": [
+          1,
+          1,
+          0,
+          17,
+          4294967295,
+          31,
+          17,
+          31
+        ],
+        "memory_seed": 4043725751,
+        "segments": [
+          {
+            "weight": 1024,
+            "release": 29922,
+            "body": [
+              {
+                "op": "divu",
+                "a": 4,
+                "b": 3,
+                "dst": 6
+              }
+            ]
+          },
+          {
+            "weight": 1024,
+            "release": 35000,
+            "body": [
+              {
+                "op": "load",
+                "a": 0,
+                "dst": 1
+              },
+              {
+                "op": "store",
+                "a": 1,
+                "b": 0
+              }
+            ]
+          },
+          {
+            "weight": 512,
+            "release": 40000,
+            "body": [
+              {
+                "op": "add",
+                "a": 5,
+                "b": 7,
+                "dst": 6
+              }
+            ]
+          },
+          {
+            "weight": 1536,
+            "release": 45000,
+            "body": [
+              {
+                "op": "divu",
+                "a": 2,
+                "b": 1,
+                "dst": 2
+              },
+              {
+                "op": "divu",
+                "a": 3,
+                "b": 0,
+                "dst": 3
+              }
+            ]
+          }
+        ]
+      },
+      "canonical_program": {
+        "registers": [
+          1,
+          1,
+          0,
+          17,
+          4294967295,
+          31,
+          17,
+          31
+        ],
+        "memory_seed": 4043725751,
+        "segments": [
+          {
+            "weight": 1024,
+            "release": 29922,
+            "body": [
+              {
+                "op": "divu",
+                "a": 4,
+                "b": 3,
+                "dst": 6
+              }
+            ]
+          },
+          {
+            "weight": 1024,
+            "release": 35000,
+            "body": [
+              {
+                "op": "load",
+                "a": 0,
+                "dst": 1
+              },
+              {
+                "op": "store",
+                "a": 1,
+                "b": 0
+              }
+            ]
+          },
+          {
+            "weight": 512,
+            "release": 40000,
+            "body": [
+              {
+                "op": "add",
+                "a": 5,
+                "b": 7,
+                "dst": 6
+              }
+            ]
+          },
+          {
+            "weight": 1536,
+            "release": 45000,
+            "body": [
+              {
+                "op": "divu",
+                "a": 2,
+                "b": 1,
+                "dst": 2
+              },
+              {
+                "op": "divu",
+                "a": 3,
+                "b": 0,
+                "dst": 3
+              }
+            ]
+          }
+        ]
+      },
+      "prediction": {
+        "reference_slot": 2,
+        "changed_factor": "Split original divu segment into four, added load/store and ALU operations, and specifically placed divu in segment 3 to target bins 0, 1, 6, 7 and suppress 2, 3, 4, 5.",
+        "window_directions": [
+          0,
+          1,
+          -1,
+          -1,
+          -1,
+          -1,
+          1,
+          1
+        ]
+      },
+      "prediction_error": null,
+      "rates": [
+        743.84116,
+        339.70068,
+        287.63972,
+        258.72256,
+        117.42184,
+        312.48744,
+        704.27108,
+        719.28092
+      ],
+      "loss": 0.27575337847768017,
+      "cache_hit": false,
+      "valid": true,
+      "stage": null,
+      "reason": "",
+      "schema_path": null,
+      "cache_id": "22ed0cf0f63f111422c58d4be21bad5ef294f97d88243b9de8c76d847d742643",
+      "feedback": {
+        "begin_tick": 286,
+        "end_tick": 400286,
+        "cycles_per_bin": 25000,
+        "retired_classes": [
+          {
+            "alu": 4,
+            "multiply": 0,
+            "divide": 0,
+            "load": 0,
+            "store": 0,
+            "branch": 6249,
+            "jump": 0,
+            "csr": 6249,
+            "other": 0
+          },
+          {
+            "alu": 490,
+            "multiply": 0,
+            "divide": 489,
+            "load": 0,
+            "store": 0,
+            "branch": 1721,
+            "jump": 0,
+            "csr": 1232,
+            "other": 0
+          },
+          {
+            "alu": 2082,
+            "multiply": 0,
+            "divide": 535,
+            "load": 221,
+            "store": 220,
+            "branch": 756,
+            "jump": 0,
+            "csr": 1,
+            "other": 0
+          },
+          {
+            "alu": 3308,
+            "multiply": 0,
+            "divide": 470,
+            "load": 291,
+            "store": 292,
+            "branch": 1041,
+            "jump": 0,
+            "csr": 2,
+            "other": 0
+          },
+          {
+            "alu": 320,
+            "multiply": 0,
+            "divide": 641,
+            "load": 0,
+            "store": 0,
+            "branch": 320,
+            "jump": 0,
+            "csr": 0,
+            "other": 0
+          },
+          {
+            "alu": 217,
+            "multiply": 0,
+            "divide": 425,
+            "load": 0,
+            "store": 0,
+            "branch": 2324,
+            "jump": 0,
+            "csr": 2111,
+            "other": 0
+          },
+          {
+            "alu": 0,
+            "multiply": 0,
+            "divide": 0,
+            "load": 0,
+            "store": 0,
+            "branch": 6250,
+            "jump": 0,
+            "csr": 6250,
+            "other": 0
+          },
+          {
+            "alu": 0,
+            "multiply": 0,
+            "divide": 0,
+            "load": 0,
+            "store": 0,
+            "branch": 6250,
+            "jump": 0,
+            "csr": 6250,
+            "other": 0
+          }
+        ],
+        "retired_per_bin": [
+          12502,
+          3932,
+          3815,
+          5404,
+          1281,
+          5077,
+          12500,
+          12500
+        ],
+        "cycles_without_retirement": [
+          12498,
+          21068,
+          21185,
+          19596,
+          23719,
+          19923,
+          12500,
+          12500
+        ],
+        "interpretation": "includes polling/control overhead; gaps are not attributed stall causes",
+        "body_completion_cycles": 141553,
+        "body_overrun_cycles": 0,
+        "body_completed_before_deadline": true,
+        "deadline_margin_cycles": 58447,
+        "allocation": [
+          1024,
+          1024,
+          512,
+          1536
+        ],
+        "trace_file": "trace_core_00000000.log"
+      },
+      "execution": {
+        "begin_tick": 286,
+        "end_tick": 400286,
+        "bins": [
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 6249,
+            "branch_not_taken_from_operands": 0,
+            "retired_by_phase": {
+              "measurement_setup": 1,
+              "segment_0_setup": 3,
+              "segment_0_poll": 12498
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 489,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 1720,
+            "branch_not_taken_from_operands": 1,
+            "retired_by_phase": {
+              "segment_0_poll": 2464,
+              "segment_0_body": 1468
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 535,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 754,
+            "branch_not_taken_from_operands": 2,
+            "retired_by_phase": {
+              "segment_0_body": 1605,
+              "segment_1_setup": 3,
+              "segment_1_poll": 2,
+              "segment_1_body": 2205
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 470,
+            "divide_zero_numerator": 235,
+            "branch_taken_from_operands": 1037,
+            "branch_not_taken_from_operands": 4,
+            "retired_by_phase": {
+              "segment_1_body": 2916,
+              "segment_2_setup": 3,
+              "segment_2_poll": 2,
+              "segment_2_body": 1537,
+              "segment_3_setup": 3,
+              "segment_3_poll": 2,
+              "segment_3_body": 941
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 641,
+            "divide_zero_numerator": 321,
+            "branch_taken_from_operands": 320,
+            "branch_not_taken_from_operands": 0,
+            "retired_by_phase": {
+              "segment_3_body": 1281
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 425,
+            "divide_zero_numerator": 212,
+            "branch_taken_from_operands": 2323,
+            "branch_not_taken_from_operands": 1,
+            "retired_by_phase": {
+              "segment_3_body": 851,
+              "body_complete": 4226
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 6250,
+            "branch_not_taken_from_operands": 0,
+            "retired_by_phase": {
+              "body_complete": 12500
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 6250,
+            "branch_not_taken_from_operands": 0,
+            "retired_by_phase": {
+              "body_complete": 12500
+            }
+          }
+        ],
+        "phases": {
+          "measurement_setup": {
+            "first_retired_cycle": 0,
+            "last_retired_cycle": 0,
+            "retired": 1
+          },
+          "segment_0_setup": {
+            "first_retired_cycle": 1,
+            "last_retired_cycle": 3,
+            "retired": 3
+          },
+          "segment_0_poll": {
+            "first_retired_cycle": 4,
+            "last_retired_cycle": 29925,
+            "retired": 14962
+          },
+          "segment_0_body": {
+            "first_retired_cycle": 29926,
+            "last_retired_cycle": 71908,
+            "retired": 3073
+          },
+          "segment_1_setup": {
+            "first_retired_cycle": 71909,
+            "last_retired_cycle": 71911,
+            "retired": 3
+          },
+          "segment_1_poll": {
+            "first_retired_cycle": 71912,
+            "last_retired_cycle": 71913,
+            "retired": 2
+          },
+          "segment_1_body": {
+            "first_retired_cycle": 71914,
+            "last_retired_cycle": 79080,
+            "retired": 5121
+          },
+          "segment_2_setup": {
+            "first_retired_cycle": 79081,
+            "last_retired_cycle": 79083,
+            "retired": 3
+          },
+          "segment_2_poll": {
+            "first_retired_cycle": 79084,
+            "last_retired_cycle": 79085,
+            "retired": 2
+          },
+          "segment_2_body": {
+            "first_retired_cycle": 79086,
+            "last_retired_cycle": 81644,
+            "retired": 1537
+          },
+          "segment_3_setup": {
+            "first_retired_cycle": 81645,
+            "last_retired_cycle": 81647,
+            "retired": 3
+          },
+          "segment_3_poll": {
+            "first_retired_cycle": 81648,
+            "last_retired_cycle": 81649,
+            "retired": 2
+          },
+          "segment_3_body": {
+            "first_retired_cycle": 81650,
+            "last_retired_cycle": 141552,
+            "retired": 3073
+          },
+          "body_complete": {
+            "first_retired_cycle": 141553,
+            "last_retired_cycle": 199999,
+            "retired": 29226
+          }
+        },
+        "scope": "retired PCs and source operand values; phase bounds are retirement times, not issue times or attributed stall cycles"
+      },
+      "prediction_assessment": {
+        "slot": 8,
+        "prediction": {
+          "reference_slot": 2,
+          "changed_factor": "Split original divu segment into four, added load/store and ALU operations, and specifically placed divu in segment 3 to target bins 0, 1, 6, 7 and suppress 2, 3, 4, 5.",
+          "window_directions": [
+            0,
+            1,
+            -1,
+            -1,
+            -1,
+            -1,
+            1,
+            1
+          ]
+        },
+        "scorable": true,
+        "reason": "measured",
+        "actual_changes": [
+          {
+            "path": [
+              "segments"
+            ],
+            "before": [
+              {
+                "release": 29922,
+                "body": [
+                  {
+                    "op": "divu",
+                    "dst": 6,
+                    "a": 4,
+                    "b": 3
+                  }
+                ],
+                "weight": 4096
+              }
+            ],
+            "after": [
+              {
+                "weight": 1024,
+                "release": 29922,
+                "body": [
+                  {
+                    "op": "divu",
+                    "a": 4,
+                    "b": 3,
+                    "dst": 6
+                  }
+                ]
+              },
+              {
+                "weight": 1024,
+                "release": 35000,
+                "body": [
+                  {
+                    "op": "load",
+                    "a": 0,
+                    "dst": 1
+                  },
+                  {
+                    "op": "store",
+                    "a": 1,
+                    "b": 0
+                  }
+                ]
+              },
+              {
+                "weight": 512,
+                "release": 40000,
+                "body": [
+                  {
+                    "op": "add",
+                    "a": 5,
+                    "b": 7,
+                    "dst": 6
+                  }
+                ]
+              },
+              {
+                "weight": 1536,
+                "release": 45000,
+                "body": [
+                  {
+                    "op": "divu",
+                    "a": 2,
+                    "b": 1,
+                    "dst": 2
+                  },
+                  {
+                    "op": "divu",
+                    "a": 3,
+                    "b": 0,
+                    "dst": 3
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "normalized_delta": [
+          -0.0009475190412118578,
+          -0.003375432507093959,
+          0.09815640255828631,
+          0.043572478318632826,
+          -0.2233821176709955,
+          0.14482848981905247,
+          0.8867747293538039,
+          0.8327892302251763
+        ],
+        "neutral_band": 0.01,
+        "observed_directions": [
+          0,
+          0,
+          1,
+          1,
+          -1,
+          1,
+          1,
+          1
+        ],
+        "matched_bins": 4,
+        "total_bins": 8,
+        "all_directions_supported": false
+      }
+    }
+  ],
+  "summary": {
+    "before_error": 0.5044624709057579,
+    "after_error": 0.27575337847768017,
+    "gain": 0.22870909242807774,
+    "improved": true,
+    "already_solved": false,
+    "newly_solved": false,
+    "valid_slots": 2,
+    "requested_slots": 2
+  }
+}

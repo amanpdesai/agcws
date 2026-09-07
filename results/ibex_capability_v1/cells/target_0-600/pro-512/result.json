@@ -1,0 +1,1312 @@
+{
+  "cell": {
+    "context": "target_0-600",
+    "arm": "pro-512",
+    "seed": 17002
+  },
+  "trials": [
+    {
+      "slot": 7,
+      "program": {
+        "registers": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "memory_seed": 123456789,
+        "segments": [
+          {
+            "weight": 1024,
+            "release": 20000,
+            "body": [
+              {
+                "op": "add",
+                "a": 0,
+                "b": 1,
+                "dst": 0
+              },
+              {
+                "op": "xor",
+                "a": 2,
+                "b": 3,
+                "dst": 2
+              },
+              {
+                "op": "sll",
+                "a": 4,
+                "b": 1,
+                "dst": 4
+              },
+              {
+                "op": "srl",
+                "a": 5,
+                "b": 1,
+                "dst": 5
+              }
+            ]
+          },
+          {
+            "weight": 512,
+            "release": 40000,
+            "body": [
+              {
+                "op": "load",
+                "a": 6,
+                "dst": 6
+              },
+              {
+                "op": "store",
+                "a": 7,
+                "b": 0
+              },
+              {
+                "op": "add",
+                "a": 0,
+                "b": 1,
+                "dst": 0
+              }
+            ]
+          },
+          {
+            "weight": 512,
+            "release": 60000,
+            "body": [
+              {
+                "op": "mul",
+                "a": 1,
+                "b": 2,
+                "dst": 1
+              },
+              {
+                "op": "and",
+                "a": 3,
+                "b": 4,
+                "dst": 3
+              },
+              {
+                "op": "cmovz",
+                "a": 5,
+                "b": 6,
+                "dst": 5
+              }
+            ]
+          },
+          {
+            "weight": 2048,
+            "release": 80000,
+            "body": [
+              {
+                "op": "divu",
+                "a": 7,
+                "b": 2,
+                "dst": 7
+              },
+              {
+                "op": "add",
+                "a": 0,
+                "b": 1,
+                "dst": 0
+              }
+            ]
+          }
+        ]
+      },
+      "canonical_program": {
+        "registers": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "memory_seed": 123456789,
+        "segments": [
+          {
+            "weight": 1024,
+            "release": 20000,
+            "body": [
+              {
+                "op": "add",
+                "a": 0,
+                "b": 1,
+                "dst": 0
+              },
+              {
+                "op": "xor",
+                "a": 2,
+                "b": 3,
+                "dst": 2
+              },
+              {
+                "op": "sll",
+                "a": 4,
+                "b": 1,
+                "dst": 4
+              },
+              {
+                "op": "srl",
+                "a": 5,
+                "b": 1,
+                "dst": 5
+              }
+            ]
+          },
+          {
+            "weight": 512,
+            "release": 40000,
+            "body": [
+              {
+                "op": "load",
+                "a": 6,
+                "dst": 6
+              },
+              {
+                "op": "store",
+                "a": 7,
+                "b": 0
+              },
+              {
+                "op": "add",
+                "a": 0,
+                "b": 1,
+                "dst": 0
+              }
+            ]
+          },
+          {
+            "weight": 512,
+            "release": 60000,
+            "body": [
+              {
+                "op": "mul",
+                "a": 1,
+                "b": 2,
+                "dst": 1
+              },
+              {
+                "op": "and",
+                "a": 3,
+                "b": 4,
+                "dst": 3
+              },
+              {
+                "op": "cmovz",
+                "a": 5,
+                "b": 6,
+                "dst": 5
+              }
+            ]
+          },
+          {
+            "weight": 2048,
+            "release": 80000,
+            "body": [
+              {
+                "op": "divu",
+                "a": 7,
+                "b": 2,
+                "dst": 7
+              },
+              {
+                "op": "add",
+                "a": 0,
+                "b": 1,
+                "dst": 0
+              }
+            ]
+          }
+        ]
+      },
+      "prediction": {
+        "reference_slot": 6,
+        "changed_factor": "Reduced weight of load/store and mul/and/cmovz segments and increased weight of the final divu segment to boost late-bin activity while slightly reducing activity in bins 2 and 3. The divisor for the divu is changed to a non-zero register to ensure non-zero divisor stalls.",
+        "window_directions": [
+          0,
+          -1,
+          -1,
+          -1,
+          -1,
+          1,
+          1,
+          1
+        ]
+      },
+      "prediction_error": null,
+      "rates": [
+        690.96564,
+        719.81816,
+        713.41168,
+        274.31604,
+        207.7794,
+        733.56264,
+        739.78748,
+        754.776
+      ],
+      "loss": 0.47102941526058056,
+      "cache_hit": false,
+      "valid": true,
+      "stage": null,
+      "reason": "",
+      "schema_path": null,
+      "cache_id": "9a42957afab1d499bf4291f3fa21759b4d3e3eb2c5de5a2e855771d39adfa4d6",
+      "feedback": {
+        "begin_tick": 286,
+        "end_tick": 400286,
+        "cycles_per_bin": 25000,
+        "retired_classes": [
+          {
+            "alu": 1288,
+            "multiply": 0,
+            "divide": 0,
+            "load": 0,
+            "store": 0,
+            "branch": 5993,
+            "jump": 0,
+            "csr": 5737,
+            "other": 0
+          },
+          {
+            "alu": 1370,
+            "multiply": 0,
+            "divide": 0,
+            "load": 171,
+            "store": 171,
+            "branch": 5780,
+            "jump": 0,
+            "csr": 5610,
+            "other": 0
+          },
+          {
+            "alu": 346,
+            "multiply": 171,
+            "divide": 0,
+            "load": 0,
+            "store": 0,
+            "branch": 6122,
+            "jump": 0,
+            "csr": 5782,
+            "other": 0
+          },
+          {
+            "alu": 953,
+            "multiply": 0,
+            "divide": 476,
+            "load": 0,
+            "store": 0,
+            "branch": 1727,
+            "jump": 0,
+            "csr": 1251,
+            "other": 0
+          },
+          {
+            "alu": 1100,
+            "multiply": 0,
+            "divide": 548,
+            "load": 0,
+            "store": 0,
+            "branch": 1044,
+            "jump": 0,
+            "csr": 497,
+            "other": 0
+          },
+          {
+            "alu": 0,
+            "multiply": 0,
+            "divide": 0,
+            "load": 0,
+            "store": 0,
+            "branch": 6250,
+            "jump": 0,
+            "csr": 6250,
+            "other": 0
+          },
+          {
+            "alu": 0,
+            "multiply": 0,
+            "divide": 0,
+            "load": 0,
+            "store": 0,
+            "branch": 6250,
+            "jump": 0,
+            "csr": 6250,
+            "other": 0
+          },
+          {
+            "alu": 0,
+            "multiply": 0,
+            "divide": 0,
+            "load": 0,
+            "store": 0,
+            "branch": 6250,
+            "jump": 0,
+            "csr": 6250,
+            "other": 0
+          }
+        ],
+        "retired_per_bin": [
+          13018,
+          13102,
+          12421,
+          4407,
+          3189,
+          12500,
+          12500,
+          12500
+        ],
+        "cycles_without_retirement": [
+          11982,
+          11898,
+          12579,
+          20593,
+          21811,
+          12500,
+          12500,
+          12500
+        ],
+        "interpretation": "includes polling/control overhead; gaps are not attributed stall causes",
+        "body_completion_cycles": 123010,
+        "body_overrun_cycles": 0,
+        "body_completed_before_deadline": true,
+        "deadline_margin_cycles": 76990,
+        "allocation": [
+          1024,
+          512,
+          512,
+          2048
+        ],
+        "trace_file": "trace_core_00000000.log"
+      },
+      "execution": {
+        "begin_tick": 286,
+        "end_tick": 400286,
+        "bins": [
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 5991,
+            "branch_not_taken_from_operands": 2,
+            "retired_by_phase": {
+              "measurement_setup": 1,
+              "segment_0_setup": 3,
+              "segment_0_poll": 10000,
+              "segment_0_body": 1537,
+              "segment_1_setup": 3,
+              "segment_1_poll": 1474
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 5778,
+            "branch_not_taken_from_operands": 2,
+            "retired_by_phase": {
+              "segment_1_poll": 7502,
+              "segment_1_body": 1879,
+              "segment_2_setup": 3,
+              "segment_2_poll": 3718
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 6119,
+            "branch_not_taken_from_operands": 3,
+            "retired_by_phase": {
+              "segment_2_poll": 5002,
+              "segment_2_body": 854,
+              "segment_3_setup": 3,
+              "segment_3_poll": 6562
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 476,
+            "divide_zero_numerator": 473,
+            "branch_taken_from_operands": 1726,
+            "branch_not_taken_from_operands": 1,
+            "retired_by_phase": {
+              "segment_3_poll": 2502,
+              "segment_3_body": 1905
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 548,
+            "divide_zero_numerator": 548,
+            "branch_taken_from_operands": 1043,
+            "branch_not_taken_from_operands": 1,
+            "retired_by_phase": {
+              "segment_3_body": 2192,
+              "body_complete": 997
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 6250,
+            "branch_not_taken_from_operands": 0,
+            "retired_by_phase": {
+              "body_complete": 12500
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 6250,
+            "branch_not_taken_from_operands": 0,
+            "retired_by_phase": {
+              "body_complete": 12500
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 6250,
+            "branch_not_taken_from_operands": 0,
+            "retired_by_phase": {
+              "body_complete": 12500
+            }
+          }
+        ],
+        "phases": {
+          "measurement_setup": {
+            "first_retired_cycle": 0,
+            "last_retired_cycle": 0,
+            "retired": 1
+          },
+          "segment_0_setup": {
+            "first_retired_cycle": 1,
+            "last_retired_cycle": 3,
+            "retired": 3
+          },
+          "segment_0_poll": {
+            "first_retired_cycle": 4,
+            "last_retired_cycle": 20001,
+            "retired": 10000
+          },
+          "segment_0_body": {
+            "first_retired_cycle": 20002,
+            "last_retired_cycle": 22048,
+            "retired": 1537
+          },
+          "segment_1_setup": {
+            "first_retired_cycle": 22049,
+            "last_retired_cycle": 22051,
+            "retired": 3
+          },
+          "segment_1_poll": {
+            "first_retired_cycle": 22052,
+            "last_retired_cycle": 40001,
+            "retired": 8976
+          },
+          "segment_1_body": {
+            "first_retired_cycle": 40002,
+            "last_retired_cycle": 42560,
+            "retired": 1879
+          },
+          "segment_2_setup": {
+            "first_retired_cycle": 42561,
+            "last_retired_cycle": 42563,
+            "retired": 3
+          },
+          "segment_2_poll": {
+            "first_retired_cycle": 42564,
+            "last_retired_cycle": 60001,
+            "retired": 8720
+          },
+          "segment_2_body": {
+            "first_retired_cycle": 60002,
+            "last_retired_cycle": 61873,
+            "retired": 854
+          },
+          "segment_3_setup": {
+            "first_retired_cycle": 61874,
+            "last_retired_cycle": 61876,
+            "retired": 3
+          },
+          "segment_3_poll": {
+            "first_retired_cycle": 61877,
+            "last_retired_cycle": 80002,
+            "retired": 9064
+          },
+          "segment_3_body": {
+            "first_retired_cycle": 80003,
+            "last_retired_cycle": 123009,
+            "retired": 4097
+          },
+          "body_complete": {
+            "first_retired_cycle": 123010,
+            "last_retired_cycle": 199998,
+            "retired": 38497
+          }
+        },
+        "scope": "retired PCs and source operand values; phase bounds are retirement times, not issue times or attributed stall cycles"
+      },
+      "prediction_assessment": {
+        "slot": 7,
+        "prediction": {
+          "reference_slot": 6,
+          "changed_factor": "Reduced weight of load/store and mul/and/cmovz segments and increased weight of the final divu segment to boost late-bin activity while slightly reducing activity in bins 2 and 3. The divisor for the divu is changed to a non-zero register to ensure non-zero divisor stalls.",
+          "window_directions": [
+            0,
+            -1,
+            -1,
+            -1,
+            -1,
+            1,
+            1,
+            1
+          ]
+        },
+        "scorable": true,
+        "reason": "measured",
+        "actual_changes": [
+          {
+            "path": [
+              "segments",
+              1,
+              "weight"
+            ],
+            "before": 1024,
+            "after": 512
+          },
+          {
+            "path": [
+              "segments",
+              2,
+              "weight"
+            ],
+            "before": 1024,
+            "after": 512
+          },
+          {
+            "path": [
+              "segments",
+              3,
+              "body",
+              0,
+              "b"
+            ],
+            "before": 0,
+            "after": 2
+          },
+          {
+            "path": [
+              "segments",
+              3,
+              "weight"
+            ],
+            "before": 1024,
+            "after": 2048
+          }
+        ],
+        "normalized_delta": [
+          0.0003354692754953548,
+          0.014776013704586035,
+          0.019191385827210482,
+          -0.0016780276102114175,
+          -0.9513723963284886,
+          -0.01040098569835137,
+          -0.010350877246100046,
+          -0.010459647406047542
+        ],
+        "neutral_band": 0.01,
+        "observed_directions": [
+          0,
+          1,
+          1,
+          0,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "matched_bins": 2,
+        "total_bins": 8,
+        "all_directions_supported": false
+      }
+    },
+    {
+      "slot": 8,
+      "program": {
+        "registers": [
+          1,
+          1,
+          0,
+          17,
+          4294967295,
+          31,
+          17,
+          31
+        ],
+        "memory_seed": 4043725751,
+        "segments": [
+          {
+            "weight": 512,
+            "release": 20000,
+            "body": [
+              {
+                "op": "divu",
+                "a": 4,
+                "b": 3,
+                "dst": 6
+              }
+            ]
+          },
+          {
+            "weight": 1024,
+            "release": 45000,
+            "body": [
+              {
+                "op": "load",
+                "a": 0,
+                "dst": 1
+              },
+              {
+                "op": "store",
+                "a": 1,
+                "b": 0
+              }
+            ]
+          },
+          {
+            "weight": 1024,
+            "release": 70000,
+            "body": [
+              {
+                "op": "divu",
+                "a": 5,
+                "b": 7,
+                "dst": 6
+              },
+              {
+                "op": "mul",
+                "a": 6,
+                "b": 0,
+                "dst": 7
+              }
+            ]
+          },
+          {
+            "weight": 1536,
+            "release": 95000,
+            "body": [
+              {
+                "op": "divu",
+                "a": 2,
+                "b": 1,
+                "dst": 2
+              },
+              {
+                "op": "divu",
+                "a": 3,
+                "b": 0,
+                "dst": 3
+              },
+              {
+                "op": "divu",
+                "a": 4,
+                "b": 5,
+                "dst": 4
+              }
+            ]
+          }
+        ]
+      },
+      "canonical_program": {
+        "registers": [
+          1,
+          1,
+          0,
+          17,
+          4294967295,
+          31,
+          17,
+          31
+        ],
+        "memory_seed": 4043725751,
+        "segments": [
+          {
+            "weight": 512,
+            "release": 20000,
+            "body": [
+              {
+                "op": "divu",
+                "a": 4,
+                "b": 3,
+                "dst": 6
+              }
+            ]
+          },
+          {
+            "weight": 1024,
+            "release": 45000,
+            "body": [
+              {
+                "op": "load",
+                "a": 0,
+                "dst": 1
+              },
+              {
+                "op": "store",
+                "a": 1,
+                "b": 0
+              }
+            ]
+          },
+          {
+            "weight": 1024,
+            "release": 70000,
+            "body": [
+              {
+                "op": "divu",
+                "a": 5,
+                "b": 7,
+                "dst": 6
+              },
+              {
+                "op": "mul",
+                "a": 6,
+                "b": 0,
+                "dst": 7
+              }
+            ]
+          },
+          {
+            "weight": 1536,
+            "release": 95000,
+            "body": [
+              {
+                "op": "divu",
+                "a": 2,
+                "b": 1,
+                "dst": 2
+              },
+              {
+                "op": "divu",
+                "a": 3,
+                "b": 0,
+                "dst": 3
+              },
+              {
+                "op": "divu",
+                "a": 4,
+                "b": 5,
+                "dst": 4
+              }
+            ]
+          }
+        ]
+      },
+      "prediction": {
+        "reference_slot": 5,
+        "changed_factor": "Replaced the mixed ALU segment with more targeted divu and load/store segments, spreading them out with adjusted release times to prevent deadline overrun. This structure aims to generate high activity peaks in the later bins using divu stalls.",
+        "window_directions": [
+          0,
+          -1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "prediction_error": null,
+      "rates": [
+        623.67096,
+        397.01052,
+        627.08872,
+        200.66644,
+        104.07656,
+        103.65224,
+        611.01344,
+        717.78228
+      ],
+      "loss": 0.3682226773446367,
+      "cache_hit": false,
+      "valid": true,
+      "stage": null,
+      "reason": "",
+      "schema_path": null,
+      "cache_id": "ad5cc07f2fbe1075e457ef60eab106cf1bce9b03c1ab87db80e123e64b9bc1c0",
+      "feedback": {
+        "begin_tick": 286,
+        "end_tick": 400286,
+        "cycles_per_bin": 25000,
+        "retired_classes": [
+          {
+            "alu": 126,
+            "multiply": 0,
+            "divide": 121,
+            "load": 0,
+            "store": 0,
+            "branch": 5121,
+            "jump": 0,
+            "csr": 5000,
+            "other": 0
+          },
+          {
+            "alu": 2894,
+            "multiply": 0,
+            "divide": 391,
+            "load": 357,
+            "store": 357,
+            "branch": 1750,
+            "jump": 0,
+            "csr": 1002,
+            "other": 0
+          },
+          {
+            "alu": 1202,
+            "multiply": 113,
+            "divide": 113,
+            "load": 155,
+            "store": 155,
+            "branch": 4726,
+            "jump": 0,
+            "csr": 4458,
+            "other": 0
+          },
+          {
+            "alu": 446,
+            "multiply": 399,
+            "divide": 529,
+            "load": 0,
+            "store": 0,
+            "branch": 1060,
+            "jump": 0,
+            "csr": 618,
+            "other": 0
+          },
+          {
+            "alu": 217,
+            "multiply": 0,
+            "divide": 652,
+            "load": 0,
+            "store": 0,
+            "branch": 217,
+            "jump": 0,
+            "csr": 0,
+            "other": 0
+          },
+          {
+            "alu": 218,
+            "multiply": 0,
+            "divide": 652,
+            "load": 0,
+            "store": 0,
+            "branch": 218,
+            "jump": 0,
+            "csr": 0,
+            "other": 0
+          },
+          {
+            "alu": 38,
+            "multiply": 0,
+            "divide": 102,
+            "load": 0,
+            "store": 0,
+            "branch": 5313,
+            "jump": 0,
+            "csr": 5279,
+            "other": 0
+          },
+          {
+            "alu": 0,
+            "multiply": 0,
+            "divide": 0,
+            "load": 0,
+            "store": 0,
+            "branch": 6250,
+            "jump": 0,
+            "csr": 6250,
+            "other": 0
+          }
+        ],
+        "retired_per_bin": [
+          10368,
+          6751,
+          10922,
+          3052,
+          1086,
+          1088,
+          10732,
+          12500
+        ],
+        "cycles_without_retirement": [
+          14632,
+          18249,
+          14078,
+          21948,
+          23914,
+          23912,
+          14268,
+          12500
+        ],
+        "interpretation": "includes polling/control overhead; gaps are not attributed stall causes",
+        "body_completion_cycles": 153881,
+        "body_overrun_cycles": 0,
+        "body_completed_before_deadline": true,
+        "deadline_margin_cycles": 46119,
+        "allocation": [
+          512,
+          1024,
+          1024,
+          1536
+        ],
+        "trace_file": "trace_core_00000000.log"
+      },
+      "execution": {
+        "begin_tick": 286,
+        "end_tick": 400286,
+        "bins": [
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 121,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 5120,
+            "branch_not_taken_from_operands": 1,
+            "retired_by_phase": {
+              "measurement_setup": 1,
+              "segment_0_setup": 3,
+              "segment_0_poll": 10000,
+              "segment_0_body": 364
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 391,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 1748,
+            "branch_not_taken_from_operands": 2,
+            "retired_by_phase": {
+              "segment_0_body": 1173,
+              "segment_1_setup": 3,
+              "segment_1_poll": 2004,
+              "segment_1_body": 3571
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 113,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 4724,
+            "branch_not_taken_from_operands": 2,
+            "retired_by_phase": {
+              "segment_1_body": 1550,
+              "segment_2_setup": 3,
+              "segment_2_poll": 8916,
+              "segment_2_body": 453
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 529,
+            "divide_zero_numerator": 80,
+            "branch_taken_from_operands": 1058,
+            "branch_not_taken_from_operands": 2,
+            "retired_by_phase": {
+              "segment_2_body": 1596,
+              "segment_3_setup": 3,
+              "segment_3_poll": 1236,
+              "segment_3_body": 217
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 652,
+            "divide_zero_numerator": 434,
+            "branch_taken_from_operands": 217,
+            "branch_not_taken_from_operands": 0,
+            "retired_by_phase": {
+              "segment_3_body": 1086
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 652,
+            "divide_zero_numerator": 435,
+            "branch_taken_from_operands": 218,
+            "branch_not_taken_from_operands": 0,
+            "retired_by_phase": {
+              "segment_3_body": 1088
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 102,
+            "divide_zero_numerator": 68,
+            "branch_taken_from_operands": 5312,
+            "branch_not_taken_from_operands": 1,
+            "retired_by_phase": {
+              "segment_3_body": 170,
+              "body_complete": 10562
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 6250,
+            "branch_not_taken_from_operands": 0,
+            "retired_by_phase": {
+              "body_complete": 12500
+            }
+          }
+        ],
+        "phases": {
+          "measurement_setup": {
+            "first_retired_cycle": 0,
+            "last_retired_cycle": 0,
+            "retired": 1
+          },
+          "segment_0_setup": {
+            "first_retired_cycle": 1,
+            "last_retired_cycle": 3,
+            "retired": 3
+          },
+          "segment_0_poll": {
+            "first_retired_cycle": 4,
+            "last_retired_cycle": 20001,
+            "retired": 10000
+          },
+          "segment_0_body": {
+            "first_retired_cycle": 20002,
+            "last_retired_cycle": 40992,
+            "retired": 1537
+          },
+          "segment_1_setup": {
+            "first_retired_cycle": 40993,
+            "last_retired_cycle": 40995,
+            "retired": 3
+          },
+          "segment_1_poll": {
+            "first_retired_cycle": 40996,
+            "last_retired_cycle": 45001,
+            "retired": 2004
+          },
+          "segment_1_body": {
+            "first_retired_cycle": 45002,
+            "last_retired_cycle": 52168,
+            "retired": 5121
+          },
+          "segment_2_setup": {
+            "first_retired_cycle": 52169,
+            "last_retired_cycle": 52171,
+            "retired": 3
+          },
+          "segment_2_poll": {
+            "first_retired_cycle": 52172,
+            "last_retired_cycle": 70001,
+            "retired": 8916
+          },
+          "segment_2_body": {
+            "first_retired_cycle": 70002,
+            "last_retired_cycle": 92528,
+            "retired": 2049
+          },
+          "segment_3_setup": {
+            "first_retired_cycle": 92529,
+            "last_retired_cycle": 92531,
+            "retired": 3
+          },
+          "segment_3_poll": {
+            "first_retired_cycle": 92532,
+            "last_retired_cycle": 95001,
+            "retired": 1236
+          },
+          "segment_3_body": {
+            "first_retired_cycle": 95002,
+            "last_retired_cycle": 153880,
+            "retired": 2561
+          },
+          "body_complete": {
+            "first_retired_cycle": 153881,
+            "last_retired_cycle": 199999,
+            "retired": 23062
+          }
+        },
+        "scope": "retired PCs and source operand values; phase bounds are retirement times, not issue times or attributed stall cycles"
+      },
+      "prediction_assessment": {
+        "slot": 8,
+        "prediction": {
+          "reference_slot": 5,
+          "changed_factor": "Replaced the mixed ALU segment with more targeted divu and load/store segments, spreading them out with adjusted release times to prevent deadline overrun. This structure aims to generate high activity peaks in the later bins using divu stalls.",
+          "window_directions": [
+            0,
+            -1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        "scorable": true,
+        "reason": "measured",
+        "actual_changes": [
+          {
+            "path": [
+              "segments",
+              0,
+              "body"
+            ],
+            "before": [
+              {
+                "op": "add",
+                "a": 4,
+                "b": 3,
+                "dst": 6
+              },
+              {
+                "op": "srl",
+                "a": 6,
+                "b": 1,
+                "dst": 6
+              }
+            ],
+            "after": [
+              {
+                "op": "divu",
+                "a": 4,
+                "b": 3,
+                "dst": 6
+              }
+            ]
+          },
+          {
+            "path": [
+              "segments",
+              0,
+              "release"
+            ],
+            "before": 29922,
+            "after": 20000
+          },
+          {
+            "path": [
+              "segments",
+              1,
+              "release"
+            ],
+            "before": 35000,
+            "after": 45000
+          },
+          {
+            "path": [
+              "segments",
+              2,
+              "body",
+              0,
+              "op"
+            ],
+            "before": "add",
+            "after": "divu"
+          },
+          {
+            "path": [
+              "segments",
+              2,
+              "release"
+            ],
+            "before": 40000,
+            "after": 70000
+          },
+          {
+            "path": [
+              "segments",
+              3,
+              "body",
+              0,
+              "op"
+            ],
+            "before": "xor",
+            "after": "divu"
+          },
+          {
+            "path": [
+              "segments",
+              3,
+              "body",
+              1,
+              "op"
+            ],
+            "before": "sll",
+            "after": "divu"
+          },
+          {
+            "path": [
+              "segments",
+              3,
+              "body",
+              2,
+              "op"
+            ],
+            "before": "or",
+            "after": "divu"
+          },
+          {
+            "path": [
+              "segments",
+              3,
+              "release"
+            ],
+            "before": 45000,
+            "after": 95000
+          }
+        ],
+        "normalized_delta": [
+          -0.20752937778321412,
+          -0.5981172695223137,
+          -0.15215643465191736,
+          -0.9633985005613359,
+          -1.1619419644208795,
+          -1.1503647925600906,
+          -0.20201010586053933,
+          -0.02838416742460121
+        ],
+        "neutral_band": 0.01,
+        "observed_directions": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "matched_bins": 1,
+        "total_bins": 8,
+        "all_directions_supported": false
+      }
+    }
+  ],
+  "summary": {
+    "before_error": 0.5044624709057579,
+    "after_error": 0.3682226773446367,
+    "gain": 0.1362397935611212,
+    "improved": true,
+    "already_solved": false,
+    "newly_solved": false,
+    "valid_slots": 2,
+    "requested_slots": 2
+  }
+}

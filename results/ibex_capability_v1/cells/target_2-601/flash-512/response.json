@@ -1,0 +1,587 @@
+{
+  "raw_text": "{\n  \"hypothesis\": \"The previous attempt to increase divu operations in early segments significantly reduced activity in bins 0 and 1, contrary to prediction, and decreased activity across most other bins. This suggests that the divu operations, especially when increased, are costly and cause overall activity reduction, likely due to stalls. For candidate one, I will revert the memory seed and segment 0 instruction mix closer to slot 4, reduce the divu operations, and slightly increase weights for segments contributing to bins 0 and 1 to recover activity. For candidate two, I will explore a program with a different instruction mix, focusing on add/mul, and adjust memory seed and segment releases to see if activity can be boosted in bins 0, 1, 3, 4, 5, 7 while reducing in bins 2 and 6.\",\n  \"candidates\": [\n    {\n      \"registers\": [1, 1, 17, 4294967295, 1076035761, 4294967295, 1, 4294967295],\n      \"memory_seed\": 1000000000,\n      \"segments\": [\n        {\n          \"weight\": 1400,\n          \"release\": 10000,\n          \"body\": [\n            {\n              \"op\": \"add\",\n              \"a\": 0,\n              \"b\": 1,\n              \"dst\": 0\n            },\n            {\n              \"op\": \"xor\",\n              \"a\": 2,\n              \"b\": 3,\n              \"dst\": 2\n            },\n            {\n              \"op\": \"load\",\n              \"a\": 4,\n              \"dst\": 5\n            },\n            {\n              \"op\": \"store\",\n              \"a\": 6,\n              \"b\": 7\n            }\n          ]\n        },\n        {\n          \"weight\": 1000,\n          \"release\": 20000,\n          \"body\": [\n            {\n              \"op\": \"cmovz\",\n              \"a\": 0,\n              \"b\": 1,\n              \"dst\": 0\n            },\n            {\n              \"op\": \"mul\",\n              \"a\": 2,\n              \"b\": 3,\n              \"dst\": 2\n            },\n            {\n              \"op\": \"sll\",\n              \"a\": 4,\n              \"b\": 1,\n              \"dst\": 4\n            },\n            {\n              \"op\": \"srl\",\n              \"a\": 5,\n              \"b\": 1,\n              \"dst\": 5\n            }\n          ]\n        },\n        {\n          \"weight\": 600,\n          \"release\": 30000,\n          \"body\": [\n            {\n              \"op\": \"divu\",\n              \"a\": 0,\n              \"b\": 7,\n              \"dst\": 0\n            },\n            {\n              \"op\": \"cmovz\",\n              \"a\": 1,\n              \"b\": 0,\n              \"dst\": 1\n            },\n            {\n              \"op\": \"load\",\n              \"a\": 2,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"store\",\n              \"a\": 4,\n              \"b\": 5\n            }\n          ]\n        },\n        {\n          \"weight\": 1096,\n          \"release\": 40000,\n          \"body\": [\n            {\n              \"op\": \"add\",\n              \"a\": 6,\n              \"b\": 7,\n              \"dst\": 6\n            },\n            {\n              \"op\": \"or\",\n              \"a\": 0,\n              \"b\": 1,\n              \"dst\": 0\n            },\n            {\n              \"op\": \"cmovz\",\n              \"a\": 2,\n              \"b\": 3,\n              \"dst\": 2\n            },\n            {\n              \"op\": \"mul\",\n              \"a\": 4,\n              \"b\": 5,\n              \"dst\": 4\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"registers\": [1, 1, 17, 4294967295, 1076035761, 4294967295, 1, 4294967295],\n      \"memory_seed\": 500000000,\n      \"segments\": [\n        {\n          \"weight\": 1200,\n          \"release\": 15000,\n          \"body\": [\n            {\n              \"op\": \"add\",\n              \"a\": 0,\n              \"b\": 1,\n              \"dst\": 0\n            },\n            {\n              \"op\": \"mul\",\n              \"a\": 2,\n              \"b\": 3,\n              \"dst\": 2\n            },\n            {\n              \"op\": \"load\",\n              \"a\": 4,\n              \"dst\": 5\n            },\n            {\n              \"op\": \"store\",\n              \"a\": 6,\n              \"b\": 7\n            }\n          ]\n        },\n        {\n          \"weight\": 1200,\n          \"release\": 25000,\n          \"body\": [\n            {\n              \"op\": \"add\",\n              \"a\": 0,\n              \"b\": 1,\n              \"dst\": 0\n            },\n            {\n              \"op\": \"mul\",\n              \"a\": 2,\n              \"b\": 3,\n              \"dst\": 2\n            },\n            {\n              \"op\": \"sll\",\n              \"a\": 4,\n              \"b\": 1,\n              \"dst\": 4\n            },\n            {\n              \"op\": \"srl\",\n              \"a\": 5,\n              \"b\": 1,\n              \"dst\": 5\n            }\n          ]\n        },\n        {\n          \"weight\": 400,\n          \"release\": 35000,\n          \"body\": [\n            {\n              \"op\": \"cmovz\",\n              \"a\": 0,\n              \"b\": 7,\n              \"dst\": 0\n            },\n            {\n              \"op\": \"cmovz\",\n              \"a\": 1,\n              \"b\": 0,\n              \"dst\": 1\n            },\n            {\n              \"op\": \"load\",\n              \"a\": 2,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"store\",\n              \"a\": 4,\n              \"b\": 5\n            }\n          ]\n        },\n        {\n          \"weight\": 1296,\n          \"release\": 45000,\n          \"body\": [\n            {\n              \"op\": \"add\",\n              \"a\": 6,\n              \"b\": 7,\n              \"dst\": 6\n            },\n            {\n              \"op\": \"or\",\n              \"a\": 0,\n              \"b\": 1,\n              \"dst\": 0\n            },\n            {\n              \"op\": \"cmovz\",\n              \"a\": 2,\n              \"b\": 3,\n              \"dst\": 2\n            },\n            {\n              \"op\": \"mul\",\n              \"a\": 4,\n              \"b\": 5,\n              \"dst\": 4\n            }\n          ]\n        }\n      ]\n    }\n  ],\n  \"predictions\": [\n    {\n      \"reference_slot\": 4,\n      \"changed_factor\": \"Reverted memory seed and segment 0 instruction mix closer to slot 4, removed problematic divu operations in segment 0, and increased segment 0 weight to boost bins 0 and 1, while keeping other segments similar to slot 4.\",\n      \"window_directions\": [\n        1,\n        1,\n        0,\n        0,\n        0,\n        0,\n        0,\n        0\n      ]\n    },\n    {\n      \"reference_slot\": 4,\n      \"changed_factor\": \"Explored a different memory seed and instruction mix, focusing on add/mul operations in early segments, and adjusting segment releases and weights to increase activity in bins 0, 1, 3, 4, 5, 7 while reducing in bins 2 and 6.\",\n      \"window_directions\": [\n        1,\n        1,\n        -1,\n        1,\n        1,\n        1,\n        -1,\n        1\n      ]\n    }\n  ]\n}",
+  "tokens_in": 22238,
+  "tokens_out": 2516,
+  "thinking_tokens": 439,
+  "usage_unknown": false,
+  "est_cost_usd": 0.0129614,
+  "finish_reasons": [
+    "FinishReason.STOP"
+  ],
+  "prompt_feedback": null,
+  "model_version": "gemini-2.5-flash",
+  "request_wall_clock_s": 13.260741478065029,
+  "long_context_tier": false,
+  "cell": {
+    "context": "target_2-601",
+    "arm": "flash-512",
+    "seed": 17700
+  },
+  "manifest_sha256": "c3080f0a569efab9a12393fb5771d16db8fa4285cdbcebc46d6047f227388860",
+  "decoded": {
+    "response_error": null,
+    "hypothesis": "The previous attempt to increase divu operations in early segments significantly reduced activity in bins 0 and 1, contrary to prediction, and decreased activity across most other bins. This suggests that the divu operations, especially when increased, are costly and cause overall activity reduction, likely due to stalls. For candidate one, I will revert the memory seed and segment 0 instruction mix closer to slot 4, reduce the divu operations, and slightly increase weights for segments contributing to bins 0 and 1 to recover activity. For candidate two, I will explore a program with a different instruction mix, focusing on add/mul, and adjust memory seed and segment releases to see if activity can be boosted in bins 0, 1, 3, 4, 5, 7 while reducing in bins 2 and 6.",
+    "slots": [
+      {
+        "submitted": {
+          "registers": [
+            1,
+            1,
+            17,
+            4294967295,
+            1076035761,
+            4294967295,
+            1,
+            4294967295
+          ],
+          "memory_seed": 1000000000,
+          "segments": [
+            {
+              "weight": 1400,
+              "release": 10000,
+              "body": [
+                {
+                  "op": "add",
+                  "a": 0,
+                  "b": 1,
+                  "dst": 0
+                },
+                {
+                  "op": "xor",
+                  "a": 2,
+                  "b": 3,
+                  "dst": 2
+                },
+                {
+                  "op": "load",
+                  "a": 4,
+                  "dst": 5
+                },
+                {
+                  "op": "store",
+                  "a": 6,
+                  "b": 7
+                }
+              ]
+            },
+            {
+              "weight": 1000,
+              "release": 20000,
+              "body": [
+                {
+                  "op": "cmovz",
+                  "a": 0,
+                  "b": 1,
+                  "dst": 0
+                },
+                {
+                  "op": "mul",
+                  "a": 2,
+                  "b": 3,
+                  "dst": 2
+                },
+                {
+                  "op": "sll",
+                  "a": 4,
+                  "b": 1,
+                  "dst": 4
+                },
+                {
+                  "op": "srl",
+                  "a": 5,
+                  "b": 1,
+                  "dst": 5
+                }
+              ]
+            },
+            {
+              "weight": 600,
+              "release": 30000,
+              "body": [
+                {
+                  "op": "divu",
+                  "a": 0,
+                  "b": 7,
+                  "dst": 0
+                },
+                {
+                  "op": "cmovz",
+                  "a": 1,
+                  "b": 0,
+                  "dst": 1
+                },
+                {
+                  "op": "load",
+                  "a": 2,
+                  "dst": 3
+                },
+                {
+                  "op": "store",
+                  "a": 4,
+                  "b": 5
+                }
+              ]
+            },
+            {
+              "weight": 1096,
+              "release": 40000,
+              "body": [
+                {
+                  "op": "add",
+                  "a": 6,
+                  "b": 7,
+                  "dst": 6
+                },
+                {
+                  "op": "or",
+                  "a": 0,
+                  "b": 1,
+                  "dst": 0
+                },
+                {
+                  "op": "cmovz",
+                  "a": 2,
+                  "b": 3,
+                  "dst": 2
+                },
+                {
+                  "op": "mul",
+                  "a": 4,
+                  "b": 5,
+                  "dst": 4
+                }
+              ]
+            }
+          ]
+        },
+        "canonical": {
+          "registers": [
+            1,
+            1,
+            17,
+            4294967295,
+            1076035761,
+            4294967295,
+            1,
+            4294967295
+          ],
+          "memory_seed": 1000000000,
+          "segments": [
+            {
+              "weight": 1400,
+              "release": 10000,
+              "body": [
+                {
+                  "op": "add",
+                  "a": 0,
+                  "b": 1,
+                  "dst": 0
+                },
+                {
+                  "op": "xor",
+                  "a": 2,
+                  "b": 3,
+                  "dst": 2
+                },
+                {
+                  "op": "load",
+                  "a": 4,
+                  "dst": 5
+                },
+                {
+                  "op": "store",
+                  "a": 6,
+                  "b": 7
+                }
+              ]
+            },
+            {
+              "weight": 1000,
+              "release": 20000,
+              "body": [
+                {
+                  "op": "cmovz",
+                  "a": 0,
+                  "b": 1,
+                  "dst": 0
+                },
+                {
+                  "op": "mul",
+                  "a": 2,
+                  "b": 3,
+                  "dst": 2
+                },
+                {
+                  "op": "sll",
+                  "a": 4,
+                  "b": 1,
+                  "dst": 4
+                },
+                {
+                  "op": "srl",
+                  "a": 5,
+                  "b": 1,
+                  "dst": 5
+                }
+              ]
+            },
+            {
+              "weight": 600,
+              "release": 30000,
+              "body": [
+                {
+                  "op": "divu",
+                  "a": 0,
+                  "b": 7,
+                  "dst": 0
+                },
+                {
+                  "op": "cmovz",
+                  "a": 1,
+                  "b": 0,
+                  "dst": 1
+                },
+                {
+                  "op": "load",
+                  "a": 2,
+                  "dst": 3
+                },
+                {
+                  "op": "store",
+                  "a": 4,
+                  "b": 5
+                }
+              ]
+            },
+            {
+              "weight": 1096,
+              "release": 40000,
+              "body": [
+                {
+                  "op": "add",
+                  "a": 6,
+                  "b": 7,
+                  "dst": 6
+                },
+                {
+                  "op": "or",
+                  "a": 0,
+                  "b": 1,
+                  "dst": 0
+                },
+                {
+                  "op": "cmovz",
+                  "a": 2,
+                  "b": 3,
+                  "dst": 2
+                },
+                {
+                  "op": "mul",
+                  "a": 4,
+                  "b": 5,
+                  "dst": 4
+                }
+              ]
+            }
+          ]
+        },
+        "program_error": null,
+        "prediction": {
+          "reference_slot": 4,
+          "changed_factor": "Reverted memory seed and segment 0 instruction mix closer to slot 4, removed problematic divu operations in segment 0, and increased segment 0 weight to boost bins 0 and 1, while keeping other segments similar to slot 4.",
+          "window_directions": [
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "prediction_error": null
+      },
+      {
+        "submitted": {
+          "registers": [
+            1,
+            1,
+            17,
+            4294967295,
+            1076035761,
+            4294967295,
+            1,
+            4294967295
+          ],
+          "memory_seed": 500000000,
+          "segments": [
+            {
+              "weight": 1200,
+              "release": 15000,
+              "body": [
+                {
+                  "op": "add",
+                  "a": 0,
+                  "b": 1,
+                  "dst": 0
+                },
+                {
+                  "op": "mul",
+                  "a": 2,
+                  "b": 3,
+                  "dst": 2
+                },
+                {
+                  "op": "load",
+                  "a": 4,
+                  "dst": 5
+                },
+                {
+                  "op": "store",
+                  "a": 6,
+                  "b": 7
+                }
+              ]
+            },
+            {
+              "weight": 1200,
+              "release": 25000,
+              "body": [
+                {
+                  "op": "add",
+                  "a": 0,
+                  "b": 1,
+                  "dst": 0
+                },
+                {
+                  "op": "mul",
+                  "a": 2,
+                  "b": 3,
+                  "dst": 2
+                },
+                {
+                  "op": "sll",
+                  "a": 4,
+                  "b": 1,
+                  "dst": 4
+                },
+                {
+                  "op": "srl",
+                  "a": 5,
+                  "b": 1,
+                  "dst": 5
+                }
+              ]
+            },
+            {
+              "weight": 400,
+              "release": 35000,
+              "body": [
+                {
+                  "op": "cmovz",
+                  "a": 0,
+                  "b": 7,
+                  "dst": 0
+                },
+                {
+                  "op": "cmovz",
+                  "a": 1,
+                  "b": 0,
+                  "dst": 1
+                },
+                {
+                  "op": "load",
+                  "a": 2,
+                  "dst": 3
+                },
+                {
+                  "op": "store",
+                  "a": 4,
+                  "b": 5
+                }
+              ]
+            },
+            {
+              "weight": 1296,
+              "release": 45000,
+              "body": [
+                {
+                  "op": "add",
+                  "a": 6,
+                  "b": 7,
+                  "dst": 6
+                },
+                {
+                  "op": "or",
+                  "a": 0,
+                  "b": 1,
+                  "dst": 0
+                },
+                {
+                  "op": "cmovz",
+                  "a": 2,
+                  "b": 3,
+                  "dst": 2
+                },
+                {
+                  "op": "mul",
+                  "a": 4,
+                  "b": 5,
+                  "dst": 4
+                }
+              ]
+            }
+          ]
+        },
+        "canonical": {
+          "registers": [
+            1,
+            1,
+            17,
+            4294967295,
+            1076035761,
+            4294967295,
+            1,
+            4294967295
+          ],
+          "memory_seed": 500000000,
+          "segments": [
+            {
+              "weight": 1200,
+              "release": 15000,
+              "body": [
+                {
+                  "op": "add",
+                  "a": 0,
+                  "b": 1,
+                  "dst": 0
+                },
+                {
+                  "op": "mul",
+                  "a": 2,
+                  "b": 3,
+                  "dst": 2
+                },
+                {
+                  "op": "load",
+                  "a": 4,
+                  "dst": 5
+                },
+                {
+                  "op": "store",
+                  "a": 6,
+                  "b": 7
+                }
+              ]
+            },
+            {
+              "weight": 1200,
+              "release": 25000,
+              "body": [
+                {
+                  "op": "add",
+                  "a": 0,
+                  "b": 1,
+                  "dst": 0
+                },
+                {
+                  "op": "mul",
+                  "a": 2,
+                  "b": 3,
+                  "dst": 2
+                },
+                {
+                  "op": "sll",
+                  "a": 4,
+                  "b": 1,
+                  "dst": 4
+                },
+                {
+                  "op": "srl",
+                  "a": 5,
+                  "b": 1,
+                  "dst": 5
+                }
+              ]
+            },
+            {
+              "weight": 400,
+              "release": 35000,
+              "body": [
+                {
+                  "op": "cmovz",
+                  "a": 0,
+                  "b": 7,
+                  "dst": 0
+                },
+                {
+                  "op": "cmovz",
+                  "a": 1,
+                  "b": 0,
+                  "dst": 1
+                },
+                {
+                  "op": "load",
+                  "a": 2,
+                  "dst": 3
+                },
+                {
+                  "op": "store",
+                  "a": 4,
+                  "b": 5
+                }
+              ]
+            },
+            {
+              "weight": 1296,
+              "release": 45000,
+              "body": [
+                {
+                  "op": "add",
+                  "a": 6,
+                  "b": 7,
+                  "dst": 6
+                },
+                {
+                  "op": "or",
+                  "a": 0,
+                  "b": 1,
+                  "dst": 0
+                },
+                {
+                  "op": "cmovz",
+                  "a": 2,
+                  "b": 3,
+                  "dst": 2
+                },
+                {
+                  "op": "mul",
+                  "a": 4,
+                  "b": 5,
+                  "dst": 4
+                }
+              ]
+            }
+          ]
+        },
+        "program_error": null,
+        "prediction": {
+          "reference_slot": 4,
+          "changed_factor": "Explored a different memory seed and instruction mix, focusing on add/mul operations in early segments, and adjusting segment releases and weights to increase activity in bins 0, 1, 3, 4, 5, 7 while reducing in bins 2 and 6.",
+          "window_directions": [
+            1,
+            1,
+            -1,
+            1,
+            1,
+            1,
+            -1,
+            1
+          ]
+        },
+        "prediction_error": null
+      }
+    ]
+  }
+}

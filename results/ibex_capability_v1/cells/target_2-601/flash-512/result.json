@@ -1,0 +1,1431 @@
+{
+  "cell": {
+    "context": "target_2-601",
+    "arm": "flash-512",
+    "seed": 17700
+  },
+  "trials": [
+    {
+      "slot": 7,
+      "program": {
+        "registers": [
+          1,
+          1,
+          17,
+          4294967295,
+          1076035761,
+          4294967295,
+          1,
+          4294967295
+        ],
+        "memory_seed": 1000000000,
+        "segments": [
+          {
+            "weight": 1400,
+            "release": 10000,
+            "body": [
+              {
+                "op": "add",
+                "a": 0,
+                "b": 1,
+                "dst": 0
+              },
+              {
+                "op": "xor",
+                "a": 2,
+                "b": 3,
+                "dst": 2
+              },
+              {
+                "op": "load",
+                "a": 4,
+                "dst": 5
+              },
+              {
+                "op": "store",
+                "a": 6,
+                "b": 7
+              }
+            ]
+          },
+          {
+            "weight": 1000,
+            "release": 20000,
+            "body": [
+              {
+                "op": "cmovz",
+                "a": 0,
+                "b": 1,
+                "dst": 0
+              },
+              {
+                "op": "mul",
+                "a": 2,
+                "b": 3,
+                "dst": 2
+              },
+              {
+                "op": "sll",
+                "a": 4,
+                "b": 1,
+                "dst": 4
+              },
+              {
+                "op": "srl",
+                "a": 5,
+                "b": 1,
+                "dst": 5
+              }
+            ]
+          },
+          {
+            "weight": 600,
+            "release": 30000,
+            "body": [
+              {
+                "op": "divu",
+                "a": 0,
+                "b": 7,
+                "dst": 0
+              },
+              {
+                "op": "cmovz",
+                "a": 1,
+                "b": 0,
+                "dst": 1
+              },
+              {
+                "op": "load",
+                "a": 2,
+                "dst": 3
+              },
+              {
+                "op": "store",
+                "a": 4,
+                "b": 5
+              }
+            ]
+          },
+          {
+            "weight": 1096,
+            "release": 40000,
+            "body": [
+              {
+                "op": "add",
+                "a": 6,
+                "b": 7,
+                "dst": 6
+              },
+              {
+                "op": "or",
+                "a": 0,
+                "b": 1,
+                "dst": 0
+              },
+              {
+                "op": "cmovz",
+                "a": 2,
+                "b": 3,
+                "dst": 2
+              },
+              {
+                "op": "mul",
+                "a": 4,
+                "b": 5,
+                "dst": 4
+              }
+            ]
+          }
+        ]
+      },
+      "canonical_program": {
+        "registers": [
+          1,
+          1,
+          17,
+          4294967295,
+          1076035761,
+          4294967295,
+          1,
+          4294967295
+        ],
+        "memory_seed": 1000000000,
+        "segments": [
+          {
+            "weight": 1400,
+            "release": 10000,
+            "body": [
+              {
+                "op": "add",
+                "a": 0,
+                "b": 1,
+                "dst": 0
+              },
+              {
+                "op": "xor",
+                "a": 2,
+                "b": 3,
+                "dst": 2
+              },
+              {
+                "op": "load",
+                "a": 4,
+                "dst": 5
+              },
+              {
+                "op": "store",
+                "a": 6,
+                "b": 7
+              }
+            ]
+          },
+          {
+            "weight": 1000,
+            "release": 20000,
+            "body": [
+              {
+                "op": "cmovz",
+                "a": 0,
+                "b": 1,
+                "dst": 0
+              },
+              {
+                "op": "mul",
+                "a": 2,
+                "b": 3,
+                "dst": 2
+              },
+              {
+                "op": "sll",
+                "a": 4,
+                "b": 1,
+                "dst": 4
+              },
+              {
+                "op": "srl",
+                "a": 5,
+                "b": 1,
+                "dst": 5
+              }
+            ]
+          },
+          {
+            "weight": 600,
+            "release": 30000,
+            "body": [
+              {
+                "op": "divu",
+                "a": 0,
+                "b": 7,
+                "dst": 0
+              },
+              {
+                "op": "cmovz",
+                "a": 1,
+                "b": 0,
+                "dst": 1
+              },
+              {
+                "op": "load",
+                "a": 2,
+                "dst": 3
+              },
+              {
+                "op": "store",
+                "a": 4,
+                "b": 5
+              }
+            ]
+          },
+          {
+            "weight": 1096,
+            "release": 40000,
+            "body": [
+              {
+                "op": "add",
+                "a": 6,
+                "b": 7,
+                "dst": 6
+              },
+              {
+                "op": "or",
+                "a": 0,
+                "b": 1,
+                "dst": 0
+              },
+              {
+                "op": "cmovz",
+                "a": 2,
+                "b": 3,
+                "dst": 2
+              },
+              {
+                "op": "mul",
+                "a": 4,
+                "b": 5,
+                "dst": 4
+              }
+            ]
+          }
+        ]
+      },
+      "prediction": {
+        "reference_slot": 4,
+        "changed_factor": "Reverted memory seed and segment 0 instruction mix closer to slot 4, removed problematic divu operations in segment 0, and increased segment 0 weight to boost bins 0 and 1, while keeping other segments similar to slot 4.",
+        "window_directions": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "prediction_error": null,
+      "rates": [
+        714.86428,
+        560.06264,
+        730.94796,
+        730.47304,
+        741.01128,
+        734.138,
+        741.49084,
+        756.87356
+      ],
+      "loss": 0.48771374046371996,
+      "cache_hit": false,
+      "valid": true,
+      "stage": null,
+      "reason": "",
+      "schema_path": null,
+      "cache_id": "8242a8098ca431526d16ac478b339bfc44906a49619f8af728c1504bb8b65446",
+      "feedback": {
+        "begin_tick": 288,
+        "end_tick": 400288,
+        "cycles_per_bin": 25000,
+        "retired_classes": [
+          {
+            "alu": 3912,
+            "multiply": 250,
+            "divide": 0,
+            "load": 350,
+            "store": 350,
+            "branch": 4949,
+            "jump": 0,
+            "csr": 4099,
+            "other": 0
+          },
+          {
+            "alu": 1881,
+            "multiply": 274,
+            "divide": 150,
+            "load": 150,
+            "store": 150,
+            "branch": 4251,
+            "jump": 0,
+            "csr": 3403,
+            "other": 0
+          },
+          {
+            "alu": 0,
+            "multiply": 0,
+            "divide": 0,
+            "load": 0,
+            "store": 0,
+            "branch": 6250,
+            "jump": 0,
+            "csr": 6250,
+            "other": 0
+          },
+          {
+            "alu": 0,
+            "multiply": 0,
+            "divide": 0,
+            "load": 0,
+            "store": 0,
+            "branch": 6250,
+            "jump": 0,
+            "csr": 6250,
+            "other": 0
+          },
+          {
+            "alu": 0,
+            "multiply": 0,
+            "divide": 0,
+            "load": 0,
+            "store": 0,
+            "branch": 6250,
+            "jump": 0,
+            "csr": 6250,
+            "other": 0
+          },
+          {
+            "alu": 0,
+            "multiply": 0,
+            "divide": 0,
+            "load": 0,
+            "store": 0,
+            "branch": 6250,
+            "jump": 0,
+            "csr": 6250,
+            "other": 0
+          },
+          {
+            "alu": 0,
+            "multiply": 0,
+            "divide": 0,
+            "load": 0,
+            "store": 0,
+            "branch": 6250,
+            "jump": 0,
+            "csr": 6250,
+            "other": 0
+          },
+          {
+            "alu": 0,
+            "multiply": 0,
+            "divide": 0,
+            "load": 0,
+            "store": 0,
+            "branch": 6250,
+            "jump": 0,
+            "csr": 6250,
+            "other": 0
+          }
+        ],
+        "retired_per_bin": [
+          13910,
+          10259,
+          12500,
+          12500,
+          12500,
+          12500,
+          12500,
+          12500
+        ],
+        "cycles_without_retirement": [
+          11090,
+          14741,
+          12500,
+          12500,
+          12500,
+          12500,
+          12500,
+          12500
+        ],
+        "interpretation": "includes polling/control overhead; gaps are not attributed stall causes",
+        "body_completion_cycles": 43289,
+        "body_overrun_cycles": 0,
+        "body_completed_before_deadline": true,
+        "deadline_margin_cycles": 156711,
+        "allocation": [
+          1400,
+          1000,
+          600,
+          1096
+        ],
+        "trace_file": "trace_core_00000000.log"
+      },
+      "execution": {
+        "begin_tick": 288,
+        "end_tick": 400288,
+        "bins": [
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 4945,
+            "branch_not_taken_from_operands": 4,
+            "retired_by_phase": {
+              "measurement_setup": 1,
+              "segment_0_setup": 3,
+              "segment_0_poll": 5000,
+              "segment_0_body": 4201,
+              "segment_1_setup": 3,
+              "segment_1_poll": 2200,
+              "segment_1_body": 1501,
+              "segment_2_setup": 3,
+              "segment_2_poll": 998
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 150,
+            "divide_zero_numerator": 149,
+            "branch_taken_from_operands": 4247,
+            "branch_not_taken_from_operands": 4,
+            "retired_by_phase": {
+              "segment_2_poll": 2502,
+              "segment_2_body": 1801,
+              "segment_3_setup": 3,
+              "segment_3_poll": 950,
+              "segment_3_body": 1645,
+              "body_complete": 3358
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 6250,
+            "branch_not_taken_from_operands": 0,
+            "retired_by_phase": {
+              "body_complete": 12500
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 6250,
+            "branch_not_taken_from_operands": 0,
+            "retired_by_phase": {
+              "body_complete": 12500
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 6250,
+            "branch_not_taken_from_operands": 0,
+            "retired_by_phase": {
+              "body_complete": 12500
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 6250,
+            "branch_not_taken_from_operands": 0,
+            "retired_by_phase": {
+              "body_complete": 12500
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 6250,
+            "branch_not_taken_from_operands": 0,
+            "retired_by_phase": {
+              "body_complete": 12500
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 6250,
+            "branch_not_taken_from_operands": 0,
+            "retired_by_phase": {
+              "body_complete": 12500
+            }
+          }
+        ],
+        "phases": {
+          "measurement_setup": {
+            "first_retired_cycle": 0,
+            "last_retired_cycle": 0,
+            "retired": 1
+          },
+          "segment_0_setup": {
+            "first_retired_cycle": 1,
+            "last_retired_cycle": 3,
+            "retired": 3
+          },
+          "segment_0_poll": {
+            "first_retired_cycle": 4,
+            "last_retired_cycle": 10001,
+            "retired": 5000
+          },
+          "segment_0_body": {
+            "first_retired_cycle": 10002,
+            "last_retired_cycle": 15600,
+            "retired": 4201
+          },
+          "segment_1_setup": {
+            "first_retired_cycle": 15601,
+            "last_retired_cycle": 15603,
+            "retired": 3
+          },
+          "segment_1_poll": {
+            "first_retired_cycle": 15604,
+            "last_retired_cycle": 20001,
+            "retired": 2200
+          },
+          "segment_1_body": {
+            "first_retired_cycle": 20002,
+            "last_retired_cycle": 23000,
+            "retired": 1501
+          },
+          "segment_2_setup": {
+            "first_retired_cycle": 23001,
+            "last_retired_cycle": 23003,
+            "retired": 3
+          },
+          "segment_2_poll": {
+            "first_retired_cycle": 23004,
+            "last_retired_cycle": 30001,
+            "retired": 3500
+          },
+          "segment_2_body": {
+            "first_retired_cycle": 30002,
+            "last_retired_cycle": 38100,
+            "retired": 1801
+          },
+          "segment_3_setup": {
+            "first_retired_cycle": 38101,
+            "last_retired_cycle": 38103,
+            "retired": 3
+          },
+          "segment_3_poll": {
+            "first_retired_cycle": 38104,
+            "last_retired_cycle": 40001,
+            "retired": 950
+          },
+          "segment_3_body": {
+            "first_retired_cycle": 40002,
+            "last_retired_cycle": 43288,
+            "retired": 1645
+          },
+          "body_complete": {
+            "first_retired_cycle": 43289,
+            "last_retired_cycle": 199999,
+            "retired": 78358
+          }
+        },
+        "scope": "retired PCs and source operand values; phase bounds are retirement times, not issue times or attributed stall cycles"
+      },
+      "prediction_assessment": {
+        "slot": 7,
+        "prediction": {
+          "reference_slot": 4,
+          "changed_factor": "Reverted memory seed and segment 0 instruction mix closer to slot 4, removed problematic divu operations in segment 0, and increased segment 0 weight to boost bins 0 and 1, while keeping other segments similar to slot 4.",
+          "window_directions": [
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "scorable": true,
+        "reason": "measured",
+        "actual_changes": [
+          {
+            "path": [
+              "segments",
+              0,
+              "weight"
+            ],
+            "before": 1000,
+            "after": 1400
+          },
+          {
+            "path": [
+              "segments",
+              2,
+              "weight"
+            ],
+            "before": 1000,
+            "after": 600
+          }
+        ],
+        "normalized_delta": [
+          0.005299536519524468,
+          0.21161003755560373,
+          1.2110804169049173e-06,
+          4.541551562855612e-07,
+          1.589543047322161e-06,
+          -1.7409280992739272e-06,
+          2.1193907296911705e-06,
+          -2.573545885976732e-06
+        ],
+        "neutral_band": 0.01,
+        "observed_directions": [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "matched_bins": 7,
+        "total_bins": 8,
+        "all_directions_supported": false
+      }
+    },
+    {
+      "slot": 8,
+      "program": {
+        "registers": [
+          1,
+          1,
+          17,
+          4294967295,
+          1076035761,
+          4294967295,
+          1,
+          4294967295
+        ],
+        "memory_seed": 500000000,
+        "segments": [
+          {
+            "weight": 1200,
+            "release": 15000,
+            "body": [
+              {
+                "op": "add",
+                "a": 0,
+                "b": 1,
+                "dst": 0
+              },
+              {
+                "op": "mul",
+                "a": 2,
+                "b": 3,
+                "dst": 2
+              },
+              {
+                "op": "load",
+                "a": 4,
+                "dst": 5
+              },
+              {
+                "op": "store",
+                "a": 6,
+                "b": 7
+              }
+            ]
+          },
+          {
+            "weight": 1200,
+            "release": 25000,
+            "body": [
+              {
+                "op": "add",
+                "a": 0,
+                "b": 1,
+                "dst": 0
+              },
+              {
+                "op": "mul",
+                "a": 2,
+                "b": 3,
+                "dst": 2
+              },
+              {
+                "op": "sll",
+                "a": 4,
+                "b": 1,
+                "dst": 4
+              },
+              {
+                "op": "srl",
+                "a": 5,
+                "b": 1,
+                "dst": 5
+              }
+            ]
+          },
+          {
+            "weight": 400,
+            "release": 35000,
+            "body": [
+              {
+                "op": "cmovz",
+                "a": 0,
+                "b": 7,
+                "dst": 0
+              },
+              {
+                "op": "cmovz",
+                "a": 1,
+                "b": 0,
+                "dst": 1
+              },
+              {
+                "op": "load",
+                "a": 2,
+                "dst": 3
+              },
+              {
+                "op": "store",
+                "a": 4,
+                "b": 5
+              }
+            ]
+          },
+          {
+            "weight": 1296,
+            "release": 45000,
+            "body": [
+              {
+                "op": "add",
+                "a": 6,
+                "b": 7,
+                "dst": 6
+              },
+              {
+                "op": "or",
+                "a": 0,
+                "b": 1,
+                "dst": 0
+              },
+              {
+                "op": "cmovz",
+                "a": 2,
+                "b": 3,
+                "dst": 2
+              },
+              {
+                "op": "mul",
+                "a": 4,
+                "b": 5,
+                "dst": 4
+              }
+            ]
+          }
+        ]
+      },
+      "canonical_program": {
+        "registers": [
+          1,
+          1,
+          17,
+          4294967295,
+          1076035761,
+          4294967295,
+          1,
+          4294967295
+        ],
+        "memory_seed": 500000000,
+        "segments": [
+          {
+            "weight": 1200,
+            "release": 15000,
+            "body": [
+              {
+                "op": "add",
+                "a": 0,
+                "b": 1,
+                "dst": 0
+              },
+              {
+                "op": "mul",
+                "a": 2,
+                "b": 3,
+                "dst": 2
+              },
+              {
+                "op": "load",
+                "a": 4,
+                "dst": 5
+              },
+              {
+                "op": "store",
+                "a": 6,
+                "b": 7
+              }
+            ]
+          },
+          {
+            "weight": 1200,
+            "release": 25000,
+            "body": [
+              {
+                "op": "add",
+                "a": 0,
+                "b": 1,
+                "dst": 0
+              },
+              {
+                "op": "mul",
+                "a": 2,
+                "b": 3,
+                "dst": 2
+              },
+              {
+                "op": "sll",
+                "a": 4,
+                "b": 1,
+                "dst": 4
+              },
+              {
+                "op": "srl",
+                "a": 5,
+                "b": 1,
+                "dst": 5
+              }
+            ]
+          },
+          {
+            "weight": 400,
+            "release": 35000,
+            "body": [
+              {
+                "op": "cmovz",
+                "a": 0,
+                "b": 7,
+                "dst": 0
+              },
+              {
+                "op": "cmovz",
+                "a": 1,
+                "b": 0,
+                "dst": 1
+              },
+              {
+                "op": "load",
+                "a": 2,
+                "dst": 3
+              },
+              {
+                "op": "store",
+                "a": 4,
+                "b": 5
+              }
+            ]
+          },
+          {
+            "weight": 1296,
+            "release": 45000,
+            "body": [
+              {
+                "op": "add",
+                "a": 6,
+                "b": 7,
+                "dst": 6
+              },
+              {
+                "op": "or",
+                "a": 0,
+                "b": 1,
+                "dst": 0
+              },
+              {
+                "op": "cmovz",
+                "a": 2,
+                "b": 3,
+                "dst": 2
+              },
+              {
+                "op": "mul",
+                "a": 4,
+                "b": 5,
+                "dst": 4
+              }
+            ]
+          }
+        ]
+      },
+      "prediction": {
+        "reference_slot": 4,
+        "changed_factor": "Explored a different memory seed and instruction mix, focusing on add/mul operations in early segments, and adjusting segment releases and weights to increase activity in bins 0, 1, 3, 4, 5, 7 while reducing in bins 2 and 6.",
+        "window_directions": [
+          1,
+          1,
+          -1,
+          1,
+          1,
+          1,
+          -1,
+          1
+        ]
+      },
+      "prediction_error": null,
+      "rates": [
+        716.5138,
+        680.76692,
+        735.44812,
+        734.97204,
+        745.51164,
+        738.63796,
+        745.99088,
+        761.3736
+      ],
+      "loss": 0.4830354296797424,
+      "cache_hit": false,
+      "valid": true,
+      "stage": null,
+      "reason": "",
+      "schema_path": null,
+      "cache_id": "47484067718b4ba1ece81452f491a032e3df4927327223ddf5ef1ee234e78337",
+      "feedback": {
+        "begin_tick": 288,
+        "end_tick": 400288,
+        "cycles_per_bin": 25000,
+        "retired_classes": [
+          {
+            "alu": 2408,
+            "multiply": 300,
+            "divide": 0,
+            "load": 300,
+            "store": 300,
+            "branch": 5199,
+            "jump": 0,
+            "csr": 4899,
+            "other": 0
+          },
+          {
+            "alu": 2885,
+            "multiply": 624,
+            "divide": 0,
+            "load": 100,
+            "store": 100,
+            "branch": 5276,
+            "jump": 0,
+            "csr": 4028,
+            "other": 0
+          },
+          {
+            "alu": 0,
+            "multiply": 0,
+            "divide": 0,
+            "load": 0,
+            "store": 0,
+            "branch": 6250,
+            "jump": 0,
+            "csr": 6250,
+            "other": 0
+          },
+          {
+            "alu": 0,
+            "multiply": 0,
+            "divide": 0,
+            "load": 0,
+            "store": 0,
+            "branch": 6250,
+            "jump": 0,
+            "csr": 6250,
+            "other": 0
+          },
+          {
+            "alu": 0,
+            "multiply": 0,
+            "divide": 0,
+            "load": 0,
+            "store": 0,
+            "branch": 6250,
+            "jump": 0,
+            "csr": 6250,
+            "other": 0
+          },
+          {
+            "alu": 0,
+            "multiply": 0,
+            "divide": 0,
+            "load": 0,
+            "store": 0,
+            "branch": 6250,
+            "jump": 0,
+            "csr": 6250,
+            "other": 0
+          },
+          {
+            "alu": 0,
+            "multiply": 0,
+            "divide": 0,
+            "load": 0,
+            "store": 0,
+            "branch": 6250,
+            "jump": 0,
+            "csr": 6250,
+            "other": 0
+          },
+          {
+            "alu": 0,
+            "multiply": 0,
+            "divide": 0,
+            "load": 0,
+            "store": 0,
+            "branch": 6250,
+            "jump": 0,
+            "csr": 6250,
+            "other": 0
+          }
+        ],
+        "retired_per_bin": [
+          13406,
+          13013,
+          12500,
+          12500,
+          12500,
+          12500,
+          12500,
+          12500
+        ],
+        "cycles_without_retirement": [
+          11594,
+          11987,
+          12500,
+          12500,
+          12500,
+          12500,
+          12500,
+          12500
+        ],
+        "interpretation": "includes polling/control overhead; gaps are not attributed stall causes",
+        "body_completion_cycles": 48889,
+        "body_overrun_cycles": 0,
+        "body_completed_before_deadline": true,
+        "deadline_margin_cycles": 151111,
+        "allocation": [
+          1200,
+          1200,
+          400,
+          1296
+        ],
+        "trace_file": "trace_core_00000000.log"
+      },
+      "execution": {
+        "begin_tick": 288,
+        "end_tick": 400288,
+        "bins": [
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 5197,
+            "branch_not_taken_from_operands": 2,
+            "retired_by_phase": {
+              "measurement_setup": 1,
+              "segment_0_setup": 3,
+              "segment_0_poll": 7500,
+              "segment_0_body": 3601,
+              "segment_1_setup": 3,
+              "segment_1_poll": 2298
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 5270,
+            "branch_not_taken_from_operands": 6,
+            "retired_by_phase": {
+              "segment_1_poll": 2,
+              "segment_1_body": 1801,
+              "segment_2_setup": 3,
+              "segment_2_poll": 3500,
+              "segment_2_body": 1201,
+              "segment_3_setup": 3,
+              "segment_3_poll": 4000,
+              "segment_3_body": 1945,
+              "body_complete": 558
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 6250,
+            "branch_not_taken_from_operands": 0,
+            "retired_by_phase": {
+              "body_complete": 12500
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 6250,
+            "branch_not_taken_from_operands": 0,
+            "retired_by_phase": {
+              "body_complete": 12500
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 6250,
+            "branch_not_taken_from_operands": 0,
+            "retired_by_phase": {
+              "body_complete": 12500
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 6250,
+            "branch_not_taken_from_operands": 0,
+            "retired_by_phase": {
+              "body_complete": 12500
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 6250,
+            "branch_not_taken_from_operands": 0,
+            "retired_by_phase": {
+              "body_complete": 12500
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 6250,
+            "branch_not_taken_from_operands": 0,
+            "retired_by_phase": {
+              "body_complete": 12500
+            }
+          }
+        ],
+        "phases": {
+          "measurement_setup": {
+            "first_retired_cycle": 0,
+            "last_retired_cycle": 0,
+            "retired": 1
+          },
+          "segment_0_setup": {
+            "first_retired_cycle": 1,
+            "last_retired_cycle": 3,
+            "retired": 3
+          },
+          "segment_0_poll": {
+            "first_retired_cycle": 4,
+            "last_retired_cycle": 15001,
+            "retired": 7500
+          },
+          "segment_0_body": {
+            "first_retired_cycle": 15002,
+            "last_retired_cycle": 20400,
+            "retired": 3601
+          },
+          "segment_1_setup": {
+            "first_retired_cycle": 20401,
+            "last_retired_cycle": 20403,
+            "retired": 3
+          },
+          "segment_1_poll": {
+            "first_retired_cycle": 20404,
+            "last_retired_cycle": 25001,
+            "retired": 2300
+          },
+          "segment_1_body": {
+            "first_retired_cycle": 25002,
+            "last_retired_cycle": 28000,
+            "retired": 1801
+          },
+          "segment_2_setup": {
+            "first_retired_cycle": 28001,
+            "last_retired_cycle": 28003,
+            "retired": 3
+          },
+          "segment_2_poll": {
+            "first_retired_cycle": 28004,
+            "last_retired_cycle": 35001,
+            "retired": 3500
+          },
+          "segment_2_body": {
+            "first_retired_cycle": 35002,
+            "last_retired_cycle": 37000,
+            "retired": 1201
+          },
+          "segment_3_setup": {
+            "first_retired_cycle": 37001,
+            "last_retired_cycle": 37003,
+            "retired": 3
+          },
+          "segment_3_poll": {
+            "first_retired_cycle": 37004,
+            "last_retired_cycle": 45001,
+            "retired": 4000
+          },
+          "segment_3_body": {
+            "first_retired_cycle": 45002,
+            "last_retired_cycle": 48888,
+            "retired": 1945
+          },
+          "body_complete": {
+            "first_retired_cycle": 48889,
+            "last_retired_cycle": 199999,
+            "retired": 75558
+          }
+        },
+        "scope": "retired PCs and source operand values; phase bounds are retirement times, not issue times or attributed stall cycles"
+      },
+      "prediction_assessment": {
+        "slot": 8,
+        "prediction": {
+          "reference_slot": 4,
+          "changed_factor": "Explored a different memory seed and instruction mix, focusing on add/mul operations in early segments, and adjusting segment releases and weights to increase activity in bins 0, 1, 3, 4, 5, 7 while reducing in bins 2 and 6.",
+          "window_directions": [
+            1,
+            1,
+            -1,
+            1,
+            1,
+            1,
+            -1,
+            1
+          ]
+        },
+        "scorable": true,
+        "reason": "measured",
+        "actual_changes": [
+          {
+            "path": [
+              "memory_seed"
+            ],
+            "before": 1000000000,
+            "after": 500000000
+          },
+          {
+            "path": [
+              "segments",
+              0,
+              "body",
+              1,
+              "op"
+            ],
+            "before": "xor",
+            "after": "mul"
+          },
+          {
+            "path": [
+              "segments",
+              0,
+              "release"
+            ],
+            "before": 10000,
+            "after": 15000
+          },
+          {
+            "path": [
+              "segments",
+              0,
+              "weight"
+            ],
+            "before": 1000,
+            "after": 1200
+          },
+          {
+            "path": [
+              "segments",
+              1,
+              "body",
+              0,
+              "op"
+            ],
+            "before": "cmovz",
+            "after": "add"
+          },
+          {
+            "path": [
+              "segments",
+              1,
+              "release"
+            ],
+            "before": 20000,
+            "after": 25000
+          },
+          {
+            "path": [
+              "segments",
+              1,
+              "weight"
+            ],
+            "before": 1000,
+            "after": 1200
+          },
+          {
+            "path": [
+              "segments",
+              2,
+              "body",
+              0,
+              "op"
+            ],
+            "before": "divu",
+            "after": "cmovz"
+          },
+          {
+            "path": [
+              "segments",
+              2,
+              "release"
+            ],
+            "before": 30000,
+            "after": 35000
+          },
+          {
+            "path": [
+              "segments",
+              2,
+              "weight"
+            ],
+            "before": 1000,
+            "after": 400
+          },
+          {
+            "path": [
+              "segments",
+              3,
+              "release"
+            ],
+            "before": 40000,
+            "after": 45000
+          },
+          {
+            "path": [
+              "segments",
+              3,
+              "weight"
+            ],
+            "before": 1096,
+            "after": 1296
+          }
+        ],
+        "normalized_delta": [
+          0.008420944909162833,
+          0.4400203340402007,
+          0.008516923032206311,
+          0.008513971023689918,
+          0.00851767995746693,
+          0.008513592561059716,
+          0.008517604264940633,
+          0.00851291132832518
+        ],
+        "neutral_band": 0.01,
+        "observed_directions": [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "matched_bins": 1,
+        "total_bins": 8,
+        "all_directions_supported": false
+      }
+    }
+  ],
+  "summary": {
+    "before_error": 0.48728355619414626,
+    "after_error": 0.4830354296797424,
+    "gain": 0.004248126514403872,
+    "improved": true,
+    "already_solved": false,
+    "newly_solved": false,
+    "valid_slots": 2,
+    "requested_slots": 2
+  }
+}

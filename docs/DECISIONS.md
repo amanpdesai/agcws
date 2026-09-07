@@ -661,3 +661,18 @@ the first context, cap the conservative reservation at $20, and report all arms.
 Larger search budgets, adaptive RTL reading, generator evolution and architectural
 complexity have separate stages in `RESEARCH_DIRECTIONS.md`; none launches
 automatically after this probe.
+
+## 2026-09-07 — Capability screen selects Pro-4096, not a new headline claim
+
+**Finding.** All 72 fixed-context cells / 144 slots completed. Pro-4096 mean
+next-batch gain is 0.1423365 versus random 0.0267417 and Flash-512 0.0093076.
+It improves 10/12 contexts, newly solves four, has 24/24 valid proposals and
+passes the predeclared screen in all three seed means. Total estimated model
+spend is $2.0606266; no API errors or unknown usage occurred.
+**Decision.** Recommend this configuration for a separate closed-loop depth
+protocol. Do not launch it automatically or rewrite completed held-out results.
+**Rationale.** Conditional proposal improvement is encouraging but cannot stand
+in for on-policy search or establish mechanistic understanding: public bin
+predictions remain weak (90/192 correct, no all-eight match for Pro-4096).
+**Consequence.** Preserve every arm and attempted outcome. New architecture,
+adaptive source reading and controller redesign remain separate ablations.

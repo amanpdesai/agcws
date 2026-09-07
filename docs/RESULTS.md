@@ -1,5 +1,11 @@
 # Results status
 
+Latest capability evidence: [model × reasoning probe](IBEX_CAPABILITY_V1_RESULTS.md),
+72 fixed-context cells / 144 slots, complete. Pro-4096 has the largest mean
+next-batch gain (0.14234 versus random 0.02674), with four newly solved contexts
+and 24/24 valid proposals. This is conditional development evidence, not AUC,
+held-out inference or a replacement for the full-search findings below.
+
 Latest programmable-Ibex development evidence:
 [v4 grounded temporal study](IBEX_TEMPORAL_V4_RESULTS.md), complete at 48 cells
 and 768 slots. Random AUC is 4.831839, base agent 4.990451, coverage 5.123888,

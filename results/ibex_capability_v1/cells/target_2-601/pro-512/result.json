@@ -1,0 +1,1965 @@
+{
+  "cell": {
+    "context": "target_2-601",
+    "arm": "pro-512",
+    "seed": 17702
+  },
+  "trials": [
+    {
+      "slot": 7,
+      "program": {
+        "registers": [
+          1,
+          1,
+          17,
+          4294967295,
+          1076035761,
+          4294967295,
+          1,
+          4294967295
+        ],
+        "memory_seed": 1000000000,
+        "segments": [
+          {
+            "weight": 800,
+            "release": 10000,
+            "body": [
+              {
+                "op": "add",
+                "a": 0,
+                "b": 1,
+                "dst": 0
+              },
+              {
+                "op": "xor",
+                "a": 2,
+                "b": 3,
+                "dst": 2
+              },
+              {
+                "op": "load",
+                "a": 4,
+                "dst": 5
+              },
+              {
+                "op": "store",
+                "a": 6,
+                "b": 7
+              }
+            ]
+          },
+          {
+            "weight": 1100,
+            "release": 20000,
+            "body": [
+              {
+                "op": "cmovz",
+                "a": 0,
+                "b": 1,
+                "dst": 0
+              },
+              {
+                "op": "mul",
+                "a": 2,
+                "b": 3,
+                "dst": 2
+              },
+              {
+                "op": "sll",
+                "a": 4,
+                "b": 1,
+                "dst": 4
+              },
+              {
+                "op": "srl",
+                "a": 5,
+                "b": 1,
+                "dst": 5
+              }
+            ]
+          },
+          {
+            "weight": 600,
+            "release": 30000,
+            "body": [
+              {
+                "op": "divu",
+                "a": 0,
+                "b": 7,
+                "dst": 0
+              },
+              {
+                "op": "cmovz",
+                "a": 1,
+                "b": 0,
+                "dst": 1
+              },
+              {
+                "op": "load",
+                "a": 2,
+                "dst": 3
+              },
+              {
+                "op": "store",
+                "a": 4,
+                "b": 5
+              }
+            ]
+          },
+          {
+            "weight": 896,
+            "release": 40000,
+            "body": [
+              {
+                "op": "add",
+                "a": 6,
+                "b": 7,
+                "dst": 6
+              },
+              {
+                "op": "or",
+                "a": 0,
+                "b": 1,
+                "dst": 0
+              },
+              {
+                "op": "cmovz",
+                "a": 2,
+                "b": 3,
+                "dst": 2
+              },
+              {
+                "op": "mul",
+                "a": 4,
+                "b": 5,
+                "dst": 4
+              }
+            ]
+          },
+          {
+            "weight": 700,
+            "release": 50000,
+            "body": [
+              {
+                "op": "divu",
+                "a": 1,
+                "b": 2,
+                "dst": 1
+              },
+              {
+                "op": "divu",
+                "a": 3,
+                "b": 4,
+                "dst": 3
+              },
+              {
+                "op": "add",
+                "a": 5,
+                "b": 6,
+                "dst": 5
+              }
+            ]
+          }
+        ]
+      },
+      "canonical_program": {
+        "registers": [
+          1,
+          1,
+          17,
+          4294967295,
+          1076035761,
+          4294967295,
+          1,
+          4294967295
+        ],
+        "memory_seed": 1000000000,
+        "segments": [
+          {
+            "weight": 800,
+            "release": 10000,
+            "body": [
+              {
+                "op": "add",
+                "a": 0,
+                "b": 1,
+                "dst": 0
+              },
+              {
+                "op": "xor",
+                "a": 2,
+                "b": 3,
+                "dst": 2
+              },
+              {
+                "op": "load",
+                "a": 4,
+                "dst": 5
+              },
+              {
+                "op": "store",
+                "a": 6,
+                "b": 7
+              }
+            ]
+          },
+          {
+            "weight": 1100,
+            "release": 20000,
+            "body": [
+              {
+                "op": "cmovz",
+                "a": 0,
+                "b": 1,
+                "dst": 0
+              },
+              {
+                "op": "mul",
+                "a": 2,
+                "b": 3,
+                "dst": 2
+              },
+              {
+                "op": "sll",
+                "a": 4,
+                "b": 1,
+                "dst": 4
+              },
+              {
+                "op": "srl",
+                "a": 5,
+                "b": 1,
+                "dst": 5
+              }
+            ]
+          },
+          {
+            "weight": 600,
+            "release": 30000,
+            "body": [
+              {
+                "op": "divu",
+                "a": 0,
+                "b": 7,
+                "dst": 0
+              },
+              {
+                "op": "cmovz",
+                "a": 1,
+                "b": 0,
+                "dst": 1
+              },
+              {
+                "op": "load",
+                "a": 2,
+                "dst": 3
+              },
+              {
+                "op": "store",
+                "a": 4,
+                "b": 5
+              }
+            ]
+          },
+          {
+            "weight": 896,
+            "release": 40000,
+            "body": [
+              {
+                "op": "add",
+                "a": 6,
+                "b": 7,
+                "dst": 6
+              },
+              {
+                "op": "or",
+                "a": 0,
+                "b": 1,
+                "dst": 0
+              },
+              {
+                "op": "cmovz",
+                "a": 2,
+                "b": 3,
+                "dst": 2
+              },
+              {
+                "op": "mul",
+                "a": 4,
+                "b": 5,
+                "dst": 4
+              }
+            ]
+          },
+          {
+            "weight": 700,
+            "release": 50000,
+            "body": [
+              {
+                "op": "divu",
+                "a": 1,
+                "b": 2,
+                "dst": 1
+              },
+              {
+                "op": "divu",
+                "a": 3,
+                "b": 4,
+                "dst": 3
+              },
+              {
+                "op": "add",
+                "a": 5,
+                "b": 6,
+                "dst": 5
+              }
+            ]
+          }
+        ]
+      },
+      "prediction": {
+        "reference_slot": 5,
+        "changed_factor": "Added a 5th segment with a late release and divu instructions to replace idle polling activity in later bins, aiming to reduce bins 3 and 7 and increase bin 2. Weights of other segments were adjusted to make room.",
+        "window_directions": [
+          -1,
+          1,
+          -1,
+          0,
+          0,
+          0,
+          -1,
+          0
+        ]
+      },
+      "prediction_error": null,
+      "rates": [
+        708.77644,
+        590.49976,
+        493.12448,
+        698.49236,
+        709.01844,
+        702.17132,
+        709.5158,
+        724.90536
+      ],
+      "loss": 0.37096642588455464,
+      "cache_hit": false,
+      "valid": true,
+      "stage": null,
+      "reason": "",
+      "schema_path": null,
+      "cache_id": "2dabfebae494c96225283cd8a06b602b1dd7272613d3618016bfd520b0fe776c",
+      "feedback": {
+        "begin_tick": 288,
+        "end_tick": 400288,
+        "cycles_per_bin": 25000,
+        "retired_classes": [
+          {
+            "alu": 2637,
+            "multiply": 275,
+            "divide": 0,
+            "load": 200,
+            "store": 200,
+            "branch": 5374,
+            "jump": 0,
+            "csr": 4624,
+            "other": 0
+          },
+          {
+            "alu": 1730,
+            "multiply": 224,
+            "divide": 150,
+            "load": 150,
+            "store": 150,
+            "branch": 4301,
+            "jump": 0,
+            "csr": 3553,
+            "other": 0
+          },
+          {
+            "alu": 471,
+            "multiply": 0,
+            "divide": 467,
+            "load": 0,
+            "store": 0,
+            "branch": 3910,
+            "jump": 0,
+            "csr": 3678,
+            "other": 0
+          },
+          {
+            "alu": 0,
+            "multiply": 0,
+            "divide": 0,
+            "load": 0,
+            "store": 0,
+            "branch": 6250,
+            "jump": 0,
+            "csr": 6250,
+            "other": 0
+          },
+          {
+            "alu": 0,
+            "multiply": 0,
+            "divide": 0,
+            "load": 0,
+            "store": 0,
+            "branch": 6250,
+            "jump": 0,
+            "csr": 6250,
+            "other": 0
+          },
+          {
+            "alu": 0,
+            "multiply": 0,
+            "divide": 0,
+            "load": 0,
+            "store": 0,
+            "branch": 6250,
+            "jump": 0,
+            "csr": 6250,
+            "other": 0
+          },
+          {
+            "alu": 0,
+            "multiply": 0,
+            "divide": 0,
+            "load": 0,
+            "store": 0,
+            "branch": 6250,
+            "jump": 0,
+            "csr": 6250,
+            "other": 0
+          },
+          {
+            "alu": 0,
+            "multiply": 0,
+            "divide": 0,
+            "load": 0,
+            "store": 0,
+            "branch": 6250,
+            "jump": 0,
+            "csr": 6250,
+            "other": 0
+          }
+        ],
+        "retired_per_bin": [
+          13310,
+          10258,
+          8526,
+          12500,
+          12500,
+          12500,
+          12500,
+          12500
+        ],
+        "cycles_without_retirement": [
+          11690,
+          14742,
+          16474,
+          12500,
+          12500,
+          12500,
+          12500,
+          12500
+        ],
+        "interpretation": "includes polling/control overhead; gaps are not attributed stall causes",
+        "body_completion_cycles": 60290,
+        "body_overrun_cycles": 0,
+        "body_completed_before_deadline": true,
+        "deadline_margin_cycles": 139710,
+        "allocation": [
+          800,
+          1100,
+          600,
+          896,
+          700
+        ],
+        "trace_file": "trace_core_00000000.log"
+      },
+      "execution": {
+        "begin_tick": 288,
+        "end_tick": 400288,
+        "bins": [
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 5370,
+            "branch_not_taken_from_operands": 4,
+            "retired_by_phase": {
+              "measurement_setup": 1,
+              "segment_0_setup": 3,
+              "segment_0_poll": 5000,
+              "segment_0_body": 2401,
+              "segment_1_setup": 3,
+              "segment_1_poll": 3400,
+              "segment_1_body": 1651,
+              "segment_2_setup": 3,
+              "segment_2_poll": 848
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 150,
+            "divide_zero_numerator": 149,
+            "branch_taken_from_operands": 4297,
+            "branch_not_taken_from_operands": 4,
+            "retired_by_phase": {
+              "segment_2_poll": 2502,
+              "segment_2_body": 1801,
+              "segment_3_setup": 3,
+              "segment_3_poll": 950,
+              "segment_3_body": 1345,
+              "segment_4_setup": 3,
+              "segment_4_poll": 3654
+            }
+          },
+          {
+            "divide_zero_divisor": 233,
+            "divide_nonzero_divisor": 234,
+            "divide_zero_numerator": 233,
+            "branch_taken_from_operands": 3908,
+            "branch_not_taken_from_operands": 2,
+            "retired_by_phase": {
+              "segment_4_poll": 2,
+              "segment_4_body": 1167,
+              "body_complete": 7357
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 6250,
+            "branch_not_taken_from_operands": 0,
+            "retired_by_phase": {
+              "body_complete": 12500
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 6250,
+            "branch_not_taken_from_operands": 0,
+            "retired_by_phase": {
+              "body_complete": 12500
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 6250,
+            "branch_not_taken_from_operands": 0,
+            "retired_by_phase": {
+              "body_complete": 12500
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 6250,
+            "branch_not_taken_from_operands": 0,
+            "retired_by_phase": {
+              "body_complete": 12500
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 6250,
+            "branch_not_taken_from_operands": 0,
+            "retired_by_phase": {
+              "body_complete": 12500
+            }
+          }
+        ],
+        "phases": {
+          "measurement_setup": {
+            "first_retired_cycle": 0,
+            "last_retired_cycle": 0,
+            "retired": 1
+          },
+          "segment_0_setup": {
+            "first_retired_cycle": 1,
+            "last_retired_cycle": 3,
+            "retired": 3
+          },
+          "segment_0_poll": {
+            "first_retired_cycle": 4,
+            "last_retired_cycle": 10001,
+            "retired": 5000
+          },
+          "segment_0_body": {
+            "first_retired_cycle": 10002,
+            "last_retired_cycle": 13200,
+            "retired": 2401
+          },
+          "segment_1_setup": {
+            "first_retired_cycle": 13201,
+            "last_retired_cycle": 13203,
+            "retired": 3
+          },
+          "segment_1_poll": {
+            "first_retired_cycle": 13204,
+            "last_retired_cycle": 20001,
+            "retired": 3400
+          },
+          "segment_1_body": {
+            "first_retired_cycle": 20002,
+            "last_retired_cycle": 23300,
+            "retired": 1651
+          },
+          "segment_2_setup": {
+            "first_retired_cycle": 23301,
+            "last_retired_cycle": 23303,
+            "retired": 3
+          },
+          "segment_2_poll": {
+            "first_retired_cycle": 23304,
+            "last_retired_cycle": 30001,
+            "retired": 3350
+          },
+          "segment_2_body": {
+            "first_retired_cycle": 30002,
+            "last_retired_cycle": 38100,
+            "retired": 1801
+          },
+          "segment_3_setup": {
+            "first_retired_cycle": 38101,
+            "last_retired_cycle": 38103,
+            "retired": 3
+          },
+          "segment_3_poll": {
+            "first_retired_cycle": 38104,
+            "last_retired_cycle": 40001,
+            "retired": 950
+          },
+          "segment_3_body": {
+            "first_retired_cycle": 40002,
+            "last_retired_cycle": 42688,
+            "retired": 1345
+          },
+          "segment_4_setup": {
+            "first_retired_cycle": 42689,
+            "last_retired_cycle": 42691,
+            "retired": 3
+          },
+          "segment_4_poll": {
+            "first_retired_cycle": 42692,
+            "last_retired_cycle": 50001,
+            "retired": 3656
+          },
+          "segment_4_body": {
+            "first_retired_cycle": 50002,
+            "last_retired_cycle": 60289,
+            "retired": 1167
+          },
+          "body_complete": {
+            "first_retired_cycle": 60290,
+            "last_retired_cycle": 199998,
+            "retired": 69857
+          }
+        },
+        "scope": "retired PCs and source operand values; phase bounds are retirement times, not issue times or attributed stall cycles"
+      },
+      "prediction_assessment": {
+        "slot": 7,
+        "prediction": {
+          "reference_slot": 5,
+          "changed_factor": "Added a 5th segment with a late release and divu instructions to replace idle polling activity in later bins, aiming to reduce bins 3 and 7 and increase bin 2. Weights of other segments were adjusted to make room.",
+          "window_directions": [
+            -1,
+            1,
+            -1,
+            0,
+            0,
+            0,
+            -1,
+            0
+          ]
+        },
+        "scorable": true,
+        "reason": "measured",
+        "actual_changes": [
+          {
+            "path": [
+              "segments"
+            ],
+            "before": [
+              {
+                "weight": 1000,
+                "release": 10000,
+                "body": [
+                  {
+                    "op": "add",
+                    "a": 0,
+                    "b": 1,
+                    "dst": 0
+                  },
+                  {
+                    "op": "xor",
+                    "a": 2,
+                    "b": 3,
+                    "dst": 2
+                  },
+                  {
+                    "op": "load",
+                    "a": 4,
+                    "dst": 5
+                  },
+                  {
+                    "op": "store",
+                    "a": 6,
+                    "b": 7
+                  }
+                ]
+              },
+              {
+                "weight": 1400,
+                "release": 20000,
+                "body": [
+                  {
+                    "op": "cmovz",
+                    "a": 0,
+                    "b": 1,
+                    "dst": 0
+                  },
+                  {
+                    "op": "mul",
+                    "a": 2,
+                    "b": 3,
+                    "dst": 2
+                  },
+                  {
+                    "op": "sll",
+                    "a": 4,
+                    "b": 1,
+                    "dst": 4
+                  },
+                  {
+                    "op": "srl",
+                    "a": 5,
+                    "b": 1,
+                    "dst": 5
+                  }
+                ]
+              },
+              {
+                "weight": 600,
+                "release": 30000,
+                "body": [
+                  {
+                    "op": "divu",
+                    "a": 0,
+                    "b": 7,
+                    "dst": 0
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 1,
+                    "b": 0,
+                    "dst": 1
+                  },
+                  {
+                    "op": "load",
+                    "a": 2,
+                    "dst": 3
+                  },
+                  {
+                    "op": "store",
+                    "a": 4,
+                    "b": 5
+                  }
+                ]
+              },
+              {
+                "weight": 1096,
+                "release": 40000,
+                "body": [
+                  {
+                    "op": "add",
+                    "a": 6,
+                    "b": 7,
+                    "dst": 6
+                  },
+                  {
+                    "op": "or",
+                    "a": 0,
+                    "b": 1,
+                    "dst": 0
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 2,
+                    "b": 3,
+                    "dst": 2
+                  },
+                  {
+                    "op": "mul",
+                    "a": 4,
+                    "b": 5,
+                    "dst": 4
+                  }
+                ]
+              }
+            ],
+            "after": [
+              {
+                "weight": 800,
+                "release": 10000,
+                "body": [
+                  {
+                    "op": "add",
+                    "a": 0,
+                    "b": 1,
+                    "dst": 0
+                  },
+                  {
+                    "op": "xor",
+                    "a": 2,
+                    "b": 3,
+                    "dst": 2
+                  },
+                  {
+                    "op": "load",
+                    "a": 4,
+                    "dst": 5
+                  },
+                  {
+                    "op": "store",
+                    "a": 6,
+                    "b": 7
+                  }
+                ]
+              },
+              {
+                "weight": 1100,
+                "release": 20000,
+                "body": [
+                  {
+                    "op": "cmovz",
+                    "a": 0,
+                    "b": 1,
+                    "dst": 0
+                  },
+                  {
+                    "op": "mul",
+                    "a": 2,
+                    "b": 3,
+                    "dst": 2
+                  },
+                  {
+                    "op": "sll",
+                    "a": 4,
+                    "b": 1,
+                    "dst": 4
+                  },
+                  {
+                    "op": "srl",
+                    "a": 5,
+                    "b": 1,
+                    "dst": 5
+                  }
+                ]
+              },
+              {
+                "weight": 600,
+                "release": 30000,
+                "body": [
+                  {
+                    "op": "divu",
+                    "a": 0,
+                    "b": 7,
+                    "dst": 0
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 1,
+                    "b": 0,
+                    "dst": 1
+                  },
+                  {
+                    "op": "load",
+                    "a": 2,
+                    "dst": 3
+                  },
+                  {
+                    "op": "store",
+                    "a": 4,
+                    "b": 5
+                  }
+                ]
+              },
+              {
+                "weight": 896,
+                "release": 40000,
+                "body": [
+                  {
+                    "op": "add",
+                    "a": 6,
+                    "b": 7,
+                    "dst": 6
+                  },
+                  {
+                    "op": "or",
+                    "a": 0,
+                    "b": 1,
+                    "dst": 0
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 2,
+                    "b": 3,
+                    "dst": 2
+                  },
+                  {
+                    "op": "mul",
+                    "a": 4,
+                    "b": 5,
+                    "dst": 4
+                  }
+                ]
+              },
+              {
+                "weight": 700,
+                "release": 50000,
+                "body": [
+                  {
+                    "op": "divu",
+                    "a": 1,
+                    "b": 2,
+                    "dst": 1
+                  },
+                  {
+                    "op": "divu",
+                    "a": 3,
+                    "b": 4,
+                    "dst": 3
+                  },
+                  {
+                    "op": "add",
+                    "a": 5,
+                    "b": 6,
+                    "dst": 5
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "normalized_delta": [
+          0.010989343703411283,
+          0.05762502285914296,
+          -0.45003627185848777,
+          -0.060515417659248005,
+          -0.06054047188537366,
+          -0.06049270990143007,
+          -0.060505426245808215,
+          -0.06049551052489451
+        ],
+        "neutral_band": 0.01,
+        "observed_directions": [
+          1,
+          1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "matched_bins": 3,
+        "total_bins": 8,
+        "all_directions_supported": false
+      }
+    },
+    {
+      "slot": 8,
+      "program": {
+        "registers": [
+          1,
+          1,
+          17,
+          4294967295,
+          1076035761,
+          4294967295,
+          1,
+          4294967295
+        ],
+        "memory_seed": 1000000000,
+        "segments": [
+          {
+            "weight": 700,
+            "release": 10000,
+            "body": [
+              {
+                "op": "add",
+                "a": 0,
+                "b": 1,
+                "dst": 0
+              },
+              {
+                "op": "xor",
+                "a": 2,
+                "b": 3,
+                "dst": 2
+              },
+              {
+                "op": "load",
+                "a": 4,
+                "dst": 5
+              },
+              {
+                "op": "store",
+                "a": 6,
+                "b": 7
+              }
+            ]
+          },
+          {
+            "weight": 1000,
+            "release": 20000,
+            "body": [
+              {
+                "op": "cmovz",
+                "a": 0,
+                "b": 1,
+                "dst": 0
+              },
+              {
+                "op": "mul",
+                "a": 2,
+                "b": 3,
+                "dst": 2
+              },
+              {
+                "op": "sll",
+                "a": 4,
+                "b": 1,
+                "dst": 4
+              },
+              {
+                "op": "srl",
+                "a": 5,
+                "b": 1,
+                "dst": 5
+              }
+            ]
+          },
+          {
+            "weight": 800,
+            "release": 30000,
+            "body": [
+              {
+                "op": "divu",
+                "a": 0,
+                "b": 7,
+                "dst": 0
+              },
+              {
+                "op": "cmovz",
+                "a": 1,
+                "b": 0,
+                "dst": 1
+              },
+              {
+                "op": "load",
+                "a": 2,
+                "dst": 3
+              },
+              {
+                "op": "store",
+                "a": 4,
+                "b": 5
+              }
+            ]
+          },
+          {
+            "weight": 796,
+            "release": 40000,
+            "body": [
+              {
+                "op": "add",
+                "a": 6,
+                "b": 7,
+                "dst": 6
+              },
+              {
+                "op": "or",
+                "a": 0,
+                "b": 1,
+                "dst": 0
+              },
+              {
+                "op": "cmovz",
+                "a": 2,
+                "b": 3,
+                "dst": 2
+              },
+              {
+                "op": "mul",
+                "a": 4,
+                "b": 5,
+                "dst": 4
+              }
+            ]
+          },
+          {
+            "weight": 800,
+            "release": 55000,
+            "body": [
+              {
+                "op": "divu",
+                "a": 1,
+                "b": 2,
+                "dst": 1
+              },
+              {
+                "op": "mul",
+                "a": 3,
+                "b": 4,
+                "dst": 3
+              },
+              {
+                "op": "xor",
+                "a": 5,
+                "b": 6,
+                "dst": 5
+              }
+            ]
+          }
+        ]
+      },
+      "canonical_program": {
+        "registers": [
+          1,
+          1,
+          17,
+          4294967295,
+          1076035761,
+          4294967295,
+          1,
+          4294967295
+        ],
+        "memory_seed": 1000000000,
+        "segments": [
+          {
+            "weight": 700,
+            "release": 10000,
+            "body": [
+              {
+                "op": "add",
+                "a": 0,
+                "b": 1,
+                "dst": 0
+              },
+              {
+                "op": "xor",
+                "a": 2,
+                "b": 3,
+                "dst": 2
+              },
+              {
+                "op": "load",
+                "a": 4,
+                "dst": 5
+              },
+              {
+                "op": "store",
+                "a": 6,
+                "b": 7
+              }
+            ]
+          },
+          {
+            "weight": 1000,
+            "release": 20000,
+            "body": [
+              {
+                "op": "cmovz",
+                "a": 0,
+                "b": 1,
+                "dst": 0
+              },
+              {
+                "op": "mul",
+                "a": 2,
+                "b": 3,
+                "dst": 2
+              },
+              {
+                "op": "sll",
+                "a": 4,
+                "b": 1,
+                "dst": 4
+              },
+              {
+                "op": "srl",
+                "a": 5,
+                "b": 1,
+                "dst": 5
+              }
+            ]
+          },
+          {
+            "weight": 800,
+            "release": 30000,
+            "body": [
+              {
+                "op": "divu",
+                "a": 0,
+                "b": 7,
+                "dst": 0
+              },
+              {
+                "op": "cmovz",
+                "a": 1,
+                "b": 0,
+                "dst": 1
+              },
+              {
+                "op": "load",
+                "a": 2,
+                "dst": 3
+              },
+              {
+                "op": "store",
+                "a": 4,
+                "b": 5
+              }
+            ]
+          },
+          {
+            "weight": 796,
+            "release": 40000,
+            "body": [
+              {
+                "op": "add",
+                "a": 6,
+                "b": 7,
+                "dst": 6
+              },
+              {
+                "op": "or",
+                "a": 0,
+                "b": 1,
+                "dst": 0
+              },
+              {
+                "op": "cmovz",
+                "a": 2,
+                "b": 3,
+                "dst": 2
+              },
+              {
+                "op": "mul",
+                "a": 4,
+                "b": 5,
+                "dst": 4
+              }
+            ]
+          },
+          {
+            "weight": 800,
+            "release": 55000,
+            "body": [
+              {
+                "op": "divu",
+                "a": 1,
+                "b": 2,
+                "dst": 1
+              },
+              {
+                "op": "mul",
+                "a": 3,
+                "b": 4,
+                "dst": 3
+              },
+              {
+                "op": "xor",
+                "a": 5,
+                "b": 6,
+                "dst": 5
+              }
+            ]
+          }
+        ]
+      },
+      "prediction": {
+        "reference_slot": 5,
+        "changed_factor": "Exploratory: Added a 5th segment with a different instruction mix (divu, mul, xor) and a later release. Adjusted all segment weights to explore a different activity distribution.",
+        "window_directions": [
+          -1,
+          1,
+          -1,
+          -1,
+          0,
+          0,
+          -1,
+          0
+        ]
+      },
+      "prediction_error": null,
+      "rates": [
+        710.35796,
+        537.928,
+        457.4572,
+        704.46868,
+        715.03856,
+        708.17908,
+        715.49508,
+        730.917
+      ],
+      "loss": 0.37261215799357367,
+      "cache_hit": false,
+      "valid": true,
+      "stage": null,
+      "reason": "",
+      "schema_path": null,
+      "cache_id": "126dca7b146889d913779a7c0fffed86abcc010e8086d7cad6b312594c679ec4",
+      "feedback": {
+        "begin_tick": 288,
+        "end_tick": 400288,
+        "cycles_per_bin": 25000,
+        "retired_classes": [
+          {
+            "alu": 2337,
+            "multiply": 250,
+            "divide": 0,
+            "load": 175,
+            "store": 175,
+            "branch": 5474,
+            "jump": 0,
+            "csr": 4799,
+            "other": 0
+          },
+          {
+            "alu": 2005,
+            "multiply": 199,
+            "divide": 200,
+            "load": 200,
+            "store": 200,
+            "branch": 3751,
+            "jump": 0,
+            "csr": 2953,
+            "other": 0
+          },
+          {
+            "alu": 537,
+            "multiply": 267,
+            "divide": 267,
+            "load": 0,
+            "store": 0,
+            "branch": 3513,
+            "jump": 0,
+            "csr": 3248,
+            "other": 0
+          },
+          {
+            "alu": 0,
+            "multiply": 0,
+            "divide": 0,
+            "load": 0,
+            "store": 0,
+            "branch": 6250,
+            "jump": 0,
+            "csr": 6250,
+            "other": 0
+          },
+          {
+            "alu": 0,
+            "multiply": 0,
+            "divide": 0,
+            "load": 0,
+            "store": 0,
+            "branch": 6250,
+            "jump": 0,
+            "csr": 6250,
+            "other": 0
+          },
+          {
+            "alu": 0,
+            "multiply": 0,
+            "divide": 0,
+            "load": 0,
+            "store": 0,
+            "branch": 6250,
+            "jump": 0,
+            "csr": 6250,
+            "other": 0
+          },
+          {
+            "alu": 0,
+            "multiply": 0,
+            "divide": 0,
+            "load": 0,
+            "store": 0,
+            "branch": 6250,
+            "jump": 0,
+            "csr": 6250,
+            "other": 0
+          },
+          {
+            "alu": 0,
+            "multiply": 0,
+            "divide": 0,
+            "load": 0,
+            "store": 0,
+            "branch": 6250,
+            "jump": 0,
+            "csr": 6250,
+            "other": 0
+          }
+        ],
+        "retired_per_bin": [
+          13210,
+          9508,
+          7832,
+          12500,
+          12500,
+          12500,
+          12500,
+          12500
+        ],
+        "cycles_without_retirement": [
+          11790,
+          15492,
+          17168,
+          12500,
+          12500,
+          12500,
+          12500,
+          12500
+        ],
+        "interpretation": "includes polling/control overhead; gaps are not attributed stall causes",
+        "body_completion_cycles": 67011,
+        "body_overrun_cycles": 0,
+        "body_completed_before_deadline": true,
+        "deadline_margin_cycles": 132989,
+        "allocation": [
+          700,
+          1000,
+          800,
+          796,
+          800
+        ],
+        "trace_file": "trace_core_00000000.log"
+      },
+      "execution": {
+        "begin_tick": 288,
+        "end_tick": 400288,
+        "bins": [
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 5470,
+            "branch_not_taken_from_operands": 4,
+            "retired_by_phase": {
+              "measurement_setup": 1,
+              "segment_0_setup": 3,
+              "segment_0_poll": 5000,
+              "segment_0_body": 2101,
+              "segment_1_setup": 3,
+              "segment_1_poll": 3600,
+              "segment_1_body": 1501,
+              "segment_2_setup": 3,
+              "segment_2_poll": 998
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 200,
+            "divide_zero_numerator": 199,
+            "branch_taken_from_operands": 3747,
+            "branch_not_taken_from_operands": 4,
+            "retired_by_phase": {
+              "segment_2_poll": 2502,
+              "segment_2_body": 2401,
+              "segment_3_setup": 3,
+              "segment_3_poll": 2,
+              "segment_3_body": 1195,
+              "segment_4_setup": 3,
+              "segment_4_poll": 3402
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 267,
+            "divide_zero_numerator": 266,
+            "branch_taken_from_operands": 3511,
+            "branch_not_taken_from_operands": 2,
+            "retired_by_phase": {
+              "segment_4_poll": 2502,
+              "segment_4_body": 1333,
+              "body_complete": 3997
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 6250,
+            "branch_not_taken_from_operands": 0,
+            "retired_by_phase": {
+              "body_complete": 12500
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 6250,
+            "branch_not_taken_from_operands": 0,
+            "retired_by_phase": {
+              "body_complete": 12500
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 6250,
+            "branch_not_taken_from_operands": 0,
+            "retired_by_phase": {
+              "body_complete": 12500
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 6250,
+            "branch_not_taken_from_operands": 0,
+            "retired_by_phase": {
+              "body_complete": 12500
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 6250,
+            "branch_not_taken_from_operands": 0,
+            "retired_by_phase": {
+              "body_complete": 12500
+            }
+          }
+        ],
+        "phases": {
+          "measurement_setup": {
+            "first_retired_cycle": 0,
+            "last_retired_cycle": 0,
+            "retired": 1
+          },
+          "segment_0_setup": {
+            "first_retired_cycle": 1,
+            "last_retired_cycle": 3,
+            "retired": 3
+          },
+          "segment_0_poll": {
+            "first_retired_cycle": 4,
+            "last_retired_cycle": 10001,
+            "retired": 5000
+          },
+          "segment_0_body": {
+            "first_retired_cycle": 10002,
+            "last_retired_cycle": 12800,
+            "retired": 2101
+          },
+          "segment_1_setup": {
+            "first_retired_cycle": 12801,
+            "last_retired_cycle": 12803,
+            "retired": 3
+          },
+          "segment_1_poll": {
+            "first_retired_cycle": 12804,
+            "last_retired_cycle": 20001,
+            "retired": 3600
+          },
+          "segment_1_body": {
+            "first_retired_cycle": 20002,
+            "last_retired_cycle": 23000,
+            "retired": 1501
+          },
+          "segment_2_setup": {
+            "first_retired_cycle": 23001,
+            "last_retired_cycle": 23003,
+            "retired": 3
+          },
+          "segment_2_poll": {
+            "first_retired_cycle": 23004,
+            "last_retired_cycle": 30001,
+            "retired": 3500
+          },
+          "segment_2_body": {
+            "first_retired_cycle": 30002,
+            "last_retired_cycle": 40800,
+            "retired": 2401
+          },
+          "segment_3_setup": {
+            "first_retired_cycle": 40801,
+            "last_retired_cycle": 40803,
+            "retired": 3
+          },
+          "segment_3_poll": {
+            "first_retired_cycle": 40804,
+            "last_retired_cycle": 40805,
+            "retired": 2
+          },
+          "segment_3_body": {
+            "first_retired_cycle": 40806,
+            "last_retired_cycle": 43192,
+            "retired": 1195
+          },
+          "segment_4_setup": {
+            "first_retired_cycle": 43193,
+            "last_retired_cycle": 43195,
+            "retired": 3
+          },
+          "segment_4_poll": {
+            "first_retired_cycle": 43196,
+            "last_retired_cycle": 55001,
+            "retired": 5904
+          },
+          "segment_4_body": {
+            "first_retired_cycle": 55002,
+            "last_retired_cycle": 67010,
+            "retired": 1333
+          },
+          "body_complete": {
+            "first_retired_cycle": 67011,
+            "last_retired_cycle": 199999,
+            "retired": 66497
+          }
+        },
+        "scope": "retired PCs and source operand values; phase bounds are retirement times, not issue times or attributed stall cycles"
+      },
+      "prediction_assessment": {
+        "slot": 8,
+        "prediction": {
+          "reference_slot": 5,
+          "changed_factor": "Exploratory: Added a 5th segment with a different instruction mix (divu, mul, xor) and a later release. Adjusted all segment weights to explore a different activity distribution.",
+          "window_directions": [
+            -1,
+            1,
+            -1,
+            -1,
+            0,
+            0,
+            -1,
+            0
+          ]
+        },
+        "scorable": true,
+        "reason": "measured",
+        "actual_changes": [
+          {
+            "path": [
+              "segments"
+            ],
+            "before": [
+              {
+                "weight": 1000,
+                "release": 10000,
+                "body": [
+                  {
+                    "op": "add",
+                    "a": 0,
+                    "b": 1,
+                    "dst": 0
+                  },
+                  {
+                    "op": "xor",
+                    "a": 2,
+                    "b": 3,
+                    "dst": 2
+                  },
+                  {
+                    "op": "load",
+                    "a": 4,
+                    "dst": 5
+                  },
+                  {
+                    "op": "store",
+                    "a": 6,
+                    "b": 7
+                  }
+                ]
+              },
+              {
+                "weight": 1400,
+                "release": 20000,
+                "body": [
+                  {
+                    "op": "cmovz",
+                    "a": 0,
+                    "b": 1,
+                    "dst": 0
+                  },
+                  {
+                    "op": "mul",
+                    "a": 2,
+                    "b": 3,
+                    "dst": 2
+                  },
+                  {
+                    "op": "sll",
+                    "a": 4,
+                    "b": 1,
+                    "dst": 4
+                  },
+                  {
+                    "op": "srl",
+                    "a": 5,
+                    "b": 1,
+                    "dst": 5
+                  }
+                ]
+              },
+              {
+                "weight": 600,
+                "release": 30000,
+                "body": [
+                  {
+                    "op": "divu",
+                    "a": 0,
+                    "b": 7,
+                    "dst": 0
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 1,
+                    "b": 0,
+                    "dst": 1
+                  },
+                  {
+                    "op": "load",
+                    "a": 2,
+                    "dst": 3
+                  },
+                  {
+                    "op": "store",
+                    "a": 4,
+                    "b": 5
+                  }
+                ]
+              },
+              {
+                "weight": 1096,
+                "release": 40000,
+                "body": [
+                  {
+                    "op": "add",
+                    "a": 6,
+                    "b": 7,
+                    "dst": 6
+                  },
+                  {
+                    "op": "or",
+                    "a": 0,
+                    "b": 1,
+                    "dst": 0
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 2,
+                    "b": 3,
+                    "dst": 2
+                  },
+                  {
+                    "op": "mul",
+                    "a": 4,
+                    "b": 5,
+                    "dst": 4
+                  }
+                ]
+              }
+            ],
+            "after": [
+              {
+                "weight": 700,
+                "release": 10000,
+                "body": [
+                  {
+                    "op": "add",
+                    "a": 0,
+                    "b": 1,
+                    "dst": 0
+                  },
+                  {
+                    "op": "xor",
+                    "a": 2,
+                    "b": 3,
+                    "dst": 2
+                  },
+                  {
+                    "op": "load",
+                    "a": 4,
+                    "dst": 5
+                  },
+                  {
+                    "op": "store",
+                    "a": 6,
+                    "b": 7
+                  }
+                ]
+              },
+              {
+                "weight": 1000,
+                "release": 20000,
+                "body": [
+                  {
+                    "op": "cmovz",
+                    "a": 0,
+                    "b": 1,
+                    "dst": 0
+                  },
+                  {
+                    "op": "mul",
+                    "a": 2,
+                    "b": 3,
+                    "dst": 2
+                  },
+                  {
+                    "op": "sll",
+                    "a": 4,
+                    "b": 1,
+                    "dst": 4
+                  },
+                  {
+                    "op": "srl",
+                    "a": 5,
+                    "b": 1,
+                    "dst": 5
+                  }
+                ]
+              },
+              {
+                "weight": 800,
+                "release": 30000,
+                "body": [
+                  {
+                    "op": "divu",
+                    "a": 0,
+                    "b": 7,
+                    "dst": 0
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 1,
+                    "b": 0,
+                    "dst": 1
+                  },
+                  {
+                    "op": "load",
+                    "a": 2,
+                    "dst": 3
+                  },
+                  {
+                    "op": "store",
+                    "a": 4,
+                    "b": 5
+                  }
+                ]
+              },
+              {
+                "weight": 796,
+                "release": 40000,
+                "body": [
+                  {
+                    "op": "add",
+                    "a": 6,
+                    "b": 7,
+                    "dst": 6
+                  },
+                  {
+                    "op": "or",
+                    "a": 0,
+                    "b": 1,
+                    "dst": 0
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 2,
+                    "b": 3,
+                    "dst": 2
+                  },
+                  {
+                    "op": "mul",
+                    "a": 4,
+                    "b": 5,
+                    "dst": 4
+                  }
+                ]
+              },
+              {
+                "weight": 800,
+                "release": 55000,
+                "body": [
+                  {
+                    "op": "divu",
+                    "a": 1,
+                    "b": 2,
+                    "dst": 1
+                  },
+                  {
+                    "op": "mul",
+                    "a": 3,
+                    "b": 4,
+                    "dst": 3
+                  },
+                  {
+                    "op": "xor",
+                    "a": 5,
+                    "b": 6,
+                    "dst": 5
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "normalized_delta": [
+          0.013982074798748873,
+          -0.04185720998560024,
+          -0.517529934880206,
+          -0.049206348725761774,
+          -0.04914851963585252,
+          -0.04912414664246118,
+          -0.04919075606539353,
+          -0.04911960509089768
+        ],
+        "neutral_band": 0.01,
+        "observed_directions": [
+          1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "matched_bins": 3,
+        "total_bins": 8,
+        "all_directions_supported": false
+      }
+    }
+  ],
+  "summary": {
+    "before_error": 0.48728355619414626,
+    "after_error": 0.37096642588455464,
+    "gain": 0.11631713030959162,
+    "improved": true,
+    "already_solved": false,
+    "newly_solved": false,
+    "valid_slots": 2,
+    "requested_slots": 2
+  }
+}

@@ -1,0 +1,365 @@
+{
+  "valid": true,
+  "stage": null,
+  "reason": "",
+  "profile": {
+    "window_bit_transitions": [
+      11895148,
+      14160529,
+      18681920,
+      18698030,
+      18280095,
+      16929228,
+      18350203,
+      18733870
+    ],
+    "window_rates": [
+      475.80592,
+      566.42116,
+      747.2768,
+      747.9212,
+      731.2038,
+      677.16912,
+      734.00812,
+      749.3548
+    ],
+    "clock_edges": 200000,
+    "period_ticks": 2,
+    "begin_tick": 288,
+    "end_tick": 400288,
+    "timescale": "1ps",
+    "selected_identifiers": 1311,
+    "scope": "TOP.ibex_simple_system.u_top.u_ibex_top.u_ibex_core",
+    "exclusions": [
+      "clock",
+      "cs_registers_i"
+    ],
+    "unknown_events": 0,
+    "units": "unique core-net bit transitions per clock edge; not watts",
+    "markers": {
+      "measure_start": {
+        "tick": 288,
+        "cycle": 140
+      },
+      "body_complete": {
+        "tick": 255100,
+        "cycle": 127546
+      },
+      "measure_stop": {
+        "tick": 400424,
+        "cycle": 200208
+      }
+    },
+    "retired_instructions": 114274,
+    "waveform_sha256": "78ead2892b89d50fed41a167b0640c141194887ff9083901354688ce77296ce4",
+    "source_sha256": "f270c4973117a188af616d488974af794aacfc3cd45fdd3951247249bd9a341a",
+    "extraction_s": 23.618617104017176
+  },
+  "feedback": {
+    "begin_tick": 288,
+    "end_tick": 400288,
+    "cycles_per_bin": 25000,
+    "retired_classes": [
+      {
+        "alu": 2081,
+        "multiply": 296,
+        "divide": 296,
+        "load": 297,
+        "store": 0,
+        "branch": 2688,
+        "jump": 0,
+        "csr": 2392,
+        "other": 0
+      },
+      {
+        "alu": 1481,
+        "multiply": 204,
+        "divide": 204,
+        "load": 203,
+        "store": 0,
+        "branch": 3811,
+        "jump": 0,
+        "csr": 3557,
+        "other": 0
+      },
+      {
+        "alu": 0,
+        "multiply": 0,
+        "divide": 0,
+        "load": 0,
+        "store": 0,
+        "branch": 6250,
+        "jump": 0,
+        "csr": 6250,
+        "other": 0
+      },
+      {
+        "alu": 221,
+        "multiply": 0,
+        "divide": 0,
+        "load": 0,
+        "store": 0,
+        "branch": 6250,
+        "jump": 0,
+        "csr": 6030,
+        "other": 0
+      },
+      {
+        "alu": 526,
+        "multiply": 0,
+        "divide": 48,
+        "load": 49,
+        "store": 0,
+        "branch": 5731,
+        "jump": 0,
+        "csr": 5406,
+        "other": 0
+      },
+      {
+        "alu": 311,
+        "multiply": 0,
+        "divide": 44,
+        "load": 44,
+        "store": 0,
+        "branch": 5778,
+        "jump": 0,
+        "csr": 5648,
+        "other": 0
+      },
+      {
+        "alu": 0,
+        "multiply": 0,
+        "divide": 0,
+        "load": 0,
+        "store": 0,
+        "branch": 6250,
+        "jump": 0,
+        "csr": 6250,
+        "other": 0
+      },
+      {
+        "alu": 0,
+        "multiply": 0,
+        "divide": 0,
+        "load": 0,
+        "store": 0,
+        "branch": 6250,
+        "jump": 0,
+        "csr": 6250,
+        "other": 0
+      }
+    ],
+    "retired_per_bin": [
+      8050,
+      9460,
+      12500,
+      12501,
+      11760,
+      11825,
+      12500,
+      12500
+    ],
+    "cycles_without_retirement": [
+      16950,
+      15540,
+      12500,
+      12499,
+      13240,
+      13175,
+      12500,
+      12500
+    ],
+    "interpretation": "includes polling/control overhead; gaps are not attributed stall causes",
+    "body_completion_cycles": 127406,
+    "body_overrun_cycles": 0,
+    "body_completed_before_deadline": true,
+    "deadline_margin_cycles": 72594,
+    "allocation": [
+      3000,
+      50,
+      400,
+      646
+    ],
+    "trace_file": "trace_core_00000000.log"
+  },
+  "execution": {
+    "begin_tick": 288,
+    "end_tick": 400288,
+    "bins": [
+      {
+        "divide_zero_divisor": 0,
+        "divide_nonzero_divisor": 296,
+        "divide_zero_numerator": 0,
+        "branch_taken_from_operands": 2687,
+        "branch_not_taken_from_operands": 1,
+        "retired_by_phase": {
+          "measurement_setup": 1,
+          "segment_0_setup": 3,
+          "segment_0_poll": 4784,
+          "segment_0_body": 3262
+        }
+      },
+      {
+        "divide_zero_divisor": 0,
+        "divide_nonzero_divisor": 204,
+        "divide_zero_numerator": 0,
+        "branch_taken_from_operands": 3808,
+        "branch_not_taken_from_operands": 3,
+        "retired_by_phase": {
+          "segment_0_body": 2239,
+          "segment_1_setup": 3,
+          "segment_1_poll": 2,
+          "segment_1_body": 101,
+          "segment_2_setup": 3,
+          "segment_2_poll": 7112
+        }
+      },
+      {
+        "divide_zero_divisor": 0,
+        "divide_nonzero_divisor": 0,
+        "divide_zero_numerator": 0,
+        "branch_taken_from_operands": 6250,
+        "branch_not_taken_from_operands": 0,
+        "retired_by_phase": {
+          "segment_2_poll": 12500
+        }
+      },
+      {
+        "divide_zero_divisor": 0,
+        "divide_nonzero_divisor": 0,
+        "divide_zero_numerator": 0,
+        "branch_taken_from_operands": 6249,
+        "branch_not_taken_from_operands": 1,
+        "retired_by_phase": {
+          "segment_2_poll": 12060,
+          "segment_2_body": 441
+        }
+      },
+      {
+        "divide_zero_divisor": 0,
+        "divide_nonzero_divisor": 48,
+        "divide_zero_numerator": 0,
+        "branch_taken_from_operands": 5728,
+        "branch_not_taken_from_operands": 3,
+        "retired_by_phase": {
+          "segment_2_body": 360,
+          "segment_3_setup": 3,
+          "segment_3_poll": 10812,
+          "segment_3_body": 585
+        }
+      },
+      {
+        "divide_zero_divisor": 0,
+        "divide_nonzero_divisor": 44,
+        "divide_zero_numerator": 0,
+        "branch_taken_from_operands": 5777,
+        "branch_not_taken_from_operands": 1,
+        "retired_by_phase": {
+          "segment_3_body": 526,
+          "body_complete": 11299
+        }
+      },
+      {
+        "divide_zero_divisor": 0,
+        "divide_nonzero_divisor": 0,
+        "divide_zero_numerator": 0,
+        "branch_taken_from_operands": 6250,
+        "branch_not_taken_from_operands": 0,
+        "retired_by_phase": {
+          "body_complete": 12500
+        }
+      },
+      {
+        "divide_zero_divisor": 0,
+        "divide_nonzero_divisor": 0,
+        "divide_zero_numerator": 0,
+        "branch_taken_from_operands": 6250,
+        "branch_not_taken_from_operands": 0,
+        "retired_by_phase": {
+          "body_complete": 12500
+        }
+      }
+    ],
+    "phases": {
+      "measurement_setup": {
+        "first_retired_cycle": 0,
+        "last_retired_cycle": 0,
+        "retired": 1
+      },
+      "segment_0_setup": {
+        "first_retired_cycle": 1,
+        "last_retired_cycle": 3,
+        "retired": 3
+      },
+      "segment_0_poll": {
+        "first_retired_cycle": 4,
+        "last_retired_cycle": 9569,
+        "retired": 4784
+      },
+      "segment_0_body": {
+        "first_retired_cycle": 9570,
+        "last_retired_cycle": 35568,
+        "retired": 5501
+      },
+      "segment_1_setup": {
+        "first_retired_cycle": 35569,
+        "last_retired_cycle": 35571,
+        "retired": 3
+      },
+      "segment_1_poll": {
+        "first_retired_cycle": 35572,
+        "last_retired_cycle": 35573,
+        "retired": 2
+      },
+      "segment_1_body": {
+        "first_retired_cycle": 35574,
+        "last_retired_cycle": 35772,
+        "retired": 101
+      },
+      "segment_2_setup": {
+        "first_retired_cycle": 35773,
+        "last_retired_cycle": 35775,
+        "retired": 3
+      },
+      "segment_2_poll": {
+        "first_retired_cycle": 35776,
+        "last_retired_cycle": 99117,
+        "retired": 31672
+      },
+      "segment_2_body": {
+        "first_retired_cycle": 99118,
+        "last_retired_cycle": 100716,
+        "retired": 801
+      },
+      "segment_3_setup": {
+        "first_retired_cycle": 100717,
+        "last_retired_cycle": 100719,
+        "retired": 3
+      },
+      "segment_3_poll": {
+        "first_retired_cycle": 100720,
+        "last_retired_cycle": 122341,
+        "retired": 10812
+      },
+      "segment_3_body": {
+        "first_retired_cycle": 122342,
+        "last_retired_cycle": 127405,
+        "retired": 1111
+      },
+      "body_complete": {
+        "first_retired_cycle": 127406,
+        "last_retired_cycle": 199998,
+        "retired": 36299
+      }
+    },
+    "scope": "retired PCs and source operand values; phase bounds are retirement times, not issue times or attributed stall cycles"
+  },
+  "cache_id": "a0cd5ae47424b8bd900aea3b4af73c75a698b3440ea5fe4e45775be9960fd2b1",
+  "allocation": [
+    3000,
+    50,
+    400,
+    646
+  ],
+  "evaluation_s": 30.248216668027453
+}

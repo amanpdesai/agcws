@@ -1,0 +1,573 @@
+{
+  "raw_text": "{\n  \"hypothesis\": \"Candidate 1 aims to further refine the hourglass shape by adjusting weights and releases based on the previous attempt, while ensuring divu operations are not concentrated. Candidate 2 explores a different set of operations and weights to achieve a similar profile.\",\n  \"candidates\": [\n    {\n      \"registers\": [\n        1,\n        1,\n        17,\n        4294967295,\n        1076035761,\n        4294967295,\n        1,\n        4294967295\n      ],\n      \"memory_seed\": 999465599,\n      \"segments\": [\n        {\n          \"weight\": 2000,\n          \"release\": 0,\n          \"body\": [\n            {\n              \"op\": \"add\",\n              \"a\": 7,\n              \"b\": 5,\n              \"dst\": 5\n            },\n            {\n              \"op\": \"xor\",\n              \"a\": 3,\n              \"b\": 3,\n              \"dst\": 0\n            },\n            {\n              \"op\": \"add\",\n              \"a\": 4,\n              \"b\": 6,\n              \"dst\": 5\n            },\n            {\n              \"op\": \"srl\",\n              \"a\": 3,\n              \"b\": 3,\n              \"dst\": 1\n            },\n            {\n              \"op\": \"xor\",\n              \"a\": 6,\n              \"b\": 3,\n              \"dst\": 0\n            },\n            {\n              \"op\": \"load\",\n              \"a\": 0,\n              \"dst\": 0\n            },\n            {\n              \"op\": \"store\",\n              \"a\": 1,\n              \"b\": 6\n            },\n            {\n              \"op\": \"srl\",\n              \"a\": 4,\n              \"b\": 7,\n              \"dst\": 3\n            }\n          ]\n        },\n        {\n          \"weight\": 50,\n          \"release\": 40000,\n          \"body\": [\n            {\n              \"op\": \"cmovz\",\n              \"a\": 4,\n              \"b\": 0,\n              \"dst\": 3\n            }\n          ]\n        },\n        {\n          \"weight\": 50,\n          \"release\": 90000,\n          \"body\": [\n            {\n              \"op\": \"cmovz\",\n              \"a\": 5,\n              \"b\": 0,\n              \"dst\": 3\n            }\n          ]\n        },\n        {\n          \"weight\": 2000,\n          \"release\": 150000,\n          \"body\": [\n            {\n              \"op\": \"load\",\n              \"a\": 5,\n              \"dst\": 0\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 0,\n              \"b\": 3,\n              \"dst\": 4\n            },\n            {\n              \"op\": \"srl\",\n              \"a\": 4,\n              \"b\": 5,\n              \"dst\": 4\n            },\n            {\n              \"op\": \"cmovz\",\n              \"a\": 4,\n              \"b\": 5,\n              \"dst\": 2\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 7,\n              \"b\": 7,\n              \"dst\": 7\n            },\n            {\n              \"op\": \"add\",\n              \"a\": 3,\n              \"b\": 3,\n              \"dst\": 2\n            },\n            {\n              \"op\": \"cmovz\",\n              \"a\": 3,\n              \"b\": 7,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"xor\",\n              \"a\": 3,\n              \"b\": 4,\n              \"dst\": 0\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"registers\": [\n        1,\n        1,\n        1,\n        1,\n        1,\n        1,\n        1,\n        1\n      ],\n      \"memory_seed\": 123456789,\n      \"segments\": [\n        {\n          \"weight\": 1800,\n          \"release\": 0,\n          \"body\": [\n            {\n              \"op\": \"mul\",\n              \"a\": 0,\n              \"b\": 1,\n              \"dst\": 2\n            },\n            {\n              \"op\": \"mul\",\n              \"a\": 3,\n              \"b\": 4,\n              \"dst\": 5\n            },\n            {\n              \"op\": \"mul\",\n              \"a\": 6,\n              \"b\": 7,\n              \"dst\": 0\n            },\n            {\n              \"op\": \"mul\",\n              \"a\": 1,\n              \"b\": 2,\n              \"dst\": 3\n            }\n          ]\n        },\n        {\n          \"weight\": 100,\n          \"release\": 30000,\n          \"body\": [\n            {\n              \"op\": \"add\",\n              \"a\": 0,\n              \"b\": 1,\n              \"dst\": 2\n            },\n            {\n              \"op\": \"xor\",\n              \"a\": 3,\n              \"b\": 4,\n              \"dst\": 5\n            }\n          ]\n        },\n        {\n          \"weight\": 100,\n          \"release\": 70000,\n          \"body\": [\n            {\n              \"op\": \"add\",\n              \"a\": 0,\n              \"b\": 1,\n              \"dst\": 2\n            },\n            {\n              \"op\": \"xor\",\n              \"a\": 3,\n              \"b\": 4,\n              \"dst\": 5\n            }\n          ]\n        },\n        {\n          \"weight\": 1800,\n          \"release\": 150000,\n          \"body\": [\n            {\n              \"op\": \"mul\",\n              \"a\": 0,\n              \"b\": 1,\n              \"dst\": 2\n            },\n            {\n              \"op\": \"mul\",\n              \"a\": 3,\n              \"b\": 4,\n              \"dst\": 5\n            },\n            {\n              \"op\": \"mul\",\n              \"a\": 6,\n              \"b\": 7,\n              \"dst\": 0\n            },\n            {\n              \"op\": \"mul\",\n              \"a\": 1,\n              \"b\": 2,\n              \"dst\": 3\n            }\n          ]\n        }\n      ]\n    }\n  ],\n  \"predictions\": [\n    {\n      \"reference_slot\": 5,\n      \"changed_factor\": \"Increased weights for segment 0 and 3, decreased for 1 and 2, and adjusted releases to further sharpen the hourglass profile. Maintained divu operations in segment 3 for high activity.\",\n      \"window_directions\": [\n        1,\n        1,\n        -1,\n        -1,\n        -1,\n        -1,\n        1,\n        1\n      ]\n    },\n    {\n      \"reference_slot\": 6,\n      \"changed_factor\": \"Modified operation types in segments 0 and 3 to use only mul, and in segments 1 and 2 to use add/xor, with increased weights for start/end segments to emphasize the hourglass shape.\",\n      \"window_directions\": [\n        1,\n        1,\n        -1,\n        -1,\n        -1,\n        -1,\n        1,\n        1\n      ]\n    }\n  ]\n}",
+  "tokens_in": 23246,
+  "tokens_out": 2381,
+  "thinking_tokens": 509,
+  "usage_unknown": false,
+  "est_cost_usd": 0.0129263,
+  "finish_reasons": [
+    "FinishReason.STOP"
+  ],
+  "prompt_feedback": null,
+  "model_version": "gemini-2.5-flash",
+  "request_wall_clock_s": 10.906918458989821,
+  "long_context_tier": false,
+  "cell": {
+    "context": "target_0-601",
+    "arm": "flash-512",
+    "seed": 17100
+  },
+  "manifest_sha256": "c3080f0a569efab9a12393fb5771d16db8fa4285cdbcebc46d6047f227388860",
+  "decoded": {
+    "response_error": null,
+    "hypothesis": "Candidate 1 aims to further refine the hourglass shape by adjusting weights and releases based on the previous attempt, while ensuring divu operations are not concentrated. Candidate 2 explores a different set of operations and weights to achieve a similar profile.",
+    "slots": [
+      {
+        "submitted": {
+          "registers": [
+            1,
+            1,
+            17,
+            4294967295,
+            1076035761,
+            4294967295,
+            1,
+            4294967295
+          ],
+          "memory_seed": 999465599,
+          "segments": [
+            {
+              "weight": 2000,
+              "release": 0,
+              "body": [
+                {
+                  "op": "add",
+                  "a": 7,
+                  "b": 5,
+                  "dst": 5
+                },
+                {
+                  "op": "xor",
+                  "a": 3,
+                  "b": 3,
+                  "dst": 0
+                },
+                {
+                  "op": "add",
+                  "a": 4,
+                  "b": 6,
+                  "dst": 5
+                },
+                {
+                  "op": "srl",
+                  "a": 3,
+                  "b": 3,
+                  "dst": 1
+                },
+                {
+                  "op": "xor",
+                  "a": 6,
+                  "b": 3,
+                  "dst": 0
+                },
+                {
+                  "op": "load",
+                  "a": 0,
+                  "dst": 0
+                },
+                {
+                  "op": "store",
+                  "a": 1,
+                  "b": 6
+                },
+                {
+                  "op": "srl",
+                  "a": 4,
+                  "b": 7,
+                  "dst": 3
+                }
+              ]
+            },
+            {
+              "weight": 50,
+              "release": 40000,
+              "body": [
+                {
+                  "op": "cmovz",
+                  "a": 4,
+                  "b": 0,
+                  "dst": 3
+                }
+              ]
+            },
+            {
+              "weight": 50,
+              "release": 90000,
+              "body": [
+                {
+                  "op": "cmovz",
+                  "a": 5,
+                  "b": 0,
+                  "dst": 3
+                }
+              ]
+            },
+            {
+              "weight": 2000,
+              "release": 150000,
+              "body": [
+                {
+                  "op": "load",
+                  "a": 5,
+                  "dst": 0
+                },
+                {
+                  "op": "divu",
+                  "a": 0,
+                  "b": 3,
+                  "dst": 4
+                },
+                {
+                  "op": "srl",
+                  "a": 4,
+                  "b": 5,
+                  "dst": 4
+                },
+                {
+                  "op": "cmovz",
+                  "a": 4,
+                  "b": 5,
+                  "dst": 2
+                },
+                {
+                  "op": "divu",
+                  "a": 7,
+                  "b": 7,
+                  "dst": 7
+                },
+                {
+                  "op": "add",
+                  "a": 3,
+                  "b": 3,
+                  "dst": 2
+                },
+                {
+                  "op": "cmovz",
+                  "a": 3,
+                  "b": 7,
+                  "dst": 3
+                },
+                {
+                  "op": "xor",
+                  "a": 3,
+                  "b": 4,
+                  "dst": 0
+                }
+              ]
+            }
+          ]
+        },
+        "canonical": {
+          "registers": [
+            1,
+            1,
+            17,
+            4294967295,
+            1076035761,
+            4294967295,
+            1,
+            4294967295
+          ],
+          "memory_seed": 999465599,
+          "segments": [
+            {
+              "weight": 2000,
+              "release": 0,
+              "body": [
+                {
+                  "op": "add",
+                  "a": 7,
+                  "b": 5,
+                  "dst": 5
+                },
+                {
+                  "op": "xor",
+                  "a": 3,
+                  "b": 3,
+                  "dst": 0
+                },
+                {
+                  "op": "add",
+                  "a": 4,
+                  "b": 6,
+                  "dst": 5
+                },
+                {
+                  "op": "srl",
+                  "a": 3,
+                  "b": 3,
+                  "dst": 1
+                },
+                {
+                  "op": "xor",
+                  "a": 6,
+                  "b": 3,
+                  "dst": 0
+                },
+                {
+                  "op": "load",
+                  "a": 0,
+                  "dst": 0
+                },
+                {
+                  "op": "store",
+                  "a": 1,
+                  "b": 6
+                },
+                {
+                  "op": "srl",
+                  "a": 4,
+                  "b": 7,
+                  "dst": 3
+                }
+              ]
+            },
+            {
+              "weight": 50,
+              "release": 40000,
+              "body": [
+                {
+                  "op": "cmovz",
+                  "a": 4,
+                  "b": 0,
+                  "dst": 3
+                }
+              ]
+            },
+            {
+              "weight": 50,
+              "release": 90000,
+              "body": [
+                {
+                  "op": "cmovz",
+                  "a": 5,
+                  "b": 0,
+                  "dst": 3
+                }
+              ]
+            },
+            {
+              "weight": 2000,
+              "release": 150000,
+              "body": [
+                {
+                  "op": "load",
+                  "a": 5,
+                  "dst": 0
+                },
+                {
+                  "op": "divu",
+                  "a": 0,
+                  "b": 3,
+                  "dst": 4
+                },
+                {
+                  "op": "srl",
+                  "a": 4,
+                  "b": 5,
+                  "dst": 4
+                },
+                {
+                  "op": "cmovz",
+                  "a": 4,
+                  "b": 5,
+                  "dst": 2
+                },
+                {
+                  "op": "divu",
+                  "a": 7,
+                  "b": 7,
+                  "dst": 7
+                },
+                {
+                  "op": "add",
+                  "a": 3,
+                  "b": 3,
+                  "dst": 2
+                },
+                {
+                  "op": "cmovz",
+                  "a": 3,
+                  "b": 7,
+                  "dst": 3
+                },
+                {
+                  "op": "xor",
+                  "a": 3,
+                  "b": 4,
+                  "dst": 0
+                }
+              ]
+            }
+          ]
+        },
+        "program_error": null,
+        "prediction": {
+          "reference_slot": 5,
+          "changed_factor": "Increased weights for segment 0 and 3, decreased for 1 and 2, and adjusted releases to further sharpen the hourglass profile. Maintained divu operations in segment 3 for high activity.",
+          "window_directions": [
+            1,
+            1,
+            -1,
+            -1,
+            -1,
+            -1,
+            1,
+            1
+          ]
+        },
+        "prediction_error": null
+      },
+      {
+        "submitted": {
+          "registers": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "memory_seed": 123456789,
+          "segments": [
+            {
+              "weight": 1800,
+              "release": 0,
+              "body": [
+                {
+                  "op": "mul",
+                  "a": 0,
+                  "b": 1,
+                  "dst": 2
+                },
+                {
+                  "op": "mul",
+                  "a": 3,
+                  "b": 4,
+                  "dst": 5
+                },
+                {
+                  "op": "mul",
+                  "a": 6,
+                  "b": 7,
+                  "dst": 0
+                },
+                {
+                  "op": "mul",
+                  "a": 1,
+                  "b": 2,
+                  "dst": 3
+                }
+              ]
+            },
+            {
+              "weight": 100,
+              "release": 30000,
+              "body": [
+                {
+                  "op": "add",
+                  "a": 0,
+                  "b": 1,
+                  "dst": 2
+                },
+                {
+                  "op": "xor",
+                  "a": 3,
+                  "b": 4,
+                  "dst": 5
+                }
+              ]
+            },
+            {
+              "weight": 100,
+              "release": 70000,
+              "body": [
+                {
+                  "op": "add",
+                  "a": 0,
+                  "b": 1,
+                  "dst": 2
+                },
+                {
+                  "op": "xor",
+                  "a": 3,
+                  "b": 4,
+                  "dst": 5
+                }
+              ]
+            },
+            {
+              "weight": 1800,
+              "release": 150000,
+              "body": [
+                {
+                  "op": "mul",
+                  "a": 0,
+                  "b": 1,
+                  "dst": 2
+                },
+                {
+                  "op": "mul",
+                  "a": 3,
+                  "b": 4,
+                  "dst": 5
+                },
+                {
+                  "op": "mul",
+                  "a": 6,
+                  "b": 7,
+                  "dst": 0
+                },
+                {
+                  "op": "mul",
+                  "a": 1,
+                  "b": 2,
+                  "dst": 3
+                }
+              ]
+            }
+          ]
+        },
+        "canonical": {
+          "registers": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "memory_seed": 123456789,
+          "segments": [
+            {
+              "weight": 1800,
+              "release": 0,
+              "body": [
+                {
+                  "op": "mul",
+                  "a": 0,
+                  "b": 1,
+                  "dst": 2
+                },
+                {
+                  "op": "mul",
+                  "a": 3,
+                  "b": 4,
+                  "dst": 5
+                },
+                {
+                  "op": "mul",
+                  "a": 6,
+                  "b": 7,
+                  "dst": 0
+                },
+                {
+                  "op": "mul",
+                  "a": 1,
+                  "b": 2,
+                  "dst": 3
+                }
+              ]
+            },
+            {
+              "weight": 100,
+              "release": 30000,
+              "body": [
+                {
+                  "op": "add",
+                  "a": 0,
+                  "b": 1,
+                  "dst": 2
+                },
+                {
+                  "op": "xor",
+                  "a": 3,
+                  "b": 4,
+                  "dst": 5
+                }
+              ]
+            },
+            {
+              "weight": 100,
+              "release": 70000,
+              "body": [
+                {
+                  "op": "add",
+                  "a": 0,
+                  "b": 1,
+                  "dst": 2
+                },
+                {
+                  "op": "xor",
+                  "a": 3,
+                  "b": 4,
+                  "dst": 5
+                }
+              ]
+            },
+            {
+              "weight": 1800,
+              "release": 150000,
+              "body": [
+                {
+                  "op": "mul",
+                  "a": 0,
+                  "b": 1,
+                  "dst": 2
+                },
+                {
+                  "op": "mul",
+                  "a": 3,
+                  "b": 4,
+                  "dst": 5
+                },
+                {
+                  "op": "mul",
+                  "a": 6,
+                  "b": 7,
+                  "dst": 0
+                },
+                {
+                  "op": "mul",
+                  "a": 1,
+                  "b": 2,
+                  "dst": 3
+                }
+              ]
+            }
+          ]
+        },
+        "program_error": null,
+        "prediction": {
+          "reference_slot": 6,
+          "changed_factor": "Modified operation types in segments 0 and 3 to use only mul, and in segments 1 and 2 to use add/xor, with increased weights for start/end segments to emphasize the hourglass shape.",
+          "window_directions": [
+            1,
+            1,
+            -1,
+            -1,
+            -1,
+            -1,
+            1,
+            1
+          ]
+        },
+        "prediction_error": null
+      }
+    ]
+  }
+}

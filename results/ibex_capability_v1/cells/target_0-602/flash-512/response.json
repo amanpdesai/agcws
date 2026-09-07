@@ -1,0 +1,521 @@
+{
+  "raw_text": "{\n  \"hypothesis\": \"Candidate 1 aims to further reduce activity in middle bins by reducing segment 0 weight and increasing `sll` ops in segment 1 to reduce `cmovz` activity. Candidate 2 explores a new profile with more `divu` and `mul` operations, distributed across four segments, aiming for a different activity pattern.\",\n  \"candidates\": [\n    {\n      \"registers\": [\n        1,\n        31,\n        4032293290,\n        0,\n        0,\n        1,\n        3024829961,\n        17\n      ],\n      \"memory_seed\": 3341289835,\n      \"segments\": [\n        {\n          \"weight\": 1800,\n          \"release\": 90063,\n          \"body\": [\n            {\n              \"op\": \"cmovz\",\n              \"a\": 5,\n              \"b\": 1,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"cmovz\",\n              \"a\": 6,\n              \"b\": 1,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"cmovz\",\n              \"a\": 5,\n              \"b\": 0,\n              \"dst\": 6\n            },\n            {\n              \"op\": \"cmovz\",\n              \"a\": 4,\n              \"b\": 1,\n              \"dst\": 7\n            },\n            {\n              \"op\": \"cmovz\",\n              \"a\": 3,\n              \"b\": 1,\n              \"dst\": 6\n            },\n            {\n              \"op\": \"cmovz\",\n              \"a\": 1,\n              \"b\": 0,\n              \"dst\": 7\n            },\n            {\n              \"op\": \"cmovz\",\n              \"a\": 0,\n              \"b\": 1,\n              \"dst\": 5\n            },\n            {\n              \"op\": \"cmovz\",\n              \"a\": 1,\n              \"b\": 0,\n              \"dst\": 2\n            }\n          ]\n        },\n        {\n          \"weight\": 2296,\n          \"release\": 155362,\n          \"body\": [\n            {\n              \"op\": \"sll\",\n              \"a\": 3,\n              \"b\": 0,\n              \"dst\": 4\n            },\n            {\n              \"op\": \"sll\",\n              \"a\": 7,\n              \"b\": 2,\n              \"dst\": 6\n            },\n            {\n              \"op\": \"sll\",\n              \"a\": 7,\n              \"b\": 2,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"sll\",\n              \"a\": 3,\n              \"b\": 1,\n              \"dst\": 7\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"registers\": [\n        0,\n        0,\n        0,\n        0,\n        0,\n        0,\n        0,\n        0\n      ],\n      \"memory_seed\": 123456789,\n      \"segments\": [\n        {\n          \"weight\": 900,\n          \"release\": 10000,\n          \"body\": [\n            {\n              \"op\": \"load\",\n              \"a\": 0,\n              \"dst\": 0\n            },\n            {\n              \"op\": \"sll\",\n              \"a\": 0,\n              \"b\": 1,\n              \"dst\": 1\n            },\n            {\n              \"op\": \"srl\",\n              \"a\": 1,\n              \"b\": 2,\n              \"dst\": 2\n            },\n            {\n              \"op\": \"add\",\n              \"a\": 0,\n              \"b\": 1,\n              \"dst\": 0\n            }\n          ]\n        },\n        {\n          \"weight\": 1100,\n          \"release\": 40000,\n          \"body\": [\n            {\n              \"op\": \"store\",\n              \"a\": 0,\n              \"b\": 1\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 2,\n              \"b\": 3,\n              \"dst\": 4\n            },\n            {\n              \"op\": \"mul\",\n              \"a\": 4,\n              \"b\": 1,\n              \"dst\": 5\n            },\n            {\n              \"op\": \"xor\",\n              \"a\": 5,\n              \"b\": 6,\n              \"dst\": 7\n            }\n          ]\n        },\n        {\n          \"weight\": 1000,\n          \"release\": 90000,\n          \"body\": [\n            {\n              \"op\": \"load\",\n              \"a\": 7,\n              \"dst\": 0\n            },\n            {\n              \"op\": \"srl\",\n              \"a\": 0,\n              \"b\": 1,\n              \"dst\": 1\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 1,\n              \"b\": 2,\n              \"dst\": 2\n            },\n            {\n              \"op\": \"cmovz\",\n              \"a\": 2,\n              \"b\": 3,\n              \"dst\": 3\n            }\n          ]\n        },\n        {\n          \"weight\": 1096,\n          \"release\": 130000,\n          \"body\": [\n            {\n              \"op\": \"mul\",\n              \"a\": 3,\n              \"b\": 4,\n              \"dst\": 4\n            },\n            {\n              \"op\": \"load\",\n              \"a\": 4,\n              \"dst\": 5\n            },\n            {\n              \"op\": \"store\",\n              \"a\": 5,\n              \"b\": 6\n            },\n            {\n              \"op\": \"add\",\n              \"a\": 5,\n              \"b\": 7,\n              \"dst\": 7\n            }\n          ]\n        }\n      ]\n    }\n  ],\n  \"predictions\": [\n    {\n      \"reference_slot\": 3,\n      \"changed_factor\": \"Reduced segment 0 weight and replaced segment 1 cmovz with sll to further reduce middle bin activity.\",\n      \"window_directions\": [\n        0,\n        0,\n        -1,\n        -1,\n        -1,\n        -1,\n        0,\n        0\n      ]\n    },\n    {\n      \"reference_slot\": 5,\n      \"changed_factor\": \"Adjusted weights and instruction mix with more divu and mul ops, spreading activity across segments.\",\n      \"window_directions\": [\n        0,\n        0,\n        -1,\n        -1,\n        -1,\n        -1,\n        0,\n        0\n      ]\n    }\n  ]\n}",
+  "tokens_in": 22911,
+  "tokens_out": 2089,
+  "thinking_tokens": 393,
+  "usage_unknown": false,
+  "est_cost_usd": 0.012095799999999999,
+  "finish_reasons": [
+    "FinishReason.STOP"
+  ],
+  "prompt_feedback": null,
+  "model_version": "gemini-2.5-flash",
+  "request_wall_clock_s": 13.172206938965246,
+  "long_context_tier": false,
+  "cell": {
+    "context": "target_0-602",
+    "arm": "flash-512",
+    "seed": 17200
+  },
+  "manifest_sha256": "c3080f0a569efab9a12393fb5771d16db8fa4285cdbcebc46d6047f227388860",
+  "decoded": {
+    "response_error": null,
+    "hypothesis": "Candidate 1 aims to further reduce activity in middle bins by reducing segment 0 weight and increasing `sll` ops in segment 1 to reduce `cmovz` activity. Candidate 2 explores a new profile with more `divu` and `mul` operations, distributed across four segments, aiming for a different activity pattern.",
+    "slots": [
+      {
+        "submitted": {
+          "registers": [
+            1,
+            31,
+            4032293290,
+            0,
+            0,
+            1,
+            3024829961,
+            17
+          ],
+          "memory_seed": 3341289835,
+          "segments": [
+            {
+              "weight": 1800,
+              "release": 90063,
+              "body": [
+                {
+                  "op": "cmovz",
+                  "a": 5,
+                  "b": 1,
+                  "dst": 3
+                },
+                {
+                  "op": "cmovz",
+                  "a": 6,
+                  "b": 1,
+                  "dst": 3
+                },
+                {
+                  "op": "cmovz",
+                  "a": 5,
+                  "b": 0,
+                  "dst": 6
+                },
+                {
+                  "op": "cmovz",
+                  "a": 4,
+                  "b": 1,
+                  "dst": 7
+                },
+                {
+                  "op": "cmovz",
+                  "a": 3,
+                  "b": 1,
+                  "dst": 6
+                },
+                {
+                  "op": "cmovz",
+                  "a": 1,
+                  "b": 0,
+                  "dst": 7
+                },
+                {
+                  "op": "cmovz",
+                  "a": 0,
+                  "b": 1,
+                  "dst": 5
+                },
+                {
+                  "op": "cmovz",
+                  "a": 1,
+                  "b": 0,
+                  "dst": 2
+                }
+              ]
+            },
+            {
+              "weight": 2296,
+              "release": 155362,
+              "body": [
+                {
+                  "op": "sll",
+                  "a": 3,
+                  "b": 0,
+                  "dst": 4
+                },
+                {
+                  "op": "sll",
+                  "a": 7,
+                  "b": 2,
+                  "dst": 6
+                },
+                {
+                  "op": "sll",
+                  "a": 7,
+                  "b": 2,
+                  "dst": 3
+                },
+                {
+                  "op": "sll",
+                  "a": 3,
+                  "b": 1,
+                  "dst": 7
+                }
+              ]
+            }
+          ]
+        },
+        "canonical": {
+          "registers": [
+            1,
+            31,
+            4032293290,
+            0,
+            0,
+            1,
+            3024829961,
+            17
+          ],
+          "memory_seed": 3341289835,
+          "segments": [
+            {
+              "weight": 1800,
+              "release": 90063,
+              "body": [
+                {
+                  "op": "cmovz",
+                  "a": 5,
+                  "b": 1,
+                  "dst": 3
+                },
+                {
+                  "op": "cmovz",
+                  "a": 6,
+                  "b": 1,
+                  "dst": 3
+                },
+                {
+                  "op": "cmovz",
+                  "a": 5,
+                  "b": 0,
+                  "dst": 6
+                },
+                {
+                  "op": "cmovz",
+                  "a": 4,
+                  "b": 1,
+                  "dst": 7
+                },
+                {
+                  "op": "cmovz",
+                  "a": 3,
+                  "b": 1,
+                  "dst": 6
+                },
+                {
+                  "op": "cmovz",
+                  "a": 1,
+                  "b": 0,
+                  "dst": 7
+                },
+                {
+                  "op": "cmovz",
+                  "a": 0,
+                  "b": 1,
+                  "dst": 5
+                },
+                {
+                  "op": "cmovz",
+                  "a": 1,
+                  "b": 0,
+                  "dst": 2
+                }
+              ]
+            },
+            {
+              "weight": 2296,
+              "release": 155362,
+              "body": [
+                {
+                  "op": "sll",
+                  "a": 3,
+                  "b": 0,
+                  "dst": 4
+                },
+                {
+                  "op": "sll",
+                  "a": 7,
+                  "b": 2,
+                  "dst": 6
+                },
+                {
+                  "op": "sll",
+                  "a": 7,
+                  "b": 2,
+                  "dst": 3
+                },
+                {
+                  "op": "sll",
+                  "a": 3,
+                  "b": 1,
+                  "dst": 7
+                }
+              ]
+            }
+          ]
+        },
+        "program_error": null,
+        "prediction": {
+          "reference_slot": 3,
+          "changed_factor": "Reduced segment 0 weight and replaced segment 1 cmovz with sll to further reduce middle bin activity.",
+          "window_directions": [
+            0,
+            0,
+            -1,
+            -1,
+            -1,
+            -1,
+            0,
+            0
+          ]
+        },
+        "prediction_error": null
+      },
+      {
+        "submitted": {
+          "registers": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "memory_seed": 123456789,
+          "segments": [
+            {
+              "weight": 900,
+              "release": 10000,
+              "body": [
+                {
+                  "op": "load",
+                  "a": 0,
+                  "dst": 0
+                },
+                {
+                  "op": "sll",
+                  "a": 0,
+                  "b": 1,
+                  "dst": 1
+                },
+                {
+                  "op": "srl",
+                  "a": 1,
+                  "b": 2,
+                  "dst": 2
+                },
+                {
+                  "op": "add",
+                  "a": 0,
+                  "b": 1,
+                  "dst": 0
+                }
+              ]
+            },
+            {
+              "weight": 1100,
+              "release": 40000,
+              "body": [
+                {
+                  "op": "store",
+                  "a": 0,
+                  "b": 1
+                },
+                {
+                  "op": "divu",
+                  "a": 2,
+                  "b": 3,
+                  "dst": 4
+                },
+                {
+                  "op": "mul",
+                  "a": 4,
+                  "b": 1,
+                  "dst": 5
+                },
+                {
+                  "op": "xor",
+                  "a": 5,
+                  "b": 6,
+                  "dst": 7
+                }
+              ]
+            },
+            {
+              "weight": 1000,
+              "release": 90000,
+              "body": [
+                {
+                  "op": "load",
+                  "a": 7,
+                  "dst": 0
+                },
+                {
+                  "op": "srl",
+                  "a": 0,
+                  "b": 1,
+                  "dst": 1
+                },
+                {
+                  "op": "divu",
+                  "a": 1,
+                  "b": 2,
+                  "dst": 2
+                },
+                {
+                  "op": "cmovz",
+                  "a": 2,
+                  "b": 3,
+                  "dst": 3
+                }
+              ]
+            },
+            {
+              "weight": 1096,
+              "release": 130000,
+              "body": [
+                {
+                  "op": "mul",
+                  "a": 3,
+                  "b": 4,
+                  "dst": 4
+                },
+                {
+                  "op": "load",
+                  "a": 4,
+                  "dst": 5
+                },
+                {
+                  "op": "store",
+                  "a": 5,
+                  "b": 6
+                },
+                {
+                  "op": "add",
+                  "a": 5,
+                  "b": 7,
+                  "dst": 7
+                }
+              ]
+            }
+          ]
+        },
+        "canonical": {
+          "registers": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "memory_seed": 123456789,
+          "segments": [
+            {
+              "weight": 900,
+              "release": 10000,
+              "body": [
+                {
+                  "op": "load",
+                  "a": 0,
+                  "dst": 0
+                },
+                {
+                  "op": "sll",
+                  "a": 0,
+                  "b": 1,
+                  "dst": 1
+                },
+                {
+                  "op": "srl",
+                  "a": 1,
+                  "b": 2,
+                  "dst": 2
+                },
+                {
+                  "op": "add",
+                  "a": 0,
+                  "b": 1,
+                  "dst": 0
+                }
+              ]
+            },
+            {
+              "weight": 1100,
+              "release": 40000,
+              "body": [
+                {
+                  "op": "store",
+                  "a": 0,
+                  "b": 1
+                },
+                {
+                  "op": "divu",
+                  "a": 2,
+                  "b": 3,
+                  "dst": 4
+                },
+                {
+                  "op": "mul",
+                  "a": 4,
+                  "b": 1,
+                  "dst": 5
+                },
+                {
+                  "op": "xor",
+                  "a": 5,
+                  "b": 6,
+                  "dst": 7
+                }
+              ]
+            },
+            {
+              "weight": 1000,
+              "release": 90000,
+              "body": [
+                {
+                  "op": "load",
+                  "a": 7,
+                  "dst": 0
+                },
+                {
+                  "op": "srl",
+                  "a": 0,
+                  "b": 1,
+                  "dst": 1
+                },
+                {
+                  "op": "divu",
+                  "a": 1,
+                  "b": 2,
+                  "dst": 2
+                },
+                {
+                  "op": "cmovz",
+                  "a": 2,
+                  "b": 3,
+                  "dst": 3
+                }
+              ]
+            },
+            {
+              "weight": 1096,
+              "release": 130000,
+              "body": [
+                {
+                  "op": "mul",
+                  "a": 3,
+                  "b": 4,
+                  "dst": 4
+                },
+                {
+                  "op": "load",
+                  "a": 4,
+                  "dst": 5
+                },
+                {
+                  "op": "store",
+                  "a": 5,
+                  "b": 6
+                },
+                {
+                  "op": "add",
+                  "a": 5,
+                  "b": 7,
+                  "dst": 7
+                }
+              ]
+            }
+          ]
+        },
+        "program_error": null,
+        "prediction": {
+          "reference_slot": 5,
+          "changed_factor": "Adjusted weights and instruction mix with more divu and mul ops, spreading activity across segments.",
+          "window_directions": [
+            0,
+            0,
+            -1,
+            -1,
+            -1,
+            -1,
+            0,
+            0
+          ]
+        },
+        "prediction_error": null
+      }
+    ]
+  }
+}

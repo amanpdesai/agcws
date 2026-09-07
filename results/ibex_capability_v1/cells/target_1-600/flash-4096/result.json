@@ -1,0 +1,2049 @@
+{
+  "cell": {
+    "context": "target_1-600",
+    "arm": "flash-4096",
+    "seed": 17301
+  },
+  "trials": [
+    {
+      "slot": 7,
+      "program": {
+        "registers": [
+          1,
+          1,
+          0,
+          17,
+          4294967295,
+          31,
+          17,
+          31
+        ],
+        "memory_seed": 4043725751,
+        "segments": [
+          {
+            "weight": 1024,
+            "release": 10000,
+            "body": [
+              {
+                "op": "add",
+                "a": 1,
+                "b": 0,
+                "dst": 2
+              },
+              {
+                "op": "mul",
+                "a": 2,
+                "b": 3,
+                "dst": 4
+              },
+              {
+                "op": "xor",
+                "a": 4,
+                "b": 5,
+                "dst": 6
+              }
+            ]
+          },
+          {
+            "weight": 1024,
+            "release": 20000,
+            "body": [
+              {
+                "op": "sll",
+                "a": 6,
+                "b": 1,
+                "dst": 7
+              },
+              {
+                "op": "load",
+                "a": 7,
+                "dst": 0
+              },
+              {
+                "op": "store",
+                "a": 0,
+                "b": 2
+              },
+              {
+                "op": "divu",
+                "a": 4,
+                "b": 3,
+                "dst": 6
+              }
+            ]
+          },
+          {
+            "weight": 1024,
+            "release": 30000,
+            "body": [
+              {
+                "op": "divu",
+                "a": 4,
+                "b": 3,
+                "dst": 6
+              },
+              {
+                "op": "add",
+                "a": 6,
+                "b": 7,
+                "dst": 1
+              },
+              {
+                "op": "srl",
+                "a": 1,
+                "b": 2,
+                "dst": 3
+              },
+              {
+                "op": "load",
+                "a": 3,
+                "dst": 5
+              }
+            ]
+          },
+          {
+            "weight": 1024,
+            "release": 40000,
+            "body": [
+              {
+                "op": "and",
+                "a": 3,
+                "b": 0,
+                "dst": 5
+              },
+              {
+                "op": "or",
+                "a": 5,
+                "b": 1,
+                "dst": 7
+              },
+              {
+                "op": "cmovz",
+                "a": 7,
+                "b": 2,
+                "dst": 4
+              },
+              {
+                "op": "store",
+                "a": 7,
+                "b": 4
+              }
+            ]
+          },
+          {
+            "weight": 2048,
+            "release": 50000,
+            "body": [
+              {
+                "op": "divu",
+                "a": 1,
+                "b": 2,
+                "dst": 1
+              },
+              {
+                "op": "mul",
+                "a": 3,
+                "b": 4,
+                "dst": 2
+              },
+              {
+                "op": "load",
+                "a": 5,
+                "dst": 3
+              },
+              {
+                "op": "store",
+                "a": 6,
+                "b": 7
+              },
+              {
+                "op": "xor",
+                "a": 0,
+                "b": 1,
+                "dst": 0
+              },
+              {
+                "op": "divu",
+                "a": 7,
+                "b": 6,
+                "dst": 5
+              },
+              {
+                "op": "add",
+                "a": 2,
+                "b": 3,
+                "dst": 4
+              },
+              {
+                "op": "load",
+                "a": 4,
+                "dst": 6
+              }
+            ]
+          }
+        ]
+      },
+      "canonical_program": {
+        "registers": [
+          1,
+          1,
+          0,
+          17,
+          4294967295,
+          31,
+          17,
+          31
+        ],
+        "memory_seed": 4043725751,
+        "segments": [
+          {
+            "weight": 1024,
+            "release": 10000,
+            "body": [
+              {
+                "op": "add",
+                "a": 1,
+                "b": 0,
+                "dst": 2
+              },
+              {
+                "op": "mul",
+                "a": 2,
+                "b": 3,
+                "dst": 4
+              },
+              {
+                "op": "xor",
+                "a": 4,
+                "b": 5,
+                "dst": 6
+              }
+            ]
+          },
+          {
+            "weight": 1024,
+            "release": 20000,
+            "body": [
+              {
+                "op": "sll",
+                "a": 6,
+                "b": 1,
+                "dst": 7
+              },
+              {
+                "op": "load",
+                "a": 7,
+                "dst": 0
+              },
+              {
+                "op": "store",
+                "a": 0,
+                "b": 2
+              },
+              {
+                "op": "divu",
+                "a": 4,
+                "b": 3,
+                "dst": 6
+              }
+            ]
+          },
+          {
+            "weight": 1024,
+            "release": 30000,
+            "body": [
+              {
+                "op": "divu",
+                "a": 4,
+                "b": 3,
+                "dst": 6
+              },
+              {
+                "op": "add",
+                "a": 6,
+                "b": 7,
+                "dst": 1
+              },
+              {
+                "op": "srl",
+                "a": 1,
+                "b": 2,
+                "dst": 3
+              },
+              {
+                "op": "load",
+                "a": 3,
+                "dst": 5
+              }
+            ]
+          },
+          {
+            "weight": 1024,
+            "release": 40000,
+            "body": [
+              {
+                "op": "and",
+                "a": 3,
+                "b": 0,
+                "dst": 5
+              },
+              {
+                "op": "or",
+                "a": 5,
+                "b": 1,
+                "dst": 7
+              },
+              {
+                "op": "cmovz",
+                "a": 7,
+                "b": 2,
+                "dst": 4
+              },
+              {
+                "op": "store",
+                "a": 7,
+                "b": 4
+              }
+            ]
+          },
+          {
+            "weight": 2048,
+            "release": 50000,
+            "body": [
+              {
+                "op": "divu",
+                "a": 1,
+                "b": 2,
+                "dst": 1
+              },
+              {
+                "op": "mul",
+                "a": 3,
+                "b": 4,
+                "dst": 2
+              },
+              {
+                "op": "load",
+                "a": 5,
+                "dst": 3
+              },
+              {
+                "op": "store",
+                "a": 6,
+                "b": 7
+              },
+              {
+                "op": "xor",
+                "a": 0,
+                "b": 1,
+                "dst": 0
+              },
+              {
+                "op": "divu",
+                "a": 7,
+                "b": 6,
+                "dst": 5
+              },
+              {
+                "op": "add",
+                "a": 2,
+                "b": 3,
+                "dst": 4
+              },
+              {
+                "op": "load",
+                "a": 4,
+                "dst": 6
+              }
+            ]
+          }
+        ]
+      },
+      "prediction": {
+        "reference_slot": 6,
+        "changed_factor": "Increased ops in segments 2, 3, 4, and added a load to segment 5, aiming to fill the dips in bins 3, 7, and 8 from the reference profile. Reduced the first segment's body to slightly decrease activity in bin 1.",
+        "window_directions": [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          1
+        ]
+      },
+      "prediction_error": null,
+      "rates": [
+        593.48928,
+        466.1214,
+        374.55596,
+        692.649,
+        701.60868,
+        694.9096,
+        701.53616,
+        716.84728
+      ],
+      "loss": 0.28245789892363454,
+      "cache_hit": false,
+      "valid": true,
+      "stage": null,
+      "reason": "",
+      "schema_path": null,
+      "cache_id": "781d6243494a5ada7912188ca235a5db5602b8e3fae315495fe317046b670295",
+      "feedback": {
+        "begin_tick": 286,
+        "end_tick": 400286,
+        "cycles_per_bin": 25000,
+        "retired_classes": [
+          {
+            "alu": 1463,
+            "multiply": 228,
+            "divide": 96,
+            "load": 97,
+            "store": 96,
+            "branch": 4811,
+            "jump": 0,
+            "csr": 4488,
+            "other": 0
+          },
+          {
+            "alu": 2650,
+            "multiply": 0,
+            "divide": 245,
+            "load": 244,
+            "store": 245,
+            "branch": 3225,
+            "jump": 0,
+            "csr": 2642,
+            "other": 0
+          },
+          {
+            "alu": 2052,
+            "multiply": 171,
+            "divide": 341,
+            "load": 341,
+            "store": 171,
+            "branch": 2242,
+            "jump": 0,
+            "csr": 2072,
+            "other": 0
+          },
+          {
+            "alu": 0,
+            "multiply": 0,
+            "divide": 0,
+            "load": 0,
+            "store": 0,
+            "branch": 6250,
+            "jump": 0,
+            "csr": 6250,
+            "other": 0
+          },
+          {
+            "alu": 0,
+            "multiply": 0,
+            "divide": 0,
+            "load": 0,
+            "store": 0,
+            "branch": 6250,
+            "jump": 0,
+            "csr": 6250,
+            "other": 0
+          },
+          {
+            "alu": 0,
+            "multiply": 0,
+            "divide": 0,
+            "load": 0,
+            "store": 0,
+            "branch": 6250,
+            "jump": 0,
+            "csr": 6250,
+            "other": 0
+          },
+          {
+            "alu": 0,
+            "multiply": 0,
+            "divide": 0,
+            "load": 0,
+            "store": 0,
+            "branch": 6250,
+            "jump": 0,
+            "csr": 6250,
+            "other": 0
+          },
+          {
+            "alu": 0,
+            "multiply": 0,
+            "divide": 0,
+            "load": 0,
+            "store": 0,
+            "branch": 6250,
+            "jump": 0,
+            "csr": 6250,
+            "other": 0
+          }
+        ],
+        "retired_per_bin": [
+          11279,
+          9251,
+          7390,
+          12500,
+          12500,
+          12500,
+          12500,
+          12500
+        ],
+        "cycles_without_retirement": [
+          13721,
+          15749,
+          17610,
+          12500,
+          12500,
+          12500,
+          12500,
+          12500
+        ],
+        "interpretation": "includes polling/control overhead; gaps are not attributed stall causes",
+        "body_completion_cycles": 66711,
+        "body_overrun_cycles": 0,
+        "body_completed_before_deadline": true,
+        "deadline_margin_cycles": 133289,
+        "allocation": [
+          683,
+          683,
+          683,
+          682,
+          1365
+        ],
+        "trace_file": "trace_core_00000000.log"
+      },
+      "execution": {
+        "begin_tick": 286,
+        "end_tick": 400286,
+        "bins": [
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 96,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 4808,
+            "branch_not_taken_from_operands": 3,
+            "retired_by_phase": {
+              "measurement_setup": 1,
+              "segment_0_setup": 3,
+              "segment_0_poll": 5000,
+              "segment_0_body": 1138,
+              "segment_1_setup": 3,
+              "segment_1_poll": 3976,
+              "segment_1_body": 1158
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 245,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 3220,
+            "branch_not_taken_from_operands": 5,
+            "retired_by_phase": {
+              "segment_1_body": 892,
+              "segment_2_setup": 3,
+              "segment_2_poll": 576,
+              "segment_2_body": 1534,
+              "segment_3_setup": 3,
+              "segment_3_poll": 900,
+              "segment_3_body": 1533,
+              "segment_4_setup": 3,
+              "segment_4_poll": 3807
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 341,
+            "divide_zero_numerator": 169,
+            "branch_taken_from_operands": 2240,
+            "branch_not_taken_from_operands": 2,
+            "retired_by_phase": {
+              "segment_4_poll": 1,
+              "segment_4_body": 3242,
+              "body_complete": 4147
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 6250,
+            "branch_not_taken_from_operands": 0,
+            "retired_by_phase": {
+              "body_complete": 12500
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 6250,
+            "branch_not_taken_from_operands": 0,
+            "retired_by_phase": {
+              "body_complete": 12500
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 6250,
+            "branch_not_taken_from_operands": 0,
+            "retired_by_phase": {
+              "body_complete": 12500
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 6250,
+            "branch_not_taken_from_operands": 0,
+            "retired_by_phase": {
+              "body_complete": 12500
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 6250,
+            "branch_not_taken_from_operands": 0,
+            "retired_by_phase": {
+              "body_complete": 12500
+            }
+          }
+        ],
+        "phases": {
+          "measurement_setup": {
+            "first_retired_cycle": 0,
+            "last_retired_cycle": 0,
+            "retired": 1
+          },
+          "segment_0_setup": {
+            "first_retired_cycle": 1,
+            "last_retired_cycle": 3,
+            "retired": 3
+          },
+          "segment_0_poll": {
+            "first_retired_cycle": 4,
+            "last_retired_cycle": 10001,
+            "retired": 5000
+          },
+          "segment_0_body": {
+            "first_retired_cycle": 10002,
+            "last_retired_cycle": 12047,
+            "retired": 1138
+          },
+          "segment_1_setup": {
+            "first_retired_cycle": 12048,
+            "last_retired_cycle": 12050,
+            "retired": 3
+          },
+          "segment_1_poll": {
+            "first_retired_cycle": 12051,
+            "last_retired_cycle": 20000,
+            "retired": 3976
+          },
+          "segment_1_body": {
+            "first_retired_cycle": 20001,
+            "last_retired_cycle": 28850,
+            "retired": 2050
+          },
+          "segment_2_setup": {
+            "first_retired_cycle": 28851,
+            "last_retired_cycle": 28853,
+            "retired": 3
+          },
+          "segment_2_poll": {
+            "first_retired_cycle": 28854,
+            "last_retired_cycle": 30003,
+            "retired": 576
+          },
+          "segment_2_body": {
+            "first_retired_cycle": 30004,
+            "last_retired_cycle": 38201,
+            "retired": 1534
+          },
+          "segment_3_setup": {
+            "first_retired_cycle": 38202,
+            "last_retired_cycle": 38204,
+            "retired": 3
+          },
+          "segment_3_poll": {
+            "first_retired_cycle": 38205,
+            "last_retired_cycle": 40002,
+            "retired": 900
+          },
+          "segment_3_body": {
+            "first_retired_cycle": 40003,
+            "last_retired_cycle": 42383,
+            "retired": 1533
+          },
+          "segment_4_setup": {
+            "first_retired_cycle": 42384,
+            "last_retired_cycle": 42386,
+            "retired": 3
+          },
+          "segment_4_poll": {
+            "first_retired_cycle": 42387,
+            "last_retired_cycle": 50000,
+            "retired": 3808
+          },
+          "segment_4_body": {
+            "first_retired_cycle": 50001,
+            "last_retired_cycle": 66710,
+            "retired": 3242
+          },
+          "body_complete": {
+            "first_retired_cycle": 66711,
+            "last_retired_cycle": 199999,
+            "retired": 66647
+          }
+        },
+        "scope": "retired PCs and source operand values; phase bounds are retirement times, not issue times or attributed stall cycles"
+      },
+      "prediction_assessment": {
+        "slot": 7,
+        "prediction": {
+          "reference_slot": 6,
+          "changed_factor": "Increased ops in segments 2, 3, 4, and added a load to segment 5, aiming to fill the dips in bins 3, 7, and 8 from the reference profile. Reduced the first segment's body to slightly decrease activity in bin 1.",
+          "window_directions": [
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            1
+          ]
+        },
+        "scorable": true,
+        "reason": "measured",
+        "actual_changes": [
+          {
+            "path": [
+              "segments"
+            ],
+            "before": [
+              {
+                "weight": 1024,
+                "release": 10000,
+                "body": [
+                  {
+                    "op": "add",
+                    "a": 1,
+                    "b": 0,
+                    "dst": 2
+                  },
+                  {
+                    "op": "mul",
+                    "a": 2,
+                    "b": 3,
+                    "dst": 4
+                  },
+                  {
+                    "op": "xor",
+                    "a": 4,
+                    "b": 5,
+                    "dst": 6
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 7,
+                    "b": 2,
+                    "dst": 4
+                  }
+                ]
+              },
+              {
+                "weight": 1024,
+                "release": 50000,
+                "body": [
+                  {
+                    "op": "sll",
+                    "a": 6,
+                    "b": 1,
+                    "dst": 7
+                  },
+                  {
+                    "op": "load",
+                    "a": 7,
+                    "dst": 0
+                  },
+                  {
+                    "op": "store",
+                    "a": 0,
+                    "b": 2
+                  },
+                  {
+                    "op": "divu",
+                    "a": 4,
+                    "b": 3,
+                    "dst": 6
+                  }
+                ]
+              },
+              {
+                "weight": 1024,
+                "release": 100000,
+                "body": [
+                  {
+                    "op": "add",
+                    "a": 6,
+                    "b": 7,
+                    "dst": 1
+                  },
+                  {
+                    "op": "srl",
+                    "a": 1,
+                    "b": 2,
+                    "dst": 3
+                  },
+                  {
+                    "op": "and",
+                    "a": 3,
+                    "b": 0,
+                    "dst": 5
+                  },
+                  {
+                    "op": "or",
+                    "a": 5,
+                    "b": 1,
+                    "dst": 7
+                  }
+                ]
+              },
+              {
+                "weight": 1024,
+                "release": 150000,
+                "body": [
+                  {
+                    "op": "divu",
+                    "a": 1,
+                    "b": 2,
+                    "dst": 1
+                  },
+                  {
+                    "op": "mul",
+                    "a": 3,
+                    "b": 4,
+                    "dst": 2
+                  },
+                  {
+                    "op": "load",
+                    "a": 5,
+                    "dst": 3
+                  },
+                  {
+                    "op": "store",
+                    "a": 6,
+                    "b": 7
+                  }
+                ]
+              }
+            ],
+            "after": [
+              {
+                "weight": 1024,
+                "release": 10000,
+                "body": [
+                  {
+                    "op": "add",
+                    "a": 1,
+                    "b": 0,
+                    "dst": 2
+                  },
+                  {
+                    "op": "mul",
+                    "a": 2,
+                    "b": 3,
+                    "dst": 4
+                  },
+                  {
+                    "op": "xor",
+                    "a": 4,
+                    "b": 5,
+                    "dst": 6
+                  }
+                ]
+              },
+              {
+                "weight": 1024,
+                "release": 20000,
+                "body": [
+                  {
+                    "op": "sll",
+                    "a": 6,
+                    "b": 1,
+                    "dst": 7
+                  },
+                  {
+                    "op": "load",
+                    "a": 7,
+                    "dst": 0
+                  },
+                  {
+                    "op": "store",
+                    "a": 0,
+                    "b": 2
+                  },
+                  {
+                    "op": "divu",
+                    "a": 4,
+                    "b": 3,
+                    "dst": 6
+                  }
+                ]
+              },
+              {
+                "weight": 1024,
+                "release": 30000,
+                "body": [
+                  {
+                    "op": "divu",
+                    "a": 4,
+                    "b": 3,
+                    "dst": 6
+                  },
+                  {
+                    "op": "add",
+                    "a": 6,
+                    "b": 7,
+                    "dst": 1
+                  },
+                  {
+                    "op": "srl",
+                    "a": 1,
+                    "b": 2,
+                    "dst": 3
+                  },
+                  {
+                    "op": "load",
+                    "a": 3,
+                    "dst": 5
+                  }
+                ]
+              },
+              {
+                "weight": 1024,
+                "release": 40000,
+                "body": [
+                  {
+                    "op": "and",
+                    "a": 3,
+                    "b": 0,
+                    "dst": 5
+                  },
+                  {
+                    "op": "or",
+                    "a": 5,
+                    "b": 1,
+                    "dst": 7
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 7,
+                    "b": 2,
+                    "dst": 4
+                  },
+                  {
+                    "op": "store",
+                    "a": 7,
+                    "b": 4
+                  }
+                ]
+              },
+              {
+                "weight": 2048,
+                "release": 50000,
+                "body": [
+                  {
+                    "op": "divu",
+                    "a": 1,
+                    "b": 2,
+                    "dst": 1
+                  },
+                  {
+                    "op": "mul",
+                    "a": 3,
+                    "b": 4,
+                    "dst": 2
+                  },
+                  {
+                    "op": "load",
+                    "a": 5,
+                    "dst": 3
+                  },
+                  {
+                    "op": "store",
+                    "a": 6,
+                    "b": 7
+                  },
+                  {
+                    "op": "xor",
+                    "a": 0,
+                    "b": 1,
+                    "dst": 0
+                  },
+                  {
+                    "op": "divu",
+                    "a": 7,
+                    "b": 6,
+                    "dst": 5
+                  },
+                  {
+                    "op": "add",
+                    "a": 2,
+                    "b": 3,
+                    "dst": 4
+                  },
+                  {
+                    "op": "load",
+                    "a": 4,
+                    "dst": 6
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "normalized_delta": [
+          -0.16581250174092807,
+          -0.4761725983367023,
+          -0.15331483307073068,
+          -0.052555364541261,
+          -0.022439654890524262,
+          -0.036818055755720225,
+          0.4557391738493828,
+          -0.046212406550007495
+        ],
+        "neutral_band": 0.01,
+        "observed_directions": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          1,
+          -1
+        ],
+        "matched_bins": 1,
+        "total_bins": 8,
+        "all_directions_supported": false
+      }
+    },
+    {
+      "slot": 8,
+      "program": {
+        "registers": [
+          0,
+          4294967295,
+          0,
+          2662913795,
+          0,
+          4294967295,
+          0,
+          1
+        ],
+        "memory_seed": 3062472912,
+        "segments": [
+          {
+            "weight": 512,
+            "release": 10000,
+            "body": [
+              {
+                "op": "xor",
+                "a": 6,
+                "b": 1,
+                "dst": 2
+              },
+              {
+                "op": "srl",
+                "a": 2,
+                "b": 1,
+                "dst": 4
+              },
+              {
+                "op": "add",
+                "a": 2,
+                "b": 0,
+                "dst": 6
+              }
+            ]
+          },
+          {
+            "weight": 1024,
+            "release": 30000,
+            "body": [
+              {
+                "op": "sll",
+                "a": 2,
+                "b": 0,
+                "dst": 7
+              },
+              {
+                "op": "srl",
+                "a": 1,
+                "b": 4,
+                "dst": 1
+              },
+              {
+                "op": "load",
+                "a": 6,
+                "dst": 4
+              },
+              {
+                "op": "store",
+                "a": 4,
+                "b": 1
+              }
+            ]
+          },
+          {
+            "weight": 1536,
+            "release": 60000,
+            "body": [
+              {
+                "op": "load",
+                "a": 4,
+                "dst": 6
+              },
+              {
+                "op": "load",
+                "a": 1,
+                "dst": 2
+              },
+              {
+                "op": "divu",
+                "a": 6,
+                "b": 2,
+                "dst": 5
+              },
+              {
+                "op": "mul",
+                "a": 5,
+                "b": 3,
+                "dst": 7
+              }
+            ]
+          },
+          {
+            "weight": 1024,
+            "release": 90000,
+            "body": [
+              {
+                "op": "cmovz",
+                "a": 2,
+                "b": 1,
+                "dst": 5
+              },
+              {
+                "op": "cmovz",
+                "a": 0,
+                "b": 0,
+                "dst": 6
+              },
+              {
+                "op": "divu",
+                "a": 5,
+                "b": 1,
+                "dst": 4
+              },
+              {
+                "op": "store",
+                "a": 4,
+                "b": 6
+              }
+            ]
+          },
+          {
+            "weight": 2048,
+            "release": 120000,
+            "body": [
+              {
+                "op": "divu",
+                "a": 6,
+                "b": 6,
+                "dst": 6
+              },
+              {
+                "op": "divu",
+                "a": 7,
+                "b": 7,
+                "dst": 6
+              },
+              {
+                "op": "load",
+                "a": 2,
+                "dst": 5
+              },
+              {
+                "op": "store",
+                "a": 5,
+                "b": 2
+              }
+            ]
+          }
+        ]
+      },
+      "canonical_program": {
+        "registers": [
+          0,
+          4294967295,
+          0,
+          2662913795,
+          0,
+          4294967295,
+          0,
+          1
+        ],
+        "memory_seed": 3062472912,
+        "segments": [
+          {
+            "weight": 512,
+            "release": 10000,
+            "body": [
+              {
+                "op": "xor",
+                "a": 6,
+                "b": 1,
+                "dst": 2
+              },
+              {
+                "op": "srl",
+                "a": 2,
+                "b": 1,
+                "dst": 4
+              },
+              {
+                "op": "add",
+                "a": 2,
+                "b": 0,
+                "dst": 6
+              }
+            ]
+          },
+          {
+            "weight": 1024,
+            "release": 30000,
+            "body": [
+              {
+                "op": "sll",
+                "a": 2,
+                "b": 0,
+                "dst": 7
+              },
+              {
+                "op": "srl",
+                "a": 1,
+                "b": 4,
+                "dst": 1
+              },
+              {
+                "op": "load",
+                "a": 6,
+                "dst": 4
+              },
+              {
+                "op": "store",
+                "a": 4,
+                "b": 1
+              }
+            ]
+          },
+          {
+            "weight": 1536,
+            "release": 60000,
+            "body": [
+              {
+                "op": "load",
+                "a": 4,
+                "dst": 6
+              },
+              {
+                "op": "load",
+                "a": 1,
+                "dst": 2
+              },
+              {
+                "op": "divu",
+                "a": 6,
+                "b": 2,
+                "dst": 5
+              },
+              {
+                "op": "mul",
+                "a": 5,
+                "b": 3,
+                "dst": 7
+              }
+            ]
+          },
+          {
+            "weight": 1024,
+            "release": 90000,
+            "body": [
+              {
+                "op": "cmovz",
+                "a": 2,
+                "b": 1,
+                "dst": 5
+              },
+              {
+                "op": "cmovz",
+                "a": 0,
+                "b": 0,
+                "dst": 6
+              },
+              {
+                "op": "divu",
+                "a": 5,
+                "b": 1,
+                "dst": 4
+              },
+              {
+                "op": "store",
+                "a": 4,
+                "b": 6
+              }
+            ]
+          },
+          {
+            "weight": 2048,
+            "release": 120000,
+            "body": [
+              {
+                "op": "divu",
+                "a": 6,
+                "b": 6,
+                "dst": 6
+              },
+              {
+                "op": "divu",
+                "a": 7,
+                "b": 7,
+                "dst": 6
+              },
+              {
+                "op": "load",
+                "a": 2,
+                "dst": 5
+              },
+              {
+                "op": "store",
+                "a": 5,
+                "b": 2
+              }
+            ]
+          }
+        ]
+      },
+      "prediction": {
+        "reference_slot": 3,
+        "changed_factor": "Significantly re-weighted segments, reduced early segments' ops, and increased ops for later segments with more complex operations (divu, load, store) to shift activity towards the middle and end of the profile and smooth out the activity curve.",
+        "window_directions": [
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "prediction_error": null,
+      "rates": [
+        742.22288,
+        760.48204,
+        478.00336,
+        725.22384,
+        670.50404,
+        502.99412,
+        731.00852,
+        746.3696
+      ],
+      "loss": 0.211993483599712,
+      "cache_hit": false,
+      "valid": true,
+      "stage": null,
+      "reason": "",
+      "schema_path": null,
+      "cache_id": "be09b8466ae04696fdac0b63f953e3bdaf0f49bb75820a53112befcea611ab6d",
+      "feedback": {
+        "begin_tick": 288,
+        "end_tick": 400288,
+        "cycles_per_bin": 25000,
+        "retired_classes": [
+          {
+            "alu": 462,
+            "multiply": 0,
+            "divide": 0,
+            "load": 0,
+            "store": 0,
+            "branch": 6164,
+            "jump": 0,
+            "csr": 6051,
+            "other": 0
+          },
+          {
+            "alu": 1539,
+            "multiply": 0,
+            "divide": 0,
+            "load": 171,
+            "store": 170,
+            "branch": 5738,
+            "jump": 0,
+            "csr": 5568,
+            "other": 0
+          },
+          {
+            "alu": 1796,
+            "multiply": 256,
+            "divide": 256,
+            "load": 512,
+            "store": 0,
+            "branch": 3050,
+            "jump": 0,
+            "csr": 2794,
+            "other": 0
+          },
+          {
+            "alu": 855,
+            "multiply": 0,
+            "divide": 171,
+            "load": 0,
+            "store": 170,
+            "branch": 6080,
+            "jump": 0,
+            "csr": 5569,
+            "other": 0
+          },
+          {
+            "alu": 666,
+            "multiply": 0,
+            "divide": 190,
+            "load": 95,
+            "store": 95,
+            "branch": 5095,
+            "jump": 0,
+            "csr": 5000,
+            "other": 0
+          },
+          {
+            "alu": 1726,
+            "multiply": 0,
+            "divide": 493,
+            "load": 246,
+            "store": 246,
+            "branch": 3227,
+            "jump": 0,
+            "csr": 2981,
+            "other": 0
+          },
+          {
+            "alu": 0,
+            "multiply": 0,
+            "divide": 0,
+            "load": 0,
+            "store": 0,
+            "branch": 6250,
+            "jump": 0,
+            "csr": 6250,
+            "other": 0
+          },
+          {
+            "alu": 0,
+            "multiply": 0,
+            "divide": 0,
+            "load": 0,
+            "store": 0,
+            "branch": 6250,
+            "jump": 0,
+            "csr": 6250,
+            "other": 0
+          }
+        ],
+        "retired_per_bin": [
+          12677,
+          13186,
+          8664,
+          12845,
+          11141,
+          8919,
+          12500,
+          12500
+        ],
+        "cycles_without_retirement": [
+          12323,
+          11814,
+          16336,
+          12155,
+          13859,
+          16081,
+          12500,
+          12500
+        ],
+        "interpretation": "includes polling/control overhead; gaps are not attributed stall causes",
+        "body_completion_cycles": 138075,
+        "body_overrun_cycles": 0,
+        "body_completed_before_deadline": true,
+        "deadline_margin_cycles": 61925,
+        "allocation": [
+          341,
+          683,
+          1024,
+          683,
+          1365
+        ],
+        "trace_file": "trace_core_00000000.log"
+      },
+      "execution": {
+        "begin_tick": 288,
+        "end_tick": 400288,
+        "bins": [
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 6162,
+            "branch_not_taken_from_operands": 2,
+            "retired_by_phase": {
+              "measurement_setup": 1,
+              "segment_0_setup": 3,
+              "segment_0_poll": 5000,
+              "segment_0_body": 568,
+              "segment_1_setup": 3,
+              "segment_1_poll": 7102
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 5736,
+            "branch_not_taken_from_operands": 2,
+            "retired_by_phase": {
+              "segment_1_poll": 2502,
+              "segment_1_body": 2047,
+              "segment_2_setup": 3,
+              "segment_2_poll": 8634
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 256,
+            "divide_zero_numerator": 256,
+            "branch_taken_from_operands": 3048,
+            "branch_not_taken_from_operands": 2,
+            "retired_by_phase": {
+              "segment_2_poll": 5002,
+              "segment_2_body": 3073,
+              "segment_3_setup": 3,
+              "segment_3_poll": 586
+            }
+          },
+          {
+            "divide_zero_divisor": 171,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 171,
+            "branch_taken_from_operands": 5907,
+            "branch_not_taken_from_operands": 173,
+            "retired_by_phase": {
+              "segment_3_poll": 7502,
+              "segment_3_body": 1705,
+              "segment_4_setup": 3,
+              "segment_4_poll": 3635
+            }
+          },
+          {
+            "divide_zero_divisor": 96,
+            "divide_nonzero_divisor": 94,
+            "divide_zero_numerator": 96,
+            "branch_taken_from_operands": 5094,
+            "branch_not_taken_from_operands": 1,
+            "retired_by_phase": {
+              "segment_4_poll": 10001,
+              "segment_4_body": 1140
+            }
+          },
+          {
+            "divide_zero_divisor": 246,
+            "divide_nonzero_divisor": 247,
+            "divide_zero_numerator": 246,
+            "branch_taken_from_operands": 3226,
+            "branch_not_taken_from_operands": 1,
+            "retired_by_phase": {
+              "segment_4_body": 2954,
+              "body_complete": 5965
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 6250,
+            "branch_not_taken_from_operands": 0,
+            "retired_by_phase": {
+              "body_complete": 12500
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 6250,
+            "branch_not_taken_from_operands": 0,
+            "retired_by_phase": {
+              "body_complete": 12500
+            }
+          }
+        ],
+        "phases": {
+          "measurement_setup": {
+            "first_retired_cycle": 0,
+            "last_retired_cycle": 0,
+            "retired": 1
+          },
+          "segment_0_setup": {
+            "first_retired_cycle": 1,
+            "last_retired_cycle": 3,
+            "retired": 3
+          },
+          "segment_0_poll": {
+            "first_retired_cycle": 4,
+            "last_retired_cycle": 10001,
+            "retired": 5000
+          },
+          "segment_0_body": {
+            "first_retired_cycle": 10002,
+            "last_retired_cycle": 10793,
+            "retired": 568
+          },
+          "segment_1_setup": {
+            "first_retired_cycle": 10794,
+            "last_retired_cycle": 10796,
+            "retired": 3
+          },
+          "segment_1_poll": {
+            "first_retired_cycle": 10797,
+            "last_retired_cycle": 30002,
+            "retired": 9604
+          },
+          "segment_1_body": {
+            "first_retired_cycle": 30003,
+            "last_retired_cycle": 32728,
+            "retired": 2047
+          },
+          "segment_2_setup": {
+            "first_retired_cycle": 32729,
+            "last_retired_cycle": 32731,
+            "retired": 3
+          },
+          "segment_2_poll": {
+            "first_retired_cycle": 32732,
+            "last_retired_cycle": 60001,
+            "retired": 13636
+          },
+          "segment_2_body": {
+            "first_retired_cycle": 60002,
+            "last_retired_cycle": 73824,
+            "retired": 3073
+          },
+          "segment_3_setup": {
+            "first_retired_cycle": 73825,
+            "last_retired_cycle": 73827,
+            "retired": 3
+          },
+          "segment_3_poll": {
+            "first_retired_cycle": 73828,
+            "last_retired_cycle": 90001,
+            "retired": 8088
+          },
+          "segment_3_body": {
+            "first_retired_cycle": 90002,
+            "last_retired_cycle": 92727,
+            "retired": 1705
+          },
+          "segment_4_setup": {
+            "first_retired_cycle": 92728,
+            "last_retired_cycle": 92730,
+            "retired": 3
+          },
+          "segment_4_poll": {
+            "first_retired_cycle": 92731,
+            "last_retired_cycle": 120000,
+            "retired": 13636
+          },
+          "segment_4_body": {
+            "first_retired_cycle": 120001,
+            "last_retired_cycle": 138074,
+            "retired": 4094
+          },
+          "body_complete": {
+            "first_retired_cycle": 138075,
+            "last_retired_cycle": 199999,
+            "retired": 30965
+          }
+        },
+        "scope": "retired PCs and source operand values; phase bounds are retirement times, not issue times or attributed stall cycles"
+      },
+      "prediction_assessment": {
+        "slot": 8,
+        "prediction": {
+          "reference_slot": 3,
+          "changed_factor": "Significantly re-weighted segments, reduced early segments' ops, and increased ops for later segments with more complex operations (divu, load, store) to shift activity towards the middle and end of the profile and smooth out the activity curve.",
+          "window_directions": [
+            0,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        "scorable": true,
+        "reason": "measured",
+        "actual_changes": [
+          {
+            "path": [
+              "segments",
+              0,
+              "body"
+            ],
+            "before": [
+              {
+                "op": "xor",
+                "a": 6,
+                "b": 1,
+                "dst": 2
+              },
+              {
+                "op": "srl",
+                "a": 2,
+                "b": 1,
+                "dst": 4
+              },
+              {
+                "op": "xor",
+                "a": 2,
+                "b": 0,
+                "dst": 6
+              },
+              {
+                "op": "mul",
+                "a": 7,
+                "b": 0,
+                "dst": 2
+              }
+            ],
+            "after": [
+              {
+                "op": "xor",
+                "a": 6,
+                "b": 1,
+                "dst": 2
+              },
+              {
+                "op": "srl",
+                "a": 2,
+                "b": 1,
+                "dst": 4
+              },
+              {
+                "op": "add",
+                "a": 2,
+                "b": 0,
+                "dst": 6
+              }
+            ]
+          },
+          {
+            "path": [
+              "segments",
+              0,
+              "release"
+            ],
+            "before": 26942,
+            "after": 10000
+          },
+          {
+            "path": [
+              "segments",
+              0,
+              "weight"
+            ],
+            "before": 600,
+            "after": 512
+          },
+          {
+            "path": [
+              "segments",
+              1,
+              "release"
+            ],
+            "before": 102374,
+            "after": 30000
+          },
+          {
+            "path": [
+              "segments",
+              1,
+              "weight"
+            ],
+            "before": 800,
+            "after": 1024
+          },
+          {
+            "path": [
+              "segments",
+              2,
+              "body"
+            ],
+            "before": [
+              {
+                "op": "load",
+                "a": 4,
+                "dst": 6
+              },
+              {
+                "op": "load",
+                "a": 1,
+                "dst": 2
+              },
+              {
+                "op": "divu",
+                "a": 6,
+                "b": 2,
+                "dst": 5
+              }
+            ],
+            "after": [
+              {
+                "op": "load",
+                "a": 4,
+                "dst": 6
+              },
+              {
+                "op": "load",
+                "a": 1,
+                "dst": 2
+              },
+              {
+                "op": "divu",
+                "a": 6,
+                "b": 2,
+                "dst": 5
+              },
+              {
+                "op": "mul",
+                "a": 5,
+                "b": 3,
+                "dst": 7
+              }
+            ]
+          },
+          {
+            "path": [
+              "segments",
+              2,
+              "release"
+            ],
+            "before": 105645,
+            "after": 60000
+          },
+          {
+            "path": [
+              "segments",
+              2,
+              "weight"
+            ],
+            "before": 400,
+            "after": 1536
+          },
+          {
+            "path": [
+              "segments",
+              3,
+              "body",
+              3
+            ],
+            "before": {
+              "op": "cmovz",
+              "a": 2,
+              "b": 0,
+              "dst": 5
+            },
+            "after": {
+              "op": "store",
+              "a": 4,
+              "b": 6
+            }
+          },
+          {
+            "path": [
+              "segments",
+              3,
+              "release"
+            ],
+            "before": 116314,
+            "after": 90000
+          },
+          {
+            "path": [
+              "segments",
+              3,
+              "weight"
+            ],
+            "before": 800,
+            "after": 1024
+          },
+          {
+            "path": [
+              "segments",
+              4,
+              "body"
+            ],
+            "before": [
+              {
+                "op": "divu",
+                "a": 3,
+                "b": 3,
+                "dst": 1
+              },
+              {
+                "op": "divu",
+                "a": 2,
+                "b": 1,
+                "dst": 1
+              },
+              {
+                "op": "divu",
+                "a": 4,
+                "b": 0,
+                "dst": 5
+              },
+              {
+                "op": "divu",
+                "a": 6,
+                "b": 6,
+                "dst": 6
+              },
+              {
+                "op": "divu",
+                "a": 7,
+                "b": 7,
+                "dst": 6
+              },
+              {
+                "op": "divu",
+                "a": 4,
+                "b": 2,
+                "dst": 6
+              },
+              {
+                "op": "divu",
+                "a": 2,
+                "b": 5,
+                "dst": 4
+              },
+              {
+                "op": "divu",
+                "a": 5,
+                "b": 2,
+                "dst": 5
+              }
+            ],
+            "after": [
+              {
+                "op": "divu",
+                "a": 6,
+                "b": 6,
+                "dst": 6
+              },
+              {
+                "op": "divu",
+                "a": 7,
+                "b": 7,
+                "dst": 6
+              },
+              {
+                "op": "load",
+                "a": 2,
+                "dst": 5
+              },
+              {
+                "op": "store",
+                "a": 5,
+                "b": 2
+              }
+            ]
+          },
+          {
+            "path": [
+              "segments",
+              4,
+              "release"
+            ],
+            "before": 158118,
+            "after": 120000
+          },
+          {
+            "path": [
+              "segments",
+              4,
+              "weight"
+            ],
+            "before": 1496,
+            "after": 2048
+          }
+        ],
+        "normalized_delta": [
+          -0.0047857356526330875,
+          0.057019634035719656,
+          -0.48490585060838637,
+          -0.03284820984148161,
+          0.1729778590278173,
+          -0.4918187733208673,
+          0.6225089589673843,
+          0.77626568500525
+        ],
+        "neutral_band": 0.01,
+        "observed_directions": [
+          0,
+          1,
+          -1,
+          -1,
+          1,
+          -1,
+          1,
+          1
+        ],
+        "matched_bins": 5,
+        "total_bins": 8,
+        "all_directions_supported": false
+      }
+    }
+  ],
+  "summary": {
+    "before_error": 0.22993934208585132,
+    "after_error": 0.211993483599712,
+    "gain": 0.017945858486139304,
+    "improved": true,
+    "already_solved": false,
+    "newly_solved": false,
+    "valid_slots": 2,
+    "requested_slots": 2
+  }
+}

@@ -1,0 +1,316 @@
+{
+  "phase": "fixed-context-development",
+  "primary": "mean next-batch best-error reduction; larger is better",
+  "arms": {
+    "flash-512": {
+      "contexts": 12,
+      "requested_slots": 24,
+      "mean_gain": 0.009307603646174402,
+      "mean_after_error": 0.3245421933601251,
+      "improved_contexts": 5,
+      "already_solved": 1,
+      "newly_solved": 1,
+      "validity": {
+        "VALID": 23,
+        "USEFUL_WORK": 1
+      },
+      "predictions": {
+        "scorable": 23,
+        "requested": 24,
+        "unscorable": {
+          "missing or malformed prediction": 1
+        },
+        "matched_bins": 73,
+        "scorable_bins": 184,
+        "always_neutral_matches": 50,
+        "largest_observed_class_count": 75,
+        "all_eight_supported": 0
+      },
+      "tokens_in": 273286,
+      "tokens_out_including_thinking": 28555,
+      "thinking_tokens": 5698,
+      "estimated_usd": 0.1533733,
+      "unknown_usage": 0,
+      "api_errors": 0,
+      "finish_reasons": {
+        "FinishReason.STOP": 12
+      },
+      "model_versions": [
+        "gemini-2.5-flash"
+      ],
+      "unknown_usage_reservation_usd": 0.0,
+      "gain_by_target": {
+        "target_0": 0.0,
+        "target_1": 0.01458031350406015,
+        "target_2": 0.016574511446406353,
+        "target_3": 0.006075589634231104
+      },
+      "gain_by_seed": {
+        "600": 0.015925544181877124,
+        "601": 0.008647608901779036,
+        "602": 0.003349657854867044
+      }
+    },
+    "flash-4096": {
+      "contexts": 12,
+      "requested_slots": 24,
+      "mean_gain": 0.03589635211271698,
+      "mean_after_error": 0.2979534448935825,
+      "improved_contexts": 6,
+      "already_solved": 1,
+      "newly_solved": 1,
+      "validity": {
+        "VALID": 24
+      },
+      "predictions": {
+        "scorable": 24,
+        "requested": 24,
+        "unscorable": {},
+        "matched_bins": 65,
+        "scorable_bins": 192,
+        "always_neutral_matches": 34,
+        "largest_observed_class_count": 92,
+        "all_eight_supported": 0
+      },
+      "tokens_in": 273286,
+      "tokens_out_including_thinking": 69121,
+      "thinking_tokens": 47976,
+      "estimated_usd": 0.2547883,
+      "unknown_usage": 0,
+      "api_errors": 0,
+      "finish_reasons": {
+        "FinishReason.STOP": 12
+      },
+      "model_versions": [
+        "gemini-2.5-flash"
+      ],
+      "unknown_usage_reservation_usd": 0.0,
+      "gain_by_target": {
+        "target_0": 0.07623636414269258,
+        "target_1": 0.02681249472292675,
+        "target_2": 0.03826947314698818,
+        "target_3": 0.0022670764382604256
+      },
+      "gain_by_seed": {
+        "600": 0.06336404505724957,
+        "601": 0.026234171033714768,
+        "602": 0.0180908402471866
+      },
+      "screen": {
+        "gain_threshold_pass": true,
+        "seed_means_improved": 3,
+        "eligible": true
+      }
+    },
+    "pro-512": {
+      "contexts": 12,
+      "requested_slots": 24,
+      "mean_gain": 0.02928805700621155,
+      "mean_after_error": 0.30456174000008795,
+      "improved_contexts": 4,
+      "already_solved": 1,
+      "newly_solved": 0,
+      "validity": {
+        "VALID": 22,
+        "USEFUL_WORK": 2
+      },
+      "predictions": {
+        "scorable": 22,
+        "requested": 24,
+        "unscorable": {
+          "candidate has no valid measurement": 2
+        },
+        "matched_bins": 47,
+        "scorable_bins": 176,
+        "always_neutral_matches": 29,
+        "largest_observed_class_count": 77,
+        "all_eight_supported": 0
+      },
+      "tokens_in": 273286,
+      "tokens_out_including_thinking": 27224,
+      "thinking_tokens": 5822,
+      "estimated_usd": 0.6138475,
+      "unknown_usage": 0,
+      "api_errors": 0,
+      "finish_reasons": {
+        "FinishReason.STOP": 12
+      },
+      "model_versions": [
+        "gemini-2.5-pro"
+      ],
+      "unknown_usage_reservation_usd": 0.0,
+      "gain_by_target": {
+        "target_0": 0.04541326452037373,
+        "target_1": 0.032966586734608595,
+        "target_2": 0.03877237676986387,
+        "target_3": 0.0
+      },
+      "gain_by_seed": {
+        "600": 0.054593114185006265,
+        "601": 0.03327105683362839,
+        "602": 0.0
+      },
+      "screen": {
+        "gain_threshold_pass": true,
+        "seed_means_improved": 2,
+        "eligible": true
+      }
+    },
+    "pro-4096": {
+      "contexts": 12,
+      "requested_slots": 24,
+      "mean_gain": 0.1423364997884879,
+      "mean_after_error": 0.1915132972178116,
+      "improved_contexts": 10,
+      "already_solved": 1,
+      "newly_solved": 4,
+      "validity": {
+        "VALID": 24
+      },
+      "predictions": {
+        "scorable": 24,
+        "requested": 24,
+        "unscorable": {},
+        "matched_bins": 90,
+        "scorable_bins": 192,
+        "always_neutral_matches": 28,
+        "largest_observed_class_count": 88,
+        "all_eight_supported": 0
+      },
+      "tokens_in": 273286,
+      "tokens_out_including_thinking": 69701,
+      "thinking_tokens": 46330,
+      "estimated_usd": 1.0386175,
+      "unknown_usage": 0,
+      "api_errors": 0,
+      "finish_reasons": {
+        "FinishReason.STOP": 12
+      },
+      "model_versions": [
+        "gemini-2.5-pro"
+      ],
+      "unknown_usage_reservation_usd": 0.0,
+      "gain_by_target": {
+        "target_0": 0.08566233222929769,
+        "target_1": 0.0881696923080665,
+        "target_2": 0.237059655108734,
+        "target_3": 0.15845431950785338
+      },
+      "gain_by_seed": {
+        "600": 0.22467291354731195,
+        "601": 0.04500342552645588,
+        "602": 0.15733316029169586
+      },
+      "screen": {
+        "gain_threshold_pass": true,
+        "seed_means_improved": 3,
+        "eligible": true
+      }
+    },
+    "random": {
+      "contexts": 12,
+      "requested_slots": 24,
+      "mean_gain": 0.026741678085847636,
+      "mean_after_error": 0.30710811892045187,
+      "improved_contexts": 6,
+      "already_solved": 1,
+      "newly_solved": 1,
+      "validity": {
+        "USEFUL_WORK": 3,
+        "VALID": 21
+      },
+      "predictions": {
+        "scorable": 0,
+        "requested": 24,
+        "unscorable": {
+          "missing or malformed prediction": 24
+        },
+        "matched_bins": 0,
+        "scorable_bins": 0,
+        "always_neutral_matches": 0,
+        "largest_observed_class_count": 0,
+        "all_eight_supported": 0
+      },
+      "tokens_in": 0,
+      "tokens_out_including_thinking": 0,
+      "thinking_tokens": 0,
+      "estimated_usd": 0.0,
+      "unknown_usage": 0,
+      "api_errors": 0,
+      "finish_reasons": {},
+      "model_versions": [],
+      "unknown_usage_reservation_usd": 0.0,
+      "gain_by_target": {
+        "target_0": 0.0,
+        "target_1": 0.036079844184043225,
+        "target_2": 0.030767928059885357,
+        "target_3": 0.04011894009946196
+      },
+      "gain_by_seed": {
+        "600": 0.036485603797310966,
+        "601": 0.029328027961946397,
+        "602": 0.014411402498285542
+      }
+    },
+    "coverage": {
+      "contexts": 12,
+      "requested_slots": 24,
+      "mean_gain": 0.017771799552057228,
+      "mean_after_error": 0.31607799745424225,
+      "improved_contexts": 4,
+      "already_solved": 1,
+      "newly_solved": 1,
+      "validity": {
+        "VALID": 23,
+        "USEFUL_WORK": 1
+      },
+      "predictions": {
+        "scorable": 0,
+        "requested": 24,
+        "unscorable": {
+          "missing or malformed prediction": 24
+        },
+        "matched_bins": 0,
+        "scorable_bins": 0,
+        "always_neutral_matches": 0,
+        "largest_observed_class_count": 0,
+        "all_eight_supported": 0
+      },
+      "tokens_in": 0,
+      "tokens_out_including_thinking": 0,
+      "thinking_tokens": 0,
+      "estimated_usd": 0.0,
+      "unknown_usage": 0,
+      "api_errors": 0,
+      "finish_reasons": {},
+      "model_versions": [],
+      "unknown_usage_reservation_usd": 0.0,
+      "gain_by_target": {
+        "target_0": 0.007778479027291081,
+        "target_1": 0.05603745595894082,
+        "target_2": 0.007271263221997004,
+        "target_3": 0.0
+      },
+      "gain_by_seed": {
+        "600": 0.042028091969205615,
+        "601": 0.0033229570277687193,
+        "602": 0.007964349659197345
+      }
+    }
+  },
+  "paired_gain_contrasts": {
+    "reasoning_on_flash": 0.026588748466542578,
+    "reasoning_on_pro": 0.11304844278227634,
+    "model_at_512": 0.019980453360037148,
+    "model_at_4096": 0.10644014767577091,
+    "interaction": 0.08645969431573376
+  },
+  "screened_candidate": "pro-4096",
+  "limits": [
+    "observed contexts, three reused seed units; no held-out inference",
+    "one next batch, not on-policy AUC or cumulative search performance",
+    "same language; no intrinsic expressiveness or gate-power claim",
+    "thought allowance is not actual reasoning use or causal understanding",
+    "screening does not authorize automatic depth or held-out runs"
+  ]
+}

@@ -3,6 +3,9 @@
 Current research extension: [staged hypothesis roadmap](RESEARCH_DIRECTIONS.md)
 and [model × reasoning fixed-context probe](IBEX_CAPABILITY_V1_PROTOCOL.md).
 These are new development stages; prior frozen studies are not being amended.
+The capability probe is [complete](IBEX_CAPABILITY_V1_RESULTS.md): Pro-4096
+passes the predeclared development screen. Next recommendation is a separately
+frozen closed-loop depth comparison; it has not been launched.
 
 The post-results [research assessment](RESEARCH_DIRECTION.md) separates
 demonstrated waveform feasibility from unproven agent superiority and proposes

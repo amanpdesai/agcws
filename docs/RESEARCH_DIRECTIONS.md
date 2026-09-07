@@ -4,6 +4,11 @@ Updated 2026-09-07. This is a living roadmap, not a retroactive revision of any
 frozen protocol. Individual executed stages have their own immutable protocol,
 source/parameter manifest and complete evidence archive.
 
+Stage A is now [complete](IBEX_CAPABILITY_V1_RESULTS.md): the fixed-context
+model/thinking probe selects Pro-4096 for further development, with mean gain
+0.14234 versus random 0.02674. It supports testing closed-loop depth next, not
+claiming full-search superiority. All later stages below remain proposals.
+
 ## 1. What the project is trying to establish
 
 The central question is whether semantic, feedback-driven workload construction

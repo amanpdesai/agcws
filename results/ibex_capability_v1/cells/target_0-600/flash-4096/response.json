@@ -1,0 +1,391 @@
+{
+  "raw_text": "{\n  \"hypothesis\": \"For candidate 1, I am refining the program from slot 6 to further reduce activity in bins 2, 4, 5, and 7 by decreasing ALU operations and divu operations in those segments, while maintaining activity in bins 0, 1, 3, and 6 by adjusting weights and instruction types. For candidate 2, I am exploring a new program structure starting from slot 2, aiming for high activity in bins 0, 1, 6, 7 and low activity in bins 2, 3, 4, 5 by strategically placing divu operations and using minimal ALU operations.\",\n  \"candidates\": [\n    {\n      \"registers\": [\n        0,\n        1,\n        2,\n        3,\n        4,\n        5,\n        6,\n        7\n      ],\n      \"memory_seed\": 123456789,\n      \"segments\": [\n        {\n          \"weight\": 1024,\n          \"release\": 20000,\n          \"body\": [\n            {\n              \"op\": \"add\",\n              \"a\": 0,\n              \"b\": 1,\n              \"dst\": 0\n            },\n            {\n              \"op\": \"sll\",\n              \"a\": 4,\n              \"b\": 1,\n              \"dst\": 4\n            }\n          ]\n        },\n        {\n          \"weight\": 1024,\n          \"release\": 40000,\n          \"body\": [\n            {\n              \"op\": \"load\",\n              \"a\": 6,\n              \"dst\": 6\n            },\n            {\n              \"op\": \"store\",\n              \"a\": 7,\n              \"b\": 0\n            },\n            {\n              \"op\": \"add\",\n              \"a\": 0,\n              \"b\": 1,\n              \"dst\": 0\n            }\n          ]\n        },\n        {\n          \"weight\": 512,\n          \"release\": 60000,\n          \"body\": [\n            {\n              \"op\": \"mul\",\n              \"a\": 1,\n              \"b\": 2,\n              \"dst\": 1\n            },\n            {\n              \"op\": \"and\",\n              \"a\": 3,\n              \"b\": 4,\n              \"dst\": 3\n            }\n          ]\n        },\n        {\n          \"weight\": 1536,\n          \"release\": 80000,\n          \"body\": [\n            {\n              \"op\": \"divu\",\n              \"a\": 7,\n              \"b\": 0,\n              \"dst\": 7\n            },\n            {\n              \"op\": \"add\",\n              \"a\": 0,\n              \"b\": 1,\n              \"dst\": 0\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"registers\": [\n        1,\n        1,\n        0,\n        17,\n        4294967295,\n        31,\n        17,\n        31\n      ],\n      \"memory_seed\": 4043725751,\n      \"segments\": [\n        {\n          \"weight\": 1024,\n          \"release\": 29922,\n          \"body\": [\n            {\n              \"op\": \"divu\",\n              \"a\": 4,\n              \"b\": 3,\n              \"dst\": 6\n            }\n          ]\n        },\n        {\n          \"weight\": 1024,\n          \"release\": 35000,\n          \"body\": [\n            {\n              \"op\": \"load\",\n              \"a\": 0,\n              \"dst\": 1\n            },\n            {\n              \"op\": \"store\",\n              \"a\": 1,\n              \"b\": 0\n            }\n          ]\n        },\n        {\n          \"weight\": 512,\n          \"release\": 40000,\n          \"body\": [\n            {\n              \"op\": \"add\",\n              \"a\": 5,\n              \"b\": 7,\n              \"dst\": 6\n            }\n          ]\n        },\n        {\n          \"weight\": 1536,\n          \"release\": 45000,\n          \"body\": [\n            {\n              \"op\": \"divu\",\n              \"a\": 2,\n              \"b\": 1,\n              \"dst\": 2\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 3,\n              \"b\": 0,\n              \"dst\": 3\n            }\n          ]\n        }\n      ]\n    }\n  ],\n  \"predictions\": [\n    {\n      \"reference_slot\": 6,\n      \"changed_factor\": \"Reduced ALU ops in segments 0 and 2, removed xor from segment 0, removed cmovz from segment 2. Increased divu weight in segment 3, removed xor from segment 3. Aiming to decrease bins 2, 4, 5, 7 and increase 0, 1, 3, 6.\",\n      \"window_directions\": [\n        1,\n        0,\n        -1,\n        1,\n        -1,\n        -1,\n        0,\n        -1\n      ]\n    },\n    {\n      \"reference_slot\": 2,\n      \"changed_factor\": \"Split original divu segment into four, added load/store and ALU operations, and specifically placed divu in segment 3 to target bins 0, 1, 6, 7 and suppress 2, 3, 4, 5.\",\n      \"window_directions\": [\n        0,\n        1,\n        -1,\n        -1,\n        -1,\n        -1,\n        1,\n        1\n      ]\n    }\n  ]\n}",
+  "tokens_in": 21497,
+  "tokens_out": 5513,
+  "thinking_tokens": 4097,
+  "usage_unknown": false,
+  "est_cost_usd": 0.0202316,
+  "finish_reasons": [
+    "FinishReason.STOP"
+  ],
+  "prompt_feedback": null,
+  "model_version": "gemini-2.5-flash",
+  "request_wall_clock_s": 20.74737646302674,
+  "long_context_tier": false,
+  "cell": {
+    "context": "target_0-600",
+    "arm": "flash-4096",
+    "seed": 17001
+  },
+  "manifest_sha256": "c3080f0a569efab9a12393fb5771d16db8fa4285cdbcebc46d6047f227388860",
+  "decoded": {
+    "response_error": null,
+    "hypothesis": "For candidate 1, I am refining the program from slot 6 to further reduce activity in bins 2, 4, 5, and 7 by decreasing ALU operations and divu operations in those segments, while maintaining activity in bins 0, 1, 3, and 6 by adjusting weights and instruction types. For candidate 2, I am exploring a new program structure starting from slot 2, aiming for high activity in bins 0, 1, 6, 7 and low activity in bins 2, 3, 4, 5 by strategically placing divu operations and using minimal ALU operations.",
+    "slots": [
+      {
+        "submitted": {
+          "registers": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "memory_seed": 123456789,
+          "segments": [
+            {
+              "weight": 1024,
+              "release": 20000,
+              "body": [
+                {
+                  "op": "add",
+                  "a": 0,
+                  "b": 1,
+                  "dst": 0
+                },
+                {
+                  "op": "sll",
+                  "a": 4,
+                  "b": 1,
+                  "dst": 4
+                }
+              ]
+            },
+            {
+              "weight": 1024,
+              "release": 40000,
+              "body": [
+                {
+                  "op": "load",
+                  "a": 6,
+                  "dst": 6
+                },
+                {
+                  "op": "store",
+                  "a": 7,
+                  "b": 0
+                },
+                {
+                  "op": "add",
+                  "a": 0,
+                  "b": 1,
+                  "dst": 0
+                }
+              ]
+            },
+            {
+              "weight": 512,
+              "release": 60000,
+              "body": [
+                {
+                  "op": "mul",
+                  "a": 1,
+                  "b": 2,
+                  "dst": 1
+                },
+                {
+                  "op": "and",
+                  "a": 3,
+                  "b": 4,
+                  "dst": 3
+                }
+              ]
+            },
+            {
+              "weight": 1536,
+              "release": 80000,
+              "body": [
+                {
+                  "op": "divu",
+                  "a": 7,
+                  "b": 0,
+                  "dst": 7
+                },
+                {
+                  "op": "add",
+                  "a": 0,
+                  "b": 1,
+                  "dst": 0
+                }
+              ]
+            }
+          ]
+        },
+        "canonical": {
+          "registers": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "memory_seed": 123456789,
+          "segments": [
+            {
+              "weight": 1024,
+              "release": 20000,
+              "body": [
+                {
+                  "op": "add",
+                  "a": 0,
+                  "b": 1,
+                  "dst": 0
+                },
+                {
+                  "op": "sll",
+                  "a": 4,
+                  "b": 1,
+                  "dst": 4
+                }
+              ]
+            },
+            {
+              "weight": 1024,
+              "release": 40000,
+              "body": [
+                {
+                  "op": "load",
+                  "a": 6,
+                  "dst": 6
+                },
+                {
+                  "op": "store",
+                  "a": 7,
+                  "b": 0
+                },
+                {
+                  "op": "add",
+                  "a": 0,
+                  "b": 1,
+                  "dst": 0
+                }
+              ]
+            },
+            {
+              "weight": 512,
+              "release": 60000,
+              "body": [
+                {
+                  "op": "mul",
+                  "a": 1,
+                  "b": 2,
+                  "dst": 1
+                },
+                {
+                  "op": "and",
+                  "a": 3,
+                  "b": 4,
+                  "dst": 3
+                }
+              ]
+            },
+            {
+              "weight": 1536,
+              "release": 80000,
+              "body": [
+                {
+                  "op": "divu",
+                  "a": 7,
+                  "b": 0,
+                  "dst": 7
+                },
+                {
+                  "op": "add",
+                  "a": 0,
+                  "b": 1,
+                  "dst": 0
+                }
+              ]
+            }
+          ]
+        },
+        "program_error": null,
+        "prediction": {
+          "reference_slot": 6,
+          "changed_factor": "Reduced ALU ops in segments 0 and 2, removed xor from segment 0, removed cmovz from segment 2. Increased divu weight in segment 3, removed xor from segment 3. Aiming to decrease bins 2, 4, 5, 7 and increase 0, 1, 3, 6.",
+          "window_directions": [
+            1,
+            0,
+            -1,
+            1,
+            -1,
+            -1,
+            0,
+            -1
+          ]
+        },
+        "prediction_error": null
+      },
+      {
+        "submitted": {
+          "registers": [
+            1,
+            1,
+            0,
+            17,
+            4294967295,
+            31,
+            17,
+            31
+          ],
+          "memory_seed": 4043725751,
+          "segments": [
+            {
+              "weight": 1024,
+              "release": 29922,
+              "body": [
+                {
+                  "op": "divu",
+                  "a": 4,
+                  "b": 3,
+                  "dst": 6
+                }
+              ]
+            },
+            {
+              "weight": 1024,
+              "release": 35000,
+              "body": [
+                {
+                  "op": "load",
+                  "a": 0,
+                  "dst": 1
+                },
+                {
+                  "op": "store",
+                  "a": 1,
+                  "b": 0
+                }
+              ]
+            },
+            {
+              "weight": 512,
+              "release": 40000,
+              "body": [
+                {
+                  "op": "add",
+                  "a": 5,
+                  "b": 7,
+                  "dst": 6
+                }
+              ]
+            },
+            {
+              "weight": 1536,
+              "release": 45000,
+              "body": [
+                {
+                  "op": "divu",
+                  "a": 2,
+                  "b": 1,
+                  "dst": 2
+                },
+                {
+                  "op": "divu",
+                  "a": 3,
+                  "b": 0,
+                  "dst": 3
+                }
+              ]
+            }
+          ]
+        },
+        "canonical": {
+          "registers": [
+            1,
+            1,
+            0,
+            17,
+            4294967295,
+            31,
+            17,
+            31
+          ],
+          "memory_seed": 4043725751,
+          "segments": [
+            {
+              "weight": 1024,
+              "release": 29922,
+              "body": [
+                {
+                  "op": "divu",
+                  "a": 4,
+                  "b": 3,
+                  "dst": 6
+                }
+              ]
+            },
+            {
+              "weight": 1024,
+              "release": 35000,
+              "body": [
+                {
+                  "op": "load",
+                  "a": 0,
+                  "dst": 1
+                },
+                {
+                  "op": "store",
+                  "a": 1,
+                  "b": 0
+                }
+              ]
+            },
+            {
+              "weight": 512,
+              "release": 40000,
+              "body": [
+                {
+                  "op": "add",
+                  "a": 5,
+                  "b": 7,
+                  "dst": 6
+                }
+              ]
+            },
+            {
+              "weight": 1536,
+              "release": 45000,
+              "body": [
+                {
+                  "op": "divu",
+                  "a": 2,
+                  "b": 1,
+                  "dst": 2
+                },
+                {
+                  "op": "divu",
+                  "a": 3,
+                  "b": 0,
+                  "dst": 3
+                }
+              ]
+            }
+          ]
+        },
+        "program_error": null,
+        "prediction": {
+          "reference_slot": 2,
+          "changed_factor": "Split original divu segment into four, added load/store and ALU operations, and specifically placed divu in segment 3 to target bins 0, 1, 6, 7 and suppress 2, 3, 4, 5.",
+          "window_directions": [
+            0,
+            1,
+            -1,
+            -1,
+            -1,
+            -1,
+            1,
+            1
+          ]
+        },
+        "prediction_error": null
+      }
+    ]
+  }
+}

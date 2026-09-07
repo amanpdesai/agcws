@@ -1,0 +1,1289 @@
+{
+  "cell": {
+    "context": "target_2-601",
+    "arm": "coverage",
+    "seed": 17705
+  },
+  "trials": [
+    {
+      "slot": 7,
+      "program": {
+        "registers": [
+          0,
+          4294967295,
+          31,
+          31,
+          17,
+          17,
+          31,
+          0
+        ],
+        "memory_seed": 3512990835,
+        "segments": [
+          {
+            "release": 35167,
+            "body": [
+              {
+                "op": "mul",
+                "dst": 1,
+                "a": 2,
+                "b": 4
+              },
+              {
+                "op": "mul",
+                "dst": 0,
+                "a": 5,
+                "b": 2
+              },
+              {
+                "op": "mul",
+                "dst": 4,
+                "a": 0,
+                "b": 3
+              },
+              {
+                "op": "mul",
+                "dst": 2,
+                "a": 3,
+                "b": 6
+              }
+            ],
+            "weight": 200
+          },
+          {
+            "release": 106915,
+            "body": [
+              {
+                "op": "cmovz",
+                "dst": 5,
+                "a": 4,
+                "b": 1
+              },
+              {
+                "op": "cmovz",
+                "dst": 6,
+                "a": 7,
+                "b": 0
+              }
+            ],
+            "weight": 832
+          },
+          {
+            "release": 122338,
+            "body": [
+              {
+                "op": "mul",
+                "dst": 3,
+                "a": 0,
+                "b": 2
+              }
+            ],
+            "weight": 984
+          },
+          {
+            "release": 149804,
+            "body": [
+              {
+                "op": "cmovz",
+                "dst": 7,
+                "a": 7,
+                "b": 0
+              },
+              {
+                "op": "cmovz",
+                "dst": 7,
+                "a": 5,
+                "b": 1
+              },
+              {
+                "op": "cmovz",
+                "dst": 3,
+                "a": 3,
+                "b": 0
+              },
+              {
+                "op": "cmovz",
+                "dst": 7,
+                "a": 7,
+                "b": 0
+              }
+            ],
+            "weight": 424
+          },
+          {
+            "release": 158773,
+            "body": [
+              {
+                "op": "store",
+                "a": 0,
+                "b": 1
+              },
+              {
+                "op": "store",
+                "a": 5,
+                "b": 0
+              }
+            ],
+            "weight": 264
+          },
+          {
+            "release": 169595,
+            "body": [
+              {
+                "op": "srl",
+                "dst": 1,
+                "a": 6,
+                "b": 5
+              },
+              {
+                "op": "xor",
+                "dst": 3,
+                "a": 3,
+                "b": 4
+              },
+              {
+                "op": "sll",
+                "dst": 1,
+                "a": 6,
+                "b": 3
+              },
+              {
+                "op": "and",
+                "dst": 1,
+                "a": 7,
+                "b": 4
+              }
+            ],
+            "weight": 1392
+          }
+        ]
+      },
+      "canonical_program": {
+        "registers": [
+          0,
+          4294967295,
+          31,
+          31,
+          17,
+          17,
+          31,
+          0
+        ],
+        "memory_seed": 3512990835,
+        "segments": [
+          {
+            "release": 35167,
+            "body": [
+              {
+                "op": "mul",
+                "dst": 1,
+                "a": 2,
+                "b": 4
+              },
+              {
+                "op": "mul",
+                "dst": 0,
+                "a": 5,
+                "b": 2
+              },
+              {
+                "op": "mul",
+                "dst": 4,
+                "a": 0,
+                "b": 3
+              },
+              {
+                "op": "mul",
+                "dst": 2,
+                "a": 3,
+                "b": 6
+              }
+            ],
+            "weight": 200
+          },
+          {
+            "release": 106915,
+            "body": [
+              {
+                "op": "cmovz",
+                "dst": 5,
+                "a": 4,
+                "b": 1
+              },
+              {
+                "op": "cmovz",
+                "dst": 6,
+                "a": 7,
+                "b": 0
+              }
+            ],
+            "weight": 832
+          },
+          {
+            "release": 122338,
+            "body": [
+              {
+                "op": "mul",
+                "dst": 3,
+                "a": 0,
+                "b": 2
+              }
+            ],
+            "weight": 984
+          },
+          {
+            "release": 149804,
+            "body": [
+              {
+                "op": "cmovz",
+                "dst": 7,
+                "a": 7,
+                "b": 0
+              },
+              {
+                "op": "cmovz",
+                "dst": 7,
+                "a": 5,
+                "b": 1
+              },
+              {
+                "op": "cmovz",
+                "dst": 3,
+                "a": 3,
+                "b": 0
+              },
+              {
+                "op": "cmovz",
+                "dst": 7,
+                "a": 7,
+                "b": 0
+              }
+            ],
+            "weight": 424
+          },
+          {
+            "release": 158773,
+            "body": [
+              {
+                "op": "store",
+                "a": 0,
+                "b": 1
+              },
+              {
+                "op": "store",
+                "a": 5,
+                "b": 0
+              }
+            ],
+            "weight": 264
+          },
+          {
+            "release": 169595,
+            "body": [
+              {
+                "op": "srl",
+                "dst": 1,
+                "a": 6,
+                "b": 5
+              },
+              {
+                "op": "xor",
+                "dst": 3,
+                "a": 3,
+                "b": 4
+              },
+              {
+                "op": "sll",
+                "dst": 1,
+                "a": 6,
+                "b": 3
+              },
+              {
+                "op": "and",
+                "dst": 1,
+                "a": 7,
+                "b": 4
+              }
+            ],
+            "weight": 1392
+          }
+        ]
+      },
+      "prediction": null,
+      "prediction_error": null,
+      "rates": [
+        731.7824,
+        728.8312,
+        727.46632,
+        735.14084,
+        730.77884,
+        724.82676,
+        734.32044,
+        737.76208
+      ],
+      "loss": 0.4739917280830714,
+      "cache_hit": false,
+      "valid": true,
+      "stage": null,
+      "reason": "",
+      "schema_path": null,
+      "cache_id": "5eb74ddc881eaa19684e3874bd9605a7b01fab0829ddd88e696ba8bc267480ac",
+      "feedback": {
+        "begin_tick": 286,
+        "end_tick": 400286,
+        "cycles_per_bin": 25000,
+        "retired_classes": [
+          {
+            "alu": 4,
+            "multiply": 0,
+            "divide": 0,
+            "load": 0,
+            "store": 0,
+            "branch": 6249,
+            "jump": 0,
+            "csr": 6249,
+            "other": 0
+          },
+          {
+            "alu": 54,
+            "multiply": 200,
+            "divide": 0,
+            "load": 0,
+            "store": 0,
+            "branch": 6100,
+            "jump": 0,
+            "csr": 6050,
+            "other": 0
+          },
+          {
+            "alu": 0,
+            "multiply": 0,
+            "divide": 0,
+            "load": 0,
+            "store": 0,
+            "branch": 6250,
+            "jump": 0,
+            "csr": 6250,
+            "other": 0
+          },
+          {
+            "alu": 0,
+            "multiply": 0,
+            "divide": 0,
+            "load": 0,
+            "store": 0,
+            "branch": 6250,
+            "jump": 0,
+            "csr": 6250,
+            "other": 0
+          },
+          {
+            "alu": 1217,
+            "multiply": 380,
+            "divide": 0,
+            "load": 0,
+            "store": 0,
+            "branch": 6277,
+            "jump": 0,
+            "csr": 4650,
+            "other": 0
+          },
+          {
+            "alu": 621,
+            "multiply": 604,
+            "divide": 0,
+            "load": 0,
+            "store": 0,
+            "branch": 5810,
+            "jump": 0,
+            "csr": 5144,
+            "other": 0
+          },
+          {
+            "alu": 2770,
+            "multiply": 0,
+            "divide": 0,
+            "load": 0,
+            "store": 264,
+            "branch": 5665,
+            "jump": 0,
+            "csr": 4716,
+            "other": 0
+          },
+          {
+            "alu": 0,
+            "multiply": 0,
+            "divide": 0,
+            "load": 0,
+            "store": 0,
+            "branch": 6250,
+            "jump": 0,
+            "csr": 6250,
+            "other": 0
+          }
+        ],
+        "retired_per_bin": [
+          12502,
+          12404,
+          12500,
+          12500,
+          12524,
+          12179,
+          13415,
+          12500
+        ],
+        "cycles_without_retirement": [
+          12498,
+          12596,
+          12500,
+          12500,
+          12476,
+          12821,
+          11585,
+          12500
+        ],
+        "interpretation": "includes polling/control overhead; gaps are not attributed stall causes",
+        "body_completion_cycles": 172380,
+        "body_overrun_cycles": 0,
+        "body_completed_before_deadline": true,
+        "deadline_margin_cycles": 27620,
+        "allocation": [
+          200,
+          832,
+          984,
+          424,
+          264,
+          1392
+        ],
+        "trace_file": "trace_core_00000000.log"
+      },
+      "execution": {
+        "begin_tick": 286,
+        "end_tick": 400286,
+        "bins": [
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 6249,
+            "branch_not_taken_from_operands": 0,
+            "retired_by_phase": {
+              "measurement_setup": 1,
+              "segment_0_setup": 3,
+              "segment_0_poll": 12498
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 6098,
+            "branch_not_taken_from_operands": 2,
+            "retired_by_phase": {
+              "segment_0_poll": 5086,
+              "segment_0_body": 301,
+              "segment_1_setup": 3,
+              "segment_1_poll": 7014
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 6250,
+            "branch_not_taken_from_operands": 0,
+            "retired_by_phase": {
+              "segment_1_poll": 12500
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 6250,
+            "branch_not_taken_from_operands": 0,
+            "retired_by_phase": {
+              "segment_1_poll": 12500
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 5858,
+            "branch_not_taken_from_operands": 419,
+            "retired_by_phase": {
+              "segment_1_poll": 3460,
+              "segment_1_body": 2081,
+              "segment_2_setup": 3,
+              "segment_2_poll": 5840,
+              "segment_2_body": 1140
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 5807,
+            "branch_not_taken_from_operands": 3,
+            "retired_by_phase": {
+              "segment_2_body": 1813,
+              "segment_3_setup": 3,
+              "segment_3_poll": 10288,
+              "segment_3_body": 75
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 5660,
+            "branch_not_taken_from_operands": 5,
+            "retired_by_phase": {
+              "segment_3_body": 563,
+              "segment_4_setup": 3,
+              "segment_4_poll": 3638,
+              "segment_4_body": 1321,
+              "segment_5_setup": 3,
+              "segment_5_poll": 4486,
+              "segment_5_body": 2089,
+              "body_complete": 1312
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 6250,
+            "branch_not_taken_from_operands": 0,
+            "retired_by_phase": {
+              "body_complete": 12500
+            }
+          }
+        ],
+        "phases": {
+          "measurement_setup": {
+            "first_retired_cycle": 0,
+            "last_retired_cycle": 0,
+            "retired": 1
+          },
+          "segment_0_setup": {
+            "first_retired_cycle": 1,
+            "last_retired_cycle": 3,
+            "retired": 3
+          },
+          "segment_0_poll": {
+            "first_retired_cycle": 4,
+            "last_retired_cycle": 35169,
+            "retired": 17584
+          },
+          "segment_0_body": {
+            "first_retired_cycle": 35170,
+            "last_retired_cycle": 35968,
+            "retired": 301
+          },
+          "segment_1_setup": {
+            "first_retired_cycle": 35969,
+            "last_retired_cycle": 35971,
+            "retired": 3
+          },
+          "segment_1_poll": {
+            "first_retired_cycle": 35972,
+            "last_retired_cycle": 106917,
+            "retired": 35474
+          },
+          "segment_1_body": {
+            "first_retired_cycle": 106918,
+            "last_retired_cycle": 110660,
+            "retired": 2081
+          },
+          "segment_2_setup": {
+            "first_retired_cycle": 110661,
+            "last_retired_cycle": 110663,
+            "retired": 3
+          },
+          "segment_2_poll": {
+            "first_retired_cycle": 110664,
+            "last_retired_cycle": 122341,
+            "retired": 5840
+          },
+          "segment_2_body": {
+            "first_retired_cycle": 122342,
+            "last_retired_cycle": 129228,
+            "retired": 2953
+          },
+          "segment_3_setup": {
+            "first_retired_cycle": 129229,
+            "last_retired_cycle": 129231,
+            "retired": 3
+          },
+          "segment_3_poll": {
+            "first_retired_cycle": 129232,
+            "last_retired_cycle": 149805,
+            "retired": 10288
+          },
+          "segment_3_body": {
+            "first_retired_cycle": 149806,
+            "last_retired_cycle": 151499,
+            "retired": 638
+          },
+          "segment_4_setup": {
+            "first_retired_cycle": 151500,
+            "last_retired_cycle": 151502,
+            "retired": 3
+          },
+          "segment_4_poll": {
+            "first_retired_cycle": 151503,
+            "last_retired_cycle": 158776,
+            "retired": 3638
+          },
+          "segment_4_body": {
+            "first_retired_cycle": 158777,
+            "last_retired_cycle": 160623,
+            "retired": 1321
+          },
+          "segment_5_setup": {
+            "first_retired_cycle": 160624,
+            "last_retired_cycle": 160626,
+            "retired": 3
+          },
+          "segment_5_poll": {
+            "first_retired_cycle": 160627,
+            "last_retired_cycle": 169596,
+            "retired": 4486
+          },
+          "segment_5_body": {
+            "first_retired_cycle": 169597,
+            "last_retired_cycle": 172379,
+            "retired": 2089
+          },
+          "body_complete": {
+            "first_retired_cycle": 172380,
+            "last_retired_cycle": 199998,
+            "retired": 13812
+          }
+        },
+        "scope": "retired PCs and source operand values; phase bounds are retirement times, not issue times or attributed stall cycles"
+      },
+      "prediction_assessment": {
+        "slot": 7,
+        "prediction": null,
+        "scorable": false,
+        "reason": "missing or malformed prediction",
+        "actual_changes": null
+      }
+    },
+    {
+      "slot": 8,
+      "program": {
+        "registers": [
+          1,
+          1,
+          17,
+          4294967295,
+          1076035761,
+          4294967295,
+          1,
+          4294967295
+        ],
+        "memory_seed": 1000000000,
+        "segments": [
+          {
+            "weight": 1000,
+            "release": 10000,
+            "body": [
+              {
+                "op": "add",
+                "a": 0,
+                "b": 1,
+                "dst": 0
+              },
+              {
+                "op": "xor",
+                "a": 2,
+                "b": 3,
+                "dst": 2
+              },
+              {
+                "op": "load",
+                "a": 4,
+                "dst": 5
+              },
+              {
+                "op": "store",
+                "a": 6,
+                "b": 7
+              }
+            ]
+          },
+          {
+            "weight": 1400,
+            "release": 20000,
+            "body": [
+              {
+                "op": "cmovz",
+                "a": 0,
+                "b": 1,
+                "dst": 0
+              },
+              {
+                "op": "mul",
+                "a": 2,
+                "b": 3,
+                "dst": 2
+              },
+              {
+                "op": "xor",
+                "dst": 6,
+                "a": 6,
+                "b": 1
+              },
+              {
+                "op": "sll",
+                "a": 4,
+                "b": 1,
+                "dst": 4
+              },
+              {
+                "op": "srl",
+                "a": 5,
+                "b": 1,
+                "dst": 5
+              }
+            ]
+          },
+          {
+            "weight": 600,
+            "release": 30000,
+            "body": [
+              {
+                "op": "divu",
+                "a": 0,
+                "b": 7,
+                "dst": 0
+              },
+              {
+                "op": "cmovz",
+                "a": 1,
+                "b": 0,
+                "dst": 1
+              },
+              {
+                "op": "load",
+                "a": 2,
+                "dst": 3
+              },
+              {
+                "op": "store",
+                "a": 4,
+                "b": 5
+              }
+            ]
+          },
+          {
+            "weight": 1096,
+            "release": 40000,
+            "body": [
+              {
+                "op": "add",
+                "a": 6,
+                "b": 7,
+                "dst": 6
+              },
+              {
+                "op": "or",
+                "a": 0,
+                "b": 1,
+                "dst": 0
+              },
+              {
+                "op": "cmovz",
+                "a": 2,
+                "b": 3,
+                "dst": 2
+              },
+              {
+                "op": "mul",
+                "a": 4,
+                "b": 5,
+                "dst": 4
+              }
+            ]
+          }
+        ]
+      },
+      "canonical_program": {
+        "registers": [
+          1,
+          1,
+          17,
+          4294967295,
+          1076035761,
+          4294967295,
+          1,
+          4294967295
+        ],
+        "memory_seed": 1000000000,
+        "segments": [
+          {
+            "weight": 1000,
+            "release": 10000,
+            "body": [
+              {
+                "op": "add",
+                "a": 0,
+                "b": 1,
+                "dst": 0
+              },
+              {
+                "op": "xor",
+                "a": 2,
+                "b": 3,
+                "dst": 2
+              },
+              {
+                "op": "load",
+                "a": 4,
+                "dst": 5
+              },
+              {
+                "op": "store",
+                "a": 6,
+                "b": 7
+              }
+            ]
+          },
+          {
+            "weight": 1400,
+            "release": 20000,
+            "body": [
+              {
+                "op": "cmovz",
+                "a": 0,
+                "b": 1,
+                "dst": 0
+              },
+              {
+                "op": "mul",
+                "a": 2,
+                "b": 3,
+                "dst": 2
+              },
+              {
+                "op": "xor",
+                "dst": 6,
+                "a": 6,
+                "b": 1
+              },
+              {
+                "op": "sll",
+                "a": 4,
+                "b": 1,
+                "dst": 4
+              },
+              {
+                "op": "srl",
+                "a": 5,
+                "b": 1,
+                "dst": 5
+              }
+            ]
+          },
+          {
+            "weight": 600,
+            "release": 30000,
+            "body": [
+              {
+                "op": "divu",
+                "a": 0,
+                "b": 7,
+                "dst": 0
+              },
+              {
+                "op": "cmovz",
+                "a": 1,
+                "b": 0,
+                "dst": 1
+              },
+              {
+                "op": "load",
+                "a": 2,
+                "dst": 3
+              },
+              {
+                "op": "store",
+                "a": 4,
+                "b": 5
+              }
+            ]
+          },
+          {
+            "weight": 1096,
+            "release": 40000,
+            "body": [
+              {
+                "op": "add",
+                "a": 6,
+                "b": 7,
+                "dst": 6
+              },
+              {
+                "op": "or",
+                "a": 0,
+                "b": 1,
+                "dst": 0
+              },
+              {
+                "op": "cmovz",
+                "a": 2,
+                "b": 3,
+                "dst": 2
+              },
+              {
+                "op": "mul",
+                "a": 4,
+                "b": 5,
+                "dst": 4
+              }
+            ]
+          }
+        ]
+      },
+      "prediction": null,
+      "prediction_error": null,
+      "rates": [
+        703.65284,
+        562.60168,
+        739.42028,
+        738.96168,
+        749.51192,
+        742.64752,
+        750.02008,
+        765.3392
+      ],
+      "loss": 0.4956976599373839,
+      "cache_hit": false,
+      "valid": true,
+      "stage": null,
+      "reason": "",
+      "schema_path": null,
+      "cache_id": "b8ae9495e7665be1617d9b51a1e26245bc7e8f60d67b0503481d32f295ce258c",
+      "feedback": {
+        "begin_tick": 288,
+        "end_tick": 400288,
+        "cycles_per_bin": 25000,
+        "retired_classes": [
+          {
+            "alu": 3382,
+            "multiply": 280,
+            "divide": 0,
+            "load": 250,
+            "store": 250,
+            "branch": 5149,
+            "jump": 0,
+            "csr": 4339,
+            "other": 0
+          },
+          {
+            "alu": 1881,
+            "multiply": 274,
+            "divide": 150,
+            "load": 150,
+            "store": 150,
+            "branch": 4251,
+            "jump": 0,
+            "csr": 3403,
+            "other": 0
+          },
+          {
+            "alu": 0,
+            "multiply": 0,
+            "divide": 0,
+            "load": 0,
+            "store": 0,
+            "branch": 6250,
+            "jump": 0,
+            "csr": 6250,
+            "other": 0
+          },
+          {
+            "alu": 0,
+            "multiply": 0,
+            "divide": 0,
+            "load": 0,
+            "store": 0,
+            "branch": 6250,
+            "jump": 0,
+            "csr": 6250,
+            "other": 0
+          },
+          {
+            "alu": 0,
+            "multiply": 0,
+            "divide": 0,
+            "load": 0,
+            "store": 0,
+            "branch": 6250,
+            "jump": 0,
+            "csr": 6250,
+            "other": 0
+          },
+          {
+            "alu": 0,
+            "multiply": 0,
+            "divide": 0,
+            "load": 0,
+            "store": 0,
+            "branch": 6250,
+            "jump": 0,
+            "csr": 6250,
+            "other": 0
+          },
+          {
+            "alu": 0,
+            "multiply": 0,
+            "divide": 0,
+            "load": 0,
+            "store": 0,
+            "branch": 6250,
+            "jump": 0,
+            "csr": 6250,
+            "other": 0
+          },
+          {
+            "alu": 0,
+            "multiply": 0,
+            "divide": 0,
+            "load": 0,
+            "store": 0,
+            "branch": 6250,
+            "jump": 0,
+            "csr": 6250,
+            "other": 0
+          }
+        ],
+        "retired_per_bin": [
+          13650,
+          10259,
+          12500,
+          12500,
+          12500,
+          12500,
+          12500,
+          12500
+        ],
+        "cycles_without_retirement": [
+          11350,
+          14741,
+          12500,
+          12500,
+          12500,
+          12500,
+          12500,
+          12500
+        ],
+        "interpretation": "includes polling/control overhead; gaps are not attributed stall causes",
+        "body_completion_cycles": 43289,
+        "body_overrun_cycles": 0,
+        "body_completed_before_deadline": true,
+        "deadline_margin_cycles": 156711,
+        "allocation": [
+          1000,
+          1400,
+          600,
+          1096
+        ],
+        "trace_file": "trace_core_00000000.log"
+      },
+      "execution": {
+        "begin_tick": 288,
+        "end_tick": 400288,
+        "bins": [
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 5145,
+            "branch_not_taken_from_operands": 4,
+            "retired_by_phase": {
+              "measurement_setup": 1,
+              "segment_0_setup": 3,
+              "segment_0_poll": 5000,
+              "segment_0_body": 3001,
+              "segment_1_setup": 3,
+              "segment_1_poll": 3000,
+              "segment_1_body": 1961,
+              "segment_2_setup": 3,
+              "segment_2_poll": 678
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 150,
+            "divide_zero_numerator": 149,
+            "branch_taken_from_operands": 4247,
+            "branch_not_taken_from_operands": 4,
+            "retired_by_phase": {
+              "segment_2_poll": 2502,
+              "segment_2_body": 1801,
+              "segment_3_setup": 3,
+              "segment_3_poll": 950,
+              "segment_3_body": 1645,
+              "body_complete": 3358
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 6250,
+            "branch_not_taken_from_operands": 0,
+            "retired_by_phase": {
+              "body_complete": 12500
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 6250,
+            "branch_not_taken_from_operands": 0,
+            "retired_by_phase": {
+              "body_complete": 12500
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 6250,
+            "branch_not_taken_from_operands": 0,
+            "retired_by_phase": {
+              "body_complete": 12500
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 6250,
+            "branch_not_taken_from_operands": 0,
+            "retired_by_phase": {
+              "body_complete": 12500
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 6250,
+            "branch_not_taken_from_operands": 0,
+            "retired_by_phase": {
+              "body_complete": 12500
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 6250,
+            "branch_not_taken_from_operands": 0,
+            "retired_by_phase": {
+              "body_complete": 12500
+            }
+          }
+        ],
+        "phases": {
+          "measurement_setup": {
+            "first_retired_cycle": 0,
+            "last_retired_cycle": 0,
+            "retired": 1
+          },
+          "segment_0_setup": {
+            "first_retired_cycle": 1,
+            "last_retired_cycle": 3,
+            "retired": 3
+          },
+          "segment_0_poll": {
+            "first_retired_cycle": 4,
+            "last_retired_cycle": 10001,
+            "retired": 5000
+          },
+          "segment_0_body": {
+            "first_retired_cycle": 10002,
+            "last_retired_cycle": 14000,
+            "retired": 3001
+          },
+          "segment_1_setup": {
+            "first_retired_cycle": 14001,
+            "last_retired_cycle": 14003,
+            "retired": 3
+          },
+          "segment_1_poll": {
+            "first_retired_cycle": 14004,
+            "last_retired_cycle": 20001,
+            "retired": 3000
+          },
+          "segment_1_body": {
+            "first_retired_cycle": 20002,
+            "last_retired_cycle": 23640,
+            "retired": 1961
+          },
+          "segment_2_setup": {
+            "first_retired_cycle": 23641,
+            "last_retired_cycle": 23643,
+            "retired": 3
+          },
+          "segment_2_poll": {
+            "first_retired_cycle": 23644,
+            "last_retired_cycle": 30001,
+            "retired": 3180
+          },
+          "segment_2_body": {
+            "first_retired_cycle": 30002,
+            "last_retired_cycle": 38100,
+            "retired": 1801
+          },
+          "segment_3_setup": {
+            "first_retired_cycle": 38101,
+            "last_retired_cycle": 38103,
+            "retired": 3
+          },
+          "segment_3_poll": {
+            "first_retired_cycle": 38104,
+            "last_retired_cycle": 40001,
+            "retired": 950
+          },
+          "segment_3_body": {
+            "first_retired_cycle": 40002,
+            "last_retired_cycle": 43288,
+            "retired": 1645
+          },
+          "body_complete": {
+            "first_retired_cycle": 43289,
+            "last_retired_cycle": 199999,
+            "retired": 78358
+          }
+        },
+        "scope": "retired PCs and source operand values; phase bounds are retirement times, not issue times or attributed stall cycles"
+      },
+      "prediction_assessment": {
+        "slot": 8,
+        "prediction": null,
+        "scorable": false,
+        "reason": "missing or malformed prediction",
+        "actual_changes": null
+      }
+    }
+  ],
+  "summary": {
+    "before_error": 0.48728355619414626,
+    "after_error": 0.4739917280830714,
+    "gain": 0.013291828111074877,
+    "improved": true,
+    "already_solved": false,
+    "newly_solved": false,
+    "valid_slots": 2,
+    "requested_slots": 2
+  }
+}

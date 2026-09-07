@@ -1,0 +1,535 @@
+{
+  "raw_text": "{\n  \"hypothesis\": \"The primary challenge is drastically reducing activity in bin 6 while maintaining or increasing it in all other bins. Previous attempts to lower bin 6 activity by shifting work away from it (slot 3) or introducing different instruction mixes (slot 5) were insufficient. The goal profile's extremely low bin 6 suggests a need for a period of very low-activity work, such as a tight loop with minimal data changes, to fall within that measurement window. My strategy is to use the `release` parameter to schedule a low-activity segment specifically into the time window corresponding to bin 6 (approximately 125000-150000 cycles), while ensuring the other segments with high-activity instructions (divu, mul, sll) execute in the other bins.\",\n  \"candidates\": [\n    {\n      \"registers\": [\n        1,\n        1,\n        17,\n        4294967295,\n        1076035761,\n        4294967295,\n        1,\n        4294967295\n      ],\n      \"memory_seed\": 999465599,\n      \"segments\": [\n        {\n          \"weight\": 1400,\n          \"release\": 9500,\n          \"body\": [\n            {\n              \"op\": \"divu\",\n              \"a\": 4,\n              \"b\": 6,\n              \"dst\": 5\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 6,\n              \"b\": 3,\n              \"dst\": 0\n            },\n            {\n              \"op\": \"load\",\n              \"a\": 0,\n              \"dst\": 0\n            },\n            {\n              \"op\": \"srl\",\n              \"a\": 4,\n              \"b\": 7,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"mul\",\n              \"a\": 1,\n              \"b\": 6,\n              \"dst\": 1\n            }\n          ]\n        },\n        {\n          \"weight\": 1200,\n          \"release\": 40000,\n          \"body\": [\n            {\n              \"op\": \"load\",\n              \"a\": 5,\n              \"dst\": 0\n            },\n            {\n              \"op\": \"xor\",\n              \"a\": 0,\n              \"b\": 3,\n              \"dst\": 4\n            },\n            {\n              \"op\": \"srl\",\n              \"a\": 4,\n              \"b\": 5,\n              \"dst\": 4\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 7,\n              \"b\": 7,\n              \"dst\": 7\n            }\n          ]\n        },\n        {\n          \"weight\": 1400,\n          \"release\": 75000,\n          \"body\": [\n            {\n              \"op\": \"sll\",\n              \"a\": 2,\n              \"b\": 1,\n              \"dst\": 2\n            },\n            {\n              \"op\": \"mul\",\n              \"a\": 5,\n              \"b\": 2,\n              \"dst\": 1\n            },\n            {\n              \"op\": \"xor\",\n              \"a\": 3,\n              \"b\": 5,\n              \"dst\": 1\n            },\n            {\n              \"op\": \"cmovz\",\n              \"a\": 7,\n              \"b\": 6,\n              \"dst\": 3\n            }\n          ]\n        },\n        {\n          \"weight\": 96,\n          \"release\": 130000,\n          \"body\": [\n            {\n              \"op\": \"add\",\n              \"a\": 7,\n              \"b\": 7,\n              \"dst\": 7\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"registers\": [\n        1,\n        1,\n        17,\n        4294967295,\n        1076035761,\n        4294967295,\n        1,\n        4294967295\n      ],\n      \"memory_seed\": 999465599,\n      \"segments\": [\n        {\n          \"weight\": 1200,\n          \"release\": 10000,\n          \"body\": [\n            {\n              \"op\": \"divu\",\n              \"a\": 4,\n              \"b\": 6,\n              \"dst\": 5\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 6,\n              \"b\": 3,\n              \"dst\": 0\n            },\n            {\n              \"op\": \"load\",\n              \"a\": 0,\n              \"dst\": 0\n            },\n            {\n              \"op\": \"srl\",\n              \"a\": 4,\n              \"b\": 7,\n              \"dst\": 3\n            }\n          ]\n        },\n        {\n          \"weight\": 1200,\n          \"release\": 45000,\n          \"body\": [\n            {\n              \"op\": \"mul\",\n              \"a\": 1,\n              \"b\": 6,\n              \"dst\": 1\n            },\n            {\n              \"op\": \"sll\",\n              \"a\": 3,\n              \"b\": 0,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"add\",\n              \"a\": 3,\n              \"b\": 3,\n              \"dst\": 2\n            }\n          ]\n        },\n        {\n          \"weight\": 1600,\n          \"release\": 80000,\n          \"body\": [\n            {\n              \"op\": \"load\",\n              \"a\": 5,\n              \"dst\": 0\n            },\n            {\n              \"op\": \"xor\",\n              \"a\": 0,\n              \"b\": 3,\n              \"dst\": 4\n            },\n            {\n              \"op\": \"srl\",\n              \"a\": 4,\n              \"b\": 5,\n              \"dst\": 4\n            },\n            {\n              \"op\": \"cmovz\",\n              \"a\": 4,\n              \"b\": 5,\n              \"dst\": 2\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 7,\n              \"b\": 7,\n              \"dst\": 7\n            }\n          ]\n        },\n        {\n          \"weight\": 96,\n          \"release\": 135000,\n          \"body\": [\n            {\n              \"op\": \"xor\",\n              \"a\": 7,\n              \"b\": 7,\n              \"dst\": 7\n            }\n          ]\n        }\n      ]\n    }\n  ],\n  \"predictions\": [\n    {\n      \"reference_slot\": 5,\n      \"changed_factor\": \"Refined the approach from slot 5 by scheduling a very small, low-activity segment (add r7,r7,r7) to execute during the bin 6 window (~130k cycles). Redistributed weights and instructions (divu/mul/sll) across the first three segments to boost activity in earlier bins.\",\n      \"window_directions\": [\n        1,\n        1,\n        0,\n        1,\n        0,\n        -1,\n        1,\n        1\n      ]\n    },\n    {\n      \"reference_slot\": 1,\n      \"changed_factor\": \"This is an exploration based on the hypothesis. It schedules a minimal, zero-result segment (xor r7,r7,r7) into the bin 6 window. The other three segments are filled with a mix of high-activity instructions (divu, mul, sll) and scheduled across the remaining bins to raise their activity levels relative to the baseline.\",\n      \"window_directions\": [\n        1,\n        0,\n        -1,\n        0,\n        0,\n        -1,\n        0,\n        0\n      ]\n    }\n  ]\n}",
+  "tokens_in": 24329,
+  "tokens_out": 2482,
+  "thinking_tokens": 508,
+  "usage_unknown": false,
+  "est_cost_usd": 0.05523125,
+  "finish_reasons": [
+    "FinishReason.STOP"
+  ],
+  "prompt_feedback": null,
+  "model_version": "gemini-2.5-pro",
+  "request_wall_clock_s": 20.281916163978167,
+  "long_context_tier": false,
+  "cell": {
+    "context": "target_3-601",
+    "arm": "pro-512",
+    "seed": 18002
+  },
+  "manifest_sha256": "c3080f0a569efab9a12393fb5771d16db8fa4285cdbcebc46d6047f227388860",
+  "decoded": {
+    "response_error": null,
+    "hypothesis": "The primary challenge is drastically reducing activity in bin 6 while maintaining or increasing it in all other bins. Previous attempts to lower bin 6 activity by shifting work away from it (slot 3) or introducing different instruction mixes (slot 5) were insufficient. The goal profile's extremely low bin 6 suggests a need for a period of very low-activity work, such as a tight loop with minimal data changes, to fall within that measurement window. My strategy is to use the `release` parameter to schedule a low-activity segment specifically into the time window corresponding to bin 6 (approximately 125000-150000 cycles), while ensuring the other segments with high-activity instructions (divu, mul, sll) execute in the other bins.",
+    "slots": [
+      {
+        "submitted": {
+          "registers": [
+            1,
+            1,
+            17,
+            4294967295,
+            1076035761,
+            4294967295,
+            1,
+            4294967295
+          ],
+          "memory_seed": 999465599,
+          "segments": [
+            {
+              "weight": 1400,
+              "release": 9500,
+              "body": [
+                {
+                  "op": "divu",
+                  "a": 4,
+                  "b": 6,
+                  "dst": 5
+                },
+                {
+                  "op": "divu",
+                  "a": 6,
+                  "b": 3,
+                  "dst": 0
+                },
+                {
+                  "op": "load",
+                  "a": 0,
+                  "dst": 0
+                },
+                {
+                  "op": "srl",
+                  "a": 4,
+                  "b": 7,
+                  "dst": 3
+                },
+                {
+                  "op": "mul",
+                  "a": 1,
+                  "b": 6,
+                  "dst": 1
+                }
+              ]
+            },
+            {
+              "weight": 1200,
+              "release": 40000,
+              "body": [
+                {
+                  "op": "load",
+                  "a": 5,
+                  "dst": 0
+                },
+                {
+                  "op": "xor",
+                  "a": 0,
+                  "b": 3,
+                  "dst": 4
+                },
+                {
+                  "op": "srl",
+                  "a": 4,
+                  "b": 5,
+                  "dst": 4
+                },
+                {
+                  "op": "divu",
+                  "a": 7,
+                  "b": 7,
+                  "dst": 7
+                }
+              ]
+            },
+            {
+              "weight": 1400,
+              "release": 75000,
+              "body": [
+                {
+                  "op": "sll",
+                  "a": 2,
+                  "b": 1,
+                  "dst": 2
+                },
+                {
+                  "op": "mul",
+                  "a": 5,
+                  "b": 2,
+                  "dst": 1
+                },
+                {
+                  "op": "xor",
+                  "a": 3,
+                  "b": 5,
+                  "dst": 1
+                },
+                {
+                  "op": "cmovz",
+                  "a": 7,
+                  "b": 6,
+                  "dst": 3
+                }
+              ]
+            },
+            {
+              "weight": 96,
+              "release": 130000,
+              "body": [
+                {
+                  "op": "add",
+                  "a": 7,
+                  "b": 7,
+                  "dst": 7
+                }
+              ]
+            }
+          ]
+        },
+        "canonical": {
+          "registers": [
+            1,
+            1,
+            17,
+            4294967295,
+            1076035761,
+            4294967295,
+            1,
+            4294967295
+          ],
+          "memory_seed": 999465599,
+          "segments": [
+            {
+              "weight": 1400,
+              "release": 9500,
+              "body": [
+                {
+                  "op": "divu",
+                  "a": 4,
+                  "b": 6,
+                  "dst": 5
+                },
+                {
+                  "op": "divu",
+                  "a": 6,
+                  "b": 3,
+                  "dst": 0
+                },
+                {
+                  "op": "load",
+                  "a": 0,
+                  "dst": 0
+                },
+                {
+                  "op": "srl",
+                  "a": 4,
+                  "b": 7,
+                  "dst": 3
+                },
+                {
+                  "op": "mul",
+                  "a": 1,
+                  "b": 6,
+                  "dst": 1
+                }
+              ]
+            },
+            {
+              "weight": 1200,
+              "release": 40000,
+              "body": [
+                {
+                  "op": "load",
+                  "a": 5,
+                  "dst": 0
+                },
+                {
+                  "op": "xor",
+                  "a": 0,
+                  "b": 3,
+                  "dst": 4
+                },
+                {
+                  "op": "srl",
+                  "a": 4,
+                  "b": 5,
+                  "dst": 4
+                },
+                {
+                  "op": "divu",
+                  "a": 7,
+                  "b": 7,
+                  "dst": 7
+                }
+              ]
+            },
+            {
+              "weight": 1400,
+              "release": 75000,
+              "body": [
+                {
+                  "op": "sll",
+                  "a": 2,
+                  "b": 1,
+                  "dst": 2
+                },
+                {
+                  "op": "mul",
+                  "a": 5,
+                  "b": 2,
+                  "dst": 1
+                },
+                {
+                  "op": "xor",
+                  "a": 3,
+                  "b": 5,
+                  "dst": 1
+                },
+                {
+                  "op": "cmovz",
+                  "a": 7,
+                  "b": 6,
+                  "dst": 3
+                }
+              ]
+            },
+            {
+              "weight": 96,
+              "release": 130000,
+              "body": [
+                {
+                  "op": "add",
+                  "a": 7,
+                  "b": 7,
+                  "dst": 7
+                }
+              ]
+            }
+          ]
+        },
+        "program_error": null,
+        "prediction": {
+          "reference_slot": 5,
+          "changed_factor": "Refined the approach from slot 5 by scheduling a very small, low-activity segment (add r7,r7,r7) to execute during the bin 6 window (~130k cycles). Redistributed weights and instructions (divu/mul/sll) across the first three segments to boost activity in earlier bins.",
+          "window_directions": [
+            1,
+            1,
+            0,
+            1,
+            0,
+            -1,
+            1,
+            1
+          ]
+        },
+        "prediction_error": null
+      },
+      {
+        "submitted": {
+          "registers": [
+            1,
+            1,
+            17,
+            4294967295,
+            1076035761,
+            4294967295,
+            1,
+            4294967295
+          ],
+          "memory_seed": 999465599,
+          "segments": [
+            {
+              "weight": 1200,
+              "release": 10000,
+              "body": [
+                {
+                  "op": "divu",
+                  "a": 4,
+                  "b": 6,
+                  "dst": 5
+                },
+                {
+                  "op": "divu",
+                  "a": 6,
+                  "b": 3,
+                  "dst": 0
+                },
+                {
+                  "op": "load",
+                  "a": 0,
+                  "dst": 0
+                },
+                {
+                  "op": "srl",
+                  "a": 4,
+                  "b": 7,
+                  "dst": 3
+                }
+              ]
+            },
+            {
+              "weight": 1200,
+              "release": 45000,
+              "body": [
+                {
+                  "op": "mul",
+                  "a": 1,
+                  "b": 6,
+                  "dst": 1
+                },
+                {
+                  "op": "sll",
+                  "a": 3,
+                  "b": 0,
+                  "dst": 3
+                },
+                {
+                  "op": "add",
+                  "a": 3,
+                  "b": 3,
+                  "dst": 2
+                }
+              ]
+            },
+            {
+              "weight": 1600,
+              "release": 80000,
+              "body": [
+                {
+                  "op": "load",
+                  "a": 5,
+                  "dst": 0
+                },
+                {
+                  "op": "xor",
+                  "a": 0,
+                  "b": 3,
+                  "dst": 4
+                },
+                {
+                  "op": "srl",
+                  "a": 4,
+                  "b": 5,
+                  "dst": 4
+                },
+                {
+                  "op": "cmovz",
+                  "a": 4,
+                  "b": 5,
+                  "dst": 2
+                },
+                {
+                  "op": "divu",
+                  "a": 7,
+                  "b": 7,
+                  "dst": 7
+                }
+              ]
+            },
+            {
+              "weight": 96,
+              "release": 135000,
+              "body": [
+                {
+                  "op": "xor",
+                  "a": 7,
+                  "b": 7,
+                  "dst": 7
+                }
+              ]
+            }
+          ]
+        },
+        "canonical": {
+          "registers": [
+            1,
+            1,
+            17,
+            4294967295,
+            1076035761,
+            4294967295,
+            1,
+            4294967295
+          ],
+          "memory_seed": 999465599,
+          "segments": [
+            {
+              "weight": 1200,
+              "release": 10000,
+              "body": [
+                {
+                  "op": "divu",
+                  "a": 4,
+                  "b": 6,
+                  "dst": 5
+                },
+                {
+                  "op": "divu",
+                  "a": 6,
+                  "b": 3,
+                  "dst": 0
+                },
+                {
+                  "op": "load",
+                  "a": 0,
+                  "dst": 0
+                },
+                {
+                  "op": "srl",
+                  "a": 4,
+                  "b": 7,
+                  "dst": 3
+                }
+              ]
+            },
+            {
+              "weight": 1200,
+              "release": 45000,
+              "body": [
+                {
+                  "op": "mul",
+                  "a": 1,
+                  "b": 6,
+                  "dst": 1
+                },
+                {
+                  "op": "sll",
+                  "a": 3,
+                  "b": 0,
+                  "dst": 3
+                },
+                {
+                  "op": "add",
+                  "a": 3,
+                  "b": 3,
+                  "dst": 2
+                }
+              ]
+            },
+            {
+              "weight": 1600,
+              "release": 80000,
+              "body": [
+                {
+                  "op": "load",
+                  "a": 5,
+                  "dst": 0
+                },
+                {
+                  "op": "xor",
+                  "a": 0,
+                  "b": 3,
+                  "dst": 4
+                },
+                {
+                  "op": "srl",
+                  "a": 4,
+                  "b": 5,
+                  "dst": 4
+                },
+                {
+                  "op": "cmovz",
+                  "a": 4,
+                  "b": 5,
+                  "dst": 2
+                },
+                {
+                  "op": "divu",
+                  "a": 7,
+                  "b": 7,
+                  "dst": 7
+                }
+              ]
+            },
+            {
+              "weight": 96,
+              "release": 135000,
+              "body": [
+                {
+                  "op": "xor",
+                  "a": 7,
+                  "b": 7,
+                  "dst": 7
+                }
+              ]
+            }
+          ]
+        },
+        "program_error": null,
+        "prediction": {
+          "reference_slot": 1,
+          "changed_factor": "This is an exploration based on the hypothesis. It schedules a minimal, zero-result segment (xor r7,r7,r7) into the bin 6 window. The other three segments are filled with a mix of high-activity instructions (divu, mul, sll) and scheduled across the remaining bins to raise their activity levels relative to the baseline.",
+          "window_directions": [
+            1,
+            0,
+            -1,
+            0,
+            0,
+            -1,
+            0,
+            0
+          ]
+        },
+        "prediction_error": null
+      }
+    ]
+  }
+}

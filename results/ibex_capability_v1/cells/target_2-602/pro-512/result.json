@@ -1,0 +1,1474 @@
+{
+  "cell": {
+    "context": "target_2-602",
+    "arm": "pro-512",
+    "seed": 17802
+  },
+  "trials": [
+    {
+      "slot": 7,
+      "program": {
+        "registers": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "memory_seed": 123456789,
+        "segments": [
+          {
+            "weight": 1000,
+            "release": 10000,
+            "body": [
+              {
+                "op": "sll",
+                "a": 0,
+                "b": 1,
+                "dst": 1
+              },
+              {
+                "op": "srl",
+                "a": 1,
+                "b": 2,
+                "dst": 0
+              },
+              {
+                "op": "add",
+                "a": 0,
+                "b": 1,
+                "dst": 0
+              },
+              {
+                "op": "load",
+                "a": 0,
+                "dst": 2
+              }
+            ]
+          },
+          {
+            "weight": 1500,
+            "release": 50000,
+            "body": [
+              {
+                "op": "divu",
+                "a": 0,
+                "b": 1,
+                "dst": 2
+              },
+              {
+                "op": "divu",
+                "a": 2,
+                "b": 3,
+                "dst": 4
+              },
+              {
+                "op": "divu",
+                "a": 4,
+                "b": 5,
+                "dst": 6
+              },
+              {
+                "op": "divu",
+                "a": 6,
+                "b": 7,
+                "dst": 0
+              }
+            ]
+          },
+          {
+            "weight": 1596,
+            "release": 100000,
+            "body": [
+              {
+                "op": "divu",
+                "a": 0,
+                "b": 1,
+                "dst": 0
+              },
+              {
+                "op": "cmovz",
+                "a": 0,
+                "b": 2,
+                "dst": 3
+              },
+              {
+                "op": "and",
+                "a": 3,
+                "b": 4,
+                "dst": 5
+              },
+              {
+                "op": "or",
+                "a": 5,
+                "b": 6,
+                "dst": 7
+              }
+            ]
+          }
+        ]
+      },
+      "canonical_program": {
+        "registers": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "memory_seed": 123456789,
+        "segments": [
+          {
+            "weight": 1000,
+            "release": 10000,
+            "body": [
+              {
+                "op": "sll",
+                "a": 0,
+                "b": 1,
+                "dst": 1
+              },
+              {
+                "op": "srl",
+                "a": 1,
+                "b": 2,
+                "dst": 0
+              },
+              {
+                "op": "add",
+                "a": 0,
+                "b": 1,
+                "dst": 0
+              },
+              {
+                "op": "load",
+                "a": 0,
+                "dst": 2
+              }
+            ]
+          },
+          {
+            "weight": 1500,
+            "release": 50000,
+            "body": [
+              {
+                "op": "divu",
+                "a": 0,
+                "b": 1,
+                "dst": 2
+              },
+              {
+                "op": "divu",
+                "a": 2,
+                "b": 3,
+                "dst": 4
+              },
+              {
+                "op": "divu",
+                "a": 4,
+                "b": 5,
+                "dst": 6
+              },
+              {
+                "op": "divu",
+                "a": 6,
+                "b": 7,
+                "dst": 0
+              }
+            ]
+          },
+          {
+            "weight": 1596,
+            "release": 100000,
+            "body": [
+              {
+                "op": "divu",
+                "a": 0,
+                "b": 1,
+                "dst": 0
+              },
+              {
+                "op": "cmovz",
+                "a": 0,
+                "b": 2,
+                "dst": 3
+              },
+              {
+                "op": "and",
+                "a": 3,
+                "b": 4,
+                "dst": 5
+              },
+              {
+                "op": "or",
+                "a": 5,
+                "b": 6,
+                "dst": 7
+              }
+            ]
+          }
+        ]
+      },
+      "prediction": {
+        "reference_slot": 4,
+        "changed_factor": "Replaced the instruction mix (mul, xor, store, load) in segment 2 with only `divu` operations to induce stalls and lower activity in bin 3.",
+        "window_directions": [
+          0,
+          0,
+          -1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "prediction_error": null,
+      "rates": [
+        695.39844,
+        727.00428,
+        699.37608,
+        741.08236,
+        777.45728,
+        766.8118,
+        773.15268,
+        788.66856
+      ],
+      "loss": 0.48258062122899115,
+      "cache_hit": false,
+      "valid": true,
+      "stage": null,
+      "reason": "",
+      "schema_path": null,
+      "cache_id": "972733c5bc7f41166131da108cf4f518f65e77bc7721e9071fa0fc079031a722",
+      "feedback": {
+        "begin_tick": 286,
+        "end_tick": 400286,
+        "cycles_per_bin": 25000,
+        "retired_classes": [
+          {
+            "alu": 1758,
+            "multiply": 0,
+            "divide": 0,
+            "load": 250,
+            "store": 0,
+            "branch": 5749,
+            "jump": 0,
+            "csr": 5499,
+            "other": 0
+          },
+          {
+            "alu": 0,
+            "multiply": 0,
+            "divide": 0,
+            "load": 0,
+            "store": 0,
+            "branch": 6250,
+            "jump": 0,
+            "csr": 6250,
+            "other": 0
+          },
+          {
+            "alu": 379,
+            "multiply": 0,
+            "divide": 1500,
+            "load": 0,
+            "store": 0,
+            "branch": 5500,
+            "jump": 0,
+            "csr": 5125,
+            "other": 0
+          },
+          {
+            "alu": 0,
+            "multiply": 0,
+            "divide": 0,
+            "load": 0,
+            "store": 0,
+            "branch": 6250,
+            "jump": 0,
+            "csr": 6250,
+            "other": 0
+          },
+          {
+            "alu": 1202,
+            "multiply": 0,
+            "divide": 399,
+            "load": 0,
+            "store": 0,
+            "branch": 5950,
+            "jump": 0,
+            "csr": 5153,
+            "other": 0
+          },
+          {
+            "alu": 0,
+            "multiply": 0,
+            "divide": 0,
+            "load": 0,
+            "store": 0,
+            "branch": 6250,
+            "jump": 0,
+            "csr": 6250,
+            "other": 0
+          },
+          {
+            "alu": 0,
+            "multiply": 0,
+            "divide": 0,
+            "load": 0,
+            "store": 0,
+            "branch": 6250,
+            "jump": 0,
+            "csr": 6250,
+            "other": 0
+          },
+          {
+            "alu": 0,
+            "multiply": 0,
+            "divide": 0,
+            "load": 0,
+            "store": 0,
+            "branch": 6250,
+            "jump": 0,
+            "csr": 6250,
+            "other": 0
+          }
+        ],
+        "retired_per_bin": [
+          13256,
+          12500,
+          12504,
+          12500,
+          12704,
+          12500,
+          12500,
+          12500
+        ],
+        "cycles_without_retirement": [
+          11744,
+          12500,
+          12496,
+          12500,
+          12296,
+          12500,
+          12500,
+          12500
+        ],
+        "interpretation": "includes polling/control overhead; gaps are not attributed stall causes",
+        "body_completion_cycles": 104390,
+        "body_overrun_cycles": 0,
+        "body_completed_before_deadline": true,
+        "deadline_margin_cycles": 95610,
+        "allocation": [
+          1000,
+          1500,
+          1596
+        ],
+        "trace_file": "trace_core_00000000.log"
+      },
+      "execution": {
+        "begin_tick": 286,
+        "end_tick": 400286,
+        "bins": [
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 5747,
+            "branch_not_taken_from_operands": 2,
+            "retired_by_phase": {
+              "measurement_setup": 1,
+              "segment_0_setup": 3,
+              "segment_0_poll": 5000,
+              "segment_0_body": 2251,
+              "segment_1_setup": 3,
+              "segment_1_poll": 5998
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 6250,
+            "branch_not_taken_from_operands": 0,
+            "retired_by_phase": {
+              "segment_1_poll": 12500
+            }
+          },
+          {
+            "divide_zero_divisor": 1500,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 1,
+            "branch_taken_from_operands": 5498,
+            "branch_not_taken_from_operands": 2,
+            "retired_by_phase": {
+              "segment_1_poll": 2,
+              "segment_1_body": 2251,
+              "segment_2_setup": 3,
+              "segment_2_poll": 10248
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 6250,
+            "branch_not_taken_from_operands": 0,
+            "retired_by_phase": {
+              "segment_2_poll": 12500
+            }
+          },
+          {
+            "divide_zero_divisor": 399,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 5948,
+            "branch_not_taken_from_operands": 2,
+            "retired_by_phase": {
+              "segment_2_poll": 2,
+              "segment_2_body": 2395,
+              "body_complete": 10307
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 6250,
+            "branch_not_taken_from_operands": 0,
+            "retired_by_phase": {
+              "body_complete": 12500
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 6250,
+            "branch_not_taken_from_operands": 0,
+            "retired_by_phase": {
+              "body_complete": 12500
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 6250,
+            "branch_not_taken_from_operands": 0,
+            "retired_by_phase": {
+              "body_complete": 12500
+            }
+          }
+        ],
+        "phases": {
+          "measurement_setup": {
+            "first_retired_cycle": 0,
+            "last_retired_cycle": 0,
+            "retired": 1
+          },
+          "segment_0_setup": {
+            "first_retired_cycle": 1,
+            "last_retired_cycle": 3,
+            "retired": 3
+          },
+          "segment_0_poll": {
+            "first_retired_cycle": 4,
+            "last_retired_cycle": 10001,
+            "retired": 5000
+          },
+          "segment_0_body": {
+            "first_retired_cycle": 10002,
+            "last_retired_cycle": 13000,
+            "retired": 2251
+          },
+          "segment_1_setup": {
+            "first_retired_cycle": 13001,
+            "last_retired_cycle": 13003,
+            "retired": 3
+          },
+          "segment_1_poll": {
+            "first_retired_cycle": 13004,
+            "last_retired_cycle": 50001,
+            "retired": 18500
+          },
+          "segment_1_body": {
+            "first_retired_cycle": 50002,
+            "last_retired_cycle": 54500,
+            "retired": 2251
+          },
+          "segment_2_setup": {
+            "first_retired_cycle": 54501,
+            "last_retired_cycle": 54503,
+            "retired": 3
+          },
+          "segment_2_poll": {
+            "first_retired_cycle": 54504,
+            "last_retired_cycle": 100001,
+            "retired": 22750
+          },
+          "segment_2_body": {
+            "first_retired_cycle": 100002,
+            "last_retired_cycle": 104389,
+            "retired": 2395
+          },
+          "body_complete": {
+            "first_retired_cycle": 104390,
+            "last_retired_cycle": 199998,
+            "retired": 47807
+          }
+        },
+        "scope": "retired PCs and source operand values; phase bounds are retirement times, not issue times or attributed stall cycles"
+      },
+      "prediction_assessment": {
+        "slot": 7,
+        "prediction": {
+          "reference_slot": 4,
+          "changed_factor": "Replaced the instruction mix (mul, xor, store, load) in segment 2 with only `divu` operations to induce stalls and lower activity in bin 3.",
+          "window_directions": [
+            0,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "scorable": true,
+        "reason": "measured",
+        "actual_changes": [
+          {
+            "path": [
+              "segments",
+              1,
+              "body",
+              0,
+              "a"
+            ],
+            "before": 2,
+            "after": 0
+          },
+          {
+            "path": [
+              "segments",
+              1,
+              "body",
+              0,
+              "b"
+            ],
+            "before": 3,
+            "after": 1
+          },
+          {
+            "path": [
+              "segments",
+              1,
+              "body",
+              0,
+              "dst"
+            ],
+            "before": 4,
+            "after": 2
+          },
+          {
+            "path": [
+              "segments",
+              1,
+              "body",
+              0,
+              "op"
+            ],
+            "before": "mul",
+            "after": "divu"
+          },
+          {
+            "path": [
+              "segments",
+              1,
+              "body",
+              1,
+              "a"
+            ],
+            "before": 4,
+            "after": 2
+          },
+          {
+            "path": [
+              "segments",
+              1,
+              "body",
+              1,
+              "b"
+            ],
+            "before": 5,
+            "after": 3
+          },
+          {
+            "path": [
+              "segments",
+              1,
+              "body",
+              1,
+              "dst"
+            ],
+            "before": 6,
+            "after": 4
+          },
+          {
+            "path": [
+              "segments",
+              1,
+              "body",
+              1,
+              "op"
+            ],
+            "before": "xor",
+            "after": "divu"
+          },
+          {
+            "path": [
+              "segments",
+              1,
+              "body",
+              2
+            ],
+            "before": {
+              "op": "store",
+              "a": 6,
+              "b": 7
+            },
+            "after": {
+              "op": "divu",
+              "a": 4,
+              "b": 5,
+              "dst": 6
+            }
+          },
+          {
+            "path": [
+              "segments",
+              1,
+              "body",
+              3
+            ],
+            "before": {
+              "op": "load",
+              "a": 7,
+              "dst": 0
+            },
+            "after": {
+              "op": "divu",
+              "a": 6,
+              "b": 7,
+              "dst": 0
+            }
+          }
+        ],
+        "normalized_delta": [
+          0.010729945416605699,
+          0.012300035484656217,
+          0.038295195401769955,
+          -0.05741664133490128,
+          0.14447553557003726,
+          0.11969153176240056,
+          0.11961871555233151,
+          0.11965504796483974
+        ],
+        "neutral_band": 0.01,
+        "observed_directions": [
+          1,
+          1,
+          1,
+          -1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "matched_bins": 0,
+        "total_bins": 8,
+        "all_directions_supported": false
+      }
+    },
+    {
+      "slot": 8,
+      "program": {
+        "registers": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "memory_seed": 987654321,
+        "segments": [
+          {
+            "weight": 1000,
+            "release": 10000,
+            "body": [
+              {
+                "op": "sll",
+                "a": 0,
+                "b": 1,
+                "dst": 1
+              },
+              {
+                "op": "srl",
+                "a": 1,
+                "b": 2,
+                "dst": 0
+              },
+              {
+                "op": "add",
+                "a": 0,
+                "b": 1,
+                "dst": 0
+              },
+              {
+                "op": "load",
+                "a": 0,
+                "dst": 2
+              }
+            ]
+          },
+          {
+            "weight": 700,
+            "release": 50000,
+            "body": [
+              {
+                "op": "divu",
+                "a": 0,
+                "b": 1,
+                "dst": 2
+              },
+              {
+                "op": "divu",
+                "a": 2,
+                "b": 3,
+                "dst": 4
+              }
+            ]
+          },
+          {
+            "weight": 1200,
+            "release": 100000,
+            "body": [
+              {
+                "op": "divu",
+                "a": 4,
+                "b": 5,
+                "dst": 6
+              },
+              {
+                "op": "divu",
+                "a": 6,
+                "b": 7,
+                "dst": 0
+              }
+            ]
+          },
+          {
+            "weight": 1196,
+            "release": 150000,
+            "body": [
+              {
+                "op": "divu",
+                "a": 1,
+                "b": 2,
+                "dst": 3
+              },
+              {
+                "op": "divu",
+                "a": 3,
+                "b": 4,
+                "dst": 5
+              }
+            ]
+          }
+        ]
+      },
+      "canonical_program": {
+        "registers": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "memory_seed": 987654321,
+        "segments": [
+          {
+            "weight": 1000,
+            "release": 10000,
+            "body": [
+              {
+                "op": "sll",
+                "a": 0,
+                "b": 1,
+                "dst": 1
+              },
+              {
+                "op": "srl",
+                "a": 1,
+                "b": 2,
+                "dst": 0
+              },
+              {
+                "op": "add",
+                "a": 0,
+                "b": 1,
+                "dst": 0
+              },
+              {
+                "op": "load",
+                "a": 0,
+                "dst": 2
+              }
+            ]
+          },
+          {
+            "weight": 700,
+            "release": 50000,
+            "body": [
+              {
+                "op": "divu",
+                "a": 0,
+                "b": 1,
+                "dst": 2
+              },
+              {
+                "op": "divu",
+                "a": 2,
+                "b": 3,
+                "dst": 4
+              }
+            ]
+          },
+          {
+            "weight": 1200,
+            "release": 100000,
+            "body": [
+              {
+                "op": "divu",
+                "a": 4,
+                "b": 5,
+                "dst": 6
+              },
+              {
+                "op": "divu",
+                "a": 6,
+                "b": 7,
+                "dst": 0
+              }
+            ]
+          },
+          {
+            "weight": 1196,
+            "release": 150000,
+            "body": [
+              {
+                "op": "divu",
+                "a": 1,
+                "b": 2,
+                "dst": 3
+              },
+              {
+                "op": "divu",
+                "a": 3,
+                "b": 4,
+                "dst": 5
+              }
+            ]
+          }
+        ]
+      },
+      "prediction": {
+        "reference_slot": 4,
+        "changed_factor": "Replaced segments 2 and 3 with `divu`-heavy segments at different release times and added a fourth `divu` segment to aggressively lower activity in bins 3, 5, and 7. Changed memory seed for diversity.",
+        "window_directions": [
+          0,
+          0,
+          -1,
+          0,
+          -1,
+          0,
+          -1,
+          0
+        ]
+      },
+      "prediction_error": null,
+      "rates": [
+        698.61612,
+        729.50428,
+        746.02836,
+        765.34812,
+        735.98912,
+        744.27632,
+        87.81388,
+        170.11224
+      ],
+      "loss": 0.5354317913157591,
+      "cache_hit": false,
+      "valid": true,
+      "stage": null,
+      "reason": "",
+      "schema_path": null,
+      "cache_id": "c7712cc1da52a16933b0f6896d0be07a9adb49767526f05de3d76d9cbb42a85f",
+      "feedback": {
+        "begin_tick": 286,
+        "end_tick": 400286,
+        "cycles_per_bin": 25000,
+        "retired_classes": [
+          {
+            "alu": 1758,
+            "multiply": 0,
+            "divide": 0,
+            "load": 250,
+            "store": 0,
+            "branch": 5749,
+            "jump": 0,
+            "csr": 5499,
+            "other": 0
+          },
+          {
+            "alu": 0,
+            "multiply": 0,
+            "divide": 0,
+            "load": 0,
+            "store": 0,
+            "branch": 6250,
+            "jump": 0,
+            "csr": 6250,
+            "other": 0
+          },
+          {
+            "alu": 354,
+            "multiply": 0,
+            "divide": 700,
+            "load": 0,
+            "store": 0,
+            "branch": 5900,
+            "jump": 0,
+            "csr": 5550,
+            "other": 0
+          },
+          {
+            "alu": 0,
+            "multiply": 0,
+            "divide": 0,
+            "load": 0,
+            "store": 0,
+            "branch": 6250,
+            "jump": 0,
+            "csr": 6250,
+            "other": 0
+          },
+          {
+            "alu": 604,
+            "multiply": 0,
+            "divide": 1200,
+            "load": 0,
+            "store": 0,
+            "branch": 5650,
+            "jump": 0,
+            "csr": 5050,
+            "other": 0
+          },
+          {
+            "alu": 0,
+            "multiply": 0,
+            "divide": 0,
+            "load": 0,
+            "store": 0,
+            "branch": 6250,
+            "jump": 0,
+            "csr": 6250,
+            "other": 0
+          },
+          {
+            "alu": 321,
+            "multiply": 0,
+            "divide": 641,
+            "load": 0,
+            "store": 0,
+            "branch": 321,
+            "jump": 0,
+            "csr": 1,
+            "other": 0
+          },
+          {
+            "alu": 282,
+            "multiply": 0,
+            "divide": 555,
+            "load": 0,
+            "store": 0,
+            "branch": 1116,
+            "jump": 0,
+            "csr": 838,
+            "other": 0
+          }
+        ],
+        "retired_per_bin": [
+          13256,
+          12500,
+          12504,
+          12500,
+          12504,
+          12500,
+          1284,
+          2791
+        ],
+        "cycles_without_retirement": [
+          11744,
+          12500,
+          12496,
+          12500,
+          12496,
+          12500,
+          23716,
+          22209
+        ],
+        "interpretation": "includes polling/control overhead; gaps are not attributed stall causes",
+        "body_completion_cycles": 196645,
+        "body_overrun_cycles": 0,
+        "body_completed_before_deadline": true,
+        "deadline_margin_cycles": 3355,
+        "allocation": [
+          1000,
+          700,
+          1200,
+          1196
+        ],
+        "trace_file": "trace_core_00000000.log"
+      },
+      "execution": {
+        "begin_tick": 286,
+        "end_tick": 400286,
+        "bins": [
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 5747,
+            "branch_not_taken_from_operands": 2,
+            "retired_by_phase": {
+              "measurement_setup": 1,
+              "segment_0_setup": 3,
+              "segment_0_poll": 5000,
+              "segment_0_body": 2251,
+              "segment_1_setup": 3,
+              "segment_1_poll": 5998
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 6250,
+            "branch_not_taken_from_operands": 0,
+            "retired_by_phase": {
+              "segment_1_poll": 12500
+            }
+          },
+          {
+            "divide_zero_divisor": 700,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 350,
+            "branch_taken_from_operands": 5898,
+            "branch_not_taken_from_operands": 2,
+            "retired_by_phase": {
+              "segment_1_poll": 2,
+              "segment_1_body": 1401,
+              "segment_2_setup": 3,
+              "segment_2_poll": 11098
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 6250,
+            "branch_not_taken_from_operands": 0,
+            "retired_by_phase": {
+              "segment_2_poll": 12500
+            }
+          },
+          {
+            "divide_zero_divisor": 1200,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 5648,
+            "branch_not_taken_from_operands": 2,
+            "retired_by_phase": {
+              "segment_2_poll": 2,
+              "segment_2_body": 2401,
+              "segment_3_setup": 3,
+              "segment_3_poll": 10098
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 0,
+            "divide_zero_numerator": 0,
+            "branch_taken_from_operands": 6250,
+            "branch_not_taken_from_operands": 0,
+            "retired_by_phase": {
+              "segment_3_poll": 12500
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 641,
+            "divide_zero_numerator": 641,
+            "branch_taken_from_operands": 320,
+            "branch_not_taken_from_operands": 1,
+            "retired_by_phase": {
+              "segment_3_poll": 2,
+              "segment_3_body": 1282
+            }
+          },
+          {
+            "divide_zero_divisor": 0,
+            "divide_nonzero_divisor": 555,
+            "divide_zero_numerator": 555,
+            "branch_taken_from_operands": 1115,
+            "branch_not_taken_from_operands": 1,
+            "retired_by_phase": {
+              "segment_3_body": 1111,
+              "body_complete": 1680
+            }
+          }
+        ],
+        "phases": {
+          "measurement_setup": {
+            "first_retired_cycle": 0,
+            "last_retired_cycle": 0,
+            "retired": 1
+          },
+          "segment_0_setup": {
+            "first_retired_cycle": 1,
+            "last_retired_cycle": 3,
+            "retired": 3
+          },
+          "segment_0_poll": {
+            "first_retired_cycle": 4,
+            "last_retired_cycle": 10001,
+            "retired": 5000
+          },
+          "segment_0_body": {
+            "first_retired_cycle": 10002,
+            "last_retired_cycle": 13000,
+            "retired": 2251
+          },
+          "segment_1_setup": {
+            "first_retired_cycle": 13001,
+            "last_retired_cycle": 13003,
+            "retired": 3
+          },
+          "segment_1_poll": {
+            "first_retired_cycle": 13004,
+            "last_retired_cycle": 50001,
+            "retired": 18500
+          },
+          "segment_1_body": {
+            "first_retired_cycle": 50002,
+            "last_retired_cycle": 52800,
+            "retired": 1401
+          },
+          "segment_2_setup": {
+            "first_retired_cycle": 52801,
+            "last_retired_cycle": 52803,
+            "retired": 3
+          },
+          "segment_2_poll": {
+            "first_retired_cycle": 52804,
+            "last_retired_cycle": 100001,
+            "retired": 23600
+          },
+          "segment_2_body": {
+            "first_retired_cycle": 100002,
+            "last_retired_cycle": 104800,
+            "retired": 2401
+          },
+          "segment_3_setup": {
+            "first_retired_cycle": 104801,
+            "last_retired_cycle": 104803,
+            "retired": 3
+          },
+          "segment_3_poll": {
+            "first_retired_cycle": 104804,
+            "last_retired_cycle": 150001,
+            "retired": 22600
+          },
+          "segment_3_body": {
+            "first_retired_cycle": 150002,
+            "last_retired_cycle": 196644,
+            "retired": 2393
+          },
+          "body_complete": {
+            "first_retired_cycle": 196645,
+            "last_retired_cycle": 199999,
+            "retired": 1680
+          }
+        },
+        "scope": "retired PCs and source operand values; phase bounds are retirement times, not issue times or attributed stall cycles"
+      },
+      "prediction_assessment": {
+        "slot": 8,
+        "prediction": {
+          "reference_slot": 4,
+          "changed_factor": "Replaced segments 2 and 3 with `divu`-heavy segments at different release times and added a fourth `divu` segment to aggressively lower activity in bins 3, 5, and 7. Changed memory seed for diversity.",
+          "window_directions": [
+            0,
+            0,
+            -1,
+            0,
+            -1,
+            0,
+            -1,
+            0
+          ]
+        },
+        "scorable": true,
+        "reason": "measured",
+        "actual_changes": [
+          {
+            "path": [
+              "memory_seed"
+            ],
+            "before": 123456789,
+            "after": 987654321
+          },
+          {
+            "path": [
+              "segments"
+            ],
+            "before": [
+              {
+                "weight": 1000,
+                "release": 10000,
+                "body": [
+                  {
+                    "op": "sll",
+                    "a": 0,
+                    "b": 1,
+                    "dst": 1
+                  },
+                  {
+                    "op": "srl",
+                    "a": 1,
+                    "b": 2,
+                    "dst": 0
+                  },
+                  {
+                    "op": "add",
+                    "a": 0,
+                    "b": 1,
+                    "dst": 0
+                  },
+                  {
+                    "op": "load",
+                    "a": 0,
+                    "dst": 2
+                  }
+                ]
+              },
+              {
+                "weight": 1500,
+                "release": 50000,
+                "body": [
+                  {
+                    "op": "mul",
+                    "a": 2,
+                    "b": 3,
+                    "dst": 4
+                  },
+                  {
+                    "op": "xor",
+                    "a": 4,
+                    "b": 5,
+                    "dst": 6
+                  },
+                  {
+                    "op": "store",
+                    "a": 6,
+                    "b": 7
+                  },
+                  {
+                    "op": "load",
+                    "a": 7,
+                    "dst": 0
+                  }
+                ]
+              },
+              {
+                "weight": 1596,
+                "release": 100000,
+                "body": [
+                  {
+                    "op": "divu",
+                    "a": 0,
+                    "b": 1,
+                    "dst": 0
+                  },
+                  {
+                    "op": "cmovz",
+                    "a": 0,
+                    "b": 2,
+                    "dst": 3
+                  },
+                  {
+                    "op": "and",
+                    "a": 3,
+                    "b": 4,
+                    "dst": 5
+                  },
+                  {
+                    "op": "or",
+                    "a": 5,
+                    "b": 6,
+                    "dst": 7
+                  }
+                ]
+              }
+            ],
+            "after": [
+              {
+                "weight": 1000,
+                "release": 10000,
+                "body": [
+                  {
+                    "op": "sll",
+                    "a": 0,
+                    "b": 1,
+                    "dst": 1
+                  },
+                  {
+                    "op": "srl",
+                    "a": 1,
+                    "b": 2,
+                    "dst": 0
+                  },
+                  {
+                    "op": "add",
+                    "a": 0,
+                    "b": 1,
+                    "dst": 0
+                  },
+                  {
+                    "op": "load",
+                    "a": 0,
+                    "dst": 2
+                  }
+                ]
+              },
+              {
+                "weight": 700,
+                "release": 50000,
+                "body": [
+                  {
+                    "op": "divu",
+                    "a": 0,
+                    "b": 1,
+                    "dst": 2
+                  },
+                  {
+                    "op": "divu",
+                    "a": 2,
+                    "b": 3,
+                    "dst": 4
+                  }
+                ]
+              },
+              {
+                "weight": 1200,
+                "release": 100000,
+                "body": [
+                  {
+                    "op": "divu",
+                    "a": 4,
+                    "b": 5,
+                    "dst": 6
+                  },
+                  {
+                    "op": "divu",
+                    "a": 6,
+                    "b": 7,
+                    "dst": 0
+                  }
+                ]
+              },
+              {
+                "weight": 1196,
+                "release": 150000,
+                "body": [
+                  {
+                    "op": "divu",
+                    "a": 1,
+                    "b": 2,
+                    "dst": 3
+                  },
+                  {
+                    "op": "divu",
+                    "a": 3,
+                    "b": 4,
+                    "dst": 5
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "normalized_delta": [
+          0.016818803597877744,
+          0.017030818363370146,
+          0.1265759183925573,
+          -0.011498224556108745,
+          0.0660047910341293,
+          0.0770473465833607,
+          -1.1772569089110085,
+          -1.050847211305678
+        ],
+        "neutral_band": 0.01,
+        "observed_directions": [
+          1,
+          1,
+          1,
+          -1,
+          1,
+          1,
+          -1,
+          -1
+        ],
+        "matched_bins": 1,
+        "total_bins": 8,
+        "all_directions_supported": false
+      }
+    }
+  ],
+  "summary": {
+    "before_error": 0.44006967794585633,
+    "after_error": 0.44006967794585633,
+    "gain": 0.0,
+    "improved": false,
+    "already_solved": false,
+    "newly_solved": false,
+    "valid_slots": 2,
+    "requested_slots": 2
+  }
+}

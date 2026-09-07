@@ -1,0 +1,549 @@
+{
+  "raw_text": "{\"hypothesis\": \"CPU control\", \"candidates\": [{\"registers\": [1, 1, 17, 4294967295, 1076035761, 4294967295, 1, 4294967295], \"memory_seed\": 999465599, \"segments\": [{\"weight\": 2000, \"release\": 9569, \"body\": [{\"op\": \"add\", \"a\": 7, \"b\": 5, \"dst\": 5}, {\"op\": \"divu\", \"a\": 4, \"b\": 6, \"dst\": 5}, {\"op\": \"divu\", \"a\": 6, \"b\": 3, \"dst\": 0}, {\"op\": \"load\", \"a\": 0, \"dst\": 0}, {\"op\": \"srl\", \"a\": 4, \"b\": 7, \"dst\": 3}, {\"op\": \"mul\", \"a\": 1, \"b\": 6, \"dst\": 1}]}, {\"weight\": 100, \"release\": 28578, \"body\": [{\"op\": \"cmovz\", \"a\": 4, \"b\": 0, \"dst\": 3}, {\"op\": \"sll\", \"a\": 3, \"b\": 0, \"dst\": 3}]}, {\"weight\": 600, \"release\": 177373, \"body\": [{\"op\": \"cmovz\", \"a\": 5, \"b\": 0, \"dst\": 3}, {\"op\": \"add\", \"a\": 3, \"b\": 3, \"dst\": 2}]}, {\"weight\": 1396, \"release\": 122339, \"body\": [{\"op\": \"load\", \"a\": 5, \"dst\": 0}, {\"op\": \"xor\", \"a\": 0, \"b\": 3, \"dst\": 4}, {\"op\": \"srl\", \"a\": 4, \"b\": 5, \"dst\": 4}, {\"op\": \"cmovz\", \"a\": 4, \"b\": 5, \"dst\": 2}, {\"op\": \"divu\", \"a\": 7, \"b\": 7, \"dst\": 7}, {\"op\": \"cmovz\", \"a\": 3, \"b\": 7, \"dst\": 3}, {\"op\": \"xor\", \"a\": 3, \"b\": 4, \"dst\": 0}]}]}, {\"registers\": [1108300482, 978658013, 30, 1, 0, 17, 17, 1765682813], \"memory_seed\": 123456789, \"segments\": [{\"weight\": 800, \"release\": 10000, \"body\": [{\"op\": \"sll\", \"a\": 0, \"b\": 3, \"dst\": 7}, {\"op\": \"mul\", \"a\": 5, \"b\": 2, \"dst\": 1}, {\"op\": \"xor\", \"a\": 3, \"b\": 5, \"dst\": 1}, {\"op\": \"cmovz\", \"a\": 7, \"b\": 6, \"dst\": 3}, {\"op\": \"add\", \"a\": 1, \"b\": 2, \"dst\": 1}]}, {\"weight\": 1200, \"release\": 30000, \"body\": [{\"op\": \"mul\", \"a\": 4, \"b\": 0, \"dst\": 3}, {\"op\": \"load\", \"a\": 6, \"dst\": 5}, {\"op\": \"srl\", \"a\": 6, \"b\": 4, \"dst\": 4}]}, {\"weight\": 1000, \"release\": 80000, \"body\": [{\"op\": \"divu\", \"a\": 0, \"b\": 1, \"dst\": 0}, {\"op\": \"cmovz\", \"a\": 4, \"b\": 3, \"dst\": 4}, {\"op\": \"and\", \"a\": 4, \"b\": 0, \"dst\": 2}]}, {\"weight\": 1096, \"release\": 120000, \"body\": [{\"op\": \"store\", \"a\": 7, \"b\": 5}, {\"op\": \"sll\", \"a\": 2, \"b\": 1, \"dst\": 2}, {\"op\": \"or\", \"a\": 5, \"b\": 6, \"dst\": 5}]}]}]}",
+  "tokens_in": 0,
+  "tokens_out": 0,
+  "est_cost_usd": 0.0,
+  "usage_unknown": false,
+  "cell": {
+    "context": "target_3-601",
+    "arm": "coverage",
+    "seed": 18005
+  },
+  "manifest_sha256": "c3080f0a569efab9a12393fb5771d16db8fa4285cdbcebc46d6047f227388860",
+  "decoded": {
+    "response_error": null,
+    "hypothesis": "CPU control",
+    "slots": [
+      {
+        "submitted": {
+          "registers": [
+            1,
+            1,
+            17,
+            4294967295,
+            1076035761,
+            4294967295,
+            1,
+            4294967295
+          ],
+          "memory_seed": 999465599,
+          "segments": [
+            {
+              "weight": 2000,
+              "release": 9569,
+              "body": [
+                {
+                  "op": "add",
+                  "a": 7,
+                  "b": 5,
+                  "dst": 5
+                },
+                {
+                  "op": "divu",
+                  "a": 4,
+                  "b": 6,
+                  "dst": 5
+                },
+                {
+                  "op": "divu",
+                  "a": 6,
+                  "b": 3,
+                  "dst": 0
+                },
+                {
+                  "op": "load",
+                  "a": 0,
+                  "dst": 0
+                },
+                {
+                  "op": "srl",
+                  "a": 4,
+                  "b": 7,
+                  "dst": 3
+                },
+                {
+                  "op": "mul",
+                  "a": 1,
+                  "b": 6,
+                  "dst": 1
+                }
+              ]
+            },
+            {
+              "weight": 100,
+              "release": 28578,
+              "body": [
+                {
+                  "op": "cmovz",
+                  "a": 4,
+                  "b": 0,
+                  "dst": 3
+                },
+                {
+                  "op": "sll",
+                  "a": 3,
+                  "b": 0,
+                  "dst": 3
+                }
+              ]
+            },
+            {
+              "weight": 600,
+              "release": 177373,
+              "body": [
+                {
+                  "op": "cmovz",
+                  "a": 5,
+                  "b": 0,
+                  "dst": 3
+                },
+                {
+                  "op": "add",
+                  "a": 3,
+                  "b": 3,
+                  "dst": 2
+                }
+              ]
+            },
+            {
+              "weight": 1396,
+              "release": 122339,
+              "body": [
+                {
+                  "op": "load",
+                  "a": 5,
+                  "dst": 0
+                },
+                {
+                  "op": "xor",
+                  "a": 0,
+                  "b": 3,
+                  "dst": 4
+                },
+                {
+                  "op": "srl",
+                  "a": 4,
+                  "b": 5,
+                  "dst": 4
+                },
+                {
+                  "op": "cmovz",
+                  "a": 4,
+                  "b": 5,
+                  "dst": 2
+                },
+                {
+                  "op": "divu",
+                  "a": 7,
+                  "b": 7,
+                  "dst": 7
+                },
+                {
+                  "op": "cmovz",
+                  "a": 3,
+                  "b": 7,
+                  "dst": 3
+                },
+                {
+                  "op": "xor",
+                  "a": 3,
+                  "b": 4,
+                  "dst": 0
+                }
+              ]
+            }
+          ]
+        },
+        "canonical": {
+          "registers": [
+            1,
+            1,
+            17,
+            4294967295,
+            1076035761,
+            4294967295,
+            1,
+            4294967295
+          ],
+          "memory_seed": 999465599,
+          "segments": [
+            {
+              "weight": 2000,
+              "release": 9569,
+              "body": [
+                {
+                  "op": "add",
+                  "a": 7,
+                  "b": 5,
+                  "dst": 5
+                },
+                {
+                  "op": "divu",
+                  "a": 4,
+                  "b": 6,
+                  "dst": 5
+                },
+                {
+                  "op": "divu",
+                  "a": 6,
+                  "b": 3,
+                  "dst": 0
+                },
+                {
+                  "op": "load",
+                  "a": 0,
+                  "dst": 0
+                },
+                {
+                  "op": "srl",
+                  "a": 4,
+                  "b": 7,
+                  "dst": 3
+                },
+                {
+                  "op": "mul",
+                  "a": 1,
+                  "b": 6,
+                  "dst": 1
+                }
+              ]
+            },
+            {
+              "weight": 100,
+              "release": 28578,
+              "body": [
+                {
+                  "op": "cmovz",
+                  "a": 4,
+                  "b": 0,
+                  "dst": 3
+                },
+                {
+                  "op": "sll",
+                  "a": 3,
+                  "b": 0,
+                  "dst": 3
+                }
+              ]
+            },
+            {
+              "weight": 600,
+              "release": 177373,
+              "body": [
+                {
+                  "op": "cmovz",
+                  "a": 5,
+                  "b": 0,
+                  "dst": 3
+                },
+                {
+                  "op": "add",
+                  "a": 3,
+                  "b": 3,
+                  "dst": 2
+                }
+              ]
+            },
+            {
+              "weight": 1396,
+              "release": 122339,
+              "body": [
+                {
+                  "op": "load",
+                  "a": 5,
+                  "dst": 0
+                },
+                {
+                  "op": "xor",
+                  "a": 0,
+                  "b": 3,
+                  "dst": 4
+                },
+                {
+                  "op": "srl",
+                  "a": 4,
+                  "b": 5,
+                  "dst": 4
+                },
+                {
+                  "op": "cmovz",
+                  "a": 4,
+                  "b": 5,
+                  "dst": 2
+                },
+                {
+                  "op": "divu",
+                  "a": 7,
+                  "b": 7,
+                  "dst": 7
+                },
+                {
+                  "op": "cmovz",
+                  "a": 3,
+                  "b": 7,
+                  "dst": 3
+                },
+                {
+                  "op": "xor",
+                  "a": 3,
+                  "b": 4,
+                  "dst": 0
+                }
+              ]
+            }
+          ]
+        },
+        "program_error": null,
+        "prediction": null,
+        "prediction_error": null
+      },
+      {
+        "submitted": {
+          "registers": [
+            1108300482,
+            978658013,
+            30,
+            1,
+            0,
+            17,
+            17,
+            1765682813
+          ],
+          "memory_seed": 123456789,
+          "segments": [
+            {
+              "weight": 800,
+              "release": 10000,
+              "body": [
+                {
+                  "op": "sll",
+                  "a": 0,
+                  "b": 3,
+                  "dst": 7
+                },
+                {
+                  "op": "mul",
+                  "a": 5,
+                  "b": 2,
+                  "dst": 1
+                },
+                {
+                  "op": "xor",
+                  "a": 3,
+                  "b": 5,
+                  "dst": 1
+                },
+                {
+                  "op": "cmovz",
+                  "a": 7,
+                  "b": 6,
+                  "dst": 3
+                },
+                {
+                  "op": "add",
+                  "a": 1,
+                  "b": 2,
+                  "dst": 1
+                }
+              ]
+            },
+            {
+              "weight": 1200,
+              "release": 30000,
+              "body": [
+                {
+                  "op": "mul",
+                  "a": 4,
+                  "b": 0,
+                  "dst": 3
+                },
+                {
+                  "op": "load",
+                  "a": 6,
+                  "dst": 5
+                },
+                {
+                  "op": "srl",
+                  "a": 6,
+                  "b": 4,
+                  "dst": 4
+                }
+              ]
+            },
+            {
+              "weight": 1000,
+              "release": 80000,
+              "body": [
+                {
+                  "op": "divu",
+                  "a": 0,
+                  "b": 1,
+                  "dst": 0
+                },
+                {
+                  "op": "cmovz",
+                  "a": 4,
+                  "b": 3,
+                  "dst": 4
+                },
+                {
+                  "op": "and",
+                  "a": 4,
+                  "b": 0,
+                  "dst": 2
+                }
+              ]
+            },
+            {
+              "weight": 1096,
+              "release": 120000,
+              "body": [
+                {
+                  "op": "store",
+                  "a": 7,
+                  "b": 5
+                },
+                {
+                  "op": "sll",
+                  "a": 2,
+                  "b": 1,
+                  "dst": 2
+                },
+                {
+                  "op": "or",
+                  "a": 5,
+                  "b": 6,
+                  "dst": 5
+                }
+              ]
+            }
+          ]
+        },
+        "canonical": {
+          "registers": [
+            1108300482,
+            978658013,
+            30,
+            1,
+            0,
+            17,
+            17,
+            1765682813
+          ],
+          "memory_seed": 123456789,
+          "segments": [
+            {
+              "weight": 800,
+              "release": 10000,
+              "body": [
+                {
+                  "op": "sll",
+                  "a": 0,
+                  "b": 3,
+                  "dst": 7
+                },
+                {
+                  "op": "mul",
+                  "a": 5,
+                  "b": 2,
+                  "dst": 1
+                },
+                {
+                  "op": "xor",
+                  "a": 3,
+                  "b": 5,
+                  "dst": 1
+                },
+                {
+                  "op": "cmovz",
+                  "a": 7,
+                  "b": 6,
+                  "dst": 3
+                },
+                {
+                  "op": "add",
+                  "a": 1,
+                  "b": 2,
+                  "dst": 1
+                }
+              ]
+            },
+            {
+              "weight": 1200,
+              "release": 30000,
+              "body": [
+                {
+                  "op": "mul",
+                  "a": 4,
+                  "b": 0,
+                  "dst": 3
+                },
+                {
+                  "op": "load",
+                  "a": 6,
+                  "dst": 5
+                },
+                {
+                  "op": "srl",
+                  "a": 6,
+                  "b": 4,
+                  "dst": 4
+                }
+              ]
+            },
+            {
+              "weight": 1000,
+              "release": 80000,
+              "body": [
+                {
+                  "op": "divu",
+                  "a": 0,
+                  "b": 1,
+                  "dst": 0
+                },
+                {
+                  "op": "cmovz",
+                  "a": 4,
+                  "b": 3,
+                  "dst": 4
+                },
+                {
+                  "op": "and",
+                  "a": 4,
+                  "b": 0,
+                  "dst": 2
+                }
+              ]
+            },
+            {
+              "weight": 1096,
+              "release": 120000,
+              "body": [
+                {
+                  "op": "store",
+                  "a": 7,
+                  "b": 5
+                },
+                {
+                  "op": "sll",
+                  "a": 2,
+                  "b": 1,
+                  "dst": 2
+                },
+                {
+                  "op": "or",
+                  "a": 5,
+                  "b": 6,
+                  "dst": 5
+                }
+              ]
+            }
+          ]
+        },
+        "program_error": null,
+        "prediction": null,
+        "prediction_error": null
+      }
+    ]
+  }
+}

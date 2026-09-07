@@ -1,0 +1,511 @@
+{
+  "raw_text": "{\n  \"hypothesis\": \"The primary challenge is the extremely high activity in bin 6 (125k-150k cycles), which is currently a polling period. The goal requires a rate of ~231, whereas recent attempts yield ~720-760. I hypothesize that introducing a long pipeline stall that spans bin 6 will displace the high-activity polling loop and drastically reduce the measured rate. A division operation (`divu`) with a non-zero divisor is known to cause such a stall. By placing this operation in the segment active in bin 5 (100k-125k cycles), I can induce a stall that lowers activity in bin 5 and especially in bin 6. Other bins can be tuned by adjusting segment weights and operation mix to better match the goal profile.\",\n  \"candidates\": [\n    {\n      \"registers\": [\n        1,\n        2,\n        3,\n        4,\n        5,\n        6,\n        7,\n        0\n      ],\n      \"memory_seed\": 987654321,\n      \"segments\": [\n        {\n          \"weight\": 1024,\n          \"release\": 10000,\n          \"body\": [\n            {\n              \"op\": \"add\",\n              \"a\": 0,\n              \"b\": 1,\n              \"dst\": 2\n            },\n            {\n              \"op\": \"xor\",\n              \"a\": 2,\n              \"b\": 3,\n              \"dst\": 4\n            },\n            {\n              \"op\": \"sll\",\n              \"a\": 4,\n              \"b\": 5,\n              \"dst\": 6\n            },\n            {\n              \"op\": \"mul\",\n              \"a\": 6,\n              \"b\": 7,\n              \"dst\": 0\n            }\n          ]\n        },\n        {\n          \"weight\": 800,\n          \"release\": 50000,\n          \"body\": [\n            {\n              \"op\": \"load\",\n              \"a\": 0,\n              \"dst\": 1\n            },\n            {\n              \"op\": \"add\",\n              \"a\": 1,\n              \"b\": 2,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"store\",\n              \"a\": 4,\n              \"b\": 3\n            },\n            {\n              \"op\": \"cmovz\",\n              \"a\": 5,\n              \"b\": 6,\n              \"dst\": 7\n            }\n          ]\n        },\n        {\n          \"weight\": 1024,\n          \"release\": 100000,\n          \"body\": [\n            {\n              \"op\": \"and\",\n              \"a\": 0,\n              \"b\": 1,\n              \"dst\": 2\n            },\n            {\n              \"op\": \"or\",\n              \"a\": 2,\n              \"b\": 3,\n              \"dst\": 4\n            },\n            {\n              \"op\": \"srl\",\n              \"a\": 4,\n              \"b\": 5,\n              \"dst\": 6\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 6,\n              \"b\": 1,\n              \"dst\": 0\n            }\n          ]\n        },\n        {\n          \"weight\": 1248,\n          \"release\": 150000,\n          \"body\": [\n            {\n              \"op\": \"add\",\n              \"a\": 0,\n              \"b\": 1,\n              \"dst\": 0\n            },\n            {\n              \"op\": \"xor\",\n              \"a\": 2,\n              \"b\": 3,\n              \"dst\": 1\n            },\n            {\n              \"op\": \"cmovz\",\n              \"a\": 4,\n              \"b\": 5,\n              \"dst\": 2\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"registers\": [\n        0,\n        1,\n        0,\n        1,\n        0,\n        1,\n        0,\n        1\n      ],\n      \"memory_seed\": 1122334455,\n      \"segments\": [\n        {\n          \"weight\": 1000,\n          \"release\": 20000,\n          \"body\": [\n            {\n              \"op\": \"mul\",\n              \"a\": 1,\n              \"b\": 3,\n              \"dst\": 2\n            },\n            {\n              \"op\": \"add\",\n              \"a\": 2,\n              \"b\": 5,\n              \"dst\": 4\n            }\n          ]\n        },\n        {\n          \"weight\": 1000,\n          \"release\": 70000,\n          \"body\": [\n            {\n              \"op\": \"load\",\n              \"a\": 0,\n              \"dst\": 1\n            },\n            {\n              \"op\": \"sll\",\n              \"a\": 1,\n              \"b\": 2,\n              \"dst\": 3\n            },\n            {\n              \"op\": \"store\",\n              \"a\": 3,\n              \"b\": 4\n            }\n          ]\n        },\n        {\n          \"weight\": 1000,\n          \"release\": 120000,\n          \"body\": [\n            {\n              \"op\": \"divu\",\n              \"a\": 4,\n              \"b\": 1,\n              \"dst\": 5\n            },\n            {\n              \"op\": \"divu\",\n              \"a\": 5,\n              \"b\": 3,\n              \"dst\": 6\n            }\n          ]\n        },\n        {\n          \"weight\": 1096,\n          \"release\": 170000,\n          \"body\": [\n            {\n              \"op\": \"xor\",\n              \"a\": 0,\n              \"b\": 1,\n              \"dst\": 2\n            },\n            {\n              \"op\": \"or\",\n              \"a\": 2,\n              \"b\": 3,\n              \"dst\": 4\n            },\n            {\n              \"op\": \"and\",\n              \"a\": 4,\n              \"b\": 5,\n              \"dst\": 6\n            }\n          ]\n        }\n      ]\n    }\n  ],\n  \"predictions\": [\n    {\n      \"reference_slot\": 6,\n      \"changed_factor\": \"In seg 2, changed divu to use a non-zero divisor (r1) to induce a long stall. Adjusted seg 1 weight down and seg 3 weight up to tune activity in bins 3 and 7.\",\n      \"window_directions\": [\n        0,\n        0,\n        -1,\n        0,\n        -1,\n        -1,\n        1,\n        0\n      ]\n    },\n    {\n      \"reference_slot\": 6,\n      \"changed_factor\": \"New program. Segments are repositioned to place work in polling bins. A segment with two non-zero divisor `divu` ops is placed at 120k cycles (bin 5) to create a stall through bin 6.\",\n      \"window_directions\": [\n        -1,\n        1,\n        -1,\n        1,\n        -1,\n        -1,\n        -1,\n        1\n      ]\n    }\n  ]\n}",
+  "tokens_in": 21123,
+  "tokens_out": 5883,
+  "thinking_tokens": 4094,
+  "usage_unknown": false,
+  "est_cost_usd": 0.08523375,
+  "finish_reasons": [
+    "FinishReason.STOP"
+  ],
+  "prompt_feedback": null,
+  "model_version": "gemini-2.5-pro",
+  "request_wall_clock_s": 55.1217708690092,
+  "long_context_tier": false,
+  "cell": {
+    "context": "target_3-600",
+    "arm": "pro-4096",
+    "seed": 17903
+  },
+  "manifest_sha256": "c3080f0a569efab9a12393fb5771d16db8fa4285cdbcebc46d6047f227388860",
+  "decoded": {
+    "response_error": null,
+    "hypothesis": "The primary challenge is the extremely high activity in bin 6 (125k-150k cycles), which is currently a polling period. The goal requires a rate of ~231, whereas recent attempts yield ~720-760. I hypothesize that introducing a long pipeline stall that spans bin 6 will displace the high-activity polling loop and drastically reduce the measured rate. A division operation (`divu`) with a non-zero divisor is known to cause such a stall. By placing this operation in the segment active in bin 5 (100k-125k cycles), I can induce a stall that lowers activity in bin 5 and especially in bin 6. Other bins can be tuned by adjusting segment weights and operation mix to better match the goal profile.",
+    "slots": [
+      {
+        "submitted": {
+          "registers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            0
+          ],
+          "memory_seed": 987654321,
+          "segments": [
+            {
+              "weight": 1024,
+              "release": 10000,
+              "body": [
+                {
+                  "op": "add",
+                  "a": 0,
+                  "b": 1,
+                  "dst": 2
+                },
+                {
+                  "op": "xor",
+                  "a": 2,
+                  "b": 3,
+                  "dst": 4
+                },
+                {
+                  "op": "sll",
+                  "a": 4,
+                  "b": 5,
+                  "dst": 6
+                },
+                {
+                  "op": "mul",
+                  "a": 6,
+                  "b": 7,
+                  "dst": 0
+                }
+              ]
+            },
+            {
+              "weight": 800,
+              "release": 50000,
+              "body": [
+                {
+                  "op": "load",
+                  "a": 0,
+                  "dst": 1
+                },
+                {
+                  "op": "add",
+                  "a": 1,
+                  "b": 2,
+                  "dst": 3
+                },
+                {
+                  "op": "store",
+                  "a": 4,
+                  "b": 3
+                },
+                {
+                  "op": "cmovz",
+                  "a": 5,
+                  "b": 6,
+                  "dst": 7
+                }
+              ]
+            },
+            {
+              "weight": 1024,
+              "release": 100000,
+              "body": [
+                {
+                  "op": "and",
+                  "a": 0,
+                  "b": 1,
+                  "dst": 2
+                },
+                {
+                  "op": "or",
+                  "a": 2,
+                  "b": 3,
+                  "dst": 4
+                },
+                {
+                  "op": "srl",
+                  "a": 4,
+                  "b": 5,
+                  "dst": 6
+                },
+                {
+                  "op": "divu",
+                  "a": 6,
+                  "b": 1,
+                  "dst": 0
+                }
+              ]
+            },
+            {
+              "weight": 1248,
+              "release": 150000,
+              "body": [
+                {
+                  "op": "add",
+                  "a": 0,
+                  "b": 1,
+                  "dst": 0
+                },
+                {
+                  "op": "xor",
+                  "a": 2,
+                  "b": 3,
+                  "dst": 1
+                },
+                {
+                  "op": "cmovz",
+                  "a": 4,
+                  "b": 5,
+                  "dst": 2
+                }
+              ]
+            }
+          ]
+        },
+        "canonical": {
+          "registers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            0
+          ],
+          "memory_seed": 987654321,
+          "segments": [
+            {
+              "weight": 1024,
+              "release": 10000,
+              "body": [
+                {
+                  "op": "add",
+                  "a": 0,
+                  "b": 1,
+                  "dst": 2
+                },
+                {
+                  "op": "xor",
+                  "a": 2,
+                  "b": 3,
+                  "dst": 4
+                },
+                {
+                  "op": "sll",
+                  "a": 4,
+                  "b": 5,
+                  "dst": 6
+                },
+                {
+                  "op": "mul",
+                  "a": 6,
+                  "b": 7,
+                  "dst": 0
+                }
+              ]
+            },
+            {
+              "weight": 800,
+              "release": 50000,
+              "body": [
+                {
+                  "op": "load",
+                  "a": 0,
+                  "dst": 1
+                },
+                {
+                  "op": "add",
+                  "a": 1,
+                  "b": 2,
+                  "dst": 3
+                },
+                {
+                  "op": "store",
+                  "a": 4,
+                  "b": 3
+                },
+                {
+                  "op": "cmovz",
+                  "a": 5,
+                  "b": 6,
+                  "dst": 7
+                }
+              ]
+            },
+            {
+              "weight": 1024,
+              "release": 100000,
+              "body": [
+                {
+                  "op": "and",
+                  "a": 0,
+                  "b": 1,
+                  "dst": 2
+                },
+                {
+                  "op": "or",
+                  "a": 2,
+                  "b": 3,
+                  "dst": 4
+                },
+                {
+                  "op": "srl",
+                  "a": 4,
+                  "b": 5,
+                  "dst": 6
+                },
+                {
+                  "op": "divu",
+                  "a": 6,
+                  "b": 1,
+                  "dst": 0
+                }
+              ]
+            },
+            {
+              "weight": 1248,
+              "release": 150000,
+              "body": [
+                {
+                  "op": "add",
+                  "a": 0,
+                  "b": 1,
+                  "dst": 0
+                },
+                {
+                  "op": "xor",
+                  "a": 2,
+                  "b": 3,
+                  "dst": 1
+                },
+                {
+                  "op": "cmovz",
+                  "a": 4,
+                  "b": 5,
+                  "dst": 2
+                }
+              ]
+            }
+          ]
+        },
+        "program_error": null,
+        "prediction": {
+          "reference_slot": 6,
+          "changed_factor": "In seg 2, changed divu to use a non-zero divisor (r1) to induce a long stall. Adjusted seg 1 weight down and seg 3 weight up to tune activity in bins 3 and 7.",
+          "window_directions": [
+            0,
+            0,
+            -1,
+            0,
+            -1,
+            -1,
+            1,
+            0
+          ]
+        },
+        "prediction_error": null
+      },
+      {
+        "submitted": {
+          "registers": [
+            0,
+            1,
+            0,
+            1,
+            0,
+            1,
+            0,
+            1
+          ],
+          "memory_seed": 1122334455,
+          "segments": [
+            {
+              "weight": 1000,
+              "release": 20000,
+              "body": [
+                {
+                  "op": "mul",
+                  "a": 1,
+                  "b": 3,
+                  "dst": 2
+                },
+                {
+                  "op": "add",
+                  "a": 2,
+                  "b": 5,
+                  "dst": 4
+                }
+              ]
+            },
+            {
+              "weight": 1000,
+              "release": 70000,
+              "body": [
+                {
+                  "op": "load",
+                  "a": 0,
+                  "dst": 1
+                },
+                {
+                  "op": "sll",
+                  "a": 1,
+                  "b": 2,
+                  "dst": 3
+                },
+                {
+                  "op": "store",
+                  "a": 3,
+                  "b": 4
+                }
+              ]
+            },
+            {
+              "weight": 1000,
+              "release": 120000,
+              "body": [
+                {
+                  "op": "divu",
+                  "a": 4,
+                  "b": 1,
+                  "dst": 5
+                },
+                {
+                  "op": "divu",
+                  "a": 5,
+                  "b": 3,
+                  "dst": 6
+                }
+              ]
+            },
+            {
+              "weight": 1096,
+              "release": 170000,
+              "body": [
+                {
+                  "op": "xor",
+                  "a": 0,
+                  "b": 1,
+                  "dst": 2
+                },
+                {
+                  "op": "or",
+                  "a": 2,
+                  "b": 3,
+                  "dst": 4
+                },
+                {
+                  "op": "and",
+                  "a": 4,
+                  "b": 5,
+                  "dst": 6
+                }
+              ]
+            }
+          ]
+        },
+        "canonical": {
+          "registers": [
+            0,
+            1,
+            0,
+            1,
+            0,
+            1,
+            0,
+            1
+          ],
+          "memory_seed": 1122334455,
+          "segments": [
+            {
+              "weight": 1000,
+              "release": 20000,
+              "body": [
+                {
+                  "op": "mul",
+                  "a": 1,
+                  "b": 3,
+                  "dst": 2
+                },
+                {
+                  "op": "add",
+                  "a": 2,
+                  "b": 5,
+                  "dst": 4
+                }
+              ]
+            },
+            {
+              "weight": 1000,
+              "release": 70000,
+              "body": [
+                {
+                  "op": "load",
+                  "a": 0,
+                  "dst": 1
+                },
+                {
+                  "op": "sll",
+                  "a": 1,
+                  "b": 2,
+                  "dst": 3
+                },
+                {
+                  "op": "store",
+                  "a": 3,
+                  "b": 4
+                }
+              ]
+            },
+            {
+              "weight": 1000,
+              "release": 120000,
+              "body": [
+                {
+                  "op": "divu",
+                  "a": 4,
+                  "b": 1,
+                  "dst": 5
+                },
+                {
+                  "op": "divu",
+                  "a": 5,
+                  "b": 3,
+                  "dst": 6
+                }
+              ]
+            },
+            {
+              "weight": 1096,
+              "release": 170000,
+              "body": [
+                {
+                  "op": "xor",
+                  "a": 0,
+                  "b": 1,
+                  "dst": 2
+                },
+                {
+                  "op": "or",
+                  "a": 2,
+                  "b": 3,
+                  "dst": 4
+                },
+                {
+                  "op": "and",
+                  "a": 4,
+                  "b": 5,
+                  "dst": 6
+                }
+              ]
+            }
+          ]
+        },
+        "program_error": null,
+        "prediction": {
+          "reference_slot": 6,
+          "changed_factor": "New program. Segments are repositioned to place work in polling bins. A segment with two non-zero divisor `divu` ops is placed at 120k cycles (bin 5) to create a stall through bin 6.",
+          "window_directions": [
+            -1,
+            1,
+            -1,
+            1,
+            -1,
+            -1,
+            -1,
+            1
+          ]
+        },
+        "prediction_error": null
+      }
+    ]
+  }
+}

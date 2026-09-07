@@ -31,8 +31,11 @@ prediction feedback. The response interface is more reliable, but the grounded
 agent does not beat random or improve non-flat target coverage. Its complete
 compact archive and every finalist are tracked; this is not held-out confirmation.
 
-The next development stage is a controlled model × reasoning probe, not a rewrite
-of those results. See the [research roadmap](docs/RESEARCH_DIRECTIONS.md) and
+A controlled [model × reasoning probe](docs/IBEX_CAPABILITY_V1_RESULTS.md) is now
+complete: 72 fixed-context cells / 144 slots. Pro-4096 produces mean next-batch
+gain 0.14234 versus random 0.02674 and newly solves four contexts, including two
+non-flat cases. This is promising development evidence, not a full-search or
+held-out win. See the [research roadmap](docs/RESEARCH_DIRECTIONS.md) and
 [frozen-context protocol](docs/IBEX_CAPABILITY_V1_PROTOCOL.md).
 
 Reviewable ledgers and inference are tracked in
