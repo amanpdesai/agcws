@@ -12,6 +12,50 @@ from pathlib import Path
 from agcws.provenance import file_sha256
 
 
+def audit_cell(manifest, summary, trials, evaluations):
+    target = manifest["targets"][summary["target"]]["rates"]
+    scale, best, curve = manifest["scale"], 1.0, []
+    solved_at = None
+    if len(trials) != manifest["budget"]:
+        raise ValueError("wrong proposal count")
+    for index, t in enumerate(trials, 1):
+        if t["slot"] != index:
+            raise ValueError("noncontiguous proposal slots")
+        if t["valid"]:
+            record = evaluations[t["cache_id"]]
+            if not record["valid"] or t["rates"] != record["profile"]["window_rates"]:
+                raise ValueError("ledger differs from evaluator")
+            if record["profile"]["clock_edges"] != 200000:
+                raise ValueError("wrong observation duration")
+            loss = (
+                math.sqrt(sum((a - b) ** 2 for a, b in zip(t["rates"], target)) / 8)
+                / scale
+            )
+            if not math.isclose(loss, t["loss"], abs_tol=1e-12):
+                raise ValueError("target loss mismatch")
+            best = min(best, loss)
+            if loss <= manifest["tolerance"] and solved_at is None:
+                solved_at = index
+        elif t["loss"] is not None or t["rates"] is not None:
+            raise ValueError("invalid candidate received a score")
+        if not math.isclose(best, t["best_loss"], abs_tol=1e-12):
+            raise ValueError("best-so-far curve mismatch")
+        curve.append(best)
+    auc = sum((a + b) / 2 for a, b in itertools.pairwise(curve))
+    if not math.isclose(auc, summary["auc"], abs_tol=1e-12):
+        raise ValueError("AUC mismatch")
+    if summary["solved"] != (solved_at is not None) or summary[
+        "evaluations_to_target"
+    ] != (solved_at or manifest["budget"]):
+        raise ValueError("solve/censor mismatch")
+    if summary["right_censored"] != (solved_at is None):
+        raise ValueError("censor flag mismatch")
+    if not math.isclose(
+        sum(t["est_cost_usd"] for t in trials), summary["est_cost_usd"], abs_tol=1e-12
+    ):
+        raise ValueError("cost allocation mismatch")
+
+
 def describe(manifest, cells):
     expected = set(
         itertools.product(manifest["targets"], manifest["seeds"], manifest["policies"])
@@ -95,6 +139,14 @@ def archive(root, destination):
             json.loads(line)
             for line in (source / "trials.jsonl").read_text().splitlines()
         ]
+        evaluations = {
+            t["cache_id"]: json.loads(
+                (root / "cache" / t["cache_id"] / "result.json").read_text()
+            )
+            for t in rows
+            if t["cache_id"]
+        }
+        audit_cell(manifest, summary, rows, evaluations)
         cells.append((summary, rows))
         (destination / relative).mkdir(parents=True, exist_ok=True)
         for name in ("summary.json", "trials.jsonl", "batches.json", "manifest.json"):

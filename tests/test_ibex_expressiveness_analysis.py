@@ -2,7 +2,7 @@ import itertools
 
 import pytest
 
-from analysis.ibex_expressiveness import describe
+from analysis.ibex_expressiveness import audit_cell, describe
 
 
 def panel():
@@ -53,3 +53,35 @@ def test_incomplete_or_duplicate_panel_cannot_be_reported_complete():
     for rows in (cells[:-1], cells + [cells[0]]):
         with pytest.raises(ValueError):
             describe(manifest, rows)
+
+
+def test_cell_audit_rejects_fabricated_auc():
+    manifest = {
+        "targets": {"t": {"rates": [0] * 8}},
+        "scale": 1,
+        "budget": 2,
+        "tolerance": 0.1,
+    }
+    rows = [
+        {
+            "slot": i,
+            "valid": False,
+            "loss": None,
+            "rates": None,
+            "best_loss": 1,
+            "est_cost_usd": 0,
+        }
+        for i in [1, 2]
+    ]
+    summary = {
+        "target": "t",
+        "auc": 1,
+        "solved": False,
+        "evaluations_to_target": 2,
+        "right_censored": True,
+        "est_cost_usd": 0,
+    }
+    audit_cell(manifest, summary, rows, {})
+    summary["auc"] = 0
+    with pytest.raises(ValueError, match="AUC mismatch"):
+        audit_cell(manifest, summary, rows, {})
