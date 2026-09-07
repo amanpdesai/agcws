@@ -64,6 +64,14 @@ def describe_panel(manifest, cells):
             ),
             "matched_bins": sum(r["matched_bins"] for r in scorable),
             "scorable_bins": 8 * len(scorable),
+            "always_no_change_matched_bins": sum(
+                d == 0 for r in scorable for d in r["observed_directions"]
+            ),
+            "observed_direction_counts": dict(
+                collections.Counter(
+                    str(d) for r in scorable for d in r["observed_directions"]
+                )
+            ),
             "all_directions_supported": sum(
                 r["all_directions_supported"] for r in scorable
             ),
@@ -111,6 +119,14 @@ def audit(root):
     if file_sha256(previous) != manifest["previous_manifest_sha256"]:
         raise ValueError("v3 manifest mismatch")
     old = read(previous)
+    for name, target in manifest["targets"].items():
+        if file_sha256(root / "witnesses" / f"{name}.json") != target["witness_sha256"]:
+            raise ValueError("target witness hash mismatch")
+        if (
+            read(root / "target-evidence" / name / "profile.json")["window_rates"]
+            != target["rates"]
+        ):
+            raise ValueError("target differs from achieved profile")
     for field in ("targets", "scale", "tolerance", "seeds", "budget", "measurement"):
         if old[field] != manifest[field]:
             raise ValueError("changed comparison settings")
@@ -132,6 +148,22 @@ def audit(root):
             if t["cache_id"]
         }
         audit_cell(manifest, summary, trials, records)
+        if directory != (
+            root
+            / "panel"
+            / summary["target"]
+            / f"seed-{summary['seed']}"
+            / summary["policy"]
+        ):
+            raise ValueError("cell stored under wrong identity")
+        if (
+            summary["budget"] != manifest["budget"]
+            or summary["valid_slots"] != sum(t["valid"] for t in trials)
+            or summary["final_loss"] != trials[-1]["best_loss"]
+            or summary["behavior_cells"]
+            != len({descriptor(t["feedback"]) for t in trials if t["valid"]})
+        ):
+            raise ValueError("summary totals mismatch")
         for i, t in enumerate(trials):
             if assess(t, trials[:i], manifest["scale"]) != t["prediction_assessment"]:
                 raise ValueError("prediction assessment mismatch")
@@ -202,9 +234,11 @@ def audit(root):
             raise ValueError("batch proposal count mismatch")
         if sum(b["usage_unknown"] for b in batches) != summary["unknown_usage_batches"]:
             raise ValueError("unknown usage mismatch")
-        for b in batches:
+        for batch_index, b in enumerate(batches):
             offset = b["first_slot"] - 1
             group = trials[offset : offset + b["requested_slots"]]
+            if offset != batch_index * manifest["batch_size"]:
+                raise ValueError("noncontiguous batch slots")
             for k in ("tokens_in", "tokens_out"):
                 if sum(t[k] for t in group) != b[k]:
                     raise ValueError("batch token allocation mismatch")
@@ -308,6 +342,13 @@ def archive(root, destination):
 
     previous = Path("results/ibex_temporal_v3_development")
     copy(previous / "manifest.json", "v3_manifest.json")
+    for name in manifest["targets"]:
+        copy(
+            previous / "witnesses" / f"{name}.json", Path("witnesses") / f"{name}.json"
+        )
+        for p in (previous / "target-evidence" / name).iterdir():
+            if p.is_file():
+                copy(p, Path("target-evidence") / name / p.name)
     for name, digest in manifest["sources"].items():
         if file_sha256(Path(name)) != digest:
             raise ValueError("frozen source changed")

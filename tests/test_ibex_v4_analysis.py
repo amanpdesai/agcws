@@ -66,6 +66,7 @@ def test_descriptive_predictions_keep_missing_denominator_and_remove_union_cover
             else {
                 "scorable": True,
                 "matched_bins": 4,
+                "observed_directions": [0] * 4 + [1] * 4,
                 "all_directions_supported": False,
                 "actual_changes": [],
             }
