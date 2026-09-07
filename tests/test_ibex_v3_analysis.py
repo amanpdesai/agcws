@@ -1,11 +1,17 @@
 import copy
 import itertools
+import json
 
 import pytest
 
 from agcws.policies.source_context import build_bundle
 from agcws.provenance import file_sha256
-from analysis.ibex_temporal_v3 import check_feedback, describe_panel, verify_bundle
+from analysis.ibex_temporal_v3 import (
+    check_feedback,
+    describe_panel,
+    model_diagnostics,
+    verify_bundle,
+)
 from experiments.ibex_temporal_v3.feedback import CLASSES
 
 
@@ -28,6 +34,11 @@ def test_feedback_audit_catches_mixed_windows_and_bad_counts():
     broken = copy.deepcopy(data)
     broken["retired_per_bin"][0] = 10
     with pytest.raises(ValueError, match="arithmetic"):
+        check_feedback(broken, data)
+    broken = copy.deepcopy(data)
+    for field in ("retired_classes", "retired_per_bin", "cycles_without_retirement"):
+        broken[field].pop()
+    with pytest.raises(ValueError, match="bin shape"):
         check_feedback(broken, data)
 
 
@@ -100,3 +111,18 @@ def test_bundle_audit_checks_unselected_sources_too(tmp_path):
     path.write_text("changed")
     with pytest.raises(ValueError, match="source differs"):
         verify_bundle(target, digest)
+
+
+def test_model_diagnostics_distinguishes_missing_metadata(tmp_path):
+    (tmp_path / "batches.json").write_text(
+        json.dumps(
+            [
+                {"first_slot": 1},
+                {"diagnostics": {"finish_reason": "STOP", "model_version": "flash"}},
+                {"diagnostics": {"finish_reason": "MAX_TOKENS"}},
+            ]
+        )
+    )
+    result = model_diagnostics([tmp_path])
+    assert result["finish_reasons"] == {"STOP": 1, "MAX_TOKENS": 1}
+    assert result["reported_model_versions"] == {"flash": 1, "None": 1}

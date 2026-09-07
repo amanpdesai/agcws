@@ -96,7 +96,25 @@ def describe_panel(manifest, cells):
     return result
 
 
+def model_diagnostics(directories):
+    counts = collections.defaultdict(collections.Counter)
+    for directory in directories:
+        for batch in read(directory / "batches.json"):
+            diagnostic = batch.get("diagnostics")
+            if diagnostic is None:
+                continue
+            counts["finish_reasons"][str(diagnostic.get("finish_reason"))] += 1
+            counts["reported_model_versions"][str(diagnostic.get("model_version"))] += 1
+            counts["prompt_feedback"][str(diagnostic.get("prompt_feedback"))] += 1
+    return {key: dict(value) for key, value in counts.items()}
+
+
 def check_feedback(feedback, profile):
+    if feedback["cycles_per_bin"] != 25000 or any(
+        len(feedback[k]) != 8
+        for k in ("retired_classes", "retired_per_bin", "cycles_without_retirement")
+    ):
+        raise ValueError("wrong feedback bin shape")
     if any(feedback[k] != profile[k] for k in ("begin_tick", "end_tick")):
         raise ValueError("feedback/activity interval mismatch")
     if feedback["end_tick"] - feedback["begin_tick"] != 400000:
@@ -282,7 +300,9 @@ def audit(root):
             ):
                 raise ValueError("random control no longer reproduces v2")
         cells.append((summary, trials))
-    return describe_panel(manifest, cells)
+    result = describe_panel(manifest, cells)
+    result["model_diagnostics"] = model_diagnostics(panel_cells(root, manifest))
+    return result
 
 
 def archive(root, destination):
@@ -369,6 +389,13 @@ def archive(root, destination):
 
 def verify(root):
     index = read(root / "sha256.json")
+    actual = {
+        str(p.relative_to(root))
+        for p in root.rglob("*")
+        if p.is_file() and p.name != "sha256.json"
+    }
+    if set(index) != actual:
+        raise ValueError("archive file inventory differs from hash index")
     for name, digest in index.items():
         path = root / name
         if (
