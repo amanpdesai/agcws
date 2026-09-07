@@ -60,6 +60,8 @@ COPY experiments /opt/agcws/experiments
 COPY flows /opt/agcws/flows
 COPY analysis /opt/agcws/analysis
 COPY validation /opt/agcws/validation
+COPY maintenance /opt/agcws/maintenance
+COPY docs/WINDOWED_POWER_PROTOCOL.md /opt/agcws/docs/WINDOWED_POWER_PROTOCOL.md
 COPY prompts /opt/agcws/prompts
 COPY third_party/liberty /opt/agcws/third_party/liberty
 COPY third_party/opentitan /opt/agcws/third_party/opentitan

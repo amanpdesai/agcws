@@ -1,5 +1,11 @@
 # Plan
 
+The post-results [research assessment](RESEARCH_DIRECTION.md) separates
+demonstrated waveform feasibility from unproven agent superiority and proposes
+a fresh complexity-controlled extension. It does not amend either frozen study.
+The [retention record](../results/artifact_retention_20260906.json) documents
+verified compression, exact-path cleanup and the permission-blocked remainder.
+
 ## Current research checkpoint — 2026-09-06
 
 The versioned semantic-search development and frozen AES/DMA evaluation are
@@ -16,7 +22,9 @@ validation is complete for all sixteen finalists and four achieved references
 (180 reports); see [WINDOWED_POWER_RESULTS.md](WINDOWED_POWER_RESULTS.md).
 A [four-page working draft](../paper/report.pdf) now integrates both frozen
 studies and the windowed measurements. Venue formatting, author review, a
-successful current-image replay, and upstream submission remain. Compositional
+upstream submission, and a full clean-checkout synthesis check remain. Two
+image-only AES/DMA gate/window replays passed on 2026-09-07; see the
+[compact evidence](../results/container_window_replay_v1/README.md). Compositional
 held-out evaluation is not part of these completed results. The broad slice
 table below tracks the original project, not just these two-design milestones.
 

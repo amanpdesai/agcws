@@ -82,10 +82,13 @@ configuration uses Gemini 2.5 Flash, temperature 0.7, top-p 0.95, 512 thinking
 tokens, and an 8,192-token output limit. A malformed batch is charged, not
 silently resampled until it succeeds.
 
+Workspace-based DSE [5] motivates a separate controller ablation; these
+frozen runs do not test an unrestricted coding agent.
+
 Reusable simulator, activity, synthesis, and power components are separated
 from research drivers, following CHIA's composable-loop motivation [3]. The
 reported studies ran through host Python drivers; they are not evidence of
-a deployed Ray/CHIA execution or a successfully replayed container artifact.
+a deployed Ray/CHIA execution. Separate container replays are described below.
 \end{multicols}
 \clearpage
 
@@ -302,11 +305,11 @@ authoritative archives. Window measurements are versioned separately, so no
 later oracle change rewrites a frozen search result. Local audits verify
 ledgers and regenerate descriptive reports without model calls.
 
-The current evidence comes from host execution. A container configuration
-exists, but its latest validation smoke failed before Python started; a
-successful full image replay is not claimed. Completing that portability
-check, venue formatting, and the upstream contribution remain submission
-work, not hidden completed deliverables.
+The frozen studies ran on the host. Separate image-only AES/DMA finalist
+replays reproduce functional observations and all 72 window/full-power
+components exactly, without host source or executable mounts. Netlists and
+RTL measurements were staged inputs, not fresh synthesis. Full clean-checkout
+synthesis, venue formatting and upstream submission remain unfinished.
 
 \heading{Conclusion}
 Within two frozen, bounded workload studies, a feedback-driven agent does not
@@ -336,5 +339,9 @@ agentic AI-driven hardware/software co-design research}. 2026.
 \noindent[4] Parallax Software / The OpenROAD Project. \emph{OpenSTA},
 revision \texttt{a9a3f30ca9}, 2026.
 \href{https://github.com/The-OpenROAD-Project/OpenSTA/tree/a9a3f30ca97dc13f9ef911cae1a82c42c67379e1}{Pinned source and native VCD window tests}.
+
+\noindent[5] C. Wang et al. \emph{AgentDSE: Reasoning-Augmented Architectural
+Design Space Exploration}. 2026.
+\href{https://arxiv.org/abs/2606.21836v1}{arXiv:2606.21836v1}.
 \end{multicols}
 \end{document}

@@ -26,3 +26,10 @@ in this pass. This does not establish nonexistence. Its title, artifact and
 claimed objectives remain [U]; they are not used to support the draft's novelty
 claims. The draft makes no absolute-first or exhaustive literature-gap claim.
 Resolve this and the other outstanding nearby work before submission.
+
+## AgentDSE — checked 2026-09-07
+
+[V] Wang et al., *AgentDSE: Reasoning-Augmented Architectural Design Space
+Exploration*, arXiv:2606.21836v1. [Primary paper](https://arxiv.org/pdf/2606.21836).
+Full text read; reported experiments not independently reproduced.
+See [research assessment](RESEARCH_DIRECTION.md) for proposed adaptations.

@@ -21,6 +21,15 @@ host tool-path overrides or cloud credentials automatically. Existing frozen
 held-out experiments are host executions; do not silently switch them to a
 different container toolchain mid-study.
 
+Set `AGCWS_CONTAINER_CHECKOUT=0` to execute the code baked into the image,
+without mounting host source. In that mode only `/opt/agcws/out` is writable
+and persistent. This is the appropriate mode for portability checks; default
+checkout mode remains useful for development. The matched replay entry point
+is `python3 -m validation.container_replay`, with checksummed inputs staged by
+`python -m maintenance.stage_container_replay --out <new-input-directory>`.
+It checks existing netlists, functional behavior and eight-window power, not
+fresh synthesis or a rerun of the frozen policy studies.
+
 ```bash
 bash docker/run.sh python3 -c 'import agcws; print(agcws.__version__)'
 bash docker/prune.sh          # preview owned stopped containers/dangling images
@@ -32,8 +41,11 @@ and unused dedicated-builder cache older than seven days while reserving
 10 GB. It never runs global system/volume/default-builder pruning. Keep the
 tagged runtime image and useful build cache for fast starts. Docker `--rm`
 does not delete bind-mounted experiment outputs; see `maintenance/README.md`.
-The wrapper was smoke-tested against the existing `agcws:dev` image; Dockerfile
-layer-cleanup changes require the next image rebuild before they take effect.
+The rebuilt `agcws:window-validation-v1` image passed image-only AES/DMA
+matched GLS and window-power replays on 2026-09-07. All 72 power components
+matched archived host values exactly. See the [evidence and scope](../results/container_window_replay_v1/README.md).
+The older `agcws:dev` tag was not silently replaced; select the verified tag
+explicitly or rebuild the default tag with `docker/build.sh`.
 
 See Docker's [pruning guidance](https://docs.docker.com/engine/manage-resources/pruning/)
 and [builder-specific cache pruning](https://docs.docker.com/reference/cli/docker/buildx/prune/).
@@ -42,7 +54,7 @@ The image is the reproducible execution boundary for CHIA workers and EDA
 tasks. The host only needs Docker and Git. Build from the repository root:
 
 ```bash
-docker build -f docker/Dockerfile -t agcws:dev .
+bash docker/build.sh
 docker run --rm agcws:dev
 ```
 
@@ -77,7 +89,7 @@ make lint VENV_PYTHON=.venv/bin/python
 Run the basic image check with:
 
 ```bash
-docker build -f docker/Dockerfile -t agcws:dev .
+bash docker/build.sh
 docker run --rm agcws:dev python3 -c \
   'import os; from pathlib import Path; print(Path(os.environ["AGCWS_LIBERTY"]).exists())'
 ```

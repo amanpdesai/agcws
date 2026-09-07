@@ -1,0 +1,40 @@
+{
+  "date": "2026-09-06",
+  "scope": "Completed exact-path waveform retirement, not deletion of research results or global Docker pruning.",
+  "superseded_oracle": {
+    "deleted_files": 127,
+    "reclaimed_allocated_bytes": 4643930112,
+    "plan": "out/.maintenance/superseded-oracle-20260906.json",
+    "plan_sha256": "df42c9c1ef8257d9af4af45f65cf4f3177d7889084dc4c458633e204bbba36d5",
+    "deletion_journal_sha256": "0ad9d76faf4814d709e35b2714da1f044dbbd9bed5d4d12b13e68ad39e5d6760",
+    "recovery": "Regenerate from retained inputs and provenance; no trash copy."
+  },
+  "compressed_development": {
+    "target": "out/structural-population-development-v1",
+    "retired_files": 1903,
+    "raw_bytes": 4460660036,
+    "unique_objects": 1525,
+    "compressed_object_bytes": 69146827,
+    "reclaimed_original_allocated_bytes": 4463837184,
+    "plan_sha256": "bf9a61bc2ea5084ff937cbd8c2eeeaa2aabde8365952d5f489ec642d112d5170",
+    "index": "out/.maintenance/structural-development-objects-20260906.json",
+    "index_sha256": "30106d96d1e00e73014b9810e281a73f033ef13d8296b0497d74e1a2653f055f",
+    "retirement_journal_sha256": "5fc6dfe77ea55584d7c746ce7e745830b3dadcc2f8acdba4fc5717f648f7f7f5",
+    "validation": "All objects decompressed and hash/size checked before retirement; two largest traces restored byte-identically before originals were removed.",
+    "recovery": "Local index plus out/trace-objects; not an off-host backup."
+  },
+  "permission_blocked": {
+    "files": 16000,
+    "allocated_bytes": 505584082944,
+    "targets": ["out/ibex-full", "out/aes-baseline-matrix-docker-seed1"],
+    "plan": "out/.maintenance/stale-waveforms-20260905.remaining.json",
+    "reason": "Root-owned parent directories; passwordless sudo unavailable. No ownership bypass attempted."
+  },
+  "preserved": ["frozen studies", "current finalist waveforms", "windowed-power evidence", "non-waveform inputs and ledgers", "useful build caches", "shared Docker resources"],
+  "post_cleanup_archive_audit": {
+    "finalists": 16,
+    "references": 4,
+    "reports": 180,
+    "sha256": "ffa5e81b890fe885bad8b358dbf052bdd5895063beb41e34004218d797a0f554"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "scope": "Two predeclared existing finalists; container replay, not new research runs.",
+  "selection_sha256": "6a2046976f1959fdf9b84365a693d3442149351573fb55596c3703f63b60070f",
+  "cases": [
+    {
+      "design": "aes",
+      "replay_id": "45a53ab579bb3e906cfdf9bfa42427abc1387a0a05d7af8856e5686504f0c39f",
+      "run": "aes/random_300/seed-400/random",
+      "evaluation_index": 9,
+      "seed": 400,
+      "target": "random_300",
+      "policy": "random"
+    },
+    {
+      "design": "dma",
+      "replay_id": "70dd19d422f6911f3dcfa58e6dd6cfaa2b3e6dea68fef16921e9c614c61a4d50",
+      "run": "dma/random_300/seed-400/random",
+      "evaluation_index": 9,
+      "seed": 400,
+      "target": "random_300",
+      "policy": "random"
+    }
+  ],
+  "files": {
+    "aes/expected_power.json": "b0d0a4a72b7e2bd8cc82edd21db584ce9a866debbf68eb165cb5fb8b1f6048df",
+    "aes/rtl/activity.json": "4024ecc99aaa006ff33cb4e6a57171193ce94d2a14467011930b88a943a78a2b",
+    "aes/rtl/activity.vcd": "866a888bbf98fdad8112bc8cce764422f5f97a3f64bab98174756b528e5eb524",
+    "aes/rtl/program.txt": "762adff6f4fa640fddcf1fa6a20658b1884b5826959a71d8c3af00db40c7f2bb",
+    "aes/rtl/run.log": "06fd98a93f531b24988cc002b4632eeaafa5be1ae3e33b59df81439e4bb60fe9",
+    "aes/rtl/workload.json": "639f162bfd6462b262ca686dd3cba856204ae386e2d27aec96e4d88b81edca45",
+    "aes/synthesis/manifest.json": "dba976cb349777fd971047d3cc01a424546a65e395c262a79a1286c91b07c32f",
+    "aes/synthesis/mapped.v": "55ca92c3f9950e315862874684e085ed82b3442471ad5139ea7774048f3b22a2",
+    "dma/expected_power.json": "cc2aeecf5d72776bb8d0ac3f72817da97d5057549a08c773f2616c93f03034d5",
+    "dma/rtl/activity.json": "246b9419c66bfeccf83d6e01b12e48824473ec6f320c92e4c56dc324eb425ff3",
+    "dma/rtl/activity.vcd": "c7102049a43eb49904e5e7fb244774afc30a19718e7481616fe5996a0e9d6987",
+    "dma/rtl/driver.log": "2f2435da43a01c07e76ce217d41530794eb40fdff2b7fa5bd8b9194970e5490e",
+    "dma/rtl/sim_build/observed.json": "b3cd34d1e88b0975a07b7e4cf50847a3773654fef881a49ab886145972ee705b",
+    "dma/rtl/workload.json": "e6870bbc29658bd6834da23e237a3bb9fbc6409d45ff9beef9665cced5a779a8",
+    "dma/synthesis/manifest.json": "6b7fccfaf0bf04df499466e6c5478ef8292740bd88a757d7b9607728bed583b2",
+    "dma/synthesis/mapped.v": "c41ff6349e5a7ad1d564b6f2783a800a914e509f11c5738bd8b320a73ea44bd9"
+  },
+  "power_relative_tolerance": 1e-05,
+  "power_absolute_tolerance_w": 1e-12
+}
