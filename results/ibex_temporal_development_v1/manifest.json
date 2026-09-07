@@ -1,0 +1,102 @@
+{
+  "phase": "development-only",
+  "targets": {
+    "target_0": {
+      "rates": [
+        679.1112,
+        714.49892,
+        230.12484,
+        228.541,
+        233.152,
+        226.16112,
+        704.9678,
+        731.63268
+      ],
+      "witness_sha256": "f3e0274eb3d78399794d8df239ca9419a8565a2206ad0ec34e65b8cbdc5a3fc5"
+    },
+    "target_1": {
+      "rates": [
+        682.55588,
+        727.99744,
+        690.06968,
+        712.73212,
+        729.67608,
+        718.92332,
+        710.9868,
+        734.8654
+      ],
+      "witness_sha256": "bf58c94435e5c78f53b5867640b85d3cc24c949d4ab07f05afeb34251626d675"
+    },
+    "target_2": {
+      "rates": [
+        669.3832,
+        704.65316,
+        228.65816,
+        694.92932,
+        702.65,
+        713.87404,
+        238.50524,
+        754.61488
+      ],
+      "witness_sha256": "150ebcca443eb84d15b5540b1a6e5ce43efea74c586d80c94f4da26fb09d9fa4"
+    },
+    "target_3": {
+      "rates": [
+        686.3124,
+        705.27976,
+        691.78392,
+        688.40124,
+        706.34252,
+        230.98132,
+        719.38224,
+        739.87572
+      ],
+      "witness_sha256": "0e4c4a007ac5b3e36165bbb67f1334f8442975e521824b79ee953c62d84d4f6e"
+    }
+  },
+  "scale": 528.45376,
+  "tolerance": 0.1,
+  "minimum_target_separation": 0.3276575684533404,
+  "tolerance_rule": "min(0.10, minimum pairwise witness normalized RMSE / 3)",
+  "seeds": [
+    600,
+    601,
+    602
+  ],
+  "budget": 16,
+  "batch_size": 2,
+  "shared_initial_slots": 2,
+  "policies": [
+    "random",
+    "mutation",
+    "agent"
+  ],
+  "measurement": {
+    "binary_sha256": "d8628e9b588350c0a55412dd224f527798c24bac6455fad17deb816c3dd14391",
+    "image_id": "sha256:9e0cb9653e368644baf5c5bd6a936f80bb12adb813baa18403fd96c5ea4f7d5a",
+    "ibex_commit": "8b8ee086aef72e0833b7f0493d9d33f1e4d3c8e2",
+    "configuration": "simple_system defaults, RV32MFast, ICache=0, MHPMCounterNum=12"
+  },
+  "model": "gemini-2.5-flash",
+  "input_rate": 0.3,
+  "output_rate": 2.5,
+  "pricing_units": "estimated USD per million input/output tokens, includes thinking output",
+  "temperature": 0.7,
+  "top_p": 0.95,
+  "thinking_budget": 512,
+  "max_output_tokens": 8192,
+  "transport": "120s HTTP deadline; no process alarm; one attempt, no free repair",
+  "prompt_sha256": "0c03d0fcee35609a82142e32db2879ced4fad004801eb613463450d2fbb8b686",
+  "sources": {
+    "experiments/ibex_temporal_v1/activity.py": "f270c4973117a188af616d488974af794aacfc3cd45fdd3951247249bd9a341a",
+    "experiments/ibex_temporal_v1/evaluate.py": "9b193971efeb57cf22e44f19bafcc5793ed74c7d8b844bbc3a039d07d3ba53f5",
+    "experiments/ibex_temporal_v1/gate.py": "e19a7c29a1ad3f1174bb42e930660e2b9fabfdb0877d71b975bde7d194d731c5",
+    "experiments/ibex_temporal_v1/panel.py": "f89f0d6f6f884d8315d5936d34238c9f628ec176a0082f4e211c8af376cbafcc",
+    "experiments/ibex_temporal_v1/program.py": "d94236fbcf1378eebe3fb01ec420405d5d75efa6796eb659d3e1208f18cccfab",
+    "experiments/ibex_temporal_v1/search.py": "48a97537ec71e94c579a0dece9ae1f753d141c3da8097634d45d7b8d337b4df8",
+    "experiments/ibex_temporal_v1/witnesses.py": "0c7a8c5b8e2be9b76945a08e189253185c008c5d32a46c29c4a46418aa02d76a",
+    "src/agcws/policies/vertex.py": "56b76b78d6dfd94d336da82dc6d71938fdd2578138b02797ae7cdb47ee6f8544",
+    "docker/run.sh": "90118b16e7f44b458628bbef9cddb61b0f6e96e981d714172fba107a865f3384"
+  },
+  "measurement_fingerprint": "3d1ddb20f8ab00151f4331eda24c9ff09db08f066109dd7f8220f0e862ed9934"
+}
