@@ -138,6 +138,21 @@ def check_inputs(functional, record_root, manifest):
 
 def audit(root):
     manifest = read(root / "manifest.json")
+    previous_path = root / "v2_manifest.json"
+    if file_sha256(previous_path) != manifest["v2_manifest_sha256"]:
+        raise ValueError("v2 reference manifest mismatch")
+    previous = read(previous_path)
+    for field in ("targets", "scale", "tolerance", "measurement", "seeds", "budget"):
+        if previous[field] != manifest[field]:
+            raise ValueError(f"v2 comparison setting changed: {field}")
+    for name, target in manifest["targets"].items():
+        if file_sha256(root / "witnesses" / f"{name}.json") != target["witness_sha256"]:
+            raise ValueError("target witness hash differs")
+        if (
+            read(root / "target-evidence" / name / "profile.json")["window_rates"]
+            != target["rates"]
+        ):
+            raise ValueError("target differs from achieved profile")
     cells, initial = [], {}
     verify_bundle(root / "context_bundle", manifest["context_sha256"])
     source_payload = load_context(root / "context_bundle", manifest["context_sha256"])
@@ -164,6 +179,12 @@ def audit(root):
             if t["cache_id"]
         }
         audit_cell(manifest, summary, trials, records)
+        if summary["budget"] != manifest["budget"] or summary["valid_slots"] != sum(
+            t["valid"] for t in trials
+        ):
+            raise ValueError("summary proposal/validity count mismatch")
+        if summary["final_loss"] != trials[-1]["best_loss"]:
+            raise ValueError("summary final loss mismatch")
         for t in trials:
             if t["prompt_sha256"] != manifest["prompts"][policy]:
                 raise ValueError("wrong treatment prompt")
@@ -231,6 +252,8 @@ def audit(root):
         batches = read(directory / "batches.json")
         if sum(b["requested_slots"] for b in batches) != manifest["budget"]:
             raise ValueError("proposal accounting mismatch")
+        if sum(b["usage_unknown"] for b in batches) != summary["unknown_usage_batches"]:
+            raise ValueError("unknown usage accounting mismatch")
         for field in ("tokens_in", "tokens_out"):
             if sum(t[field] for t in trials) != sum(b[field] for b in batches):
                 raise ValueError("token accounting mismatch")
@@ -246,12 +269,39 @@ def audit(root):
                 raise ValueError("source arm did not record frozen context")
         elif source_path.exists():
             raise ValueError("source context leaked into control arm")
+        if policy == "random":
+            old = rows(
+                root / "v2_random" / directory.relative_to(root) / "trials.jsonl"
+            )
+            if len(old) != len(trials) or any(
+                any(
+                    a[k] != b[k]
+                    for k in ("program", "valid", "stage", "rates", "loss", "best_loss")
+                )
+                for a, b in zip(old, trials)
+            ):
+                raise ValueError("random control no longer reproduces v2")
         cells.append((summary, trials))
     return describe_panel(manifest, cells)
 
 
 def archive(root, destination):
     manifest = read(destination / "manifest.json")
+    previous = Path("results/ibex_proposal_v2_development")
+    shutil.copy2(previous / "manifest.json", destination / "v2_manifest.json")
+    (destination / "witnesses").mkdir(exist_ok=True)
+    for name in manifest["targets"]:
+        shutil.copy2(previous / "witnesses" / f"{name}.json", destination / "witnesses")
+        shutil.copytree(
+            previous / "gate-evidence" / name,
+            destination / "target-evidence" / name,
+            dirs_exist_ok=True,
+        )
+        for seed in manifest["seeds"]:
+            relative = Path("panel") / name / f"seed-{seed}" / "random/trials.jsonl"
+            target = destination / "v2_random" / relative
+            target.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(previous / relative, target)
     for directory in panel_cells(root, manifest):
         target = destination / directory.relative_to(root)
         target.mkdir(parents=True, exist_ok=True)
