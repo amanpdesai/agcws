@@ -165,3 +165,81 @@ the observed near-invariance belongs to those particular schedules and designs.
 Keep writing the existing held-out and methodological results while development
 continues. A new capability probe does not invalidate those results or require
 changing their headline after observing it.
+
+## 8. Design notes for the unimplemented stages
+
+### Reasoning versus controller memory
+
+Increasing the thought allowance tests resource availability within a model call;
+it does not add persistent memory, another simulator observation or a better
+optimizer. Record actual thought-token use, termination and output validity to
+distinguish an unused allowance from a failed reasoning intervention. A different
+model may use the same allowance differently. Do not infer equal cognitive effort
+from equal token caps, or call the same-generation Flash/Pro probe exhaustive.
+
+A controller-memory test should keep observations constant and vary only their
+retention: best/recent history, compressed mechanism notebook, or explicit
+prediction/error records. Missing history and poor use of present information are
+different hypotheses. More input tokens are not a success metric.
+
+### Depth, cadence and parallel exploration
+
+Use one frozen maximum-budget trajectory per run and inspect predeclared prefixes.
+Compare the actual error curves, not merely whether the first tolerance crossing
+happens. Report the fraction of the budget spent repeating previously evaluated
+programs or equivalent behavior. A cache hit still costs a proposal slot.
+
+For cadence, distinguish one candidate per observation from independent batches
+whose members share the same earlier history. Parallelism lowers elapsed time but
+does not give within-batch feedback. Compare at equal proposals, while reporting
+the different number of model calls, token costs and observed-data opportunities.
+A population of independent explorers with an archive is a separate controller
+from one long conversation; its archive selection and restart rules must be fixed.
+
+### RTL investigation that demonstrates understanding
+
+An autonomous reader should trace a concrete question: which state must be reached,
+which operands/control signals affect latency, what enables the relevant datapath,
+and which prerequisites legal software can establish. Ask for a short mechanism
+prediction and source locations, then test the predicted executed events. Score
+unsupported statements and contradictions as well as correct explanations.
+
+Compare equal-budget source treatments: supplied specification alone, fixed
+excerpts, and adaptive retrieval from the same hashed allowlist. Include active
+configuration and harness semantics: reading an uninstantiated module or optional
+cache configuration would produce confident but irrelevant reasoning. Exclude
+reference solutions, result directories, secrets and unrestricted shell access.
+
+If extra monitored signals are needed, prove that tracing/observation changes do
+not change the instructions, hardware configuration or activity signal inventory.
+Do not turn a changed measurement instrument into an apparent controller gain.
+The agent still generates stimulus; it never edits DUT RTL or its evaluator.
+
+### Actionable tools without giving away the solution
+
+A useful reference-edit tool can expose allocation changes, effective segment
+start/end times and bin occupancy. Distinguish static estimates from measured
+execution, and avoid reporting guessed stall causes. Keep a path for complete
+program construction so the helper does not reduce every method to scalar tuning.
+
+Read-only source lookup is not a power evaluation. A submitted candidate sent to
+public validation/simulation must follow an explicitly declared proposal-counting
+rule; do not provide the model unlimited uncharged candidate repairs or hidden
+simulations through a helper. All methods get access to the same legitimate
+tools. Human-authored mechanism knowledge and constraints must be counted as
+per-design engineering, not attributed to model discovery.
+
+### More complex targets, not just more complex RTL
+
+For a new architectural regime, predefine a gradient of prerequisites independently
+of which method wins. Examples of questions include whether a requested phase
+requires a particular cache state, multiple outstanding operations, a dependency
+chain, or coordinated resource contention. These are proposed task mechanisms;
+their feasibility and observability must be established before comparison.
+
+Useful-work and correctness gates should reject illegal sequences but need not
+construct the desired state for the policy. If an adapter performs every hard
+setup sequence automatically, the experiment measures choice among prepared
+knobs, not semantic planning. Conversely, deliberately withholding the interface
+specification would test documentation guessing. The benchmark must expose legal
+actions clearly while leaving the actual state-reaching plan to every policy.
