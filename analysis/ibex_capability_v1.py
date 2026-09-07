@@ -92,6 +92,14 @@ def describe(manifest, cells):
                 {r["model_version"] for _, r in selected if r.get("model_version")}
             ),
         }
+        s = settings(arm) if arm in MODEL_ARMS else None
+        report["unknown_usage_reservation_usd"] = (
+            report["unknown_usage"]
+            * (200000 * s["input_rate"] + s["max_output_tokens"] * s["output_rate"])
+            / 1e6
+            if s
+            else 0.0
+        )
         for field in ("target", "seed"):
             values = sorted({c[field] for c in manifest["contexts"].values()})
             report[f"gain_by_{field}"] = {
