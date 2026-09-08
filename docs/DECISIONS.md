@@ -676,3 +676,22 @@ in for on-policy search or establish mechanistic understanding: public bin
 predictions remain weak (90/192 correct, no all-eight match for Pro-4096).
 **Consequence.** Preserve every arm and attempted outcome. New architecture,
 adaptive source reading and controller redesign remain separate ablations.
+
+## 2026-09-08 — Closed-loop depth panel with strict resumable execution
+
+**Decision.** Four existing temporal targets, development seeds 610–612, Pro-4096,
+Flash-4096, random and behavior-coverage; each builds its own trajectory through
+128 proposals with 16/64 prefixes. Flash-4096 isolates model capability at the
+same thinking allowance. Two shared random initial programs count as slots.
+**Rationale.** The prior next-batch probe cannot establish compounded search
+improvement. Preserve the language, diagnostics and evaluator while changing
+model and depth only. No held-out seed reuse, ranking-based early stopping or
+silent model/proposer replacement.
+**Engineering.** Immutable atomic checkpoints, durable request markers, API
+failures distinct from schema rejections, unknown usage distinct from zero cost,
+explicit model dispatch, one API call in flight, $180 liability ceiling and
+independent compressed-evidence audit. Full suite passed 510 tests before freeze.
+Historical source dependencies remain intact to preserve completed studies.
+**Consequence.** Only complete panels support aggregates; incomplete runs remain
+visible. Three development seeds support descriptive contrasts, not significance
+or equivalence claims. See `IBEX_DEPTH_V1_PROTOCOL.md` and `CODE_QUALITY_AUDIT.md`.
