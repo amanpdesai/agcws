@@ -42,6 +42,28 @@ def value(root, name):
     return json.loads(text(root, name))
 
 
+def completed_prefixes(root, manifest):
+    completed = [
+        n for n in manifest["prefixes"] if (root / f"prefix-{n}-complete.json").exists()
+    ]
+    if not completed or completed != manifest["prefixes"][: len(completed)]:
+        raise ValueError("no complete ordered prefix panel available")
+    digest = (
+        file_sha256(root / "manifest.json")
+        if (root / "manifest.json").exists()
+        else None
+    )
+    for n in completed:
+        record = read(root / f"prefix-{n}-complete.json")
+        if record["cells"] != len(manifest["cells"]) or record["slots"] != n * len(
+            manifest["cells"]
+        ):
+            raise ValueError("prefix completion counts differ")
+        if digest is not None and record["manifest_sha256"] != digest:
+            raise ValueError("prefix completion belongs to another manifest")
+    return completed
+
+
 def check_trial(root, t, manifest):
     if not t["valid"] and (t["loss"] is not None or t["rates"] is not None):
         raise ValueError("invalid candidate was scored")
@@ -244,6 +266,7 @@ def describe(manifest, histories, responses):
 
 def audit(root):
     manifest = read(root / "manifest.json")
+    prefixes = completed_prefixes(root, manifest)
     if read(root / "parent_manifest.json")["targets"] != manifest["targets"]:
         raise ValueError("target corpus differs from parent")
     if file_sha256(root / "parent_manifest.json") != manifest["parent_sha256"]:
@@ -263,7 +286,7 @@ def audit(root):
         }:
             raise ValueError("cell identity differs")
         rng, archive, history = random.Random(seed), BehaviorArchive(), []
-        for offset in range(0, max(manifest["prefixes"]), 2):
+        for offset in range(0, max(prefixes), 2):
             batch = f"{directory}/batches/{offset + 1:03d}"
             model_batch = arm in MODELS and offset > 0
             candidates = (
@@ -380,14 +403,16 @@ def audit(root):
             for trial in trials:
                 archive.observe(trial)
             history.extend(trials)
-        for budget in manifest["prefixes"]:
+        for budget in prefixes:
             if value(root, f"{directory}/prefix-{budget}.json") != {
                 "cell": cell,
                 **summarize(history, budget, manifest["tolerance"]),
             }:
                 raise ValueError("prefix arithmetic differs")
         histories[target, seed, arm] = history
-    return describe(manifest, histories, responses)
+    result = describe({**manifest, "prefixes": prefixes}, histories, responses)
+    result["complete_study"] = prefixes == manifest["prefixes"]
+    return result
 
 
 def verify(root):
@@ -414,7 +439,8 @@ def verify(root):
         raise ValueError("aggregate differs")
     return {
         "cells": len(manifest["cells"]),
-        "slots": len(manifest["cells"]) * max(manifest["prefixes"]),
+        "slots": len(manifest["cells"]) * max(completed_prefixes(root, manifest)),
+        "complete_study": completed_prefixes(root, manifest) == manifest["prefixes"],
         "files": len(index),
         "scope": "compact evidence, not independent waveform replay",
     }
@@ -422,9 +448,8 @@ def verify(root):
 
 def archive(source, destination):
     manifest = read(destination / "manifest.json")
-    maximum = max(manifest["prefixes"])
-    if not (source / f"prefix-{maximum}-complete.json").exists():
-        raise ValueError("panel incomplete; do not publish a complete aggregate")
+    prefixes = completed_prefixes(source, manifest)
+    maximum = max(prefixes)
     identifiers = set()
     timings = []
 
@@ -437,6 +462,10 @@ def archive(source, destination):
         target.write_bytes(data)
 
     for path in sorted((source / "panel").rglob("*.json")):
+        if path.parent.parent.name == "batches" and int(path.parent.name) > maximum:
+            continue
+        if path.name.startswith("prefix-") and int(path.stem.split("-")[1]) > maximum:
+            continue
         copy(path, path.relative_to(source))
         if path.name == "trials.json":
             identifiers.update(t["cache_id"] for t in read(path) if t["cache_id"])
@@ -458,7 +487,7 @@ def archive(source, destination):
             path = source / "cache" / identifier / name
             if path.exists():
                 copy(path, Path("evaluations") / identifier / name)
-    for budget in manifest["prefixes"]:
+    for budget in prefixes:
         shutil.copyfile(
             source / f"prefix-{budget}-complete.json",
             destination / f"prefix-{budget}-complete.json",
@@ -472,7 +501,7 @@ def archive(source, destination):
                 "identity_mtime_unix": start,
                 "prefix_summary_mtime_unix": {
                     str(n): (directory / f"prefix-{n}.json").stat().st_mtime
-                    for n in manifest["prefixes"]
+                    for n in prefixes
                 },
                 "scope": "Observed checkpoint timestamps; elapsed spans include worker/stage waits, not exclusive compute time.",
             }
