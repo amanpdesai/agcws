@@ -56,3 +56,9 @@ guessing. Runtime/package/source fingerprints must match. Unexpected interruptio
 inside a cache evaluation require inspection, not a fallback simulator. Stored
 compact evidence is not an independent replay of every waveform. The existing
 Ray/fork warnings are not silently suppressed.
+
+Verification checkpoint: 513 tests passed, with the three existing Ray/fork
+warnings; lint passes for `src/`, the new runner and its analysis/tests. The
+previous capability archive (72 cells / 144 slots) and v4 archive (48 cells /
+768 slots) independently pass their compact-evidence audits unchanged. This
+does not imply completion of the new depth panel.
