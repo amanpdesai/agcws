@@ -3,6 +3,7 @@
 import argparse
 import collections
 import gzip
+import hashlib
 import itertools
 import json
 import math
@@ -88,6 +89,28 @@ def check_trial(root, t, manifest):
     functional = value(root, f"{directory}/run/functional.json")
     if functional["expected"] != expected or not functional["functional_ok"]:
         raise ValueError("functional reference differs")
+    parent = read(root / "parent_manifest.json")
+    inputs = {
+        "Vibex_simple_system": parent["measurement"]["binary_sha256"],
+        "program.S": hashlib.sha256(
+            text(root, f"{directory}/run/program.S").encode()
+        ).hexdigest(),
+        **{
+            name: manifest["sources"][name]
+            for name in (
+                "experiments/ibex_temporal_v4/evaluate.py",
+                "experiments/ibex_temporal_v4/compiler.py",
+                "experiments/ibex_temporal_v4/events.py",
+                "experiments/ibex_temporal_v3/program.py",
+                "experiments/ibex_temporal_v2/compiler.py",
+            )
+        },
+    }
+    if any(
+        [v for k, v in functional["inputs"].items() if k.endswith(suffix)] != [digest]
+        for suffix, digest in inputs.items()
+    ):
+        raise ValueError("CPU/evaluator source provenance differs")
     match = re.search(
         r"AGCWS_STATE ([0-9A-Fa-f ]+)\n",
         text(root, f"{directory}/run/ibex_simple_system.log"),
@@ -278,6 +301,26 @@ def audit(root):
                 start = value(root, f"{batch}/request_started.json")
                 if response["identity"] != identity or start["identity"] != identity:
                     raise ValueError("request identity differs")
+                if start["reservation_usd"] != cost(
+                    arm, 200000, settings(arm)["max_output_tokens"]
+                ):
+                    raise ValueError("request reservation differs")
+                if response.get("api_error"):
+                    if response["raw_text"] or not response["usage_unknown"]:
+                        raise ValueError("API failure has fabricated output or usage")
+                elif response["model_version"] != manifest["models"][arm]["model"]:
+                    raise ValueError("reported model differs")
+                if not response["usage_unknown"]:
+                    fields = response["usage_fields"]
+                    if (
+                        response["tokens_in"] != fields["prompt_token_count"]
+                        or response["tokens_out"]
+                        != fields["candidates_token_count"]
+                        + fields["thoughts_token_count"]
+                    ):
+                        raise ValueError("usage decomposition differs")
+                elif response["estimated_usd"] is not None:
+                    raise ValueError("unknown usage presented as known cost")
                 if not response["usage_unknown"] and not math.isclose(
                     response["estimated_usd"],
                     cost(arm, response["tokens_in"], response["tokens_out"]),
@@ -308,6 +351,17 @@ def audit(root):
                 ):
                     raise ValueError("submitted proposal differs")
                 check_trial(root, trial, manifest)
+                if (trial["stage"] == "API") != bool(
+                    model_batch and response.get("api_error")
+                ):
+                    raise ValueError("API failure classification differs")
+                note_error = proposal["prediction_error"]
+                if proposal["prediction"] and proposal["prediction"][
+                    "reference_slot"
+                ] not in {t["slot"] for t in history if t["valid"]}:
+                    note_error = "reference was not visible as valid before this batch"
+                if trial["prediction_error"] != note_error:
+                    raise ValueError("prediction visibility differs")
                 if trial["valid"] and not math.isclose(
                     trial["loss"],
                     error(
@@ -372,6 +426,7 @@ def archive(source, destination):
     if not (source / f"prefix-{maximum}-complete.json").exists():
         raise ValueError("panel incomplete; do not publish a complete aggregate")
     identifiers = set()
+    timings = []
 
     def copy(path, relative):
         target = destination / (str(relative) + ".gz")
@@ -408,6 +463,23 @@ def archive(source, destination):
             source / f"prefix-{budget}-complete.json",
             destination / f"prefix-{budget}-complete.json",
         )
+    for cell in manifest["cells"]:
+        directory = source / "panel" / cell["target"] / str(cell["seed"]) / cell["arm"]
+        start = (directory / "identity.json").stat().st_mtime
+        timings.append(
+            {
+                "cell": cell,
+                "identity_mtime_unix": start,
+                "prefix_summary_mtime_unix": {
+                    str(n): (directory / f"prefix-{n}.json").stat().st_mtime
+                    for n in manifest["prefixes"]
+                },
+                "scope": "Observed checkpoint timestamps; elapsed spans include worker/stage waits, not exclusive compute time.",
+            }
+        )
+    (destination / "execution_timings.json").write_text(
+        json.dumps(timings, indent=2) + "\n"
+    )
     (destination / "aggregate.json").write_text(
         json.dumps(audit(destination), indent=2) + "\n"
     )
