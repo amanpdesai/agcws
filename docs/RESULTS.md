@@ -1,5 +1,9 @@
 # Results status
 
+In progress, not a result: [closed-loop depth panel](IBEX_DEPTH_V1_PROTOCOL.md),
+48 Ibex trajectories and 6,144 requested slots, frozen at `06a85b8c` before calls.
+Do not infer completion from the presence of its manifest or producer code.
+
 Latest capability evidence: [model × reasoning probe](IBEX_CAPABILITY_V1_RESULTS.md),
 72 fixed-context cells / 144 slots, complete. Pro-4096 has the largest mean
 next-batch gain (0.14234 versus random 0.02674), with four newly solved contexts

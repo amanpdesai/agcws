@@ -38,6 +38,12 @@ non-flat cases. This is promising development evidence, not a full-search or
 held-out win. See the [research roadmap](docs/RESEARCH_DIRECTIONS.md) and
 [frozen-context protocol](docs/IBEX_CAPABILITY_V1_PROTOCOL.md).
 
+A [closed-loop depth study](docs/IBEX_DEPTH_V1_PROTOCOL.md) is now running:
+Pro-4096, Flash-4096, random and behavior-coverage, four Ibex targets and three
+development seeds, with 16/64/128 proposal prefixes. It is not yet a completed
+comparison. The [active-path quality audit](docs/CODE_QUALITY_AUDIT.md) documents
+strict accounting, immutable checkpoints and preserved historical dependencies.
+
 Reviewable ledgers and inference are tracked in
 [`results/structural_temporal_heldout_v1/`](results/structural_temporal_heldout_v1/),
 with matched gate evidence in
