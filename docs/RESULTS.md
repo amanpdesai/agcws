@@ -1,8 +1,9 @@
 # Results status
 
-In progress, not a result: [closed-loop depth panel](IBEX_DEPTH_V1_PROTOCOL.md),
-48 Ibex trajectories and 6,144 requested slots, frozen at `06a85b8c` before calls.
-Do not infer completion from the presence of its manifest or producer code.
+Latest depth checkpoint: [interim results](IBEX_DEPTH_V1_RESULTS.md) records the
+complete 16-slot secondary panel: 48 cells, 768 slots. Pro mean AUC is 2.1973
+versus random 4.9947, with 10/12 versus 3/12 solves. This is development-only.
+The 64/128-slot panels remain in progress; the primary endpoint is not complete.
 
 Latest capability evidence: [model × reasoning probe](IBEX_CAPABILITY_V1_RESULTS.md),
 72 fixed-context cells / 144 slots, complete. Pro-4096 has the largest mean
