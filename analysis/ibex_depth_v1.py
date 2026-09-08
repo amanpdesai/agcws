@@ -42,6 +42,38 @@ def value(root, name):
     return json.loads(text(root, name))
 
 
+def check_prefix_arithmetic(history, recorded, tolerance):
+    """Check the integral directly, without the producer's running-min reducer."""
+    budget = recorded["budget"]
+    rows = history[:budget]
+    if len(rows) != budget or [t["slot"] for t in rows] != list(range(1, budget + 1)):
+        raise ValueError("incomplete ordered prefix")
+    curve = []
+    for index in range(budget):
+        losses = [t["loss"] for t in rows[: index + 1] if t["valid"]]
+        if any(v is None or not math.isfinite(v) or v < 0 for v in losses):
+            raise ValueError("invalid measured loss")
+        curve.append(min(losses) if losses else 1.0)
+    if any(t["loss"] is not None for t in rows if not t["valid"]):
+        raise ValueError("invalid proposal received a loss")
+    integral = sum(curve) - (curve[0] + curve[-1]) / 2
+    if recorded["curve"] != curve or not math.isclose(
+        recorded["auc"], integral, rel_tol=1e-12, abs_tol=1e-12
+    ):
+        raise ValueError("independent integral differs")
+    if not math.isclose(
+        recorded["mean_auc"], integral / (budget - 1), rel_tol=1e-12, abs_tol=1e-12
+    ):
+        raise ValueError("normalized integral differs")
+    solved_slots = [t["slot"] for t in rows if t["valid"] and t["loss"] <= tolerance]
+    if (
+        recorded["solved"] != bool(solved_slots)
+        or recorded["right_censored"] != (not solved_slots)
+        or recorded["evaluations_to_target"] != min(solved_slots, default=budget)
+    ):
+        raise ValueError("solve/censoring arithmetic differs")
+
+
 def completed_prefixes(root, manifest):
     completed = [
         n for n in manifest["prefixes"] if (root / f"prefix-{n}-complete.json").exists()
@@ -404,7 +436,9 @@ def audit(root):
                 archive.observe(trial)
             history.extend(trials)
         for budget in prefixes:
-            if value(root, f"{directory}/prefix-{budget}.json") != {
+            recorded = value(root, f"{directory}/prefix-{budget}.json")
+            check_prefix_arithmetic(history, recorded, manifest["tolerance"])
+            if recorded != {
                 "cell": cell,
                 **summarize(history, budget, manifest["tolerance"]),
             }:

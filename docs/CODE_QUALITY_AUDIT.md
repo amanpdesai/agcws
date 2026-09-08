@@ -62,3 +62,10 @@ warnings; lint passes for `src/`, the new runner and its analysis/tests. The
 previous capability archive (72 cells / 144 slots) and v4 archive (48 cells /
 768 slots) independently pass their compact-evidence audits unchanged. This
 does not imply completion of the new depth panel.
+
+While the panel runs, the audit now also computes each prefix's integral directly
+from prefix minima and endpoint weights, separately from the producer reducer.
+It rejects clipped first-valid losses and inconsistent right-censoring. A live
+check on the first eight completed 16-slot cells (128 slots) passed the compact
+CPU-state, source-provenance, activity-window and independent-integral checks.
+This is an early execution check, not a full-panel result or a fresh simulation.

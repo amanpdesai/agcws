@@ -3,7 +3,7 @@ import itertools
 
 import pytest
 
-from analysis.ibex_depth_v1 import describe, text
+from analysis.ibex_depth_v1 import check_prefix_arithmetic, describe, text
 from experiments.ibex_depth_v1.model import ARMS
 
 
@@ -51,3 +51,25 @@ def test_compressed_evidence_is_lossless(tmp_path):
     original = 'specific tool log  \n{"x": 1}\n'
     (tmp_path / "record.log.gz").write_bytes(gzip.compress(original.encode(), mtime=0))
     assert text(tmp_path, "record.log") == original
+
+
+def test_independent_integral_rejects_clipping_and_bad_censoring():
+    rows = [
+        {"slot": 1, "valid": False, "loss": None},
+        {"slot": 2, "valid": True, "loss": 2.0},
+        {"slot": 3, "valid": True, "loss": 0.5},
+    ]
+    recorded = {
+        "budget": 3,
+        "curve": [1, 2, 0.5],
+        "auc": 2.75,
+        "mean_auc": 1.375,
+        "solved": False,
+        "right_censored": True,
+        "evaluations_to_target": 3,
+    }
+    check_prefix_arithmetic(rows, recorded, 0.1)
+    with pytest.raises(ValueError, match="integral"):
+        check_prefix_arithmetic(rows, {**recorded, "auc": 2.0}, 0.1)
+    with pytest.raises(ValueError, match="censoring"):
+        check_prefix_arithmetic(rows, {**recorded, "evaluations_to_target": None}, 0.1)
