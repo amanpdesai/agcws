@@ -1,9 +1,25 @@
 # Ibex depth v1 — interim development results
 
-Status, 2026-09-08: the complete 16-slot prefix contains 48 cells and 768
-proposed slots. The 64- and 128-slot panels are running. This is not completion
+Status, 2026-09-08: the complete 64-slot prefix contains 48 cells and 3,072
+proposed slots. The 128-slot panel is running. This is not completion
 of the study or its primary endpoint (AUC at 128). See the frozen
 [protocol](IBEX_DEPTH_V1_PROTOCOL.md) and [compact archive](../results/ibex_depth_v1/README.md).
+
+## Complete 64-slot secondary comparison
+
+| Arm | Mean AUC | Solves / 12 | Mean censored slots to tolerance |
+|---|---:|---:|---:|
+| Pro-4096 | 4.5782 | 12 | 10.50 |
+| Flash-4096 | 15.7169 | 6 | 44.92 |
+| Random | 15.8451 | 3 | 48.50 |
+| Behavior-coverage | 19.4151 | 3 | 48.50 |
+
+All four targets are now solved for all three Pro development seeds. Flash
+solves six cells; both controls solve only the three near-flat target cells.
+This is a complete secondary depth breakdown, not the still-pending primary
+128-slot endpoint. Raw AUC grows with the integration horizon: do not compare
+the 16-slot and 64-slot raw AUCs as if they shared an axis. The aggregate also
+reports horizon-normalized AUC and all paired seed/target breakdowns.
 
 ## Complete 16-slot secondary comparison
 

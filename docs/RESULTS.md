@@ -1,9 +1,9 @@
 # Results status
 
 Latest depth checkpoint: [interim results](IBEX_DEPTH_V1_RESULTS.md) records the
-complete 16-slot secondary panel: 48 cells, 768 slots. Pro mean AUC is 2.1973
-versus random 4.9947, with 10/12 versus 3/12 solves. This is development-only.
-The 64/128-slot panels remain in progress; the primary endpoint is not complete.
+complete 64-slot secondary panel: 48 cells, 3,072 slots. Pro mean AUC is 4.5782
+versus random 15.8451, with 12/12 versus 3/12 solves. This is development-only.
+The 128-slot panel remains in progress; the primary endpoint is not complete.
 
 Latest capability evidence: [model × reasoning probe](IBEX_CAPABILITY_V1_RESULTS.md),
 72 fixed-context cells / 144 slots, complete. Pro-4096 has the largest mean
