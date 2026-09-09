@@ -1,0 +1,588 @@
+{
+  "slot": 3,
+  "program": {
+    "registers": [
+      0,
+      0,
+      0,
+      4294967295,
+      3785798770,
+      4294967295,
+      17,
+      17
+    ],
+    "memory_seed": 306612398,
+    "segments": [
+      {
+        "weight": 1316,
+        "release": 10293,
+        "body": [
+          {
+            "op": "divu",
+            "dst": 6,
+            "a": 6,
+            "b": 0
+          },
+          {
+            "op": "divu",
+            "dst": 6,
+            "a": 7,
+            "b": 0
+          },
+          {
+            "op": "divu",
+            "dst": 7,
+            "a": 4,
+            "b": 0
+          },
+          {
+            "op": "divu",
+            "dst": 7,
+            "a": 4,
+            "b": 1
+          },
+          {
+            "op": "divu",
+            "dst": 6,
+            "a": 1,
+            "b": 0
+          },
+          {
+            "op": "divu",
+            "dst": 3,
+            "a": 0,
+            "b": 1
+          }
+        ]
+      },
+      {
+        "weight": 2023,
+        "release": 86566,
+        "body": [
+          {
+            "op": "cmovz",
+            "dst": 0,
+            "a": 1,
+            "b": 6
+          },
+          {
+            "op": "cmovz",
+            "dst": 1,
+            "a": 6,
+            "b": 5
+          },
+          {
+            "op": "cmovz",
+            "dst": 7,
+            "a": 2,
+            "b": 7
+          },
+          {
+            "op": "cmovz",
+            "dst": 0,
+            "a": 3,
+            "b": 7
+          },
+          {
+            "op": "cmovz",
+            "dst": 2,
+            "a": 0,
+            "b": 0
+          },
+          {
+            "op": "cmovz",
+            "dst": 1,
+            "a": 7,
+            "b": 7
+          },
+          {
+            "op": "cmovz",
+            "dst": 7,
+            "a": 5,
+            "b": 1
+          }
+        ]
+      },
+      {
+        "weight": 832,
+        "release": 120561,
+        "body": [
+          {
+            "op": "divu",
+            "dst": 1,
+            "a": 0,
+            "b": 7
+          },
+          {
+            "op": "divu",
+            "dst": 1,
+            "a": 1,
+            "b": 3
+          },
+          {
+            "op": "divu",
+            "dst": 5,
+            "a": 4,
+            "b": 1
+          }
+        ]
+      }
+    ]
+  },
+  "canonical_program": {
+    "registers": [
+      0,
+      0,
+      0,
+      4294967295,
+      3785798770,
+      4294967295,
+      17,
+      17
+    ],
+    "memory_seed": 306612398,
+    "segments": [
+      {
+        "weight": 1316,
+        "release": 10293,
+        "body": [
+          {
+            "op": "divu",
+            "dst": 6,
+            "a": 6,
+            "b": 0
+          },
+          {
+            "op": "divu",
+            "dst": 6,
+            "a": 7,
+            "b": 0
+          },
+          {
+            "op": "divu",
+            "dst": 7,
+            "a": 4,
+            "b": 0
+          },
+          {
+            "op": "divu",
+            "dst": 7,
+            "a": 4,
+            "b": 1
+          },
+          {
+            "op": "divu",
+            "dst": 6,
+            "a": 1,
+            "b": 0
+          },
+          {
+            "op": "divu",
+            "dst": 3,
+            "a": 0,
+            "b": 1
+          }
+        ]
+      },
+      {
+        "weight": 2023,
+        "release": 86566,
+        "body": [
+          {
+            "op": "cmovz",
+            "dst": 0,
+            "a": 1,
+            "b": 6
+          },
+          {
+            "op": "cmovz",
+            "dst": 1,
+            "a": 6,
+            "b": 5
+          },
+          {
+            "op": "cmovz",
+            "dst": 7,
+            "a": 2,
+            "b": 7
+          },
+          {
+            "op": "cmovz",
+            "dst": 0,
+            "a": 3,
+            "b": 7
+          },
+          {
+            "op": "cmovz",
+            "dst": 2,
+            "a": 0,
+            "b": 0
+          },
+          {
+            "op": "cmovz",
+            "dst": 1,
+            "a": 7,
+            "b": 7
+          },
+          {
+            "op": "cmovz",
+            "dst": 7,
+            "a": 5,
+            "b": 1
+          }
+        ]
+      },
+      {
+        "weight": 832,
+        "release": 120561,
+        "body": [
+          {
+            "op": "divu",
+            "dst": 1,
+            "a": 0,
+            "b": 7
+          },
+          {
+            "op": "divu",
+            "dst": 1,
+            "a": 1,
+            "b": 3
+          },
+          {
+            "op": "divu",
+            "dst": 5,
+            "a": 4,
+            "b": 1
+          }
+        ]
+      }
+    ]
+  },
+  "valid": true,
+  "stage": null,
+  "reason": "",
+  "schema_path": null,
+  "allocation": [
+    1292,
+    1987,
+    817
+  ],
+  "cache_id": "9ae823622baece76a9bc50ace8f3ab6352b981dd2a81a87c1981006516c1a2c4",
+  "feedback": {
+    "begin_tick": 288,
+    "end_tick": 400288,
+    "cycles_per_bin": 25000,
+    "retired_classes": [
+      {
+        "alu": 223,
+        "multiply": 0,
+        "divide": 1292,
+        "load": 0,
+        "store": 0,
+        "branch": 5603,
+        "jump": 0,
+        "csr": 5388,
+        "other": 0
+      },
+      {
+        "alu": 0,
+        "multiply": 0,
+        "divide": 0,
+        "load": 0,
+        "store": 0,
+        "branch": 6250,
+        "jump": 0,
+        "csr": 6250,
+        "other": 0
+      },
+      {
+        "alu": 0,
+        "multiply": 0,
+        "divide": 0,
+        "load": 0,
+        "store": 0,
+        "branch": 6250,
+        "jump": 0,
+        "csr": 6250,
+        "other": 0
+      },
+      {
+        "alu": 855,
+        "multiply": 0,
+        "divide": 0,
+        "load": 0,
+        "store": 0,
+        "branch": 6889,
+        "jump": 0,
+        "csr": 4619,
+        "other": 0
+      },
+      {
+        "alu": 56,
+        "multiply": 0,
+        "divide": 165,
+        "load": 0,
+        "store": 0,
+        "branch": 5196,
+        "jump": 0,
+        "csr": 5141,
+        "other": 0
+      },
+      {
+        "alu": 221,
+        "multiply": 0,
+        "divide": 652,
+        "load": 0,
+        "store": 0,
+        "branch": 2126,
+        "jump": 0,
+        "csr": 1910,
+        "other": 0
+      },
+      {
+        "alu": 0,
+        "multiply": 0,
+        "divide": 0,
+        "load": 0,
+        "store": 0,
+        "branch": 6250,
+        "jump": 0,
+        "csr": 6250,
+        "other": 0
+      },
+      {
+        "alu": 0,
+        "multiply": 0,
+        "divide": 0,
+        "load": 0,
+        "store": 0,
+        "branch": 6250,
+        "jump": 0,
+        "csr": 6250,
+        "other": 0
+      }
+    ],
+    "retired_per_bin": [
+      12506,
+      12500,
+      12500,
+      12363,
+      10558,
+      4909,
+      12500,
+      12500
+    ],
+    "cycles_without_retirement": [
+      12494,
+      12500,
+      12500,
+      12637,
+      14442,
+      20091,
+      12500,
+      12500
+    ],
+    "interpretation": "includes polling/control overhead; gaps are not attributed stall causes",
+    "body_completion_cycles": 142359,
+    "body_overrun_cycles": 0,
+    "body_completed_before_deadline": true,
+    "deadline_margin_cycles": 57641,
+    "allocation": [
+      1292,
+      1987,
+      817
+    ],
+    "trace_file": "trace_core_00000000.log"
+  },
+  "execution": {
+    "begin_tick": 288,
+    "end_tick": 400288,
+    "bins": [
+      {
+        "divide_zero_divisor": 1292,
+        "divide_nonzero_divisor": 0,
+        "divide_zero_numerator": 430,
+        "branch_taken_from_operands": 5601,
+        "branch_not_taken_from_operands": 2,
+        "retired_by_phase": {
+          "measurement_setup": 1,
+          "segment_0_setup": 3,
+          "segment_0_poll": 5146,
+          "segment_0_body": 1723,
+          "segment_1_setup": 3,
+          "segment_1_poll": 5630
+        }
+      },
+      {
+        "divide_zero_divisor": 0,
+        "divide_nonzero_divisor": 0,
+        "divide_zero_numerator": 0,
+        "branch_taken_from_operands": 6250,
+        "branch_not_taken_from_operands": 0,
+        "retired_by_phase": {
+          "segment_1_poll": 12500
+        }
+      },
+      {
+        "divide_zero_divisor": 0,
+        "divide_nonzero_divisor": 0,
+        "divide_zero_numerator": 0,
+        "branch_taken_from_operands": 6250,
+        "branch_not_taken_from_operands": 0,
+        "retired_by_phase": {
+          "segment_1_poll": 12500
+        }
+      },
+      {
+        "divide_zero_divisor": 0,
+        "divide_nonzero_divisor": 0,
+        "divide_zero_numerator": 0,
+        "branch_taken_from_operands": 6319,
+        "branch_not_taken_from_operands": 570,
+        "retired_by_phase": {
+          "segment_1_poll": 5786,
+          "segment_1_body": 3122,
+          "segment_2_setup": 3,
+          "segment_2_poll": 3452
+        }
+      },
+      {
+        "divide_zero_divisor": 55,
+        "divide_nonzero_divisor": 110,
+        "divide_zero_numerator": 0,
+        "branch_taken_from_operands": 5195,
+        "branch_not_taken_from_operands": 1,
+        "retired_by_phase": {
+          "segment_2_poll": 10282,
+          "segment_2_body": 276
+        }
+      },
+      {
+        "divide_zero_divisor": 217,
+        "divide_nonzero_divisor": 435,
+        "divide_zero_numerator": 0,
+        "branch_taken_from_operands": 2125,
+        "branch_not_taken_from_operands": 1,
+        "retired_by_phase": {
+          "segment_2_body": 1086,
+          "body_complete": 3823
+        }
+      },
+      {
+        "divide_zero_divisor": 0,
+        "divide_nonzero_divisor": 0,
+        "divide_zero_numerator": 0,
+        "branch_taken_from_operands": 6250,
+        "branch_not_taken_from_operands": 0,
+        "retired_by_phase": {
+          "body_complete": 12500
+        }
+      },
+      {
+        "divide_zero_divisor": 0,
+        "divide_nonzero_divisor": 0,
+        "divide_zero_numerator": 0,
+        "branch_taken_from_operands": 6250,
+        "branch_not_taken_from_operands": 0,
+        "retired_by_phase": {
+          "body_complete": 12500
+        }
+      }
+    ],
+    "phases": {
+      "measurement_setup": {
+        "first_retired_cycle": 0,
+        "last_retired_cycle": 0,
+        "retired": 1
+      },
+      "segment_0_setup": {
+        "first_retired_cycle": 1,
+        "last_retired_cycle": 3,
+        "retired": 3
+      },
+      "segment_0_poll": {
+        "first_retired_cycle": 4,
+        "last_retired_cycle": 10293,
+        "retired": 5146
+      },
+      "segment_0_body": {
+        "first_retired_cycle": 10294,
+        "last_retired_cycle": 13736,
+        "retired": 1723
+      },
+      "segment_1_setup": {
+        "first_retired_cycle": 13737,
+        "last_retired_cycle": 13739,
+        "retired": 3
+      },
+      "segment_1_poll": {
+        "first_retired_cycle": 13740,
+        "last_retired_cycle": 86569,
+        "retired": 36416
+      },
+      "segment_1_body": {
+        "first_retired_cycle": 86570,
+        "last_retired_cycle": 93092,
+        "retired": 3122
+      },
+      "segment_2_setup": {
+        "first_retired_cycle": 93094,
+        "last_retired_cycle": 93096,
+        "retired": 3
+      },
+      "segment_2_poll": {
+        "first_retired_cycle": 93097,
+        "last_retired_cycle": 120562,
+        "retired": 13734
+      },
+      "segment_2_body": {
+        "first_retired_cycle": 120563,
+        "last_retired_cycle": 142358,
+        "retired": 1362
+      },
+      "body_complete": {
+        "first_retired_cycle": 142359,
+        "last_retired_cycle": 199999,
+        "retired": 28823
+      }
+    },
+    "scope": "retired PCs and source operand values; phase bounds are retirement times, not issue times or attributed stall cycles"
+  },
+  "rates": [
+    702.56052,
+    762.28,
+    770.09064,
+    749.08952,
+    667.1026,
+    323.3976,
+    716.97424,
+    732.38368
+  ],
+  "loss": 0.3303281468618793,
+  "residual": [
+    -0.05232987650612983,
+    0.02832709525995236,
+    0.11480459520242596,
+    0.48118329217678385,
+    -0.1376851590572465,
+    -0.7757306145385361,
+    -0.044435524500762394,
+    -0.04455867624066101
+  ],
+  "prediction": null,
+  "prediction_error": null,
+  "proposal_mode": "cpu-qualification",
+  "cache_hit": true,
+  "evaluation_s": 30.616123291896656,
+  "prediction_assessment": {
+    "slot": 3,
+    "prediction": null,
+    "scorable": false,
+    "reason": "missing or malformed prediction",
+    "actual_changes": null
+  },
+  "operator": {
+    "operator": "bootstrap",
+    "parents": []
+  }
+}

@@ -126,3 +126,19 @@ def test_shared_initial_programs_are_identical_across_arms():
         rng = random.Random(830)
         batches.append([propose(arm, rng, slot, [])[0] for slot in (1, 2)])
     assert batches[0] == batches[1] == batches[2]
+
+
+def test_every_mutation_operator_is_exercised():
+    rng = random.Random(91)
+    program = phase_random(rng, 4)
+    observed = {mutate(program, rng)[1] for _ in range(128)}
+    assert observed == {
+        "release",
+        "weight",
+        "instruction",
+        "register",
+        "swap",
+        "mix",
+        "insert",
+        "delete",
+    }

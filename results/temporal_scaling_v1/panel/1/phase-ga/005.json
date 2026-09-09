@@ -1,0 +1,663 @@
+{
+  "slot": 5,
+  "program": {
+    "registers": [
+      1,
+      31,
+      31,
+      1,
+      31,
+      0,
+      1,
+      17
+    ],
+    "memory_seed": 1521528228,
+    "segments": [
+      {
+        "release": 61281,
+        "body": [
+          {
+            "op": "load",
+            "dst": 4,
+            "a": 6
+          },
+          {
+            "op": "load",
+            "dst": 7,
+            "a": 6
+          },
+          {
+            "op": "store",
+            "a": 1,
+            "b": 1
+          },
+          {
+            "op": "store",
+            "a": 4,
+            "b": 0
+          }
+        ],
+        "weight": 2824
+      },
+      {
+        "weight": 2532,
+        "release": 56718,
+        "body": [
+          {
+            "op": "cmovz",
+            "dst": 1,
+            "a": 6,
+            "b": 0
+          },
+          {
+            "op": "cmovz",
+            "dst": 1,
+            "a": 1,
+            "b": 2
+          }
+        ]
+      },
+      {
+        "release": 72187,
+        "body": [
+          {
+            "op": "cmovz",
+            "dst": 7,
+            "a": 2,
+            "b": 1
+          },
+          {
+            "op": "cmovz",
+            "dst": 3,
+            "a": 4,
+            "b": 0
+          },
+          {
+            "op": "cmovz",
+            "dst": 5,
+            "a": 6,
+            "b": 1
+          },
+          {
+            "op": "cmovz",
+            "dst": 7,
+            "a": 2,
+            "b": 1
+          },
+          {
+            "op": "cmovz",
+            "dst": 4,
+            "a": 7,
+            "b": 0
+          },
+          {
+            "op": "cmovz",
+            "dst": 5,
+            "a": 4,
+            "b": 0
+          },
+          {
+            "op": "cmovz",
+            "dst": 7,
+            "a": 0,
+            "b": 0
+          },
+          {
+            "op": "cmovz",
+            "dst": 3,
+            "a": 4,
+            "b": 0
+          }
+        ],
+        "weight": 1272
+      },
+      {
+        "weight": 2966,
+        "release": 36530,
+        "body": [
+          {
+            "op": "mul",
+            "dst": 6,
+            "a": 6,
+            "b": 3
+          },
+          {
+            "op": "mul",
+            "dst": 7,
+            "a": 6,
+            "b": 5
+          },
+          {
+            "op": "mul",
+            "dst": 4,
+            "a": 5,
+            "b": 4
+          },
+          {
+            "op": "mul",
+            "dst": 4,
+            "a": 7,
+            "b": 7
+          },
+          {
+            "op": "mul",
+            "dst": 3,
+            "a": 7,
+            "b": 7
+          },
+          {
+            "op": "mul",
+            "dst": 1,
+            "a": 3,
+            "b": 6
+          }
+        ]
+      }
+    ]
+  },
+  "canonical_program": {
+    "registers": [
+      1,
+      31,
+      31,
+      1,
+      31,
+      0,
+      1,
+      17
+    ],
+    "memory_seed": 1521528228,
+    "segments": [
+      {
+        "release": 61281,
+        "body": [
+          {
+            "op": "load",
+            "dst": 4,
+            "a": 6
+          },
+          {
+            "op": "load",
+            "dst": 7,
+            "a": 6
+          },
+          {
+            "op": "store",
+            "a": 1,
+            "b": 1
+          },
+          {
+            "op": "store",
+            "a": 4,
+            "b": 0
+          }
+        ],
+        "weight": 2824
+      },
+      {
+        "weight": 2532,
+        "release": 56718,
+        "body": [
+          {
+            "op": "cmovz",
+            "dst": 1,
+            "a": 6,
+            "b": 0
+          },
+          {
+            "op": "cmovz",
+            "dst": 1,
+            "a": 1,
+            "b": 2
+          }
+        ]
+      },
+      {
+        "release": 72187,
+        "body": [
+          {
+            "op": "cmovz",
+            "dst": 7,
+            "a": 2,
+            "b": 1
+          },
+          {
+            "op": "cmovz",
+            "dst": 3,
+            "a": 4,
+            "b": 0
+          },
+          {
+            "op": "cmovz",
+            "dst": 5,
+            "a": 6,
+            "b": 1
+          },
+          {
+            "op": "cmovz",
+            "dst": 7,
+            "a": 2,
+            "b": 1
+          },
+          {
+            "op": "cmovz",
+            "dst": 4,
+            "a": 7,
+            "b": 0
+          },
+          {
+            "op": "cmovz",
+            "dst": 5,
+            "a": 4,
+            "b": 0
+          },
+          {
+            "op": "cmovz",
+            "dst": 7,
+            "a": 0,
+            "b": 0
+          },
+          {
+            "op": "cmovz",
+            "dst": 3,
+            "a": 4,
+            "b": 0
+          }
+        ],
+        "weight": 1272
+      },
+      {
+        "weight": 2966,
+        "release": 36530,
+        "body": [
+          {
+            "op": "mul",
+            "dst": 6,
+            "a": 6,
+            "b": 3
+          },
+          {
+            "op": "mul",
+            "dst": 7,
+            "a": 6,
+            "b": 5
+          },
+          {
+            "op": "mul",
+            "dst": 4,
+            "a": 5,
+            "b": 4
+          },
+          {
+            "op": "mul",
+            "dst": 4,
+            "a": 7,
+            "b": 7
+          },
+          {
+            "op": "mul",
+            "dst": 3,
+            "a": 7,
+            "b": 7
+          },
+          {
+            "op": "mul",
+            "dst": 1,
+            "a": 3,
+            "b": 6
+          }
+        ]
+      }
+    ]
+  },
+  "valid": true,
+  "stage": null,
+  "reason": "",
+  "schema_path": null,
+  "allocation": [
+    1206,
+    1081,
+    543,
+    1266
+  ],
+  "cache_id": "2e14b6962c4a4be649bda3fb9f920169b7096cc9ab3dd44d2e497b91a4bec6e9",
+  "feedback": {
+    "begin_tick": 286,
+    "end_tick": 400286,
+    "cycles_per_bin": 25000,
+    "retired_classes": [
+      {
+        "alu": 4,
+        "multiply": 0,
+        "divide": 0,
+        "load": 0,
+        "store": 0,
+        "branch": 6249,
+        "jump": 0,
+        "csr": 6249,
+        "other": 0
+      },
+      {
+        "alu": 0,
+        "multiply": 0,
+        "divide": 0,
+        "load": 0,
+        "store": 0,
+        "branch": 6250,
+        "jump": 0,
+        "csr": 6250,
+        "other": 0
+      },
+      {
+        "alu": 4506,
+        "multiply": 0,
+        "divide": 0,
+        "load": 604,
+        "store": 602,
+        "branch": 5090,
+        "jump": 0,
+        "csr": 2823,
+        "other": 0
+      },
+      {
+        "alu": 248,
+        "multiply": 1266,
+        "divide": 0,
+        "load": 0,
+        "store": 0,
+        "branch": 5359,
+        "jump": 0,
+        "csr": 4883,
+        "other": 0
+      },
+      {
+        "alu": 0,
+        "multiply": 0,
+        "divide": 0,
+        "load": 0,
+        "store": 0,
+        "branch": 6250,
+        "jump": 0,
+        "csr": 6250,
+        "other": 0
+      },
+      {
+        "alu": 0,
+        "multiply": 0,
+        "divide": 0,
+        "load": 0,
+        "store": 0,
+        "branch": 6250,
+        "jump": 0,
+        "csr": 6250,
+        "other": 0
+      },
+      {
+        "alu": 0,
+        "multiply": 0,
+        "divide": 0,
+        "load": 0,
+        "store": 0,
+        "branch": 6250,
+        "jump": 0,
+        "csr": 6250,
+        "other": 0
+      },
+      {
+        "alu": 0,
+        "multiply": 0,
+        "divide": 0,
+        "load": 0,
+        "store": 0,
+        "branch": 6250,
+        "jump": 0,
+        "csr": 6250,
+        "other": 0
+      }
+    ],
+    "retired_per_bin": [
+      12502,
+      12500,
+      13625,
+      11756,
+      12500,
+      12500,
+      12500,
+      12500
+    ],
+    "cycles_without_retirement": [
+      12498,
+      12500,
+      11375,
+      13244,
+      12500,
+      12500,
+      12500,
+      12500
+    ],
+    "interpretation": "includes polling/control overhead; gaps are not attributed stall causes",
+    "body_completion_cycles": 80469,
+    "body_overrun_cycles": 0,
+    "body_completed_before_deadline": true,
+    "deadline_margin_cycles": 119531,
+    "allocation": [
+      1206,
+      1081,
+      543,
+      1266
+    ],
+    "trace_file": "trace_core_00000000.log"
+  },
+  "execution": {
+    "begin_tick": 286,
+    "end_tick": 400286,
+    "bins": [
+      {
+        "divide_zero_divisor": 0,
+        "divide_nonzero_divisor": 0,
+        "divide_zero_numerator": 0,
+        "branch_taken_from_operands": 6249,
+        "branch_not_taken_from_operands": 0,
+        "retired_by_phase": {
+          "measurement_setup": 1,
+          "segment_0_setup": 3,
+          "segment_0_poll": 12498
+        }
+      },
+      {
+        "divide_zero_divisor": 0,
+        "divide_nonzero_divisor": 0,
+        "divide_zero_numerator": 0,
+        "branch_taken_from_operands": 6250,
+        "branch_not_taken_from_operands": 0,
+        "retired_by_phase": {
+          "segment_0_poll": 12500
+        }
+      },
+      {
+        "divide_zero_divisor": 0,
+        "divide_nonzero_divisor": 0,
+        "divide_zero_numerator": 0,
+        "branch_taken_from_operands": 5085,
+        "branch_not_taken_from_operands": 5,
+        "retired_by_phase": {
+          "segment_0_poll": 5642,
+          "segment_0_body": 5427,
+          "segment_1_setup": 3,
+          "segment_1_poll": 2,
+          "segment_1_body": 2162,
+          "segment_2_setup": 3,
+          "segment_2_poll": 2,
+          "segment_2_body": 384
+        }
+      },
+      {
+        "divide_zero_divisor": 0,
+        "divide_nonzero_divisor": 0,
+        "divide_zero_numerator": 0,
+        "branch_taken_from_operands": 5356,
+        "branch_not_taken_from_operands": 3,
+        "retired_by_phase": {
+          "segment_2_body": 294,
+          "segment_3_setup": 3,
+          "segment_3_poll": 2,
+          "segment_3_body": 1689,
+          "body_complete": 9768
+        }
+      },
+      {
+        "divide_zero_divisor": 0,
+        "divide_nonzero_divisor": 0,
+        "divide_zero_numerator": 0,
+        "branch_taken_from_operands": 6250,
+        "branch_not_taken_from_operands": 0,
+        "retired_by_phase": {
+          "body_complete": 12500
+        }
+      },
+      {
+        "divide_zero_divisor": 0,
+        "divide_nonzero_divisor": 0,
+        "divide_zero_numerator": 0,
+        "branch_taken_from_operands": 6250,
+        "branch_not_taken_from_operands": 0,
+        "retired_by_phase": {
+          "body_complete": 12500
+        }
+      },
+      {
+        "divide_zero_divisor": 0,
+        "divide_nonzero_divisor": 0,
+        "divide_zero_numerator": 0,
+        "branch_taken_from_operands": 6250,
+        "branch_not_taken_from_operands": 0,
+        "retired_by_phase": {
+          "body_complete": 12500
+        }
+      },
+      {
+        "divide_zero_divisor": 0,
+        "divide_nonzero_divisor": 0,
+        "divide_zero_numerator": 0,
+        "branch_taken_from_operands": 6250,
+        "branch_not_taken_from_operands": 0,
+        "retired_by_phase": {
+          "body_complete": 12500
+        }
+      }
+    ],
+    "phases": {
+      "measurement_setup": {
+        "first_retired_cycle": 0,
+        "last_retired_cycle": 0,
+        "retired": 1
+      },
+      "segment_0_setup": {
+        "first_retired_cycle": 1,
+        "last_retired_cycle": 3,
+        "retired": 3
+      },
+      "segment_0_poll": {
+        "first_retired_cycle": 4,
+        "last_retired_cycle": 61281,
+        "retired": 30640
+      },
+      "segment_0_body": {
+        "first_retired_cycle": 61282,
+        "last_retired_cycle": 68514,
+        "retired": 5427
+      },
+      "segment_1_setup": {
+        "first_retired_cycle": 68515,
+        "last_retired_cycle": 68517,
+        "retired": 3
+      },
+      "segment_1_poll": {
+        "first_retired_cycle": 68518,
+        "last_retired_cycle": 68519,
+        "retired": 2
+      },
+      "segment_1_body": {
+        "first_retired_cycle": 68520,
+        "last_retired_cycle": 73920,
+        "retired": 2162
+      },
+      "segment_2_setup": {
+        "first_retired_cycle": 73922,
+        "last_retired_cycle": 73924,
+        "retired": 3
+      },
+      "segment_2_poll": {
+        "first_retired_cycle": 73925,
+        "last_retired_cycle": 73926,
+        "retired": 2
+      },
+      "segment_2_body": {
+        "first_retired_cycle": 73927,
+        "last_retired_cycle": 75821,
+        "retired": 678
+      },
+      "segment_3_setup": {
+        "first_retired_cycle": 75823,
+        "last_retired_cycle": 75825,
+        "retired": 3
+      },
+      "segment_3_poll": {
+        "first_retired_cycle": 75826,
+        "last_retired_cycle": 75827,
+        "retired": 2
+      },
+      "segment_3_body": {
+        "first_retired_cycle": 75828,
+        "last_retired_cycle": 80468,
+        "retired": 1689
+      },
+      "body_complete": {
+        "first_retired_cycle": 80469,
+        "last_retired_cycle": 199999,
+        "retired": 59768
+      }
+    },
+    "scope": "retired PCs and source operand values; phase bounds are retirement times, not issue times or attributed stall cycles"
+  },
+  "rates": [
+    724.66976,
+    745.73892,
+    640.14336,
+    610.8776,
+    715.6118,
+    709.07888,
+    715.24728,
+    730.2686
+  ],
+  "loss": 0.13961638637545737,
+  "residual": [
+    -0.013107523352658227,
+    0.014972208732131944,
+    -0.2037247686533632,
+    -0.3000827924850038,
+    -0.11947429421260991,
+    -0.03664797464966471,
+    -0.0002768832603252668,
+    -0.09151604863214516
+  ],
+  "prediction": null,
+  "prediction_error": null,
+  "proposal_mode": "cpu-qualification",
+  "cache_hit": false,
+  "evaluation_s": 32.142995750997216,
+  "prediction_assessment": {
+    "slot": 5,
+    "prediction": null,
+    "scorable": false,
+    "reason": "missing or malformed prediction",
+    "actual_changes": null
+  },
+  "operator": {
+    "operator": "crossover+swap",
+    "parents": [
+      4,
+      1
+    ]
+  }
+}

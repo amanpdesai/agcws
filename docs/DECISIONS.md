@@ -1,5 +1,20 @@
 # Decision log
 
+## 2026-09-09 — Post-reboot qualification and exact-path trace retention
+
+**Finding.** The CPU qualification completed before reboot: twelve witness
+attempts, 72 search slots, zero model calls. Its 739-file compact audit passes;
+no simulation was restarted. Synthetic requests remain unqualified, while two
+achieved witness targets support the engineering smoke only.
+**Retention.** At the user's request, remove 4,016 non-finalist depth waveforms
+after a full archive audit; preserve 48 finalists and all non-waveform evidence.
+The exact-path find journal records 65.6 GiB reclaimed; owner-scoped Docker
+cleanup reports 924.3 MB. Another 470.9 GiB remains root-permission blocked.
+**Consequence.** Publish qualification results and cleanup evidence separately.
+No new agent claim, no paid confirmation launch and no root-ownership bypass.
+See `TEMPORAL_SCALING_V1_RESULTS.md` and
+`results/artifact_retention_20260909/README.md`.
+
 ## 2026-09-09 — Separate seed confirmation from harder targets and stronger baselines
 
 **Decision.** First implement a CPU-only temporal qualification milestone:

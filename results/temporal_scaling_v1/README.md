@@ -1,6 +1,8 @@
 # Temporal scaling v1 — CPU qualification
 
 This is a bounded engineering qualification, not a policy-efficacy study.
+It is complete: twelve witness proposals and 72 search slots; the independent
+audit passes. See [findings](../../docs/TEMPORAL_SCALING_V1_RESULTS.md).
 The manifest and source snapshots were committed before execution. Completion
 requires `complete.json`, `summary.json` and a passing independent archive audit.
 

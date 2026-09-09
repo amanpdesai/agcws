@@ -45,6 +45,11 @@ with 12/12 versus 3/12 solves. This is a substantial development improvement,
 not held-out or gate-power superiority. The [active-path quality audit](docs/CODE_QUALITY_AUDIT.md) documents
 strict accounting, immutable checkpoints and preserved historical dependencies.
 
+The [next temporal research plan](docs/TEMPORAL_SCALING_V1_PLAN.md) separates
+fresh-seed confirmation from harder target families and stronger classical
+controls. A versioned request generator and CPU-only phase-baseline qualification
+are available; longer requested waveforms are not yet supported measurements.
+
 Reviewable ledgers and inference are tracked in
 [`results/structural_temporal_heldout_v1/`](results/structural_temporal_heldout_v1/),
 with matched gate evidence in

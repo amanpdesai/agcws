@@ -1,0 +1,484 @@
+{
+  "slot": 2,
+  "program": {
+    "registers": [
+      2804792015,
+      2512395319,
+      1,
+      31,
+      31,
+      17,
+      3487560141,
+      4294967295
+    ],
+    "memory_seed": 1246911381,
+    "segments": [
+      {
+        "weight": 2299,
+        "release": 64833,
+        "body": [
+          {
+            "op": "mul",
+            "dst": 4,
+            "a": 3,
+            "b": 1
+          },
+          {
+            "op": "mul",
+            "dst": 4,
+            "a": 6,
+            "b": 1
+          },
+          {
+            "op": "mul",
+            "dst": 2,
+            "a": 1,
+            "b": 1
+          },
+          {
+            "op": "mul",
+            "dst": 3,
+            "a": 6,
+            "b": 1
+          },
+          {
+            "op": "mul",
+            "dst": 3,
+            "a": 7,
+            "b": 1
+          },
+          {
+            "op": "mul",
+            "dst": 3,
+            "a": 7,
+            "b": 0
+          },
+          {
+            "op": "mul",
+            "dst": 5,
+            "a": 1,
+            "b": 1
+          },
+          {
+            "op": "mul",
+            "dst": 4,
+            "a": 3,
+            "b": 1
+          }
+        ]
+      },
+      {
+        "weight": 3842,
+        "release": 115042,
+        "body": [
+          {
+            "op": "divu",
+            "dst": 7,
+            "a": 2,
+            "b": 2
+          },
+          {
+            "op": "divu",
+            "dst": 7,
+            "a": 6,
+            "b": 5
+          },
+          {
+            "op": "divu",
+            "dst": 5,
+            "a": 7,
+            "b": 0
+          },
+          {
+            "op": "divu",
+            "dst": 7,
+            "a": 7,
+            "b": 0
+          }
+        ]
+      }
+    ]
+  },
+  "canonical_program": {
+    "registers": [
+      2804792015,
+      2512395319,
+      1,
+      31,
+      31,
+      17,
+      3487560141,
+      4294967295
+    ],
+    "memory_seed": 1246911381,
+    "segments": [
+      {
+        "weight": 2299,
+        "release": 64833,
+        "body": [
+          {
+            "op": "mul",
+            "dst": 4,
+            "a": 3,
+            "b": 1
+          },
+          {
+            "op": "mul",
+            "dst": 4,
+            "a": 6,
+            "b": 1
+          },
+          {
+            "op": "mul",
+            "dst": 2,
+            "a": 1,
+            "b": 1
+          },
+          {
+            "op": "mul",
+            "dst": 3,
+            "a": 6,
+            "b": 1
+          },
+          {
+            "op": "mul",
+            "dst": 3,
+            "a": 7,
+            "b": 1
+          },
+          {
+            "op": "mul",
+            "dst": 3,
+            "a": 7,
+            "b": 0
+          },
+          {
+            "op": "mul",
+            "dst": 5,
+            "a": 1,
+            "b": 1
+          },
+          {
+            "op": "mul",
+            "dst": 4,
+            "a": 3,
+            "b": 1
+          }
+        ]
+      },
+      {
+        "weight": 3842,
+        "release": 115042,
+        "body": [
+          {
+            "op": "divu",
+            "dst": 7,
+            "a": 2,
+            "b": 2
+          },
+          {
+            "op": "divu",
+            "dst": 7,
+            "a": 6,
+            "b": 5
+          },
+          {
+            "op": "divu",
+            "dst": 5,
+            "a": 7,
+            "b": 0
+          },
+          {
+            "op": "divu",
+            "dst": 7,
+            "a": 7,
+            "b": 0
+          }
+        ]
+      }
+    ]
+  },
+  "valid": false,
+  "stage": "USEFUL_WORK",
+  "reason": "body or fixed observation did not complete in the declared window",
+  "schema_path": null,
+  "allocation": [
+    1533,
+    2563
+  ],
+  "cache_id": "fc6061a9c6201cb55fe7d6eced265b05fa35b138a77468079191a44c1c0ac12e",
+  "feedback": {
+    "begin_tick": 292,
+    "end_tick": 400292,
+    "cycles_per_bin": 25000,
+    "retired_classes": [
+      {
+        "alu": 4,
+        "multiply": 0,
+        "divide": 0,
+        "load": 0,
+        "store": 0,
+        "branch": 6249,
+        "jump": 0,
+        "csr": 6249,
+        "other": 0
+      },
+      {
+        "alu": 0,
+        "multiply": 0,
+        "divide": 0,
+        "load": 0,
+        "store": 0,
+        "branch": 6250,
+        "jump": 0,
+        "csr": 6250,
+        "other": 0
+      },
+      {
+        "alu": 195,
+        "multiply": 1533,
+        "divide": 0,
+        "load": 0,
+        "store": 0,
+        "branch": 5100,
+        "jump": 0,
+        "csr": 4910,
+        "other": 0
+      },
+      {
+        "alu": 0,
+        "multiply": 0,
+        "divide": 0,
+        "load": 0,
+        "store": 0,
+        "branch": 6250,
+        "jump": 0,
+        "csr": 6250,
+        "other": 0
+      },
+      {
+        "alu": 66,
+        "multiply": 0,
+        "divide": 262,
+        "load": 0,
+        "store": 0,
+        "branch": 3827,
+        "jump": 0,
+        "csr": 3761,
+        "other": 0
+      },
+      {
+        "alu": 165,
+        "multiply": 0,
+        "divide": 658,
+        "load": 0,
+        "store": 0,
+        "branch": 165,
+        "jump": 0,
+        "csr": 0,
+        "other": 0
+      },
+      {
+        "alu": 164,
+        "multiply": 0,
+        "divide": 658,
+        "load": 0,
+        "store": 0,
+        "branch": 164,
+        "jump": 0,
+        "csr": 0,
+        "other": 0
+      },
+      {
+        "alu": 165,
+        "multiply": 0,
+        "divide": 658,
+        "load": 0,
+        "store": 0,
+        "branch": 165,
+        "jump": 0,
+        "csr": 0,
+        "other": 0
+      }
+    ],
+    "retired_per_bin": [
+      12502,
+      12500,
+      11738,
+      12500,
+      7916,
+      988,
+      986,
+      988
+    ],
+    "cycles_without_retirement": [
+      12498,
+      12500,
+      13262,
+      12500,
+      17084,
+      24012,
+      24014,
+      24012
+    ],
+    "interpretation": "includes polling/control overhead; gaps are not attributed stall causes",
+    "body_completion_cycles": 212400,
+    "body_overrun_cycles": 12400,
+    "body_completed_before_deadline": false,
+    "deadline_margin_cycles": -12400,
+    "allocation": [
+      1533,
+      2563
+    ],
+    "trace_file": "trace_core_00000000.log"
+  },
+  "execution": {
+    "begin_tick": 292,
+    "end_tick": 400292,
+    "bins": [
+      {
+        "divide_zero_divisor": 0,
+        "divide_nonzero_divisor": 0,
+        "divide_zero_numerator": 0,
+        "branch_taken_from_operands": 6249,
+        "branch_not_taken_from_operands": 0,
+        "retired_by_phase": {
+          "measurement_setup": 1,
+          "segment_0_setup": 3,
+          "segment_0_poll": 12498
+        }
+      },
+      {
+        "divide_zero_divisor": 0,
+        "divide_nonzero_divisor": 0,
+        "divide_zero_numerator": 0,
+        "branch_taken_from_operands": 6250,
+        "branch_not_taken_from_operands": 0,
+        "retired_by_phase": {
+          "segment_0_poll": 12500
+        }
+      },
+      {
+        "divide_zero_divisor": 0,
+        "divide_nonzero_divisor": 0,
+        "divide_zero_numerator": 0,
+        "branch_taken_from_operands": 5098,
+        "branch_not_taken_from_operands": 2,
+        "retired_by_phase": {
+          "segment_0_poll": 7418,
+          "segment_0_body": 1916,
+          "segment_1_setup": 3,
+          "segment_1_poll": 2401
+        }
+      },
+      {
+        "divide_zero_divisor": 0,
+        "divide_nonzero_divisor": 0,
+        "divide_zero_numerator": 0,
+        "branch_taken_from_operands": 6250,
+        "branch_not_taken_from_operands": 0,
+        "retired_by_phase": {
+          "segment_1_poll": 12500
+        }
+      },
+      {
+        "divide_zero_divisor": 1,
+        "divide_nonzero_divisor": 261,
+        "divide_zero_numerator": 0,
+        "branch_taken_from_operands": 3826,
+        "branch_not_taken_from_operands": 1,
+        "retired_by_phase": {
+          "segment_1_poll": 7523,
+          "segment_1_body": 393
+        }
+      },
+      {
+        "divide_zero_divisor": 0,
+        "divide_nonzero_divisor": 658,
+        "divide_zero_numerator": 0,
+        "branch_taken_from_operands": 165,
+        "branch_not_taken_from_operands": 0,
+        "retired_by_phase": {
+          "segment_1_body": 988
+        }
+      },
+      {
+        "divide_zero_divisor": 0,
+        "divide_nonzero_divisor": 658,
+        "divide_zero_numerator": 0,
+        "branch_taken_from_operands": 164,
+        "branch_not_taken_from_operands": 0,
+        "retired_by_phase": {
+          "segment_1_body": 986
+        }
+      },
+      {
+        "divide_zero_divisor": 0,
+        "divide_nonzero_divisor": 658,
+        "divide_zero_numerator": 0,
+        "branch_taken_from_operands": 165,
+        "branch_not_taken_from_operands": 0,
+        "retired_by_phase": {
+          "segment_1_body": 988
+        }
+      }
+    ],
+    "phases": {
+      "measurement_setup": {
+        "first_retired_cycle": 0,
+        "last_retired_cycle": 0,
+        "retired": 1
+      },
+      "segment_0_setup": {
+        "first_retired_cycle": 1,
+        "last_retired_cycle": 3,
+        "retired": 3
+      },
+      "segment_0_poll": {
+        "first_retired_cycle": 4,
+        "last_retired_cycle": 64833,
+        "retired": 32416
+      },
+      "segment_0_body": {
+        "first_retired_cycle": 64834,
+        "last_retired_cycle": 70195,
+        "retired": 1916
+      },
+      "segment_1_setup": {
+        "first_retired_cycle": 70196,
+        "last_retired_cycle": 70198,
+        "retired": 3
+      },
+      "segment_1_poll": {
+        "first_retired_cycle": 70199,
+        "last_retired_cycle": 115044,
+        "retired": 22424
+      },
+      "segment_1_body": {
+        "first_retired_cycle": 115045,
+        "last_retired_cycle": 199977,
+        "retired": 3355
+      }
+    },
+    "scope": "retired PCs and source operand values; phase bounds are retirement times, not issue times or attributed stall cycles"
+  },
+  "rates": null,
+  "loss": null,
+  "residual": null,
+  "prediction": null,
+  "prediction_error": null,
+  "proposal_mode": "cpu-qualification",
+  "cache_hit": false,
+  "evaluation_s": 5.390220873989165,
+  "prediction_assessment": {
+    "slot": 2,
+    "prediction": null,
+    "scorable": false,
+    "reason": "missing or malformed prediction",
+    "actual_changes": null
+  },
+  "operator": {
+    "operator": "witness-phase-random",
+    "parents": []
+  }
+}

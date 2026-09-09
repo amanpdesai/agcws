@@ -55,6 +55,14 @@ Public direction predictions match 5,857/11,848 scorable bins for Pro and
 well-calibrated causal explanations; these dependent prediction checks remain
 a separate diagnostic, with no private reasoning trace claimed.
 
+A 2026-09-09 re-analysis of the archived scorable direction labels finds
+Pro counts (down, up, neutral) = (3,717, 4,711, 3,420), and Flash counts =
+(3,995, 4,335, 2,414). Their pooled majority-label reference accuracies are
+39.8% and 40.3%, versus model accuracies 49.4% and 46.1%. These are
+three-class predictions, not binary coin flips; describing 49.4% as "chance"
+is incorrect. This pooled diagnostic is not a calibrated causal-model test
+or a significance calculation; references and bins are dependent.
+
 ## Complete 64-slot secondary comparison
 
 | Arm | Mean AUC | Solves / 12 | Mean censored slots to tolerance |

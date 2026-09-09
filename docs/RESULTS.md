@@ -1,5 +1,10 @@
 # Results status
 
+Latest engineering milestone: [temporal scaling qualification](TEMPORAL_SCALING_V1_RESULTS.md)
+is complete, with twelve witness attempts, 72 CPU search slots and zero model
+calls. New phase controls are operational; synthetic requests remain unqualified.
+This is not a new agent-comparison result or fresh-seed confirmation.
+
 Latest completed [closed-loop depth results](IBEX_DEPTH_V1_RESULTS.md): 48 cells,
 6,144 slots, all 16/64/128 prefixes. Primary 128-slot mean AUC is 6.4399 for Pro,
 24.6608 for Flash, 26.3595 for random and 35.0842 for coverage; solves are

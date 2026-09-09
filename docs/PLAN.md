@@ -15,6 +15,9 @@ and phase-GA on the unchanged Ibex evaluator using CPU only. Fresh-seed Pro/rand
 confirmation is the next paid study and must keep the completed protocol fixed.
 New horizons, bin counts, stronger-baseline comparisons and new-family claims
 have separate implementation and freeze gates, not a silently enlarged matrix.
+The [first CPU qualification](TEMPORAL_SCALING_V1_RESULTS.md) is complete:
+84 total slots, zero model calls. Synthetic requests are not yet qualified;
+only measured witness-derived targets are feasible evidence.
 
 The post-results [research assessment](RESEARCH_DIRECTION.md) separates
 demonstrated waveform feasibility from unproven agent superiority and proposes
