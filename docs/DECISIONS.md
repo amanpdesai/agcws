@@ -1,5 +1,23 @@
 # Decision log
 
+## 2026-09-09 — Complete the frozen depth panel; retain failures and development scope
+
+**Decision.** Report all 48 trajectories and all 6,144 slots, including the
+dependent 16/64 prefixes. Do not rerun five Pro HTTP 429 calls or replace their
+ten charged API-failure slots. Their usage remains unknown, not zero cost.
+**Finding.** Primary 128-slot mean AUC: Pro 6.4399, Flash 24.6608, random
+26.3595, behavior-coverage 35.0842. Solves: 12, 7, 3, 3 of twelve each.
+All three Pro seed-level target-averaged AUCs improve over random's.
+**Scope.** Development-only temporal activity evidence on programmable Ibex.
+The settings were frozen before generation; the controller was not revised
+after observing intermediate results. Prior held-out negative results remain
+unchanged. Fresh held-out confirmation is a next research decision, not a
+claim inferred from these three development seeds.
+**Consequence.** Archive deterministic compressed compact evidence, raw public
+responses, accounting, source hashes, all prefix curves and independent checks.
+Keep heavy waveforms in scratch and historical reproducibility dependencies
+intact. No further experiment launch is implied by finishing this goal.
+
 ## 2026-09-06 — Windowed validation, not another model-selection study
 
 **Decision.** Preserve both frozen activity studies. Evaluate eight native gate

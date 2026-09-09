@@ -38,10 +38,11 @@ non-flat cases. This is promising development evidence, not a full-search or
 held-out win. See the [research roadmap](docs/RESEARCH_DIRECTIONS.md) and
 [frozen-context protocol](docs/IBEX_CAPABILITY_V1_PROTOCOL.md).
 
-A [closed-loop depth study](docs/IBEX_DEPTH_V1_PROTOCOL.md) is now running:
-Pro-4096, Flash-4096, random and behavior-coverage, four Ibex targets and three
-development seeds, with 16/64/128 proposal prefixes. It is not yet a completed
-comparison. The [active-path quality audit](docs/CODE_QUALITY_AUDIT.md) documents
+A [closed-loop depth study](docs/IBEX_DEPTH_V1_RESULTS.md) is complete:
+48 trajectories / 6,144 slots, four Ibex targets, three development seeds and
+16/64/128 prefixes. At 128 slots Pro mean AUC is 6.4399 versus random 26.3595,
+with 12/12 versus 3/12 solves. This is a substantial development improvement,
+not held-out or gate-power superiority. The [active-path quality audit](docs/CODE_QUALITY_AUDIT.md) documents
 strict accounting, immutable checkpoints and preserved historical dependencies.
 
 Reviewable ledgers and inference are tracked in

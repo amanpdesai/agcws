@@ -69,3 +69,16 @@ It rejects clipped first-valid losses and inconsistent right-censoring. A live
 check on the first eight completed 16-slot cells (128 slots) passed the compact
 CPU-state, source-provenance, activity-window and independent-integral checks.
 This is an early execution check, not a full-panel result or a fresh simulation.
+
+Final execution checkpoint, 2026-09-09: all 48 trajectories reached 128 slots
+and the supervised producer exited zero. The full suite again passes 514 tests
+with the three existing warnings; maintained package/scripts/tests and the new
+producer/analysis pass their lint checks. Five HTTP 429 calls exercised the
+explicit API-failure path in the real run: ten charged slots, unknown usage,
+no substitute proposer and no retry. No unfinished request marker remains.
+This audit is scoped to the active execution path, not a claim that every
+historical file has been rewritten or that all repository warnings are fixed.
+
+The completed archive passes the independent compact-evidence audit for every
+one of its 48 trajectories, 6,144 slots and 16/64/128 prefixes (61,081 files).
+This verifies the full panel rather than only the early execution sample.

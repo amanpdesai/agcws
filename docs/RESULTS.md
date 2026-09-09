@@ -1,9 +1,10 @@
 # Results status
 
-Latest depth checkpoint: [interim results](IBEX_DEPTH_V1_RESULTS.md) records the
-complete 64-slot secondary panel: 48 cells, 3,072 slots. Pro mean AUC is 4.5782
-versus random 15.8451, with 12/12 versus 3/12 solves. This is development-only.
-The 128-slot panel remains in progress; the primary endpoint is not complete.
+Latest completed [closed-loop depth results](IBEX_DEPTH_V1_RESULTS.md): 48 cells,
+6,144 slots, all 16/64/128 prefixes. Primary 128-slot mean AUC is 6.4399 for Pro,
+24.6608 for Flash, 26.3595 for random and 35.0842 for coverage; solves are
+12/12, 7/12, 3/12 and 3/12. This is development-only, not held-out confirmation
+or gate-power superiority. Five charged API failures have unknown usage.
 
 Latest capability evidence: [model × reasoning probe](IBEX_CAPABILITY_V1_RESULTS.md),
 72 fixed-context cells / 144 slots, complete. Pro-4096 has the largest mean

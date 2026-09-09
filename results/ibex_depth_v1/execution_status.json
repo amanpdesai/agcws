@@ -1,23 +1,61 @@
 {
-  "snapshot_utc": "2026-09-08T14:46:16.271399+00:00",
+  "snapshot_utc": "2026-09-09T00:50:38.743780+00:00",
   "phase": "execution-status-not-comparative-inference",
   "completed_slots_by_arm": {
-    "random": 808,
-    "coverage": 810,
-    "flash-4096": 790,
-    "pro-4096": 790
+    "random": 1536,
+    "coverage": 1536,
+    "flash-4096": 1536,
+    "pro-4096": 1536
   },
   "validity": {
-    "VALID": 2975,
-    "USEFUL_WORK": 200,
-    "SCHEMA": 23
+    "VALID": 5748,
+    "USEFUL_WORK": 328,
+    "SCHEMA": 58,
+    "API": 10
   },
   "complete_prefixes": [
     16,
-    64
+    64,
+    128
   ],
-  "known_estimated_usd": 47.261883,
-  "unknown_usage_calls": 0,
-  "api_errors": [],
+  "known_estimated_usd": 94.53147865000007,
+  "unknown_usage_calls": 5,
+  "api_errors": [
+    {
+      "batch": "panel/target_2/610/pro-4096/batches/099",
+      "error": {
+        "type": "ClientError",
+        "message": "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.', 'status': 'RESOURCE_EXHAUSTED'}}"
+      }
+    },
+    {
+      "batch": "panel/target_2/611/pro-4096/batches/085",
+      "error": {
+        "type": "ClientError",
+        "message": "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.', 'status': 'RESOURCE_EXHAUSTED'}}"
+      }
+    },
+    {
+      "batch": "panel/target_2/612/pro-4096/batches/069",
+      "error": {
+        "type": "ClientError",
+        "message": "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.', 'status': 'RESOURCE_EXHAUSTED'}}"
+      }
+    },
+    {
+      "batch": "panel/target_2/612/pro-4096/batches/079",
+      "error": {
+        "type": "ClientError",
+        "message": "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.', 'status': 'RESOURCE_EXHAUSTED'}}"
+      }
+    },
+    {
+      "batch": "panel/target_3/611/pro-4096/batches/085",
+      "error": {
+        "type": "ClientError",
+        "message": "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.', 'status': 'RESOURCE_EXHAUSTED'}}"
+      }
+    }
+  ],
   "in_flight_or_unresolved_requests": []
 }
