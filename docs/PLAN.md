@@ -9,6 +9,13 @@ comparison](IBEX_DEPTH_V1_RESULTS.md) is complete: 48 trajectories,
 6,144 slots, four policies and 16/64/128 prefix summaries. Pro improves over
 both controls in development; fresh held-out confirmation remains future work.
 
+Next scoped milestone: [temporal scaling and stronger-control qualification](TEMPORAL_SCALING_V1_PLAN.md).
+Build deterministic request generation and witness checks; qualify phase-random
+and phase-GA on the unchanged Ibex evaluator using CPU only. Fresh-seed Pro/random
+confirmation is the next paid study and must keep the completed protocol fixed.
+New horizons, bin counts, stronger-baseline comparisons and new-family claims
+have separate implementation and freeze gates, not a silently enlarged matrix.
+
 The post-results [research assessment](RESEARCH_DIRECTION.md) separates
 demonstrated waveform feasibility from unproven agent superiority and proposes
 a fresh complexity-controlled extension. It does not amend either frozen study.

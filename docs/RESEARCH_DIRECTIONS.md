@@ -1,13 +1,20 @@
 # Research directions: separating agent capability from benchmark design
 
-Updated 2026-09-07. This is a living roadmap, not a retroactive revision of any
+Updated 2026-09-09. This is a living roadmap, not a retroactive revision of any
 frozen protocol. Individual executed stages have their own immutable protocol,
 source/parameter manifest and complete evidence archive.
 
 Stage A is now [complete](IBEX_CAPABILITY_V1_RESULTS.md): the fixed-context
 model/thinking probe selects Pro-4096 for further development, with mean gain
 0.14234 versus random 0.02674. It supports testing closed-loop depth next, not
-claiming full-search superiority. All later stages below remain proposals.
+claiming full-search superiority. Stage B is now also
+[complete](IBEX_DEPTH_V1_RESULTS.md): Pro-4096 mean AUC 6.4399 versus random
+26.3595 at 128 slots, with 12/12 versus 3/12 solves on three development seeds.
+Next paid priority is fresh-seed confirmation of that frozen contrast.
+[Temporal scaling and stronger controls](TEMPORAL_SCALING_V1_PLAN.md) defines
+a parallel CPU-only qualification milestone and gates for new target families,
+duration/resolution changes and later cross-design transfer. Neither revises
+the old panels or treats development ranking as held-out inference.
 
 ## 1. What the project is trying to establish
 
@@ -122,14 +129,14 @@ A new design/configuration requires a decision entry and a fresh protocol.
 
 ## 6. Staged order and stop/advance decisions
 
-**A — Capability/reasoning probe, active next.** A frozen 2×2 comparison on common
+**A — Capability/reasoning probe, complete.** A frozen 2×2 comparison on common
 observed histories, with random/coverage next-batch controls. Test generated
 programs rather than judging prose. Protocol: `IBEX_CAPABILITY_V1_PROTOCOL.md`.
 This isolates conditional proposal quality; it cannot measure a whole new
 controller's cumulative AUC. Model availability failures are recorded, never
 silently replaced with another model.
 
-**B — Depth and cadence.** After A, make a documented controller choice and freeze
+**B — Depth complete; cadence remains untested.** After A, make a documented controller choice and freeze
 a new observed-development search panel. Log every proposal index so 16/64/128
 views are prefixes of the same runs. Budget cadence separately: more observations
 and more model invocations can change dollars even at equal evaluator budget.
@@ -143,7 +150,7 @@ credentials, calibration witnesses or held-out artifacts. Test comprehension by
 predicting consequences before simulation. A reference-edit tool must report actual
 phase/bin placement and global allocation, not just echo the agent's intent.
 
-**D — Confirmation.** Only after development selection, freeze the whole controller,
+**D — Confirmation, next paid priority.** Only after development selection, freeze the whole controller,
 model/configuration and target construction. Use fresh seeds and held-out target
 families with no subsequent prompt iteration. Report selection history and all
 failed development stages. More development is legitimate; presenting it as an

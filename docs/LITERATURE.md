@@ -6,7 +6,29 @@
 
 ## Novelty boundary
 
-Prior work covers power viruses, stressmarks, extrema, switching maximization, low-power ATPG, and LLM hardware fuzzing for verification. This project studies goal-conditioned arbitrary scalar, compositional, and temporal power profiles over heterogeneous legal workload interfaces. This is a literature-supported gap, not an absolute-first claim.
+Prior work covers power viruses, stressmarks, extrema, switching maximization,
+low-power ATPG, LLM hardware fuzzing, and **controlled periodic current/power
+waveforms for dI/dt stress**. Shaped temporal workload generation is established.
+This project evaluates requested profile matching under shared legal interfaces
+and proposal budgets. Arbitrary/nonperiodic profile tracking and cross-interface
+controllers are evaluation questions, not an established absolute-first claim.
+Custom fitness functions in prior systems may also express vector errors; merely
+accepting a target vector does not itself establish novelty.
+
+## Temporal stress literature — primary-source pass, 2026-09-09
+
+| Work | Evidence and verification scope | Consequence |
+|---|---|---|
+| Jiang et al., *Exploration of LLM Workload Reliability based on di/dt Effects and Voltage Droops*, HPCA 2026 | [Author PDF](https://lca.ece.utexas.edu/pubs/jiang_hpca26.pdf), abstract and §V.A–F inspected. [V] for these method statements, not reproduction: GPU knob-based code generation; timer-controlled high/low phases; GA mixed-parameter crossover/mutation; separate PDN analysis. | Periodic temporal control is prior art. Adapt the separation of representation, generator and search, not its GPU-specific constants. The paper's LLMs are workloads under test, not a semantic workload-generating agent. |
+| Kim and John, *Automated di/dt Stressmark Generation for Microprocessor Power Delivery Networks*, ISLPED 2011, doi:10.1109/ISLPED.2011.5993645 | [Author PDF](https://lca.ece.utexas.edu/pubs/young_islped11.pdf), abstract and §§I–IV inspected; [V] for periodic high/low current and GA sequencing/register/dependency controls. [Author publication list](https://lca.ece.utexas.edu/pubs-by-date.php) confirms 2011; the supplied ResearchGate venue metadata inconsistently says 2010. | Temporal scheduling and dependencies are established optimization dimensions. No voltage-droop claim follows from our activity-rate measurements. |
+| Hadjilambrou, Das, Whatmough, Bull, Sazeides, *GeST: An Automatic Framework For Generating CPU Stress-Tests*, ISPASS 2019 | [Upstream README](https://github.com/toolsForUarch/GeST), [paper](https://ieeexplore.ieee.org/document/8695639/). [P] Title/authors/venue confirmed. Supplied [author PDF](https://www5.cs.ucy.ac.cy/carch/xi/papers/ISPASS_2019_for_webpage.pdf) was inaccessible (TLS/fetch errors); full algorithm and specified-frequency capability not verified in this pass. | Relevant framework to inspect for a direct baseline. Do not call our new phase-GA a reproduction or repeat unverified configuration claims. |
+| Hadjilambrou, Das, Antoniades, Sazeides, *Harnessing CPU Electromagnetic Emanations for Resonance-Induced Voltage-Noise Characterization*, IEEE TC 2021, doi:10.1109/TC.2020.3008851 | [Authors' publication index](https://www8.cs.ucy.ac.cy/ResearchLabs/carch/xi/publications.php), [publisher link](https://dl.acm.org/doi/10.1109/TC.2020.3008851). [P] Metadata confirmed by indexed author listing; publisher full text blocked. Four-CPU experimental and exact search claims from the supplied summary remain unverified. | Review EM-guided fitness and resonance characterization before citing quantitative results. |
+| Chatzimiltis et al., *SAGA*, ISPASS 2025 | [Author tool listing](https://www8.cs.ucy.ac.cy/ResearchLabs/carch/xi/saga_tool.php), [publisher](https://ieeexplore.ieee.org/document/11096384/). [P] Surrogate-assisted CPU power-virus GA, also noted below. Full paper unavailable in this pass; no borrowed speedup claim. | Surrogate-assisted phase search is a candidate stronger baseline, not implemented or reproduced by this milestone. |
+
+The implementation plan is [TEMPORAL_SCALING_V1_PLAN.md](TEMPORAL_SCALING_V1_PLAN.md).
+It does not require downloading prior code into the project or copying paper
+figures/text. The research audit must finish inaccessible full-text reviews
+before claiming exhaustive coverage of temporal synthesis methods.
 
 ## Outstanding verification
 

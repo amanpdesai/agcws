@@ -1,5 +1,24 @@
 # Decision log
 
+## 2026-09-09 — Separate seed confirmation from harder targets and stronger baselines
+
+**Decision.** First implement a CPU-only temporal qualification milestone:
+deterministic requests, measured witnesses and phase-aware random/GA controls.
+Keep fresh-seed confirmation of Pro versus original random as the next paid
+panel with its unchanged controller, targets and measurement. The proposed
+six-seed confirmation requires a dedicated freeze and cumulative cost check.
+**Rationale.** Harder requests can be infeasible; longer windows and more bins
+change different properties. The legacy baseline already generates phases.
+Stronger controls need their own development qualification, not retrospective
+insertion into the study that selected Pro. dI/dt stress literature establishes
+controlled periodic workload generation, so shaped waveforms alone are not new.
+**Rejected.** Random unconstrained target values treated as feasible; changing
+horizon and padding old bins; labeling our adaptations GeST/SAGA reproductions;
+claiming unseen-target generalization from fresh seeds on known targets.
+**Consequence.** No paid calls in this first milestone. All witness attempts and
+failed qualification cases are retained, useful-work gates remain hard, and
+historical source hashes stay unchanged. See `TEMPORAL_SCALING_V1_PLAN.md`.
+
 ## 2026-09-09 — Complete the frozen depth panel; retain failures and development scope
 
 **Decision.** Report all 48 trajectories and all 6,144 slots, including the
