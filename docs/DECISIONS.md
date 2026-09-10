@@ -747,3 +747,22 @@ Historical source dependencies remain intact to preserve completed studies.
 **Consequence.** Only complete panels support aggregates; incomplete runs remain
 visible. Three development seeds support descriptive contrasts, not significance
 or equivalence claims. See `IBEX_DEPTH_V1_PROTOCOL.md` and `CODE_QUALITY_AUDIT.md`.
+
+## 2026-09-10 — Prioritize fresh non-flat targets against phase-aware random
+
+**Decision.** Run the separately frozen `NONFLAT_TEMPORAL_V1_PROTOCOL.md`:
+three first-qualifying scheduled witness targets, six fresh seeds, Pro-4096
+versus unchanged phase-random, 128 proposals, $150 liability cap. User confirmed
+additional funding. Target floor >=0.20 and pair distance >=0.15 are fixed before
+all 24 construction attempts. No selection uses policy outcomes.
+**Rationale.** The stronger-control panel identified phase-random as a contender,
+not a statistically proven best baseline. A post-hoc depth-target diagnostic
+shows nine Pro solves necessarily required nonconstant activity versus zero
+for random/coverage, but those remain development data. Fresh targets with a
+non-flatness gate address the temporal question directly.
+**Rejected.** Treating this as unchanged-task replication, tuning the target bank
+until Pro wins, dropping failed construction attempts, or changing the old
+endpoint after inspecting outcomes.
+**Consequence.** The old-target Pro/random replication remains unrun. This new
+contrast tests generalization conditional on one construction distribution and
+feasibility filter, not arbitrary waveforms, gate power or larger DSL capacity.

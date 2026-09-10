@@ -2,6 +2,12 @@
 
 2026-09-10. Living roadmap; does not amend any frozen experiment.
 
+Priority update: the user selected [non-flat temporal confirmation](NONFLAT_TEMPORAL_V1_PROTOCOL.md)
+after the CPU baseline panel. This combines fresh witnessed targets with the
+selected Pro controller and phase-random, not unchanged-target Pro/random
+replication. The latter remains unrun and must not be claimed complete by this
+new contrast. See the depth-target diagnostic and execution archive in `PLAN.md`.
+
 ## Direction and current evidence
 
 The objective is finite-budget temporal target discovery against credible search
