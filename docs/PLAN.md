@@ -8,6 +8,15 @@ stronger-baseline comparison before expanding measurement duration/resolution.
 The [upstream component audit](UPSTREAM_BASELINES_AUDIT.md) records pinned sources,
 tested interfaces and the remaining ask/tell bridge work; no upstream comparative
 run or fresh-seed confirmation has been launched by that qualification.
+The next slice implements the [GeST phase bridge](GEST_BRIDGE_V1.md): exact
+pinned upstream operators in a bounded ask/tell wrapper, with a declared phase
+encoding and an eight-slot CPU qualification. This is an adaptation, not the
+full upstream runner or SAGA. See its tracked `results/gest_bridge_v1` evidence
+for completion; the fresh-seed Pro study remains separate.
+The [eight-slot bridge qualification](../results/gest_bridge_v1/README.md) is
+complete: seven valid, one useful-work failure, six upstream-operated slots,
+zero model calls. Next: qualify SAGA's temporal adaptation and the balanced
+development panel; do not present this smoke as a stronger-baseline result.
 
 Current research extension: [staged hypothesis roadmap](RESEARCH_DIRECTIONS.md)
 and [model × reasoning fixed-context probe](IBEX_CAPABILITY_V1_PROTOCOL.md).

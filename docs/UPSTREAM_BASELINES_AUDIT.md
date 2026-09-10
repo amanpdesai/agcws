@@ -4,6 +4,12 @@ Scope: source inspection and isolated component checks. Neither full optimizer
 nor remote measurement runner has been executed. No paid calls or new simulator
 comparisons. This is the first slice of [the roadmap](UPSTREAM_BASELINES_PLAN.md).
 
+Subsequent slice, 2026-09-10: the [GeST phase bridge](GEST_BRIDGE_V1.md) now
+executes three exact upstream operators in an external ask/tell scheduler.
+Its [eight-slot CPU qualification](../results/gest_bridge_v1/README.md) passed
+with seven valid workloads. The full upstream optimizer and SAGA predictor
+remain unexecuted; the component findings below are preserved.
+
 ## Pins and notices
 
 | Submodule | Upstream | Revision | Permission notice |

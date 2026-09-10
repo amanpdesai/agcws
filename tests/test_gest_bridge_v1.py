@@ -90,3 +90,21 @@ def test_bad_budget(budget):
 def test_missing_upstream_is_not_a_policy_fallback(tmp_path):
     with pytest.raises(FileNotFoundError):
         upstream(tmp_path)
+
+
+def test_changed_upstream_is_rejected_before_execution(tmp_path):
+    (tmp_path / "Algorithm.py").write_text("raise RuntimeError('must not execute')")
+    with pytest.raises(ValueError, match="changed upstream"):
+        upstream(tmp_path)
+
+
+def test_invalid_score_and_missing_batch_are_rejected():
+    bridge = Bridge(7, 2)
+    batch = bridge.ask()
+    with pytest.raises(ValueError, match="exact pending"):
+        bridge.tell(observations(batch[:1]))
+    invalid = observations(batch, False)
+    invalid[0]["loss"] = 0.0
+    with pytest.raises(ValueError, match="no score"):
+        bridge.tell(invalid)
+    assert bridge.used == 2 and not bridge._valid
