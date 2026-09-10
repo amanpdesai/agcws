@@ -32,6 +32,15 @@ before claiming exhaustive coverage of temporal synthesis methods.
 
 ## Outstanding verification
 
+Artifact discovery update, 2026-09-10: the authors' SAGA tool page links
+`ucy-xilab/GeST`, which redirects to the official
+[GeST-SAGA repository](https://github.com/ucy-xilab/GeST-SAGA).
+The [original GeST repository](https://github.com/toolsForUarch/GeST) is also
+available. Repository identity and setup documentation are verified; algorithm
+reproduction and RISC-V compatibility are not. See the
+[integration roadmap](UPSTREAM_BASELINES_PLAN.md). Earlier notes about unavailable
+full papers do not mean these code artifacts are unavailable.
+
 Read and verify FuzzPower first; then SAT/ILP maximum-power estimation and burn-in vectors, Deligiannis 2021, SAGA, and LLM-Box. Convert every `[U]` to `[V]`/`[P]` or remove it before the report.
 
 ## Sources used in the four-page draft — checked 2026-09-06

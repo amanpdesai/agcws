@@ -1,5 +1,14 @@
 # Plan
 
+Next active direction (2026-09-10): [official baseline integration and temporal
+confirmation](UPSTREAM_BASELINES_PLAN.md). First qualify pinned GeST/GeST-SAGA
+components against our interface, CPU only. Keep fresh-seed Pro confirmation
+separate and unchanged; then develop a balanced witnessed target bank and
+stronger-baseline comparison before expanding measurement duration/resolution.
+The [upstream component audit](UPSTREAM_BASELINES_AUDIT.md) records pinned sources,
+tested interfaces and the remaining ask/tell bridge work; no upstream comparative
+run or fresh-seed confirmation has been launched by that qualification.
+
 Current research extension: [staged hypothesis roadmap](RESEARCH_DIRECTIONS.md)
 and [model × reasoning fixed-context probe](IBEX_CAPABILITY_V1_PROTOCOL.md).
 These are new development stages; prior frozen studies are not being amended.
