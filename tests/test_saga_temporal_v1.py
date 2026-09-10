@@ -132,3 +132,46 @@ def test_prediction_error_is_not_training_fit_quality():
     model = Ridge(history(), 10)
     prediction = model.predict(random_program(random.Random(9)))
     assert len(prediction) == 8 and all(math.isfinite(v) for v in prediction)
+
+
+def test_fit_failure_charges_generated_pool_and_cannot_retry(monkeypatch):
+    policy = Policy(1, 8, [0.0] * 8, 10)
+    policy.tell(feedback(policy.ask()))
+
+    def fail(*args):
+        raise np.linalg.LinAlgError("intentional fit failure")
+
+    monkeypatch.setattr("experiments.saga_temporal_v1.policy.screen", fail)
+    with pytest.raises(np.linalg.LinAlgError, match="intentional"):
+        policy.ask()
+    assert policy.used == 8 and len(policy._pending) == 4
+    assert len(policy._history) == 4
+    with pytest.raises(RuntimeError, match="pending"):
+        policy.ask()
+
+
+def test_duplicate_feedback_and_missing_slots_are_rejected():
+    policy = Policy(1, 8, [0.0] * 8, 10)
+    batch = policy.ask()
+    with pytest.raises(ValueError, match="four-slot"):
+        policy.tell(feedback(batch)[:3])
+    policy.tell(feedback(batch))
+    with pytest.raises(ValueError, match="four-slot"):
+        policy.tell(feedback(batch))
+
+
+def test_filtering_cannot_import_current_batch_labels():
+    policy = Policy(1, 8, [0.0] * 8, 10)
+    policy.tell(feedback(policy.ask()))
+    batch = policy.ask()
+    expected = copy.deepcopy(batch)
+    batch["proposals"][0]["program"]["registers"][0] ^= 1
+    assert all(i <= 4 for i in expected["decision"]["training_slots"])
+    policy.tell(feedback(expected))
+    assert len(policy._parents) == 6
+
+
+@pytest.mark.parametrize("budget", [0, 4, 6, True, 8.0])
+def test_budget_shape_is_explicit(budget):
+    with pytest.raises(ValueError, match="multiple"):
+        Policy(1, budget, [0.0] * 8, 10)

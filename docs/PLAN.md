@@ -17,6 +17,12 @@ The [eight-slot bridge qualification](../results/gest_bridge_v1/README.md) is
 complete: seven valid, one useful-work failure, six upstream-operated slots,
 zero model calls. Next: qualify SAGA's temporal adaptation and the balanced
 development panel; do not present this smoke as a stronger-baseline result.
+The [temporal surrogate qualification](../results/saga_temporal_v1/README.md)
+is now complete: twelve charged proposals, eight valid selected simulations and
+four unmeasured filtered candidates. The actual upstream predictor was exercised
+separately; temporal screening uses a clearly labeled ridge adaptation. Next is
+a matched stronger-baseline development panel, not another efficacy claim from
+a single smoke. Frozen Pro confirmation is still separate and unlaunched.
 
 Current research extension: [staged hypothesis roadmap](RESEARCH_DIRECTIONS.md)
 and [model × reasoning fixed-context probe](IBEX_CAPABILITY_V1_PROTOCOL.md).

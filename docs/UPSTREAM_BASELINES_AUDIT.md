@@ -10,6 +10,14 @@ Its [eight-slot CPU qualification](../results/gest_bridge_v1/README.md) passed
 with seven valid workloads. The full upstream optimizer and SAGA predictor
 remain unexecuted; the component findings below are preserved.
 
+The next [temporal screening slice](SAGA_TEMPORAL_V1.md) exercises the pinned
+SAGA predictor in an isolated NumPy/SciPy environment. Positive synthetic
+logarithmic data produce the expected extrapolation; negative fitness produces
+log/covariance warnings and zero output. This is a predictor contract check,
+not power-virus reproduction. The temporal implementation is explicitly a
+different, SAGA-inspired ridge screening model with positional phase features.
+It must not be described as simply running upstream SAGA on Ibex.
+
 ## Pins and notices
 
 | Submodule | Upstream | Revision | Permission notice |
