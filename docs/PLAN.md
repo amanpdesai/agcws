@@ -1,5 +1,15 @@
 # Plan
 
+Next execution milestone (2026-09-10): [non-flat temporal confirmation](NONFLAT_TEMPORAL_V1_PROTOCOL.md).
+The [retrospective depth-target diagnostic](IBEX_DEPTH_FLAT_DIAGNOSTIC.md) shows
+that nine Pro solves required nonconstant activity; random and coverage solved
+none of those cases. The new study prioritizes fresh witnessed non-flat targets
+and phase-random over unchanged-target replication. It is a new generalization
+contrast, not confirmation of the old Pro/random contrast unchanged. CPU target
+qualification and a four-slot integration smoke precede full paid launch.
+See the [execution archive](../results/nonflat_temporal_v1/README.md) for status;
+the older roadmap paragraphs below record the preceding stages.
+
 Active direction (2026-09-10): [official baseline integration and temporal
 confirmation](UPSTREAM_BASELINES_PLAN.md). Upstream inspection, the
 [GeST bridge](../results/gest_bridge_v1/README.md), and

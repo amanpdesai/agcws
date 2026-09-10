@@ -1,4 +1,6 @@
+import json
 import random
+import threading
 
 import pytest
 
@@ -67,3 +69,68 @@ def test_selected_model_settings_unchanged():
         "top_p": 0.95,
         "max_output_tokens": 16384,
     }
+
+
+@pytest.mark.parametrize("arm", ["phase-random", "pro-4096"])
+def test_checkpointed_search_never_resamples_and_charges_missing_slots(
+    tmp_path, monkeypatch, arm
+):
+    from experiments.ibex_depth_v1.storage import write
+    from experiments.nonflat_temporal_v1 import study
+
+    root, archive = tmp_path / "run", tmp_path / "archive"
+    write(archive / "search_manifest.json", {"test": True})
+    write(archive / "schema.json", {})
+    calls = []
+    payloads = []
+
+    def fake_evaluate(p, slot, history, m, root, mode):
+        calls.append(slot)
+        return {
+            "slot": slot,
+            "program": p["submitted"],
+            "valid": p["submitted"] is not None,
+            "loss": 0.25 if p["submitted"] is not None else None,
+        }
+
+    def fake_payload(history, goal, n, grounded):
+        payloads.append(goal)
+        assert list(goal) == ["profile", "scale", "tolerance"]
+        return json.dumps({"slots": len(history), "goal": goal})
+
+    class FakeMeter:
+        halted = threading.Event()
+
+        def call(self, directory, arm, contents, schema, identity):
+            # Short output retains one candidate and charges the absent second slot.
+            return {
+                "identity": identity,
+                "model_version": "gemini-2.5-pro",
+                "raw_text": json.dumps(
+                    {"candidates": [random_program(random.Random(7))]}
+                ),
+            }
+
+    monkeypatch.setattr(study, "evaluate", fake_evaluate)
+    monkeypatch.setattr(study, "payload", fake_payload)
+    monkeypatch.setattr(study, "archive_evaluations", lambda *args: None)
+    m = {
+        "scale": 10,
+        "tolerance": 0.1,
+        "payload_bound": 200000,
+        "models": {"pro-4096": settings("pro-4096")},
+    }
+    target = {
+        "id": "test",
+        "rates": [0, 10] * 4,
+        "witness_secret": "must not reach model",
+    }
+    result = study.search(root, archive, m, target, 17, arm, 4, FakeMeter())
+    assert calls == [1, 2, 3, 4]
+    assert len(result["trials"]) == 4
+    if arm == "pro-4096":
+        assert result["trials"][-1]["loss"] is None
+        assert not result["trials"][-1]["valid"]
+    again = study.search(root, archive, m, target, 17, arm, 4, FakeMeter())
+    assert again == result
+    assert calls == [1, 2, 3, 4]
