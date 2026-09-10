@@ -1,0 +1,62 @@
+{
+  "verified_utc": "2026-09-10T07:39:30.867687+00:00",
+  "status": "launched and first successful Pro batch verified; study incomplete",
+  "service": "agcws-nonflat-temporal-v1.service",
+  "service_properties": {
+    "MainPID": "3127210",
+    "ActiveState": "active",
+    "SubState": "running",
+    "InvocationID": "38c07d1996fc49cca0b87a002bcb9453"
+  },
+  "search_manifest_sha256": "1f586416b6f9286b9e764527a66ace990ffff21b7ed62cc3cc8816ffbeda1d7d",
+  "source_commit": "ef426baa2d45eccca40ffbb1f6f0ff0851804c05",
+  "tests_passed": 597,
+  "billing_enabled": true,
+  "adc_valid": true,
+  "model": "gemini-2.5-pro",
+  "first_verified_response_sha256": "9aca7e500048963e38df21d1b8276ed1f55dc89be1f7685af609be8697253758",
+  "first_verified_batch": "panel/target_0/1201/pro-4096/batches/003",
+  "tokens_in": 10340,
+  "tokens_out": 5178,
+  "estimated_usd": 0.064705,
+  "finish_reasons": [
+    "FinishReason.STOP"
+  ],
+  "verified_batch_valid_slots": 2,
+  "execution_snapshot": {
+    "snapshot_utc": "2026-09-10T07:39:30.871380+00:00",
+    "phase": "execution-status-not-comparative-inference",
+    "completed_slots_by_arm": {
+      "phase-random": 14,
+      "pro-4096": 12
+    },
+    "validity": {
+      "VALID": 20,
+      "USEFUL_WORK": 2,
+      "API": 4
+    },
+    "complete_prefixes": [],
+    "known_estimated_usd": 0.19915875,
+    "unknown_usage_calls": 2,
+    "api_errors": [
+      {
+        "batch": "panel/target_0/1201/pro-4096/batches/005",
+        "error": {
+          "type": "ClientError",
+          "message": "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.', 'status': 'RESOURCE_EXHAUSTED'}}"
+        }
+      },
+      {
+        "batch": "panel/target_0/1200/pro-4096/batches/003",
+        "error": {
+          "type": "ClientError",
+          "message": "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.', 'status': 'RESOURCE_EXHAUSTED'}}"
+        }
+      }
+    ],
+    "in_flight_or_unresolved_requests": [
+      "panel/target_0/1200/pro-4096/batches/007/request_started.json"
+    ]
+  },
+  "log_path": "out/nonflat-temporal-v1/service.log"
+}
