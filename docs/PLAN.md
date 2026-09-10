@@ -1,28 +1,24 @@
 # Plan
 
-Next active direction (2026-09-10): [official baseline integration and temporal
-confirmation](UPSTREAM_BASELINES_PLAN.md). First qualify pinned GeST/GeST-SAGA
-components against our interface, CPU only. Keep fresh-seed Pro confirmation
-separate and unchanged; then develop a balanced witnessed target bank and
-stronger-baseline comparison before expanding measurement duration/resolution.
-The [upstream component audit](UPSTREAM_BASELINES_AUDIT.md) records pinned sources,
-tested interfaces and the remaining ask/tell bridge work; no upstream comparative
-run or fresh-seed confirmation has been launched by that qualification.
-The next slice implements the [GeST phase bridge](GEST_BRIDGE_V1.md): exact
-pinned upstream operators in a bounded ask/tell wrapper, with a declared phase
-encoding and an eight-slot CPU qualification. This is an adaptation, not the
-full upstream runner or SAGA. See its tracked `results/gest_bridge_v1` evidence
-for completion; the fresh-seed Pro study remains separate.
-The [eight-slot bridge qualification](../results/gest_bridge_v1/README.md) is
-complete: seven valid, one useful-work failure, six upstream-operated slots,
-zero model calls. Next: qualify SAGA's temporal adaptation and the balanced
-development panel; do not present this smoke as a stronger-baseline result.
-The [temporal surrogate qualification](../results/saga_temporal_v1/README.md)
-is now complete: twelve charged proposals, eight valid selected simulations and
-four unmeasured filtered candidates. The actual upstream predictor was exercised
-separately; temporal screening uses a clearly labeled ridge adaptation. Next is
-a matched stronger-baseline development panel, not another efficacy claim from
-a single smoke. Frozen Pro confirmation is still separate and unlaunched.
+Active direction (2026-09-10): [official baseline integration and temporal
+confirmation](UPSTREAM_BASELINES_PLAN.md). Upstream inspection, the
+[GeST bridge](../results/gest_bridge_v1/README.md), and
+[temporal surrogate screening](../results/saga_temporal_v1/README.md) have passed
+CPU qualification. The latter is a SAGA-inspired ridge adaptation, not execution
+of the original SAGA optimizer; see the [source audit](UPSTREAM_BASELINES_AUDIT.md).
+
+The [stronger-baseline development panel](BASELINE_PANEL_V1_RESULTS.md) is complete:
+three measured targets, two development seeds, six controls and sixteen
+proposals per cell. Ten of twelve construction attempts passed; all three
+selected target witnesses were independently checked and committed before
+search. All 36 cells / 576 slots passed the independent archive audit.
+Phase-random has the lowest descriptive mean AUC; screening did not improve
+the matched no-screen pool on the primary proposal-budget endpoint. Two seeds
+do not establish a general ranking. The scheduled target remained unsolved by
+all controls at sixteen proposals despite having a verified witness.
+This CPU panel does not include Pro. Fresh-seed Pro confirmation remains
+separate, unchanged and unlaunched. Longer horizons/resolution and new-family
+generalization still require their own measurement and feasibility gates.
 
 Current research extension: [staged hypothesis roadmap](RESEARCH_DIRECTIONS.md)
 and [model × reasoning fixed-context probe](IBEX_CAPABILITY_V1_PROTOCOL.md).
@@ -33,9 +29,9 @@ comparison](IBEX_DEPTH_V1_RESULTS.md) is complete: 48 trajectories,
 6,144 slots, four policies and 16/64/128 prefix summaries. Pro improves over
 both controls in development; fresh held-out confirmation remains future work.
 
-Next scoped milestone: [temporal scaling and stronger-control qualification](TEMPORAL_SCALING_V1_PLAN.md).
-Build deterministic request generation and witness checks; qualify phase-random
-and phase-GA on the unchanged Ibex evaluator using CPU only. Fresh-seed Pro/random
+Completed first milestone: [temporal scaling and stronger-control qualification](TEMPORAL_SCALING_V1_PLAN.md).
+Deterministic request generation, witness checks, phase-random and phase-GA are
+implemented and qualified on the unchanged Ibex evaluator. Fresh-seed Pro/random
 confirmation is the next paid study and must keep the completed protocol fixed.
 New horizons, bin counts, stronger-baseline comparisons and new-family claims
 have separate implementation and freeze gates, not a silently enlarged matrix.
