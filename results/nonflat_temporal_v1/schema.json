@@ -1,0 +1,126 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "hypothesis",
+    "candidates",
+    "predictions"
+  ],
+  "properties": {
+    "hypothesis": {
+      "type": "string"
+    },
+    "candidates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "registers",
+          "memory_seed",
+          "segments"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "registers": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
+          },
+          "memory_seed": {
+            "type": "integer"
+          },
+          "segments": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "weight",
+                "release",
+                "body"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "release": {
+                  "type": "integer"
+                },
+                "body": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "op",
+                      "a"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                      "op": {
+                        "type": "string",
+                        "enum": [
+                          "add",
+                          "xor",
+                          "and",
+                          "or",
+                          "sll",
+                          "srl",
+                          "mul",
+                          "divu",
+                          "cmovz",
+                          "load",
+                          "store"
+                        ]
+                      },
+                      "a": {
+                        "type": "integer"
+                      },
+                      "b": {
+                        "type": "integer"
+                      },
+                      "dst": {
+                        "type": "integer"
+                      }
+                    }
+                  }
+                },
+                "weight": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "predictions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "reference_slot",
+          "changed_factor",
+          "window_directions"
+        ],
+        "properties": {
+          "reference_slot": {
+            "type": "integer"
+          },
+          "changed_factor": {
+            "type": "string"
+          },
+          "window_directions": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "enum": [
+                -1,
+                0,
+                1
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}
