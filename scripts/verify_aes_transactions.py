@@ -1,9 +1,9 @@
 """Exercise every advertised AES mode and exact workload idle timing."""
 import argparse
 import json
-from pathlib import Path
 import subprocess
 import sys
+from pathlib import Path
 
 
 def main():

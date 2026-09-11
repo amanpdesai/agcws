@@ -1,10 +1,14 @@
 # Experiment pre-registration
 
+Historical base protocol. Completed studies have their own frozen protocols
+in the [source archive](../archive/README.md); this document is not a new run
+configuration. Current findings are in [RESULTS.md](../RESULTS.md).
+
 The sections below are the original broad project plan. Executed versioned
 studies have narrower, separately frozen protocols: scalar methods and scope
-are reported in [SEMANTIC_RESULTS.md](SEMANTIC_RESULTS.md); structural temporal
+are reported in [SEMANTIC_RESULTS.md](../RESULTS.md); structural temporal
 development, selection and held-out settings are in
-[STRUCTURAL_TEMPORAL_PLAN.md](STRUCTURAL_TEMPORAL_PLAN.md) and
+[STRUCTURAL_TEMPORAL_PLAN.md](../archive/README.md) and
 `results/structural_temporal_freeze_v1.json`. The latter was committed at
 `07cbcd0` before held-out evaluation and uses Gemini 2.5 Flash, batch four and
 32 proposal slots. Those results do not fulfill the original Pro-tier,

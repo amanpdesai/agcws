@@ -1,5 +1,5 @@
-from pathlib import Path
 import subprocess
+from pathlib import Path
 
 
 def test_axi_dma_read_smoke_completes(tmp_path: Path):

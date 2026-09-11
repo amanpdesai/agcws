@@ -1,5 +1,8 @@
 # DMA baseline development — complete panel
 
+Historical artifact notes. Current findings are consolidated in [RESULTS.md](../../RESULTS.md).
+Commands referencing retired study/report modules require the [isolated historical source](../../archive/README.md), not the active checkout.
+
 All 60 cells are complete: four policies × five targets × three development
 seeds, 50 proposal slots per run. All 3,000 proposal slots passed independent
 ledger audits. `aggregate.json` is the complete descriptive summary.

@@ -1,7 +1,7 @@
 from agcws.adapters.aes import AESAdapter
-from agcws.adapters.base import ValidityStage
+from agcws.adapters.base import SimResult, ValidityStage
 from agcws.nodes.validation import validate_static, validate_workload
-from agcws.adapters.base import SimResult
+
 
 def test_aes_protocol_requires_configuration():
     result = validate_static(AESAdapter(), {"operations": [{"op": "encrypt"}]})

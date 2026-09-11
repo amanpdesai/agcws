@@ -1,5 +1,8 @@
 # Matched scalar-edit control: completed development panel
 
+Historical artifact notes. Current findings are consolidated in [RESULTS.md](../../RESULTS.md).
+Commands referencing retired study/report modules require the [isolated historical source](../../archive/README.md), not the active checkout.
+
 All 15 cells are complete: five scalar targets × seeds 100–102, 50 proposal
 slots per cell. This is the non-LLM scalar-edit-evolution arm only, not a
 complete agent comparison. Independent ledger audit passed all 750 slots.

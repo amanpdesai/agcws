@@ -1,5 +1,8 @@
 # Prediction-envelope preflight — passed
 
+Historical artifact notes. Current findings are consolidated in [RESULTS.md](../../RESULTS.md).
+Commands referencing retired study/report modules require the [isolated historical source](../../archive/README.md), not the active checkout.
+
 One predeclared grounded request generated two full programs and two valid
 eight-bin direction predictions, both referencing the supplied prior trial.
 The full local validator accepted both programs. No retry, repair or simulation

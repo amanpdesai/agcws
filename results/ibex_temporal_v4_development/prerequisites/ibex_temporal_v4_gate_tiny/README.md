@@ -1,5 +1,8 @@
 # V4 short-allocation CPU gate
 
+Historical artifact notes. Current findings are consolidated in [RESULTS.md](../../RESULTS.md).
+Commands referencing retired study/report modules require the [isolated historical source](../../archive/README.md), not the active checkout.
+
 The retained v2 `tiny` development program exercises allocations shorter than
 their loop body. Original and phase-labeled compilations have byte-identical
 loadable programs, architectural state, observation markers, activity-bin counts,

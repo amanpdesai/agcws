@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Emit the OpenTitan AES RTL source set for harness/synthesis commands."""
-from pathlib import Path
 import argparse
+from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1] / "third_party/opentitan"
 

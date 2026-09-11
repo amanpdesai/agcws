@@ -6,6 +6,7 @@ import json
 import re
 from pathlib import Path
 
+
 def inspect(path: Path) -> dict:
     text = path.read_text(errors="replace")
     return {

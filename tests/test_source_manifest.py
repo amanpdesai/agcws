@@ -1,5 +1,7 @@
 from pathlib import Path
+
 from scripts.resolve_sv_sources import resolve
+
 
 def test_aes_core_manifest_contains_required_packages():
     paths = {path.relative_to(Path.cwd()).as_posix() for path in resolve("aes_cipher_core")}

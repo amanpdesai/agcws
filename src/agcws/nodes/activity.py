@@ -1,12 +1,13 @@
-from dataclasses import dataclass
-from pathlib import Path
-from collections.abc import Sequence
-from collections import defaultdict
-from bisect import bisect_right
 import json
 import re
-from agcws.provenance import file_sha256
+from bisect import bisect_right
+from collections import defaultdict
+from collections.abc import Sequence
+from dataclasses import dataclass
+from pathlib import Path
+
 from agcws.nodes.commands import CommandResult, run_command
+from agcws.provenance import file_sha256
 
 _VAR_RE = re.compile(r"\$var\s+\S+\s+(\d+)\s+(\S+)\s+(.+?)\s+\$end")
 

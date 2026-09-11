@@ -1,7 +1,9 @@
 from pathlib import Path
+
 import pytest
-from scripts.parse_vcd_activity import parse
+
 from agcws.nodes.activity import attribute_regions, extract_activity, normalize_windows
+from scripts.parse_vcd_activity import parse
 
 
 def test_extract_activity_requires_waveform(tmp_path: Path):

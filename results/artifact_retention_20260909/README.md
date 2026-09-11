@@ -1,5 +1,8 @@
 # Retention pass — 2026-09-09
 
+Historical artifact notes. Current findings are consolidated in [RESULTS.md](../../RESULTS.md).
+Commands referencing retired study/report modules require the [isolated historical source](../../archive/README.md), not the active checkout.
+
 Removed 4,016 completed Ibex depth **non-finalist waveform files**, reclaiming
 70,444,781,568 allocated bytes (65.6 GiB). All 48 selected finalist traces,
 simulator binaries, programs, logs and measurements remain. The full depth

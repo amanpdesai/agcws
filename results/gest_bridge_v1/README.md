@@ -1,7 +1,10 @@
 # GeST phase-bridge CPU qualification
 
+Historical artifact notes. Current findings are consolidated in [RESULTS.md](../../RESULTS.md).
+Commands referencing retired study/report modules require the [isolated historical source](../../archive/README.md), not the active checkout.
+
 Completed 2026-09-10. This is an integration check, not a comparative study.
-The [frozen protocol](../../docs/GEST_BRIDGE_V1.md) declares eight proposals,
+The [frozen protocol](../../archive/README.md) declares eight proposals,
 one existing achieved target, seed 840, two proposals per batch, and no model
 calls. `manifest.json` pins producer hashes, upstream operator hashes, target
 source and measurement identity; its source commit precedes execution.

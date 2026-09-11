@@ -1,5 +1,8 @@
 # Response-contract revision 2 — completed, readiness passed
 
+Historical artifact notes. Current findings are consolidated in [RESULTS.md](../../RESULTS.md).
+Commands referencing retired study/report modules require the [isolated historical source](../../archive/README.md), not the active checkout.
+
 Frozen at `74fa4fa9` before requests. Twelve fixed historical contexts, two arms,
 24 requests and 48 charged slots. All calls finished with STOP, with no API errors
 or unknown usage.
@@ -20,7 +23,7 @@ and native schema are a package; this comparison does not isolate their effects.
 The original arm differs from the earlier 14/24 result because these are new
 stochastic model requests, not reused responses. Both studies remain archived.
 
-See [revision protocol](../../docs/IBEX_CONTRACT_V4_REVISION2.md), `manifest.json`,
+See [revision protocol](../../archive/README.md), `manifest.json`,
 all input payloads and raw calls. Audit from the repository root:
 
 ```bash

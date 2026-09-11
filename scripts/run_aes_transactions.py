@@ -2,19 +2,20 @@
 import argparse
 import hashlib
 import json
-from pathlib import Path
 import subprocess
 import sys
+from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'src'))
 
 from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+
 from agcws import config
 from agcws.adapters.aes.transactions import AESTransactionAdapter
 from agcws.nodes.activity import parse_vcd
-from agcws.nodes.validation import validate_static
 from agcws.nodes.coverage import read_line_coverage
+from agcws.nodes.validation import validate_static
 
 
 def packed_state(data):

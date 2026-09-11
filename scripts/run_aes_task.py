@@ -10,10 +10,11 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
-from agcws.tasks import TaskStore, file_digest
+from evaluate_aes_workload import evaluate
+
 from agcws import config
 from agcws.provenance import toolchain_record
-from evaluate_aes_workload import evaluate
+from agcws.tasks import TaskStore, file_digest
 
 
 def main() -> None:

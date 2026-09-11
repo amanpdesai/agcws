@@ -1,10 +1,16 @@
 from pathlib import Path
-from agcws.provenance import file_sha256
-from agcws.nodes.commands import CommandResult, run_command
-from agcws.nodes.power import (PowerProfile, parse_annotated_pin_count,
-                               parse_annotation_summary, parse_opensta_power_file)
-from agcws.nodes.synthesize import NetlistArtifact
+
 from agcws.nodes.activity import ActivityArtifact
+from agcws.nodes.commands import CommandResult, run_command
+from agcws.nodes.power import (
+    PowerProfile,
+    parse_annotated_pin_count,
+    parse_annotation_summary,
+    parse_opensta_power_file,
+)
+from agcws.nodes.synthesize import NetlistArtifact
+from agcws.provenance import file_sha256
+
 
 def evaluate_power(command: list[str], netlist: NetlistArtifact, activity: ActivityArtifact,
                    output_dir: Path, *, timeout_s: float | None = None) -> tuple[CommandResult, PowerProfile]:

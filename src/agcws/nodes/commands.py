@@ -1,6 +1,7 @@
+import subprocess
 from dataclasses import dataclass
 from pathlib import Path
-import subprocess
+
 
 @dataclass(frozen=True)
 class CommandResult:

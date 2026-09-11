@@ -1,76 +1,22 @@
-# Risks
+# Remaining risks
 
-## R-01 — Liberty lacks usable power characterization — H
+Updated 2026-09-11. Historical risk resolutions and numerical evidence are in
+[RESULTS.md](../RESULTS.md); original risk registers remain in the source archive.
 
-Inspect `internal_power`, rise/fall power, leakage, capacitance, and cell coverage by D3. If incomplete, report synthesis-weighted switching power.
-
-**Initial inspection (2026-08-30).** Candidate Sky130 HD typical-corner Liberty:
-`/opt/eda/ChipSTA/test/sky130hd/sky130_fd_sc_hd__tt_025C_1v80.lib`. It is 12.8 MB
-and contains 2,477 `internal_power`, 2,477 `rise_power`, 2,477 `fall_power`,
-429 `cell_leakage_power`, and 4,406 `capacitance` occurrences. This is promising
-but does not close R-01: coverage must still be compared with the synthesized
-netlist cell histogram, and the path must be supplied through `AGCWS_LIBERTY`.
-
-**Closed (2026-08-31).** The copied Sky130 Liberty contains 2,477 internal-power
-groups, 2,477 rise-power tables, 2,477 fall-power tables, 429 leakage entries,
-1,328 capacitance entries, and 6 clock-gating declarations. The AES Sky130
-netlist uses 72 distinct cell types and 43,619 instances; all are defined by
-the Liberty (100% instance coverage, no unmatched types). The independent
-Nangate45 netlist likewise has 100% instance coverage (29 types, 40,479
-instances). R-01 is closed for relative synthesis-level power claims; this does
-not constitute signoff-accuracy power characterization.
-
-## R-02 — Activity annotation coverage — H — OPEN
-
-The verified AES Sky130 run reports 203 VCD-annotated pins and 153,856
-unannotated pins, a pin-count fraction of 0.0013177. This is far below a
-threshold suitable for claiming broad gate-level activity agreement.
-
-**Fallback currently in force.** Report synthesis-weighted switching power and
-RTL cycle-toggle profiles; do not describe the result as signoff-accuracy power.
-The next resolution step is hierarchy-preserving name mapping or gate-level
-simulation of finalists, followed by a per-design proxy-to-gate rank analysis.
-
-**Current finding (2026-09-03).** A clean 20-workload calibration now spans
-22.25--130.29 RTL transitions per clock edge (486% relative spread), with all
-20 workloads valid. The corresponding OpenSTA reports annotate only 203 of
-154,059 pins (0.132%) and span just 0.050% in total power. Workload diversity is
-therefore real; the RTL-waveform-to-netlist annotation path is the bottleneck,
-not the DSL. These reports remain plumbing evidence until gate-level simulation
-or materially improved annotation is available.
-
-## R-03 — Scalar targeting is trivial — M
-
-Measure evaluations-to-target by D9; make compositional/temporal arms primary if scalar search has no signal.
-
-## R-04 — Hierarchy loss — H
-
-Preserve selected synthesis boundaries; otherwise restrict composition to surviving regions or report RTL-only composition.
-
-## R-05 — Temporal trace size — M
-
-Use 8–32 coarse windows, bounded workloads, and split/online activity.
-
-## R-06 — Idle low-power solutions — M
-
-Require `useful_work()` floors and report energy per operation secondarily.
-
-## R-07 — Unfair baseline — H
-
-Same DSL, budget, checker, history, and batch semantics for every policy.
-
-## R-08 — Proxy exploitation — M
-
-Use hidden gate-level validation and report proxy-to-gate regressions.
-
-## R-09 — Ibex toolchain tail — M
-
-Start early; cut Ibex by D15 if it is not operational.
-
-## R-10 — $300 credit exhaustion — L
-
-Batch LLM candidates and defer multi-seed repetition to the free compute window.
-
-## R-11 — Prior-art surprise — H
-
-Check SAT/ILP maximum-power estimation and burn-in vectors by D5.
+- **Claim transfer:** Ibex activity-profile success is not validated gate power,
+  arbitrary target reachability, or a cross-design Pro result.
+- **Statistical scope:** the latest confirmation has six seed units and three
+  targets selected by a fixed witnessed construction rule. Avoid extrapolating
+  beyond that distribution; preserve earlier negative studies.
+- **Representation:** every policy shares the grammar. A policy win is not
+  proof of greater DSL expressiveness or calibrated causal reasoning.
+- **Accounting:** unknown API usage is reserved, not free. Keep failed calls and
+  requested-slot accounting in every audit and comparison.
+- **Reproducibility:** cold nonfinalist waveforms require replay; retain programs,
+  binaries, frozen tool identities and compact records. Never silently substitute
+  an unavailable model or tool revision.
+- **Refactor:** the new orchestration is covered by fake-provider/evaluator tests
+  and historical semantic golden cases. No new hardware study was launched to
+  validate the refactor; historical claims remain bound to original sources.
+- **Delivery:** the paper draft and figures must be updated from the consolidated
+  results. Do not start another study merely to postpone writing.

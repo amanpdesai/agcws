@@ -1,6 +1,8 @@
 from abc import ABC, abstractmethod
 from typing import Any
+
 from agcws.goals import Goal
+
 
 class SearchPolicy(ABC):
     name: str

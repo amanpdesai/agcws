@@ -1,5 +1,8 @@
 # Fixed-window AES structural CPU pilot
 
+Historical artifact notes. Current findings are consolidated in [RESULTS.md](../../RESULTS.md).
+Commands referencing retired study/report modules require the [isolated historical source](../../archive/README.md), not the active checkout.
+
 Four development cells: two achieved reference profiles (`random_300`,
 `random_301`), random and structural evolution, seed 310, 16 slots per cell,
 batch size 4. The reference workload itself was not passed to either policy.

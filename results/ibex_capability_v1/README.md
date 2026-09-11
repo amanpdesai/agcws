@@ -1,5 +1,8 @@
 # Ibex capability v1 — complete development probe
 
+Historical artifact notes. Current findings are consolidated in [RESULTS.md](../../RESULTS.md).
+Commands referencing retired study/report modules require the [isolated historical source](../../archive/README.md), not the active checkout.
+
 Twelve fixed historical contexts; four model/thinking arms plus two CPU controls.
 72 next-batch cells and 144 requested proposals, including 48 model calls. This
 is conditional proposal-quality development, not a full search or held-out study.
@@ -11,9 +14,9 @@ Pro-4096 has the largest mean next-batch gain (0.14234 versus random 0.02674),
 24/24 valid proposals and four newly solved contexts. Total model spend is
 estimated at $2.0606266. This is not a held-out or full-search win.
 
-See [results and limitations](../../docs/IBEX_CAPABILITY_V1_RESULTS.md),
-[the protocol](../../docs/IBEX_CAPABILITY_V1_PROTOCOL.md) and
-[research roadmap](../../docs/RESEARCH_DIRECTIONS.md).
+See [results and limitations](../../RESULTS.md),
+[the protocol](../../archive/README.md) and
+[research roadmap](../../archive/README.md).
 
 `cells/` preserves every response and charged slot; `parent_histories/` contains
 the original histories; `evaluations/` preserves compact CPU evidence without

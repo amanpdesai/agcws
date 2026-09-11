@@ -1,5 +1,8 @@
 # DMA catalog-controller development
 
+Historical artifact notes. Current findings are consolidated in [RESULTS.md](../../RESULTS.md).
+Commands referencing retired study/report modules require the [isolated historical source](../../archive/README.md), not the active checkout.
+
 Complete 15-cell panel, all 750 proposed slots independently audited. Five
 scalar targets, seeds 100–102, 50 slots, batch size 4, epsilon 0.02, pipelined
 DMA backend and frozen calibration match the other development policies.

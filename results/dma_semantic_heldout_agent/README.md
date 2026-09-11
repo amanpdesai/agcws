@@ -1,5 +1,8 @@
 # DMA held-out semantic agent
 
+Historical artifact notes. Current findings are consolidated in [RESULTS.md](../../RESULTS.md).
+Commands referencing retired study/report modules require the [isolated historical source](../../archive/README.md), not the active checkout.
+
 Complete panel: semantic-edits-v4 × five targets × ten held-out seeds
 (200–209), 50 proposed slots per cell, batch size 4, epsilon 0.02.
 Uses the pipelined backend and frozen DMA calibration.

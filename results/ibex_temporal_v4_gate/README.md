@@ -1,5 +1,8 @@
 # V4 diagnostic-label CPU gate
 
+Historical artifact notes. Current findings are consolidated in [RESULTS.md](../../RESULTS.md).
+Commands referencing retired study/report modules require the [isolated historical source](../../archive/README.md), not the active checkout.
+
 One partial-iteration development program replayed twice on the pinned Ibex
 simulator: unchanged v3 assembly versus the same assembly with address labels.
 Loadable bytes, architectural state, observation markers, activity-bin counts,

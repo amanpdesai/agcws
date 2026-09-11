@@ -1,5 +1,5 @@
-from pathlib import Path
 import subprocess
+from pathlib import Path
 
 
 def test_pinned_axi_dma_rtl_compiles(tmp_path: Path):

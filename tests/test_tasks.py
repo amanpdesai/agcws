@@ -1,8 +1,9 @@
-from pathlib import Path
 import json
 import multiprocessing
-import pytest
 import time
+from pathlib import Path
+
+import pytest
 
 from agcws.tasks import TaskStore, file_digest, task_key
 

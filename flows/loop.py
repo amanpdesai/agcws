@@ -1,9 +1,11 @@
 from dataclasses import dataclass, field
 from typing import Any
-from agcws.goals import Goal
-from agcws.policies import SearchPolicy
+
 from agcws.adapters import DesignAdapter
+from agcws.goals import Goal
 from agcws.nodes.validation import validate_static
+from agcws.policies import SearchPolicy
+
 
 @dataclass
 class LoopState:

@@ -101,7 +101,7 @@ hardware constraint; adapters and a bounded grammar remove much of that burden.
 
 Evidence: [scalar comparison](results/semantic_heldout_comparison.json),
 [scalar equal-valid diagnostic](results/semantic_valid_evaluation_diagnostic.json),
-[structural archive](results/structural_temporal_heldout_v1/README.md),
+[structural archive](results/structural_temporal_heldout_v1/heldout.json),
 [structural equal-valid diagnostic](results/structural_valid_evaluation_diagnostic_v1.json).
 
 ## Development evidence and stronger controls
@@ -150,7 +150,7 @@ Sky130 HD and Nangate45 Liberty characterization was inspected. Functional
 zero-delay GLS omits timing-induced glitches; no signoff claim is made.
 Evidence: [windowed measurements](results/windowed_power_v1/validation.json),
 [boundary semantics](results/window_semantics_v1/verification.json),
-[matched finalist replays](results/structural_temporal_finalist_validation_v1/README.md).
+[matched finalist replays](results/structural_temporal_finalist_validation_v1/validation.json).
 
 ## Reproduction and next work
 
@@ -158,6 +158,11 @@ Frozen manifests, compact trial evidence and source identities are preserved.
 Historical source snapshots and protocols are separated from the maintained
 pipeline; see [archive instructions](archive/README.md). No new experiment was
 launched during the consolidation pass.
+
+The [retention receipt](results/cleanup_20260911/README.md) records the scratch
+cleanup: roughly 74 GiB reclaimed, preserving all cell finalists and construction
+witnesses. Large logs are recoverable from local compressed objects; deleted
+nonfinalist waveforms require replay. Published compact evidence was unchanged.
 
 Remaining scientific questions: genuinely new waveform families, duration and
 resolution scaling, stronger controls at matched cost, cross-design Pro

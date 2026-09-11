@@ -1,5 +1,8 @@
 # Image-only matched replay — 2026-09-07
 
+Historical artifact notes. Current findings are consolidated in [RESULTS.md](../../RESULTS.md).
+Commands referencing retired study/report modules require the [isolated historical source](../../archive/README.md), not the active checkout.
+
 Two existing seed-400/random/random_300 finalists were replayed using the image's
 own source, Icarus and pinned upstream OpenSTA, with no host source or tool mounts.
 Only checksummed input artifacts and writable outputs were bind-mounted.

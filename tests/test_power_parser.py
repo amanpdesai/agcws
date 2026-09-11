@@ -1,9 +1,13 @@
 import pytest
 
-from agcws.nodes.power import parse_annotation_summary, parse_annotated_pin_count, parse_opensta_power_report
 from agcws.goals import ScalarGoal, TemporalGoal
 from agcws.goals.loss import loss
-from agcws.nodes.power import PowerProfile
+from agcws.nodes.power import (
+    PowerProfile,
+    parse_annotated_pin_count,
+    parse_annotation_summary,
+    parse_opensta_power_report,
+)
 
 
 def test_parse_opensta_power_report():

@@ -1,6 +1,7 @@
+import random
+
 from agcws.adapters.base import ValidityStage
 from agcws.adapters.ibex import IbexAdapter
-import random
 
 
 def program(*instructions):

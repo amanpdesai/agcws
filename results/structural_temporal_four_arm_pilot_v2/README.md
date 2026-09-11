@@ -1,5 +1,8 @@
 # Typed structural-edit development pilot v2
 
+Historical artifact notes. Current findings are consolidated in [RESULTS.md](../../RESULTS.md).
+Commands referencing retired study/report modules require the [isolated historical source](../../archive/README.md), not the active checkout.
+
 Eight matched-source AES cells: two achieved temporal reference profiles,
 seed 310, 16 proposal slots per cell, batch size 4, fixed scale 200 and
 tolerance 0.10. All valid workloads complete 64 AES-128 blocks over exactly

@@ -1,18 +1,21 @@
 # Ibex depth v1 — complete development study
 
+Historical artifact notes. Current findings are consolidated in [RESULTS.md](../../RESULTS.md).
+Commands referencing retired study/report modules require the [isolated historical source](../../archive/README.md), not the active checkout.
+
 48 closed-loop development trajectories: four targets × seeds 610–612 ×
 Pro-4096, Flash-4096, random and behavior-coverage. Each runs to 128 proposals;
 16/64/128 results are prefixes, not independently resampled runs. Total: 6,144
 slots, including two common initial programs per trajectory.
 
-See [protocol](../../docs/IBEX_DEPTH_V1_PROTOCOL.md) and
-[code quality audit](../../docs/CODE_QUALITY_AUDIT.md). The producer and manifest
+See [protocol](../../archive/README.md) and
+[code quality audit](../../archive/README.md). The producer and manifest
 were committed at `06a85b8c` before calls. All 48 cells at 128 slots (6,144 slots)
 are archived as deterministic gzip objects with a hash index and independent
 audit, including their 16/64-slot prefixes. The producer exited successfully.
 Heavy simulator traces remain scratch, not Git objects.
 
-See [findings and limitations](../../docs/IBEX_DEPTH_V1_RESULTS.md) and
+See [findings and limitations](../../RESULTS.md) and
 [`aggregate.json`](aggregate.json). The 16/64-slot comparisons are predeclared
 secondary development breakdowns; the primary endpoint is AUC at 128 slots.
 

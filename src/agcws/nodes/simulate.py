@@ -1,6 +1,8 @@
 from dataclasses import dataclass
 from pathlib import Path
+
 from agcws.nodes.commands import CommandResult, run_command
+
 
 @dataclass(frozen=True)
 class SimulationArtifact:

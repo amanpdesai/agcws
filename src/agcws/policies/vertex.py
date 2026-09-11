@@ -1,11 +1,11 @@
 """Optional Vertex-backed proposer with a strict, testable JSON boundary."""
 from __future__ import annotations
 
-import json
 import hashlib
+import json
+import logging
 import os
 import signal
-import logging
 from dataclasses import asdict, is_dataclass
 from typing import Any, Callable
 

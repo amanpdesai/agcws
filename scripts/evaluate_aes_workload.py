@@ -12,13 +12,13 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
+from agcws import config
 from agcws.adapters.aes import AESAdapter
+from agcws.adapters.base import SimResult
+from agcws.nodes.activity import attribute_regions
 from agcws.nodes.power import parse_annotation_summary, parse_opensta_power_file
 from agcws.nodes.validation import validate_static
-from agcws.adapters.base import SimResult
 from agcws.provenance import input_record, toolchain_record
-from agcws.nodes.activity import attribute_regions
-from agcws import config
 
 
 def evaluate(workload_path: Path, synthesis_dir: Path, output_dir: Path, *, allow_invalid: bool = False) -> dict:

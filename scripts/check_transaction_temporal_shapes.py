@@ -2,9 +2,9 @@
 import argparse
 import hashlib
 import json
-from pathlib import Path
 import subprocess
 import sys
+from pathlib import Path
 
 from agcws.adapters.aes.transactions import AESTransactionAdapter
 from agcws.nodes.validation import validate_static

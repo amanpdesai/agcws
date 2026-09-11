@@ -1,8 +1,10 @@
 import pytest
 
-from agcws.analysis.inference import (holm_bonferroni,
-                                       paired_permutation_pvalue,
-                                       rank_biserial_effect)
+from agcws.analysis.inference import (
+    holm_bonferroni,
+    paired_permutation_pvalue,
+    rank_biserial_effect,
+)
 
 
 def test_paired_permutation_is_exact_and_deterministic():

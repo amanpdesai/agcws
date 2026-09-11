@@ -1,5 +1,9 @@
 # Finalist validation
 
+Current findings are in [RESULTS.md](../RESULTS.md). Historical `analysis.*`
+audit/report commands below run from the [isolated source archive](../archive/README.md).
+Individual `validation.*` measurement stages remain maintained in this checkout.
+
 ## Native eight-window measurements
 
 The completed panel is in `results/windowed_power_v1/`. Use

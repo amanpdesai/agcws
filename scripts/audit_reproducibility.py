@@ -8,7 +8,6 @@ import json
 import subprocess
 from pathlib import Path
 
-
 REQUIRED = (
     ".env.example",
     ".gitmodules",

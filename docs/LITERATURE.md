@@ -25,7 +25,7 @@ accepting a target vector does not itself establish novelty.
 | Hadjilambrou, Das, Antoniades, Sazeides, *Harnessing CPU Electromagnetic Emanations for Resonance-Induced Voltage-Noise Characterization*, IEEE TC 2021, doi:10.1109/TC.2020.3008851 | [Authors' publication index](https://www8.cs.ucy.ac.cy/ResearchLabs/carch/xi/publications.php), [publisher link](https://dl.acm.org/doi/10.1109/TC.2020.3008851). [P] Metadata confirmed by indexed author listing; publisher full text blocked. Four-CPU experimental and exact search claims from the supplied summary remain unverified. | Review EM-guided fitness and resonance characterization before citing quantitative results. |
 | Chatzimiltis et al., *SAGA*, ISPASS 2025 | [Author tool listing](https://www8.cs.ucy.ac.cy/ResearchLabs/carch/xi/saga_tool.php), [publisher](https://ieeexplore.ieee.org/document/11096384/). [P] Surrogate-assisted CPU power-virus GA, also noted below. Full paper unavailable in this pass; no borrowed speedup claim. | Surrogate-assisted phase search is a candidate stronger baseline, not implemented or reproduced by this milestone. |
 
-The implementation plan is [TEMPORAL_SCALING_V1_PLAN.md](TEMPORAL_SCALING_V1_PLAN.md).
+The implementation plan is [TEMPORAL_SCALING_V1_PLAN.md](../archive/README.md).
 It does not require downloading prior code into the project or copying paper
 figures/text. The research audit must finish inaccessible full-text reviews
 before claiming exhaustive coverage of temporal synthesis methods.
@@ -38,7 +38,7 @@ Artifact discovery update, 2026-09-10: the authors' SAGA tool page links
 The [original GeST repository](https://github.com/toolsForUarch/GeST) is also
 available. Repository identity and setup documentation are verified; algorithm
 reproduction and RISC-V compatibility are not. See the
-[integration roadmap](UPSTREAM_BASELINES_PLAN.md). Earlier notes about unavailable
+[integration roadmap](../archive/README.md). Earlier notes about unavailable
 full papers do not mean these code artifacts are unavailable.
 
 Read and verify FuzzPower first; then SAT/ILP maximum-power estimation and burn-in vectors, Deligiannis 2021, SAGA, and LLM-Box. Convert every `[U]` to `[V]`/`[P]` or remove it before the report.
@@ -63,4 +63,4 @@ Resolve this and the other outstanding nearby work before submission.
 [V] Wang et al., *AgentDSE: Reasoning-Augmented Architectural Design Space
 Exploration*, arXiv:2606.21836v1. [Primary paper](https://arxiv.org/pdf/2606.21836).
 Full text read; reported experiments not independently reproduced.
-See [research assessment](RESEARCH_DIRECTION.md) for proposed adaptations.
+See [research assessment](../archive/README.md) for proposed adaptations.

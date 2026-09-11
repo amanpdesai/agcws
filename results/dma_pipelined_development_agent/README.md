@@ -1,5 +1,8 @@
 # DMA semantic v4 development — complete panel
 
+Historical artifact notes. Current findings are consolidated in [RESULTS.md](../../RESULTS.md).
+Commands referencing retired study/report modules require the [isolated historical source](../../archive/README.md), not the active checkout.
+
 All 15 cells and 750 proposal slots are complete and independently audited:
 five targets × three development seeds, 50 proposal slots per run.
 `comparison.json` combines these cells with the complete 60-cell baseline

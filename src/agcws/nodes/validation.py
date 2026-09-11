@@ -1,5 +1,6 @@
 from agcws.adapters.base import DesignAdapter, Validity
 
+
 def validate_static(adapter: DesignAdapter, workload: dict) -> Validity:
     """Run only pure SCHEMA and PROTOCOL validation."""
     result = adapter.validate_schema(workload)

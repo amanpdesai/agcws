@@ -1,10 +1,17 @@
 from pathlib import Path
+
 import pytest
 
-from scripts.resolve_ibex_sources import (add_declared_fileset, find_eda_manifest,
-                                          require_toplevel, resolve_manifest)
-from scripts.resolve_ibex_sources import (add_include_file_dirs, add_include_root,
-                                          add_source_file, add_toplevel_fallback)
+from scripts.resolve_ibex_sources import (
+    add_declared_fileset,
+    add_include_file_dirs,
+    add_include_root,
+    add_source_file,
+    add_toplevel_fallback,
+    find_eda_manifest,
+    require_toplevel,
+    resolve_manifest,
+)
 
 
 def test_resolve_manifest_filters_and_hashes_sv(tmp_path: Path):

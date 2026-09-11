@@ -1,9 +1,12 @@
 # Balanced stronger-baseline development archive
 
+Historical artifact notes. Current findings are consolidated in [RESULTS.md](../../RESULTS.md).
+Commands referencing retired study/report modules require the [isolated historical source](../../archive/README.md), not the active checkout.
+
 Complete: 36 cells, 576 charged proposals, 540 selected evaluations, 36 filtered
 unknown-validity proposals, zero model calls. Twelve construction attempts and
 all three measured witness targets are retained. See
-[results and claim limits](../../docs/BASELINE_PANEL_V1_RESULTS.md).
+[results and claim limits](../../RESULTS.md).
 
 - `manifest.json`: producer commit, source/runtime identity, constructors, seeds,
   policy set, proposal budget and selection rule. Committed before construction.

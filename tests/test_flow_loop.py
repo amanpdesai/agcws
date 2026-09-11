@@ -1,7 +1,7 @@
-from flows.loop import LoopState, propose_batch
 from agcws.adapters.aes import AESAdapter
 from agcws.goals import ScalarGoal
 from agcws.policies.agent import AgentPolicy
+from flows.loop import LoopState, propose_batch
 
 
 def test_flow_charges_failed_proposal_batch():

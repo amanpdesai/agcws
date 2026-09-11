@@ -20,9 +20,10 @@ CHIA belong in a separate fork and should be extracted as focused commits.
 Install the development environment and run the complete local gate:
 
 ```bash
-make dev-install
-make verify
-make audit-reproducibility
+make install
+make test
+make lint
+make archive-audit
 ```
 
 The production boundary can be checked with:
@@ -40,7 +41,8 @@ generated provenance; never hand-edit result records to make a run pass.
 
 - `src/agcws/nodes/` stays design-agnostic and reusable by CHIA.
 - `src/agcws/adapters/` contains design-specific legality and elaboration.
-- `flows/` wires nodes; `experiments/` owns sweeps and seeds.
+- `flows/` wires nodes; `src/agcws/pipeline/` owns study orchestration.
+- Historical studies and their original tests live in the verified source archive.
 - `analysis/` reads results and writes figures.
 - Do not commit generated waveforms, build directories, credentials, or `.env`.
 

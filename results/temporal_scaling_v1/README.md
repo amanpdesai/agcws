@@ -1,12 +1,15 @@
 # Temporal scaling v1 — CPU qualification
 
+Historical artifact notes. Current findings are consolidated in [RESULTS.md](../../RESULTS.md).
+Commands referencing retired study/report modules require the [isolated historical source](../../archive/README.md), not the active checkout.
+
 This is a bounded engineering qualification, not a policy-efficacy study.
 It is complete: twelve witness proposals and 72 search slots; the independent
-audit passes. See [findings](../../docs/TEMPORAL_SCALING_V1_RESULTS.md).
+audit passes. See [findings](../../RESULTS.md).
 The manifest and source snapshots were committed before execution. Completion
 requires `complete.json`, `summary.json` and a passing independent archive audit.
 
-Protocol: [temporal scaling plan](../../docs/TEMPORAL_SCALING_V1_PLAN.md).
+Protocol: [temporal scaling plan](../../archive/README.md).
 12 witness proposals; first two valid nonflat achieved profiles; 72 search slots
 across legacy-random, phase-random and phase-GA; no model calls. The 25 request
 examples include durations/resolutions unsupported by the unchanged evaluator.

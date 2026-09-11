@@ -2,13 +2,20 @@ import random
 
 from agcws.adapters.base import DesignAdapter, SimResult, Validity, ValidityStage
 
+
 class AESAdapter(DesignAdapter):
     name = "opentitan_aes"
-    design_summary = ("OpenTitan AES is a command-driven block cipher. Workload knobs are key length, "
-                      "encrypt/decrypt direction, block grouping, data pattern, and idle gaps. "
-                      "The control and round/data paths are the primary activity regions.")
-    protocol_constraints = ("configure must precede encrypt/decrypt", "key length is 128, 192, or 256",
-                            "crypto operations use whole positive block counts", "idle cycles are 0..10000")
+    design_summary = (
+        "OpenTitan AES is a command-driven block cipher. Workload knobs are key length, "
+        "encrypt/decrypt direction, block grouping, data pattern, and idle gaps. "
+        "The control and round/data paths are the primary activity regions."
+    )
+    protocol_constraints = (
+        "configure must precede encrypt/decrypt",
+        "key length is 128, 192, or 256",
+        "crypto operations use whole positive block counts",
+        "idle cycles are 0..10000",
+    )
     useful_work_floor = 38
     regions = ["aes_core", "aes_control", "aes_data"]
     activity_region_prefixes = {
@@ -17,17 +24,47 @@ class AESAdapter(DesignAdapter):
         "aes_core": ("aes_", "round", "mix_", "shift_", "sub_"),
     }
     workload_schema = {
-        "type": "object", "required": ["operations"],
+        "type": "object",
+        "required": ["operations"],
         "properties": {
-            "operations": {"type": "array", "maxItems": 256, "items": {
-                "oneOf": [
-                    {"type": "object", "properties": {"op": {"const": "configure"}, "key_len": {"enum": [128, 192, 256]}}, "required": ["op", "key_len"], "additionalProperties": False},
-                    {"type": "object", "properties": {"op": {"enum": ["encrypt", "decrypt"]}, "blocks": {"type": "integer", "minimum": 1, "maximum": 256}}, "required": ["op", "blocks"], "additionalProperties": False},
-                    {"type": "object", "properties": {"op": {"const": "idle"}, "cycles": {"type": "integer", "minimum": 0, "maximum": 10000}}, "required": ["op", "cycles"], "additionalProperties": False}
-                ]
-            }},
-            "data_pattern": {"type": "integer", "minimum": 0, "maximum": 3}
-        }, "additionalProperties": False
+            "operations": {
+                "type": "array",
+                "maxItems": 256,
+                "items": {
+                    "oneOf": [
+                        {
+                            "type": "object",
+                            "properties": {
+                                "op": {"const": "configure"},
+                                "key_len": {"enum": [128, 192, 256]},
+                            },
+                            "required": ["op", "key_len"],
+                            "additionalProperties": False,
+                        },
+                        {
+                            "type": "object",
+                            "properties": {
+                                "op": {"enum": ["encrypt", "decrypt"]},
+                                "blocks": {"type": "integer", "minimum": 1, "maximum": 256},
+                            },
+                            "required": ["op", "blocks"],
+                            "additionalProperties": False,
+                        },
+                        {
+                            "type": "object",
+                            "properties": {
+                                "op": {"const": "idle"},
+                                "cycles": {"type": "integer", "minimum": 0, "maximum": 10000},
+                            },
+                            "required": ["op", "cycles"],
+                            "additionalProperties": False,
+                        },
+                    ]
+                },
+            },
+            "data_pattern": {"type": "integer", "minimum": 0, "maximum": 3},
+        },
+        "additionalProperties": False,
     }
 
     def random_workload(self, rng: random.Random) -> dict:
@@ -51,8 +88,9 @@ class AESAdapter(DesignAdapter):
         for index, count in enumerate(blocks):
             operations.append({"op": rng.choice(("encrypt", "decrypt")), "blocks": count})
             if index != len(blocks) - 1:
-                choices = tuple(value for value in (0, 1, 4, 16, 128, 1024, 5000)
-                                if value <= idle_budget)
+                choices = tuple(
+                    value for value in (0, 1, 4, 16, 128, 1024, 5000) if value <= idle_budget
+                )
                 gap = rng.choice(choices)
                 idle_budget -= gap
                 operations.append({"op": "idle", "cycles": gap})
@@ -65,11 +103,19 @@ class AESAdapter(DesignAdapter):
             return Validity(False, ValidityStage.SCHEMA, "unknown workload field")
         ops = workload.get("operations") if isinstance(workload, dict) else None
         if not isinstance(ops, list) or len(ops) > 256:
-            return Validity(False, ValidityStage.SCHEMA, "operations must contain at most 256 items")
-        if not isinstance(workload.get("data_pattern", 0), int) or workload.get("data_pattern", 0) not in range(4):
+            return Validity(
+                False, ValidityStage.SCHEMA, "operations must contain at most 256 items"
+            )
+        if not isinstance(workload.get("data_pattern", 0), int) or workload.get(
+            "data_pattern", 0
+        ) not in range(4):
             return Validity(False, ValidityStage.SCHEMA, "data_pattern must be an integer in [0,3]")
-        allowed = {"configure": {"op", "key_len"}, "encrypt": {"op", "blocks"},
-                   "decrypt": {"op", "blocks"}, "idle": {"op", "cycles"}}
+        allowed = {
+            "configure": {"op", "key_len"},
+            "encrypt": {"op", "blocks"},
+            "decrypt": {"op", "blocks"},
+            "idle": {"op", "cycles"},
+        }
         for operation in ops:
             if not isinstance(operation, dict) or operation.get("op") not in allowed:
                 continue
@@ -81,20 +127,32 @@ class AESAdapter(DesignAdapter):
         configured = False
         crypto = False
         for op in workload["operations"]:
-            if not isinstance(op, dict) or op.get("op") not in {"configure", "encrypt", "decrypt", "idle"}:
+            if not isinstance(op, dict) or op.get("op") not in {
+                "configure",
+                "encrypt",
+                "decrypt",
+                "idle",
+            }:
                 return Validity(False, ValidityStage.PROTOCOL, "unknown AES operation")
             if op["op"] == "configure":
                 if op.get("key_len", 128) not in {128, 192, 256}:
-                    return Validity(False, ValidityStage.PROTOCOL, "key_len must be 128, 192, or 256")
+                    return Validity(
+                        False, ValidityStage.PROTOCOL, "key_len must be 128, 192, or 256"
+                    )
                 configured = True
             elif op["op"] == "idle":
                 if int(op.get("cycles", -1)) < 0 or int(op.get("cycles", -1)) > 10000:
                     return Validity(False, ValidityStage.PROTOCOL, "idle cycles out of range")
-            elif not configured: return Validity(False, ValidityStage.PROTOCOL, "configure must precede crypto")
-            else: crypto = True
+            elif not configured:
+                return Validity(False, ValidityStage.PROTOCOL, "configure must precede crypto")
+            else:
+                crypto = True
         if not crypto:
             return Validity(False, ValidityStage.PROTOCOL, "workload must encrypt or decrypt")
         return Validity(True)
 
-    def elaborate(self, workload: dict) -> list[dict]: return workload["operations"]
-    def useful_work(self, result: SimResult) -> float: return result.useful_work
+    def elaborate(self, workload: dict) -> list[dict]:
+        return workload["operations"]
+
+    def useful_work(self, result: SimResult) -> float:
+        return result.useful_work

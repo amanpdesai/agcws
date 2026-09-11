@@ -1,5 +1,8 @@
 # Grounded temporal development — complete
 
+Historical artifact notes. Current findings are consolidated in [RESULTS.md](../../RESULTS.md).
+Commands referencing retired study/report modules require the [isolated historical source](../../archive/README.md), not the active checkout.
+
 The 48-cell panel was frozen at `61c1af43` before model calls. Four observed
 development targets × seeds 600–602 × random, coverage, base agent and grounded
 agent; 16 requested slots per run (768 total). Both agent arms use the revised
@@ -12,7 +15,7 @@ Random has the lowest mean AUC (4.831839), followed by base agent (4.990451),
 coverage (5.123888), and grounded agent (5.234116). All arms solve 3/12 cells,
 only on the near-flat target. No temporal improvement or held-out claim is made.
 
-See [the report](../../docs/IBEX_TEMPORAL_V4_RESULTS.md), `aggregate.json`, and
+See [the report](../../RESULTS.md), `aggregate.json`, and
 `finalists.svg` (all targets, policies and seeds). The compact evidence includes
 raw responses, exact prompts, every trial, functional outputs, phase/operand
 diagnostics, frozen source copies, and readiness prerequisites. Large waveforms

@@ -1,9 +1,9 @@
 """Aggregate proposal-counted run summaries without external statistics packages."""
 from __future__ import annotations
 
+import random
 from collections import defaultdict
 from collections.abc import Iterable
-import random
 
 
 def aggregate_summaries(records: Iterable[dict]) -> list[dict]:

@@ -1,11 +1,11 @@
-import pytest
 import hashlib
 import json
 
-from agcws.goals import ScalarGoal
-from agcws.policies.vertex import VertexAgent, parse_candidates
-from agcws.policies.vertex import build_payload
+import pytest
+
 from agcws.adapters.base import Validity, ValidityStage
+from agcws.goals import ScalarGoal
+from agcws.policies.vertex import VertexAgent, build_payload, parse_candidates
 from agcws.telemetry.ledger import Trial
 
 

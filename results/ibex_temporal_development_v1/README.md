@@ -1,11 +1,14 @@
 # Ibex temporal expressiveness development v1
 
+Historical artifact notes. Current findings are consolidated in [RESULTS.md](../../RESULTS.md).
+Commands referencing retired study/report modules require the [isolated historical source](../../archive/README.md), not the active checkout.
+
 This is a new exploratory pilot, not a replacement for either frozen AES/DMA
 study. The protocol and manifest were committed at `e5d753c` before any
 comparative run. The manifest defines 36 cells and 576 requested proposal slots.
 
 Completed: all 36 cells and 576 slots are archived and audited. See
-[the research assessment](../../docs/IBEX_EXPRESSIVENESS_RESULTS.md).
+[the research assessment](../../RESULTS.md).
 Mean AUC (lower better): random 4.8318, mutation 5.6622, agent 5.5126.
 No agent superiority or held-out claim is supported.
 

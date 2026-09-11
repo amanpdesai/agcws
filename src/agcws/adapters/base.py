@@ -3,6 +3,7 @@ from dataclasses import dataclass
 from enum import Enum
 from typing import Any
 
+
 class ValidityStage(Enum):
     SCHEMA = "SCHEMA"
     PROTOCOL = "PROTOCOL"

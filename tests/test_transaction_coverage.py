@@ -1,7 +1,7 @@
 from pathlib import Path
 
-from agcws.nodes.coverage import read_line_coverage
 from agcws.nodes.activity import parse_vcd
+from agcws.nodes.coverage import read_line_coverage
 
 
 def test_coverage_excludes_testbench_and_preserves_unhit_points(tmp_path):

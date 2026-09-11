@@ -81,7 +81,7 @@ by `sv-elab`, since Debian packages the Yosys binary without that helper.
 For a host development environment, use the repository-local virtualenv:
 
 ```bash
-make dev-install
+make install
 make test VENV_PYTHON=.venv/bin/python
 make lint VENV_PYTHON=.venv/bin/python
 ```
@@ -109,11 +109,11 @@ old root-owned output directories:
 docker run --rm --user "$(id -u):$(id -g)" \
   -v "$PWD:/workspace" -w /workspace \
   -e AGCWS_ARTIFACT_ROOT=/tmp/agcws-artifacts \
-  agcws:dev make verify-ibex
+  agcws:dev make run-ibex
 ```
 
-The full `make verify` target is a host-checkout target because the image does
-not package the repository's tests, documentation, or Makefile. Inside the
+Local `make test` and `make lint` use the host checkout because the image does
+not package the repository's tests or Makefile. Inside the
 image, use `scripts/container_smoke.sh` as the supported end-to-end toolchain
 check; use the mounted-checkout command above for targeted checks.
 

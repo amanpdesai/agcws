@@ -1,5 +1,8 @@
 # AES catalog-controller development
 
+Historical artifact notes. Current findings are consolidated in [RESULTS.md](../../RESULTS.md).
+Commands referencing retired study/report modules require the [isolated historical source](../../archive/README.md), not the active checkout.
+
 Complete 15-cell panel: five scalar targets, seeds 100–102, 50 proposed slots
 per run, batch size 4, epsilon 0.02. Uses the transaction backend and its
 frozen calibration; all 750 slots independently audited.

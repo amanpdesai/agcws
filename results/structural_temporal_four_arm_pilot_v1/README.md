@@ -1,5 +1,8 @@
 # Four-arm structural temporal development pilot v1
 
+Historical artifact notes. Current findings are consolidated in [RESULTS.md](../../RESULTS.md).
+Commands referencing retired study/report modules require the [isolated historical source](../../archive/README.md), not the active checkout.
+
 Complete matched-source pilot: two achieved AES reference profiles, seed 310,
 16 proposal slots per cell, batch size 4. Random, structural evolution,
 complete-schedule agent and alternating hybrid all receive the same schedule

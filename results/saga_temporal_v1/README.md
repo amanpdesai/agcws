@@ -1,6 +1,9 @@
 # Temporal surrogate screening qualification
 
-Completed 2026-09-10 under the [frozen CPU protocol](../../docs/SAGA_TEMPORAL_V1.md).
+Historical artifact notes. Current findings are consolidated in [RESULTS.md](../../RESULTS.md).
+Commands referencing retired study/report modules require the [isolated historical source](../../archive/README.md), not the active checkout.
+
+Completed 2026-09-10 under the [frozen CPU protocol](../../archive/README.md).
 This is **temporal-ridge-screen-v1**, a SAGA-inspired adaptation using GeST
 operators. It is not execution of SAGA's original full optimizer or a paper
 reproduction.

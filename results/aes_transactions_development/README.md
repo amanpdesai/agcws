@@ -1,5 +1,8 @@
 # AES transaction-backend development comparison
 
+Historical artifact notes. Current findings are consolidated in [RESULTS.md](../../RESULTS.md).
+Commands referencing retired study/report modules require the [isolated historical source](../../archive/README.md), not the active checkout.
+
 Completed 2026-09-05. This directory contains five policies × five scalar
 targets × three development seeds = 75 runs, each with 50 proposal slots.
 The separately archived matched scalar-edit control adds 15 runs, giving

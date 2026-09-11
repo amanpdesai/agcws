@@ -1,7 +1,6 @@
 """Predeclared balanced development-AUC selection; never use held-out cells."""
-from statistics import mean
 import math
-
+from statistics import mean
 
 CANDIDATES = ('semantic-edits-v4', 'semantic-catalog-v5')
 

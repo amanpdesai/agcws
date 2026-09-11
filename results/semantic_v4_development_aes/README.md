@@ -1,5 +1,8 @@
 # AES semantic search development
 
+Historical artifact notes. Current findings are consolidated in [RESULTS.md](../../RESULTS.md).
+Commands referencing retired study/report modules require the [isolated historical source](../../archive/README.md), not the active checkout.
+
 This is a partial, automatically populated development archive. Count completed
 cell directories against the manifest before interpreting aggregate results.
 The legacy suite was stopped on discovery of the simulator/DSL mismatch

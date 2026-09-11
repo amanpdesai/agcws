@@ -5,6 +5,7 @@ import json
 import subprocess
 from pathlib import Path
 
+
 def block_count(workload: dict) -> int:
     operations = workload.get("operations")
     if not isinstance(operations, list) or not operations:

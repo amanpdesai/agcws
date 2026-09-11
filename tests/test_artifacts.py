@@ -1,7 +1,10 @@
 from pathlib import Path
+
 import pytest
+
 from agcws.nodes.activity import windowize
 from agcws.nodes.artifacts import trial_artifacts
+
 
 def test_windowize_is_deterministic():
     assert windowize([1, 2, 3, 4], 2) == (3, 7)

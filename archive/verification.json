@@ -1,0 +1,31 @@
+{
+  "date": "2026-09-11",
+  "historical_source_commit": "89340128d2114814aadb4caa209993528f82e279",
+  "source_archive_sha256": "acc0917acc2a5193c3ec2659ca202b557992f5e5268db28e2afcb0670df64163",
+  "source_archive_files": 525,
+  "retired_active_files": 225,
+  "checks": {
+    "pytest": {
+      "passed": 474,
+      "warnings": 3,
+      "command": "make test"
+    },
+    "lint": "make lint: passed",
+    "archive_inventory": "make archive-check: passed",
+    "frozen_nonflat_audit": {
+      "passed": true,
+      "cells": 36,
+      "slots": 4608,
+      "after_scratch_cleanup": true
+    },
+    "semantic_golden_cases": 100,
+    "fixed_empty_history_payload": "byte-identical to archived implementation",
+    "retained_waveforms": 60,
+    "documentation_links": "passed"
+  },
+  "experiment_or_paid_model_calls_launched": false,
+  "new_docker_image_built": false,
+  "historical_test_suite": "preserved in exact source archive; not represented as testing the new code",
+  "completed_transient_supervisor": "MainPID=0, exit=0 before stop; retired after audit",
+  "scope": "Historical raw scientific records unchanged; README links/status notes consolidated. Existing CHIA edits and untracked DMA development data left untouched."
+}

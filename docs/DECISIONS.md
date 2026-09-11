@@ -1,5 +1,26 @@
 # Decision log
 
+## 2026-09-11 — Consolidate publication and orchestration without rerunning research
+
+**Decision.** Root `RESULTS.md` is the sole maintained findings narrative.
+`agcws.pipeline` is the active study entry point, with a shared proposal/evaluation
+loop, explicit execution gates, immutable checkpoints and compressed export.
+Retired versioned runners, reports and their original tests are preserved at
+commit `89340128d2114814aadb4caa209993528f82e279` in a hashed source archive.
+The active backend is Ibex temporal; AES/DMA hardware stages remain reusable,
+and their exact comparative runners remain historical rather than being
+silently reinterpreted by the new backend.
+
+**Rationale.** Duplicate live runners and contradictory status reports obscured
+the completed evidence. Golden semantic/compiler tests and the original frozen
+audit distinguish code consolidation from changing a research protocol.
+
+**Consequence.** No new model call or experiment was launched. Earlier negative
+studies and the scoped positive confirmation retain their original inputs and
+analysis. The cleanup receipt records exact-path waveform deletion, protected
+finalist/witness caches, and recoverable compressed execution logs. Deleted
+nonfinalist waveforms require replay; no unique compact result was discarded.
+
 ## 2026-09-09 — Post-reboot qualification and exact-path trace retention
 
 **Finding.** The CPU qualification completed before reboot: twelve witness

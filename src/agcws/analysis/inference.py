@@ -1,8 +1,8 @@
 """Deterministic, dependency-free paired inference for experiment summaries."""
 from __future__ import annotations
 
-from collections.abc import Iterable
 import math
+from collections.abc import Iterable
 
 
 def paired_permutation_pvalue(left: Iterable[float], right: Iterable[float]) -> float:

@@ -3,9 +3,9 @@ import random
 from agcws.adapters.aes import AESAdapter
 from agcws.adapters.axi_dma import AxiDmaAdapter
 from agcws.adapters.ibex import IbexAdapter
-from agcws.policies.random_search import RandomSearch
-from agcws.policies.agent import OfflineAgent
 from agcws.goals.schema import ScalarGoal
+from agcws.policies.agent import OfflineAgent
+from agcws.policies.random_search import RandomSearch
 
 
 def test_aes_random_workloads_span_schedule_dimensions():

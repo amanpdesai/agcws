@@ -15,11 +15,10 @@ except ImportError:
             return function
         return decorate
 
-from agcws.nodes.activity import parse_vcd
-from agcws.nodes.activity import ActivityArtifact
+from agcws.nodes.activity import ActivityArtifact, parse_vcd
 from agcws.nodes.evaluate import evaluate_power
-from agcws.nodes.synthesize import NetlistArtifact
 from agcws.nodes.simulate import run_simulator
+from agcws.nodes.synthesize import NetlistArtifact
 
 
 @ChiaFunction()

@@ -14,7 +14,6 @@ import ray
 
 from flows.chia_nodes import activity_node, power_node, simulate_node
 
-
 VCD = """$timescale 1ns $end
 $scope module top $end
 $var wire 1 ! clk_i $end

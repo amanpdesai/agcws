@@ -1,5 +1,8 @@
 # V4 response-contract gate — completed, failed API readiness
 
+Historical artifact notes. Current findings are consolidated in [RESULTS.md](../../RESULTS.md).
+Commands referencing retired study/report modules require the [isolated historical source](../../archive/README.md), not the active checkout.
+
 Frozen at `53fb271b` before calls. All 24 requests and 48 requested slots are
 recorded. The original JSON-only arm produced 14/24 schema-valid candidates;
 the native full-schema arm produced none because all 12 requests returned HTTP

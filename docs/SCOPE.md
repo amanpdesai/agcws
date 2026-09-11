@@ -5,6 +5,9 @@
 **Build window:** 2026-08-29 (D1) through 2026-09-20 (D23)  
 **Status:** FROZEN after D3; changes require an entry in `DECISIONS.md`.
 
+This is the original proposal scope, not a completion claim. Current delivered
+evidence and its narrower claim boundaries are in [RESULTS.md](../RESULTS.md).
+
 ## Research question
 
 Given an RTL design, a legal stimulus interface, and a target dynamic-power profile, can an agent synthesize semantically valid workloads that drive the design toward that behavior?
