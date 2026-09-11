@@ -1,0 +1,26 @@
+{
+  "status": "post-hoc human inspection; observable explanations, not private reasoning",
+  "cases": [
+    {"target":"target_0","seed":1200,"arm":"pro-4096","first_solve":16,"best":79,"worst_valid":11,"first_invalid":3,
+     "notes":"Slot 11 assumes add-zero repetitions occupy a long low-activity interval; they finish quickly and polling dominates instead. Slot 16 uses nonzero-divisor division for the early trough, completes at 104435, and bins 6-8 retire only waiting despite the claimed sustained late computation. Best 79 completes at 103449; its equal-release segments are sequential, not parallel as the explanation suggests. First invalid is provider 429, not illegal hardware stimulus."},
+    {"target":"target_0","seed":1200,"arm":"phase-random","first_solve":40,"best":40,"worst_valid":107,"first_invalid":49,
+     "notes":"Best has early nonzero-divisor division and later mixed phases; completes at 151151. Worst places long division in the wrong temporal interval. First invalid exceeds the useful-work deadline. Both successes and failures exploit the same legal phase grammar as Pro."},
+    {"target":"target_1","seed":1200,"arm":"pro-4096","first_solve":8,"best":52,"worst_valid":93,"first_invalid":9,
+     "notes":"Early high activity is waiting until release 100000, followed by stores, division and arithmetic. Best completes at 165325; 99.8535% of semantic operations leave their architectural destination unchanged, yet actual state matches the reference. Worst switches a divisor to zero and sharply reduces division allocation, overshooting the trough. First invalid is provider 504."},
+    {"target":"target_1","seed":1200,"arm":"phase-random","first_solve":null,"best":124,"worst_valid":89,"first_invalid":49,
+     "notes":"Best reaches 0.1531, with middle division at the wrong width/placement. Worst has a long division interval spanning multiple undesired low bins. Neither demonstrates an invalid simulator outcome; first invalid is a deadline rejection."},
+    {"target":"target_1","seed":1201,"arm":"phase-random","first_solve":45,"best":45,
+     "notes":"Frozen supplemental selection. Five phases release at 25141,39126,74584,118922,133918: stores; shifts/logic; logic/add; divisions; multiplications. Division spans bins 5-7 and the body completes at 164021. Its 16-bin and shifted errors remain below 0.1, showing the polling/division strategy and finer-profile success are not exclusive to Pro."},
+    {"target":"target_2","seed":1200,"arm":"pro-4096","first_solve":52,"best":61,"worst_valid":95,"first_invalid":19,
+     "notes":"First solve uses arithmetic, multiplication, nonzero-divisor division and arithmetic; completes at 80632. Best adjusts releases/weights, completes at 82480 and bins 5-8 are entirely waiting by retirement count. Recurrent division drives the numerator to zero while retaining a nonzero divisor. Worst expands division across phases and stretches the low region through 118297. First invalid is provider 429."},
+    {"target":"target_2","seed":1200,"arm":"phase-random","first_solve":31,"best":31,"worst_valid":107,"first_invalid":49,
+     "notes":"Seven mixed phases include division near releases 42789,61480,77904, followed by memory/shift operations; completes at 150847. Worst is identical to target 0's worst at this seed, consistent with target-independent random generation. First invalid is a deadline rejection."}
+  ],
+  "classification": {
+    "consistency":"No selected architectural-output discrepancy or independent eight-bin reconstruction discrepancy found.",
+    "objective":"Active waiting and repeated state-preserving operations are legal under the frozen contract; application-level productivity is not guaranteed.",
+    "information":"Actual payloads contain semantic facts and same-cell feedback, but no checked witness metadata or exact witness program in history. Shared constructor vocabulary remains a competing explanation.",
+    "mechanism":"Observed division/polling timing is consistent with parameter fitting; causal semantic understanding is not isolated.",
+    "missing":"Detailed Pro first-solve FSTs absent after documented cleanup. No replay; use compact execution records only. Full accounting, new-family and stronger-baseline studies remain pending."
+  }
+}

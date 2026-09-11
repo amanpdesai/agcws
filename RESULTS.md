@@ -171,5 +171,88 @@ positive finding, not a reason to rewrite prior negative studies.
 
 The [validation roadmap](docs/PLAN.md) orders the next work: solution inspection,
 independent information/accounting audits, a post-hoc phase-GA robustness check,
-then conditional fresh-family confirmation. These checks are planned, not
-completed findings; the scoped paper should be written in parallel.
+then conditional fresh-family confirmation. The first inspection slice is complete
+as described below; remaining checks are planned, not completed. Validity and
+mechanism evidence gate stronger paper claims.
+
+## Solution-inspection audit — 2026-09-11
+
+Post-hoc audit, not a new comparative study. Selection was frozen at `7e43ae8d4`
+before detailed program inspection, under the [protocol](docs/SOLUTION_AUDIT.md).
+All 36 cells contributed first-solve, best, worst-valid and first-invalid roles
+where present: 124 distinct selected records, 90 valid. Detailed inspection used
+seed 1200 plus the first successful baseline seed for otherwise-unsolved target 1.
+Evidence and reproduction: [audit inventory](results/solution_audit_v1/README.md).
+
+### Consistency checks passed within their scope
+
+All 90 valid selected programs matched the actual architectural state printed
+by the archived simulator and the recorded reference. Each satisfies the frozen
+4096-semantic-operation allocation and fixed 200,000-cycle observation window.
+All 1,134 archived model payloads match reconstruction; all 8,160 transmitted
+history rows match prior trials of the same cell. No exact witness program was
+found in transmitted history, nor the checked witness/constructor metadata terms
+in payloads. These are bounded checks, not proof that no leakage is possible.
+Payload/reference reconstruction uses migrated implementations; independent
+accounting and full simulator verification remain separate work.
+
+The frozen constructor uses the same phase-random primitive as the baseline,
+then fixes four equal-weight phases at 0/40k/80k/120k releases. Thus constructor
+and agent share a phase vocabulary. Pro receives semantics and outcome feedback;
+phase-random samples without using either. This is the defined comparison, but
+cannot isolate semantic understanding from feedback-directed parameter fitting
+or familiarity with the construction family.
+
+### A narrower observed mechanism: polling and division
+
+High-activity portions frequently execute the harness's active CSR/branch wait
+loop; nonzero-divisor division occupies lower-activity portions. Across all
+cell-best records, the mean fraction of retired instructions in polling/tail
+code is 85.87% for Pro and 88.55% for phase-random. These are **instruction
+fractions, not cycle or energy fractions**. They do not establish causality.
+
+The semantic-operation floor is also weaker than application progress: the mean
+fraction of operations leaving their architectural destination unchanged is
+62.67% for Pro bests and 79.94% for baseline bests. This does not imply zero
+switching or invalid computation. It shows why operation count alone cannot
+support a claim about productive application workloads. No frozen scores or
+validity decisions were changed.
+
+Some explanations disagree with execution. Target 0's first Pro solve says its
+late segment sustains the high plateau; its body finishes at cycle 104,435 and
+bins 6–8 are entirely waiting by retired-instruction count. Its later best calls
+an equal-release segment "parallel", although segments execute sequentially.
+Successful output is not evidence that the emitted causal explanation is correct.
+See [case notes](results/solution_audit_v1/case_notes.json) for failures and controls.
+
+### Independent waveform sensitivity
+
+Ten retained FSTs (seven detailed bests and three witnesses) were converted
+offline, without simulation. An independent streaming transition counter
+reproduced all original eight-bin rates exactly. It then compared each candidate
+against the **measured witness waveform**, not interpolated eight-bin targets,
+on 16 bins and a grid shifted by 6,250 cycles. Short end bins retain the same
+physical interval; NRMSE is cycle-weighted.
+
+| Case: target / seed / policy | Original 8 bins | 16 bins | Shifted grid |
+|---|---:|---:|---:|
+| 0 / 1200 / phase-random | 0.0923 | 0.1478 | 0.1397 |
+| 0 / 1200 / Pro | 0.0296 | 0.0449 | 0.0471 |
+| 1 / 1200 / phase-random | 0.1531 | 0.2169 | 0.1591 |
+| 1 / 1200 / Pro | 0.0373 | 0.1412 | 0.0710 |
+| 1 / 1201 / phase-random | 0.0342 | 0.0546 | 0.0427 |
+| 2 / 1200 / phase-random | 0.0695 | 0.0772 | 0.0384 |
+| 2 / 1200 / Pro | 0.0605 | 0.1305 | 0.0886 |
+
+Two of three inspected Pro bests exceed 0.1 at finer resolution; all three remain
+below 0.1 on the shifted grid. This is sensitivity evidence, **not a replacement
+endpoint or new solve-rate comparison**. It supports coarse matching while
+limiting sub-bin claims. First-solving Pro waveforms in these detailed cells
+were not retained; compact execution records remain, and no replay was launched.
+
+**Conclusion:** no disqualifying inconsistency was found in these checks. The
+scoped eight-bin result stands, but productive computation, calibrated causal
+reasoning and resolution-independent shaping are not established. Next is the
+independent information/accounting audit, followed by frozen feedback/context
+ablations and stronger feedback-aware controls—not a declaration that semantic
+understanding has been proved. No new model calls or comparative runs occurred.

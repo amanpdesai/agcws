@@ -1,5 +1,17 @@
 # Decision log
 
+## 2026-09-11 — Complete bounded solution audit; keep mechanism claims open
+
+**Decision.** Preserve the frozen eight-bin study unchanged. Complete the
+deterministically selected offline inspection before further experiments.
+Record polling, architectural state-change and finer-bin diagnostics as
+post-hoc sensitivity evidence, not replacement validity rules or endpoints.
+**Rationale.** Legal activity matching can rely on harness waiting and repeated
+operations; correct output does not establish the agent's causal explanation.
+**Consequence.** Independent accounting is next. Feedback/context ablations,
+a division/polling scheduler and phase-GA need frozen protocols before execution.
+No new model calls, simulations or comparative runs were launched in this slice.
+
 ## 2026-09-11 — Validity gates paper claims; freeze solution-inspection rules
 
 The user prioritizes thorough validity and mechanism testing over manuscript

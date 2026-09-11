@@ -31,7 +31,7 @@ page. New measurements and paid calls require an explicit execution decision.
 
 | Order | Work | Status | Exit condition |
 |---|---|---|---|
-| 1 | Inspect solutions and measurement behavior | WIP | Explain representative successes and identify any disqualifying behavior |
+| 1 | Inspect solutions and measurement behavior | DONE — bounded offline audit | Findings and remaining limits in RESULTS.md; no new runs |
 | 2 | Audit information access and accounting independently | TODO | Reconcile raw records and classify information overlap |
 | 3 | Phase-GA robustness extension at 128 slots | PLANNED — NOT LAUNCHED | Compare an untuned, matched-budget evolutionary control |
 | 4 | Qualify a more diverse target bank | PLANNED — NOT LAUNCHED | Freeze construction/search rules and retain every attempt |
@@ -72,6 +72,20 @@ If a defect could invalidate results, pause stronger comparisons and identify
 the affected cases before correcting or withdrawing claims.
 
 ### 2. Information access and independent accounting
+
+Next execution slice: independently reconcile all proposals, retries, initializations,
+cache reuse, model requests and costs from raw evidence. The first slice checked
+actual payload reconstruction, but that is not an independent accounting audit.
+Then freeze mechanism controls before running them: feedback-free versus correct
+feedback, schema-only versus semantic context, phase-GA at matched budget, and a
+simple division/polling scheduler. Keep model, targets, work and budget fixed when
+isolating each intervention. These controls are planned, not authorized here.
+
+The first slice found active polling and repeated state-preserving operations
+within the legal task. Distinguish operation-count compliance from application
+progress. Any stronger useful-work requirement needs a new protocol; do not
+retroactively disqualify the frozen results. Finer-bin matching likewise needs
+fresh targets and a declared endpoint, not reclassification of eight-bin solves.
 
 Inspect the frozen, actually sent payloads and original sources, not only the
 new runner. Build an information-access comparison for Pro and the controls:
