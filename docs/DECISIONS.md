@@ -1,5 +1,41 @@
 # Decision log
 
+## 2026-09-11 — Validity gates paper claims; freeze solution-inspection rules
+
+The user prioritizes thorough validity and mechanism testing over manuscript
+speed. Start with the deterministic selection in [SOLUTION_AUDIT.md](SOLUTION_AUDIT.md),
+then inspect original payloads and executed solutions without new model calls
+or hardware replays. Known aggregate outcomes make this a post-hoc audit, not
+a fresh confirmation. Successful optimization alone does not establish semantic
+understanding; preserve alternative explanations and design causal ablations.
+This supersedes the earlier instruction to prioritize writing in parallel.
+
+## 2026-09-11 — Falsification-first validation; write the scoped paper in parallel
+
+**Decision.** Inspect selected solutions before auditing information access and
+accounting, then consider an untuned 128-slot phase-GA robustness extension.
+Broader confirmation is conditional on a separately frozen, diverse witnessed
+target bank and sufficient analysis time. The detailed gates are in
+[PLAN.md](PLAN.md); this entry authorizes a documentation direction, not a run.
+
+**Rationale.** The present comparison is scoped to one design and construction
+family. Its large effect merits scrutiny, not an assumption of either cheating
+or generality. Design, model, budget and task differ across earlier studies, so
+interface expressiveness is an explanation to test rather than an established
+cause. Shared vocabulary is not automatically leakage: distinguish actual
+hidden information, unequal access and distribution alignment.
+
+**Rejected.** Selecting convincing examples after inspection, tuning baselines
+on observed confirmation targets, substituting easier analytic targets after
+failed witness searches, or postponing writing until another favorable result.
+
+**Consequence.** Preserve original records, endpoints and negative findings.
+Record all qualification attempts and failures. Label existing-target additions
+post-hoc; use fresh frozen protocols for broader claims. Implementation defects
+may require correcting or withdrawing affected claims, while lawful objective
+exploitation may require narrower wording. No experiment is launched by this
+planning update.
+
 ## 2026-09-11 — Consolidate publication and orchestration without rerunning research
 
 **Decision.** Root `RESULTS.md` is the sole maintained findings narrative.

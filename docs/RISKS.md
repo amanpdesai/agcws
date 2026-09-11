@@ -10,6 +10,21 @@ Updated 2026-09-11. Historical risk resolutions and numerical evidence are in
   beyond that distribution; preserve earlier negative studies.
 - **Representation:** every policy shares the grammar. A policy win is not
   proof of greater DSL expressiveness or calibrated causal reasoning.
+- **Evaluator gaming:** accepted useful work may be repetitive or ineffective;
+  an eight-bin match may conceal sub-bin behavior. Inspect executed solutions
+  and boundary sensitivity before extending the study. Separate implementation
+  errors from legal exploitation of an underspecified objective.
+- **Information asymmetry:** inspect actual payloads for hidden witnesses,
+  target-specific template hints and cross-cell history. Shared phase vocabulary
+  alone is not leakage; constructor/prompt alignment still limits distributional
+  generalization. Follow the classification in [PLAN.md](PLAN.md).
+- **Baseline strength:** phase-random's development ranking does not establish
+  the strongest control at 128 slots. A phase-GA extension on observed targets
+  must be labeled post-hoc and not tuned on that panel.
+- **Qualification bias:** analytic requests that lack witnesses must remain
+  recorded failures, not be replaced silently. Freeze qualification and
+  selection rules, disclose acceptance rates, and distinguish requested from
+  achieved profiles before a broader confirmation.
 - **Accounting:** unknown API usage is reserved, not free. Keep failed calls and
   requested-slot accounting in every audit and comparison.
 - **Reproducibility:** cold nonfinalist waveforms require replay; retain programs,

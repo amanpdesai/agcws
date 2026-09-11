@@ -4,6 +4,12 @@ Historical base protocol. Completed studies have their own frozen protocols
 in the [source archive](../archive/README.md); this document is not a new run
 configuration. Current findings are in [RESULTS.md](../RESULTS.md).
 
+The next validation and robustness work is outlined in [PLAN.md](PLAN.md).
+That roadmap is not a frozen extension protocol. Existing-target phase-GA
+results, if run, must be labeled post-hoc; a broader target-family confirmation
+requires separately frozen qualification rules, controls and fresh seeds.
+None of the historical settings below implicitly configure those runs.
+
 The sections below are the original broad project plan. Executed versioned
 studies have narrower, separately frozen protocols: scalar methods and scope
 are reported in [SEMANTIC_RESULTS.md](../RESULTS.md); structural temporal

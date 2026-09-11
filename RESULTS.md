@@ -168,3 +168,8 @@ Remaining scientific questions: genuinely new waveform families, duration and
 resolution scaling, stronger controls at matched cost, cross-design Pro
 transfer, and Ibex gate-power validation. The present result supports a scoped
 positive finding, not a reason to rewrite prior negative studies.
+
+The [validation roadmap](docs/PLAN.md) orders the next work: solution inspection,
+independent information/accounting audits, a post-hoc phase-GA robustness check,
+then conditional fresh-family confirmation. These checks are planned, not
+completed findings; the scoped paper should be written in parallel.
