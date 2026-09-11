@@ -34,4 +34,11 @@ Updated 2026-09-11. Historical risk resolutions and numerical evidence are in
   and historical semantic golden cases. No new hardware study was launched to
   validate the refactor; historical claims remain bound to original sources.
 - **Delivery:** the paper draft and figures must be updated from the consolidated
-  results. Do not start another study merely to postpone writing.
+  results. Validity and mechanism checks gate stronger claims; neither a writing
+  deadline nor a desired positive outcome justifies skipping those checks.
+- **Cross-design confounding:** Pro on Ibex versus Flash on AES/DMA does not
+  isolate design or language effects. New within-design model controls and
+  operational expressiveness definitions are required before causal claims.
+- **Corpus expansion:** more adapters can consume the available research time.
+  Retain attempted bring-ups and apply readiness gates; do not weaken validation
+  to reach an arbitrary design count. Future free accounts are not current funds.

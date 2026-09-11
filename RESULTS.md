@@ -154,6 +154,12 @@ Evidence: [windowed measurements](results/windowed_power_v1/validation.json),
 
 ## Reproduction and next work
 
+The 2026-09-11 lossless packing pass preserves 130,015 nested evidence files in
+checksummed shards across twelve studies; original paths can be restored for
+review. Summaries, targets and frozen manifests stay directly readable. No
+scientific evidence or earlier negative study was discarded, and Git history
+was not rewritten. See [packing and recovery](results/PACKED_EVIDENCE.md).
+
 Frozen manifests, compact trial evidence and source identities are preserved.
 Historical source snapshots and protocols are separated from the maintained
 pipeline; see [archive instructions](archive/README.md). No new experiment was

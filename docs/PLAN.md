@@ -186,3 +186,98 @@ to finish analysis, not merely launch jobs. If a broader claim remains unsupport
 retain the narrower scope rather than treating a deadline as validation.
 
 The first slice follows the frozen [inspection protocol](SOLUTION_AUDIT.md).
+
+## Cross-design and corpus extension — planning, not a launch authorization
+
+The user prioritizes thorough validity and mechanism evidence before the paper.
+Do not inherit a six-day deadline or a $300 remaining-balance assumption from
+secondary feedback. Additional funding was reported; reconcile actual usage,
+unknown-call liability and available credits before sizing a paid study. Treat
+any organizer-provided future account window as unconfirmed until access and
+limits are checked. Do not depend on it to finish a promised experiment.
+
+### What the current contrast does and does not establish
+
+Adapters span three interface types, and shared schemas/context templates
+demonstrate infrastructure reuse. Completed positive Pro evidence is Ibex;
+earlier Flash negatives are AES/DMA in different protocols. Model, design,
+budget and task differ, so their contrast does not identify a cause.
+
+Pro on DMA, then AES, is the lowest-bring-up cross-design direction. However,
+those adapters and historical flows are not already maintained backends of the
+new orchestration: `docs/PIPELINE.md` currently lists Ibex only. First inventory
+and port the minimum shared contracts, preserve archived implementations, and
+verify semantic equivalence with offline fixtures before scheduling real runs.
+Do not claim that this is merely changing a model string and executing.
+
+A Pro null on a bounded DSL would not isolate expressiveness. AES/DMA already
+produced distinct temporal shapes, while Ibex also uses a bounded phase grammar,
+not arbitrary executable programs. Architecture size and interface names are
+not measurements of expressiveness. Even a CPU configuration change can alter
+ISA legality, divider latency, synthesis and the empirical envelope; requalify
+targets and references instead of calling it free transfer.
+
+### Ordered extension slices
+
+| Order | Slice | Gate before execution |
+|---|---|---|
+| 1 | Independent information/accounting audit | Reconcile all raw calls, proposals, retries, caches, initials and costs; resolve any material discrepancy |
+| 2 | Stronger matched-budget and mechanism controls | Freeze phase-GA and division/polling scheduler settings; define feedback/context ablations without tuning on the confirmation panel |
+| 3 | DMA/AES backend readiness | Shared runner contracts, complete schema, actual useful-work semantics, matched observation windows, offline golden cases and recorded tool/model identities |
+| 4 | Fresh cross-design protocol | Matched within-design Flash/Pro/control comparisons, witnessed non-flat targets, fresh seeds and a measured budget projection |
+| 5 | Additional designs, one at a time | Predeclared selection rubric and legal, calibrated witnessed targets before admitting a design |
+
+The next implementation slice is order 1, not a paid cross-design matrix.
+Prepare the cross-design protocol after readiness and accounting establish what
+can actually be held fixed. Record proposed settings now, but do not label an
+unfinished configuration or unqualified target bank "frozen".
+
+### Isolating context, feedback and expressiveness
+
+Within each design hold model settings, budget, target bank, seeds, initial
+programs, validity gates and evaluator fixed when changing one factor. Compare
+Pro and Flash under the same new protocol; do not use old Flash numbers as the
+control. Include phase-aware random and feedback-aware classical search where
+applicable. Report proposal-counted AUC first, right-censored solve rates,
+equal-valid-evaluation diagnostics and actual cost. Match feedback frequency
+or explicitly label it as a second factor.
+
+For a language-expressiveness claim, specify operational measures in advance:
+number of independently controllable phases, duration/release resolution,
+instruction/data-mix choices, legal sequencing depth and achieved profile-family
+coverage. Consider nested restricted/full grammars **within a design**, with
+identical grammar access for every policy. Separate witness feasibility from
+policy success; a target unreachable in a restricted grammar is a representation
+limit, not a failure of its search algorithm. Avoid selecting grammars or targets
+because they produce a desired model ordering.
+
+Correct-feedback versus feedback-free and semantics versus schema-only arms
+test whether those inputs help; they do not reveal private reasoning or prove
+human-like understanding. Preserve predictions and executed trajectories for
+mechanistic checks. The observed polling/division alternative must get a fair
+classical control before attributing an advantage to deep RTL understanding.
+
+### Conditional corpus of up to six designs
+
+Six is an exploration ceiling, not a completion requirement. First test Pro on
+the existing designs; then admit additional designs using a declared rubric,
+including cases expected to favor classical search. Candidate categories from
+the discussion are a temporally controlled NoC, a configurable dataflow block,
+and a FIFO/interconnect control. These are not selected dependencies: check
+upstream availability, license, synthesizability, simulation and work semantics
+before choosing a repository or promising an adapter.
+
+Seek independent variation in temporal control and sequencing depth, not three
+nominally "expressive" labels versus three "bounded" labels. Record every attempted
+bring-up and why it was admitted or cut. A proposed 1.5-day readiness timebox is
+a planning limit, not a runtime timeout or evidence of infeasibility. Missing
+the gate should reduce the corpus, not invite weakened validity or easier
+undisclosed targets. No larger corpus supersedes the original frozen studies.
+
+### CHIA deliverable remains a separate gate
+
+Preserve reusable measurement nodes and verify their actual CHIA execution path
+before submission. Import counts alone do not establish dead code or successful
+integration. A tested wrapper is not an upstreamed contribution; do not claim
+an upstream PR or acceptance until it exists. Backend ports should reuse shared
+contracts rather than duplicate the historical Ibex runner.

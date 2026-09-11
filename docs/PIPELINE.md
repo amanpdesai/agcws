@@ -8,12 +8,21 @@ Read-only commands (no simulation or model calls):
 ```bash
 make archive-check
 make archive-audit
+PYTHONPATH=src .venv/bin/python -m agcws.pipeline evidence-check
 PYTHONPATH=src .venv/bin/python -m agcws.pipeline --help
 PYTHONPATH=src .venv/bin/python -m agcws.pipeline validate --config configs/study.example.json
 ```
 
 The example is a configuration-shape example, not a pre-registered study or
 witnessed target bank. Only `ibex-temporal` is a maintained study backend.
+DMA/AES cross-design execution is planned, not implemented by changing this
+backend name. Historical adapters and tools remain available for a tested port.
+
+For packed historical evidence, use `evidence-extract --study STUDY --destination
+/absolute/new/review` to reconstruct a read-only-use review workspace with original
+paths. See [packing and recovery](../results/PACKED_EVIDENCE.md). `archive-audit`
+does this automatically for the completed non-flat study.
+
 Supply explicit named eight-bin rates, scale, tolerance, seeds, policies,
 budget, batch size, simulator and image. GeST/screening controls require their
 declared batch-four panel; `gest-batch2` explicitly changes feedback frequency.

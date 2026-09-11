@@ -20,6 +20,9 @@ links. Reattach the matching read-only third-party dependencies and result
 archives when auditing, or use `archive-audit` for the completed non-flat study.
 
 No automatic historical runs are performed by extraction or verification.
+Large result trees are [losslessly packed](../results/PACKED_EVIDENCE.md).
+`archive-audit` restores the required original paths automatically into its
+temporary review workspace before invoking the frozen audit.
 `archive-audit` runs only the frozen compact-evidence audit, never simulation
 or a model call. Historical tests are preserved rather than silently rewritten
 to pretend they tested the consolidated implementation.

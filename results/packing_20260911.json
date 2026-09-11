@@ -1,0 +1,29 @@
+{
+  "source_commit": "50e73a8523c06ec7ecd1f65046ae6b09a33b7a4c",
+  "date": "2026-09-11",
+  "migration": "lossless tracked nested evidence packing, no history rewrite",
+  "tracked_paths_before": 133140,
+  "tracked_paths_after": 3160,
+  "packed_original_files": 130015,
+  "studies": 12,
+  "shards": 18,
+  "manifests": 12,
+  "original_file_content_bytes": 394572385,
+  "packed_shards_and_manifests_bytes": 153415319,
+  "round_trip": "All selected original bytes and Git modes restored and verified against originals before retirement",
+  "retirement": "Only exact verified paths removed with GNU find -files0-from -maxdepth 0 -type f -delete; empty directories removed within the selected study roots",
+  "staged_deletions": "Exactly the 130015 paths listed in packed inventories; no other staged deletions",
+  "post_retirement_evidence_check": "All twelve packed inventories and all members verified",
+  "historical_audit": {"before_retirement": "passed using restored packs", "after_retirement": "passed using restored packs", "cells": 36, "slots": 4608, "summary": "identical to frozen published summary"},
+  "solution_audit": {"regenerated_inspection": "identical", "frozen_inventory": "verified unchanged"},
+  "tests": {"passed": 488, "warnings": 3},
+  "maintained_lint": "passed",
+  "maintained_navigation_links": "checked, none broken",
+  "limits": [
+    "Not a new scientific result or independent accounting audit",
+    "No simulation, paid call, model change or comparative run",
+    "Git history still contains loose files; full-history clone size is not claimed to shrink",
+    "No scientific evidence, source snapshot or superseded result discarded",
+    "Unrelated dirty tools/chia and untracked DMA development evidence preserved"
+  ]
+}

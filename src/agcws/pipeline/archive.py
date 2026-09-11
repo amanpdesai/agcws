@@ -8,6 +8,8 @@ import tarfile
 import tempfile
 from pathlib import Path, PurePosixPath
 
+from agcws.pipeline import evidence
+
 
 def verify(repo):
     manifest = json.loads((repo / "archive/manifest.json").read_text())
@@ -18,7 +20,12 @@ def verify(repo):
     with tarfile.open(source) as archive:
         for member in archive:
             path = PurePosixPath(member.name)
-            if not path.parts or path.is_absolute() or ".." in path.parts or not (member.isdir() or member.isfile()):
+            if (
+                not path.parts
+                or path.is_absolute()
+                or ".." in path.parts
+                or not (member.isdir() or member.isfile())
+            ):
                 raise ValueError(f"unsafe archive member: {member.name}")
             if member.isfile():
                 if member.name in actual:
@@ -50,7 +57,9 @@ def audit(repo, python):
     # The frozen audit has no evaluation or provider-call entry point.
     with tempfile.TemporaryDirectory(prefix="agcws-archive-audit-") as temp:
         destination = extract(repo, Path(temp) / "source")
-        for name in ("results", "third_party", "tools"):
+        review = evidence.materialize(repo, Path(temp) / "review", ["nonflat_temporal_v1"])
+        (destination / "results").symlink_to(review / "results", target_is_directory=True)
+        for name in ("third_party", "tools"):
             (destination / name).symlink_to(repo / name, target_is_directory=True)
         env = {
             **os.environ,

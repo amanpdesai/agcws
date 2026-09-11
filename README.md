@@ -12,6 +12,8 @@ on AES/DMA did not beat random. These are different study regimes.
 
 [RESULTS.md](RESULTS.md) is the authoritative findings and limitations document.
 [results/](results/) contains compact evidence, failures and accounting.
+Large evidence trees are [losslessly packed](results/PACKED_EVIDENCE.md);
+summaries remain readable and `make archive-audit` restores its inputs automatically.
 Activity results are not automatically power results.
 
 ## Use

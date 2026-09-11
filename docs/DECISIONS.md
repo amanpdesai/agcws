@@ -1,5 +1,28 @@
 # Decision log
 
+## 2026-09-11 — Lossless evidence packing, not scientific evidence deletion
+
+**Decision.** Pack nested tracked evidence from studies exceeding 500 nested
+files, preserving bytes, original paths, modes, hashes and source snapshots.
+Keep root summaries/manifests readable; restore original paths for frozen audits.
+**Rejected.** Dropping simulator logs used by the architectural-state audit,
+deleting the executable historical source archive, or discarding development
+records because they are not cited in the current narrative.
+**Consequence.** Checkout file count falls without a history rewrite. Full-history
+clone size is not guaranteed to shrink. Package restructuring is deferred.
+
+## 2026-09-11 — Plan cross-design controls before conditional corpus expansion
+
+**Decision.** After the validity/accounting slice, prepare matched Pro/Flash and
+classical controls on existing DMA/AES interfaces before admitting new designs.
+Up to six designs is conditional research scope, not a new hard deliverable.
+**Rationale.** The existing model/design/task contrast is confounded. A Pro null
+on one DSL would not itself establish expressiveness as the cause.
+**Consequence.** This explicitly permits planning beyond the original no-fourth-
+design scope; implementation needs individual readiness gates and a frozen
+protocol. Runtime/backend work, fresh targets, liability and funding must be
+verified before launch. No experiment was authorized or launched by this cleanup.
+
 ## 2026-09-11 — Complete bounded solution audit; keep mechanism claims open
 
 **Decision.** Preserve the frozen eight-bin study unchanged. Complete the

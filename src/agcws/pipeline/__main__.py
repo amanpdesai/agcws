@@ -6,7 +6,7 @@ import sys
 from pathlib import Path
 
 from agcws.config import ROOT
-from agcws.pipeline import archive, engine
+from agcws.pipeline import archive, engine, evidence
 from agcws.pipeline.spec import validate
 from agcws.pipeline.storage import read
 
@@ -16,6 +16,10 @@ def main(argv=None):
     sub = parser.add_subparsers(dest="action", required=True)
     sub.add_parser("archive-check")
     sub.add_parser("archive-audit")
+    sub.add_parser("evidence-check")
+    review = sub.add_parser("evidence-extract")
+    review.add_argument("--destination", type=Path, required=True)
+    review.add_argument("--study", action="append", required=True)
     extract = sub.add_parser("archive-extract")
     extract.add_argument("--destination", type=Path, required=True)
     check = sub.add_parser("validate")
@@ -35,7 +39,13 @@ def main(argv=None):
     check_export = sub.add_parser("verify-export")
     check_export.add_argument("--directory", type=Path, required=True)
     args = parser.parse_args(argv)
-    if args.action == "archive-check":
+    if args.action == "evidence-check":
+        result = [evidence.verify(ROOT / "results" / s) for s in evidence.studies(ROOT)]
+    elif args.action == "evidence-extract":
+        result = {
+            "destination": str(evidence.materialize(ROOT, args.destination.resolve(), args.study))
+        }
+    elif args.action == "archive-check":
         m = archive.verify(ROOT)
         result = {
             "files": len(m["files"]),

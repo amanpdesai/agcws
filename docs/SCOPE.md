@@ -7,6 +7,8 @@
 
 This is the original proposal scope, not a completion claim. Current delivered
 evidence and its narrower claim boundaries are in [RESULTS.md](../RESULTS.md).
+The 2026-09-11 decision permits a conditional research plan for additional designs,
+not a completed scope expansion or a six-design submission promise; see [PLAN.md](PLAN.md).
 
 ## Research question
 

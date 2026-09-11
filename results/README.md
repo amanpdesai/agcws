@@ -4,14 +4,19 @@ Findings, statistics and claim limits live in the single root
 [RESULTS.md](../RESULTS.md). This directory stores compact machine-readable
 inputs, outputs, failures and provenance. It is not scratch.
 
-| Evidence | Location |
+| Claim / evidence | Direct entry point |
 |---|---|
-| Completed non-flat Ibex confirmation | `nonflat_temporal_v1/` |
-| Earlier scalar held-out comparison | `semantic_heldout_comparison.json` |
-| Earlier structural/temporal held-out study | `structural_temporal_heldout_v1/` |
-| Native-window gate power and arithmetic audit | `windowed_power_v1/`, `window_semantics_v1/` |
-| Development model/depth studies | `ibex_capability_v1/`, `ibex_depth_v1/` |
-| Stronger-baseline qualification | `gest_bridge_v1/`, `saga_temporal_v1/`, `baseline_panel_v1/` |
+| Scoped Pro versus phase-random confirmation | [summary](nonflat_temporal_v1/summary.json), [frozen targets](nonflat_temporal_v1/targets.json), [costs](nonflat_temporal_v1/cost_summary.json) |
+| Earlier scalar held-out comparison | [comparison](semantic_heldout_comparison.json) |
+| Earlier structural/temporal held-out study | [held-out evidence](structural_temporal_heldout_v1/heldout.json) |
+| Native-window gate power and arithmetic audit | [windowed validation](windowed_power_v1/validation.json), [boundary verification](window_semantics_v1/verification.json) |
+| Development model/depth studies, not confirmation | [capability](ibex_capability_v1/README.md), [depth](ibex_depth_v1/README.md) |
+| Stronger-baseline qualification | [panel summary](baseline_panel_v1/summary.json), [GeST](gest_bridge_v1/), [SAGA](saga_temporal_v1/) |
+| Post-hoc solution and measurement audit | [inventory](solution_audit_v1/README.md), [case notes](solution_audit_v1/case_notes.json) |
+
+Large nested trees are losslessly packed. See [verification and recovery](PACKED_EVIDENCE.md)
+before using old per-slot paths. Published and development evidence are labeled
+here rather than moved or discarded; all original evidence remains recoverable.
 
 Subdirectory READMEs and launch records describe the original artifact context;
 they are not independent current-status reports. Historical commands must run

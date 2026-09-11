@@ -17,6 +17,18 @@ audit with selection frozen before detailed inspection, not a held-out study.
 
 From the repository root, with the Python environment installed:
 
+The non-flat raw records are now losslessly packed. First create and enter an
+original-path review view (see [recovery](../PACKED_EVIDENCE.md)); do not run the
+raw-record inspection directly against missing loose paths:
+
+```bash
+PYTHONPATH=src .venv/bin/python -m agcws.pipeline evidence-extract \
+  --study nonflat_temporal_v1 --destination /tmp/agcws-review
+cd /tmp/agcws-review
+```
+
+Then run the inspection commands in that view:
+
 ```bash
 PYTHONPATH=src .venv/bin/python -m analysis.solution_inspect --out /tmp/inspection-review.json
 PYTHONPATH=src .venv/bin/python -m analysis.solution_trace_audit --out /tmp/trace-review
