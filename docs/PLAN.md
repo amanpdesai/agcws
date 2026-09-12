@@ -32,7 +32,7 @@ page. New measurements and paid calls require an explicit execution decision.
 | Order | Work | Status | Exit condition |
 |---|---|---|---|
 | 1 | Inspect solutions and measurement behavior | DONE — bounded offline audit | Findings and remaining limits in RESULTS.md; no new runs |
-| 2 | Audit information access and accounting independently | TODO | Reconcile raw records and classify information overlap |
+| 2 | Audit information access and accounting independently | DONE — bounded offline audit | Independent metrics/costs reconcile; causal and provider-side limits remain |
 | 3 | Phase-GA robustness extension at 128 slots | PLANNED — NOT LAUNCHED | Compare an untuned, matched-budget evolutionary control |
 | 4 | Qualify a more diverse target bank | PLANNED — NOT LAUNCHED | Freeze construction/search rules and retain every attempt |
 | 5 | Fresh broader confirmation | CONDITIONAL | Qualified targets, frozen controls and sufficient analysis time |
@@ -73,10 +73,14 @@ the affected cases before correcting or withdrawing claims.
 
 ### 2. Information access and independent accounting
 
-Next execution slice: independently reconcile all proposals, retries, initializations,
-cache reuse, model requests and costs from raw evidence. The first slice checked
-actual payload reconstruction, but that is not an independent accounting audit.
-Then freeze mechanism controls before running them: feedback-free versus correct
+Completed under [ACCOUNTING_AUDIT.md](ACCOUNTING_AUDIT.md); evidence is indexed in
+[the audit archive](../results/accounting_audit_v1/README.md). Independent raw-record
+reconstruction agrees with published metrics and local request accounting.
+This does not establish provider billing, runtime identity on every replay or
+semantic understanding. The first implementation discrepancy was an audit-log
+expectation, documented and corrected without changing study records.
+
+Next freeze mechanism controls before running them: feedback-free versus correct
 feedback, schema-only versus semantic context, phase-GA at matched budget, and a
 simple division/polling scheduler. Keep model, targets, work and budget fixed when
 isolating each intervention. These controls are planned, not authorized here.
@@ -227,7 +231,9 @@ targets and references instead of calling it free transfer.
 | 4 | Fresh cross-design protocol | Matched within-design Flash/Pro/control comparisons, witnessed non-flat targets, fresh seeds and a measured budget projection |
 | 5 | Additional designs, one at a time | Predeclared selection rubric and legal, calibrated witnessed targets before admitting a design |
 
-The next implementation slice is order 1, not a paid cross-design matrix.
+Order 1 is complete. The next implementation slice is order 2: freeze stronger
+controls and mechanism ablations, with evaluator-equivalence checks before any
+post-hoc robustness run. It is not a paid cross-design matrix.
 Prepare the cross-design protocol after readiness and accounting establish what
 can actually be held fixed. Record proposed settings now, but do not label an
 unfinished configuration or unqualified target bank "frozen".

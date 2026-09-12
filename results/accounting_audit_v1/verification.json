@@ -1,0 +1,18 @@
+{
+  "date": "2026-09-12",
+  "scope": "Offline independent numerical/accounting reconstruction and source/local-record review; no simulations or model calls",
+  "tests_passed": 501,
+  "warnings": 3,
+  "maintained_lint": "passed",
+  "adversarial_integration": "Tampered one trial score only in an isolated restored view; independently detected loss-from-count and complete-versus-batch discrepancies",
+  "reconstruction_discrepancies": 0,
+  "final_access_discrepancies": 0,
+  "initial_audit_correction": {
+    "preserved_report": "access_initial.json.gz",
+    "initial_expectation": "2306 main service progress entries, including two smoke batches",
+    "observed": "2304 unique entries for the 36 x 64 main panel batches",
+    "resolution": "Initial expectation was wrong: smoke was a separate invocation. Corrected expected set is derived from search_manifest cells and checked exactly; all seven smoke artifact files are separately compared with local records.",
+    "study_record_changes": 0
+  },
+  "interpretation": "No material unexplained numerical or recorded-access discrepancy remains. Provider billing, per-replay image attestation, waveform truth and semantic causality are outside the verified claim."
+}

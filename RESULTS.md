@@ -262,3 +262,98 @@ reasoning and resolution-independent shaping are not established. Next is the
 independent information/accounting audit, followed by frozen feedback/context
 ablations and stronger feedback-aware controls—not a declaration that semantic
 understanding has been proved. No new model calls or comparative runs occurred.
+
+## Independent information/accounting audit — 2026-09-12
+
+Completed under the [committed checklist](docs/ACCOUNTING_AUDIT.md), using a new
+arithmetic implementation with no original/current experiment metric, cost or
+payload-builder imports. All 36 cells and 4,608 proposal slots were reconstructed
+from raw batches and integer activity counts. [Artifacts and reproduction](results/accounting_audit_v1/README.md).
+
+**The published result reconciles.** Independently computed mean AUC is
+8.40173035 for Pro versus 27.99830433 for phase-random; solves remain 18/18 versus
+5/18. Pro-minus-random is −19.59657397, seed-bootstrap CI
+[−23.54607072, −15.64707722], exact two-sided sign-flip p=0.03125. All 16/64/128
+prefixes, censoring, validity counts and equal-valid secondary results agree
+within 1e-10 absolute/relative tolerance. The six seeds—not eighteen target/seed
+cells—remain the inference units. This verifies calculation, not new replication.
+
+The exact endpoint convention is trapezoidal AUC on indices 1 through 128:
+127 intervals, no extra slot-zero interval. Before the first valid measurement
+the curve uses 1.0; valid losses are not clipped to 1.0. Six cells share an
+invalid first initialization (seed 1201 across both arms and three targets),
+so the convention is operative but paired equally. The prose protocol named AUC;
+the implementation supplied this precise integration/invalid-prefix convention.
+We disclose it rather than changing the endpoint after seeing results.
+
+### Proposals, requests and cost
+
+- 72 charged initialization slots across 36 cells; matching initial programs
+  within each seed across arms/targets. Every cell continued to 128 after solving.
+- Exactly 1,134 archived application requests: 1,094 successful responses with
+  two candidates each, and 40 API failures (31 HTTP 429, nine HTTP 504), consuming
+  80 slots. All successful responses report STOP, not output-token truncation.
+  No short batches, discarded oversized batches or candidate replacements found.
+- One generated candidate fails schema because a `divu` item lacks `dst`.
+  Independent schema validation agrees with the recorded rejection. API failures
+  remain a separate stage, not evidence of illegal hardware stimulus.
+- 9,180 local batch files match archived bytes; request/response paths and all
+  terminal cell records reconcile. No additional or unresolved **recorded** local
+  requests were found. This is not a provider-side HTTP or billing trace.
+- Frozen-rate estimate: **$99.39695125 known**, **$16.5536 reserved for unknown
+  usage**, total **$115.95055125**. Peak reconstructed liability including the
+  in-flight reservation is $116.26408875, below the $150 study cap. Thinking tokens
+  are counted once. These numbers are not invoices or the remaining GCP balance.
+
+### Cache and information access
+
+All 2,971 unique evaluation records are accounted for: 2,943 search keys, 24
+construction witnesses and four smoke evaluations. Search keys do not overlap
+construction or smoke keys. Each key has exactly one recorded cache miss across
+these records; actual external simulator executions are not independently counted.
+
+| Arm | Slots with evaluation key | Recorded cache hits | Unique search keys within arm |
+|---|---:|---:|---:|
+| Phase-random | 2,304 | 1,540 | 768 |
+| Pro | 2,223 | 44 | 2,187 |
+
+The arm sets overlap on 12 shared initialization keys. Phase-random produces the
+same 128-program sequence for each target at a given seed. Reusing measurements
+is permitted and every occurrence still consumes a slot. Thus the comparison
+is proposal-counted—not an equal-simulation-cost or wall-clock comparison.
+
+All 8,160 compact-history rows and 6,588 notebook rows match earlier same-cell
+records. The 66 prediction references missing from compact history are all
+represented in the notebook as a row or prior prediction reference; these are
+not evidence of cross-cell leakage. No checked witness metadata or witness
+programs appear in history. Qualification independently selects slots 1, 2 and 6
+from all 24 retained attempts using the frozen floor/distance rules.
+
+The [source-reviewed input table](results/accounting_audit_v1/information_access.json)
+clarifies the claim: Pro receives fixed semantic prose, schemas, selected history
+and derived execution diagnostics. It does not directly read full RTL or invoke
+shell tools. Phase-random receives RNG state and slot index, ignoring target and
+feedback. That is the defined sampling control, not an ablation isolating semantics
+or reasoning from feedback-directed parameter fitting. Constructor alignment
+remains a distributional limitation even with a clean literal-access check.
+
+### Corrections and limits
+
+The first access-audit pass incorrectly expected two smoke progress messages in
+the main service log. The smoke ran separately. The initial report is retained;
+the corrected check derives all 2,304 expected panel progress messages from the
+manifest and verifies seven smoke records separately. No study record changed.
+
+All 82 frozen source hashes match the historical archive. Runtime source verifies
+binary/image identity before execution, but the historical evaluator launches a
+Docker tag and individual records lack per-replay image-digest attestations.
+No drift was identified; this audit cannot prove none occurred. SDK source sets
+one attempt, but local markers cannot establish provider-internal attempt counts.
+Waveforms were not replayed in this slice. Existing work/polling and resolution
+limitations still apply.
+
+**Gate outcome:** no unexplained numerical or recorded information/accounting
+discrepancy remains. The next slice is to freeze stronger controls and mechanism
+ablations, with evaluator-equivalence checks before execution. This does not
+establish semantic understanding, productive application computation, Ibex gate
+power or cross-design superiority. No paid calls or new simulations were launched.

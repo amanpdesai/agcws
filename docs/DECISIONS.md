@@ -1,5 +1,19 @@
 # Decision log
 
+## 2026-09-12 — Independently reconcile confirmation; retain causal limits
+
+**Decision.** Preserve all frozen records. An independent offline implementation
+reconstructs measured-count losses, proposal-axis AUC, seed-paired inference,
+cost reservations, qualification and cache accounting. Record the precise
+trapezoid/invalid-prefix conventions rather than retroactively replacing them.
+**Finding.** Published numerical results reconcile. Local request records match
+the archive. A first-pass audit assumption incorrectly included separate smoke
+progress in the main service log; its report is retained and the expected set
+is now derived from the panel manifest, with smoke checked separately.
+**Consequence.** Proceed to predeclared stronger controls and context/feedback
+ablations. Passing accounting does not prove semantic causality, provider-side
+billing, unrestricted RTL access or cross-design superiority. No new run launched.
+
 ## 2026-09-11 — Lossless evidence packing, not scientific evidence deletion
 
 **Decision.** Pack nested tracked evidence from studies exceeding 500 nested
