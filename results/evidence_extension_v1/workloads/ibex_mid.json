@@ -1,0 +1,173 @@
+{
+  "design": "ibex",
+  "label": "mid",
+  "fidelity": "RTL activity, not watts",
+  "selection": "min/lower-median/max mean rate among unique valid confirmation programs; ties by cache ID",
+  "scope": "descriptive observed levels, not a calibrated scalar envelope or target solve",
+  "source": "results/nonflat_temporal_v1/evaluations/84115545425d4899d1d49ee7829b96832d9975f738eb9581aa366deff32c5354",
+  "program": {
+    "registers": [
+      2,
+      3,
+      5,
+      7,
+      11,
+      13,
+      17,
+      19
+    ],
+    "memory_seed": 123456789,
+    "segments": [
+      {
+        "weight": 1520,
+        "release": 0,
+        "body": [
+          {
+            "op": "mul",
+            "a": 0,
+            "b": 1,
+            "dst": 0
+          },
+          {
+            "op": "mul",
+            "a": 2,
+            "b": 3,
+            "dst": 2
+          }
+        ]
+      },
+      {
+        "weight": 820,
+        "release": 40000,
+        "body": [
+          {
+            "op": "divu",
+            "a": 6,
+            "b": 2,
+            "dst": 7
+          }
+        ]
+      },
+      {
+        "weight": 170,
+        "release": 85000,
+        "body": [
+          {
+            "op": "xor",
+            "a": 4,
+            "b": 5,
+            "dst": 4
+          },
+          {
+            "op": "xor",
+            "a": 6,
+            "b": 7,
+            "dst": 6
+          }
+        ]
+      },
+      {
+        "weight": 1100,
+        "release": 130000,
+        "body": [
+          {
+            "op": "load",
+            "a": 0,
+            "dst": 1
+          },
+          {
+            "op": "add",
+            "a": 1,
+            "b": 2,
+            "dst": 1
+          },
+          {
+            "op": "store",
+            "a": 0,
+            "b": 1
+          }
+        ]
+      },
+      {
+        "weight": 486,
+        "release": 175000,
+        "body": [
+          {
+            "op": "add",
+            "a": 4,
+            "b": 5,
+            "dst": 4
+          },
+          {
+            "op": "add",
+            "a": 6,
+            "b": 7,
+            "dst": 6
+          }
+        ]
+      }
+    ]
+  },
+  "profile": {
+    "window_bit_transitions": [
+      16979458,
+      12363837,
+      4388974,
+      18112560,
+      18722950,
+      18262104,
+      18390086,
+      17867768
+    ],
+    "window_rates": [
+      679.17832,
+      494.55348,
+      175.55896,
+      724.5024,
+      748.918,
+      730.48416,
+      735.60344,
+      714.71072
+    ],
+    "clock_edges": 200000,
+    "period_ticks": 2,
+    "begin_tick": 286,
+    "end_tick": 400286,
+    "timescale": "1ps",
+    "selected_identifiers": 1311,
+    "scope": "TOP.ibex_simple_system.u_top.u_ibex_top.u_ibex_core",
+    "exclusions": [
+      "clock",
+      "cs_registers_i"
+    ],
+    "unknown_events": 0,
+    "units": "unique core-net bit transitions per clock edge; not watts",
+    "markers": {
+      "measure_start": {
+        "tick": 286,
+        "cycle": 139
+      },
+      "body_complete": {
+        "tick": 353206,
+        "cycle": 176599
+      },
+      "measure_stop": {
+        "tick": 400418,
+        "cycle": 200205
+      }
+    },
+    "retired_instructions": 109692,
+    "waveform_sha256": "3531055cf8f8f3be9cc72a33dcc59274beb92d5b0ffaa5677d4525e46c93fc7d",
+    "source_sha256": "f270c4973117a188af616d488974af794aacfc3cd45fdd3951247249bd9a341a",
+    "extraction_s": 22.833321925005293
+  },
+  "valid": true,
+  "allocation": [
+    1520,
+    820,
+    170,
+    1100,
+    486
+  ],
+  "measurement_fingerprint": "d30727e568aadf9e413525cce64182f50f431c584c4b173e6f52bd6648193b0a"
+}

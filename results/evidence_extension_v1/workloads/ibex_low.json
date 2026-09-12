@@ -1,0 +1,99 @@
+{
+  "design": "ibex",
+  "label": "low",
+  "fidelity": "RTL activity, not watts",
+  "selection": "min/lower-median/max mean rate among unique valid confirmation programs; ties by cache ID",
+  "scope": "descriptive observed levels, not a calibrated scalar envelope or target solve",
+  "source": "results/nonflat_temporal_v1/evaluations/496171cbd015ec1892c498d9a2acd30a819b48559a1cc21d879ee085ead4b2ed",
+  "program": {
+    "registers": [
+      1836867688,
+      1,
+      4294967295,
+      4294967295,
+      1,
+      17,
+      1,
+      4294967295
+    ],
+    "memory_seed": 3862742519,
+    "segments": [
+      {
+        "weight": 2876,
+        "release": 31508,
+        "body": [
+          {
+            "op": "divu",
+            "dst": 2,
+            "a": 4,
+            "b": 0
+          },
+          {
+            "op": "divu",
+            "dst": 7,
+            "a": 6,
+            "b": 1
+          }
+        ]
+      }
+    ]
+  },
+  "profile": {
+    "window_bit_transitions": [
+      18476503,
+      7104031,
+      2834626,
+      2830001,
+      2820523,
+      2815803,
+      2804290,
+      8188265
+    ],
+    "window_rates": [
+      739.06012,
+      284.16124,
+      113.38504,
+      113.20004,
+      112.82092,
+      112.63212,
+      112.1716,
+      327.5306
+    ],
+    "clock_edges": 200000,
+    "period_ticks": 2,
+    "begin_tick": 288,
+    "end_tick": 400288,
+    "timescale": "1ps",
+    "selected_identifiers": 1311,
+    "scope": "TOP.ibex_simple_system.u_top.u_ibex_top.u_ibex_core",
+    "exclusions": [
+      "clock",
+      "cs_registers_i"
+    ],
+    "unknown_events": 0,
+    "units": "unique core-net bit transitions per clock edge; not watts",
+    "markers": {
+      "measure_start": {
+        "tick": 288,
+        "cycle": 140
+      },
+      "body_complete": {
+        "tick": 382796,
+        "cycle": 191394
+      },
+      "measure_stop": {
+        "tick": 400424,
+        "cycle": 200208
+      }
+    },
+    "retired_instructions": 51500,
+    "waveform_sha256": "5cfe06da522a833929a41f9ed5779980a3b3b612df0e3f9060a2855f08cdc5ee",
+    "source_sha256": "f270c4973117a188af616d488974af794aacfc3cd45fdd3951247249bd9a341a",
+    "extraction_s": 11.306475769997633
+  },
+  "valid": true,
+  "allocation": [
+    4096
+  ],
+  "measurement_fingerprint": "d30727e568aadf9e413525cce64182f50f431c584c4b173e6f52bd6648193b0a"
+}

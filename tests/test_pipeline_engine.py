@@ -103,6 +103,25 @@ def test_short_model_batch_charges_every_requested_slot(tmp_path):
     assert rows[1]["stage"] == "SCHEMA" and rows[1]["loss"] is None
 
 
+def test_phase_ga_128_slots_has_no_model_calls_or_sibling_feedback(tmp_path):
+    m = manifest(tmp_path, "phase-ga", 128, 2)
+    meter = Meter(tmp_path, 1)
+
+    def forbidden(*args):
+        raise AssertionError("CPU control must not call a model")
+
+    meter.call = forbidden
+    result = engine.cell(tmp_path, m, "example", 1200, "phase-ga", meter, evaluate)
+    assert result["budget"] == 128 and result["valid_slots"] == 128
+    all_rows = []
+    for first in range(1, 129, 2):
+        rows = read(tmp_path / f"panel/example/1200/phase-ga/batches/{first:03}/trials.json")
+        assert [r["slot"] for r in rows] == [first, first + 1]
+        assert all(parent < first for r in rows for parent in r["parents"])
+        all_rows.extend(rows)
+    assert len(all_rows) == 128
+
+
 def test_infrastructure_failure_does_not_become_a_trial(tmp_path):
     m = manifest(tmp_path)
 

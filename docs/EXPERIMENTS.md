@@ -10,6 +10,13 @@ results, if run, must be labeled post-hoc; a broader target-family confirmation
 requires separately frozen qualification rules, controls and fresh seeds.
 None of the historical settings below implicitly configure those runs.
 
+The September 12 roadmap prioritizes temporal validation, not additional scalar
+runs. Planned 16/32/64/128-slot reanalysis and cost/coverage summaries are secondary
+analyses of existing evidence, not changes to frozen primary endpoints. New target
+qualification must retain failures and include a legally witnessed near-flat
+control in its difficulty gradient. Second-design temporal and compositional
+claims require their own completed studies; see PLAN.md for the execution gates.
+
 The sections below are the original broad project plan. Executed versioned
 studies have narrower, separately frozen protocols: scalar methods and scope
 are reported in [SEMANTIC_RESULTS.md](../RESULTS.md); structural temporal

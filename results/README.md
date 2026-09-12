@@ -14,6 +14,7 @@ inputs, outputs, failures and provenance. It is not scratch.
 | Stronger-baseline qualification | [panel summary](baseline_panel_v1/summary.json), [GeST](gest_bridge_v1/), [SAGA](saga_temporal_v1/) |
 | Post-hoc solution and measurement audit | [inventory](solution_audit_v1/README.md), [case notes](solution_audit_v1/case_notes.json) |
 | Independent information/accounting audit | [reproduction and artifacts](accounting_audit_v1/README.md) |
+| Budget/cost/coverage secondary analysis and readable suite | [reproduction and index](evidence_extension_v1/README.md), [analysis](evidence_extension_v1/analysis.json) |
 
 Large nested trees are losslessly packed. See [verification and recovery](PACKED_EVIDENCE.md)
 before using old per-slot paths. Published and development evidence are labeled

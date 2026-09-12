@@ -1,5 +1,39 @@
 # Decision log
 
+## 2026-09-12 — Complete offline budget/coverage slice; freeze untuned phase-GA
+
+**Decision.** Publish 16/32/64/128 prefixes, per-run and per-solved-cell costs,
+scalar center-within-tolerance coverage and a readable provenance-linked suite.
+Retain occupancy as a differently defined secondary metric. Include unsolved
+cell spending and unknown-call liability; do not infer current cloud credits.
+**Finding.** Prefixes reproduce the frozen endpoint; the margin exists at 16
+slots. Historical/current offline phase-GA, compiler and metric behavior agree.
+Neither check is a new performance measurement or live runtime attestation.
+**Consequence.** Declare PHASE_GA_ROBUSTNESS_V1.md before execution. Verify immutable
+runtime identities and the fixed replay set before comparing new baseline data
+with historical Pro. Additional scheduler/context/feedback arms need separate
+protocols. Missing scalar/shape categories are documented, not synthesized or
+relabeled into evidence. No new simulation or paid call was made.
+
+## 2026-09-12 — Prioritize temporal validity and existing-evidence reanalysis
+
+**Decision.** Retain frozen scalar comparisons as findings; schedule no new
+scalar study. First deliver budget-prefix, cost-per-solve and coverage analyses,
+document external credit checks, and prepare the untuned phase-GA robustness
+protocol. Extract readable characterization workloads early where evidence
+supports them. Solution and accounting audits are already complete within their
+recorded limits.
+**Rationale.** Random's competitiveness does not prove optimality, and legality
+checks only partially exercise the proposed long-sequence semantic hypothesis.
+Neither a large Ibex advantage nor reconciled accounting establishes its cause.
+**Consequence.** Stronger controls precede independent witnessed targets and
+fresh confirmation. Include a legally witnessed near-flat control; keep every
+qualification failure. Cross-design performance requires a second completed
+temporal study, otherwise narrow the claim. Compositional work is conditional
+and must be explicitly descoped if omitted. Passing a gate means trustworthy
+evidence, not an agent win. This amendment launches no simulations or paid calls
+and does not modify a frozen protocol or endpoint.
+
 ## 2026-09-12 — Independently reconcile confirmation; retain causal limits
 
 **Decision.** Preserve all frozen records. An independent offline implementation

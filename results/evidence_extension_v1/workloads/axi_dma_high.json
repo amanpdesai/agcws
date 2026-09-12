@@ -1,0 +1,98 @@
+{
+  "design": "axi_dma",
+  "label": "high",
+  "fidelity": "RTL activity, not watts",
+  "selection": "nearest frozen envelope q=0/0.5/1; ties by corpus index; not a tolerance solve",
+  "source": "results/dma_pipelined_calibration/corpus.jsonl",
+  "source_index": 1,
+  "calibration": {
+    "backend": "pipelined",
+    "count": 20,
+    "valid_count": 20,
+    "power_metric": "total_transitions_per_clock_edge",
+    "p_min": 4.547597535934291,
+    "p_max": 27.705809437236592,
+    "epsilon_scalar": 0.02,
+    "epsilon_source": "AES transaction five-seed rule; no DMA retuning",
+    "useful_work_floor": 4096,
+    "corpus_sha256": "ae2819862a0eca86ac996bd6cb1d1eb1ee04aba7b33cbd1ac2341cc11c5a775d"
+  },
+  "record": {
+    "activity": 27.705809437236592,
+    "clock_edges": 12101,
+    "index": 1,
+    "observed": {
+      "max_inflight": 3,
+      "read_descriptors": 8,
+      "write_completions": 8
+    },
+    "seed": 0,
+    "useful_work": 30976,
+    "valid": true,
+    "workload": {
+      "backpressure": {
+        "period": 8,
+        "read_pause": 1,
+        "write_pause": 1
+      },
+      "transfers": [
+        {
+          "dst": 32896,
+          "gap_cycles": 177,
+          "length": 3072,
+          "outstanding": 4,
+          "src": 664
+        },
+        {
+          "dst": 37008,
+          "gap_cycles": 358,
+          "length": 3584,
+          "outstanding": 4,
+          "src": 4336
+        },
+        {
+          "dst": 40960,
+          "gap_cycles": 243,
+          "length": 4096,
+          "outstanding": 4,
+          "src": 8192
+        },
+        {
+          "dst": 45056,
+          "gap_cycles": 362,
+          "length": 4096,
+          "outstanding": 4,
+          "src": 12288
+        },
+        {
+          "dst": 49152,
+          "gap_cycles": 356,
+          "length": 4096,
+          "outstanding": 4,
+          "src": 16384
+        },
+        {
+          "dst": 53472,
+          "gap_cycles": 126,
+          "length": 3840,
+          "outstanding": 4,
+          "src": 20624
+        },
+        {
+          "dst": 57344,
+          "gap_cycles": 228,
+          "length": 4096,
+          "outstanding": 4,
+          "src": 24576
+        },
+        {
+          "dst": 61440,
+          "gap_cycles": 96,
+          "length": 4096,
+          "outstanding": 4,
+          "src": 28672
+        }
+      ]
+    }
+  }
+}

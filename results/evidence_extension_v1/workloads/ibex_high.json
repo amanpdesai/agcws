@@ -1,0 +1,193 @@
+{
+  "design": "ibex",
+  "label": "high",
+  "fidelity": "RTL activity, not watts",
+  "selection": "min/lower-median/max mean rate among unique valid confirmation programs; ties by cache ID",
+  "scope": "descriptive observed levels, not a calibrated scalar envelope or target solve",
+  "source": "results/nonflat_temporal_v1/evaluations/ae5d088929d92ef9a70331676f8150b0a06784effeaaeef6ec4dfb97666c4df4",
+  "program": {
+    "registers": [
+      4294967295,
+      1,
+      1,
+      1,
+      4294967295,
+      1,
+      17,
+      17
+    ],
+    "memory_seed": 745802052,
+    "segments": [
+      {
+        "weight": 3259,
+        "release": 422,
+        "body": [
+          {
+            "op": "mul",
+            "dst": 6,
+            "a": 6,
+            "b": 1
+          },
+          {
+            "op": "mul",
+            "dst": 2,
+            "a": 4,
+            "b": 0
+          }
+        ]
+      },
+      {
+        "weight": 2817,
+        "release": 72291,
+        "body": [
+          {
+            "op": "cmovz",
+            "dst": 5,
+            "a": 1,
+            "b": 1
+          },
+          {
+            "op": "cmovz",
+            "dst": 7,
+            "a": 0,
+            "b": 0
+          },
+          {
+            "op": "cmovz",
+            "dst": 7,
+            "a": 7,
+            "b": 1
+          },
+          {
+            "op": "cmovz",
+            "dst": 4,
+            "a": 6,
+            "b": 0
+          },
+          {
+            "op": "cmovz",
+            "dst": 7,
+            "a": 2,
+            "b": 0
+          },
+          {
+            "op": "cmovz",
+            "dst": 3,
+            "a": 7,
+            "b": 1
+          }
+        ]
+      },
+      {
+        "weight": 3153,
+        "release": 100449,
+        "body": [
+          {
+            "op": "mul",
+            "dst": 0,
+            "a": 0,
+            "b": 2
+          },
+          {
+            "op": "add",
+            "dst": 5,
+            "a": 3,
+            "b": 3
+          }
+        ]
+      },
+      {
+        "weight": 1225,
+        "release": 149287,
+        "body": [
+          {
+            "op": "store",
+            "a": 3,
+            "b": 4
+          },
+          {
+            "op": "store",
+            "a": 5,
+            "b": 5
+          },
+          {
+            "op": "load",
+            "dst": 3,
+            "a": 3
+          },
+          {
+            "op": "load",
+            "dst": 2,
+            "a": 3
+          },
+          {
+            "op": "load",
+            "dst": 2,
+            "a": 1
+          }
+        ]
+      }
+    ]
+  },
+  "profile": {
+    "window_bit_transitions": [
+      18192558,
+      19177761,
+      18412468,
+      18478068,
+      20218173,
+      20195578,
+      18851301,
+      19267532
+    ],
+    "window_rates": [
+      727.70232,
+      767.11044,
+      736.49872,
+      739.12272,
+      808.72692,
+      807.82312,
+      754.05204,
+      770.70128
+    ],
+    "clock_edges": 200000,
+    "period_ticks": 2,
+    "begin_tick": 286,
+    "end_tick": 400286,
+    "timescale": "1ps",
+    "selected_identifiers": 1311,
+    "scope": "TOP.ibex_simple_system.u_top.u_ibex_top.u_ibex_core",
+    "exclusions": [
+      "clock",
+      "cs_registers_i"
+    ],
+    "unknown_events": 0,
+    "units": "unique core-net bit transitions per clock edge; not watts",
+    "markers": {
+      "measure_start": {
+        "tick": 286,
+        "cycle": 139
+      },
+      "body_complete": {
+        "tick": 304434,
+        "cycle": 152213
+      },
+      "measure_stop": {
+        "tick": 400422,
+        "cycle": 200207
+      }
+    },
+    "retired_instructions": 122692,
+    "waveform_sha256": "90061c84cbefdef04f59fb1efd995b0546de719df03861b7d2dd2e3e758a276d",
+    "source_sha256": "f270c4973117a188af616d488974af794aacfc3cd45fdd3951247249bd9a341a",
+    "extraction_s": 25.558309858999564
+  },
+  "valid": true,
+  "allocation": [
+    1277,
+    1104,
+    1235,
+    480
+  ],
+  "measurement_fingerprint": "d30727e568aadf9e413525cce64182f50f431c584c4b173e6f52bd6648193b0a"
+}

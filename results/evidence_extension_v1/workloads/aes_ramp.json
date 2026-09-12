@@ -1,0 +1,111 @@
+{
+  "design": "aes",
+  "label": "ramp",
+  "fidelity": "RTL activity, not watts",
+  "selection": "existing named capability-check case; not selected for fit",
+  "source": "results/aes_transactions_temporal_check.json",
+  "record": {
+    "name": "ramp",
+    "workload": {
+      "data_pattern": 1,
+      "operations": [
+        {
+          "op": "configure",
+          "key_len": 128
+        },
+        {
+          "op": "encrypt",
+          "blocks": 2
+        },
+        {
+          "op": "idle",
+          "cycles": 1500
+        },
+        {
+          "op": "encrypt",
+          "blocks": 4
+        },
+        {
+          "op": "idle",
+          "cycles": 1300
+        },
+        {
+          "op": "encrypt",
+          "blocks": 6
+        },
+        {
+          "op": "idle",
+          "cycles": 1100
+        },
+        {
+          "op": "encrypt",
+          "blocks": 8
+        },
+        {
+          "op": "idle",
+          "cycles": 900
+        },
+        {
+          "op": "encrypt",
+          "blocks": 10
+        },
+        {
+          "op": "idle",
+          "cycles": 600
+        },
+        {
+          "op": "encrypt",
+          "blocks": 12
+        },
+        {
+          "op": "idle",
+          "cycles": 400
+        },
+        {
+          "op": "encrypt",
+          "blocks": 10
+        },
+        {
+          "op": "idle",
+          "cycles": 200
+        },
+        {
+          "op": "encrypt",
+          "blocks": 12
+        },
+        {
+          "op": "idle",
+          "cycles": 0
+        }
+      ]
+    },
+    "useful_work": 64,
+    "idle_cycles": 6000,
+    "deterministic_repeats": 2,
+    "clock_edges": 6774,
+    "samples": 6774,
+    "mean_transitions_per_edge": 23.35001476232654,
+    "eight_bin_transitions_per_sample": [
+      7.405437352245863,
+      12.672963400236128,
+      2.0,
+      18.004722550177096,
+      23.361702127659573,
+      9.343565525383708,
+      53.324675324675326,
+      60.66824085005903
+    ],
+    "provenance": {
+      "simulator_digest": "ef1157b0f36882b5facbad1ee4c69c8a30d34a5f72a4ec35154798793dcf7d09",
+      "verilator": "Verilator 5.048 2026-04-26 rev v5.048",
+      "workload_sha256": "06707936edf3da8e8cd8098a6aaadcb256daebe8c275ea389f0189db7644d9e6",
+      "backend": "aes-transactions-v1",
+      "functional_reference": "cryptography AES-ECB zero key",
+      "reset_policy": "once_per_workload",
+      "coverage": "verilator_line"
+    },
+    "activity_sha256": "8dd7d3fd2f4e8d08de375e4565f737a4f2468eabc39439d08986e19a654760db"
+  },
+  "window": "Eight equal sample-count bins over full DUT-scoped RTL trace",
+  "validity_scope": "archived functional-reference capability check; not held-out search"
+}

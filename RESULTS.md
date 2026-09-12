@@ -1,9 +1,62 @@
 # Research results
 
-Updated 2026-09-11. This is the authoritative findings document. All results
+Updated 2026-09-12. This is the authoritative findings document. All results
 below concern **activity-profile synthesis** unless explicitly labeled gate
 power. Lower best-so-far target-error AUC is better. Budgets, normalizations
 and target banks differ across studies: do not compare their raw AUC values.
+
+## Budget, cost and coverage secondary analysis
+
+The September 12 existing-evidence slice adds no experimental runs. Recomputing
+the confirmation's complete trajectories preserves the frozen 128-slot result
+and adds a 32-slot prefix alongside 16/64/128. These are **post-hoc descriptive
+prefixes**, not independent studies or a newly selected primary endpoint.
+
+| Slots | Pro AUC | Phase-random AUC | Pro solves | Phase-random solves |
+|---|---:|---:|---:|---:|
+| 16 | 3.42230 | 5.42517 | 14/18 | 0/18 |
+| 32 | 4.54242 | 9.84933 | 14/18 | 2/18 |
+| 64 | 6.13828 | 16.68393 | 18/18 | 5/18 |
+| 128 | 8.40173 | 27.99830 | 18/18 | 5/18 |
+
+The advantage is already present at 16 slots. Relative AUC reductions are
+36.9%, 53.9%, 63.2% and 70.0%; raw AUC grows with the integration interval, so
+its increasing absolute gap alone is not evidence of improving relative efficacy.
+Mean censored slots are Pro 11.17/14.72/16.89/16.89 versus random
+16.00/31.83/57.83/104.06. Six paired seed differences and interval-normalized
+AUC are included in the artifact. No extra prefix significance tests are used.
+
+At 128 slots, Pro's known estimated cost is **$99.39695**, with **$16.55360**
+reserved for unknown usage: **$115.95055 liability**. That is **$5.52205 known /
+$6.44170 liability per solved cell**, including every call through the budget,
+not just calls up to first solve. At 16 slots the corresponding values are
+$0.70559 / $0.85339 per solved cell, including spend on four unsolved cells.
+Phase-random uses no model calls; CPU cost remains unpriced, not zero. Actual
+provider bills, remaining credits and organizer access are externally unverified.
+This accounting covers the confirmation, not all project/cloud expenditure.
+
+For the separate 20-workload **AES transactions** and **DMA pipelined** scalar
+calibration corpora, center-within-tolerance coverage is **9/10 and 6/10**:
+centers 0.05..0.95, each corpus's frozen envelope, epsilon 0.02, no clipping.
+Both occupy 9/10 bins under ordinary bin membership. Those definitions are not
+interchangeable. All included records pass their recorded useful-work floors;
+this is corpus capability, not a retrospective policy comparison. No current
+Ibex temporal-bin values are substituted for a frozen scalar corpus.
+
+The [reproduction bundle](results/evidence_extension_v1/README.md) includes
+per-cell cost and censoring, original input hashes and **15 readable workload
+examples**. Levels are deterministically selected observed examples, not new
+tolerance solves. Four examples retain existing AES/DMA windowed GLS power;
+others are labeled RTL activity. Unqualified shape categories remain explicit
+gaps rather than inferred burst/ramp successes.
+
+Offline stronger-control readiness agrees between archived and maintained
+implementations on **768 mock-feedback phase-GA slots**, all four prefixes for
+36 recorded cells, and **102 assembly/reference-state examples**. This verifies
+refactor behavior, not live simulator equivalence or phase-GA performance.
+The [untuned 128-slot protocol](docs/PHASE_GA_ROBUSTNESS_V1.md) is declared;
+runtime identity, matched live replay and an execution manifest gate the next
+CPU-only extension. No new baseline or agent run has started.
 
 ## Main result: non-flat Ibex temporal confirmation
 

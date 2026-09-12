@@ -1,0 +1,194 @@
+{
+  "design": "aes",
+  "label": "temporal_random_301",
+  "selection": "all predeclared random-policy finalists; not selected for gate fit",
+  "fidelity": "archived zero-delay GLS windowed dynamic power; not signoff power",
+  "source": "results/windowed_power_v1/validation.json",
+  "profile": {
+    "design": "aes",
+    "target": "random_301",
+    "policy": "random",
+    "seed": 400,
+    "replay_id": "5931833fd4c145d561d7d0c80484ce7c21da5668f7293b432dd13118bced9f15",
+    "proposal_source": "cpu",
+    "activity_error": 0.12535501684712477,
+    "dynamic_power_w": [
+      0.007993341423570999,
+      0.002886859932914,
+      0.002886859932914,
+      0.007151689380407,
+      0.0060901241377,
+      0.002886859932914,
+      0.002886859932914,
+      0.002886859932914
+    ],
+    "gate_nrmse": 0.3890257569300679,
+    "full_dynamic_power_w": 0.0044572171173057,
+    "window_min_w": 0.002886859932914,
+    "window_max_w": 0.007993341423570999
+  },
+  "workload": {
+    "data_pattern": 1,
+    "operations": [
+      {
+        "key_len": 128,
+        "op": "configure"
+      },
+      {
+        "cycles": 245,
+        "op": "idle"
+      },
+      {
+        "blocks": 5,
+        "op": "encrypt"
+      },
+      {
+        "blocks": 21,
+        "op": "encrypt"
+      },
+      {
+        "cycles": 1043,
+        "op": "idle"
+      },
+      {
+        "cycles": 355,
+        "op": "idle"
+      },
+      {
+        "cycles": 315,
+        "op": "idle"
+      },
+      {
+        "cycles": 518,
+        "op": "idle"
+      },
+      {
+        "cycles": 332,
+        "op": "idle"
+      },
+      {
+        "blocks": 38,
+        "op": "encrypt"
+      },
+      {
+        "cycles": 821,
+        "op": "idle"
+      },
+      {
+        "cycles": 1552,
+        "op": "idle"
+      },
+      {
+        "cycles": 680,
+        "op": "idle"
+      },
+      {
+        "cycles": 139,
+        "op": "idle"
+      }
+    ]
+  },
+  "validation": {
+    "replay": {
+      "design": "aes",
+      "workload": {
+        "sequence": [
+          {
+            "cycles": 245,
+            "op": "wait"
+          },
+          {
+            "op": "work",
+            "units": 5
+          },
+          {
+            "op": "work",
+            "units": 21
+          },
+          {
+            "cycles": 1043,
+            "op": "wait"
+          },
+          {
+            "cycles": 355,
+            "op": "wait"
+          },
+          {
+            "cycles": 315,
+            "op": "wait"
+          },
+          {
+            "cycles": 518,
+            "op": "wait"
+          },
+          {
+            "cycles": 332,
+            "op": "wait"
+          },
+          {
+            "op": "work",
+            "units": 38
+          },
+          {
+            "cycles": 821,
+            "op": "wait"
+          },
+          {
+            "cycles": 1552,
+            "op": "wait"
+          },
+          {
+            "cycles": 680,
+            "op": "wait"
+          },
+          {
+            "cycles": 139,
+            "op": "wait"
+          }
+        ]
+      },
+      "observation_cycles": 6774,
+      "contract": {
+        "idle_cycles": 6000,
+        "max_depth": 4,
+        "max_expanded_ops": 128,
+        "work_units": 64
+      },
+      "source_digest": "ae31d8465bab8b454865870ac996283d69507c58e99be96ec1cfd8dd182e819c"
+    },
+    "inputs": {
+      "synthesis_manifest": "dba976cb349777fd971047d3cc01a424546a65e395c262a79a1286c91b07c32f",
+      "netlist": "55ca92c3f9950e315862874684e085ed82b3442471ad5139ea7774048f3b22a2",
+      "liberty": "92eb4e93a3d4c2563018ac81cdec2f02fdeaced9b39337ed5c141fa63e0ad8f8",
+      "cell_models": "5ff4558207faf8ea0d4f35ea6d85e1ff36f57936d307423c8f234204398d1c3a",
+      "primitive_models": "81351b44f54dd9b5e3cd07a845cbe9d90e889d29edfcbff57a527280839bbccc",
+      "rtl_workload": "fd1058175ced06278bd67a2a8faf42c8ba3a44d4355f27995899aedaab10f259",
+      "validation_driver": "ca2169e5eaaa9414b319b0c1aae9c4de1f9f938c1dc114965db183a45c88fb14",
+      "design_driver": "43d6aa5f5326fee68ef446545bd8a376be394a98d17a5506fda769317f25468a"
+    },
+    "wall_clock_s": 343.1688581859926,
+    "comparison_sha256": "2b9ac097b17ebfbd2b0de8097abd217391726d626e44384990d71934ec5f9b1e"
+  },
+  "provenance": {
+    "scope": "Reference-checked unmasked GLS, not yet a power report.",
+    "parameters": {
+      "SecMasking": 0,
+      "SecSBoxImpl": "aes_pkg::SBoxImplLut",
+      "EntropyWidth": 32
+    },
+    "inputs": {
+      "/home/aman/agcws/out/aes-unmasked-matched-synthesis-v2/mapped.v": "55ca92c3f9950e315862874684e085ed82b3442471ad5139ea7774048f3b22a2",
+      "/opt/eda/ChipSTA/examples/sky130_hd.v": "5ff4558207faf8ea0d4f35ea6d85e1ff36f57936d307423c8f234204398d1c3a",
+      "/opt/eda/ChipSTA/examples/sky130_hd_primitives.v": "81351b44f54dd9b5e3cd07a845cbe9d90e889d29edfcbff57a527280839bbccc",
+      "/home/aman/agcws/validation/aes_transaction_gls.sv": "e1c571f1f2df90b4e92821572bdb573ab0ac5dfe6f3d93f325efcb2ceefd23b5",
+      "/home/aman/agcws/experiments/aes_transactions.svh": "046ad867f87a905ac3abe2880f70e7d1cd0284e7e83499816aaa52b60a287911",
+      "/home/aman/agcws/validation/aes_gls.py": "43d6aa5f5326fee68ef446545bd8a376be394a98d17a5506fda769317f25468a"
+    },
+    "cache_key": "7aba006b4ed75e8a80f23b58d17fe4a22738395f3ca306fde0abf36741ceb998",
+    "program_sha256": "382ce150f1ca61b8f539d0a6bef906a64c1a581f1e517ec6381e4de5c64118db",
+    "workload_sha256": "fd1058175ced06278bd67a2a8faf42c8ba3a44d4355f27995899aedaab10f259",
+    "waveform_sha256": "f64d5cc4fc64618b8e9ba2c33a6bcd9f80d58e40ad9f36508104e0e2d736639b",
+    "clock_edges": 6774,
+    "blocks_checked": 64
+  }
+}

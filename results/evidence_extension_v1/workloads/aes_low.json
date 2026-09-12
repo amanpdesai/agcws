@@ -1,0 +1,125 @@
+{
+  "design": "aes",
+  "label": "low",
+  "fidelity": "RTL activity, not watts",
+  "selection": "nearest frozen envelope q=0/0.5/1; ties by corpus index; not a tolerance solve",
+  "source": "results/aes_transactions_calibration/corpus.jsonl",
+  "source_index": 16,
+  "calibration": {
+    "backend": "transactions",
+    "power_metric": "total_transitions_per_clock_edge",
+    "scope": "aes_core_smoke.dut",
+    "count": 20,
+    "valid_count": 20,
+    "p_min": 20.145905199948896,
+    "p_max": 197.84064022268615,
+    "useful_work_floor": 38,
+    "useful_work_min": 47,
+    "epsilon_scalar": 0.02,
+    "random_solved_fraction_base": 1.0,
+    "base_seed_fractions": [
+      0.8,
+      1.0,
+      0.6,
+      1.0,
+      1.0
+    ],
+    "final_seed_fractions": [
+      0.6,
+      0.6,
+      0.6,
+      0.8,
+      0.8
+    ],
+    "random_solved_fraction": 0.6,
+    "status": "five_seed_calibration_before_transaction_comparisons",
+    "g3_trivial": false,
+    "corpus_sha256": "11a1252f36b6514fa8e4421fc4936ebd09f6e19c64df3aadca65c8573feb5940"
+  },
+  "record": {
+    "activity": 20.145905199948896,
+    "clock_edges": 7827,
+    "index": 16,
+    "provenance": {
+      "backend": "aes-transactions-v1",
+      "coverage": "verilator_line",
+      "functional_reference": "cryptography AES-ECB zero key",
+      "reset_policy": "once_per_workload",
+      "simulator_digest": "ef1157b0f36882b5facbad1ee4c69c8a30d34a5f72a4ec35154798793dcf7d09",
+      "verilator": "Verilator 5.048 2026-04-26 rev v5.048",
+      "workload_sha256": "0b15e965b3cbe90e51c847c09f593354ac9de6bc8e311e16464929ddbb383492"
+    },
+    "seed": 0,
+    "useful_work": 47,
+    "valid": true,
+    "workload": {
+      "data_pattern": 1,
+      "operations": [
+        {
+          "key_len": 256,
+          "op": "configure"
+        },
+        {
+          "blocks": 21,
+          "op": "encrypt"
+        },
+        {
+          "cycles": 0,
+          "op": "idle"
+        },
+        {
+          "blocks": 10,
+          "op": "decrypt"
+        },
+        {
+          "cycles": 1024,
+          "op": "idle"
+        },
+        {
+          "blocks": 8,
+          "op": "decrypt"
+        },
+        {
+          "cycles": 4,
+          "op": "idle"
+        },
+        {
+          "blocks": 1,
+          "op": "encrypt"
+        },
+        {
+          "cycles": 1,
+          "op": "idle"
+        },
+        {
+          "blocks": 4,
+          "op": "encrypt"
+        },
+        {
+          "cycles": 1024,
+          "op": "idle"
+        },
+        {
+          "blocks": 1,
+          "op": "encrypt"
+        },
+        {
+          "cycles": 5000,
+          "op": "idle"
+        },
+        {
+          "blocks": 1,
+          "op": "encrypt"
+        },
+        {
+          "cycles": 1,
+          "op": "idle"
+        },
+        {
+          "blocks": 1,
+          "op": "encrypt"
+        }
+      ]
+    }
+  }
+}

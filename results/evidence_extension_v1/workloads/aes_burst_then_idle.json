@@ -1,0 +1,55 @@
+{
+  "design": "aes",
+  "label": "burst_then_idle",
+  "fidelity": "RTL activity, not watts",
+  "selection": "existing named capability-check case; not selected for fit",
+  "source": "results/aes_transactions_temporal_check.json",
+  "record": {
+    "name": "burst_then_idle",
+    "workload": {
+      "data_pattern": 1,
+      "operations": [
+        {
+          "op": "configure",
+          "key_len": 128
+        },
+        {
+          "op": "encrypt",
+          "blocks": 64
+        },
+        {
+          "op": "idle",
+          "cycles": 6000
+        }
+      ]
+    },
+    "useful_work": 64,
+    "idle_cycles": 6000,
+    "deterministic_repeats": 2,
+    "clock_edges": 6774,
+    "samples": 6774,
+    "mean_transitions_per_edge": 23.34174785946265,
+    "eight_bin_transitions_per_sample": [
+      172.8853427895981,
+      2.0,
+      2.0,
+      2.0,
+      2.0,
+      2.0,
+      2.0,
+      2.0
+    ],
+    "provenance": {
+      "simulator_digest": "ef1157b0f36882b5facbad1ee4c69c8a30d34a5f72a4ec35154798793dcf7d09",
+      "verilator": "Verilator 5.048 2026-04-26 rev v5.048",
+      "workload_sha256": "701cae035df8b94d7cd1c7302e16bfcf0e31f4574bcc0b1d1671d751f84b8fc7",
+      "backend": "aes-transactions-v1",
+      "functional_reference": "cryptography AES-ECB zero key",
+      "reset_policy": "once_per_workload",
+      "coverage": "verilator_line"
+    },
+    "activity_sha256": "08a7e394c22cd233ff2eeebf8d82d6f6fa1b6c1a6ab5e7727eabfd6b76b2a867"
+  },
+  "window": "Eight equal sample-count bins over full DUT-scoped RTL trace",
+  "validity_scope": "archived functional-reference capability check; not held-out search"
+}

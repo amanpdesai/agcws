@@ -1,6 +1,6 @@
 # Plan
 
-Updated 2026-09-11. Findings and completion status live only in
+Updated 2026-09-12. Findings and completion status live only in
 [RESULTS.md](../RESULTS.md); compact evidence lives in `results/`.
 
 ## Where we stand
@@ -17,6 +17,88 @@ generalization or Ibex gate-power accuracy. Earlier frozen negative studies
 remain part of the paper. Differences in design, model, budget and task prevent
 attributing their contrast to interface expressiveness alone.
 
+## Research priorities — September 12 amendment
+
+Scalar is a completed finding, not a new experiment priority. Preserve its
+frozen comparisons: random was competitive or best among the tested policies;
+this does not prove near-optimality. The AES calibration transition from 0.80
+solved at tolerance 0.05 to 0.20 at 0.02 describes that calibration, not universal
+task difficulty. Temporal targeting is the next discriminating regime.
+
+The implemented task is goal-conditioned search through a bounded interface.
+Adapters and checks reduce the low-level legality burden; they do not guarantee
+that every proposal is legal. Thus the original long-sequence semantic hypothesis
+was only partially exercised. A win alone cannot establish semantic understanding.
+
+Cross-design performance claims now require a second completed temporal design
+study. Until then, narrow the abstract to the Ibex result and distinguish it from
+three-interface harness reuse. Preserve earlier negative studies unchanged.
+
+### First slice: existing-evidence analysis and stronger-control readiness
+
+**Complete 2026-09-12, within the declared offline scope.** Reproduction and
+limits are in [the evidence bundle](../results/evidence_extension_v1/README.md).
+F1–F3 are computed; F4 reconciles local liability but external balance/access
+remain unverified. Early C4 provides 15 readable examples with missing shape
+categories explicit. The untuned [phase-GA protocol](PHASE_GA_ROBUSTNESS_V1.md)
+and offline historical/current checks are recorded. The next execution slice
+is runtime identity plus matched live replay, then V2 only if that gate passes.
+No execution or provider call has been launched by this planning/analysis work.
+
+No paid calls or new simulations in this slice. Produce a compact, reproducible
+analysis bundle linked from RESULTS.md, plus an execution-ready robustness
+protocol. Do not conflate writing that protocol with running it.
+
+| Item | Work and acceptance condition |
+|---|---|
+| F1 | Recompute paired 16/32/64/128-slot prefixes from existing 128-slot curves. Preserve the frozen AUC convention, censor at each prefix, and report AUC and solve rates together. Label post-hoc descriptive budget sensitivity; do not select a favorable headline cutoff. |
+| F2 | Add per-run cost and total accounted cost divided by solved cells, including spending on unsolved cells. Zero solves means undefined cost per solve, not zero. Separate known estimates, unknown-call liability and unpriced CPU/runtime cost; no invoice claim. |
+| F3 | Define and compute ten-bin coverage using each corpus's own frozen scalar envelope, valid-work gate and measurement units. Record bin/tolerance rules, out-of-envelope values and denominator. Do not substitute temporal-bin values for whole-workload scalar coverage or pool incompatible calibrations. Report capability coverage, not a retrospective policy contest. |
+| F4 | Reuse the completed local liability reconciliation; identify the remaining external checks for actual available credits, billing and organizer access. Never infer the balance from an old $300 allocation or mark unknown usage as free. |
+| Control readiness | Inspect and freeze untuned phase-GA settings, matched initialization, targets, seeds, 128-slot accounting and feedback. Check offline evaluator fixtures and specify any live equivalence check required before execution. Scope the simple division/polling scheduler and feedback/context ablations separately; do not silently add arms. |
+
+Exit: reproducible analyses, explicit missing-data/external-account limitations,
+and a reviewed protocol with execution prerequisites. This is not evidence that
+new controls have run. If equivalence requires simulation, leave that gate open
+for the next authorized execution slice.
+
+### Validity sequence after the first slice
+
+1. **V1 — complete, bounded:** solution inspection and independent accounting.
+   Missing first-solve traces remain a documented limit, not an indefinitely
+   open audit. New replay would require a separate decision.
+2. **V2 — execute stronger control:** untuned phase-GA at 128 slots on the existing
+   confirmation panel, after evaluator equivalence. Report as post-hoc robustness.
+3. **V3 — qualify independent targets:** freeze a different generation and witness
+   search procedure; retain all attempts and failures. Include a difficulty
+   gradient and at least one below-tolerance constant-floor control **with a
+   legal near-flat witness**, not merely a mathematically fitting constant vector.
+4. **V4 — fresh confirmation:** freeze qualified targets, controls, controller,
+   inference and fresh seeds before comparison. Keep the eight-bin horizon fixed.
+
+A gate passes when evidence is trustworthy and analyzable, not when Pro wins.
+If a control explains the advantage, report that and revise the next question.
+
+### Conditional extensions and deliverable extraction
+
+- **C1/C2:** port minimum shared contracts to DMA first, verify offline fixtures
+  and measurement equivalence, then run a separately frozen second-design temporal
+  comparison. A model-string substitution is not a backend port.
+- **C3:** either explicitly descope compositional claims or freeze and run an AES
+  compositional study. Region support is not an experimental result; a CPU
+  multiplier/divider example must not imply a demonstrated AES capability.
+- **C4, early and independent:** extract a directly readable characterization
+  suite from existing evidence alongside the free analyses. Use deterministic
+  selection rules for low/mid/high/burst/ramp representatives where supported,
+  with measured profiles, validity, provenance and source links. Mark missing
+  categories rather than inventing examples or measurements. Activity-only
+  records are not power-validated workloads. Extraction need not wait for C1–C3.
+
+Order: first-slice analyses/control readiness and early C4 → V2 → V3 → V4 →
+C1 → C2 → conditional C3. Preserve methods notes throughout. Longer horizons,
+16-bin targets and additional designs remain separate deferred axes, selected
+for measurable difficulty spread rather than presumed expressiveness.
+
 ## Next milestone: try to falsify the result
 
 The objective is not to make the agent win more. Seek evaluator errors,
@@ -24,7 +106,7 @@ information asymmetries and comparison-design weaknesses that could explain
 the observed advantage. A large effect motivates scrutiny, but is not itself
 evidence of a confound. Audit consistency and scientific validity separately.
 
-The steps below are planned, not executed or pre-registered by this document.
+The upcoming extensions are planned, not executed or pre-registered by this document.
 Freeze the inspection selection before opening solutions; freeze any extension
 protocol before evaluation. Do not launch jobs merely by following a status
 page. New measurements and paid calls require an explicit execution decision.
@@ -33,7 +115,7 @@ page. New measurements and paid calls require an explicit execution decision.
 |---|---|---|---|
 | 1 | Inspect solutions and measurement behavior | DONE — bounded offline audit | Findings and remaining limits in RESULTS.md; no new runs |
 | 2 | Audit information access and accounting independently | DONE — bounded offline audit | Independent metrics/costs reconcile; causal and provider-side limits remain |
-| 3 | Phase-GA robustness extension at 128 slots | PLANNED — NOT LAUNCHED | Compare an untuned, matched-budget evolutionary control |
+| 3 | Phase-GA robustness extension at 128 slots | PROTOCOL DECLARED; OFFLINE CHECKS PASSED; NOT LAUNCHED | Live identity/equivalence gate, then untuned matched-budget control |
 | 4 | Qualify a more diverse target bank | PLANNED — NOT LAUNCHED | Freeze construction/search rules and retain every attempt |
 | 5 | Fresh broader confirmation | CONDITIONAL | Qualified targets, frozen controls and sufficient analysis time |
 | Gate | Paper claims | WAITING ON VALIDITY | Audit validity and test competing mechanisms before finalizing claims |
@@ -189,7 +271,8 @@ the broader confirmation only after steps 1–4 pass their gates and there is ti
 to finish analysis, not merely launch jobs. If a broader claim remains unsupported,
 retain the narrower scope rather than treating a deadline as validation.
 
-The first slice follows the frozen [inspection protocol](SOLUTION_AUDIT.md).
+The completed first audit follows the frozen
+[inspection protocol](SOLUTION_AUDIT.md); it is not the next implementation task.
 
 ## Cross-design and corpus extension — planning, not a launch authorization
 
@@ -231,9 +314,10 @@ targets and references instead of calling it free transfer.
 | 4 | Fresh cross-design protocol | Matched within-design Flash/Pro/control comparisons, witnessed non-flat targets, fresh seeds and a measured budget projection |
 | 5 | Additional designs, one at a time | Predeclared selection rubric and legal, calibrated witnessed targets before admitting a design |
 
-Order 1 is complete. The next implementation slice is order 2: freeze stronger
-controls and mechanism ablations, with evaluator-equivalence checks before any
-post-hoc robustness run. It is not a paid cross-design matrix.
+Order 1 and the existing-evidence/phase-GA readiness slice are complete within
+their offline scope. Next: verify runtime identity and perform the declared
+matched live replays before launching V2. Other mechanism arms remain separately
+scoped, not frozen implementations. This is not a paid cross-design matrix.
 Prepare the cross-design protocol after readiness and accounting establish what
 can actually be held fixed. Record proposed settings now, but do not label an
 unfinished configuration or unqualified target bank "frozen".

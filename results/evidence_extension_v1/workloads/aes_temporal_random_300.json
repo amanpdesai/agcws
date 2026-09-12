@@ -1,0 +1,306 @@
+{
+  "design": "aes",
+  "label": "temporal_random_300",
+  "selection": "all predeclared random-policy finalists; not selected for gate fit",
+  "fidelity": "archived zero-delay GLS windowed dynamic power; not signoff power",
+  "source": "results/windowed_power_v1/validation.json",
+  "profile": {
+    "design": "aes",
+    "target": "random_300",
+    "policy": "random",
+    "seed": 400,
+    "replay_id": "45a53ab579bb3e906cfdf9bfa42427abc1387a0a05d7af8856e5686504f0c39f",
+    "proposal_source": "cpu",
+    "activity_error": 0.10546443189406782,
+    "dynamic_power_w": [
+      0.0030781913374088,
+      0.005243072984739999,
+      0.0056360446615140005,
+      0.0044573943596338,
+      0.0042626549839045,
+      0.002886859932914,
+      0.007012278074399,
+      0.0030832707925582
+    ],
+    "gate_nrmse": 0.3372032486868669,
+    "full_dynamic_power_w": 0.0044572103652167,
+    "window_min_w": 0.002886859932914,
+    "window_max_w": 0.007012278074399
+  },
+  "workload": {
+    "data_pattern": 1,
+    "operations": [
+      {
+        "key_len": 128,
+        "op": "configure"
+      },
+      {
+        "blocks": 1,
+        "op": "encrypt"
+      },
+      {
+        "cycles": 52,
+        "op": "idle"
+      },
+      {
+        "cycles": 1074,
+        "op": "idle"
+      },
+      {
+        "cycles": 27,
+        "op": "idle"
+      },
+      {
+        "blocks": 12,
+        "op": "encrypt"
+      },
+      {
+        "cycles": 308,
+        "op": "idle"
+      },
+      {
+        "cycles": 369,
+        "op": "idle"
+      },
+      {
+        "blocks": 3,
+        "op": "encrypt"
+      },
+      {
+        "blocks": 11,
+        "op": "encrypt"
+      },
+      {
+        "cycles": 722,
+        "op": "idle"
+      },
+      {
+        "blocks": 5,
+        "op": "encrypt"
+      },
+      {
+        "blocks": 1,
+        "op": "encrypt"
+      },
+      {
+        "blocks": 2,
+        "op": "encrypt"
+      },
+      {
+        "cycles": 470,
+        "op": "idle"
+      },
+      {
+        "blocks": 7,
+        "op": "encrypt"
+      },
+      {
+        "cycles": 495,
+        "op": "idle"
+      },
+      {
+        "cycles": 740,
+        "op": "idle"
+      },
+      {
+        "cycles": 111,
+        "op": "idle"
+      },
+      {
+        "cycles": 151,
+        "op": "idle"
+      },
+      {
+        "cycles": 554,
+        "op": "idle"
+      },
+      {
+        "blocks": 1,
+        "op": "encrypt"
+      },
+      {
+        "blocks": 11,
+        "op": "encrypt"
+      },
+      {
+        "blocks": 5,
+        "op": "encrypt"
+      },
+      {
+        "blocks": 4,
+        "op": "encrypt"
+      },
+      {
+        "cycles": 433,
+        "op": "idle"
+      },
+      {
+        "cycles": 494,
+        "op": "idle"
+      },
+      {
+        "blocks": 1,
+        "op": "encrypt"
+      }
+    ]
+  },
+  "validation": {
+    "replay": {
+      "design": "aes",
+      "workload": {
+        "sequence": [
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "cycles": 52,
+            "op": "wait"
+          },
+          {
+            "cycles": 1074,
+            "op": "wait"
+          },
+          {
+            "cycles": 27,
+            "op": "wait"
+          },
+          {
+            "op": "work",
+            "units": 12
+          },
+          {
+            "cycles": 308,
+            "op": "wait"
+          },
+          {
+            "cycles": 369,
+            "op": "wait"
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "work",
+            "units": 11
+          },
+          {
+            "cycles": 722,
+            "op": "wait"
+          },
+          {
+            "op": "work",
+            "units": 5
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "cycles": 470,
+            "op": "wait"
+          },
+          {
+            "op": "work",
+            "units": 7
+          },
+          {
+            "cycles": 495,
+            "op": "wait"
+          },
+          {
+            "cycles": 740,
+            "op": "wait"
+          },
+          {
+            "cycles": 111,
+            "op": "wait"
+          },
+          {
+            "cycles": 151,
+            "op": "wait"
+          },
+          {
+            "cycles": 554,
+            "op": "wait"
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "work",
+            "units": 11
+          },
+          {
+            "op": "work",
+            "units": 5
+          },
+          {
+            "op": "work",
+            "units": 4
+          },
+          {
+            "cycles": 433,
+            "op": "wait"
+          },
+          {
+            "cycles": 494,
+            "op": "wait"
+          },
+          {
+            "op": "work",
+            "units": 1
+          }
+        ]
+      },
+      "observation_cycles": 6774,
+      "contract": {
+        "idle_cycles": 6000,
+        "max_depth": 4,
+        "max_expanded_ops": 128,
+        "work_units": 64
+      },
+      "source_digest": "ae31d8465bab8b454865870ac996283d69507c58e99be96ec1cfd8dd182e819c"
+    },
+    "inputs": {
+      "synthesis_manifest": "dba976cb349777fd971047d3cc01a424546a65e395c262a79a1286c91b07c32f",
+      "netlist": "55ca92c3f9950e315862874684e085ed82b3442471ad5139ea7774048f3b22a2",
+      "liberty": "92eb4e93a3d4c2563018ac81cdec2f02fdeaced9b39337ed5c141fa63e0ad8f8",
+      "cell_models": "5ff4558207faf8ea0d4f35ea6d85e1ff36f57936d307423c8f234204398d1c3a",
+      "primitive_models": "81351b44f54dd9b5e3cd07a845cbe9d90e889d29edfcbff57a527280839bbccc",
+      "rtl_workload": "639f162bfd6462b262ca686dd3cba856204ae386e2d27aec96e4d88b81edca45",
+      "validation_driver": "ca2169e5eaaa9414b319b0c1aae9c4de1f9f938c1dc114965db183a45c88fb14",
+      "design_driver": "43d6aa5f5326fee68ef446545bd8a376be394a98d17a5506fda769317f25468a"
+    },
+    "wall_clock_s": 343.3074554569321,
+    "comparison_sha256": "ebc401404da4dca81964226cd094a1ae4d95c125e9ae13a430c68bfd1a9d55d1"
+  },
+  "provenance": {
+    "scope": "Reference-checked unmasked GLS, not yet a power report.",
+    "parameters": {
+      "SecMasking": 0,
+      "SecSBoxImpl": "aes_pkg::SBoxImplLut",
+      "EntropyWidth": 32
+    },
+    "inputs": {
+      "/home/aman/agcws/out/aes-unmasked-matched-synthesis-v2/mapped.v": "55ca92c3f9950e315862874684e085ed82b3442471ad5139ea7774048f3b22a2",
+      "/opt/eda/ChipSTA/examples/sky130_hd.v": "5ff4558207faf8ea0d4f35ea6d85e1ff36f57936d307423c8f234204398d1c3a",
+      "/opt/eda/ChipSTA/examples/sky130_hd_primitives.v": "81351b44f54dd9b5e3cd07a845cbe9d90e889d29edfcbff57a527280839bbccc",
+      "/home/aman/agcws/validation/aes_transaction_gls.sv": "e1c571f1f2df90b4e92821572bdb573ab0ac5dfe6f3d93f325efcb2ceefd23b5",
+      "/home/aman/agcws/experiments/aes_transactions.svh": "046ad867f87a905ac3abe2880f70e7d1cd0284e7e83499816aaa52b60a287911",
+      "/home/aman/agcws/validation/aes_gls.py": "43d6aa5f5326fee68ef446545bd8a376be394a98d17a5506fda769317f25468a"
+    },
+    "cache_key": "7aba006b4ed75e8a80f23b58d17fe4a22738395f3ca306fde0abf36741ceb998",
+    "program_sha256": "762adff6f4fa640fddcf1fa6a20658b1884b5826959a71d8c3af00db40c7f2bb",
+    "workload_sha256": "639f162bfd6462b262ca686dd3cba856204ae386e2d27aec96e4d88b81edca45",
+    "waveform_sha256": "ecdc85750db413f529776a59f49a634c451c8fd47abe25516c72cb02634afb5d",
+    "clock_edges": 6774,
+    "blocks_checked": 64
+  }
+}

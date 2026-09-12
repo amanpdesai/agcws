@@ -1,0 +1,2703 @@
+{
+  "scope": "post-hoc existing-evidence analysis; no new measurement or causal claim",
+  "budget_convention": "trapezoidal x=1..N; invalid-prefix value 1; six paired seeds; descriptive prefixes",
+  "cost_convention": "all consumed batch calls through prefix, including failed/unsolved cells and post-solve calls; estimates not invoices",
+  "budgets": {
+    "16": {
+      "arms": {
+        "phase-random": {
+          "mean_auc": 5.4251716719479175,
+          "mean_auc_per_interval": 0.3616781114631945,
+          "mean_final_error": 0.3005204282642347,
+          "solves": 0,
+          "cells": 18,
+          "mean_censored_slots": 16,
+          "cost": {
+            "known_estimated_usd": 0.0,
+            "unknown_reserved_usd": 0.0,
+            "liability_usd": 0.0,
+            "cells": 18,
+            "solves": 0,
+            "known_usd_per_run": 0.0,
+            "known_usd_per_solved_cell": null,
+            "liability_usd_per_solved_cell": null,
+            "model_request_wall_s": 0.0,
+            "compute_cost_usd": null
+          }
+        },
+        "pro-4096": {
+          "mean_auc": 3.422303416338759,
+          "mean_auc_per_interval": 0.22815356108925058,
+          "mean_final_error": 0.0829808976117042,
+          "solves": 14,
+          "cells": 18,
+          "mean_censored_slots": 11.166666666666666,
+          "cost": {
+            "known_estimated_usd": 9.8781925,
+            "unknown_reserved_usd": 2.0692,
+            "liability_usd": 11.947392500000001,
+            "cells": 18,
+            "solves": 14,
+            "known_usd_per_run": 0.5487884722222223,
+            "known_usd_per_solved_cell": 0.7055851785714287,
+            "liability_usd_per_solved_cell": 0.8533851785714287,
+            "model_request_wall_s": 6476.376998696935,
+            "compute_cost_usd": null
+          }
+        }
+      },
+      "pro_minus_random_seed_deltas": [
+        -0.5393665299974817,
+        -3.117712386393468,
+        -2.317478287442758,
+        -1.173019743632858,
+        -1.9457812717187624,
+        -2.923851314469625
+      ],
+      "mean_difference": -2.002868255609159
+    },
+    "32": {
+      "arms": {
+        "phase-random": {
+          "mean_auc": 9.849325290056658,
+          "mean_auc_per_interval": 0.317720170646989,
+          "mean_final_error": 0.24446660183399724,
+          "solves": 2,
+          "cells": 18,
+          "mean_censored_slots": 31.833333333333332,
+          "cost": {
+            "known_estimated_usd": 0.0,
+            "unknown_reserved_usd": 0.0,
+            "liability_usd": 0.0,
+            "cells": 18,
+            "solves": 2,
+            "known_usd_per_run": 0.0,
+            "known_usd_per_solved_cell": 0.0,
+            "liability_usd_per_solved_cell": 0.0,
+            "model_request_wall_s": 0.0,
+            "compute_cost_usd": null
+          }
+        },
+        "pro-4096": {
+          "mean_auc": 4.542424557154489,
+          "mean_auc_per_interval": 0.14652982442433835,
+          "mean_final_error": 0.0640780407413145,
+          "solves": 14,
+          "cells": 18,
+          "mean_censored_slots": 14.722222222222221,
+          "cost": {
+            "known_estimated_usd": 21.9023725,
+            "unknown_reserved_usd": 5.37992,
+            "liability_usd": 27.282292499999997,
+            "cells": 18,
+            "solves": 14,
+            "known_usd_per_run": 1.216798472222222,
+            "known_usd_per_solved_cell": 1.5644551785714285,
+            "liability_usd_per_solved_cell": 1.9487351785714284,
+            "model_request_wall_s": 13307.551413547939,
+            "compute_cost_usd": null
+          }
+        }
+      },
+      "pro_minus_random_seed_deltas": [
+        -3.965445817110284,
+        -6.257549108978749,
+        -4.599018250655604,
+        -3.850605099906822,
+        -6.069285063463215,
+        -7.099501057298342
+      ],
+      "mean_difference": -5.30690073290217
+    },
+    "64": {
+      "arms": {
+        "phase-random": {
+          "mean_auc": 16.683925204751866,
+          "mean_auc_per_interval": 0.26482420959923597,
+          "mean_final_error": 0.19143113772582945,
+          "solves": 5,
+          "cells": 18,
+          "mean_censored_slots": 57.833333333333336,
+          "cost": {
+            "known_estimated_usd": 0.0,
+            "unknown_reserved_usd": 0.0,
+            "liability_usd": 0.0,
+            "cells": 18,
+            "solves": 5,
+            "known_usd_per_run": 0.0,
+            "known_usd_per_solved_cell": 0.0,
+            "liability_usd_per_solved_cell": 0.0,
+            "model_request_wall_s": 0.0,
+            "compute_cost_usd": null
+          }
+        },
+        "pro-4096": {
+          "mean_auc": 6.138277452107067,
+          "mean_auc_per_interval": 0.09743297543027091,
+          "mean_final_error": 0.0398448146065028,
+          "solves": 18,
+          "cells": 18,
+          "mean_censored_slots": 16.88888888888889,
+          "cost": {
+            "known_estimated_usd": 46.7463975,
+            "unknown_reserved_usd": 11.58752,
+            "liability_usd": 58.3339175,
+            "cells": 18,
+            "solves": 18,
+            "known_usd_per_run": 2.5970220833333335,
+            "known_usd_per_solved_cell": 2.5970220833333335,
+            "liability_usd_per_solved_cell": 3.2407731944444444,
+            "model_request_wall_s": 27235.419469570043,
+            "compute_cost_usd": null
+          }
+        }
+      },
+      "pro_minus_random_seed_deltas": [
+        -7.41147317815428,
+        -11.820226357435159,
+        -8.04613363455242,
+        -9.50799661487643,
+        -12.157558948102551,
+        -14.330497782747944
+      ],
+      "mean_difference": -10.545647752644797
+    },
+    "128": {
+      "arms": {
+        "phase-random": {
+          "mean_auc": 27.99830432510873,
+          "mean_auc_per_interval": 0.2204590891740845,
+          "mean_final_error": 0.1671915797016041,
+          "solves": 5,
+          "cells": 18,
+          "mean_censored_slots": 104.05555555555556,
+          "cost": {
+            "known_estimated_usd": 0.0,
+            "unknown_reserved_usd": 0.0,
+            "liability_usd": 0.0,
+            "cells": 18,
+            "solves": 5,
+            "known_usd_per_run": 0.0,
+            "known_usd_per_solved_cell": 0.0,
+            "liability_usd_per_solved_cell": 0.0,
+            "model_request_wall_s": 0.0,
+            "compute_cost_usd": null
+          }
+        },
+        "pro-4096": {
+          "mean_auc": 8.40173035450213,
+          "mean_auc_per_interval": 0.06615535712206401,
+          "mean_final_error": 0.030636759143096947,
+          "solves": 18,
+          "cells": 18,
+          "mean_censored_slots": 16.88888888888889,
+          "cost": {
+            "known_estimated_usd": 99.39695125,
+            "unknown_reserved_usd": 16.5536,
+            "liability_usd": 115.95055125,
+            "cells": 18,
+            "solves": 18,
+            "known_usd_per_run": 5.522052847222223,
+            "known_usd_per_solved_cell": 5.522052847222223,
+            "liability_usd_per_solved_cell": 6.441697291666667,
+            "model_request_wall_s": 55461.19718748418,
+            "compute_cost_usd": null
+          }
+        }
+      },
+      "pro_minus_random_seed_deltas": [
+        -13.309117341558931,
+        -21.91806696096574,
+        -12.988561030681616,
+        -20.79895821414315,
+        -20.48814835780185,
+        -28.076591918488308
+      ],
+      "mean_difference": -19.5965739706066
+    }
+  },
+  "cells": [
+    {
+      "cell": {
+        "target": "target_0",
+        "seed": 1200,
+        "arm": "phase-random"
+      },
+      "prefixes": {
+        "16": {
+          "budget": 16,
+          "auc": 7.6584400315858545,
+          "mean_auc": 0.5105626687723903,
+          "final_loss": 0.4864045863519829,
+          "solved": false,
+          "evaluations_to_target": 16,
+          "right_censored": true,
+          "valid_slots": 16
+        },
+        "32": {
+          "budget": 32,
+          "auc": 15.377715299104974,
+          "mean_auc": 0.4960553322291927,
+          "final_loss": 0.4442725102769118,
+          "solved": false,
+          "evaluations_to_target": 32,
+          "right_censored": true,
+          "valid_slots": 32
+        },
+        "64": {
+          "budget": 64,
+          "auc": 20.971240593503214,
+          "mean_auc": 0.33287683481751135,
+          "final_loss": 0.09230536601311844,
+          "solved": true,
+          "evaluations_to_target": 40,
+          "right_censored": false,
+          "valid_slots": 63
+        },
+        "128": {
+          "budget": 128,
+          "auc": 26.87878401834279,
+          "mean_auc": 0.21164396864836843,
+          "final_loss": 0.09230536601311844,
+          "solved": true,
+          "evaluations_to_target": 40,
+          "right_censored": false,
+          "valid_slots": 125
+        }
+      },
+      "cost": {
+        "known_estimated_usd": 0.0,
+        "unknown_reserved_usd": 0.0,
+        "liability_usd": 0.0,
+        "cells": 1,
+        "solves": 1,
+        "known_usd_per_run": 0.0,
+        "known_usd_per_solved_cell": 0.0,
+        "liability_usd_per_solved_cell": 0.0,
+        "model_request_wall_s": 0.0,
+        "compute_cost_usd": null
+      }
+    },
+    {
+      "cell": {
+        "target": "target_0",
+        "seed": 1200,
+        "arm": "pro-4096"
+      },
+      "prefixes": {
+        "16": {
+          "budget": 16,
+          "auc": 8.683614631812969,
+          "mean_auc": 0.5789076421208645,
+          "final_loss": 0.04928889910728214,
+          "solved": true,
+          "evaluations_to_target": 16,
+          "right_censored": false,
+          "valid_slots": 14
+        },
+        "32": {
+          "budget": 32,
+          "auc": 9.236234748756825,
+          "mean_auc": 0.2979430564115105,
+          "final_loss": 0.03100845732530325,
+          "solved": true,
+          "evaluations_to_target": 16,
+          "right_censored": false,
+          "valid_slots": 30
+        },
+        "64": {
+          "budget": 64,
+          "auc": 10.22850538316653,
+          "mean_auc": 0.16235722830423063,
+          "final_loss": 0.03100845732530325,
+          "solved": true,
+          "evaluations_to_target": 16,
+          "right_censored": false,
+          "valid_slots": 60
+        },
+        "128": {
+          "budget": 128,
+          "auc": 12.1427057278638,
+          "mean_auc": 0.09561185612491181,
+          "final_loss": 0.029587428555159043,
+          "solved": true,
+          "evaluations_to_target": 16,
+          "right_censored": false,
+          "valid_slots": 120
+        }
+      },
+      "cost": {
+        "known_estimated_usd": 5.04985,
+        "unknown_reserved_usd": 1.65536,
+        "liability_usd": 6.70521,
+        "cells": 1,
+        "solves": 1,
+        "known_usd_per_run": 5.04985,
+        "known_usd_per_solved_cell": 5.04985,
+        "liability_usd_per_solved_cell": 6.70521,
+        "model_request_wall_s": 2975.140692214998,
+        "compute_cost_usd": null
+      }
+    },
+    {
+      "cell": {
+        "target": "target_0",
+        "seed": 1201,
+        "arm": "phase-random"
+      },
+      "prefixes": {
+        "16": {
+          "budget": 16,
+          "auc": 8.235886426286013,
+          "mean_auc": 0.5490590950857343,
+          "final_loss": 0.43324734547673516,
+          "solved": false,
+          "evaluations_to_target": 16,
+          "right_censored": true,
+          "valid_slots": 15
+        },
+        "32": {
+          "budget": 32,
+          "auc": 14.939268685996504,
+          "mean_auc": 0.48191189309666144,
+          "final_loss": 0.391688205855413,
+          "solved": false,
+          "evaluations_to_target": 32,
+          "right_censored": true,
+          "valid_slots": 31
+        },
+        "64": {
+          "budget": 64,
+          "auc": 27.473291273369718,
+          "mean_auc": 0.436083988466186,
+          "final_loss": 0.391688205855413,
+          "solved": false,
+          "evaluations_to_target": 64,
+          "right_censored": true,
+          "valid_slots": 62
+        },
+        "128": {
+          "budget": 128,
+          "auc": 50.89047631892882,
+          "mean_auc": 0.40071241196006946,
+          "final_loss": 0.35284443810982863,
+          "solved": false,
+          "evaluations_to_target": 128,
+          "right_censored": true,
+          "valid_slots": 126
+        }
+      },
+      "cost": {
+        "known_estimated_usd": 0.0,
+        "unknown_reserved_usd": 0.0,
+        "liability_usd": 0.0,
+        "cells": 1,
+        "solves": 0,
+        "known_usd_per_run": 0.0,
+        "known_usd_per_solved_cell": null,
+        "liability_usd_per_solved_cell": null,
+        "model_request_wall_s": 0.0,
+        "compute_cost_usd": null
+      }
+    },
+    {
+      "cell": {
+        "target": "target_0",
+        "seed": 1201,
+        "arm": "pro-4096"
+      },
+      "prefixes": {
+        "16": {
+          "budget": 16,
+          "auc": 3.1898872071792956,
+          "mean_auc": 0.2126591471452864,
+          "final_loss": 0.13455878642798524,
+          "solved": false,
+          "evaluations_to_target": 16,
+          "right_censored": true,
+          "valid_slots": 11
+        },
+        "32": {
+          "budget": 32,
+          "auc": 5.041330559070525,
+          "mean_auc": 0.16262356642162984,
+          "final_loss": 0.10617410282446228,
+          "solved": false,
+          "evaluations_to_target": 32,
+          "right_censored": true,
+          "valid_slots": 25
+        },
+        "64": {
+          "budget": 64,
+          "auc": 6.4291346747767575,
+          "mean_auc": 0.10204975674248822,
+          "final_loss": 0.04092589492385267,
+          "solved": true,
+          "evaluations_to_target": 33,
+          "right_censored": false,
+          "valid_slots": 53
+        },
+        "128": {
+          "budget": 128,
+          "auc": 9.016098629819963,
+          "mean_auc": 0.07099290259700758,
+          "final_loss": 0.035054382181422476,
+          "solved": true,
+          "evaluations_to_target": 33,
+          "right_censored": false,
+          "valid_slots": 115
+        }
+      },
+      "cost": {
+        "known_estimated_usd": 5.0064425,
+        "unknown_reserved_usd": 2.48304,
+        "liability_usd": 7.4894825,
+        "cells": 1,
+        "solves": 1,
+        "known_usd_per_run": 5.0064425,
+        "known_usd_per_solved_cell": 5.0064425,
+        "liability_usd_per_solved_cell": 7.4894825,
+        "model_request_wall_s": 2929.6081581909893,
+        "compute_cost_usd": null
+      }
+    },
+    {
+      "cell": {
+        "target": "target_0",
+        "seed": 1202,
+        "arm": "phase-random"
+      },
+      "prefixes": {
+        "16": {
+          "budget": 16,
+          "auc": 6.741454759192551,
+          "mean_auc": 0.4494303172795034,
+          "final_loss": 0.36639301253755086,
+          "solved": false,
+          "evaluations_to_target": 16,
+          "right_censored": true,
+          "valid_slots": 15
+        },
+        "32": {
+          "budget": 32,
+          "auc": 12.603742959793365,
+          "mean_auc": 0.40657235354172144,
+          "final_loss": 0.36639301253755086,
+          "solved": false,
+          "evaluations_to_target": 32,
+          "right_censored": true,
+          "valid_slots": 30
+        },
+        "64": {
+          "budget": 64,
+          "auc": 23.327314438191493,
+          "mean_auc": 0.3702748323522459,
+          "final_loss": 0.32999283352651454,
+          "solved": false,
+          "evaluations_to_target": 64,
+          "right_censored": true,
+          "valid_slots": 61
+        },
+        "128": {
+          "budget": 128,
+          "auc": 37.03243451670755,
+          "mean_auc": 0.2915939725725004,
+          "final_loss": 0.2053807113890209,
+          "solved": false,
+          "evaluations_to_target": 128,
+          "right_censored": true,
+          "valid_slots": 125
+        }
+      },
+      "cost": {
+        "known_estimated_usd": 0.0,
+        "unknown_reserved_usd": 0.0,
+        "liability_usd": 0.0,
+        "cells": 1,
+        "solves": 0,
+        "known_usd_per_run": 0.0,
+        "known_usd_per_solved_cell": null,
+        "liability_usd_per_solved_cell": null,
+        "model_request_wall_s": 0.0,
+        "compute_cost_usd": null
+      }
+    },
+    {
+      "cell": {
+        "target": "target_0",
+        "seed": 1202,
+        "arm": "pro-4096"
+      },
+      "prefixes": {
+        "16": {
+          "budget": 16,
+          "auc": 2.2911795180736907,
+          "mean_auc": 0.15274530120491273,
+          "final_loss": 0.06463952656663943,
+          "solved": true,
+          "evaluations_to_target": 9,
+          "right_censored": false,
+          "valid_slots": 16
+        },
+        "32": {
+          "budget": 32,
+          "auc": 3.3254119431399216,
+          "mean_auc": 0.1072713530045136,
+          "final_loss": 0.06463952656663943,
+          "solved": true,
+          "evaluations_to_target": 9,
+          "right_censored": false,
+          "valid_slots": 32
+        },
+        "64": {
+          "budget": 64,
+          "auc": 5.061718120319057,
+          "mean_auc": 0.08034473206855645,
+          "final_loss": 0.04003518042194858,
+          "solved": true,
+          "evaluations_to_target": 9,
+          "right_censored": false,
+          "valid_slots": 64
+        },
+        "128": {
+          "budget": 128,
+          "auc": 7.623969667323766,
+          "mean_auc": 0.06003125722302178,
+          "final_loss": 0.04003518042194858,
+          "solved": true,
+          "evaluations_to_target": 9,
+          "right_censored": false,
+          "valid_slots": 128
+        }
+      },
+      "cost": {
+        "known_estimated_usd": 5.9225925,
+        "unknown_reserved_usd": 0.0,
+        "liability_usd": 5.9225925,
+        "cells": 1,
+        "solves": 1,
+        "known_usd_per_run": 5.9225925,
+        "known_usd_per_solved_cell": 5.9225925,
+        "liability_usd_per_solved_cell": 5.9225925,
+        "model_request_wall_s": 3160.4253920179763,
+        "compute_cost_usd": null
+      }
+    },
+    {
+      "cell": {
+        "target": "target_0",
+        "seed": 1203,
+        "arm": "phase-random"
+      },
+      "prefixes": {
+        "16": {
+          "budget": 16,
+          "auc": 5.782164776098215,
+          "mean_auc": 0.38547765173988097,
+          "final_loss": 0.27430054961826633,
+          "solved": false,
+          "evaluations_to_target": 16,
+          "right_censored": true,
+          "valid_slots": 16
+        },
+        "32": {
+          "budget": 32,
+          "auc": 10.170973569990476,
+          "mean_auc": 0.328095921612596,
+          "final_loss": 0.27430054961826633,
+          "solved": false,
+          "evaluations_to_target": 32,
+          "right_censored": true,
+          "valid_slots": 32
+        },
+        "64": {
+          "budget": 64,
+          "auc": 18.948591157775,
+          "mean_auc": 0.3007712882186508,
+          "final_loss": 0.27430054961826633,
+          "solved": false,
+          "evaluations_to_target": 64,
+          "right_censored": true,
+          "valid_slots": 64
+        },
+        "128": {
+          "budget": 128,
+          "auc": 36.503826333344044,
+          "mean_auc": 0.28743170341215785,
+          "final_loss": 0.27430054961826633,
+          "solved": false,
+          "evaluations_to_target": 128,
+          "right_censored": true,
+          "valid_slots": 127
+        }
+      },
+      "cost": {
+        "known_estimated_usd": 0.0,
+        "unknown_reserved_usd": 0.0,
+        "liability_usd": 0.0,
+        "cells": 1,
+        "solves": 0,
+        "known_usd_per_run": 0.0,
+        "known_usd_per_solved_cell": null,
+        "liability_usd_per_solved_cell": null,
+        "model_request_wall_s": 0.0,
+        "compute_cost_usd": null
+      }
+    },
+    {
+      "cell": {
+        "target": "target_0",
+        "seed": 1203,
+        "arm": "pro-4096"
+      },
+      "prefixes": {
+        "16": {
+          "budget": 16,
+          "auc": 2.244528784442628,
+          "mean_auc": 0.1496352522961752,
+          "final_loss": 0.09583829932631258,
+          "solved": true,
+          "evaluations_to_target": 3,
+          "right_censored": false,
+          "valid_slots": 16
+        },
+        "32": {
+          "budget": 32,
+          "auc": 3.2250283102698027,
+          "mean_auc": 0.1040331712990259,
+          "final_loss": 0.04317989328880525,
+          "solved": true,
+          "evaluations_to_target": 3,
+          "right_censored": false,
+          "valid_slots": 32
+        },
+        "64": {
+          "budget": 64,
+          "auc": 4.606784895511571,
+          "mean_auc": 0.07312356977002493,
+          "final_loss": 0.04317989328880525,
+          "solved": true,
+          "evaluations_to_target": 3,
+          "right_censored": false,
+          "valid_slots": 64
+        },
+        "128": {
+          "budget": 128,
+          "auc": 6.945568325626224,
+          "mean_auc": 0.05468951437500964,
+          "final_loss": 0.031853766878968404,
+          "solved": true,
+          "evaluations_to_target": 3,
+          "right_censored": false,
+          "valid_slots": 128
+        }
+      },
+      "cost": {
+        "known_estimated_usd": 5.68665375,
+        "unknown_reserved_usd": 0.0,
+        "liability_usd": 5.68665375,
+        "cells": 1,
+        "solves": 1,
+        "known_usd_per_run": 5.68665375,
+        "known_usd_per_solved_cell": 5.68665375,
+        "liability_usd_per_solved_cell": 5.68665375,
+        "model_request_wall_s": 3011.482856442999,
+        "compute_cost_usd": null
+      }
+    },
+    {
+      "cell": {
+        "target": "target_0",
+        "seed": 1204,
+        "arm": "phase-random"
+      },
+      "prefixes": {
+        "16": {
+          "budget": 16,
+          "auc": 7.8885839047717266,
+          "mean_auc": 0.5259055936514484,
+          "final_loss": 0.4384744273014072,
+          "solved": false,
+          "evaluations_to_target": 16,
+          "right_censored": true,
+          "valid_slots": 16
+        },
+        "32": {
+          "budget": 32,
+          "auc": 13.008701689397865,
+          "mean_auc": 0.4196355383676731,
+          "final_loss": 0.2736506836321571,
+          "solved": false,
+          "evaluations_to_target": 32,
+          "right_censored": true,
+          "valid_slots": 32
+        },
+        "64": {
+          "budget": 64,
+          "auc": 21.765523565626896,
+          "mean_auc": 0.34548450104169676,
+          "final_loss": 0.2736506836321571,
+          "solved": false,
+          "evaluations_to_target": 64,
+          "right_censored": true,
+          "valid_slots": 62
+        },
+        "128": {
+          "budget": 128,
+          "auc": 39.279167318084944,
+          "mean_auc": 0.3092847820321649,
+          "final_loss": 0.2736506836321571,
+          "solved": false,
+          "evaluations_to_target": 128,
+          "right_censored": true,
+          "valid_slots": 125
+        }
+      },
+      "cost": {
+        "known_estimated_usd": 0.0,
+        "unknown_reserved_usd": 0.0,
+        "liability_usd": 0.0,
+        "cells": 1,
+        "solves": 0,
+        "known_usd_per_run": 0.0,
+        "known_usd_per_solved_cell": null,
+        "liability_usd_per_solved_cell": null,
+        "model_request_wall_s": 0.0,
+        "compute_cost_usd": null
+      }
+    },
+    {
+      "cell": {
+        "target": "target_0",
+        "seed": 1204,
+        "arm": "pro-4096"
+      },
+      "prefixes": {
+        "16": {
+          "budget": 16,
+          "auc": 4.708495733005225,
+          "mean_auc": 0.3138997155336816,
+          "final_loss": 0.04446967377674929,
+          "solved": true,
+          "evaluations_to_target": 9,
+          "right_censored": false,
+          "valid_slots": 14
+        },
+        "32": {
+          "budget": 32,
+          "auc": 5.413918145014132,
+          "mean_auc": 0.17464252080690748,
+          "final_loss": 0.04203272640911683,
+          "solved": true,
+          "evaluations_to_target": 9,
+          "right_censored": false,
+          "valid_slots": 30
+        },
+        "64": {
+          "budget": 64,
+          "auc": 6.441368344030599,
+          "mean_auc": 0.10224394196873968,
+          "final_loss": 0.027366396016995444,
+          "solved": true,
+          "evaluations_to_target": 9,
+          "right_censored": false,
+          "valid_slots": 60
+        },
+        "128": {
+          "budget": 128,
+          "auc": 7.720344430903705,
+          "mean_auc": 0.06079011362916303,
+          "final_loss": 0.010964293310005159,
+          "solved": true,
+          "evaluations_to_target": 9,
+          "right_censored": false,
+          "valid_slots": 124
+        }
+      },
+      "cost": {
+        "known_estimated_usd": 5.38606,
+        "unknown_reserved_usd": 0.82768,
+        "liability_usd": 6.21374,
+        "cells": 1,
+        "solves": 1,
+        "known_usd_per_run": 5.38606,
+        "known_usd_per_solved_cell": 5.38606,
+        "liability_usd_per_solved_cell": 6.21374,
+        "model_request_wall_s": 3052.0935629109736,
+        "compute_cost_usd": null
+      }
+    },
+    {
+      "cell": {
+        "target": "target_0",
+        "seed": 1205,
+        "arm": "phase-random"
+      },
+      "prefixes": {
+        "16": {
+          "budget": 16,
+          "auc": 8.522898595369428,
+          "mean_auc": 0.5681932396912952,
+          "final_loss": 0.5149016410105189,
+          "solved": false,
+          "evaluations_to_target": 16,
+          "right_censored": true,
+          "valid_slots": 16
+        },
+        "32": {
+          "budget": 32,
+          "auc": 16.157337778874208,
+          "mean_auc": 0.5212044444798132,
+          "final_loss": 0.3791202213088667,
+          "solved": false,
+          "evaluations_to_target": 32,
+          "right_censored": true,
+          "valid_slots": 30
+        },
+        "64": {
+          "budget": 64,
+          "auc": 28.289184860757942,
+          "mean_auc": 0.4490346803294911,
+          "final_loss": 0.3791202213088667,
+          "solved": false,
+          "evaluations_to_target": 64,
+          "right_censored": true,
+          "valid_slots": 62
+        },
+        "128": {
+          "budget": 128,
+          "auc": 51.32362739236617,
+          "mean_auc": 0.4041230503335919,
+          "final_loss": 0.3191567270571966,
+          "solved": false,
+          "evaluations_to_target": 128,
+          "right_censored": true,
+          "valid_slots": 123
+        }
+      },
+      "cost": {
+        "known_estimated_usd": 0.0,
+        "unknown_reserved_usd": 0.0,
+        "liability_usd": 0.0,
+        "cells": 1,
+        "solves": 0,
+        "known_usd_per_run": 0.0,
+        "known_usd_per_solved_cell": null,
+        "liability_usd_per_solved_cell": null,
+        "model_request_wall_s": 0.0,
+        "compute_cost_usd": null
+      }
+    },
+    {
+      "cell": {
+        "target": "target_0",
+        "seed": 1205,
+        "arm": "pro-4096"
+      },
+      "prefixes": {
+        "16": {
+          "budget": 16,
+          "auc": 5.163799935945711,
+          "mean_auc": 0.3442533290630474,
+          "final_loss": 0.08023143830071756,
+          "solved": true,
+          "evaluations_to_target": 15,
+          "right_censored": false,
+          "valid_slots": 16
+        },
+        "32": {
+          "budget": 32,
+          "auc": 5.838308294141178,
+          "mean_auc": 0.18833252561745734,
+          "final_loss": 0.037457924384164676,
+          "solved": true,
+          "evaluations_to_target": 15,
+          "right_censored": false,
+          "valid_slots": 32
+        },
+        "64": {
+          "budget": 64,
+          "auc": 7.036961874434447,
+          "mean_auc": 0.11169780753070552,
+          "final_loss": 0.037457924384164676,
+          "solved": true,
+          "evaluations_to_target": 15,
+          "right_censored": false,
+          "valid_slots": 60
+        },
+        "128": {
+          "budget": 128,
+          "auc": 9.434269035020986,
+          "mean_auc": 0.07428558295292115,
+          "final_loss": 0.037457924384164676,
+          "solved": true,
+          "evaluations_to_target": 15,
+          "right_censored": false,
+          "valid_slots": 124
+        }
+      },
+      "cost": {
+        "known_estimated_usd": 5.3863975,
+        "unknown_reserved_usd": 0.82768,
+        "liability_usd": 6.2140775,
+        "cells": 1,
+        "solves": 1,
+        "known_usd_per_run": 5.3863975,
+        "known_usd_per_solved_cell": 5.3863975,
+        "liability_usd_per_solved_cell": 6.2140775,
+        "model_request_wall_s": 2871.528104951998,
+        "compute_cost_usd": null
+      }
+    },
+    {
+      "cell": {
+        "target": "target_1",
+        "seed": 1200,
+        "arm": "phase-random"
+      },
+      "prefixes": {
+        "16": {
+          "budget": 16,
+          "auc": 6.1955447829518775,
+          "mean_auc": 0.4130363188634585,
+          "final_loss": 0.3945579740616226,
+          "solved": false,
+          "evaluations_to_target": 16,
+          "right_censored": true,
+          "valid_slots": 16
+        },
+        "32": {
+          "budget": 32,
+          "auc": 11.523122666007016,
+          "mean_auc": 0.3717136343873231,
+          "final_loss": 0.29083695280574634,
+          "solved": false,
+          "evaluations_to_target": 32,
+          "right_censored": true,
+          "valid_slots": 32
+        },
+        "64": {
+          "budget": 64,
+          "auc": 20.829905155790897,
+          "mean_auc": 0.3306334151712841,
+          "final_loss": 0.29083695280574634,
+          "solved": false,
+          "evaluations_to_target": 64,
+          "right_censored": true,
+          "valid_slots": 63
+        },
+        "128": {
+          "budget": 128,
+          "auc": 36.33972800859357,
+          "mean_auc": 0.286139590618847,
+          "final_loss": 0.15310291395232567,
+          "solved": false,
+          "evaluations_to_target": 128,
+          "right_censored": true,
+          "valid_slots": 125
+        }
+      },
+      "cost": {
+        "known_estimated_usd": 0.0,
+        "unknown_reserved_usd": 0.0,
+        "liability_usd": 0.0,
+        "cells": 1,
+        "solves": 0,
+        "known_usd_per_run": 0.0,
+        "known_usd_per_solved_cell": null,
+        "liability_usd_per_solved_cell": null,
+        "model_request_wall_s": 0.0,
+        "compute_cost_usd": null
+      }
+    },
+    {
+      "cell": {
+        "target": "target_1",
+        "seed": 1200,
+        "arm": "pro-4096"
+      },
+      "prefixes": {
+        "16": {
+          "budget": 16,
+          "auc": 2.14627721139125,
+          "mean_auc": 0.14308514742608333,
+          "final_loss": 0.07007109293892985,
+          "solved": true,
+          "evaluations_to_target": 8,
+          "right_censored": false,
+          "valid_slots": 14
+        },
+        "32": {
+          "budget": 32,
+          "auc": 3.2674146984141275,
+          "mean_auc": 0.1054004741423912,
+          "final_loss": 0.07007109293892985,
+          "solved": true,
+          "evaluations_to_target": 8,
+          "right_censored": false,
+          "valid_slots": 30
+        },
+        "64": {
+          "budget": 64,
+          "auc": 4.731094659450918,
+          "mean_auc": 0.07509674062620504,
+          "final_loss": 0.037348361105670184,
+          "solved": true,
+          "evaluations_to_target": 8,
+          "right_censored": false,
+          "valid_slots": 58
+        },
+        "128": {
+          "budget": 128,
+          "auc": 7.12138977021381,
+          "mean_auc": 0.05607393519853394,
+          "final_loss": 0.037348361105670184,
+          "solved": true,
+          "evaluations_to_target": 8,
+          "right_censored": false,
+          "valid_slots": 118
+        }
+      },
+      "cost": {
+        "known_estimated_usd": 5.14499125,
+        "unknown_reserved_usd": 0.82768,
+        "liability_usd": 5.97267125,
+        "cells": 1,
+        "solves": 1,
+        "known_usd_per_run": 5.14499125,
+        "known_usd_per_solved_cell": 5.14499125,
+        "liability_usd_per_solved_cell": 5.97267125,
+        "model_request_wall_s": 2872.3535123129623,
+        "compute_cost_usd": null
+      }
+    },
+    {
+      "cell": {
+        "target": "target_1",
+        "seed": 1201,
+        "arm": "phase-random"
+      },
+      "prefixes": {
+        "16": {
+          "budget": 16,
+          "auc": 4.495001444977513,
+          "mean_auc": 0.29966676299850087,
+          "final_loss": 0.1750262021004189,
+          "solved": false,
+          "evaluations_to_target": 16,
+          "right_censored": true,
+          "valid_slots": 15
+        },
+        "32": {
+          "budget": 32,
+          "auc": 7.193252078738158,
+          "mean_auc": 0.23204038963671478,
+          "final_loss": 0.10691380220304768,
+          "solved": false,
+          "evaluations_to_target": 32,
+          "right_censored": true,
+          "valid_slots": 31
+        },
+        "64": {
+          "budget": 64,
+          "auc": 9.196607824496283,
+          "mean_auc": 0.14597790197613147,
+          "final_loss": 0.03420170349846304,
+          "solved": true,
+          "evaluations_to_target": 45,
+          "right_censored": false,
+          "valid_slots": 62
+        },
+        "128": {
+          "budget": 128,
+          "auc": 11.385516848397918,
+          "mean_auc": 0.08964973896376313,
+          "final_loss": 0.03420170349846304,
+          "solved": true,
+          "evaluations_to_target": 45,
+          "right_censored": false,
+          "valid_slots": 126
+        }
+      },
+      "cost": {
+        "known_estimated_usd": 0.0,
+        "unknown_reserved_usd": 0.0,
+        "liability_usd": 0.0,
+        "cells": 1,
+        "solves": 1,
+        "known_usd_per_run": 0.0,
+        "known_usd_per_solved_cell": 0.0,
+        "liability_usd_per_solved_cell": 0.0,
+        "model_request_wall_s": 0.0,
+        "compute_cost_usd": null
+      }
+    },
+    {
+      "cell": {
+        "target": "target_1",
+        "seed": 1201,
+        "arm": "pro-4096"
+      },
+      "prefixes": {
+        "16": {
+          "budget": 16,
+          "auc": 2.1435863361788714,
+          "mean_auc": 0.1429057557452581,
+          "final_loss": 0.04095368884928119,
+          "solved": true,
+          "evaluations_to_target": 7,
+          "right_censored": false,
+          "valid_slots": 15
+        },
+        "32": {
+          "budget": 32,
+          "auc": 2.7988453577673704,
+          "mean_auc": 0.09028533412152807,
+          "final_loss": 0.04095368884928119,
+          "solved": true,
+          "evaluations_to_target": 7,
+          "right_censored": false,
+          "valid_slots": 31
+        },
+        "64": {
+          "budget": 64,
+          "auc": 4.1093634009443685,
+          "mean_auc": 0.06522799049118046,
+          "final_loss": 0.04095368884928119,
+          "solved": true,
+          "evaluations_to_target": 7,
+          "right_censored": false,
+          "valid_slots": 61
+        },
+        "128": {
+          "budget": 128,
+          "auc": 5.7206034938487,
+          "mean_auc": 0.04504412199880866,
+          "final_loss": 0.024737889061886783,
+          "solved": true,
+          "evaluations_to_target": 7,
+          "right_censored": false,
+          "valid_slots": 122
+        }
+      },
+      "cost": {
+        "known_estimated_usd": 5.3858125,
+        "unknown_reserved_usd": 0.82768,
+        "liability_usd": 6.2134925,
+        "cells": 1,
+        "solves": 1,
+        "known_usd_per_run": 5.3858125,
+        "known_usd_per_solved_cell": 5.3858125,
+        "liability_usd_per_solved_cell": 6.2134925,
+        "model_request_wall_s": 3001.7826495600384,
+        "compute_cost_usd": null
+      }
+    },
+    {
+      "cell": {
+        "target": "target_1",
+        "seed": 1202,
+        "arm": "phase-random"
+      },
+      "prefixes": {
+        "16": {
+          "budget": 16,
+          "auc": 2.1940705790705195,
+          "mean_auc": 0.14627137193803463,
+          "final_loss": 0.11421401474405446,
+          "solved": false,
+          "evaluations_to_target": 16,
+          "right_censored": true,
+          "valid_slots": 15
+        },
+        "32": {
+          "budget": 32,
+          "auc": 3.854564227543188,
+          "mean_auc": 0.12434078153365123,
+          "final_loss": 0.047441779771173316,
+          "solved": true,
+          "evaluations_to_target": 30,
+          "right_censored": false,
+          "valid_slots": 30
+        },
+        "64": {
+          "budget": 64,
+          "auc": 5.372701180220734,
+          "mean_auc": 0.08528097111461481,
+          "final_loss": 0.047441779771173316,
+          "solved": true,
+          "evaluations_to_target": 30,
+          "right_censored": false,
+          "valid_slots": 61
+        },
+        "128": {
+          "budget": 128,
+          "auc": 8.408975085575825,
+          "mean_auc": 0.06621240224862855,
+          "final_loss": 0.047441779771173316,
+          "solved": true,
+          "evaluations_to_target": 30,
+          "right_censored": false,
+          "valid_slots": 125
+        }
+      },
+      "cost": {
+        "known_estimated_usd": 0.0,
+        "unknown_reserved_usd": 0.0,
+        "liability_usd": 0.0,
+        "cells": 1,
+        "solves": 1,
+        "known_usd_per_run": 0.0,
+        "known_usd_per_solved_cell": 0.0,
+        "liability_usd_per_solved_cell": 0.0,
+        "model_request_wall_s": 0.0,
+        "compute_cost_usd": null
+      }
+    },
+    {
+      "cell": {
+        "target": "target_1",
+        "seed": 1202,
+        "arm": "pro-4096"
+      },
+      "prefixes": {
+        "16": {
+          "budget": 16,
+          "auc": 2.246826018096119,
+          "mean_auc": 0.14978840120640793,
+          "final_loss": 0.10408477469239436,
+          "solved": false,
+          "evaluations_to_target": 16,
+          "right_censored": true,
+          "valid_slots": 16
+        },
+        "32": {
+          "budget": 32,
+          "auc": 3.912182413174428,
+          "mean_auc": 0.12619943268304606,
+          "final_loss": 0.10408477469239436,
+          "solved": false,
+          "evaluations_to_target": 32,
+          "right_censored": true,
+          "valid_slots": 32
+        },
+        "64": {
+          "budget": 64,
+          "auc": 6.297943562667226,
+          "mean_auc": 0.09996735813757501,
+          "final_loss": 0.054565000454581944,
+          "solved": true,
+          "evaluations_to_target": 35,
+          "right_censored": false,
+          "valid_slots": 60
+        },
+        "128": {
+          "budget": 128,
+          "auc": 9.390360888055978,
+          "mean_auc": 0.0739398495122518,
+          "final_loss": 0.04494234309650532,
+          "solved": true,
+          "evaluations_to_target": 35,
+          "right_censored": false,
+          "valid_slots": 124
+        }
+      },
+      "cost": {
+        "known_estimated_usd": 5.7686825,
+        "unknown_reserved_usd": 0.82768,
+        "liability_usd": 6.5963625,
+        "cells": 1,
+        "solves": 1,
+        "known_usd_per_run": 5.7686825,
+        "known_usd_per_solved_cell": 5.7686825,
+        "liability_usd_per_solved_cell": 6.5963625,
+        "model_request_wall_s": 3235.0118265979545,
+        "compute_cost_usd": null
+      }
+    },
+    {
+      "cell": {
+        "target": "target_1",
+        "seed": 1203,
+        "arm": "phase-random"
+      },
+      "prefixes": {
+        "16": {
+          "budget": 16,
+          "auc": 3.929750761071517,
+          "mean_auc": 0.26198338407143446,
+          "final_loss": 0.21030403977941595,
+          "solved": false,
+          "evaluations_to_target": 16,
+          "right_censored": true,
+          "valid_slots": 16
+        },
+        "32": {
+          "budget": 32,
+          "auc": 7.294615397542172,
+          "mean_auc": 0.2353101741142636,
+          "final_loss": 0.21030403977941595,
+          "solved": false,
+          "evaluations_to_target": 32,
+          "right_censored": true,
+          "valid_slots": 32
+        },
+        "64": {
+          "budget": 64,
+          "auc": 14.001926816222015,
+          "mean_auc": 0.22225280660669866,
+          "final_loss": 0.2095174484018206,
+          "solved": false,
+          "evaluations_to_target": 64,
+          "right_censored": true,
+          "valid_slots": 64
+        },
+        "128": {
+          "budget": 128,
+          "auc": 27.411043513938534,
+          "mean_auc": 0.2158349882987286,
+          "final_loss": 0.2095174484018206,
+          "solved": false,
+          "evaluations_to_target": 128,
+          "right_censored": true,
+          "valid_slots": 127
+        }
+      },
+      "cost": {
+        "known_estimated_usd": 0.0,
+        "unknown_reserved_usd": 0.0,
+        "liability_usd": 0.0,
+        "cells": 1,
+        "solves": 0,
+        "known_usd_per_run": 0.0,
+        "known_usd_per_solved_cell": null,
+        "liability_usd_per_solved_cell": null,
+        "model_request_wall_s": 0.0,
+        "compute_cost_usd": null
+      }
+    },
+    {
+      "cell": {
+        "target": "target_1",
+        "seed": 1203,
+        "arm": "pro-4096"
+      },
+      "prefixes": {
+        "16": {
+          "budget": 16,
+          "auc": 4.722801408175771,
+          "mean_auc": 0.31485342721171805,
+          "final_loss": 0.09994118314503267,
+          "solved": true,
+          "evaluations_to_target": 13,
+          "right_censored": false,
+          "valid_slots": 15
+        },
+        "32": {
+          "budget": 32,
+          "auc": 5.754002015076107,
+          "mean_auc": 0.18561296822826154,
+          "final_loss": 0.06066411465174689,
+          "solved": true,
+          "evaluations_to_target": 13,
+          "right_censored": false,
+          "valid_slots": 31
+        },
+        "64": {
+          "budget": 64,
+          "auc": 7.0119632770297615,
+          "mean_auc": 0.1113010043972978,
+          "final_loss": 0.028760529251427396,
+          "solved": true,
+          "evaluations_to_target": 13,
+          "right_censored": false,
+          "valid_slots": 59
+        },
+        "128": {
+          "budget": 128,
+          "auc": 8.454532643785829,
+          "mean_auc": 0.06657112317941598,
+          "final_loss": 0.017337215120195926,
+          "solved": true,
+          "evaluations_to_target": 13,
+          "right_censored": false,
+          "valid_slots": 119
+        }
+      },
+      "cost": {
+        "known_estimated_usd": 5.3038825,
+        "unknown_reserved_usd": 1.65536,
+        "liability_usd": 6.9592425,
+        "cells": 1,
+        "solves": 1,
+        "known_usd_per_run": 5.3038825,
+        "known_usd_per_solved_cell": 5.3038825,
+        "liability_usd_per_solved_cell": 6.9592425,
+        "model_request_wall_s": 3035.4089349190326,
+        "compute_cost_usd": null
+      }
+    },
+    {
+      "cell": {
+        "target": "target_1",
+        "seed": 1204,
+        "arm": "phase-random"
+      },
+      "prefixes": {
+        "16": {
+          "budget": 16,
+          "auc": 4.716614821523662,
+          "mean_auc": 0.3144409881015775,
+          "final_loss": 0.3097284435894892,
+          "solved": false,
+          "evaluations_to_target": 16,
+          "right_censored": true,
+          "valid_slots": 16
+        },
+        "32": {
+          "budget": 32,
+          "auc": 9.67226991895549,
+          "mean_auc": 0.3120087070630803,
+          "final_loss": 0.3097284435894892,
+          "solved": false,
+          "evaluations_to_target": 32,
+          "right_censored": true,
+          "valid_slots": 32
+        },
+        "64": {
+          "budget": 64,
+          "auc": 15.036749106547138,
+          "mean_auc": 0.23867855724677997,
+          "final_loss": 0.16065201712155458,
+          "solved": false,
+          "evaluations_to_target": 64,
+          "right_censored": true,
+          "valid_slots": 62
+        },
+        "128": {
+          "budget": 128,
+          "auc": 25.31847820232663,
+          "mean_auc": 0.19935809608131205,
+          "final_loss": 0.16065201712155458,
+          "solved": false,
+          "evaluations_to_target": 128,
+          "right_censored": true,
+          "valid_slots": 125
+        }
+      },
+      "cost": {
+        "known_estimated_usd": 0.0,
+        "unknown_reserved_usd": 0.0,
+        "liability_usd": 0.0,
+        "cells": 1,
+        "solves": 0,
+        "known_usd_per_run": 0.0,
+        "known_usd_per_solved_cell": null,
+        "liability_usd_per_solved_cell": null,
+        "model_request_wall_s": 0.0,
+        "compute_cost_usd": null
+      }
+    },
+    {
+      "cell": {
+        "target": "target_1",
+        "seed": 1204,
+        "arm": "pro-4096"
+      },
+      "prefixes": {
+        "16": {
+          "budget": 16,
+          "auc": 4.263713505423701,
+          "mean_auc": 0.2842475670282468,
+          "final_loss": 0.08933224166065326,
+          "solved": true,
+          "evaluations_to_target": 15,
+          "right_censored": false,
+          "valid_slots": 16
+        },
+        "32": {
+          "budget": 32,
+          "auc": 4.897286302892737,
+          "mean_auc": 0.15797697751266893,
+          "final_loss": 0.02518904838250447,
+          "solved": true,
+          "evaluations_to_target": 15,
+          "right_censored": false,
+          "valid_slots": 32
+        },
+        "64": {
+          "budget": 64,
+          "auc": 5.703335851132881,
+          "mean_auc": 0.09052914049417271,
+          "final_loss": 0.02518904838250447,
+          "solved": true,
+          "evaluations_to_target": 15,
+          "right_censored": false,
+          "valid_slots": 64
+        },
+        "128": {
+          "budget": 128,
+          "auc": 7.310000437760578,
+          "mean_auc": 0.05755905856504392,
+          "final_loss": 0.025094535167676842,
+          "solved": true,
+          "evaluations_to_target": 15,
+          "right_censored": false,
+          "valid_slots": 123
+        }
+      },
+      "cost": {
+        "known_estimated_usd": 6.3960225,
+        "unknown_reserved_usd": 0.41384,
+        "liability_usd": 6.8098624999999995,
+        "cells": 1,
+        "solves": 1,
+        "known_usd_per_run": 6.3960225,
+        "known_usd_per_solved_cell": 6.3960225,
+        "liability_usd_per_solved_cell": 6.8098624999999995,
+        "model_request_wall_s": 3331.6430683040817,
+        "compute_cost_usd": null
+      }
+    },
+    {
+      "cell": {
+        "target": "target_1",
+        "seed": 1205,
+        "arm": "phase-random"
+      },
+      "prefixes": {
+        "16": {
+          "budget": 16,
+          "auc": 4.1804997273347375,
+          "mean_auc": 0.2786999818223158,
+          "final_loss": 0.2729377589117233,
+          "solved": false,
+          "evaluations_to_target": 16,
+          "right_censored": true,
+          "valid_slots": 16
+        },
+        "32": {
+          "budget": 32,
+          "auc": 7.617484224382492,
+          "mean_auc": 0.24572529756072556,
+          "final_loss": 0.1920664853865217,
+          "solved": false,
+          "evaluations_to_target": 32,
+          "right_censored": true,
+          "valid_slots": 30
+        },
+        "64": {
+          "budget": 64,
+          "auc": 13.763611756751185,
+          "mean_auc": 0.21847002788493944,
+          "final_loss": 0.1920664853865217,
+          "solved": false,
+          "evaluations_to_target": 64,
+          "right_censored": true,
+          "valid_slots": 62
+        },
+        "128": {
+          "budget": 128,
+          "auc": 26.05586682148858,
+          "mean_auc": 0.20516430568101243,
+          "final_loss": 0.1920664853865217,
+          "solved": false,
+          "evaluations_to_target": 128,
+          "right_censored": true,
+          "valid_slots": 123
+        }
+      },
+      "cost": {
+        "known_estimated_usd": 0.0,
+        "unknown_reserved_usd": 0.0,
+        "liability_usd": 0.0,
+        "cells": 1,
+        "solves": 0,
+        "known_usd_per_run": 0.0,
+        "known_usd_per_solved_cell": null,
+        "liability_usd_per_solved_cell": null,
+        "model_request_wall_s": 0.0,
+        "compute_cost_usd": null
+      }
+    },
+    {
+      "cell": {
+        "target": "target_1",
+        "seed": 1205,
+        "arm": "pro-4096"
+      },
+      "prefixes": {
+        "16": {
+          "budget": 16,
+          "auc": 2.1087840497411623,
+          "mean_auc": 0.14058560331607747,
+          "final_loss": 0.08659150343108064,
+          "solved": true,
+          "evaluations_to_target": 5,
+          "right_censored": false,
+          "valid_slots": 15
+        },
+        "32": {
+          "budget": 32,
+          "auc": 3.270013781415605,
+          "mean_auc": 0.10548431552953565,
+          "final_loss": 0.03896468440765761,
+          "solved": true,
+          "evaluations_to_target": 5,
+          "right_censored": false,
+          "valid_slots": 31
+        },
+        "64": {
+          "budget": 64,
+          "auc": 4.094484366874263,
+          "mean_auc": 0.06499181534721052,
+          "final_loss": 0.019535824963397563,
+          "solved": true,
+          "evaluations_to_target": 5,
+          "right_censored": false,
+          "valid_slots": 63
+        },
+        "128": {
+          "budget": 128,
+          "auc": 5.320069235170432,
+          "mean_auc": 0.04189030893834986,
+          "final_loss": 0.015043474170438548,
+          "solved": true,
+          "evaluations_to_target": 5,
+          "right_censored": false,
+          "valid_slots": 124
+        }
+      },
+      "cost": {
+        "known_estimated_usd": 5.7864275,
+        "unknown_reserved_usd": 0.41384,
+        "liability_usd": 6.200267500000001,
+        "cells": 1,
+        "solves": 1,
+        "known_usd_per_run": 5.7864275,
+        "known_usd_per_solved_cell": 5.7864275,
+        "liability_usd_per_solved_cell": 6.200267500000001,
+        "model_request_wall_s": 3081.3641064420226,
+        "compute_cost_usd": null
+      }
+    },
+    {
+      "cell": {
+        "target": "target_2",
+        "seed": 1200,
+        "arm": "phase-random"
+      },
+      "prefixes": {
+        "16": {
+          "budget": 16,
+          "auc": 2.4293517574231274,
+          "mean_auc": 0.1619567838282085,
+          "final_loss": 0.1134845530288583,
+          "solved": false,
+          "evaluations_to_target": 16,
+          "right_censored": true,
+          "valid_slots": 16
+        },
+        "32": {
+          "budget": 32,
+          "auc": 4.179169491942253,
+          "mean_auc": 0.1348119190949114,
+          "final_loss": 0.0695278104004536,
+          "solved": true,
+          "evaluations_to_target": 31,
+          "right_censored": false,
+          "valid_slots": 32
+        },
+        "64": {
+          "budget": 64,
+          "auc": 6.404059424756769,
+          "mean_auc": 0.10165173690090108,
+          "final_loss": 0.0695278104004536,
+          "solved": true,
+          "evaluations_to_target": 31,
+          "right_censored": false,
+          "valid_slots": 63
+        },
+        "128": {
+          "budget": 128,
+          "auc": 10.853839290385798,
+          "mean_auc": 0.08546330149910077,
+          "final_loss": 0.0695278104004536,
+          "solved": true,
+          "evaluations_to_target": 31,
+          "right_censored": false,
+          "valid_slots": 125
+        }
+      },
+      "cost": {
+        "known_estimated_usd": 0.0,
+        "unknown_reserved_usd": 0.0,
+        "liability_usd": 0.0,
+        "cells": 1,
+        "solves": 1,
+        "known_usd_per_run": 0.0,
+        "known_usd_per_solved_cell": 0.0,
+        "liability_usd_per_solved_cell": 0.0,
+        "model_request_wall_s": 0.0,
+        "compute_cost_usd": null
+      }
+    },
+    {
+      "cell": {
+        "target": "target_2",
+        "seed": 1200,
+        "arm": "pro-4096"
+      },
+      "prefixes": {
+        "16": {
+          "budget": 16,
+          "auc": 3.8353451387641972,
+          "mean_auc": 0.25568967591761316,
+          "final_loss": 0.17779221373676496,
+          "solved": false,
+          "evaluations_to_target": 16,
+          "right_censored": true,
+          "valid_slots": 16
+        },
+        "32": {
+          "budget": 32,
+          "auc": 6.680020558552437,
+          "mean_auc": 0.2154845341468528,
+          "final_loss": 0.17779221373676496,
+          "solved": false,
+          "evaluations_to_target": 32,
+          "right_censored": true,
+          "valid_slots": 30
+        },
+        "64": {
+          "budget": 64,
+          "auc": 11.01118559697059,
+          "mean_auc": 0.17478072376143794,
+          "final_loss": 0.060464346837455586,
+          "solved": true,
+          "evaluations_to_target": 52,
+          "right_censored": false,
+          "valid_slots": 60
+        },
+        "128": {
+          "budget": 128,
+          "auc": 14.880903794567747,
+          "mean_auc": 0.11717247082336808,
+          "final_loss": 0.060464346837455586,
+          "solved": true,
+          "evaluations_to_target": 52,
+          "right_censored": false,
+          "valid_slots": 124
+        }
+      },
+      "cost": {
+        "known_estimated_usd": 5.39068,
+        "unknown_reserved_usd": 0.82768,
+        "liability_usd": 6.21836,
+        "cells": 1,
+        "solves": 1,
+        "known_usd_per_run": 5.39068,
+        "known_usd_per_solved_cell": 5.39068,
+        "liability_usd_per_solved_cell": 6.21836,
+        "model_request_wall_s": 3034.1050069269986,
+        "compute_cost_usd": null
+      }
+    },
+    {
+      "cell": {
+        "target": "target_2",
+        "seed": 1201,
+        "arm": "phase-random"
+      },
+      "prefixes": {
+        "16": {
+          "budget": 16,
+          "auc": 4.155547832347744,
+          "mean_auc": 0.27703652215651625,
+          "final_loss": 0.18693220891615775,
+          "solved": false,
+          "evaluations_to_target": 16,
+          "right_censored": true,
+          "valid_slots": 15
+        },
+        "32": {
+          "budget": 32,
+          "auc": 7.146463175006268,
+          "mean_auc": 0.23053107016149252,
+          "final_loss": 0.18693220891615775,
+          "solved": false,
+          "evaluations_to_target": 32,
+          "right_censored": true,
+          "valid_slots": 31
+        },
+        "64": {
+          "budget": 64,
+          "auc": 12.928110135915569,
+          "mean_auc": 0.2052080973954852,
+          "final_loss": 0.1678670923058962,
+          "solved": false,
+          "evaluations_to_target": 64,
+          "right_censored": true,
+          "valid_slots": 62
+        },
+        "128": {
+          "budget": 128,
+          "auc": 23.671604043492923,
+          "mean_auc": 0.18639058301962932,
+          "final_loss": 0.1678670923058962,
+          "solved": false,
+          "evaluations_to_target": 128,
+          "right_censored": true,
+          "valid_slots": 126
+        }
+      },
+      "cost": {
+        "known_estimated_usd": 0.0,
+        "unknown_reserved_usd": 0.0,
+        "liability_usd": 0.0,
+        "cells": 1,
+        "solves": 0,
+        "known_usd_per_run": 0.0,
+        "known_usd_per_solved_cell": null,
+        "liability_usd_per_solved_cell": null,
+        "model_request_wall_s": 0.0,
+        "compute_cost_usd": null
+      }
+    },
+    {
+      "cell": {
+        "target": "target_2",
+        "seed": 1201,
+        "arm": "pro-4096"
+      },
+      "prefixes": {
+        "16": {
+          "budget": 16,
+          "auc": 2.199825001072699,
+          "mean_auc": 0.14665500007151328,
+          "final_loss": 0.029145980930880656,
+          "solved": true,
+          "evaluations_to_target": 10,
+          "right_censored": false,
+          "valid_slots": 15
+        },
+        "32": {
+          "budget": 32,
+          "auc": 2.6661606959667887,
+          "mean_auc": 0.08600518374086415,
+          "final_loss": 0.029145980930880656,
+          "solved": true,
+          "evaluations_to_target": 10,
+          "right_censored": false,
+          "valid_slots": 27
+        },
+        "64": {
+          "budget": 64,
+          "auc": 3.59883208575497,
+          "mean_auc": 0.05712431882150746,
+          "final_loss": 0.029145980930880656,
+          "solved": true,
+          "evaluations_to_target": 10,
+          "right_censored": false,
+          "valid_slots": 59
+        },
+        "128": {
+          "budget": 128,
+          "auc": 5.456694204253781,
+          "mean_auc": 0.04296609609648646,
+          "final_loss": 0.026153716499860043,
+          "solved": true,
+          "evaluations_to_target": 10,
+          "right_censored": false,
+          "valid_slots": 123
+        }
+      },
+      "cost": {
+        "known_estimated_usd": 5.35007375,
+        "unknown_reserved_usd": 0.82768,
+        "liability_usd": 6.17775375,
+        "cells": 1,
+        "solves": 1,
+        "known_usd_per_run": 5.35007375,
+        "known_usd_per_solved_cell": 5.35007375,
+        "liability_usd_per_solved_cell": 6.17775375,
+        "model_request_wall_s": 2887.6030427769874,
+        "compute_cost_usd": null
+      }
+    },
+    {
+      "cell": {
+        "target": "target_2",
+        "seed": 1202,
+        "arm": "phase-random"
+      },
+      "prefixes": {
+        "16": {
+          "budget": 16,
+          "auc": 5.6742759260266835,
+          "mean_auc": 0.3782850617351122,
+          "final_loss": 0.29071959642378165,
+          "solved": false,
+          "evaluations_to_target": 16,
+          "right_censored": true,
+          "valid_slots": 15
+        },
+        "32": {
+          "budget": 32,
+          "auc": 9.998966886225002,
+          "mean_auc": 0.32254731891048394,
+          "final_loss": 0.19734171568601366,
+          "solved": false,
+          "evaluations_to_target": 32,
+          "right_censored": true,
+          "valid_slots": 30
+        },
+        "64": {
+          "budget": 64,
+          "auc": 15.583421848083171,
+          "mean_auc": 0.24735590235052654,
+          "final_loss": 0.13382172089520775,
+          "solved": false,
+          "evaluations_to_target": 64,
+          "right_censored": true,
+          "valid_slots": 61
+        },
+        "128": {
+          "budget": 128,
+          "auc": 23.913405888536072,
+          "mean_auc": 0.18829453455540215,
+          "final_loss": 0.1291760556112395,
+          "solved": false,
+          "evaluations_to_target": 128,
+          "right_censored": true,
+          "valid_slots": 125
+        }
+      },
+      "cost": {
+        "known_estimated_usd": 0.0,
+        "unknown_reserved_usd": 0.0,
+        "liability_usd": 0.0,
+        "cells": 1,
+        "solves": 0,
+        "known_usd_per_run": 0.0,
+        "known_usd_per_solved_cell": null,
+        "liability_usd_per_solved_cell": null,
+        "model_request_wall_s": 0.0,
+        "compute_cost_usd": null
+      }
+    },
+    {
+      "cell": {
+        "target": "target_2",
+        "seed": 1202,
+        "arm": "pro-4096"
+      },
+      "prefixes": {
+        "16": {
+          "budget": 16,
+          "auc": 3.119360865791671,
+          "mean_auc": 0.20795739105277808,
+          "final_loss": 0.14395400621804513,
+          "solved": false,
+          "evaluations_to_target": 16,
+          "right_censored": true,
+          "valid_slots": 16
+        },
+        "32": {
+          "budget": 32,
+          "auc": 5.422624965280393,
+          "mean_auc": 0.1749233859767869,
+          "final_loss": 0.14395400621804513,
+          "solved": false,
+          "evaluations_to_target": 32,
+          "right_censored": true,
+          "valid_slots": 30
+        },
+        "64": {
+          "budget": 64,
+          "auc": 8.785374879851855,
+          "mean_auc": 0.1394503949182834,
+          "final_loss": 0.08971363873520843,
+          "solved": true,
+          "evaluations_to_target": 47,
+          "right_censored": false,
+          "valid_slots": 62
+        },
+        "128": {
+          "budget": 128,
+          "auc": 13.374801843394861,
+          "mean_auc": 0.10531340034169182,
+          "final_loss": 0.05559300464615363,
+          "solved": true,
+          "evaluations_to_target": 47,
+          "right_censored": false,
+          "valid_slots": 122
+        }
+      },
+      "cost": {
+        "known_estimated_usd": 5.2258175,
+        "unknown_reserved_usd": 1.24152,
+        "liability_usd": 6.467337499999999,
+        "cells": 1,
+        "solves": 1,
+        "known_usd_per_run": 5.2258175,
+        "known_usd_per_solved_cell": 5.2258175,
+        "liability_usd_per_solved_cell": 6.467337499999999,
+        "model_request_wall_s": 3351.8429737940314,
+        "compute_cost_usd": null
+      }
+    },
+    {
+      "cell": {
+        "target": "target_2",
+        "seed": 1203,
+        "arm": "phase-random"
+      },
+      "prefixes": {
+        "16": {
+          "budget": 16,
+          "auc": 3.663767301493211,
+          "mean_auc": 0.24425115343288073,
+          "final_loss": 0.19813087948490526,
+          "solved": false,
+          "evaluations_to_target": 16,
+          "right_censored": true,
+          "valid_slots": 16
+        },
+        "32": {
+          "budget": 32,
+          "auc": 6.833861373251695,
+          "mean_auc": 0.22044714107263533,
+          "final_loss": 0.19813087948490526,
+          "solved": false,
+          "evaluations_to_target": 32,
+          "right_censored": true,
+          "valid_slots": 32
+        },
+        "64": {
+          "budget": 64,
+          "auc": 12.626571357615697,
+          "mean_auc": 0.20042176758120153,
+          "final_loss": 0.15757694176987067,
+          "solved": false,
+          "evaluations_to_target": 64,
+          "right_censored": true,
+          "valid_slots": 64
+        },
+        "128": {
+          "budget": 128,
+          "auc": 21.07451982738974,
+          "mean_auc": 0.1659411010030688,
+          "final_loss": 0.11813174168558926,
+          "solved": false,
+          "evaluations_to_target": 128,
+          "right_censored": true,
+          "valid_slots": 127
+        }
+      },
+      "cost": {
+        "known_estimated_usd": 0.0,
+        "unknown_reserved_usd": 0.0,
+        "liability_usd": 0.0,
+        "cells": 1,
+        "solves": 0,
+        "known_usd_per_run": 0.0,
+        "known_usd_per_solved_cell": null,
+        "liability_usd_per_solved_cell": null,
+        "model_request_wall_s": 0.0,
+        "compute_cost_usd": null
+      }
+    },
+    {
+      "cell": {
+        "target": "target_2",
+        "seed": 1203,
+        "arm": "pro-4096"
+      },
+      "prefixes": {
+        "16": {
+          "budget": 16,
+          "auc": 2.8892934151459704,
+          "mean_auc": 0.19261956100973135,
+          "final_loss": 0.054956956285749696,
+          "solved": true,
+          "evaluations_to_target": 9,
+          "right_censored": false,
+          "valid_slots": 16
+        },
+        "32": {
+          "budget": 32,
+          "auc": 3.7686047157179656,
+          "mean_auc": 0.12156789405541825,
+          "final_loss": 0.054956956285749696,
+          "solved": true,
+          "evaluations_to_target": 9,
+          "right_censored": false,
+          "valid_slots": 32
+        },
+        "64": {
+          "budget": 64,
+          "auc": 5.434351314442088,
+          "mean_auc": 0.08625954467368394,
+          "final_loss": 0.028420955594358706,
+          "solved": true,
+          "evaluations_to_target": 9,
+          "right_censored": false,
+          "valid_slots": 64
+        },
+        "128": {
+          "budget": 128,
+          "auc": 7.1924140628308235,
+          "mean_auc": 0.0566331815970931,
+          "final_loss": 0.026772822090829942,
+          "solved": true,
+          "evaluations_to_target": 9,
+          "right_censored": false,
+          "valid_slots": 126
+        }
+      },
+      "cost": {
+        "known_estimated_usd": 5.7269525,
+        "unknown_reserved_usd": 0.41384,
+        "liability_usd": 6.1407925,
+        "cells": 1,
+        "solves": 1,
+        "known_usd_per_run": 5.7269525,
+        "known_usd_per_solved_cell": 5.7269525,
+        "liability_usd_per_solved_cell": 6.1407925,
+        "model_request_wall_s": 3291.961903655043,
+        "compute_cost_usd": null
+      }
+    },
+    {
+      "cell": {
+        "target": "target_2",
+        "seed": 1204,
+        "arm": "phase-random"
+      },
+      "prefixes": {
+        "16": {
+          "budget": 16,
+          "auc": 5.270397332796942,
+          "mean_auc": 0.3513598221864628,
+          "final_loss": 0.29101290698306864,
+          "solved": false,
+          "evaluations_to_target": 16,
+          "right_censored": true,
+          "valid_slots": 16
+        },
+        "32": {
+          "budget": 32,
+          "auc": 9.890623605785088,
+          "mean_auc": 0.3190523743801641,
+          "final_loss": 0.26702608115576687,
+          "solved": false,
+          "evaluations_to_target": 32,
+          "right_censored": true,
+          "valid_slots": 32
+        },
+        "64": {
+          "budget": 64,
+          "auc": 17.734970578095222,
+          "mean_auc": 0.28150746949357497,
+          "final_loss": 0.046469216149793095,
+          "solved": true,
+          "evaluations_to_target": 63,
+          "right_censored": false,
+          "valid_slots": 62
+        },
+        "128": {
+          "budget": 128,
+          "auc": 20.70900041168198,
+          "mean_auc": 0.16306299536757465,
+          "final_loss": 0.046469216149793095,
+          "solved": true,
+          "evaluations_to_target": 63,
+          "right_censored": false,
+          "valid_slots": 125
+        }
+      },
+      "cost": {
+        "known_estimated_usd": 0.0,
+        "unknown_reserved_usd": 0.0,
+        "liability_usd": 0.0,
+        "cells": 1,
+        "solves": 1,
+        "known_usd_per_run": 0.0,
+        "known_usd_per_solved_cell": 0.0,
+        "liability_usd_per_solved_cell": 0.0,
+        "model_request_wall_s": 0.0,
+        "compute_cost_usd": null
+      }
+    },
+    {
+      "cell": {
+        "target": "target_2",
+        "seed": 1204,
+        "arm": "pro-4096"
+      },
+      "prefixes": {
+        "16": {
+          "budget": 16,
+          "auc": 3.066043005507118,
+          "mean_auc": 0.20440286703380786,
+          "final_loss": 0.0752251477662484,
+          "solved": true,
+          "evaluations_to_target": 11,
+          "right_censored": false,
+          "valid_slots": 16
+        },
+        "32": {
+          "budget": 32,
+          "auc": 4.0525355758419295,
+          "mean_auc": 0.1307269540594171,
+          "final_loss": 0.05835395734238096,
+          "solved": true,
+          "evaluations_to_target": 11,
+          "right_censored": false,
+          "valid_slots": 26
+        },
+        "64": {
+          "budget": 64,
+          "auc": 5.9198622107981205,
+          "mean_auc": 0.09396606683806541,
+          "final_loss": 0.05835395734238096,
+          "solved": true,
+          "evaluations_to_target": 11,
+          "right_censored": false,
+          "valid_slots": 56
+        },
+        "128": {
+          "budget": 128,
+          "auc": 8.811855990023723,
+          "mean_auc": 0.06938469283483246,
+          "final_loss": 0.020783047331943163,
+          "solved": true,
+          "evaluations_to_target": 11,
+          "right_censored": false,
+          "valid_slots": 118
+        }
+      },
+      "cost": {
+        "known_estimated_usd": 5.38492,
+        "unknown_reserved_usd": 2.0692,
+        "liability_usd": 7.45412,
+        "cells": 1,
+        "solves": 1,
+        "known_usd_per_run": 5.38492,
+        "known_usd_per_solved_cell": 5.38492,
+        "liability_usd_per_solved_cell": 7.45412,
+        "model_request_wall_s": 3203.204807975053,
+        "compute_cost_usd": null
+      }
+    },
+    {
+      "cell": {
+        "target": "target_2",
+        "seed": 1205,
+        "arm": "phase-random"
+      },
+      "prefixes": {
+        "16": {
+          "budget": 16,
+          "auc": 5.918839334741192,
+          "mean_auc": 0.39458928898274614,
+          "final_loss": 0.3385975684362671,
+          "solved": false,
+          "evaluations_to_target": 16,
+          "right_censored": true,
+          "valid_slots": 16
+        },
+        "32": {
+          "budget": 32,
+          "auc": 9.825722192483639,
+          "mean_auc": 0.31695878040269804,
+          "final_loss": 0.19472345060409316,
+          "solved": false,
+          "evaluations_to_target": 32,
+          "right_censored": true,
+          "valid_slots": 30
+        },
+        "64": {
+          "budget": 64,
+          "auc": 16.056872611814622,
+          "mean_auc": 0.25487099383832734,
+          "final_loss": 0.19472345060409316,
+          "solved": false,
+          "evaluations_to_target": 64,
+          "right_censored": true,
+          "valid_slots": 62
+        },
+        "128": {
+          "budget": 128,
+          "auc": 26.91918401237523,
+          "mean_auc": 0.21196207883760024,
+          "final_loss": 0.16365569452445522,
+          "solved": false,
+          "evaluations_to_target": 128,
+          "right_censored": true,
+          "valid_slots": 123
+        }
+      },
+      "cost": {
+        "known_estimated_usd": 0.0,
+        "unknown_reserved_usd": 0.0,
+        "liability_usd": 0.0,
+        "cells": 1,
+        "solves": 0,
+        "known_usd_per_run": 0.0,
+        "known_usd_per_solved_cell": null,
+        "liability_usd_per_solved_cell": null,
+        "model_request_wall_s": 0.0,
+        "compute_cost_usd": null
+      }
+    },
+    {
+      "cell": {
+        "target": "target_2",
+        "seed": 1205,
+        "arm": "pro-4096"
+      },
+      "prefixes": {
+        "16": {
+          "budget": 16,
+          "auc": 2.5780997283496103,
+          "mean_auc": 0.17187331522330734,
+          "final_loss": 0.05258074384992846,
+          "solved": true,
+          "evaluations_to_target": 7,
+          "right_censored": false,
+          "valid_slots": 16
+        },
+        "32": {
+          "budget": 32,
+          "auc": 3.193718948288531,
+          "mean_auc": 0.10302319188027519,
+          "final_loss": 0.024781584108833413,
+          "solved": true,
+          "evaluations_to_target": 7,
+          "right_censored": false,
+          "valid_slots": 32
+        },
+        "64": {
+          "budget": 64,
+          "auc": 3.9867296397712,
+          "mean_auc": 0.06328142285351111,
+          "final_loss": 0.024781584108833413,
+          "solved": true,
+          "evaluations_to_target": 7,
+          "right_censored": false,
+          "valid_slots": 62
+        },
+        "128": {
+          "budget": 128,
+          "auc": 5.314564200573625,
+          "mean_auc": 0.04184696220924114,
+          "final_loss": 0.012237933715460742,
+          "solved": true,
+          "evaluations_to_target": 7,
+          "right_censored": false,
+          "valid_slots": 126
+        }
+      },
+      "cost": {
+        "known_estimated_usd": 6.0946925,
+        "unknown_reserved_usd": 0.41384,
+        "liability_usd": 6.508532499999999,
+        "cells": 1,
+        "solves": 1,
+        "known_usd_per_run": 6.0946925,
+        "known_usd_per_solved_cell": 6.0946925,
+        "liability_usd_per_solved_cell": 6.508532499999999,
+        "model_request_wall_s": 3134.6365874900366,
+        "compute_cost_usd": null
+      }
+    }
+  ],
+  "scalar_coverage": {
+    "aes": {
+      "calibration": {
+        "backend": "transactions",
+        "power_metric": "total_transitions_per_clock_edge",
+        "scope": "aes_core_smoke.dut",
+        "count": 20,
+        "valid_count": 20,
+        "p_min": 20.145905199948896,
+        "p_max": 197.84064022268615,
+        "useful_work_floor": 38,
+        "useful_work_min": 47,
+        "epsilon_scalar": 0.02,
+        "random_solved_fraction_base": 1.0,
+        "base_seed_fractions": [
+          0.8,
+          1.0,
+          0.6,
+          1.0,
+          1.0
+        ],
+        "final_seed_fractions": [
+          0.6,
+          0.6,
+          0.6,
+          0.8,
+          0.8
+        ],
+        "random_solved_fraction": 0.6,
+        "status": "five_seed_calibration_before_transaction_comparisons",
+        "g3_trivial": false,
+        "corpus_sha256": "11a1252f36b6514fa8e4421fc4936ebd09f6e19c64df3aadca65c8573feb5940"
+      },
+      "rule": "ten bin centers 0.05..0.95; hit iff |q-center| <= frozen epsilon; no clipping",
+      "epsilon": 0.02,
+      "p_min": 20.145905199948896,
+      "p_max": 197.84064022268615,
+      "valid_records": 100,
+      "total_records": 100,
+      "centers": [
+        0.05,
+        0.15,
+        0.25,
+        0.35,
+        0.45,
+        0.55,
+        0.65,
+        0.75,
+        0.85,
+        0.95
+      ],
+      "hit_indices": [
+        [
+          14,
+          0
+        ],
+        [
+          2,
+          17,
+          4,
+          8,
+          3
+        ],
+        [
+          3,
+          10,
+          16,
+          18,
+          11,
+          16,
+          10,
+          11,
+          18
+        ],
+        [
+          3,
+          7
+        ],
+        [
+          1,
+          4,
+          9,
+          2
+        ],
+        [],
+        [
+          4
+        ],
+        [
+          6,
+          9,
+          15,
+          9
+        ],
+        [
+          7,
+          19
+        ],
+        [
+          3,
+          15,
+          19,
+          7,
+          11,
+          14,
+          15,
+          0,
+          1,
+          13,
+          5,
+          15
+        ]
+      ],
+      "coverage": 0.9,
+      "occupancy_secondary": 0.9,
+      "occupied_bins": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        6,
+        7,
+        8,
+        9
+      ],
+      "out_of_envelope_indices": [
+        18,
+        12,
+        19
+      ]
+    },
+    "axi_dma": {
+      "calibration": {
+        "backend": "pipelined",
+        "count": 20,
+        "valid_count": 20,
+        "power_metric": "total_transitions_per_clock_edge",
+        "p_min": 4.547597535934291,
+        "p_max": 27.705809437236592,
+        "epsilon_scalar": 0.02,
+        "epsilon_source": "AES transaction five-seed rule; no DMA retuning",
+        "useful_work_floor": 4096,
+        "corpus_sha256": "ae2819862a0eca86ac996bd6cb1d1eb1ee04aba7b33cbd1ac2341cc11c5a775d"
+      },
+      "rule": "ten bin centers 0.05..0.95; hit iff |q-center| <= frozen epsilon; no clipping",
+      "epsilon": 0.02,
+      "p_min": 4.547597535934291,
+      "p_max": 27.705809437236592,
+      "valid_records": 20,
+      "total_records": 20,
+      "centers": [
+        0.05,
+        0.15,
+        0.25,
+        0.35,
+        0.45,
+        0.55,
+        0.65,
+        0.75,
+        0.85,
+        0.95
+      ],
+      "hit_indices": [
+        [],
+        [
+          11
+        ],
+        [
+          0,
+          10
+        ],
+        [],
+        [
+          4,
+          19
+        ],
+        [
+          16
+        ],
+        [
+          15
+        ],
+        [
+          7
+        ],
+        [],
+        []
+      ],
+      "coverage": 0.6,
+      "occupancy_secondary": 0.9,
+      "occupied_bins": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "out_of_envelope_indices": []
+    }
+  },
+  "external_checks": {
+    "actual_credit_balance": "unverified",
+    "provider_invoice": "unverified",
+    "organizer_access_and_limits": "unverified"
+  },
+  "missing_categories": {
+    "ibex_scalar_coverage": "no frozen scalar corpus selected for the current temporal backend",
+    "ibex_burst_ramp": "not assigned: confirmation targets were not qualified as these analytic families",
+    "axi_dma_burst_ramp": "not extracted in this slice; requires a provenance-complete temporal case selection"
+  },
+  "inputs_sha256": {
+    "results/accounting_audit_v1/reconstruction.json.gz": "753f6452f6b0f2c7b595283e4f8875267168bdf851eab324ebf37eb7325ef599",
+    "results/nonflat_temporal_v1/manifest.json": "f2ad0420728fc088ebb4f0c70cb773576435cf32be8c5f865e4aace3ba5e26f7",
+    "results/nonflat_temporal_v1/targets.json": "9c7e43003d810992515205d13f30bf89de511200eb3ad8913ef232cd6d595cb7",
+    "results/nonflat_temporal_v1/summary.json": "a30a68fccba29424a61e8670457afa74e9c834832a3d23baca01c10cb77302db",
+    "results/nonflat_temporal_v1/panel/target_0/1200/phase-random/complete.json": "730522a3700bcee33447f260194302c9e35208f396ee0847743e20dc307561ad",
+    "results/nonflat_temporal_v1/panel/target_0/1200/pro-4096/complete.json": "ffda48c04c47ffd1e8fa9d28041da7a2d98b1ccbc8c8c4ab3fd01108c8d116e0",
+    "results/nonflat_temporal_v1/panel/target_0/1201/phase-random/complete.json": "4249652b583f5301db24f37d104c8a3d5a40a05d45d5f793f1eed2423781f042",
+    "results/nonflat_temporal_v1/panel/target_0/1201/pro-4096/complete.json": "2b56ab2112bb8cef51043cc0ef4c93cf5e335c1fdc349432a26d2feea19c0509",
+    "results/nonflat_temporal_v1/panel/target_0/1202/phase-random/complete.json": "6d32632cd8724b42f22a99368e64370af42f403dab330f13e22946cbf4b010bd",
+    "results/nonflat_temporal_v1/panel/target_0/1202/pro-4096/complete.json": "05821fe5bc9678058b05700c1ffe4ef79bcd71387fe065f1290de279991ccc8b",
+    "results/nonflat_temporal_v1/panel/target_0/1203/phase-random/complete.json": "8a58e3d49dcf1921e3962c75f099751181ff02df84de2d4b6a618060eab0552f",
+    "results/nonflat_temporal_v1/panel/target_0/1203/pro-4096/complete.json": "542705e23508dd37b03c99385785d03a5239af22128f3c9204563d9442553227",
+    "results/nonflat_temporal_v1/panel/target_0/1204/phase-random/complete.json": "182cf23f18a832baf78a835316ebad46237798ee83f657bd1fe0aed05a1a4e10",
+    "results/nonflat_temporal_v1/panel/target_0/1204/pro-4096/complete.json": "1f69ec271f9bbbdf6814a95f1faae8e8fb2dcbff7b9ceda0cf8f764e6463b427",
+    "results/nonflat_temporal_v1/panel/target_0/1205/phase-random/complete.json": "785eedd7bc0b1c81960caa01fd1b260427af154e4f1014cefb83cc222ad1056e",
+    "results/nonflat_temporal_v1/panel/target_0/1205/pro-4096/complete.json": "18c8df59e53bf0efce24d444d20313f9cdd6334a7f32a1ff2e9c2c7048d1f772",
+    "results/nonflat_temporal_v1/panel/target_1/1200/phase-random/complete.json": "56cdaf957c89508856dfeeac859da16df0a487257e58a35dc0d8811b163a1dca",
+    "results/nonflat_temporal_v1/panel/target_1/1200/pro-4096/complete.json": "c33c499a0b49856755ef44c7d27cc30247e36ca4771c4b4d9a680ce1045e1d04",
+    "results/nonflat_temporal_v1/panel/target_1/1201/phase-random/complete.json": "c62bd89f77d28d2d7619dc33c6f1702ba120efc693d2e34d5d52e573cb4c99ea",
+    "results/nonflat_temporal_v1/panel/target_1/1201/pro-4096/complete.json": "578f95d479764070a7d4c5eccb8c101790009bd3968a34c5d6667bf375497012",
+    "results/nonflat_temporal_v1/panel/target_1/1202/phase-random/complete.json": "fa6932736860bf02d9f5488b20d8c7182f25da73a6dfad1a388c769e02d61e95",
+    "results/nonflat_temporal_v1/panel/target_1/1202/pro-4096/complete.json": "d50ef4d8fda8ae3854c708315e65d985127b72d3d8acf63b53627f884f5652b6",
+    "results/nonflat_temporal_v1/panel/target_1/1203/phase-random/complete.json": "bc3603f8c053d46b13d8f7ce8931832c263d5541a3f5154aad34c658160409b5",
+    "results/nonflat_temporal_v1/panel/target_1/1203/pro-4096/complete.json": "ab025a9c0c76e235a169d2685bbec033a6213d6bd58e78c2cdac0a301f49e112",
+    "results/nonflat_temporal_v1/panel/target_1/1204/phase-random/complete.json": "322c58667231583412f3b8ce9ca0c3312597abdc16771e581ee335eef20cb1fe",
+    "results/nonflat_temporal_v1/panel/target_1/1204/pro-4096/complete.json": "3f6951cbfd6c997a222d933381965a5db0a6edcdb4a2646d0078aaab7cd0dfa2",
+    "results/nonflat_temporal_v1/panel/target_1/1205/phase-random/complete.json": "2e7785e51423414916afc4da8465602e211a8ed1a054ef47b7d4dbc0fd443e6d",
+    "results/nonflat_temporal_v1/panel/target_1/1205/pro-4096/complete.json": "c8f70f70c9acbb3c9eb0978d4f2d09a97a82aba3686ca5554ad605e924581956",
+    "results/nonflat_temporal_v1/panel/target_2/1200/phase-random/complete.json": "412d277ac6fdc979ff917b039e4cfe889c63054556fa2928aefffb4a6da7c6cd",
+    "results/nonflat_temporal_v1/panel/target_2/1200/pro-4096/complete.json": "d887131749f841c37a4e5b595a2193f1e1a0a5ae0bdb4f46c3754f9d786c56d6",
+    "results/nonflat_temporal_v1/panel/target_2/1201/phase-random/complete.json": "a05400fdc73cbd0be26c3a4d855a3e9bd4031f709033e76885b61ada2e220e90",
+    "results/nonflat_temporal_v1/panel/target_2/1201/pro-4096/complete.json": "ced17f28e3e65e8983f8f736e04aedf6e3a117d91af0c21f09dd6b05e37a9295",
+    "results/nonflat_temporal_v1/panel/target_2/1202/phase-random/complete.json": "0afb28bc5b97fcf795b0ae6e9846483ce1b4610dcd3c1135c50cc7a547e795f5",
+    "results/nonflat_temporal_v1/panel/target_2/1202/pro-4096/complete.json": "29f2492f6ffc4cb98348a425f194d0256f7d78f82231782ab5333c662becb70f",
+    "results/nonflat_temporal_v1/panel/target_2/1203/phase-random/complete.json": "a5319423ed97e795c22951a82b20100460675db105a0bc440ed01c0d297b1f03",
+    "results/nonflat_temporal_v1/panel/target_2/1203/pro-4096/complete.json": "86fed3898fc6f56d9d2a44906ee891d6acb273f8a78f705e151ce217d27fa282",
+    "results/nonflat_temporal_v1/panel/target_2/1204/phase-random/complete.json": "0719e43335b64ff46ca239697cbd01929d10f0e728c4948bfad48d057c8a3be2",
+    "results/nonflat_temporal_v1/panel/target_2/1204/pro-4096/complete.json": "667e03a18f004c94d2705b93c500726a22e119b16e9b345ffe336968c3d3e106",
+    "results/nonflat_temporal_v1/panel/target_2/1205/phase-random/complete.json": "516027e1d64fe355ddc92b5037ddea79fce1834a4f3c965d708f24edd8afa3fc",
+    "results/nonflat_temporal_v1/panel/target_2/1205/pro-4096/complete.json": "a51cf694b58aca30ec7b936686c4dbfb9bf7f6bd69a1723e0c82bf5554e6edf3",
+    "results/aes_transactions_calibration/calibration.json": "4d3cbd34a279696c0992b128ac877f5f5ce8e78d2395c98aa901b29545d1d544",
+    "results/aes_transactions_calibration/corpus.jsonl": "11a1252f36b6514fa8e4421fc4936ebd09f6e19c64df3aadca65c8573feb5940",
+    "results/dma_pipelined_calibration/calibration.json": "1dad397c376dcc9384367965bfccba77b74349d985641697c303ac53d0e72760",
+    "results/dma_pipelined_calibration/corpus.jsonl": "ae2819862a0eca86ac996bd6cb1d1eb1ee04aba7b33cbd1ac2341cc11c5a775d",
+    "results/aes_transactions_temporal_check.json": "696010b8a5f852e9d82923254e7bc9a93200c48737d30746ea02e43675e4db68",
+    "results/windowed_power_v1/validation.json": "ffa5e81b890fe885bad8b358dbf052bdd5895063beb41e34004218d797a0f554",
+    "results/structural_temporal_finalist_validation_v1/replays/45a53ab579bb3e906cfdf9bfa42427abc1387a0a05d7af8856e5686504f0c39f/workload.json": "639f162bfd6462b262ca686dd3cba856204ae386e2d27aec96e4d88b81edca45",
+    "results/structural_temporal_finalist_validation_v1/replays/45a53ab579bb3e906cfdf9bfa42427abc1387a0a05d7af8856e5686504f0c39f/completed.json": "159315c01157c604f72a16b4ccf5ce5803bd54656e8e352ff479a32604f1e441",
+    "results/structural_temporal_finalist_validation_v1/replays/45a53ab579bb3e906cfdf9bfa42427abc1387a0a05d7af8856e5686504f0c39f/gls_provenance.json": "09892034192dc3a5eeda6fcb253509f49ce15bf5f21ed3025d5c4db831444364",
+    "results/structural_temporal_finalist_validation_v1/replays/5931833fd4c145d561d7d0c80484ce7c21da5668f7293b432dd13118bced9f15/workload.json": "fd1058175ced06278bd67a2a8faf42c8ba3a44d4355f27995899aedaab10f259",
+    "results/structural_temporal_finalist_validation_v1/replays/5931833fd4c145d561d7d0c80484ce7c21da5668f7293b432dd13118bced9f15/completed.json": "b0356a20ef3859d569c03e87541378b2f11f1584b044b42cf64ba289d3113e26",
+    "results/structural_temporal_finalist_validation_v1/replays/5931833fd4c145d561d7d0c80484ce7c21da5668f7293b432dd13118bced9f15/gls_provenance.json": "b5c84f2a77ca8dad611abe22cf7b3c58a6a781902b2606d2cd1a3dd53e200c30",
+    "results/structural_temporal_finalist_validation_v1/replays/70dd19d422f6911f3dcfa58e6dd6cfaa2b3e6dea68fef16921e9c614c61a4d50/workload.json": "e6870bbc29658bd6834da23e237a3bb9fbc6409d45ff9beef9665cced5a779a8",
+    "results/structural_temporal_finalist_validation_v1/replays/70dd19d422f6911f3dcfa58e6dd6cfaa2b3e6dea68fef16921e9c614c61a4d50/completed.json": "82bd01ef882a87acc46558b8c273df79e68cac6d1f12e064e3a897ad6393fb87",
+    "results/structural_temporal_finalist_validation_v1/replays/70dd19d422f6911f3dcfa58e6dd6cfaa2b3e6dea68fef16921e9c614c61a4d50/gls_provenance.json": "99fcdcd5fe49ec053b39bd7279ad3b0db8c2db0e8cde9337773f606d081c42e2",
+    "results/structural_temporal_finalist_validation_v1/replays/188130546abfd2412a4e33c4a07450f2e4f0575d30ba0eea91576c3d07b065bd/workload.json": "eab197057b66542c07091535d5f305cb3367162b6505678173c4f067f0b25d8a",
+    "results/structural_temporal_finalist_validation_v1/replays/188130546abfd2412a4e33c4a07450f2e4f0575d30ba0eea91576c3d07b065bd/completed.json": "7a72cde7f351ad377df017fca27dabe6d64a093e56472d08f44f1414a1ff68eb",
+    "results/structural_temporal_finalist_validation_v1/replays/188130546abfd2412a4e33c4a07450f2e4f0575d30ba0eea91576c3d07b065bd/gls_provenance.json": "60cf8a931e290f7f4efecd7344e40f91827cde6d1edc16f03df493fb13973879",
+    "results/nonflat_temporal_v1/evaluations/496171cbd015ec1892c498d9a2acd30a819b48559a1cc21d879ee085ead4b2ed/result.json.gz": "bb2132f34a2d034aca533cd5febebea5d8303fbc9e3813e055c887c5754909c1",
+    "results/nonflat_temporal_v1/evaluations/496171cbd015ec1892c498d9a2acd30a819b48559a1cc21d879ee085ead4b2ed/program.json.gz": "54f4605934488129d53df3fe61b3ff97f8771a8ac5b076fed78c0ac484b230f6",
+    "results/nonflat_temporal_v1/evaluations/84115545425d4899d1d49ee7829b96832d9975f738eb9581aa366deff32c5354/result.json.gz": "a02440b9948c384c3b02045bd750774b4d349ac0f6147e516a3fec0716df7e10",
+    "results/nonflat_temporal_v1/evaluations/84115545425d4899d1d49ee7829b96832d9975f738eb9581aa366deff32c5354/program.json.gz": "2bc02ae688417bce40328c9b37ccee7b5b9a6541a15ec8dd2792a487695fa9b8",
+    "results/nonflat_temporal_v1/evaluations/ae5d088929d92ef9a70331676f8150b0a06784effeaaeef6ec4dfb97666c4df4/result.json.gz": "4cc7518f9850743aabacd622d5eeb562b4c2f2435fe922c5a6816bd7376fab98",
+    "results/nonflat_temporal_v1/evaluations/ae5d088929d92ef9a70331676f8150b0a06784effeaaeef6ec4dfb97666c4df4/program.json.gz": "229b0a7b7c4169efec8197d89e26a156d3eb71bbe373bcbe50e645adad84ef93"
+  },
+  "analysis_source_sha256": {
+    "analysis/evidence_extension.py": "4152a03852246ebb8b0575951dd2800ed891a41f67cdeaa7a88f922acec6dcab",
+    "analysis/accounting_math.py": "98cf6f151db3512192e284394be54d06bc555b59a9e13c8bca835e22d6dd7c49",
+    "analysis/accounting_audit.py": "5f6d97cb7604a3237fc2753eb73c3ab6808c979e801f5e2c4478d31b6a3d8777"
+  }
+}

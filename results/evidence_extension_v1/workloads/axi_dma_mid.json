@@ -1,0 +1,77 @@
+{
+  "design": "axi_dma",
+  "label": "mid",
+  "fidelity": "RTL activity, not watts",
+  "selection": "nearest frozen envelope q=0/0.5/1; ties by corpus index; not a tolerance solve",
+  "source": "results/dma_pipelined_calibration/corpus.jsonl",
+  "source_index": 13,
+  "calibration": {
+    "backend": "pipelined",
+    "count": 20,
+    "valid_count": 20,
+    "power_metric": "total_transitions_per_clock_edge",
+    "p_min": 4.547597535934291,
+    "p_max": 27.705809437236592,
+    "epsilon_scalar": 0.02,
+    "epsilon_source": "AES transaction five-seed rule; no DMA retuning",
+    "useful_work_floor": 4096,
+    "corpus_sha256": "ae2819862a0eca86ac996bd6cb1d1eb1ee04aba7b33cbd1ac2341cc11c5a775d"
+  },
+  "record": {
+    "activity": 15.7273007316134,
+    "clock_edges": 12985,
+    "index": 13,
+    "observed": {
+      "max_inflight": 3,
+      "read_descriptors": 5,
+      "write_completions": 5
+    },
+    "seed": 0,
+    "useful_work": 17408,
+    "valid": true,
+    "workload": {
+      "backpressure": {
+        "period": 16,
+        "read_pause": 10,
+        "write_pause": 3
+      },
+      "transfers": [
+        {
+          "dst": 33160,
+          "gap_cycles": 29,
+          "length": 3328,
+          "outstanding": 8,
+          "src": 472
+        },
+        {
+          "dst": 38792,
+          "gap_cycles": 9,
+          "length": 1792,
+          "outstanding": 8,
+          "src": 4504
+        },
+        {
+          "dst": 40960,
+          "gap_cycles": 40,
+          "length": 4096,
+          "outstanding": 8,
+          "src": 8192
+        },
+        {
+          "dst": 45056,
+          "gap_cycles": 12,
+          "length": 4096,
+          "outstanding": 8,
+          "src": 12288
+        },
+        {
+          "dst": 49152,
+          "gap_cycles": 3,
+          "length": 4096,
+          "outstanding": 8,
+          "src": 16384
+        }
+      ]
+    }
+  }
+}
