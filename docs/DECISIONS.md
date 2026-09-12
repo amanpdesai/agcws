@@ -1,5 +1,19 @@
 # Decision log
 
+## 2026-09-12 — Live gate passes; launch the untuned CPU-only extension
+
+**Decision.** Execute the authorized phase-GA panel after all seven frozen
+equivalence cases matched exactly. Use the original binary hash, clean Ibex
+revision and immutable image ID, with a separate fresh search cache. Freeze
+the execution manifest and paired analysis before the first search measurement.
+**Limits.** Six seed units and two Holm comparisons cannot produce adjusted
+p below 0.0625. Keep the declared tests; do not add seeds or change the family
+after seeing outcomes. Host GNU time excludes container CPU, which remains
+unmeasured; per-evaluation wall durations are not CPU usage.
+**Consequence.** Serial, checkpointed 18-cell/2,304-slot execution without an
+outer kill timeout or paid calls. The gate's raw traces are retained. Report
+incomplete or failed cells explicitly, and publish no panel claim before audit.
+
 ## 2026-09-12 — Complete offline budget/coverage slice; freeze untuned phase-GA
 
 **Decision.** Publish 16/32/64/128 prefixes, per-run and per-solved-cell costs,

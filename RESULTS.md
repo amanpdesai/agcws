@@ -5,6 +5,27 @@ below concern **activity-profile synthesis** unless explicitly labeled gate
 power. Lower best-so-far target-error AUC is better. Budgets, normalizations
 and target banks differ across studies: do not compare their raw AUC values.
 
+## Phase-GA robustness execution — in progress
+
+On September 12 the seven preselected live-equivalence replays **all passed**:
+exact assembly, reference state, markers/windows and integer transition counts,
+with matched losses. The original binary, clean Ibex revision and immutable
+container image ID were verified. See the
+[gate evidence](results/phase_ga_robustness_v1/gate/complete.json) and
+[execution freeze](results/phase_ga_robustness_v1/execution_freeze.json).
+
+The untuned 128-slot phase-GA extension is now running: 18 cells / 2,304 proposed
+slots, serial execution, no model calls, no wall-clock kill timeout. No completed
+panel or comparative result is claimed yet. Gate raw waveforms/logs are retained
+under `out/phase-ga-robustness-v1-gate`; the tracked records contain profiles,
+checks and source/runtime identities.
+
+Inference limitation declared before examining the new panel: six seed units
+and two Holm-corrected contrasts imply a minimum adjusted p of **0.0625**.
+Report the effects and intervals without changing that frozen testing family.
+GNU time records host orchestrator/Docker-client CPU only, not container CPU;
+evaluation wall durations must not be relabeled CPU time.
+
 ## Budget, cost and coverage secondary analysis
 
 The September 12 existing-evidence slice adds no experimental runs. Recomputing
@@ -55,8 +76,9 @@ implementations on **768 mock-feedback phase-GA slots**, all four prefixes for
 36 recorded cells, and **102 assembly/reference-state examples**. This verifies
 refactor behavior, not live simulator equivalence or phase-GA performance.
 The [untuned 128-slot protocol](docs/PHASE_GA_ROBUSTNESS_V1.md) is declared;
-runtime identity, matched live replay and an execution manifest gate the next
-CPU-only extension. No new baseline or agent run has started.
+runtime identity, matched live replay and an execution manifest gated the next
+CPU-only extension. Those gates have now passed as recorded above; the offline
+slice itself launched no baseline or agent run.
 
 ## Main result: non-flat Ibex temporal confirmation
 
