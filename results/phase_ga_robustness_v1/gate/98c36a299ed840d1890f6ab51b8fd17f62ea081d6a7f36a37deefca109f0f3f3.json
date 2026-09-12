@@ -1,0 +1,168 @@
+{
+  "passed": true,
+  "checks": {
+    "valid": true,
+    "stage": true,
+    "reason": true,
+    "allocation": true,
+    "profile.window_bit_transitions": true,
+    "profile.window_rates": true,
+    "profile.clock_edges": true,
+    "profile.period_ticks": true,
+    "profile.begin_tick": true,
+    "profile.end_tick": true,
+    "profile.timescale": true,
+    "profile.selected_identifiers": true,
+    "profile.scope": true,
+    "profile.exclusions": true,
+    "profile.unknown_events": true,
+    "profile.markers": true,
+    "profile.retired_instructions": true,
+    "assembly": true,
+    "reference_state": true,
+    "functional_ok": true,
+    "marker_pcs": true,
+    "loss.target_0": true,
+    "loss.target_1": true,
+    "loss.target_2": true
+  },
+  "losses": [
+    {
+      "target": "target_0",
+      "historical": 0.4209925810439664,
+      "replay": 0.4209925810439664
+    },
+    {
+      "target": "target_1",
+      "historical": 0.594826325925632,
+      "replay": 0.594826325925632
+    },
+    {
+      "target": "target_2",
+      "historical": 0.060464346837455586,
+      "replay": 0.060464346837455586
+    }
+  ],
+  "profiles": {
+    "historical": {
+      "window_bit_transitions": [
+        17125299,
+        13671878,
+        4368385,
+        16931435,
+        18464971,
+        18301432,
+        18456150,
+        18831068
+      ],
+      "window_rates": [
+        685.01196,
+        546.87512,
+        174.7354,
+        677.2574,
+        738.59884,
+        732.05728,
+        738.246,
+        753.24272
+      ],
+      "clock_edges": 200000,
+      "period_ticks": 2,
+      "begin_tick": 286,
+      "end_tick": 400286,
+      "timescale": "1ps",
+      "selected_identifiers": 1311,
+      "scope": "TOP.ibex_simple_system.u_top.u_ibex_top.u_ibex_core",
+      "exclusions": [
+        "clock",
+        "cs_registers_i"
+      ],
+      "unknown_events": 0,
+      "units": "unique core-net bit transitions per clock edge; not watts",
+      "markers": {
+        "measure_start": {
+          "tick": 286,
+          "cycle": 139
+        },
+        "body_complete": {
+          "tick": 165246,
+          "cycle": 82619
+        },
+        "measure_stop": {
+          "tick": 400418,
+          "cycle": 200205
+        }
+      },
+      "retired_instructions": 110093,
+      "waveform_sha256": "f58fb250fa720e73ecf6a560d5e4cb33e9cfac1572573e658067fc54eea6ffbf",
+      "source_sha256": "f270c4973117a188af616d488974af794aacfc3cd45fdd3951247249bd9a341a",
+      "extraction_s": 22.772111204001703
+    },
+    "replay": {
+      "window_bit_transitions": [
+        17125299,
+        13671878,
+        4368385,
+        16931435,
+        18464971,
+        18301432,
+        18456150,
+        18831068
+      ],
+      "window_rates": [
+        685.01196,
+        546.87512,
+        174.7354,
+        677.2574,
+        738.59884,
+        732.05728,
+        738.246,
+        753.24272
+      ],
+      "clock_edges": 200000,
+      "period_ticks": 2,
+      "begin_tick": 286,
+      "end_tick": 400286,
+      "timescale": "1ps",
+      "selected_identifiers": 1311,
+      "scope": "TOP.ibex_simple_system.u_top.u_ibex_top.u_ibex_core",
+      "exclusions": [
+        "clock",
+        "cs_registers_i"
+      ],
+      "unknown_events": 0,
+      "units": "unique core-net bit transitions per clock edge; not watts",
+      "markers": {
+        "measure_start": {
+          "tick": 286,
+          "cycle": 139
+        },
+        "body_complete": {
+          "tick": 165246,
+          "cycle": 82619
+        },
+        "measure_stop": {
+          "tick": 400418,
+          "cycle": 200205
+        }
+      },
+      "retired_instructions": 110093,
+      "waveform_sha256": "c83dbe970b77c0223ad963ef8e812e3f9cba4b38a3fabba4e6eb3a6a0e6d3c62",
+      "source_sha256": "0832bbd963928e95c1ead345ab2a84210356ad5c89ec42d70f8d1fd57e63c1e9",
+      "extraction_s": 22.207829509978183
+    }
+  },
+  "historical_cache_id": "98c36a299ed840d1890f6ab51b8fd17f62ea081d6a7f36a37deefca109f0f3f3",
+  "replay_cache_id": "c7838d1697786d3c00ec6087225a788425ce09a020c7d066cd9d7942c7759fbc",
+  "origins": [
+    {
+      "cell": {
+        "target": "target_2",
+        "seed": 1200,
+        "arm": "pro-4096"
+      },
+      "slot": 61,
+      "role": "best"
+    }
+  ],
+  "replay_s": 27.821637932036538
+}
