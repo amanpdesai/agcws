@@ -536,3 +536,15 @@ admission still requires a valid measured witness. Their v1 calibration and
 measurement contracts remain unchanged. Stronger contrast and distinct
 development dwell/phase templates are recorded in
 [the v2 procedure](docs/TARGET_QUALIFICATION_V2.md), with every v1 failure retained.
+
+Initial six-slot Flash/phase-random/phase-GA control smokes on mesh and RedMulE
+completed but failed readiness: both Flash calls per design received provider
+schema-complexity HTTP 400 rejections. They produced no agent workloads or
+measured agent feedback. Reserved unknown-usage liability is $0.20192 per design.
+Separate one-call diagnostics projected the serving grammar while retaining
+the native schema in the payload and local validators. All four resulting
+candidates passed native schema/protocol checks; reported total cost was
+$0.0269287. This verifies transport compatibility, not simulation or closed-loop
+readiness. [Mesh evidence](results/mesh/README.md) and
+[RedMulE evidence](results/redmule/README.md) preserve both failed and successful
+diagnostics. Integration and fresh full-loop smokes remain required.

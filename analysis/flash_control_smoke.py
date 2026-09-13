@@ -44,6 +44,7 @@ def analyze(root):
     design = backend(spec["domain"])
     history = histories["flash-4096"]
     calls = []
+    unknown_reserved = 0.0
     for offset in (2, 4):
         directory = root / "panel/flat_control/8200/flash-4096/batches" / f"{offset+1:03}"
         response = read(directory / "response.json")
@@ -54,18 +55,23 @@ def analyze(root):
         if read(directory / "decoded.json") != design.decode(response["raw_text"], 2):
             raise ValueError("saved parsing differs from raw response")
         known = not response["usage_unknown"]
+        if not known:
+            unknown_reserved += read(directory / "request_started.json")["reservation_usd"]
         if known and response["estimated_usd"] != cost("flash-4096", response["tokens_in"], response["tokens_out"]):
             raise ValueError("cost accounting differs")
         calls.append({key: response.get(key) for key in ("tokens_in", "tokens_out", "thinking_tokens",
                      "estimated_usd", "usage_unknown", "model_version", "finish_reasons", "api_error")})
+    measured_feedback = any(t["valid"] for t in history[2:4])
     ready = (all(not c["usage_unknown"] and not c["api_error"] and c["model_version"] == MODELS["flash-4096"] for c in calls)
-             and any(t["valid"] for t in history[2:]))
+             and measured_feedback)
     return {"scope": "control plumbing only; not non-flat qualification or paper inference",
             "domain": spec["domain"], "ready": ready, "shared_initialization": True,
-            "second_call_receives_measured_agent_feedback": True, "proposal_slots": 18,
+            "second_call_receives_prior_trial_history": True,
+            "second_call_receives_measured_agent_feedback": measured_feedback, "proposal_slots": 18,
             "generated_agent_valid": sum(t["valid"] for t in history[2:]),
             "validity": validity, "calls": calls,
-            "known_cost_usd": sum(c["estimated_usd"] or 0 for c in calls)}
+            "known_cost_usd": sum(c["estimated_usd"] or 0 for c in calls),
+            "unknown_usage_reserved_usd": unknown_reserved}
 
 
 if __name__ == "__main__":
