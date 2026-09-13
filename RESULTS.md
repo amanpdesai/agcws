@@ -1,11 +1,11 @@
 # Research results
 
-Updated 2026-09-12. This is the authoritative findings document. All results
+Updated 2026-09-13. This is the authoritative findings document. All results
 below concern **activity-profile synthesis** unless explicitly labeled gate
 power. Lower best-so-far target-error AUC is better. Budgets, normalizations
 and target banks differ across studies: do not compare their raw AUC values.
 
-## Phase-GA robustness execution — in progress
+## Phase-GA robustness extension — complete
 
 On September 12 the seven preselected live-equivalence replays **all passed**:
 exact assembly, reference state, markers/windows and integer transition counts,
@@ -14,17 +14,64 @@ container image ID were verified. See the
 [gate evidence](results/phase_ga_robustness_v1/gate/complete.json) and
 [execution freeze](results/phase_ga_robustness_v1/execution_freeze.json).
 
-The untuned 128-slot phase-GA extension is now running: 18 cells / 2,304 proposed
-slots, serial execution, no model calls, no wall-clock kill timeout. No completed
-panel or comparative result is claimed yet. Gate raw waveforms/logs are retained
-under `out/phase-ga-robustness-v1-gate`; the tracked records contain profiles,
-checks and source/runtime identities.
+The extension completed all **18 cells / 2,304 proposed slots**, with no
+infrastructure failures or model calls. This is **post-hoc robustness on the
+three observed confirmation targets**, not another held-out study. Pro and
+phase-random below are the unchanged historical comparators. The frozen audit
+reconstructs every GA proposal and parent from RNG/history, checks charged shared
+initializations, observed architectural state, integer-bin rates, cache identity,
+losses and saved metrics. Frozen sources/runtime and the execution manifest
+remain unchanged. It does not independently re-simulate all waveforms.
 
-Inference limitation declared before examining the new panel: six seed units
-and two Holm-corrected contrasts imply a minimum adjusted p of **0.0625**.
-Report the effects and intervals without changing that frozen testing family.
-GNU time records host orchestrator/Docker-client CPU only, not container CPU;
-evaluation wall durations must not be relabeled CPU time.
+| Policy | Mean AUC, 128 slots | Solves | Mean censored slots | Valid slots |
+|---|---:|---:|---:|---:|
+| Pro-4096 | 8.40173 | 18/18 | 16.89 | 2,208/2,304 |
+| Phase-GA | 26.67250 | 8/18 | 93.94 | 2,233/2,304 |
+| Phase-random | 27.99830 | 5/18 | 104.06 | 2,253/2,304 |
+
+Read the primary AUC first: Pro is **68.5% lower than phase-GA**. The GA improves
+the mean over phase-random by 4.7%, but does not close the observed Pro advantage.
+Pairing averages the three targets within each of six seeds:
+
+| Contrast (left minus right) | Mean AUC difference | Seed-bootstrap 95% CI | Exact p | Holm p, two contrasts |
+|---|---:|---|---:|---:|
+| Pro minus phase-GA | −18.27077 | [−20.89473, −15.68766] | 0.03125 | 0.06250 |
+| Phase-GA minus phase-random | −1.32580 | [−5.42354, 2.65321] | 0.59375 | 0.59375 |
+
+Pro has lower AUC in all six seed units, but **neither extension contrast is
+significant at Holm-adjusted 0.05**. Six seeds and two contrasts impose a minimum
+adjusted p of 0.0625, declared before examining this panel. The intervals are
+unadjusted percentile intervals; their exclusion of zero does not override Holm.
+No test-family change, extra seeds or equivalence claim is made. The original
+confirmation's single-contrast inference remains separate and unchanged.
+
+Descriptive AUC prefixes at 16/32/64/128 slots are Pro
+3.4223/4.5424/6.1383/8.4017, phase-GA 5.5132/9.7322/16.6500/26.6725, and
+phase-random 5.4252/9.8493/16.6839/27.9983. At the common valid-evaluation count
+within each cell, mean best errors are **0.03064 / 0.14767 / 0.17098** respectively.
+This secondary view does not replace proposal-counted AUC. GA's 71 rejected
+slots are all USEFUL_WORK; random has 51 USEFUL_WORK rejections, while Pro has
+80 API, 15 USEFUL_WORK and one SCHEMA rejection.
+
+There were **2,199 unique measurements and 105 charged cache hits**. Serial
+execution took **17h 22m 02s**, with 62,471.16 seconds summed unique-evaluation
+wall time and **$0 new model cost**. Host GNU time reports 286.59 user + 163.86
+system CPU seconds for orchestration/Docker clients, not container CPU. Container
+CPU and monetary compute cost remain unmeasured, not zero. These timings are not
+a hardware-normalized comparison with the historical arms.
+
+The [reproduction bundle](results/phase_ga_robustness_v1/README.md) contains the
+analysis and a checksummed compact archive of **32,992 files**, restored and
+byte-checked against scratch. Gate raw waveforms/logs remain locally under
+`out/phase-ga-robustness-v1-gate`; search scratch is also retained. The compact
+archive omits raw waveforms and instruction traces, so it supports accounting
+re-analysis, not an independent waveform reconstruction.
+
+This addresses one stronger-baseline objection, not semantic causality, target
+constructor alignment, generalization beyond Ibex, or power-level accuracy.
+Next is independently generated, witnessed target qualification with all
+attempts retained and a difficulty gradient including a near-flat control;
+fresh confirmation requires a separate frozen protocol and execution decision.
 
 ## Budget, cost and coverage secondary analysis
 

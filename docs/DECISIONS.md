@@ -1,5 +1,19 @@
 # Decision log
 
+## 2026-09-13 — Publish completed phase-GA robustness without changing inference
+
+**Decision.** Preserve the frozen two-contrast analysis and all 18 cells after
+2,304 slots completed without infrastructure failures. Publish compact evidence
+with exact-byte restoration and re-analysis; keep raw scratch and gate traces.
+**Finding.** Phase-GA AUC 26.67250 and 8/18 solves do not close the observed gap
+to Pro (8.40173, 18/18). Pro-minus-GA Holm p is 0.0625, not significant at 0.05;
+do not change the correction family or add seeds after seeing this result.
+**Limits.** This is post-hoc robustness on observed targets, not new confirmation
+or a semantic-mechanism test. Host CPU accounting excludes container CPU.
+**Next.** Freeze independent target qualification with a witnessed near-flat
+control, a difficulty gradient and every attempt retained. No new run or model
+call is part of this completion/publication slice.
+
 ## 2026-09-12 — Live gate passes; launch the untuned CPU-only extension
 
 **Decision.** Execute the authorized phase-GA panel after all seven frozen

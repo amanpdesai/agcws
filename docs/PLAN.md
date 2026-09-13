@@ -44,8 +44,9 @@ categories explicit. The untuned [phase-GA protocol](PHASE_GA_ROBUSTNESS_V1.md)
 and offline historical/current checks are recorded. The next execution slice
 was runtime identity plus matched live replay, then V2 only if that gate passes.
 On September 12 all seven live replays passed and V2 started under its recorded
-execution manifest. The panel remains incomplete; see RESULTS.md. No provider
-calls are part of V2. The preceding planning/analysis slice launched no runs.
+execution manifest. V2 completed and passed its accounting audit on September 13:
+18 cells / 2,304 slots, no provider calls. See RESULTS.md for paired inference
+and limits. The preceding planning/analysis slice launched no runs.
 
 No paid calls or new simulations in this slice. Produce a compact, reproducible
 analysis bundle linked from RESULTS.md, plus an execution-ready robustness
@@ -117,7 +118,7 @@ page. New measurements and paid calls require an explicit execution decision.
 |---|---|---|---|
 | 1 | Inspect solutions and measurement behavior | DONE — bounded offline audit | Findings and remaining limits in RESULTS.md; no new runs |
 | 2 | Audit information access and accounting independently | DONE — bounded offline audit | Independent metrics/costs reconcile; causal and provider-side limits remain |
-| 3 | Phase-GA robustness extension at 128 slots | LIVE GATE PASSED; RUNNING | Complete, audit and analyze all 18 cells before conclusions |
+| 3 | Phase-GA robustness extension at 128 slots | DONE — post-hoc robustness | All 18 cells audited; compact evidence and frozen paired analysis in RESULTS.md |
 | 4 | Qualify a more diverse target bank | PLANNED — NOT LAUNCHED | Freeze construction/search rules and retain every attempt |
 | 5 | Fresh broader confirmation | CONDITIONAL | Qualified targets, frozen controls and sufficient analysis time |
 | Gate | Paper claims | WAITING ON VALIDITY | Audit validity and test competing mechanisms before finalizing claims |
@@ -317,8 +318,9 @@ targets and references instead of calling it free transfer.
 | 5 | Additional designs, one at a time | Predeclared selection rubric and legal, calibrated witnessed targets before admitting a design |
 
 Order 1 and the existing-evidence/phase-GA readiness slice are complete within
-their offline scope. V2 has passed its live gate and is running. Next: complete,
-audit and analyze it before V3 qualification. Other mechanism arms remain separately
+their offline scope. V2 completed with audited compact evidence; phase-GA did not
+close the observed Pro gap (see inference limits in RESULTS.md). Next: V3 target
+qualification, with independent construction and all attempts retained. Other mechanism arms remain separately
 scoped, not frozen implementations. This is not a paid cross-design matrix.
 Prepare the cross-design protocol after readiness and accounting establish what
 can actually be held fixed. Record proposed settings now, but do not label an
