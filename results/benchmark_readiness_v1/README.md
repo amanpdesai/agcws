@@ -29,7 +29,10 @@ different packet release schedules plus an exact repeated replay, each deliverin
 retained as a negative case with no score. The compressed bundle includes input
 packets, per-cycle counts, source hashes and functional logs; the summary exposes
 the vectors. These are reference profiles, not the eight qualified benchmark
-targets, and the compact traffic API/shared-runner mesh port remains outstanding.
+targets. The subsequent compact traffic API/shared-runner mesh port is exercised
+by `mesh_temporal/shared_panel.json.gz`: 16/16 valid CPU proposals, two classical
+arms, with resume hashes/timestamps retained. Its separate horizon-classification
+check confirms late packets produce a cached `USEFUL_WORK` rejection with no score.
 
 ## Shared schedule pipeline
 

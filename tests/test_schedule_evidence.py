@@ -10,7 +10,8 @@ import pytest
 from agcws.pipeline.metrics import error, summarize
 
 
-@pytest.mark.parametrize("domain,edges,work", [("aes", 6774, 64), ("dma", 12000, 4096)])
+@pytest.mark.parametrize("domain,edges,work", [("aes", 6774, 64), ("dma", 12000, 4096),
+                                              ("mesh_temporal", 8200, None)])
 def test_archived_shared_panel(domain, edges, work):
     directory = Path("results/benchmark_readiness_v1") / domain
     data = (directory / "shared_panel.json.gz").read_bytes()
@@ -22,7 +23,8 @@ def test_archived_shared_panel(domain, edges, work):
     assert files["complete.json"]["slots"] == 16
     assert not any("response" in name for name in files)
     for arm in ("phase-random", "phase-ga"):
-        prefix = f"panel/plumbing_only/7102/{arm}"
+        seed = spec["seeds"][0]
+        prefix = f"panel/plumbing_only/{seed}/{arm}"
         trials = [row for name, rows in sorted(files.items())
                   if name.startswith(prefix + "/batches/") and name.endswith("/trials.json")
                   for row in rows]
@@ -34,7 +36,8 @@ def test_archived_shared_panel(domain, edges, work):
             cache = "cache/" + row["cache_id"]
             record = files[cache + "/result.json"]
             profile = record["profile"]
-            assert profile["clock_edges"] == edges and profile["useful_work"] == work
+            useful_work = work if work is not None else sum(p["packets"] for p in row["program"]["phases"])
+            assert profile["clock_edges"] == edges and profile["useful_work"] == useful_work
             assert profile["fidelity"] == "activity"
             samples = files[cache + "/attempt-001/activity.json"]["per_cycle_toggles"]
             bins = [samples[i * edges // 8:(i + 1) * edges // 8] for i in range(8)]
