@@ -238,3 +238,23 @@ retained. Activity scope is the accelerator wrapper, excluding the controller CP
 and testbench memories; it still includes accelerator control/interface logic.
 These are small 4×4 engineering stimuli, not a qualified target bank, a general
 matrix workload language, or evidence of temporal power targeting.
+
+The subsequent `RedmuleTemporalAdapter` defines a compact phase language: square
+matrix size 4/8/16, data pattern and seed, and timed job counts. All jobs execute
+sequentially; overlapping releases do not imply parallel execution. The provisional
+useful-work floor is 1024 completed multiply-accumulates, checked after simulation.
+The reference generator uses half-integer operands: every intermediate GEMM sum
+is exactly representable in FP16 for these sizes. This deliberately avoids an
+unverified floating-point rounding oracle; it does not cover arbitrary FP16 data.
+
+Local RTL size gates (`out/redmule-size-gate-{4,8,16}`) each completed three jobs
+with zero output mismatches. The three-job 4×4 case is a functional bring-up check
+only: its 192 MACs are below the benchmark floor. The replay script
+`scripts/run_redmule_workload.py` rejects below-floor cases before scoring and
+requires an explicit prepared Bender source list. Its 8×8 replay
+(`out/redmule-runner-gate-v3`, with the complete harness/include cache key) completed
+1536 MACs. These scratch paths are not
+published evidence; archive and shared-runner reproduction remain admission gates.
+The earlier v1 runner attempt used the wrong `fst2vcd` output syntax and failed
+without an activity result; v2 uses explicit `-o`. No failed attempt is counted
+as a valid benchmark observation.
