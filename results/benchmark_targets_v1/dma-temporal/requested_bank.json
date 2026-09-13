@@ -1,0 +1,794 @@
+{
+  "procedure": "docs/TARGET_QUALIFICATION_V1.md",
+  "calibration": {
+    "domain": "dma-temporal",
+    "proposals": 64,
+    "valid": 64,
+    "failure_stages": {},
+    "measurement_fingerprint": "2cde2aa410458ef8dd5ae95c044242ceceeb4ceb82a443561a978e6ef77211fe",
+    "target_qualified": false,
+    "status": "calibrated",
+    "low": 1.9993333333333334,
+    "high": 19.666633333333333,
+    "scale": 17.6673,
+    "median_window_mean": 5.893166666666667,
+    "min_bin": 1.9993333333333334,
+    "max_bin": 33.12466666666667,
+    "mean_range": [
+      5.8905,
+      5.897333333333333
+    ]
+  },
+  "calibration_manifest_sha256": "302b6745d66379b16afcebdc7f916a35b359227c334837895d9ceb745bd3e0c7",
+  "qualified": false,
+  "splits": {
+    "development": {
+      "requests": [
+        {
+          "id": "activation",
+          "split": "development",
+          "rates": [
+            2.9727916666666667,
+            2.9727916666666667,
+            6.866625,
+            6.866625,
+            6.866625,
+            6.866625,
+            6.866625,
+            6.866625
+          ],
+          "control": false,
+          "qualified": false,
+          "normalization": "calibration-mean-preserving",
+          "constant_floor": 0.09543502925657306,
+          "best_constant_rate": 5.893166666666667,
+          "span_over_scale": 0.22039775932560907,
+          "total_variation_over_scale": 0.22039775932560907,
+          "necessary_floor_gate": false
+        },
+        {
+          "id": "deactivation",
+          "split": "development",
+          "rates": [
+            8.813541666666666,
+            8.813541666666666,
+            8.813541666666666,
+            8.813541666666666,
+            2.9727916666666667,
+            2.9727916666666667,
+            2.9727916666666667,
+            2.9727916666666667
+          ],
+          "control": false,
+          "qualified": false,
+          "normalization": "calibration-mean-preserving",
+          "constant_floor": 0.16529831949420676,
+          "best_constant_rate": 5.893166666666666,
+          "span_over_scale": 0.33059663898841357,
+          "total_variation_over_scale": 0.33059663898841357,
+          "necessary_floor_gate": true
+        },
+        {
+          "id": "burst",
+          "split": "development",
+          "rates": [
+            2.9727916666666667,
+            2.9727916666666667,
+            2.9727916666666667,
+            14.654291666666666,
+            14.654291666666666,
+            2.9727916666666667,
+            2.9727916666666667,
+            2.9727916666666667
+          ],
+          "control": false,
+          "qualified": false,
+          "normalization": "calibration-mean-preserving",
+          "constant_floor": 0.28630508776971914,
+          "best_constant_rate": 5.893166666666667,
+          "span_over_scale": 0.6611932779768273,
+          "total_variation_over_scale": 1.3223865559536545,
+          "necessary_floor_gate": true
+        },
+        {
+          "id": "quiet_interval",
+          "split": "development",
+          "rates": [
+            6.866625,
+            6.866625,
+            6.866625,
+            2.9727916666666667,
+            2.9727916666666667,
+            6.866625,
+            6.866625,
+            6.866625
+          ],
+          "control": false,
+          "qualified": false,
+          "normalization": "calibration-mean-preserving",
+          "constant_floor": 0.09543502925657306,
+          "best_constant_rate": 5.893166666666667,
+          "span_over_scale": 0.22039775932560907,
+          "total_variation_over_scale": 0.44079551865121813,
+          "necessary_floor_gate": false
+        },
+        {
+          "id": "alternating",
+          "split": "development",
+          "rates": [
+            2.9727916666666667,
+            8.813541666666666,
+            2.9727916666666667,
+            8.813541666666666,
+            2.9727916666666667,
+            8.813541666666666,
+            2.9727916666666667,
+            8.813541666666666
+          ],
+          "control": false,
+          "qualified": false,
+          "normalization": "calibration-mean-preserving",
+          "constant_floor": 0.16529831949420676,
+          "best_constant_rate": 5.893166666666666,
+          "span_over_scale": 0.33059663898841357,
+          "total_variation_over_scale": 2.314176472918895,
+          "necessary_floor_gate": true
+        },
+        {
+          "id": "ramp",
+          "split": "development",
+          "rates": [
+            2.9727916666666667,
+            2.9727916666666667,
+            4.900239166666667,
+            4.900239166666667,
+            6.886094166666667,
+            6.886094166666667,
+            8.813541666666666,
+            8.813541666666666
+          ],
+          "control": false,
+          "qualified": false,
+          "normalization": "calibration-mean-preserving",
+          "constant_floor": 0.12345471843441312,
+          "best_constant_rate": 5.893166666666667,
+          "span_over_scale": 0.33059663898841357,
+          "total_variation_over_scale": 0.33059663898841357,
+          "necessary_floor_gate": true
+        },
+        {
+          "id": "rise_fall",
+          "split": "development",
+          "rates": [
+            2.9727916666666667,
+            5.893166666666667,
+            8.813541666666666,
+            8.813541666666666,
+            8.813541666666666,
+            5.893166666666667,
+            2.9727916666666667,
+            2.9727916666666667
+          ],
+          "control": false,
+          "qualified": false,
+          "normalization": "calibration-mean-preserving",
+          "constant_floor": 0.14315254388485957,
+          "best_constant_rate": 5.893166666666667,
+          "span_over_scale": 0.33059663898841357,
+          "total_variation_over_scale": 0.6611932779768271,
+          "necessary_floor_gate": true
+        },
+        {
+          "id": "irregular",
+          "split": "development",
+          "rates": [
+            5.893166666666667,
+            8.813541666666666,
+            2.9727916666666667,
+            2.9727916666666667,
+            8.813541666666666,
+            5.893166666666667,
+            2.9727916666666667,
+            8.813541666666666
+          ],
+          "control": false,
+          "qualified": false,
+          "normalization": "calibration-mean-preserving",
+          "constant_floor": 0.14315254388485957,
+          "best_constant_rate": 5.893166666666667,
+          "span_over_scale": 0.33059663898841357,
+          "total_variation_over_scale": 1.487684875447861,
+          "necessary_floor_gate": true
+        },
+        {
+          "id": "flat_control",
+          "split": "development",
+          "rates": [
+            5.893166666666667,
+            5.893166666666667,
+            5.893166666666667,
+            5.893166666666667,
+            5.893166666666667,
+            5.893166666666667,
+            5.893166666666667,
+            5.893166666666667
+          ],
+          "control": true,
+          "qualified": false,
+          "normalization": "calibration-mean-preserving",
+          "constant_floor": 0.0,
+          "best_constant_rate": 5.893166666666667,
+          "span_over_scale": 0.0,
+          "total_variation_over_scale": 0.0,
+          "necessary_floor_gate": true
+        }
+      ],
+      "pairwise_distances": [
+        {
+          "left": "activation",
+          "right": "deactivation",
+          "distance": 0.2337671252661882
+        },
+        {
+          "left": "activation",
+          "right": "burst",
+          "distance": 0.26993102540023745
+        },
+        {
+          "left": "activation",
+          "right": "quiet_interval",
+          "distance": 0.15584475017745883
+        },
+        {
+          "left": "activation",
+          "right": "alternating",
+          "distance": 0.19087005851314612
+        },
+        {
+          "left": "activation",
+          "right": "ramp",
+          "distance": 0.07831489446150883
+        },
+        {
+          "left": "activation",
+          "right": "rise_fall",
+          "distance": 0.14315254388485957
+        },
+        {
+          "left": "activation",
+          "right": "irregular",
+          "distance": 0.1967443530043812
+        },
+        {
+          "left": "activation",
+          "right": "flat_control",
+          "distance": 0.09543502925657306
+        },
+        {
+          "left": "deactivation",
+          "right": "burst",
+          "distance": 0.3305966389884136
+        },
+        {
+          "left": "deactivation",
+          "right": "quiet_interval",
+          "distance": 0.19087005851314612
+        },
+        {
+          "left": "deactivation",
+          "right": "alternating",
+          "distance": 0.2337671252661882
+        },
+        {
+          "left": "deactivation",
+          "right": "ramp",
+          "distance": 0.2813861014057463
+        },
+        {
+          "left": "deactivation",
+          "right": "rise_fall",
+          "distance": 0.1848091394777625
+        },
+        {
+          "left": "deactivation",
+          "right": "irregular",
+          "distance": 0.24794747924131014
+        },
+        {
+          "left": "deactivation",
+          "right": "flat_control",
+          "distance": 0.16529831949420676
+        },
+        {
+          "left": "burst",
+          "right": "quiet_interval",
+          "distance": 0.38174011702629224
+        },
+        {
+          "left": "burst",
+          "right": "alternating",
+          "distance": 0.3305966389884136
+        },
+        {
+          "left": "burst",
+          "right": "ramp",
+          "distance": 0.3117878618332452
+        },
+        {
+          "left": "burst",
+          "right": "rise_fall",
+          "distance": 0.2186691227592856
+        },
+        {
+          "left": "burst",
+          "right": "irregular",
+          "distance": 0.32009881927856787
+        },
+        {
+          "left": "burst",
+          "right": "flat_control",
+          "distance": 0.28630508776971914
+        },
+        {
+          "left": "quiet_interval",
+          "right": "alternating",
+          "distance": 0.19087005851314612
+        },
+        {
+          "left": "quiet_interval",
+          "right": "ramp",
+          "distance": 0.15604138013015387
+        },
+        {
+          "left": "quiet_interval",
+          "right": "rise_fall",
+          "distance": 0.2186691227592856
+        },
+        {
+          "left": "quiet_interval",
+          "right": "irregular",
+          "distance": 0.17204794572999005
+        },
+        {
+          "left": "quiet_interval",
+          "right": "flat_control",
+          "distance": 0.09543502925657306
+        },
+        {
+          "left": "alternating",
+          "right": "ramp",
+          "distance": 0.20631190448282202
+        },
+        {
+          "left": "alternating",
+          "right": "rise_fall",
+          "distance": 0.21866912275928557
+        },
+        {
+          "left": "alternating",
+          "right": "irregular",
+          "distance": 0.1848091394777625
+        },
+        {
+          "left": "alternating",
+          "right": "flat_control",
+          "distance": 0.16529831949420676
+        },
+        {
+          "left": "ramp",
+          "right": "rise_fall",
+          "distance": 0.21186576494959214
+        },
+        {
+          "left": "ramp",
+          "right": "irregular",
+          "distance": 0.18867193922862197
+        },
+        {
+          "left": "ramp",
+          "right": "flat_control",
+          "distance": 0.12345471843441312
+        },
+        {
+          "left": "rise_fall",
+          "right": "irregular",
+          "distance": 0.21866912275928557
+        },
+        {
+          "left": "rise_fall",
+          "right": "flat_control",
+          "distance": 0.14315254388485957
+        },
+        {
+          "left": "irregular",
+          "right": "flat_control",
+          "distance": 0.14315254388485957
+        }
+      ]
+    },
+    "confirmation": {
+      "requests": [
+        {
+          "id": "activation",
+          "split": "confirmation",
+          "rates": [
+            2.3887166666666664,
+            2.3887166666666664,
+            7.0613166666666665,
+            7.0613166666666665,
+            7.0613166666666665,
+            7.0613166666666665,
+            7.0613166666666665,
+            7.0613166666666665
+          ],
+          "control": false,
+          "qualified": false,
+          "normalization": "calibration-mean-preserving",
+          "constant_floor": 0.11452203510788768,
+          "best_constant_rate": 5.893166666666667,
+          "span_over_scale": 0.26447731119073087,
+          "total_variation_over_scale": 0.26447731119073087,
+          "necessary_floor_gate": false
+        },
+        {
+          "id": "deactivation",
+          "split": "confirmation",
+          "rates": [
+            9.397616666666666,
+            9.397616666666666,
+            9.397616666666666,
+            9.397616666666666,
+            2.388716666666667,
+            2.388716666666667,
+            2.388716666666667,
+            2.388716666666667
+          ],
+          "control": false,
+          "qualified": false,
+          "normalization": "calibration-mean-preserving",
+          "constant_floor": 0.19835798339304817,
+          "best_constant_rate": 5.893166666666667,
+          "span_over_scale": 0.3967159667860963,
+          "total_variation_over_scale": 0.3967159667860963,
+          "necessary_floor_gate": true
+        },
+        {
+          "id": "burst",
+          "split": "confirmation",
+          "rates": [
+            2.388716666666667,
+            2.388716666666667,
+            2.388716666666667,
+            16.406516666666665,
+            16.406516666666665,
+            2.388716666666667,
+            2.388716666666667,
+            2.388716666666667
+          ],
+          "control": false,
+          "qualified": false,
+          "normalization": "calibration-mean-preserving",
+          "constant_floor": 0.343566105323663,
+          "best_constant_rate": 5.893166666666667,
+          "span_over_scale": 0.7934319335721925,
+          "total_variation_over_scale": 1.586863867144385,
+          "necessary_floor_gate": true
+        },
+        {
+          "id": "quiet_interval",
+          "split": "confirmation",
+          "rates": [
+            7.0613166666666665,
+            7.0613166666666665,
+            7.0613166666666665,
+            2.3887166666666664,
+            2.3887166666666664,
+            7.0613166666666665,
+            7.0613166666666665,
+            7.0613166666666665
+          ],
+          "control": false,
+          "qualified": false,
+          "normalization": "calibration-mean-preserving",
+          "constant_floor": 0.11452203510788768,
+          "best_constant_rate": 5.893166666666667,
+          "span_over_scale": 0.26447731119073087,
+          "total_variation_over_scale": 0.5289546223814617,
+          "necessary_floor_gate": false
+        },
+        {
+          "id": "alternating",
+          "split": "confirmation",
+          "rates": [
+            2.388716666666667,
+            9.397616666666666,
+            2.388716666666667,
+            9.397616666666666,
+            2.388716666666667,
+            9.397616666666666,
+            2.388716666666667,
+            9.397616666666666
+          ],
+          "control": false,
+          "qualified": false,
+          "normalization": "calibration-mean-preserving",
+          "constant_floor": 0.19835798339304817,
+          "best_constant_rate": 5.893166666666667,
+          "span_over_scale": 0.3967159667860963,
+          "total_variation_over_scale": 2.7770117675026738,
+          "necessary_floor_gate": true
+        },
+        {
+          "id": "ramp",
+          "split": "confirmation",
+          "rates": [
+            2.388716666666667,
+            2.388716666666667,
+            4.701653666666667,
+            4.701653666666667,
+            7.084679666666667,
+            7.084679666666667,
+            9.397616666666666,
+            9.397616666666666
+          ],
+          "control": false,
+          "qualified": false,
+          "normalization": "calibration-mean-preserving",
+          "constant_floor": 0.14814566212129576,
+          "best_constant_rate": 5.893166666666667,
+          "span_over_scale": 0.3967159667860963,
+          "total_variation_over_scale": 0.3967159667860963,
+          "necessary_floor_gate": true
+        },
+        {
+          "id": "rise_fall",
+          "split": "confirmation",
+          "rates": [
+            2.388716666666667,
+            5.893166666666667,
+            9.397616666666666,
+            9.397616666666666,
+            9.397616666666666,
+            5.893166666666667,
+            2.388716666666667,
+            2.388716666666667
+          ],
+          "control": false,
+          "qualified": false,
+          "normalization": "calibration-mean-preserving",
+          "constant_floor": 0.1717830526618315,
+          "best_constant_rate": 5.893166666666667,
+          "span_over_scale": 0.3967159667860963,
+          "total_variation_over_scale": 0.7934319335721925,
+          "necessary_floor_gate": true
+        },
+        {
+          "id": "irregular",
+          "split": "confirmation",
+          "rates": [
+            5.893166666666667,
+            9.397616666666666,
+            2.388716666666667,
+            2.388716666666667,
+            9.397616666666666,
+            5.893166666666667,
+            2.388716666666667,
+            9.397616666666666
+          ],
+          "control": false,
+          "qualified": false,
+          "normalization": "calibration-mean-preserving",
+          "constant_floor": 0.1717830526618315,
+          "best_constant_rate": 5.893166666666667,
+          "span_over_scale": 0.3967159667860963,
+          "total_variation_over_scale": 1.785221850537433,
+          "necessary_floor_gate": true
+        },
+        {
+          "id": "flat_control",
+          "split": "confirmation",
+          "rates": [
+            5.893166666666667,
+            5.893166666666667,
+            5.893166666666667,
+            5.893166666666667,
+            5.893166666666667,
+            5.893166666666667,
+            5.893166666666667,
+            5.893166666666667
+          ],
+          "control": true,
+          "qualified": false,
+          "normalization": "calibration-mean-preserving",
+          "constant_floor": 0.0,
+          "best_constant_rate": 5.893166666666667,
+          "span_over_scale": 0.0,
+          "total_variation_over_scale": 0.0,
+          "necessary_floor_gate": true
+        }
+      ],
+      "pairwise_distances": [
+        {
+          "left": "activation",
+          "right": "deactivation",
+          "distance": 0.2805205503194258
+        },
+        {
+          "left": "activation",
+          "right": "burst",
+          "distance": 0.3239172304802849
+        },
+        {
+          "left": "activation",
+          "right": "quiet_interval",
+          "distance": 0.18701370021295058
+        },
+        {
+          "left": "activation",
+          "right": "alternating",
+          "distance": 0.22904407021577533
+        },
+        {
+          "left": "activation",
+          "right": "ramp",
+          "distance": 0.09397787335381062
+        },
+        {
+          "left": "activation",
+          "right": "rise_fall",
+          "distance": 0.1717830526618315
+        },
+        {
+          "left": "activation",
+          "right": "irregular",
+          "distance": 0.23609322360525745
+        },
+        {
+          "left": "activation",
+          "right": "flat_control",
+          "distance": 0.11452203510788768
+        },
+        {
+          "left": "deactivation",
+          "right": "burst",
+          "distance": 0.3967159667860963
+        },
+        {
+          "left": "deactivation",
+          "right": "quiet_interval",
+          "distance": 0.22904407021577533
+        },
+        {
+          "left": "deactivation",
+          "right": "alternating",
+          "distance": 0.2805205503194258
+        },
+        {
+          "left": "deactivation",
+          "right": "ramp",
+          "distance": 0.3376633216868956
+        },
+        {
+          "left": "deactivation",
+          "right": "rise_fall",
+          "distance": 0.22177096737331498
+        },
+        {
+          "left": "deactivation",
+          "right": "irregular",
+          "distance": 0.2975369750895722
+        },
+        {
+          "left": "deactivation",
+          "right": "flat_control",
+          "distance": 0.19835798339304817
+        },
+        {
+          "left": "burst",
+          "right": "quiet_interval",
+          "distance": 0.45808814043155066
+        },
+        {
+          "left": "burst",
+          "right": "alternating",
+          "distance": 0.3967159667860963
+        },
+        {
+          "left": "burst",
+          "right": "ramp",
+          "distance": 0.37414543419989427
+        },
+        {
+          "left": "burst",
+          "right": "rise_fall",
+          "distance": 0.26240294731114266
+        },
+        {
+          "left": "burst",
+          "right": "irregular",
+          "distance": 0.3841185831342814
+        },
+        {
+          "left": "burst",
+          "right": "flat_control",
+          "distance": 0.343566105323663
+        },
+        {
+          "left": "quiet_interval",
+          "right": "alternating",
+          "distance": 0.22904407021577533
+        },
+        {
+          "left": "quiet_interval",
+          "right": "ramp",
+          "distance": 0.18724965615618464
+        },
+        {
+          "left": "quiet_interval",
+          "right": "rise_fall",
+          "distance": 0.2624029473111427
+        },
+        {
+          "left": "quiet_interval",
+          "right": "irregular",
+          "distance": 0.20645753487598809
+        },
+        {
+          "left": "quiet_interval",
+          "right": "flat_control",
+          "distance": 0.11452203510788768
+        },
+        {
+          "left": "alternating",
+          "right": "ramp",
+          "distance": 0.24757428537938644
+        },
+        {
+          "left": "alternating",
+          "right": "rise_fall",
+          "distance": 0.26240294731114266
+        },
+        {
+          "left": "alternating",
+          "right": "irregular",
+          "distance": 0.22177096737331498
+        },
+        {
+          "left": "alternating",
+          "right": "flat_control",
+          "distance": 0.19835798339304817
+        },
+        {
+          "left": "ramp",
+          "right": "rise_fall",
+          "distance": 0.2542389179395106
+        },
+        {
+          "left": "ramp",
+          "right": "irregular",
+          "distance": 0.22640632707434638
+        },
+        {
+          "left": "ramp",
+          "right": "flat_control",
+          "distance": 0.14814566212129576
+        },
+        {
+          "left": "rise_fall",
+          "right": "irregular",
+          "distance": 0.26240294731114266
+        },
+        {
+          "left": "rise_fall",
+          "right": "flat_control",
+          "distance": 0.1717830526618315
+        },
+        {
+          "left": "irregular",
+          "right": "flat_control",
+          "distance": 0.1717830526618315
+        }
+      ]
+    }
+  }
+}
