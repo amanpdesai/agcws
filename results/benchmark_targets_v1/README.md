@@ -11,6 +11,9 @@ AES and DMA both fail the necessary non-flatness gate for activation and
 quiet-interval requests in both splits. Those vectors remain in the bank and are
 not qualified. Mesh passes this necessary diagnostic, but no request is qualified
 without a measured valid witness. RedMulE also clears the necessary floor gate in
-both splits; its feasibility is not yet demonstrated. Mesh CPU witness searches
-are running through the ordinary pipeline. No full paid study is authorized by
-these files.
+both splits; its feasibility is not yet demonstrated. Ibex requests have also been
+frozen from its completed calibration. Mesh CPU witness searches completed:
+six non-flat development requests and five non-flat confirmation requests qualify,
+plus both flat controls. Full per-request qualification reports retain every miss
+and identify the selected witnesses. Mesh therefore still lacks the required eight
+non-flat profiles in each split. No full paid study is authorized by these files.

@@ -7,8 +7,9 @@ policy-comparison results. Each completed design has a compact evidence archive
 and `calibration.json`; the packer verifies restoration against the original files.
 
 AES, DMA and mesh completed with 64/64 valid proposals each. RedMulE completed
-with 59/64 valid proposals and five useful-work rejections, all retained. Ibex is
-still in progress at this archive update; absence is not a successful admission.
+with 59/64 valid proposals and five useful-work rejections, all retained. Ibex
+completed with 61/64 valid proposals and three useful-work rejections. All five
+calibrations are complete; calibration alone is not target admission.
 
 AES's whole-window mean spans only 23.3355–23.3607 transitions per edge, while
 per-bin values span 2–172.8853. Its exact-work constraint materially restricts

@@ -479,3 +479,22 @@ discrepancy remains. The next slice is to freeze stronger controls and mechanism
 ablations, with evaluator-equivalence checks before execution. This does not
 establish semantic understanding, productive application computation, Ibex gate
 power or cross-design superiority. No paid calls or new simulations were launched.
+
+## Five-design benchmark readiness — calibration and first witnesses
+
+This is subsequent CPU-only engineering/qualification work, not a new agent
+comparison. All five backends execute through the shared harness. Frozen
+64-proposal calibrations completed: AES, DMA and mesh each 64 valid; RedMulE
+59 valid and five useful-work rejections; Ibex 61 valid and three useful-work
+rejections. [Compact calibration evidence](results/benchmark_calibration_v1/README.md)
+retains invalid candidates and measurement provenance.
+
+AES/DMA fixed-work contracts constrain mean activity, motivating mean-preserving
+analytic requests. Even then, activation and quiet-interval requests fail the
+predeclared non-flatness floor. They are not qualified. Mesh's two CPU witness
+panels completed 9,216 proposal slots: six of eight non-flat development requests
+and five of eight confirmation requests qualify at error <=0.10, alongside both
+flat controls. [Per-request records](results/benchmark_targets_v1/README.md) retain
+misses and witness identities. This proves neither eight-profile readiness nor
+agent superiority. Quantities are RTL activity, not gate power. Historical frozen
+study results above are unchanged; no full Flash or Pro panel was launched.

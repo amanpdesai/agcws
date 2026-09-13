@@ -1,0 +1,1951 @@
+{
+  "scope": "target qualification; witnesses must not be supplied to search policies",
+  "domain": "mesh-temporal",
+  "split": "development",
+  "request_bank_sha256": "6bc53a8b4b02f23c91e3523511bef67d7fa987e70192267ab13af8ccc8ab281a",
+  "run_manifest_sha256": "03efd4f312ff517fefb1f7d0cfd02ce9be86a8b6e9a7708ce795c2fea71725ff",
+  "qualified_nonflat": 6,
+  "qualified_controls": 1,
+  "requests": [
+    {
+      "id": "activation",
+      "control": false,
+      "arms": {
+        "phase-random": {
+          "proposals": 256,
+          "invalid_by_stage": {},
+          "first_hit": null,
+          "right_censored": true
+        },
+        "phase-ga": {
+          "proposals": 256,
+          "invalid_by_stage": {},
+          "first_hit": 187,
+          "right_censored": false
+        }
+      },
+      "qualified": true,
+      "reasons": [],
+      "witness_error": 0.0641660981063695,
+      "witness": {
+        "policy": "phase-ga",
+        "slot": 251,
+        "cache_id": "61415b23fa08688bff8af1af30163512391f7ea89df6ad49cbeb2303d069b265",
+        "program": {
+          "phases": [
+            {
+              "start": 4630,
+              "duration": 175,
+              "packets": 35,
+              "sources": [
+                3
+              ],
+              "route": "self",
+              "pattern": "counter"
+            },
+            {
+              "start": 3645,
+              "duration": 100,
+              "packets": 165,
+              "sources": [
+                0,
+                1,
+                2
+              ],
+              "route": "opposite",
+              "pattern": "alternating"
+            },
+            {
+              "start": 354,
+              "duration": 104,
+              "packets": 91,
+              "sources": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "route": "self",
+              "pattern": "counter"
+            },
+            {
+              "start": 727,
+              "duration": 36,
+              "packets": 125,
+              "sources": [
+                0,
+                3
+              ],
+              "route": "neighbor",
+              "pattern": "counter"
+            },
+            {
+              "start": 1048,
+              "duration": 118,
+              "packets": 95,
+              "sources": [
+                3
+              ],
+              "route": "opposite",
+              "pattern": "zeros"
+            },
+            {
+              "start": 5643,
+              "duration": 161,
+              "packets": 92,
+              "sources": [
+                1,
+                2,
+                3
+              ],
+              "route": "neighbor",
+              "pattern": "counter"
+            },
+            {
+              "start": 4640,
+              "duration": 173,
+              "packets": 178,
+              "sources": [
+                0,
+                1
+              ],
+              "route": "opposite",
+              "pattern": "zeros"
+            },
+            {
+              "start": 2385,
+              "duration": 187,
+              "packets": 154,
+              "sources": [
+                1,
+                2
+              ],
+              "route": "hotspot0",
+              "pattern": "alternating"
+            },
+            {
+              "start": 2654,
+              "duration": 144,
+              "packets": 108,
+              "sources": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "route": "neighbor",
+              "pattern": "zeros"
+            },
+            {
+              "start": 3009,
+              "duration": 127,
+              "packets": 121,
+              "sources": [
+                0
+              ],
+              "route": "neighbor",
+              "pattern": "zeros"
+            },
+            {
+              "start": 3305,
+              "duration": 124,
+              "packets": 115,
+              "sources": [
+                1,
+                2,
+                3
+              ],
+              "route": "hotspot0",
+              "pattern": "alternating"
+            },
+            {
+              "start": 3645,
+              "duration": 100,
+              "packets": 165,
+              "sources": [
+                0,
+                1,
+                2
+              ],
+              "route": "opposite",
+              "pattern": "alternating"
+            },
+            {
+              "start": 3645,
+              "duration": 100,
+              "packets": 165,
+              "sources": [
+                0,
+                1,
+                2
+              ],
+              "route": "opposite",
+              "pattern": "alternating"
+            },
+            {
+              "start": 354,
+              "duration": 104,
+              "packets": 91,
+              "sources": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "route": "self",
+              "pattern": "alternating"
+            },
+            {
+              "start": 2807,
+              "duration": 161,
+              "packets": 6,
+              "sources": [
+                1,
+                2,
+                3
+              ],
+              "route": "self",
+              "pattern": "counter"
+            },
+            {
+              "start": 5016,
+              "duration": 115,
+              "packets": 141,
+              "sources": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "route": "self",
+              "pattern": "zeros"
+            },
+            {
+              "start": 7712,
+              "duration": 69,
+              "packets": 102,
+              "sources": [
+                0,
+                1,
+                2
+              ],
+              "route": "opposite",
+              "pattern": "zeros"
+            },
+            {
+              "start": 2807,
+              "duration": 161,
+              "packets": 21,
+              "sources": [
+                1,
+                2,
+                3
+              ],
+              "route": "self",
+              "pattern": "counter"
+            },
+            {
+              "start": 5976,
+              "duration": 62,
+              "packets": 142,
+              "sources": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "route": "opposite",
+              "pattern": "counter"
+            },
+            {
+              "start": 6299,
+              "duration": 204,
+              "packets": 113,
+              "sources": [
+                1,
+                3
+              ],
+              "route": "hotspot0",
+              "pattern": "alternating"
+            },
+            {
+              "start": 6636,
+              "duration": 181,
+              "packets": 94,
+              "sources": [
+                0,
+                1,
+                3
+              ],
+              "route": "neighbor",
+              "pattern": "counter"
+            },
+            {
+              "start": 6636,
+              "duration": 181,
+              "packets": 94,
+              "sources": [
+                0,
+                1,
+                3
+              ],
+              "route": "neighbor",
+              "pattern": "counter"
+            },
+            {
+              "start": 7260,
+              "duration": 191,
+              "packets": 155,
+              "sources": [
+                3
+              ],
+              "route": "neighbor",
+              "pattern": "counter"
+            },
+            {
+              "start": 7652,
+              "duration": 244,
+              "packets": 68,
+              "sources": [
+                2,
+                3
+              ],
+              "route": "hotspot0",
+              "pattern": "counter"
+            }
+          ],
+          "sink_period": 8,
+          "sink_pause": 0
+        },
+        "rates": [
+          28.902439024390244,
+          14.37560975609756,
+          68.08975609756098,
+          77.35121951219512,
+          65.39414634146341,
+          68.86048780487805,
+          69.19804878048781,
+          69.6039024390244
+        ]
+      }
+    },
+    {
+      "id": "deactivation",
+      "control": false,
+      "arms": {
+        "phase-random": {
+          "proposals": 256,
+          "invalid_by_stage": {},
+          "first_hit": null,
+          "right_censored": true
+        },
+        "phase-ga": {
+          "proposals": 256,
+          "invalid_by_stage": {},
+          "first_hit": 129,
+          "right_censored": false
+        }
+      },
+      "qualified": true,
+      "reasons": [],
+      "witness_error": 0.09275628091029502,
+      "witness": {
+        "policy": "phase-ga",
+        "slot": 165,
+        "cache_id": "ddc193d02fea93a35d60785c7cd02feb456aae4c187fbde63c5ea1bc7c6c3824",
+        "program": {
+          "phases": [
+            {
+              "start": 3,
+              "duration": 101,
+              "packets": 148,
+              "sources": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "route": "neighbor",
+              "pattern": "counter"
+            },
+            {
+              "start": 6976,
+              "duration": 139,
+              "packets": 49,
+              "sources": [
+                0,
+                1,
+                3
+              ],
+              "route": "neighbor",
+              "pattern": "alternating"
+            },
+            {
+              "start": 1933,
+              "duration": 424,
+              "packets": 280,
+              "sources": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "route": "hotspot0",
+              "pattern": "counter"
+            },
+            {
+              "start": 4009,
+              "duration": 243,
+              "packets": 130,
+              "sources": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "route": "self",
+              "pattern": "alternating"
+            },
+            {
+              "start": 1933,
+              "duration": 424,
+              "packets": 180,
+              "sources": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "route": "hotspot0",
+              "pattern": "counter"
+            },
+            {
+              "start": 3,
+              "duration": 101,
+              "packets": 148,
+              "sources": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "route": "neighbor",
+              "pattern": "counter"
+            },
+            {
+              "start": 3342,
+              "duration": 112,
+              "packets": 133,
+              "sources": [
+                0,
+                2,
+                3
+              ],
+              "route": "opposite",
+              "pattern": "alternating"
+            },
+            {
+              "start": 5079,
+              "duration": 142,
+              "packets": 145,
+              "sources": [
+                0,
+                1,
+                2
+              ],
+              "route": "self",
+              "pattern": "counter"
+            },
+            {
+              "start": 3,
+              "duration": 2160,
+              "packets": 320,
+              "sources": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "route": "hotspot0",
+              "pattern": "counter"
+            },
+            {
+              "start": 1015,
+              "duration": 217,
+              "packets": 80,
+              "sources": [
+                2
+              ],
+              "route": "self",
+              "pattern": "counter"
+            }
+          ],
+          "sink_period": 8,
+          "sink_pause": 2
+        },
+        "rates": [
+          70.70048780487805,
+          67.67024390243903,
+          70.64,
+          59.557073170731705,
+          23.798048780487804,
+          20.314146341463413,
+          20.30439024390244,
+          6.495609756097561
+        ]
+      }
+    },
+    {
+      "id": "burst",
+      "control": false,
+      "arms": {
+        "phase-random": {
+          "proposals": 256,
+          "invalid_by_stage": {},
+          "first_hit": null,
+          "right_censored": true
+        },
+        "phase-ga": {
+          "proposals": 256,
+          "invalid_by_stage": {},
+          "first_hit": null,
+          "right_censored": true
+        }
+      },
+      "qualified": false,
+      "reasons": [
+        "witness_misses_request"
+      ],
+      "witness_error": 0.10452522436110236,
+      "witness": {
+        "policy": "phase-ga",
+        "slot": 191,
+        "cache_id": "655af55b6a4b930b644b027ed9f93a0e48d6378a45aa5bbe0f0d872d25c88dbc",
+        "program": {
+          "phases": [
+            {
+              "start": 965,
+              "duration": 6411,
+              "packets": 348,
+              "sources": [
+                3
+              ],
+              "route": "opposite",
+              "pattern": "counter"
+            },
+            {
+              "start": 2657,
+              "duration": 315,
+              "packets": 22,
+              "sources": [
+                1
+              ],
+              "route": "self",
+              "pattern": "counter"
+            },
+            {
+              "start": 3686,
+              "duration": 503,
+              "packets": 166,
+              "sources": [
+                0
+              ],
+              "route": "opposite",
+              "pattern": "counter"
+            },
+            {
+              "start": 4239,
+              "duration": 483,
+              "packets": 104,
+              "sources": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "route": "opposite",
+              "pattern": "alternating"
+            },
+            {
+              "start": 7103,
+              "duration": 424,
+              "packets": 101,
+              "sources": [
+                0,
+                1,
+                2
+              ],
+              "route": "neighbor",
+              "pattern": "zeros"
+            }
+          ],
+          "sink_period": 8,
+          "sink_pause": 0
+        },
+        "rates": [
+          3.131707317073171,
+          24.228292682926828,
+          27.578536585365853,
+          78.86146341463414,
+          81.41463414634147,
+          24.208780487804876,
+          28.544390243902438,
+          25.154146341463413
+        ]
+      }
+    },
+    {
+      "id": "quiet_interval",
+      "control": false,
+      "arms": {
+        "phase-random": {
+          "proposals": 256,
+          "invalid_by_stage": {},
+          "first_hit": null,
+          "right_censored": true
+        },
+        "phase-ga": {
+          "proposals": 256,
+          "invalid_by_stage": {
+            "USEFUL_WORK": 1
+          },
+          "first_hit": null,
+          "right_censored": true
+        }
+      },
+      "qualified": false,
+      "reasons": [
+        "witness_misses_request"
+      ],
+      "witness_error": 0.12086963097654663,
+      "witness": {
+        "policy": "phase-ga",
+        "slot": 253,
+        "cache_id": "448d073233a15f1b4b82d245e31454a89cceec88ec69aee6c0924cd5020266dc",
+        "program": {
+          "phases": [
+            {
+              "start": 117,
+              "duration": 510,
+              "packets": 48,
+              "sources": [
+                0,
+                1
+              ],
+              "route": "hotspot0",
+              "pattern": "alternating"
+            },
+            {
+              "start": 6091,
+              "duration": 214,
+              "packets": 313,
+              "sources": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "route": "self",
+              "pattern": "counter"
+            },
+            {
+              "start": 1619,
+              "duration": 322,
+              "packets": 214,
+              "sources": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "route": "opposite",
+              "pattern": "zeros"
+            },
+            {
+              "start": 2267,
+              "duration": 261,
+              "packets": 228,
+              "sources": [
+                0,
+                2,
+                3
+              ],
+              "route": "neighbor",
+              "pattern": "alternating"
+            },
+            {
+              "start": 2977,
+              "duration": 163,
+              "packets": 298,
+              "sources": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "route": "self",
+              "pattern": "zeros"
+            },
+            {
+              "start": 768,
+              "duration": 214,
+              "packets": 313,
+              "sources": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "route": "self",
+              "pattern": "counter"
+            },
+            {
+              "start": 6658,
+              "duration": 120,
+              "packets": 260,
+              "sources": [
+                3
+              ],
+              "route": "self",
+              "pattern": "counter"
+            },
+            {
+              "start": 4386,
+              "duration": 45,
+              "packets": 87,
+              "sources": [
+                1
+              ],
+              "route": "hotspot0",
+              "pattern": "alternating"
+            },
+            {
+              "start": 5113,
+              "duration": 347,
+              "packets": 254,
+              "sources": [
+                1,
+                3
+              ],
+              "route": "neighbor",
+              "pattern": "alternating"
+            },
+            {
+              "start": 5923,
+              "duration": 113,
+              "packets": 347,
+              "sources": [
+                0
+              ],
+              "route": "neighbor",
+              "pattern": "counter"
+            },
+            {
+              "start": 117,
+              "duration": 510,
+              "packets": 48,
+              "sources": [
+                0,
+                1
+              ],
+              "route": "opposite",
+              "pattern": "alternating"
+            },
+            {
+              "start": 7332,
+              "duration": 377,
+              "packets": 314,
+              "sources": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "route": "self",
+              "pattern": "alternating"
+            }
+          ],
+          "sink_period": 8,
+          "sink_pause": 3
+        },
+        "rates": [
+          66.93365853658537,
+          68.03121951219512,
+          76.1229268292683,
+          16.070243902439024,
+          18.652682926829268,
+          87.16390243902438,
+          68.23414634146341,
+          51.59804878048781
+        ]
+      }
+    },
+    {
+      "id": "alternating",
+      "control": false,
+      "arms": {
+        "phase-random": {
+          "proposals": 256,
+          "invalid_by_stage": {},
+          "first_hit": null,
+          "right_censored": true
+        },
+        "phase-ga": {
+          "proposals": 256,
+          "invalid_by_stage": {
+            "USEFUL_WORK": 1
+          },
+          "first_hit": 191,
+          "right_censored": false
+        }
+      },
+      "qualified": true,
+      "reasons": [],
+      "witness_error": 0.0641668625124135,
+      "witness": {
+        "policy": "phase-ga",
+        "slot": 234,
+        "cache_id": "faa0170e3605452893b458baba710f02019b740b30025768ffd395ad0713e748",
+        "program": {
+          "phases": [
+            {
+              "start": 5113,
+              "duration": 1413,
+              "packets": 254,
+              "sources": [
+                1,
+                3
+              ],
+              "route": "neighbor",
+              "pattern": "alternating"
+            },
+            {
+              "start": 3752,
+              "duration": 301,
+              "packets": 82,
+              "sources": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "route": "neighbor",
+              "pattern": "alternating"
+            },
+            {
+              "start": 4386,
+              "duration": 45,
+              "packets": 87,
+              "sources": [
+                1
+              ],
+              "route": "hotspot0",
+              "pattern": "alternating"
+            },
+            {
+              "start": 768,
+              "duration": 214,
+              "packets": 313,
+              "sources": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "route": "self",
+              "pattern": "counter"
+            },
+            {
+              "start": 1619,
+              "duration": 322,
+              "packets": 214,
+              "sources": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "route": "opposite",
+              "pattern": "zeros"
+            },
+            {
+              "start": 3752,
+              "duration": 301,
+              "packets": 88,
+              "sources": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "route": "neighbor",
+              "pattern": "alternating"
+            },
+            {
+              "start": 7332,
+              "duration": 377,
+              "packets": 314,
+              "sources": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "route": "self",
+              "pattern": "alternating"
+            },
+            {
+              "start": 2977,
+              "duration": 163,
+              "packets": 317,
+              "sources": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "route": "neighbor",
+              "pattern": "zeros"
+            },
+            {
+              "start": 3752,
+              "duration": 301,
+              "packets": 88,
+              "sources": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "route": "neighbor",
+              "pattern": "alternating"
+            },
+            {
+              "start": 768,
+              "duration": 214,
+              "packets": 313,
+              "sources": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "route": "self",
+              "pattern": "counter"
+            },
+            {
+              "start": 5113,
+              "duration": 347,
+              "packets": 254,
+              "sources": [
+                1,
+                3
+              ],
+              "route": "neighbor",
+              "pattern": "alternating"
+            },
+            {
+              "start": 5113,
+              "duration": 347,
+              "packets": 254,
+              "sources": [
+                1,
+                3
+              ],
+              "route": "neighbor",
+              "pattern": "alternating"
+            },
+            {
+              "start": 2977,
+              "duration": 163,
+              "packets": 317,
+              "sources": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "route": "neighbor",
+              "pattern": "zeros"
+            },
+            {
+              "start": 7332,
+              "duration": 423,
+              "packets": 314,
+              "sources": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "route": "self",
+              "pattern": "alternating"
+            }
+          ],
+          "sink_period": 8,
+          "sink_pause": 3
+        },
+        "rates": [
+          31.57170731707317,
+          69.0360975609756,
+          18.61268292682927,
+          72.1160975609756,
+          18.399024390243902,
+          72.64292682926829,
+          26.634146341463413,
+          62.898536585365854
+        ]
+      }
+    },
+    {
+      "id": "ramp",
+      "control": false,
+      "arms": {
+        "phase-random": {
+          "proposals": 256,
+          "invalid_by_stage": {},
+          "first_hit": null,
+          "right_censored": true
+        },
+        "phase-ga": {
+          "proposals": 256,
+          "invalid_by_stage": {},
+          "first_hit": 160,
+          "right_censored": false
+        }
+      },
+      "qualified": true,
+      "reasons": [],
+      "witness_error": 0.09407456170564225,
+      "witness": {
+        "policy": "phase-ga",
+        "slot": 227,
+        "cache_id": "b4fe95730fb7d1c490275964714243cb50462d3d39f31431a95e3c930d9bb6fa",
+        "program": {
+          "phases": [
+            {
+              "start": 5177,
+              "duration": 278,
+              "packets": 124,
+              "sources": [
+                1,
+                2,
+                3
+              ],
+              "route": "neighbor",
+              "pattern": "alternating"
+            },
+            {
+              "start": 616,
+              "duration": 352,
+              "packets": 354,
+              "sources": [
+                0,
+                1
+              ],
+              "route": "hotspot0",
+              "pattern": "counter"
+            },
+            {
+              "start": 7050,
+              "duration": 109,
+              "packets": 149,
+              "sources": [
+                0,
+                3
+              ],
+              "route": "hotspot0",
+              "pattern": "alternating"
+            },
+            {
+              "start": 1707,
+              "duration": 171,
+              "packets": 21,
+              "sources": [
+                0,
+                1,
+                3
+              ],
+              "route": "neighbor",
+              "pattern": "zeros"
+            },
+            {
+              "start": 2312,
+              "duration": 70,
+              "packets": 92,
+              "sources": [
+                0,
+                1,
+                2
+              ],
+              "route": "opposite",
+              "pattern": "zeros"
+            },
+            {
+              "start": 3457,
+              "duration": 1861,
+              "packets": 50,
+              "sources": [
+                2
+              ],
+              "route": "neighbor",
+              "pattern": "counter"
+            },
+            {
+              "start": 7421,
+              "duration": 344,
+              "packets": 300,
+              "sources": [
+                0,
+                2,
+                3
+              ],
+              "route": "self",
+              "pattern": "alternating"
+            },
+            {
+              "start": 3738,
+              "duration": 82,
+              "packets": 216,
+              "sources": [
+                0,
+                3
+              ],
+              "route": "hotspot0",
+              "pattern": "counter"
+            },
+            {
+              "start": 4538,
+              "duration": 146,
+              "packets": 128,
+              "sources": [
+                1
+              ],
+              "route": "self",
+              "pattern": "alternating"
+            },
+            {
+              "start": 3738,
+              "duration": 82,
+              "packets": 216,
+              "sources": [
+                0,
+                3
+              ],
+              "route": "hotspot0",
+              "pattern": "zeros"
+            },
+            {
+              "start": 5748,
+              "duration": 384,
+              "packets": 23,
+              "sources": [
+                0,
+                1,
+                2
+              ],
+              "route": "opposite",
+              "pattern": "zeros"
+            },
+            {
+              "start": 6243,
+              "duration": 13,
+              "packets": 74,
+              "sources": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "route": "hotspot0",
+              "pattern": "alternating"
+            },
+            {
+              "start": 6895,
+              "duration": 94,
+              "packets": 269,
+              "sources": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "route": "opposite",
+              "pattern": "counter"
+            },
+            {
+              "start": 7375,
+              "duration": 153,
+              "packets": 272,
+              "sources": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "route": "self",
+              "pattern": "counter"
+            }
+          ],
+          "sink_period": 8,
+          "sink_pause": 3
+        },
+        "rates": [
+          37.57365853658536,
+          23.830243902439026,
+          28.414634146341463,
+          43.49756097560976,
+          53.08975609756097,
+          49.65853658536585,
+          64.6409756097561,
+          67.09463414634146
+        ]
+      }
+    },
+    {
+      "id": "rise_fall",
+      "control": false,
+      "arms": {
+        "phase-random": {
+          "proposals": 256,
+          "invalid_by_stage": {},
+          "first_hit": null,
+          "right_censored": true
+        },
+        "phase-ga": {
+          "proposals": 256,
+          "invalid_by_stage": {
+            "PROTOCOL": 6
+          },
+          "first_hit": 252,
+          "right_censored": false
+        }
+      },
+      "qualified": true,
+      "reasons": [],
+      "witness_error": 0.09265191449145833,
+      "witness": {
+        "policy": "phase-ga",
+        "slot": 252,
+        "cache_id": "c987406ed96646a088396da653e8b8f4f9a7e5ca3e5503b2dabd8551aa49ba86",
+        "program": {
+          "phases": [
+            {
+              "start": 965,
+              "duration": 312,
+              "packets": 348,
+              "sources": [
+                3
+              ],
+              "route": "opposite",
+              "pattern": "zeros"
+            },
+            {
+              "start": 1933,
+              "duration": 424,
+              "packets": 180,
+              "sources": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "route": "hotspot0",
+              "pattern": "counter"
+            },
+            {
+              "start": 7589,
+              "duration": 417,
+              "packets": 104,
+              "sources": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "route": "hotspot0",
+              "pattern": "alternating"
+            },
+            {
+              "start": 2657,
+              "duration": 315,
+              "packets": 413,
+              "sources": [
+                1
+              ],
+              "route": "self",
+              "pattern": "counter"
+            },
+            {
+              "start": 166,
+              "duration": 3018,
+              "packets": 263,
+              "sources": [
+                0,
+                1
+              ],
+              "route": "self",
+              "pattern": "alternating"
+            },
+            {
+              "start": 2657,
+              "duration": 315,
+              "packets": 413,
+              "sources": [
+                1
+              ],
+              "route": "self",
+              "pattern": "counter"
+            },
+            {
+              "start": 2657,
+              "duration": 3464,
+              "packets": 413,
+              "sources": [
+                1
+              ],
+              "route": "self",
+              "pattern": "counter"
+            },
+            {
+              "start": 2657,
+              "duration": 1804,
+              "packets": 413,
+              "sources": [
+                1
+              ],
+              "route": "self",
+              "pattern": "counter"
+            },
+            {
+              "start": 3686,
+              "duration": 503,
+              "packets": 166,
+              "sources": [
+                0
+              ],
+              "route": "neighbor",
+              "pattern": "counter"
+            },
+            {
+              "start": 4480,
+              "duration": 481,
+              "packets": 98,
+              "sources": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "route": "hotspot0",
+              "pattern": "counter"
+            },
+            {
+              "start": 5289,
+              "duration": 315,
+              "packets": 413,
+              "sources": [
+                1
+              ],
+              "route": "self",
+              "pattern": "counter"
+            },
+            {
+              "start": 3686,
+              "duration": 503,
+              "packets": 166,
+              "sources": [
+                0
+              ],
+              "route": "neighbor",
+              "pattern": "counter"
+            },
+            {
+              "start": 6185,
+              "duration": 417,
+              "packets": 104,
+              "sources": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "route": "hotspot0",
+              "pattern": "counter"
+            },
+            {
+              "start": 5000,
+              "duration": 481,
+              "packets": 98,
+              "sources": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "route": "hotspot0",
+              "pattern": "counter"
+            }
+          ],
+          "sink_period": 8,
+          "sink_pause": 0
+        },
+        "rates": [
+          16.413658536585366,
+          48.89756097560976,
+          64.49463414634147,
+          76.99121951219512,
+          83.22439024390243,
+          53.18829268292683,
+          32.080975609756095,
+          32.57170731707317
+        ]
+      }
+    },
+    {
+      "id": "irregular",
+      "control": false,
+      "arms": {
+        "phase-random": {
+          "proposals": 256,
+          "invalid_by_stage": {},
+          "first_hit": null,
+          "right_censored": true
+        },
+        "phase-ga": {
+          "proposals": 256,
+          "invalid_by_stage": {
+            "USEFUL_WORK": 2
+          },
+          "first_hit": 160,
+          "right_censored": false
+        }
+      },
+      "qualified": true,
+      "reasons": [],
+      "witness_error": 0.07844103413841753,
+      "witness": {
+        "policy": "phase-ga",
+        "slot": 222,
+        "cache_id": "eaf1796a39c662664e0aab5a227d6b0749924c1608521ce3a1258d6f7e11f1d5",
+        "program": {
+          "phases": [
+            {
+              "start": 6765,
+              "duration": 261,
+              "packets": 26,
+              "sources": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "route": "hotspot0",
+              "pattern": "alternating"
+            },
+            {
+              "start": 480,
+              "duration": 201,
+              "packets": 189,
+              "sources": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "route": "opposite",
+              "pattern": "zeros"
+            },
+            {
+              "start": 2657,
+              "duration": 315,
+              "packets": 199,
+              "sources": [
+                3
+              ],
+              "route": "self",
+              "pattern": "counter"
+            },
+            {
+              "start": 965,
+              "duration": 312,
+              "packets": 348,
+              "sources": [
+                3
+              ],
+              "route": "opposite",
+              "pattern": "zeros"
+            },
+            {
+              "start": 6929,
+              "duration": 265,
+              "packets": 87,
+              "sources": [
+                0,
+                1,
+                2
+              ],
+              "route": "hotspot0",
+              "pattern": "zeros"
+            },
+            {
+              "start": 2119,
+              "duration": 212,
+              "packets": 11,
+              "sources": [
+                1,
+                2,
+                3
+              ],
+              "route": "neighbor",
+              "pattern": "zeros"
+            },
+            {
+              "start": 2561,
+              "duration": 72,
+              "packets": 7,
+              "sources": [
+                0
+              ],
+              "route": "hotspot0",
+              "pattern": "zeros"
+            },
+            {
+              "start": 3359,
+              "duration": 243,
+              "packets": 126,
+              "sources": [
+                0
+              ],
+              "route": "neighbor",
+              "pattern": "zeros"
+            },
+            {
+              "start": 6765,
+              "duration": 261,
+              "packets": 26,
+              "sources": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "route": "hotspot0",
+              "pattern": "alternating"
+            },
+            {
+              "start": 4096,
+              "duration": 3,
+              "packets": 178,
+              "sources": [
+                1,
+                3
+              ],
+              "route": "hotspot0",
+              "pattern": "alternating"
+            },
+            {
+              "start": 4592,
+              "duration": 218,
+              "packets": 11,
+              "sources": [
+                3
+              ],
+              "route": "self",
+              "pattern": "counter"
+            },
+            {
+              "start": 5038,
+              "duration": 162,
+              "packets": 185,
+              "sources": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "route": "opposite",
+              "pattern": "counter"
+            },
+            {
+              "start": 1733,
+              "duration": 102,
+              "packets": 11,
+              "sources": [
+                1
+              ],
+              "route": "hotspot0",
+              "pattern": "zeros"
+            },
+            {
+              "start": 965,
+              "duration": 312,
+              "packets": 348,
+              "sources": [
+                3
+              ],
+              "route": "opposite",
+              "pattern": "zeros"
+            },
+            {
+              "start": 7149,
+              "duration": 613,
+              "packets": 206,
+              "sources": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "route": "neighbor",
+              "pattern": "counter"
+            }
+          ],
+          "sink_period": 8,
+          "sink_pause": 3
+        },
+        "rates": [
+          58.543414634146345,
+          65.6770731707317,
+          23.229268292682928,
+          26.47609756097561,
+          70.95414634146341,
+          39.90536585365854,
+          30.054634146341463,
+          65.38634146341464
+        ]
+      }
+    },
+    {
+      "id": "flat_control",
+      "control": true,
+      "arms": {
+        "phase-random": {
+          "proposals": 256,
+          "invalid_by_stage": {},
+          "first_hit": 39,
+          "right_censored": false
+        },
+        "phase-ga": {
+          "proposals": 256,
+          "invalid_by_stage": {},
+          "first_hit": 112,
+          "right_censored": false
+        }
+      },
+      "qualified": true,
+      "reasons": [],
+      "witness_error": 0.05370439710924893,
+      "witness": {
+        "policy": "phase-ga",
+        "slot": 232,
+        "cache_id": "ce2518e887baf23f64ad88c387538099cbd0909097963c76197631bb24ffb971",
+        "program": {
+          "phases": [
+            {
+              "start": 5502,
+              "duration": 28,
+              "packets": 18,
+              "sources": [
+                0,
+                1,
+                2
+              ],
+              "route": "hotspot0",
+              "pattern": "zeros"
+            },
+            {
+              "start": 7411,
+              "duration": 93,
+              "packets": 83,
+              "sources": [
+                2,
+                3
+              ],
+              "route": "opposite",
+              "pattern": "counter"
+            },
+            {
+              "start": 350,
+              "duration": 138,
+              "packets": 107,
+              "sources": [
+                1
+              ],
+              "route": "neighbor",
+              "pattern": "zeros"
+            },
+            {
+              "start": 639,
+              "duration": 184,
+              "packets": 84,
+              "sources": [
+                1,
+                2
+              ],
+              "route": "self",
+              "pattern": "alternating"
+            },
+            {
+              "start": 950,
+              "duration": 95,
+              "packets": 9,
+              "sources": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "route": "neighbor",
+              "pattern": "zeros"
+            },
+            {
+              "start": 1179,
+              "duration": 29,
+              "packets": 104,
+              "sources": [
+                1
+              ],
+              "route": "neighbor",
+              "pattern": "alternating"
+            },
+            {
+              "start": 6198,
+              "duration": 212,
+              "packets": 15,
+              "sources": [
+                2
+              ],
+              "route": "neighbor",
+              "pattern": "zeros"
+            },
+            {
+              "start": 6801,
+              "duration": 20,
+              "packets": 59,
+              "sources": [
+                2
+              ],
+              "route": "opposite",
+              "pattern": "zeros"
+            },
+            {
+              "start": 1791,
+              "duration": 176,
+              "packets": 30,
+              "sources": [
+                0,
+                1
+              ],
+              "route": "hotspot0",
+              "pattern": "alternating"
+            },
+            {
+              "start": 2086,
+              "duration": 206,
+              "packets": 99,
+              "sources": [
+                1,
+                2
+              ],
+              "route": "self",
+              "pattern": "alternating"
+            },
+            {
+              "start": 2656,
+              "duration": 207,
+              "packets": 44,
+              "sources": [
+                0
+              ],
+              "route": "opposite",
+              "pattern": "counter"
+            },
+            {
+              "start": 1264,
+              "duration": 54,
+              "packets": 77,
+              "sources": [
+                0
+              ],
+              "route": "hotspot0",
+              "pattern": "alternating"
+            },
+            {
+              "start": 3273,
+              "duration": 86,
+              "packets": 40,
+              "sources": [
+                0,
+                2,
+                3
+              ],
+              "route": "self",
+              "pattern": "counter"
+            },
+            {
+              "start": 3578,
+              "duration": 77,
+              "packets": 104,
+              "sources": [
+                0,
+                1
+              ],
+              "route": "self",
+              "pattern": "counter"
+            },
+            {
+              "start": 3836,
+              "duration": 159,
+              "packets": 369,
+              "sources": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "route": "self",
+              "pattern": "zeros"
+            },
+            {
+              "start": 4396,
+              "duration": 127,
+              "packets": 50,
+              "sources": [
+                3
+              ],
+              "route": "opposite",
+              "pattern": "zeros"
+            },
+            {
+              "start": 4714,
+              "duration": 62,
+              "packets": 40,
+              "sources": [
+                0,
+                3
+              ],
+              "route": "neighbor",
+              "pattern": "zeros"
+            },
+            {
+              "start": 6801,
+              "duration": 20,
+              "packets": 59,
+              "sources": [
+                2
+              ],
+              "route": "opposite",
+              "pattern": "zeros"
+            },
+            {
+              "start": 5279,
+              "duration": 45,
+              "packets": 100,
+              "sources": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "route": "neighbor",
+              "pattern": "zeros"
+            },
+            {
+              "start": 6490,
+              "duration": 157,
+              "packets": 55,
+              "sources": [
+                1
+              ],
+              "route": "opposite",
+              "pattern": "counter"
+            },
+            {
+              "start": 4536,
+              "duration": 29,
+              "packets": 104,
+              "sources": [
+                1,
+                2,
+                3
+              ],
+              "route": "neighbor",
+              "pattern": "alternating"
+            },
+            {
+              "start": 5624,
+              "duration": 140,
+              "packets": 261,
+              "sources": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "route": "self",
+              "pattern": "counter"
+            },
+            {
+              "start": 5624,
+              "duration": 140,
+              "packets": 139,
+              "sources": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "route": "self",
+              "pattern": "counter"
+            },
+            {
+              "start": 639,
+              "duration": 184,
+              "packets": 84,
+              "sources": [
+                1,
+                2
+              ],
+              "route": "self",
+              "pattern": "alternating"
+            },
+            {
+              "start": 350,
+              "duration": 138,
+              "packets": 107,
+              "sources": [
+                1
+              ],
+              "route": "neighbor",
+              "pattern": "zeros"
+            },
+            {
+              "start": 7622,
+              "duration": 96,
+              "packets": 312,
+              "sources": [
+                1,
+                3
+              ],
+              "route": "self",
+              "pattern": "zeros"
+            }
+          ],
+          "sink_period": 8,
+          "sink_pause": 2
+        },
+        "rates": [
+          34.710243902439025,
+          34.45756097560976,
+          39.18829268292683,
+          42.33951219512195,
+          42.89951219512195,
+          45.61951219512195,
+          43.12682926829268,
+          45.120975609756094
+        ]
+      }
+    }
+  ]
+}
