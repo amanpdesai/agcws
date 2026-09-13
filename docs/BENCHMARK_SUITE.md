@@ -83,8 +83,10 @@ on one build directory. No full study or provider run has started.
 The schedule-driven AES/DMA ports now share cache/recovery, proposal accounting,
 context rendering and baseline operators. First CPU plumbing panels exercised
 both classical policies for eight slots each, concurrently, and replayed their
-checkpoints. Fresh checks after the shared-base refactor will be archived before
-these ports are admitted. The targets used for plumbing are explicitly not
+checkpoints. Fresh checks after the shared-base refactor are archived under
+`results/benchmark_readiness_v1/{aes,dma}/shared_panel.json.gz`: 32/32 slots valid,
+two cells per design, and cached measurement bytes/mtimes unchanged on resume.
+The targets used for plumbing are explicitly not
 qualification witnesses and their solve rates are not research results.
 
 Qualification must also check resource compatibility: an exact-work, fixed-window

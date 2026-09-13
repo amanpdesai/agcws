@@ -22,3 +22,16 @@ fixed-window accelerator-only activity measurement. The dependency checkout and
 generated software reside in ignored scratch; this partial bundle alone is not
 a complete reproduction package. Neither new DUT is yet a shared-runner backend.
 No target is qualified and no Flash call has been made in this bring-up slice.
+
+## Shared schedule pipeline
+
+`aes/shared_panel.json.gz` and `dma/shared_panel.json.gz` retain the compact JSON
+records from source commit `bb9d46d7e`: two classical cells per design, eight
+slots each, run concurrently and resumed without changing any cached measurement.
+Each bundle maps original relative paths to their JSON text. Sidecar summaries
+record the compressed checksum and explicitly label the unqualified plumbing
+target. No VCD, executable, compiler output or provider credential is included.
+`tests/test_schedule_evidence.py` recomputes every eight-bin profile from the
+retained per-cycle counts, target loss, proposal accounting, parent visibility
+and summary. That audit is arithmetic/accounting verification, not independent
+RTL resimulation. Full waveforms remain in ignored scratch.
