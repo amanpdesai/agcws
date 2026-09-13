@@ -45,6 +45,11 @@ def source_inventory(repo, domain="ibex-temporal"):
             "third_party/harnesses/axi_dma_coupled_tb.py",
         ))
         paths.extend((repo / "third_party/verilog-axi/rtl").glob("*.v"))
+    if domain == "mesh-temporal":
+        paths.extend(repo / p for p in ("scripts/run_mesh_workload.py", "third_party/harnesses/mesh_temporal.sv",
+                                      "third_party/basejump_stl/testing/bsg_noc/bsg_mesh_router/all_to_all/sv.include"))
+        paths.extend(p for p in (repo / "third_party/basejump_stl").rglob("*")
+                     if p.is_file() and p.suffix in (".sv", ".svh", ".v", ".vh"))
     return {str(p.relative_to(repo)): file_sha256(p) for p in sorted(paths)}
 
 

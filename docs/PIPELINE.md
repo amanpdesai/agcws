@@ -15,9 +15,19 @@ PYTHONPATH=src .venv/bin/python -m agcws.pipeline validate --config configs/stud
 
 The example is a configuration-shape example, not a pre-registered study or
 witnessed target bank. Backends are `ibex-temporal`, `aes-temporal` and
-`dma-temporal`. AES/DMA have new source-built schedule ports under engineering
+`dma-temporal` and `mesh-temporal`. AES/DMA have new source-built schedule ports under engineering
 verification, not yet qualified target banks or completed Flash smokes.
-BaseJump and RedMulE are not yet registered as runnable temporal backends.
+The mesh port uses compact traffic phases, not the AES/DMA work/wait grammar.
+RedMulE is not yet registered as a runnable temporal backend.
+
+Mesh phases control release start/duration, packet count, source set, routing
+pattern and data pattern, with global sink pacing. The receiver checks all packet
+IDs/data/destinations. Its observation is eight reset cycles plus 8,192 traffic
+cycles, including drain time. At least 64 packets must complete. Random samples
+1–32 phase allocations; its GA uses tournament selection, phase crossover,
+insert/delete/field mutation and 20% immigrants. Static or completion failures
+consume proposals without scores; unknown tool failures stop the run. The initial
+CPU check is not a qualified target bank or a provider smoke.
 
 Ibex takes an explicit simulator `binary`. AES/DMA require `binary: null`:
 the pinned image and source inventory identify container-built simulators.

@@ -26,6 +26,12 @@ class ScheduleTemporal:
     def completed(self, attempt):
         raise NotImplementedError
 
+    def canonical(self, program):
+        return {"sequence": expand_schedule(program, self.contract)}
+
+    def failed(self, attempt):
+        return None
+
     def schema(self, n):
         return schedules.response_schema(n, self.contract)
 
@@ -47,7 +53,7 @@ class ScheduleTemporal:
             if not validity.valid:
                 return {"valid": False, "stage": validity.stage.value,
                         "reason": validity.reason}, False
-        canonical = {"sequence": expand_schedule(program, self.contract)}
+        canonical = self.canonical(program)
         identifier = key({"program": canonical, "measurement": manifest["measurement_fingerprint"]})
         locks = root / "locks"
         locks.mkdir(exist_ok=True)
@@ -70,7 +76,13 @@ class ScheduleTemporal:
                 result = subprocess.run(["bash", "docker/run.sh", *command], env=environment,
                                         stdout=log, stderr=subprocess.STDOUT, check=False)
             if result.returncode:
-                raise RuntimeError(f"replay failed; inspect {attempt}/driver.log and run.log")
+                failure = self.failed(attempt)
+                if failure is None:
+                    raise RuntimeError(f"replay failed; inspect {attempt}/driver.log and run.log")
+                failure.update(cache_id=identifier, canonical_program=canonical,
+                               evaluation_s=time.monotonic() - started)
+                write(result_path, failure)
+                return failure, False
             completion = self.completed(attempt)
             if not completion["valid"]:
                 record = completion

@@ -30,16 +30,16 @@ def response_schema(n, contract):
                 "type": "array", "minItems": n, "maxItems": n, "items": program}}}
 
 
-def payload(adapter, history, goal, n):
+def payload(adapter, history, goal, n, *, schema=None):
     return json.dumps({
         "instruction": "Propose complete schedules to match the eight-bin activity target. "
                        "Return hypothesis and candidates as strict JSON. Never modify the RTL, "
-                       "harness or evaluator. Preserve the exact work and idle totals; no "
+                       "harness or evaluator. Obey the supplied resource constraints; no "
                        "automatic repair is performed. Use prior signed residuals to revise "
                        "timing and ordering, and diversify when the evidence is ambiguous.",
         "design": {"name": adapter.name, "summary": adapter.design_summary,
                    "protocol_constraints": adapter.protocol_constraints},
-        "response_schema": response_schema(n, adapter.contract),
+        "response_schema": schema if schema is not None else response_schema(n, adapter.contract),
         "goal": goal,
         "history": [{k: t.get(k) for k in (
             "slot", "program", "valid", "stage", "reason", "rates", "residual", "loss"

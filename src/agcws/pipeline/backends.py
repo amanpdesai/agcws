@@ -51,4 +51,7 @@ def backend(domain):
     if domain == "dma-temporal":
         from agcws.pipeline.dma import DmaTemporal
         return DmaTemporal()
+    if domain == "mesh-temporal":
+        from agcws.pipeline.mesh import MeshTemporal
+        return MeshTemporal()
     raise ValueError(f"backend not implemented: {domain}")

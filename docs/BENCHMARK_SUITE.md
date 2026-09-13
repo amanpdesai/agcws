@@ -28,9 +28,11 @@ It runs 8 reset cycles plus 8,192 traffic/drain cycles, scoring only
 `mesh_temporal.dut`. All 256 packets complete in burst, spread and delayed-burst
 reference cases; an identical replay produces identical activity JSON. A deliberate
 late injection fails with `MESH_INCOMPLETE`, not a valid power/activity score.
-This is the measurement gate only: the compact agent-facing traffic grammar,
-shared runner port and qualified target bank are still required. The raw packet
-list used by the driver must not become a token-limited agent API by accident.
+The compact traffic grammar and shared runner port have subsequently been added:
+1–32 phases encode release timing, counts, source sets, routes and payload patterns.
+An initial 16-slot CPU panel completed through the common runner. Target
+qualification and Flash checks are still required; the driver packet list is not
+the model-facing API.
 
 Disposable Docker runs now disable core dumps as well as bounding logs. Expected
 negative functional tests should not leave multi-gigabyte simulator cores behind.
