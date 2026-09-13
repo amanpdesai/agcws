@@ -83,3 +83,27 @@ def qualify(request, witness, *, scale, tolerance, nonflat_margin):
     elif floor <= tolerance + nonflat_margin:
         reasons.append("insufficient_nonflat_floor")
     return {"qualified": not reasons, "reasons": reasons, "witness_error": error}
+
+
+def mean_matched_requests(low, high, mean, *, split):
+    """Preserve calibrated mean for exact-work contracts without using witnesses."""
+    if split not in ("development", "confirmation"):
+        raise ValueError("explicit development/confirmation split required")
+    vector([low, high, mean, low, high, mean, low, high])
+    if not low < mean < high:
+        raise ValueError("calibrated mean must lie strictly inside endpoints")
+    fraction = 0.75 if split == "development" else 0.9
+    result = []
+    for name, shape in SHAPES.items():
+        center = statistics.mean(shape)
+        if name == "flat_control":
+            rates = [mean]*8
+        else:
+            amplitude = fraction * min((mean-low)/(center-min(shape)),
+                                       (high-mean)/(max(shape)-center))
+            rates = [mean + amplitude*(value-center) for value in shape]
+        result.append({"id": name, "split": split, "rates": rates,
+                       "control": name == "flat_control", "qualified": False,
+                       "normalization": "calibration-mean-preserving",
+                       **diagnostics(rates, high-low)})
+    return result

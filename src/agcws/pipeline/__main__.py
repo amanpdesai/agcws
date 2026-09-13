@@ -6,7 +6,7 @@ import sys
 from pathlib import Path
 
 from agcws.config import ROOT
-from agcws.pipeline import archive, engine, evidence
+from agcws.pipeline import archive, calibration, engine, evidence
 from agcws.pipeline.spec import validate
 from agcws.pipeline.storage import read
 
@@ -14,6 +14,12 @@ from agcws.pipeline.storage import read
 def main(argv=None):
     parser = argparse.ArgumentParser(description="AGCWS study pipeline (no implicit execution)")
     sub = parser.add_subparsers(dest="action", required=True)
+    calibration_plan = sub.add_parser("calibration-plan")
+    calibration_plan.add_argument("--destination", type=Path, required=True)
+    calibration_plan.add_argument("--image", required=True)
+    calibration_plan.add_argument("--ibex-binary", type=Path, required=True)
+    calibration_report = sub.add_parser("calibration-report")
+    calibration_report.add_argument("--directory", type=Path, required=True)
     sub.add_parser("archive-check")
     sub.add_parser("archive-audit")
     sub.add_parser("evidence-check")
@@ -39,7 +45,11 @@ def main(argv=None):
     check_export = sub.add_parser("verify-export")
     check_export.add_argument("--directory", type=Path, required=True)
     args = parser.parse_args(argv)
-    if args.action == "evidence-check":
+    if args.action == "calibration-plan":
+        result = calibration.plan(args.destination, args.image, args.ibex_binary)
+    elif args.action == "calibration-report":
+        result = calibration.report(args.directory)
+    elif args.action == "evidence-check":
         result = [evidence.verify(ROOT / "results" / s) for s in evidence.studies(ROOT)]
     elif args.action == "evidence-extract":
         result = {
