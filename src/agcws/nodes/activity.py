@@ -82,7 +82,7 @@ def parse_vcd(path: Path, clock_name: str = "clk_i", windows: int = 16,
                 identifiers[identifier] = (name, width)
             elif full_name.startswith(scope_prefix + '.'):
                 identifiers.setdefault(identifier, (full_name, width))
-            if name.split()[-1] == clock_name:
+            if full_name == clock_name or ('.' not in clock_name and name.split()[-1] == clock_name):
                 clocks.add(identifier)
             continue
         if line.startswith("$enddefinitions"):

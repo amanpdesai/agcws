@@ -81,6 +81,23 @@ outputs compared and zero errors. Generated input seed 7100, upstream golden
 model, no memory stalls in this first case. Minimal evidence is in
 `results/benchmark_readiness_v1`; this is not fixed-window profile qualification.
 
+The subsequent RedMulE timing gate derives only the testbench, preserving its
+license and the untouched DUT. It adds a continuous clock, an observation deadline
+and a software-readable testbench timer. The original GEMM still passes, and a
+timed three-job program checks all outputs independently after restoring the
+original accumulation input for each job. Completions are at cycles 8,368, 24,367
+and 48,368 for requested releases 8,000, 24,000 and 48,000; all report zero errors.
+The observation is exactly 65,536 clock edges. This is not yet the RedMulE shared
+backend, a qualified target bank, or a gate-power result.
+
+Clock selection exposed a real trap: matching every leaf named `clk` counted
+67,142 edges by mixing the reference clock with internal gated clocks. New code
+accepts an exact hierarchical clock name. RedMulE uses `redmule_tb_wrap.clk`,
+independently matching the testbench's 65,536-edge deadline; only activity under
+`redmule_tb_wrap.i_redmule_tb.i_redmule_wrap` is scored. The ambiguous extraction
+is retained as a rejected diagnostic, not substituted into the results. Historical
+studies are not silently reinterpreted by this additional selector.
+
 `pipeline.targets` defines independent requested vectors and checks constant
 floors/witness errors. No requested vector is marked qualified by generation;
 the measurement, calibration provenance and qualification log are still required.
