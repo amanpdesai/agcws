@@ -509,3 +509,11 @@ These results do not distinguish an unreachable request from inadequate search.
 [Reports and byte-verified per-design archives](results/redmule/target-qualification-v1/README.md)
 retain the full attempts. No failed vector, tolerance or qualification margin
 has been changed. Ibex witness searches remain in progress.
+
+An [existing-trace timing audit](results/redmule/target-qualification-v1/README.md)
+deduplicates repeated proposals and checks each successful workload's execution
+and functional records. In the size-8/random development stratum, 74.9% of jobs
+complete outside their requested release bin; median release-to-completion is
+9,503 cycles versus 8,192 cycles per bin. This is scheduling evidence, not an
+isolated accelerator latency measurement or proof that the requested targets are
+unreachable. Rejected attempts remain counted separately.

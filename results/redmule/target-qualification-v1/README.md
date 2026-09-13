@@ -17,3 +17,23 @@ Shards are bounded at 32 MiB and checksummed in `evidence.pack.json.gz`.
 Raw scratch remains unchanged. A completed search is not target qualification:
 the reports retain unsuccessful requests, and this is not full-study readiness
 or gate-power evidence. Witness programs must not enter agent payloads.
+
+## Existing-trace timing audit
+
+[Development](development-timing.json) and [confirmation](confirmation-timing.json)
+group unique valid workloads by size/pattern, retaining invalid proposal counts.
+These are search-selected samples, not representative latency benchmarks.
+Completion timestamps include software/reference overhead; actual hardware start
+times are not recorded. Bin crossings therefore diagnose release/completion
+misalignment, not accelerator latency or proof of infeasibility.
+
+Reproduce after restoring either split's archive to an empty directory:
+
+```sh
+.venv/bin/python analysis/redmule_timing.py --directory RESTORED_SPLIT --output NEW_REPORT.json
+```
+
+The audit checks executed programs, reference work, ordered completion records
+and total proposal counts. It deduplicates cache hits and hashes consumed evidence.
+Both reports were independently regenerated from restored per-design archives;
+the resulting JSON objects, including evidence digests, matched the reports here.

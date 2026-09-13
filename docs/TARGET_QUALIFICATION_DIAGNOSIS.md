@@ -22,6 +22,17 @@ bounded and the random generator does not cover all legal schedules uniformly.
 Conversely, adding search budget without understanding job duration could waste
 time on impossible waveforms.
 
+The [existing-trace audit](../results/redmule/target-qualification-v1/README.md)
+counts 1,519 unique valid development workloads and 1,481 confirmation workloads.
+For size-8/random operands, 74.9% of development jobs and 73.3% of confirmation
+jobs complete outside their requested release bin. Development median
+release-to-completion is 9,503 cycles; the median previous-completion-after-release
+interval is 6,626 cycles. A bin is 8,192 cycles. These are paired event intervals
+from search-selected valid workloads, not isolated accelerator service times;
+software/reference overhead is included and actual start timestamps are absent.
+This motivates an isolated/paced-job diagnostic before choosing a new search
+budget. It does not prove that queueing alone caused the target misses.
+
 ## Next slice
 
 1. Preserve v1 manifests, all attempted requests and complete witness archives.

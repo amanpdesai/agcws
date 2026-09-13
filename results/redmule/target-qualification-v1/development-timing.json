@@ -1,0 +1,221 @@
+{
+  "scope": "descriptive timing audit of unique valid workloads; not hardware latency or policy inference",
+  "limitations": "Completion includes software/reference overhead; starts are not recorded. Invalid runs are excluded from timing, counted separately. Search-selected samples are not an unbiased latency population.",
+  "manifest_sha256": "94b22b647a41c63f7205cad18369bd8a41af50a148f3279d616bc6a1f95dffbf",
+  "input_evidence_sha256": "7fb780c626a0fa8f4e9095d0e2bdd3b094ce3cc6e3a4b42cc7cf97a5be408516",
+  "proposal_slots": 4608,
+  "invalid_slots_by_stage": {
+    "USEFUL_WORK": 715
+  },
+  "unique_valid_workloads": 1519,
+  "bin_cycles": 8192,
+  "groups": {
+    "size_16/alternating": {
+      "workloads": 46,
+      "jobs": 338,
+      "crossed_requested_bin_fraction": 0.6568047337278107,
+      "release_to_completion_cycles": {
+        "count": 338,
+        "minimum": 5051,
+        "median": 5312.0,
+        "maximum": 38596
+      },
+      "previous_completion_after_release_cycles": {
+        "count": 338,
+        "minimum": 0,
+        "median": 0.0,
+        "maximum": 32032
+      },
+      "remaining_after_eligibility_cycles": {
+        "count": 338,
+        "minimum": 5051,
+        "median": 5312.0,
+        "maximum": 6564
+      }
+    },
+    "size_16/random": {
+      "workloads": 27,
+      "jobs": 197,
+      "crossed_requested_bin_fraction": 0.6954314720812182,
+      "release_to_completion_cycles": {
+        "count": 197,
+        "minimum": 5052,
+        "median": 6950,
+        "maximum": 32844
+      },
+      "previous_completion_after_release_cycles": {
+        "count": 197,
+        "minimum": 0,
+        "median": 422,
+        "maximum": 26280
+      },
+      "remaining_after_eligibility_cycles": {
+        "count": 197,
+        "minimum": 5052,
+        "median": 6440,
+        "maximum": 6564
+      }
+    },
+    "size_16/zeros": {
+      "workloads": 30,
+      "jobs": 206,
+      "crossed_requested_bin_fraction": 0.9368932038834952,
+      "release_to_completion_cycles": {
+        "count": 206,
+        "minimum": 5051,
+        "median": 8384.0,
+        "maximum": 33836
+      },
+      "previous_completion_after_release_cycles": {
+        "count": 206,
+        "minimum": 0,
+        "median": 1445.0,
+        "maximum": 27272
+      },
+      "remaining_after_eligibility_cycles": {
+        "count": 206,
+        "minimum": 5051,
+        "median": 6564.0,
+        "maximum": 8384
+      }
+    },
+    "size_4/alternating": {
+      "workloads": 153,
+      "jobs": 2942,
+      "crossed_requested_bin_fraction": 0.35350101971447995,
+      "release_to_completion_cycles": {
+        "count": 2942,
+        "minimum": 366,
+        "median": 1978.5,
+        "maximum": 44305
+      },
+      "previous_completion_after_release_cycles": {
+        "count": 2942,
+        "minimum": 0,
+        "median": 106.0,
+        "maximum": 42283
+      },
+      "remaining_after_eligibility_cycles": {
+        "count": 2942,
+        "minimum": 366,
+        "median": 1758.0,
+        "maximum": 2022
+      }
+    },
+    "size_4/random": {
+      "workloads": 192,
+      "jobs": 3966,
+      "crossed_requested_bin_fraction": 0.6041351487644983,
+      "release_to_completion_cycles": {
+        "count": 3966,
+        "minimum": 366,
+        "median": 6696.0,
+        "maximum": 47833
+      },
+      "previous_completion_after_release_cycles": {
+        "count": 3966,
+        "minimum": 0,
+        "median": 4852.0,
+        "maximum": 45811
+      },
+      "remaining_after_eligibility_cycles": {
+        "count": 3966,
+        "minimum": 366,
+        "median": 1879.0,
+        "maximum": 2022
+      }
+    },
+    "size_4/zeros": {
+      "workloads": 64,
+      "jobs": 1193,
+      "crossed_requested_bin_fraction": 0.22715842414082146,
+      "release_to_completion_cycles": {
+        "count": 1193,
+        "minimum": 366,
+        "median": 677,
+        "maximum": 29370
+      },
+      "previous_completion_after_release_cycles": {
+        "count": 1193,
+        "minimum": 0,
+        "median": 0,
+        "maximum": 27348
+      },
+      "remaining_after_eligibility_cycles": {
+        "count": 1193,
+        "minimum": 366,
+        "median": 677,
+        "maximum": 2022
+      }
+    },
+    "size_8/alternating": {
+      "workloads": 233,
+      "jobs": 3559,
+      "crossed_requested_bin_fraction": 0.7055352627142456,
+      "release_to_completion_cycles": {
+        "count": 3559,
+        "minimum": 1274,
+        "median": 8469,
+        "maximum": 44303
+      },
+      "previous_completion_after_release_cycles": {
+        "count": 3559,
+        "minimum": 0,
+        "median": 5678,
+        "maximum": 41373
+      },
+      "remaining_after_eligibility_cycles": {
+        "count": 3559,
+        "minimum": 1274,
+        "median": 2787,
+        "maximum": 2930
+      }
+    },
+    "size_8/random": {
+      "workloads": 662,
+      "jobs": 9925,
+      "crossed_requested_bin_fraction": 0.7490176322418136,
+      "release_to_completion_cycles": {
+        "count": 9925,
+        "minimum": 1274,
+        "median": 9503,
+        "maximum": 48623
+      },
+      "previous_completion_after_release_cycles": {
+        "count": 9925,
+        "minimum": 0,
+        "median": 6626,
+        "maximum": 45693
+      },
+      "remaining_after_eligibility_cycles": {
+        "count": 9925,
+        "minimum": 1274,
+        "median": 2787,
+        "maximum": 2930
+      }
+    },
+    "size_8/zeros": {
+      "workloads": 112,
+      "jobs": 1309,
+      "crossed_requested_bin_fraction": 0.612681436210848,
+      "release_to_completion_cycles": {
+        "count": 1309,
+        "minimum": 1274,
+        "median": 4406,
+        "maximum": 35554
+      },
+      "previous_completion_after_release_cycles": {
+        "count": 1309,
+        "minimum": 0,
+        "median": 1622,
+        "maximum": 32624
+      },
+      "remaining_after_eligibility_cycles": {
+        "count": 1309,
+        "minimum": 1274,
+        "median": 2787,
+        "maximum": 2930
+      }
+    }
+  }
+}
