@@ -159,8 +159,15 @@ def cell(root, manifest, target, seed, arm, meter, evaluator=evaluate):
         policy.observe(trials)
         history.extend(trials)
         print(json.dumps({"cell": ident, "completed_slots": len(history)}), flush=True)
+        if spec.get("stop_on_success", False) and any(
+            t["valid"] is True and t["loss"] <= spec["tolerance"] for t in trials
+        ):
+            break
     numeric = [{**t, "valid": t["valid"] is True} for t in history]
-    summary = summarize(numeric, spec["budget"], spec["tolerance"])
+    summary = summarize(
+        numeric, spec["budget"], spec["tolerance"],
+        stop_on_success=spec.get("stop_on_success", False),
+    )
     summary.update(cell=ident, filtered=sum(t["valid"] is None for t in history))
     ensure(directory / "complete.json", summary)
     return summary
@@ -173,7 +180,7 @@ def run(repo, root, allow_paid=False):
         raise ValueError("paid policies require explicit --allow-paid")
     with (root / "runner.lock").open("a") as lock:
         fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
-        meter = Meter(root, spec["cost_ceiling_usd"])
+        meter = Meter(root, spec["cost_ceiling_usd"], spec.get("provider_workers", 1))
         cells = [
             (t, s, a) for t in spec["targets"] for s in spec["seeds"] for a in spec["policies"]
         ]
@@ -191,7 +198,7 @@ def run(repo, root, allow_paid=False):
                 root / "complete.json",
                 {
                     "cells": len(cells),
-                    "slots": len(cells) * spec["budget"],
+                    "slots": sum(s.get("charged_slots", spec["budget"]) for s in summaries),
                     "summaries": summaries,
                     "liability_usd": meter.liability,
                 },

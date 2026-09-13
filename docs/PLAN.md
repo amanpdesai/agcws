@@ -1,6 +1,6 @@
 # Plan
 
-Updated 2026-09-12. Findings and completion status live only in
+Updated 2026-09-13. Findings and completion status live only in
 [RESULTS.md](../RESULTS.md); compact evidence lives in `results/`.
 
 ## Where we stand
@@ -12,10 +12,25 @@ documented scratch retention. Verification is recorded in
 
 The scientific evidence supports a scoped Pro-versus-phase-random finding on
 one Ibex target-construction family. It does not yet establish the mechanism,
-superiority to a well-tested evolutionary baseline, arbitrary temporal-profile
+arbitrary temporal-profile
 generalization or Ibex gate-power accuracy. Earlier frozen negative studies
 remain part of the paper. Differences in design, model, budget and task prevent
 attributing their contrast to interface expressiveness alone.
+
+The untuned 128-slot phase-GA extension is now complete; it did not close the
+observed Pro gap, with the frozen inference limits recorded in RESULTS.md.
+
+## Active milestone — five-design benchmark readiness
+
+The September 13 user decision prioritizes five fully functioning designs over
+leaving cross-design work as a late optional port. Keep Ibex/AES/DMA and evaluate
+two additions before agent outcomes. Selection evidence, candidates and mandatory
+functional/measurement/target/smoke gates are in [BENCHMARK_SUITE.md](BENCHMARK_SUITE.md).
+This authorizes bring-up, CPU target qualification and bounded cheap-model smoke
+tests, not a new paid comparative matrix or a five-design performance claim.
+Independent target qualification remains necessary; existing frozen studies are
+not changed. The earlier conditional ordering below is superseded where it would
+defer suite readiness until after another Ibex-only confirmation.
 
 ## Research priorities — September 12 amendment
 

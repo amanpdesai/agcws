@@ -1,4 +1,4 @@
-"""Durable paid-call reservations and serialized provider access."""
+"""Durable atomic reservations with independently bounded provider concurrency."""
 
 import os
 import threading
@@ -9,8 +9,11 @@ from agcws.pipeline.storage import read, write
 
 
 class Meter:
-    def __init__(self, root, ceiling):
+    def __init__(self, root, ceiling, provider_workers=1):
+        if type(provider_workers) is not int or provider_workers < 1:
+            raise ValueError("positive integer provider_workers required")
         self.lock = threading.Lock()
+        self.provider_slots = threading.BoundedSemaphore(provider_workers)
         self.halted = threading.Event()
         self.ceiling = ceiling
         self.liability = 0.0
@@ -28,13 +31,17 @@ class Meter:
         from google.genai.errors import APIError
         from httpx import TransportError
 
+        with self.provider_slots:
+            return self._call(directory, arm, contents, schema, identity, APIError, TransportError)
+
+    def _call(self, directory, arm, contents, schema, identity, api_error, transport_error):
         response = directory / "response.json"
-        if response.exists():
-            info = read(response)
-            if info["identity"] != identity:
-                raise ValueError("saved response identity differs")
-            return info
         with self.lock:
+            if response.exists():
+                info = read(response)
+                if info["identity"] != identity:
+                    raise ValueError("saved response identity differs")
+                return info
             if self.halted.is_set():
                 raise RuntimeError("stage halted after an infrastructure failure")
             marker = directory / "request_started.json"
@@ -52,23 +59,24 @@ class Meter:
                 },
             )
             self.liability += reservation
-            started = time.monotonic()
-            try:
-                info = generate(os.environ["AGCWS_GCP_PROJECT"], arm, contents, schema)
-            except (APIError, TransportError) as exc:
-                info = {
-                    "raw_text": "",
-                    "tokens_in": None,
-                    "tokens_out": None,
-                    "thinking_tokens": None,
-                    "estimated_usd": None,
-                    "usage_unknown": True,
-                    "model_version": None,
-                    "finish_reasons": [],
-                    "prompt_feedback": None,
-                    "api_error": {"type": type(exc).__name__, "message": str(exc)},
-                }
-            info.update(identity=identity, request_wall_clock_s=time.monotonic() - started)
+        started = time.monotonic()
+        try:
+            info = generate(os.environ["AGCWS_GCP_PROJECT"], arm, contents, schema)
+        except (api_error, transport_error) as exc:
+            info = {
+                "raw_text": "",
+                "tokens_in": None,
+                "tokens_out": None,
+                "thinking_tokens": None,
+                "estimated_usd": None,
+                "usage_unknown": True,
+                "model_version": None,
+                "finish_reasons": [],
+                "prompt_feedback": None,
+                "api_error": {"type": type(exc).__name__, "message": str(exc)},
+            }
+        info.update(identity=identity, request_wall_clock_s=time.monotonic() - started)
+        with self.lock:
             write(response, info)
             if not info["usage_unknown"]:
                 self.liability += info["estimated_usd"] - reservation

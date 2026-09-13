@@ -27,6 +27,15 @@ Supply explicit named eight-bin rates, scale, tolerance, seeds, policies,
 budget, batch size, simulator and image. GeST/screening controls require their
 declared batch-four panel; `gest-batch2` explicitly changes feedback frequency.
 
+New configurations may set `stop_on_success: true`: stop after the first batch
+with a valid tolerance hit, charge all siblings, and carry the terminal best
+error forward for budget-axis AUC. The summary records actual charged slots and
+the exact first-hit slot. Omission retains historical full-budget behavior.
+`max_workers` bounds concurrent independent cells; optional `provider_workers`
+bounds simultaneous model calls (default one). Atomic reservations enforce the
+global model-cost ceiling even while calls overlap. Set both limits explicitly
+for new parallel studies. Neither option changes within-trajectory feedback.
+
 For a separately authorized future study:
 
 ```bash

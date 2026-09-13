@@ -23,8 +23,14 @@ def validate(spec):
         "max_workers",
         "cost_ceiling_usd",
     }
-    if set(spec) != required:
+    if set(spec) - {"stop_on_success", "provider_workers"} != required:
         raise ValueError(f"exact study fields required: {sorted(required)}")
+    if "stop_on_success" in spec and type(spec["stop_on_success"]) is not bool:
+        raise ValueError("stop_on_success must be boolean")
+    if "provider_workers" in spec and (
+        type(spec["provider_workers"]) is not int or spec["provider_workers"] < 1
+    ):
+        raise ValueError("positive integer provider_workers required")
     if spec["domain"] != "ibex-temporal":
         raise ValueError(
             "maintained study backend is ibex-temporal; historical AES/DMA studies use the archive"

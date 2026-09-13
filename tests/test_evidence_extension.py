@@ -79,11 +79,17 @@ def test_prefix_refuses_missing_slot_or_scored_failure():
 
 
 def test_frozen_readiness_and_secondary_bundle_hashes():
+    import subprocess
+
     repo = Path(__file__).resolve().parents[1]
+    frozen_commit = "4f8daba47f4da753ed9e28b0340f1c32cfc83325"
     root = repo / "results/evidence_extension_v1"
     frozen = json.loads((root / "freeze.json").read_text())
     for name, expected in frozen["files_sha256"].items():
-        assert hashlib.sha256((repo / name).read_bytes()).hexdigest() == expected, name
+        original = subprocess.check_output(["git", "show", f"{frozen_commit}:{name}"], cwd=repo)
+        assert hashlib.sha256(original).hexdigest() == expected, name
+        if not name.startswith("tests/"):
+            assert hashlib.sha256((repo / name).read_bytes()).hexdigest() == expected, name
     recorded = {
         name for name in frozen["files_sha256"] if name.startswith("results/evidence_extension_v1/")
     }
@@ -96,5 +102,6 @@ def test_frozen_readiness_and_secondary_bundle_hashes():
     assert readiness["fixture_cells"] == 36 and readiness["synthetic_slots"] == 768
     assert readiness["compiler_state_examples"] == 102
     for name, expected in readiness["source_sha256"].items():
-        assert hashlib.sha256((repo / name).read_bytes()).hexdigest() == expected, name
+        original = subprocess.check_output(["git", "show", f"{frozen_commit}:{name}"], cwd=repo)
+        assert hashlib.sha256(original).hexdigest() == expected, name
     assert len(list((root / "workloads").glob("*.json"))) == 15

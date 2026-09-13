@@ -1,5 +1,32 @@
 # Decision log
 
+## 2026-09-13 — Opt-in early stopping; preserve historical source identity
+
+**Decision.** New configurations may stop after a successful batch, charging
+all requested siblings and carrying terminal best error to the budget for AUC.
+Default full-budget behavior and historical artifacts stay unchanged. Historical
+readiness source hashes are verified against their published commit
+`4f8daba47f4da753ed9e28b0340f1c32cfc83325`, not falsely asserted to describe
+the evolving current source. Frozen result/protocol files remain byte-checked.
+**Consequence.** New execution requires fresh preparation and its own source
+manifest; an old measurement manifest cannot authorize changed code. This is
+not a retrospective early-stop analysis of the completed studies.
+
+## 2026-09-13 — Five-design readiness before broader confirmation
+
+**Decision.** Expand the active implementation milestone to five working shared-
+harness designs: existing Ibex/AES/DMA and two additions selected before model
+outcomes. Audit targets and run bounded Flash feedback-loop smokes on each.
+**Rationale.** Cross-design generality requires working, qualified benchmarks,
+not an optional late port. Prefer distinct state/traffic mechanisms and checkable
+functionality rather than selecting hardware where the agent is expected to win.
+**Scope change.** This supersedes the original three-design/no-fourth-design
+restriction for development. No new cross-design superiority, arbitrary-power
+or semantic-causality claim is earned by this decision. Preserve frozen evidence.
+**Tradeoff.** Additional Ibex-only refinements and submission assembly may move
+later. Candidate failures and substitutions must be documented before observing
+agent performance. Selection/admission details are in BENCHMARK_SUITE.md.
+
 ## 2026-09-13 — Publish completed phase-GA robustness without changing inference
 
 **Decision.** Preserve the frozen two-contrast analysis and all 18 cells after
