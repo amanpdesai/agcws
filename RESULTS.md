@@ -517,3 +517,11 @@ complete outside their requested release bin; median release-to-completion is
 9,503 cycles versus 8,192 cycles per bin. This is scheduling evidence, not an
 isolated accelerator latency measurement or proof that the requested targets are
 unreachable. Rejected attempts remain counted separately.
+
+The subsequent fixed pacing probe completed 54 cases (48 valid). A separately
+frozen pulse-guided witness search then replayed 340 candidates against the
+unchanged v1 requests: 0/8 development and 4/8 confirmation non-flat requests
+qualified; neither control qualified. [Per-design evidence](results/redmule/README.md)
+retains both stages. The pulse model is only a proposal mechanism, never the
+admission oracle. A finer-grid v3 is separately declared to test release-grid
+discretization; these are engineering iterations, not held-out policy studies.

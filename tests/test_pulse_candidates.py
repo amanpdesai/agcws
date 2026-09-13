@@ -33,3 +33,12 @@ def test_proposals_are_legal_deterministic_and_never_qualify_from_prediction():
 def test_bad_window_cannot_be_used_as_pulse():
     with pytest.raises(ValueError, match="fixed-window"):
         module["basis"]([0]*10, 9)
+
+
+def test_fine_grid_resolves_narrow_pulse_bin_boundary():
+    samples = np.full(65536, 2.0)
+    samples[2300:2380] = 100
+    _, coarse, _ = module["basis"](samples, 4096, stride=256)
+    _, fine, _ = module["basis"](samples, 4096, stride=16)
+    target = np.array([0.5, 0.5, 0, 0, 0, 0, 0, 0])*coarse[0].sum()
+    assert ((fine-target)**2).sum(axis=1).min() < ((coarse-target)**2).sum(axis=1).min()

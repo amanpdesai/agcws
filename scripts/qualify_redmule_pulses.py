@@ -21,7 +21,9 @@ def sources():
             for p in (Path(__file__).resolve(), ROOT / "analysis/pulse_candidates.py")}
 
 
-def prepare(reference, probe, bank_path, root):
+def prepare(reference, probe, bank_path, root, stride=256):
+    if stride not in (16, 256):
+        raise ValueError("versioned release grid must be 16 or 256 cycles")
     measurement = verify_inputs(ROOT, reference)
     bank = read(bank_path)
     if (measurement != read(probe / "manifest.json")["measurement"]
@@ -42,7 +44,7 @@ def prepare(reference, probe, bank_path, root):
     for split, seed in (("development", 7600), ("confirmation", 7700)):
         for request in bank["splits"][split]["requests"]:
             for pattern, pulse in pulses.items():
-                candidates = propose(request["rates"], pulse["samples"], pulse["completion"], pattern=pattern, seed=seed)
+                candidates = propose(request["rates"], pulse["samples"], pulse["completion"], pattern=pattern, seed=seed, stride=stride)
                 counts = {len(c["program"]["phases"]) for c in candidates}
                 attempts.append({"split": split, "target": request["id"], "pattern": pattern,
                                  "unplaced_job_counts": sorted(set(range(1, 9))-counts)})
@@ -50,7 +52,8 @@ def prepare(reference, probe, bank_path, root):
                     cases.append({"id": f"{split}-{request['id']}-{pattern}-{len(candidate['program']['phases'])}",
                                   "split": split, "target": request["id"], **candidate})
     root.mkdir(parents=True, exist_ok=False)
-    write(root / "manifest.json", {"kind": "redmule-pulse-witness-v2", "measurement": measurement,
+    write(root / "manifest.json", {"kind": f"redmule-pulse-witness-v{2 if stride == 256 else 3}",
+                                   "release_stride": stride, "measurement": measurement,
                                    "driver_sources": sources(), "bank": bank, "cases": cases,
                                    "proposal_attempts": attempts, "max_workers": 18})
     write(root / "pulse_inputs.json", pulses)
@@ -103,11 +106,12 @@ def main():
     parser.add_argument("--probe", type=Path)
     parser.add_argument("--bank", type=Path)
     parser.add_argument("--execute", action="store_true")
+    parser.add_argument("--release-stride", type=int, choices=(16, 256), default=256)
     args = parser.parse_args()
     if args.action == "prepare":
         if args.probe is None or args.bank is None:
             parser.error("prepare requires --probe and --bank")
-        result = prepare(args.reference.resolve(), args.probe.resolve(), args.bank, args.directory.resolve())
+        result = prepare(args.reference.resolve(), args.probe.resolve(), args.bank, args.directory.resolve(), args.release_stride)
     else:
         if not args.execute:
             parser.error("run requires --execute")

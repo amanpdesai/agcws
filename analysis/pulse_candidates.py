@@ -16,12 +16,14 @@ def basis(samples, completion, *, release=2048, baseline=2, stride=256):
     return positions, values, len(pulse)
 
 
-def propose(target, samples, completion, *, pattern, seed):
+def propose(target, samples, completion, *, pattern, seed, stride=256):
     """One candidate per job count; four initializations and three coordinate sweeps."""
     target = np.asarray(target, dtype=float)
     if target.shape != (8,) or not np.isfinite(target).all():
         raise ValueError("eight finite target bins required")
-    positions, values, duration = basis(samples, completion)
+    if stride not in (16, 256):
+        raise ValueError("versioned release grid must be 16 or 256 cycles")
+    positions, values, duration = basis(samples, completion, stride=stride)
     rng = np.random.default_rng(seed)
     candidates = []
     for count in range(1, 9):
