@@ -1,5 +1,9 @@
 import copy
+import gzip
+import hashlib
+import json
 import runpy
+from pathlib import Path
 
 import jsonschema
 import pytest
@@ -47,3 +51,25 @@ def test_useful_work_floor_is_not_optional():
     data["packets"].pop()
     with pytest.raises(jsonschema.ValidationError):
         packet_program(data)
+
+
+def test_archived_mesh_timing_gate():
+    directory = Path("results/benchmark_readiness_v1/mesh_temporal")
+    blob = (directory / "evidence.json.gz").read_bytes()
+    summary = json.loads((directory / "summary.json").read_text())
+    assert hashlib.sha256(blob).hexdigest() == summary["sha256"]
+    record = json.loads(gzip.decompress(blob))
+    cases = record["cases"]
+    assert cases["burst"]["activity"] == cases["repeat"]["activity"]
+    for name, case in cases.items():
+        assert case["functional"]["received"] == len(case["workload"]["packets"]) == 256
+        assert case["activity"]["clock_edges"] == 8200
+        samples = case["activity"]["per_cycle_toggles"]
+        rates = [sum(samples[i*1025:(i+1)*1025])/1025 for i in range(8)]
+        assert rates == case["window_rates"] == summary["cases"][name]["window_rates"]
+        assert case["provenance"]["scope"] == "mesh_temporal.dut"
+    assert cases["burst"]["window_rates"][0] > 90
+    assert cases["late"]["window_rates"][4] > 80
+    assert max(cases["spread"]["window_rates"]) < 20
+    assert not record["negative"]["activity_scored"]
+    assert "MESH_INCOMPLETE sent=4 received=0 expected=64" in record["negative"]["run_log"]

@@ -23,6 +23,14 @@ generated software reside in ignored scratch; this partial bundle alone is not
 a complete reproduction package. Neither new DUT is yet a shared-runner backend.
 No target is qualified and no Flash call has been made in this bring-up slice.
 
+`mesh_temporal/` records the four-router fixed-window measurement gate: three
+different packet release schedules plus an exact repeated replay, each delivering
+256 checked packets over 8,200 clock edges. A deliberate horizon violation is
+retained as a negative case with no score. The compressed bundle includes input
+packets, per-cycle counts, source hashes and functional logs; the summary exposes
+the vectors. These are reference profiles, not the eight qualified benchmark
+targets, and the compact traffic API/shared-runner mesh port remains outstanding.
+
 ## Shared schedule pipeline
 
 `aes/shared_panel.json.gz` and `dma/shared_panel.json.gz` retain the compact JSON
