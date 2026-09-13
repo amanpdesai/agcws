@@ -548,3 +548,12 @@ $0.0269287. This verifies transport compatibility, not simulation or closed-loop
 readiness. [Mesh evidence](results/mesh/README.md) and
 [RedMulE evidence](results/redmule/README.md) preserve both failed and successful
 diagnostics. Integration and fresh full-loop smokes remain required.
+
+Mesh's separately frozen measured-feedback refinement completed and now qualifies
+all eight original non-flat requests plus the control in each split. It used
+140 charged slots including 18 exact initial replays, with 131 unique measured
+profiles. An archive-only audit reconstructs every paired edit, incumbent choice,
+stop and eight-bin rate, and verifies functional records. The
+[admitted bank and audit](results/mesh/witness-refinement-v4/README.md) preserve
+the failed v1 search rather than replacing its accounting. This clears the mesh
+target gate, not Flash-loop readiness, gate-power validation or policy superiority.
