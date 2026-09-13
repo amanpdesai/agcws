@@ -4,6 +4,11 @@ Findings, statistics and claim limits live in the single root
 [RESULTS.md](../RESULTS.md). This directory stores compact machine-readable
 inputs, outputs, failures and provenance. It is not scratch.
 
+New evidence uses per-design entry points, then frozen study versions and labeled
+splits. See [BaseJump mesh](mesh/README.md). Large studies use bounded compressed
+shards, not one indefinitely growing archive. Historical study paths remain
+available unless an explicitly verified relocation is recorded.
+
 | Claim / evidence | Direct entry point |
 |---|---|
 | Scoped Pro versus phase-random confirmation | [summary](nonflat_temporal_v1/summary.json), [frozen targets](nonflat_temporal_v1/targets.json), [costs](nonflat_temporal_v1/cost_summary.json) |
