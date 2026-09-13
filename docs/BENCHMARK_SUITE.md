@@ -218,8 +218,8 @@ concurrency are separately bounded. No new paid comparative panel is authorized
 by the smoke-test goal.
 
 Readiness is per-design and per-gate, never inferred from a directory existing.
-The maintained runner now registers all five designs. RedMulE shared-runner
-execution is under admission testing, not yet a completed benchmark gate. The five-design goal is not
+The maintained runner now executes all five designs. RedMulE passed its CPU
+shared-runner smoke; full target-bank and Flash admission remain open. The five-design goal is not
 complete until all five pass. If a preferred candidate fails, retain its failure
 evidence and explain any substitution before inspecting agent performance.
 
@@ -274,3 +274,13 @@ later releases. Phase-GA uses tournament selection, phase crossover, structural 
 numeric edits, and 20% random immigrants. Invalid crossover or unfinished jobs
 remain charged proposals. These are disclosed representation-specific operators,
 not an assertion of identical proposal distributions across designs.
+
+The RedMulE shared smoke is archived in
+`results/benchmark_readiness_v1/redmule_temporal/shared_panel.json.gz`:
+one explicitly unqualified flat plumbing vector, seed 7104, eight proposals each
+for phase-random and phase-GA, two concurrent cells, 16/16 valid proposals and no
+model calls. Reconstructed per-cycle bins, losses, summaries and prior-parent
+visibility pass the compact-evidence test. A completed resume preserved all 97
+JSON artifacts' modification times. The initial container mount-point failure is
+retained in the archive; execution resumed after adding the read-only mount point,
+without changing the frozen workload or scoring contract.

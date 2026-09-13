@@ -3,8 +3,11 @@ import os
 import subprocess
 from pathlib import Path
 
+import pytest
 
-def test_run_wrapper_uses_disposable_nonroot_container(tmp_path):
+
+@pytest.mark.parametrize("with_dependencies", [False, True])
+def test_run_wrapper_uses_disposable_nonroot_container(tmp_path, with_dependencies):
     fake = tmp_path / "docker"
     fake.write_text(
         "#!/usr/bin/env python3\nimport json, sys\nprint(json.dumps(sys.argv[1:]))\n"
@@ -15,7 +18,12 @@ def test_run_wrapper_uses_disposable_nonroot_container(tmp_path):
         "PATH": f"{tmp_path}:{os.environ['PATH']}",
         "AGCWS_CONTAINER_OUTPUT": str(tmp_path / "artifacts"),
         "AGCWS_CONTAINER_IMAGE": "test-image",
+        "AGCWS_CONTAINER_DEPS": "",
     }
+    dependencies = tmp_path / "read-only dependencies"
+    if with_dependencies:
+        dependencies.mkdir()
+        environment["AGCWS_CONTAINER_DEPS"] = str(dependencies)
     root = Path(__file__).parents[1]
     result = subprocess.run(
         ["bash", str(root / "docker/run.sh"), "echo", "two words"],
@@ -33,6 +41,7 @@ def test_run_wrapper_uses_disposable_nonroot_container(tmp_path):
     assert f"io.agcws.owner={os.getuid()}" in args
     assert any("dst=/workspace,readonly" in arg for arg in args)
     assert any("dst=/workspace/out" in arg for arg in args)
+    assert (f"type=bind,src={dependencies},dst=/workspace/.dependencies,readonly" in args) == with_dependencies
     assert args[-3:] == ["test-image", "echo", "two words"]
 
 

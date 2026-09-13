@@ -11,7 +11,8 @@ from agcws.pipeline.metrics import error, summarize
 
 
 @pytest.mark.parametrize("domain,edges,work", [("aes", 6774, 64), ("dma", 12000, 4096),
-                                              ("mesh_temporal", 8200, None)])
+                                              ("mesh_temporal", 8200, None),
+                                              ("redmule_temporal", 65536, None)])
 def test_archived_shared_panel(domain, edges, work):
     directory = Path("results/benchmark_readiness_v1") / domain
     data = (directory / "shared_panel.json.gz").read_bytes()
@@ -36,10 +37,16 @@ def test_archived_shared_panel(domain, edges, work):
             cache = "cache/" + row["cache_id"]
             record = files[cache + "/result.json"]
             profile = record["profile"]
-            useful_work = work if work is not None else sum(p["packets"] for p in row["program"]["phases"])
+            if domain == "redmule_temporal":
+                useful_work = sum(p["jobs"] for p in row["program"]["phases"]) * row["program"]["size"]**3
+            else:
+                useful_work = work if work is not None else sum(p["packets"] for p in row["program"]["phases"])
             assert profile["clock_edges"] == edges and profile["useful_work"] == useful_work
             assert profile["fidelity"] == "activity"
-            samples = files[cache + "/attempt-001/activity.json"]["per_cycle_toggles"]
+            activities = [value for name, value in files.items()
+                          if name.startswith(cache + "/attempt-") and name.endswith("/activity.json")]
+            assert len(activities) == 1
+            samples = activities[0]["per_cycle_toggles"]
             bins = [samples[i * edges // 8:(i + 1) * edges // 8] for i in range(8)]
             rates = [sum(values) / len(values) for values in bins]
             assert rates == profile["window_rates"] == row["rates"]
