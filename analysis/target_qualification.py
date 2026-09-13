@@ -15,12 +15,19 @@ def analyze(root, bank_path, split):
     manifest = read(root / "manifest.json")
     spec = manifest["spec"]
     requested = bank["splits"][split]["requests"]
+    procedure = bank.get("procedure", "docs/TARGET_QUALIFICATION_V1.md")
+    if procedure == "docs/TARGET_QUALIFICATION_V1.md":
+        seed = 7300 if split == "development" else 7400
+    elif procedure == "docs/TARGET_QUALIFICATION_V2.md" and spec["domain"] in ("aes-temporal", "dma-temporal"):
+        seed = 7800 if split == "development" else 7900
+    else:
+        raise ValueError("unknown witness qualification procedure")
     if manifest["measurement_fingerprint"] != bank["calibration"]["measurement_fingerprint"]:
         raise ValueError("measurement contract changed after calibration")
     if (spec["targets"] != {r["id"]: r["rates"] for r in requested}
             or spec["scale"] != bank["calibration"]["scale"] or spec["tolerance"] != 0.1
             or spec["budget"] != 256 or spec["batch_size"] != 2
-            or spec["seeds"] != [7300 if split == "development" else 7400]
+            or spec["seeds"] != [seed]
             or spec["policies"] != ["phase-random", "phase-ga"] or spec.get("stop_on_success") is not False
             or spec["domain"] != bank["calibration"]["domain"]):
         raise ValueError("witness run differs from frozen request procedure")
