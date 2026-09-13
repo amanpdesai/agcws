@@ -10,4 +10,7 @@ pipeline; creating them does not execute a search.
 AES and DMA both fail the necessary non-flatness gate for activation and
 quiet-interval requests in both splits. Those vectors remain in the bank and are
 not qualified. Mesh passes this necessary diagnostic, but no request is qualified
-without a measured valid witness. No full paid study is authorized by these files.
+without a measured valid witness. RedMulE also clears the necessary floor gate in
+both splits; its feasibility is not yet demonstrated. Mesh CPU witness searches
+are running through the ordinary pipeline. No full paid study is authorized by
+these files.
