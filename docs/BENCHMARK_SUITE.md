@@ -218,6 +218,23 @@ concurrency are separately bounded. No new paid comparative panel is authorized
 by the smoke-test goal.
 
 Readiness is per-design and per-gate, never inferred from a directory existing.
-The maintained runner currently admits only Ibex; the five-design goal is not
+The maintained runner admits Ibex, AES, DMA and mesh; RedMulE has passed its
+timed reference gate but is not yet a registered backend. The five-design goal is not
 complete until all five pass. If a preferred candidate fails, retain its failure
 evidence and explain any substitution before inspecting agent performance.
+
+### RedMulE timed reference evidence
+
+`results/benchmark_readiness_v1/redmule_temporal/` archives the single-job and
+three-job FP16 GEMM gates. Every scheduled job checks all 16 outputs against the
+upstream reference; completions occur at cycles 8368, 24367 and 48368 within a
+65,536-cycle observation. A job released at cycle 65535 fails explicitly as
+unfinished and receives no activity score. The compact-evidence test reconstructs
+all eight bins from recorded counts; it does not independently resimulate RTL.
+
+Clock selection must be `redmule_tb_wrap.clk`: bare `clk` also matches gated
+internal clocks and incorrectly counts 67,142 edges. That rejected diagnostic is
+retained. Activity scope is the accelerator wrapper, excluding the controller CPU
+and testbench memories; it still includes accelerator control/interface logic.
+These are small 4×4 engineering stimuli, not a qualified target bank, a general
+matrix workload language, or evidence of temporal power targeting.

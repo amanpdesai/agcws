@@ -1,3 +1,6 @@
+import gzip
+import hashlib
+import json
 import runpy
 from pathlib import Path
 
@@ -62,3 +65,28 @@ $enddefinitions $end
 """)
     assert parse_vcd(vcd, "top.clk", 2)["clock_edges"] == 2
     assert parse_vcd(vcd, "top.gated.clk", 2)["clock_edges"] == 1
+
+
+def test_archived_reference_checked_timing_gate():
+    directory = Path("results/benchmark_readiness_v1/redmule_temporal")
+    blob = (directory / "evidence.json.gz").read_bytes()
+    summary = json.loads((directory / "summary.json").read_text())
+    assert hashlib.sha256(blob).hexdigest() == summary["sha256"]
+    evidence = json.loads(gzip.decompress(blob))
+    assert evidence["clock"] == "redmule_tb_wrap.clk"
+    assert evidence["scope"] == "redmule_tb_wrap.i_redmule_tb.i_redmule_wrap"
+    assert evidence["rejected_unqualified_clock_edges"] == 67142
+    for name, case in evidence["cases"].items():
+        counts = case["activity"]["per_cycle_toggles"]
+        assert case["activity"]["clock_edges"] == len(counts) == 65536
+        rates = [sum(counts[i*8192:(i+1)*8192])/8192 for i in range(8)]
+        assert rates == case["window_rates"] == summary["cases"][name]["window_rates"]
+        assert "[TB] - errors=00000000" in case["run_log"]
+        assert "AGCWS_REDMULE_WINDOW_DONE cycles=65536" in case["run_log"]
+    jobs = evidence["cases"]["scheduled_three_jobs"]["jobs"]
+    assert [job["job"] for job in jobs] == [0, 1, 2]
+    assert all(job["errors"] == 0 for job in jobs)
+    assert [job["cycle"] for job in jobs] == [8368, 24367, 48368]
+    assert not evidence["negative"]["activity_scored"]
+    assert "REDMULE_INCOMPLETE" in evidence["negative"]["run_log"]
+    assert "AGCWS_REDMULE_WINDOW_DONE" not in evidence["negative"]["run_log"]

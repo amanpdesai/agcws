@@ -1,0 +1,54 @@
+{
+  "status": "engineering timing gate; not a qualified target or shared-backend smoke",
+  "sha256": "039729dc9b79c21ceb455378266715ab9e21fa3927ec4d1ab145baeedcad402a",
+  "source_commit": "98c1378cb",
+  "scope": "redmule_tb_wrap.i_redmule_tb.i_redmule_wrap",
+  "clock": "redmule_tb_wrap.clk",
+  "clock_edges": 65536,
+  "rejected_unqualified_clock_edges": 67142,
+  "cases": {
+    "single_job": {
+      "window_rates": [
+        7.032470703125,
+        2.0,
+        2.0,
+        2.0,
+        2.0,
+        2.0,
+        2.0,
+        1.9998779296875
+      ],
+      "jobs": []
+    },
+    "scheduled_three_jobs": {
+      "window_rates": [
+        6.3294677734375,
+        5.3199462890625,
+        8.650390625,
+        3.4642333984375,
+        3.3907470703125,
+        9.4876708984375,
+        2.1654052734375,
+        1.9998779296875
+      ],
+      "jobs": [
+        {
+          "job": 0,
+          "cycle": 8368,
+          "errors": 0
+        },
+        {
+          "job": 1,
+          "cycle": 24367,
+          "errors": 0
+        },
+        {
+          "job": 2,
+          "cycle": 48368,
+          "errors": 0
+        }
+      ]
+    }
+  },
+  "unfinished_work_rejected": true
+}
