@@ -21,6 +21,20 @@ and irregular multilevel activity. These are requested families, not yet
 qualified targets. Keep development and confirmation instances separate.
 Qualification failures are part of the deliverable, not replaceable successes.
 
+Mesh temporal measurement now has a real fixed-window driver over four unmodified
+BaseJump routers. Four source queues preserve ready/valid handshakes and packet
+order; an independent receiver checks IDs, payloads, destinations and duplicates.
+It runs 8 reset cycles plus 8,192 traffic/drain cycles, scoring only
+`mesh_temporal.dut`. All 256 packets complete in burst, spread and delayed-burst
+reference cases; an identical replay produces identical activity JSON. A deliberate
+late injection fails with `MESH_INCOMPLETE`, not a valid power/activity score.
+This is the measurement gate only: the compact agent-facing traffic grammar,
+shared runner port and qualified target bank are still required. The raw packet
+list used by the driver must not become a token-limited agent API by accident.
+
+Disposable Docker runs now disable core dumps as well as bounding logs. Expected
+negative functional tests should not leave multi-gigabyte simulator cores behind.
+
 The authorized stopping point is the audited Flash smoke panel: all 40
 substantive design/target pairs (and separately labeled controls), one development
 seed each and a small budget supporting two measured-feedback model rounds.

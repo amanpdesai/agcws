@@ -28,6 +28,7 @@ def test_run_wrapper_uses_disposable_nonroot_container(tmp_path):
     assert args[:4] == ["run", "--rm", "--init", "--read-only"]
     assert args[args.index("--user") + 1] == f"{os.getuid()}:{os.getgid()}"
     assert args[args.index("--cap-drop") + 1] == "ALL"
+    assert args[args.index("--ulimit") + 1] == "core=0:0"
     assert "io.agcws.project=agcws" in args
     assert f"io.agcws.owner={os.getuid()}" in args
     assert any("dst=/workspace,readonly" in arg for arg in args)

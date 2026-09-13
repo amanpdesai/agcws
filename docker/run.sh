@@ -21,6 +21,7 @@ case ${AGCWS_CONTAINER_CHECKOUT:-1} in
   *) echo 'AGCWS_CONTAINER_CHECKOUT must be 0 or 1' >&2; exit 2 ;;
 esac
 exec docker run --rm --init --read-only --user "$task_uid:$task_gid" \
+  --ulimit core=0:0 \
   --label io.agcws.project=agcws --label "io.agcws.owner=$task_uid" \
   --cap-drop ALL \
   --log-driver local --log-opt max-size=10m --log-opt max-file=3 \
