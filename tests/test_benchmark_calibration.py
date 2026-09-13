@@ -2,8 +2,8 @@ import statistics
 
 import pytest
 
-from agcws.pipeline.calibration import DOMAINS, plan
-from agcws.pipeline.storage import read
+from agcws.pipeline.calibration import DOMAINS, plan, report
+from agcws.pipeline.storage import read, write
 from agcws.pipeline.targets import mean_matched_requests
 
 
@@ -29,3 +29,30 @@ def test_mean_matched_requests_preserve_resource_mean(split):
         assert not request["qualified"]
     with pytest.raises(ValueError):
         mean_matched_requests(2, 100, 101, split=split)
+
+
+def calibration_fixture(tmp_path, valid_count):
+    spec = {"domain": "aes-temporal", "seeds": [7200, 7201], "policies": ["random"],
+            "budget": 32, "stop_on_success": False, "targets": {"calibration_only": [0.0]*8}}
+    write(tmp_path / "manifest.json", {"spec": spec, "measurement_fingerprint": "test"})
+    write(tmp_path / "complete.json", {"slots": 64})
+    write(tmp_path / "panel/trials.json", [
+        {"valid": i < valid_count, "rates": list(range(8)) if i < valid_count else None,
+         "stage": None if i < valid_count else "USEFUL_WORK"} for i in range(64)])
+
+
+def test_report_preserves_rejections_and_inclusive_quantiles(tmp_path):
+    calibration_fixture(tmp_path, 40)
+    result = report(tmp_path)
+    assert result["proposals"] == 64 and result["valid"] == 40
+    assert result["failure_stages"] == {"USEFUL_WORK": 24}
+    assert result["low"] == 0 and result["high"] == 7
+    assert result["median_window_mean"] == 3.5
+    assert not result["target_qualified"]
+
+
+def test_insufficient_calibration_never_produces_endpoints(tmp_path):
+    calibration_fixture(tmp_path, 31)
+    result = report(tmp_path)
+    assert result["status"] == "insufficient_valid_calibration"
+    assert "low" not in result and "scale" not in result
