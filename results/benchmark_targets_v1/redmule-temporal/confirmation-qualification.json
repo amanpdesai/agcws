@@ -1,0 +1,713 @@
+{
+  "scope": "target qualification; witnesses must not be supplied to search policies",
+  "domain": "redmule-temporal",
+  "split": "confirmation",
+  "request_bank_sha256": "42f4c8085336a28cf88c3c183c1d396947b28e73a6174b40f4da84f32dee747f",
+  "run_manifest_sha256": "330238110740fcef9d582dfcd2fc2169857977bff03183cc504d63c1012d0445",
+  "qualified_nonflat": 1,
+  "qualified_controls": 1,
+  "requests": [
+    {
+      "id": "activation",
+      "control": false,
+      "arms": {
+        "phase-random": {
+          "proposals": 256,
+          "invalid_by_stage": {
+            "USEFUL_WORK": 18
+          },
+          "first_hit": null,
+          "right_censored": true
+        },
+        "phase-ga": {
+          "proposals": 256,
+          "invalid_by_stage": {
+            "USEFUL_WORK": 93
+          },
+          "first_hit": null,
+          "right_censored": true
+        }
+      },
+      "qualified": false,
+      "reasons": [
+        "witness_misses_request"
+      ],
+      "witness_error": 0.41026493245871604,
+      "witness": {
+        "policy": "phase-ga",
+        "slot": 238,
+        "cache_id": "3e6de158280b66a03bf869a313e78731ec5d62e8c0f48f66fb611ff9cfddf499",
+        "program": {
+          "size": 4,
+          "pattern": "random",
+          "data_seed": 49119,
+          "phases": [
+            {
+              "start": 23600,
+              "duration": 9856,
+              "jobs": 4
+            },
+            {
+              "start": 12800,
+              "duration": 7986,
+              "jobs": 4
+            },
+            {
+              "start": 23600,
+              "duration": 9856,
+              "jobs": 4
+            },
+            {
+              "start": 20000,
+              "duration": 14410,
+              "jobs": 2
+            },
+            {
+              "start": 45200,
+              "duration": 13144,
+              "jobs": 4
+            },
+            {
+              "start": 38000,
+              "duration": 5425,
+              "jobs": 4
+            },
+            {
+              "start": 45200,
+              "duration": 13144,
+              "jobs": 4
+            }
+          ]
+        },
+        "rates": [
+          3.3580322265625,
+          11.209716796875,
+          24.676513671875,
+          24.64501953125,
+          24.608642578125,
+          24.618408203125,
+          24.6239013671875,
+          24.5616455078125
+        ]
+      }
+    },
+    {
+      "id": "deactivation",
+      "control": false,
+      "arms": {
+        "phase-random": {
+          "proposals": 256,
+          "invalid_by_stage": {
+            "USEFUL_WORK": 18
+          },
+          "first_hit": null,
+          "right_censored": true
+        },
+        "phase-ga": {
+          "proposals": 256,
+          "invalid_by_stage": {
+            "USEFUL_WORK": 38
+          },
+          "first_hit": null,
+          "right_censored": true
+        }
+      },
+      "qualified": false,
+      "reasons": [
+        "witness_misses_request"
+      ],
+      "witness_error": 0.27932717232170606,
+      "witness": {
+        "policy": "phase-ga",
+        "slot": 237,
+        "cache_id": "7ccb05770201606acced0fad6f86ad6192d59cc262bd236f114660d74a4cae50",
+        "program": {
+          "size": 8,
+          "pattern": "random",
+          "data_seed": 58371,
+          "phases": [
+            {
+              "start": 2000,
+              "duration": 27752,
+              "jobs": 2
+            },
+            {
+              "start": 2000,
+              "duration": 9823,
+              "jobs": 4
+            },
+            {
+              "start": 2000,
+              "duration": 42365,
+              "jobs": 2
+            },
+            {
+              "start": 2000,
+              "duration": 9823,
+              "jobs": 4
+            }
+          ]
+        },
+        "rates": [
+          30.4501953125,
+          32.2716064453125,
+          29.0616455078125,
+          26.0203857421875,
+          11.98876953125,
+          2.0,
+          2.0,
+          1.9998779296875
+        ]
+      }
+    },
+    {
+      "id": "burst",
+      "control": false,
+      "arms": {
+        "phase-random": {
+          "proposals": 256,
+          "invalid_by_stage": {
+            "USEFUL_WORK": 18
+          },
+          "first_hit": null,
+          "right_censored": true
+        },
+        "phase-ga": {
+          "proposals": 256,
+          "invalid_by_stage": {
+            "USEFUL_WORK": 66
+          },
+          "first_hit": null,
+          "right_censored": true
+        }
+      },
+      "qualified": false,
+      "reasons": [
+        "witness_misses_request"
+      ],
+      "witness_error": 0.24942384223119335,
+      "witness": {
+        "policy": "phase-ga",
+        "slot": 231,
+        "cache_id": "fed58c8b5103e90238d22c340e9d17a27a7bde71b3e53eda93dd77581e4bbdee",
+        "program": {
+          "size": 4,
+          "pattern": "random",
+          "data_seed": 9024,
+          "phases": [
+            {
+              "start": 23600,
+              "duration": 9856,
+              "jobs": 4
+            },
+            {
+              "start": 15867,
+              "duration": 9856,
+              "jobs": 4
+            },
+            {
+              "start": 23600,
+              "duration": 9856,
+              "jobs": 4
+            },
+            {
+              "start": 23600,
+              "duration": 9856,
+              "jobs": 4
+            }
+          ]
+        },
+        "rates": [
+          3.6751708984375,
+          7.0350341796875,
+          17.7366943359375,
+          23.984130859375,
+          28.897705078125,
+          18.731201171875,
+          2.0,
+          1.9998779296875
+        ]
+      }
+    },
+    {
+      "id": "quiet_interval",
+      "control": false,
+      "arms": {
+        "phase-random": {
+          "proposals": 256,
+          "invalid_by_stage": {
+            "USEFUL_WORK": 18
+          },
+          "first_hit": null,
+          "right_censored": true
+        },
+        "phase-ga": {
+          "proposals": 256,
+          "invalid_by_stage": {
+            "USEFUL_WORK": 62
+          },
+          "first_hit": 81,
+          "right_censored": false
+        }
+      },
+      "qualified": true,
+      "reasons": [],
+      "witness_error": 0.05572309531036731,
+      "witness": {
+        "policy": "phase-ga",
+        "slot": 193,
+        "cache_id": "735c433dc8634afa9d5489bde851bde52b7ae8b405ca3753b929ab9895173ea4",
+        "program": {
+          "size": 16,
+          "pattern": "alternating",
+          "data_seed": 52668,
+          "phases": [
+            {
+              "start": 2000,
+              "duration": 9414,
+              "jobs": 2
+            },
+            {
+              "start": 2000,
+              "duration": 58212,
+              "jobs": 1
+            },
+            {
+              "start": 42500,
+              "duration": 2325,
+              "jobs": 3
+            }
+          ]
+        },
+        "rates": [
+          51.3291015625,
+          52.4639892578125,
+          52.4013671875,
+          3.7242431640625,
+          3.7239990234375,
+          52.5799560546875,
+          52.8157958984375,
+          51.61474609375
+        ]
+      }
+    },
+    {
+      "id": "alternating",
+      "control": false,
+      "arms": {
+        "phase-random": {
+          "proposals": 256,
+          "invalid_by_stage": {
+            "USEFUL_WORK": 18
+          },
+          "first_hit": null,
+          "right_censored": true
+        },
+        "phase-ga": {
+          "proposals": 256,
+          "invalid_by_stage": {
+            "USEFUL_WORK": 73
+          },
+          "first_hit": null,
+          "right_censored": true
+        }
+      },
+      "qualified": false,
+      "reasons": [
+        "witness_misses_request"
+      ],
+      "witness_error": 0.36335165616159887,
+      "witness": {
+        "policy": "phase-ga",
+        "slot": 234,
+        "cache_id": "0320e01e8f663985f85a379f81571b5e7332e6411a5bccebf5b7a0c331a148d2",
+        "program": {
+          "size": 8,
+          "pattern": "random",
+          "data_seed": 58371,
+          "phases": [
+            {
+              "start": 2000,
+              "duration": 6042,
+              "jobs": 2
+            },
+            {
+              "start": 8750,
+              "duration": 4827,
+              "jobs": 2
+            },
+            {
+              "start": 15500,
+              "duration": 4044,
+              "jobs": 2
+            },
+            {
+              "start": 22250,
+              "duration": 1525,
+              "jobs": 2
+            },
+            {
+              "start": 29000,
+              "duration": 11188,
+              "jobs": 2
+            },
+            {
+              "start": 29000,
+              "duration": 4544,
+              "jobs": 2
+            },
+            {
+              "start": 36129,
+              "duration": 4544,
+              "jobs": 2
+            },
+            {
+              "start": 34400,
+              "duration": 4287,
+              "jobs": 4
+            },
+            {
+              "start": 22250,
+              "duration": 1525,
+              "jobs": 2
+            }
+          ]
+        },
+        "rates": [
+          20.97412109375,
+          32.209716796875,
+          22.7508544921875,
+          32.276611328125,
+          32.2197265625,
+          32.1639404296875,
+          22.825927734375,
+          22.03857421875
+        ]
+      }
+    },
+    {
+      "id": "ramp",
+      "control": false,
+      "arms": {
+        "phase-random": {
+          "proposals": 256,
+          "invalid_by_stage": {
+            "USEFUL_WORK": 18
+          },
+          "first_hit": null,
+          "right_censored": true
+        },
+        "phase-ga": {
+          "proposals": 256,
+          "invalid_by_stage": {
+            "USEFUL_WORK": 84
+          },
+          "first_hit": null,
+          "right_censored": true
+        }
+      },
+      "qualified": false,
+      "reasons": [
+        "witness_misses_request"
+      ],
+      "witness_error": 0.3049387735796163,
+      "witness": {
+        "policy": "phase-ga",
+        "slot": 224,
+        "cache_id": "48da3a2ee151c29a8f3b24fab35ef0a3c656cdde4e744a8e9ef7caa985b0d00e",
+        "program": {
+          "size": 4,
+          "pattern": "random",
+          "data_seed": 35498,
+          "phases": [
+            {
+              "start": 2000,
+              "duration": 9823,
+              "jobs": 4
+            },
+            {
+              "start": 34400,
+              "duration": 4287,
+              "jobs": 4
+            },
+            {
+              "start": 29000,
+              "duration": 4544,
+              "jobs": 2
+            },
+            {
+              "start": 34400,
+              "duration": 4287,
+              "jobs": 4
+            },
+            {
+              "start": 34400,
+              "duration": 4287,
+              "jobs": 4
+            },
+            {
+              "start": 23600,
+              "duration": 9856,
+              "jobs": 4
+            },
+            {
+              "start": 29000,
+              "duration": 4544,
+              "jobs": 2
+            }
+          ]
+        },
+        "rates": [
+          16.2786865234375,
+          8.9058837890625,
+          8.898681640625,
+          24.2742919921875,
+          24.3455810546875,
+          24.3172607421875,
+          24.30029296875,
+          18.88720703125
+        ]
+      }
+    },
+    {
+      "id": "rise_fall",
+      "control": false,
+      "arms": {
+        "phase-random": {
+          "proposals": 256,
+          "invalid_by_stage": {
+            "USEFUL_WORK": 18
+          },
+          "first_hit": null,
+          "right_censored": true
+        },
+        "phase-ga": {
+          "proposals": 256,
+          "invalid_by_stage": {
+            "USEFUL_WORK": 40
+          },
+          "first_hit": null,
+          "right_censored": true
+        }
+      },
+      "qualified": false,
+      "reasons": [
+        "witness_misses_request"
+      ],
+      "witness_error": 0.2926072030615296,
+      "witness": {
+        "policy": "phase-ga",
+        "slot": 248,
+        "cache_id": "4a97406b2621815f72883952ef27108167cbea3606fc40b43821f2dc12710198",
+        "program": {
+          "size": 4,
+          "pattern": "random",
+          "data_seed": 41528,
+          "phases": [
+            {
+              "start": 2000,
+              "duration": 9823,
+              "jobs": 4
+            },
+            {
+              "start": 12800,
+              "duration": 2413,
+              "jobs": 4
+            },
+            {
+              "start": 2000,
+              "duration": 9823,
+              "jobs": 4
+            },
+            {
+              "start": 34400,
+              "duration": 4287,
+              "jobs": 4
+            },
+            {
+              "start": 23600,
+              "duration": 9856,
+              "jobs": 4
+            },
+            {
+              "start": 2000,
+              "duration": 9414,
+              "jobs": 2
+            },
+            {
+              "start": 23600,
+              "duration": 9856,
+              "jobs": 4
+            }
+          ]
+        },
+        "rates": [
+          21.6258544921875,
+          24.57763671875,
+          29.675537109375,
+          24.5103759765625,
+          24.525390625,
+          24.5145263671875,
+          7.89697265625,
+          1.9998779296875
+        ]
+      }
+    },
+    {
+      "id": "irregular",
+      "control": false,
+      "arms": {
+        "phase-random": {
+          "proposals": 256,
+          "invalid_by_stage": {
+            "USEFUL_WORK": 18
+          },
+          "first_hit": null,
+          "right_censored": true
+        },
+        "phase-ga": {
+          "proposals": 256,
+          "invalid_by_stage": {
+            "USEFUL_WORK": 85
+          },
+          "first_hit": null,
+          "right_censored": true
+        }
+      },
+      "qualified": false,
+      "reasons": [
+        "witness_misses_request"
+      ],
+      "witness_error": 0.3353679232157358,
+      "witness": {
+        "policy": "phase-ga",
+        "slot": 162,
+        "cache_id": "3be91dfafe01a0971db62cff95741d7e55411109395dede8da8d1d2352124470",
+        "program": {
+          "size": 8,
+          "pattern": "random",
+          "data_seed": 19587,
+          "phases": [
+            {
+              "start": 23600,
+              "duration": 9856,
+              "jobs": 4
+            },
+            {
+              "start": 12800,
+              "duration": 7986,
+              "jobs": 4
+            },
+            {
+              "start": 2000,
+              "duration": 9823,
+              "jobs": 4
+            },
+            {
+              "start": 24998,
+              "duration": 9414,
+              "jobs": 2
+            },
+            {
+              "start": 45200,
+              "duration": 7898,
+              "jobs": 4
+            },
+            {
+              "start": 46603,
+              "duration": 9414,
+              "jobs": 2
+            }
+          ]
+        },
+        "rates": [
+          29.09130859375,
+          30.6962890625,
+          24.7117919921875,
+          27.7525634765625,
+          30.540283203125,
+          21.4940185546875,
+          21.7564697265625,
+          21.0150146484375
+        ]
+      }
+    },
+    {
+      "id": "flat_control",
+      "control": true,
+      "arms": {
+        "phase-random": {
+          "proposals": 256,
+          "invalid_by_stage": {
+            "USEFUL_WORK": 18
+          },
+          "first_hit": null,
+          "right_censored": true
+        },
+        "phase-ga": {
+          "proposals": 256,
+          "invalid_by_stage": {
+            "USEFUL_WORK": 79
+          },
+          "first_hit": 38,
+          "right_censored": false
+        }
+      },
+      "qualified": true,
+      "reasons": [],
+      "witness_error": 0.08584548982335144,
+      "witness": {
+        "policy": "phase-ga",
+        "slot": 234,
+        "cache_id": "f59390fbabcc7d59805477cbe26b71df549ba845ff21d4b79c196e4413ded50b",
+        "program": {
+          "size": 8,
+          "pattern": "random",
+          "data_seed": 58371,
+          "phases": [
+            {
+              "start": 7419,
+              "duration": 9856,
+              "jobs": 4
+            },
+            {
+              "start": 7419,
+              "duration": 9856,
+              "jobs": 4
+            },
+            {
+              "start": 2000,
+              "duration": 9823,
+              "jobs": 4
+            },
+            {
+              "start": 20000,
+              "duration": 14410,
+              "jobs": 2
+            },
+            {
+              "start": 45200,
+              "duration": 7898,
+              "jobs": 4
+            },
+            {
+              "start": 23600,
+              "duration": 9856,
+              "jobs": 4
+            }
+          ]
+        },
+        "rates": [
+          30.4569091796875,
+          32.27294921875,
+          29.0623779296875,
+          26.0281982421875,
+          32.12109375,
+          32.2388916015625,
+          32.192626953125,
+          22.5186767578125
+        ]
+      }
+    }
+  ]
+}

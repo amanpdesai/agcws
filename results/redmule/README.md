@@ -1,0 +1,11 @@
+# RedMulE evidence
+
+Archives are grouped by design, frozen study version and labeled split.
+
+- [Target qualification v1](target-qualification-v1/README.md)
+- [Frozen calibration](../benchmark_calibration_v1/redmule-temporal/calibration.json)
+- [Frozen requests](../benchmark_targets_v1/redmule-temporal/requested_bank.json)
+- [Shared-runner admission](../benchmark_readiness_v1/redmule_temporal/)
+
+Historical evidence is linked rather than duplicated. Current claims and
+limitations belong in [RESULTS.md](../../RESULTS.md).

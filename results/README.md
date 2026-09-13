@@ -5,7 +5,7 @@ Findings, statistics and claim limits live in the single root
 inputs, outputs, failures and provenance. It is not scratch.
 
 New evidence uses per-design entry points, then frozen study versions and labeled
-splits. See [BaseJump mesh](mesh/README.md). Large studies use bounded compressed
+splits. See [BaseJump mesh](mesh/README.md) and [RedMulE](redmule/README.md). Large studies use bounded compressed
 shards, not one indefinitely growing archive. Historical study paths remain
 available unless an explicitly verified relocation is recorded.
 

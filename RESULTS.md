@@ -498,3 +498,14 @@ flat controls. [Per-request records](results/benchmark_targets_v1/README.md) ret
 misses and witness identities. This proves neither eight-profile readiness nor
 agent superiority. Quantities are RTL activity, not gate power. Historical frozen
 study results above are unchanged; no full Flash or Pro panel was launched.
+
+RedMulE's two witness panels also completed 9,216 slots. Only 0/8 development
+and 1/8 confirmation non-flat requests qualify; both controls pass. The one
+non-flat success is confirmation quiet-interval (error 0.0557). Completed search
+is not evidence of feasibility for the other requests. The development
+activation request asks for six successive bins at 44.3 transitions/edge; its
+best measured witness reaches roughly 22–32 in those bins (error 0.3011).
+These results do not distinguish an unreachable request from inadequate search.
+[Reports and byte-verified per-design archives](results/redmule/target-qualification-v1/README.md)
+retain the full attempts. No failed vector, tolerance or qualification margin
+has been changed. Ibex witness searches remain in progress.
