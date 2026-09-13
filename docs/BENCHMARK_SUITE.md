@@ -43,7 +43,8 @@ under the existing immutable container with Verilator assertions enabled. Raw
 commands/source hashes/logs are in `out/mesh-reference-gate`; this is a reference
 gate, not target qualification or a new measured benchmark yet. RedMulE dependency
 preparation and the first reference GEMM pass are complete. AES/DMA
-maintained-backend ports remain outstanding.
+maintained-backend ports have now been implemented and are undergoing common-loop
+CPU checks; provider smokes and target qualification remain outstanding.
 
 RedMulE's 17 dependencies are resolved in a disposable writable checkout under
 `out/redmule-bringup`, with Bender.lock retained. Stock reference elaboration failed
@@ -78,6 +79,20 @@ Shared AES compilation now takes an interprocess lock and requires a completion
 stamp with the executable hash. Interrupted builds cannot masquerade as hits;
 changed completed binaries fail closed. This prevents concurrent cells racing
 on one build directory. No full study or provider run has started.
+
+The schedule-driven AES/DMA ports now share cache/recovery, proposal accounting,
+context rendering and baseline operators. First CPU plumbing panels exercised
+both classical policies for eight slots each, concurrently, and replayed their
+checkpoints. Fresh checks after the shared-base refactor will be archived before
+these ports are admitted. The targets used for plumbing are explicitly not
+qualification witnesses and their solve rates are not research results.
+
+Qualification must also check resource compatibility: an exact-work, fixed-window
+contract can constrain the achievable mean across schedules. Merely scaling the
+same low/high endpoints into eight differently shaped vectors does not establish
+that all eight are feasible. Keep every failed requested shape, measure independent
+calibration first, and freeze the request/qualification procedure before witness
+search. Do not move a missed request onto an achieved waveform after the search.
 
 ## Selection before agent outcomes
 

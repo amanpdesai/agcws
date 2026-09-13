@@ -3,6 +3,7 @@
 import math
 from pathlib import Path
 
+from agcws.pipeline.backends import backend
 from agcws.pipeline.model import MODELS
 from agcws.pipeline.policies.controls import ARMS
 
@@ -31,10 +32,7 @@ def validate(spec):
         type(spec["provider_workers"]) is not int or spec["provider_workers"] < 1
     ):
         raise ValueError("positive integer provider_workers required")
-    if spec["domain"] != "ibex-temporal":
-        raise ValueError(
-            "maintained study backend is ibex-temporal; historical AES/DMA studies use the archive"
-        )
+    design = backend(spec["domain"])
     if not spec["name"] or not isinstance(spec["name"], str):
         raise ValueError("study name required")
     for field in ("budget", "batch_size", "max_workers"):
@@ -45,6 +43,10 @@ def validate(spec):
     if spec["budget"] < 2:
         raise ValueError("AUC requires at least two proposal slots")
     for field in ("binary", "image"):
+        if field == "binary" and design.binary_path is None:
+            if spec[field] is not None:
+                raise ValueError("source-built backend requires binary=null")
+            continue
         if not isinstance(spec[field], str) or not spec[field].strip():
             raise ValueError(f"explicit {field} required")
     for field in ("scale", "tolerance", "cost_ceiling_usd"):
@@ -61,6 +63,10 @@ def validate(spec):
         raise ValueError("nonnegative integer seeds required")
     if any(arm not in (*ARMS, *MODELS) for arm in spec["policies"]):
         raise ValueError("unknown policy")
+    if hasattr(design, "allowed_policies") and any(
+        arm not in design.allowed_policies for arm in spec["policies"]
+    ):
+        raise ValueError("policy is not implemented for this backend")
     if any(a.startswith("gest-") or a == "ridge-screen" for a in spec["policies"]) and (
         spec["budget"] < 8 or spec["budget"] % 4 or spec["batch_size"] != 4
     ):

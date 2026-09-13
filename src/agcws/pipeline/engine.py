@@ -20,30 +20,43 @@ from agcws.pipeline.spec import validate
 from agcws.pipeline.storage import ensure, read, write
 from agcws.provenance import file_sha256
 
-BINARY = Path("toolchain/lowrisc_ibex_ibex_simple_system_0/sim-verilator/Vibex_simple_system")
 
-
-def source_inventory(repo):
-    roots = (
-        repo / "src/agcws",
-        repo / "third_party/ibex/examples/sw/simple_system/common",
-    )
+def source_inventory(repo, domain="ibex-temporal"):
+    roots = [repo / "src/agcws"]
+    if domain == "ibex-temporal":
+        roots.append(repo / "third_party/ibex/examples/sw/simple_system/common")
     paths = [
         p for root in roots for p in root.rglob("*") if p.is_file() and "__pycache__" not in p.parts
     ]
     paths = [p for p in paths if p.suffix in (".py", ".S", ".c", ".h", ".ld")]
     paths.append(repo / "docker/run.sh")
+    if domain == "aes-temporal":
+        paths.extend(repo / p for p in (
+            "scripts/run_aes_transactions.py", "scripts/resolve_sv_sources.py",
+            "scripts/aes_sources.py", "experiments/aes_core_smoke.sv",
+            "experiments/aes_transactions.svh",
+        ))
+        paths.extend(p for p in (repo / "third_party/opentitan/hw").rglob("*")
+                     if p.is_file() and p.suffix in (".sv", ".svh", ".v", ".vh"))
+    if domain == "dma-temporal":
+        paths.extend(repo / p for p in (
+            "scripts/run_axi_dma_coupled.sh", "scripts/parse_vcd_activity.py",
+            "third_party/harnesses/axi_dma_pipelined_tb.py",
+            "third_party/harnesses/axi_dma_coupled_tb.py",
+        ))
+        paths.extend((repo / "third_party/verilog-axi/rtl").glob("*.v"))
     return {str(p.relative_to(repo)): file_sha256(p) for p in sorted(paths)}
 
 
 def prepare(repo, spec_path, root):
     spec = validate(read(spec_path))
-    binary = Path(spec["binary"]).expanduser().resolve(strict=True)
+    design = backend(spec["domain"])
+    binary = Path(spec["binary"]).expanduser().resolve(strict=True) if design.binary_path else None
     image = subprocess.check_output(
         ["docker", "image", "inspect", spec["image"], "--format", "{{.Id}}"], text=True
     ).strip()
-    sources = source_inventory(repo)
-    runtime = {"image_id": image, "binary_sha256": file_sha256(binary)}
+    sources = source_inventory(repo, spec["domain"])
+    runtime = {"image_id": image, "binary_sha256": file_sha256(binary) if binary else None}
     manifest = {
         "version": 1,
         "spec": spec,
@@ -56,8 +69,9 @@ def prepare(repo, spec_path, root):
         "schema": backend(spec["domain"]).schema(spec["batch_size"]),
     }
     root.mkdir(parents=True, exist_ok=False)
-    (root / BINARY).parent.mkdir(parents=True)
-    shutil.copy2(binary, root / BINARY)
+    if binary is not None:
+        (root / design.binary_path).parent.mkdir(parents=True)
+        shutil.copy2(binary, root / design.binary_path)
     write(root / "manifest.json", manifest)
     return manifest
 
@@ -65,7 +79,8 @@ def prepare(repo, spec_path, root):
 def verify_inputs(repo, root):
     m = read(root / "manifest.json")
     validate(m["spec"])
-    if source_inventory(repo) != m["sources"]:
+    design = backend(m["spec"]["domain"])
+    if source_inventory(repo, m["spec"]["domain"]) != m["sources"]:
         raise ValueError("prepared source inventory changed")
     if m["measurement_fingerprint"] != key(
         {
@@ -77,8 +92,10 @@ def verify_inputs(repo, root):
         raise ValueError("measurement fingerprint differs")
     if m["schema"] != backend(m["spec"]["domain"]).schema(m["spec"]["batch_size"]):
         raise ValueError("prepared response schema differs")
-    if file_sha256(root / BINARY) != m["runtime"]["binary_sha256"]:
+    if design.binary_path and file_sha256(root / design.binary_path) != m["runtime"]["binary_sha256"]:
         raise ValueError("simulator changed")
+    if not design.binary_path and m["runtime"]["binary_sha256"] is not None:
+        raise ValueError("source-built backend cannot supply a binary identity")
     image = subprocess.check_output(
         ["docker", "image", "inspect", m["runtime"]["image_id"], "--format", "{{.Id}}"],
         text=True,

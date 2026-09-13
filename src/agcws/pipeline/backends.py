@@ -45,4 +45,10 @@ class IbexTemporal:
 def backend(domain):
     if domain == "ibex-temporal":
         return IbexTemporal()
+    if domain == "aes-temporal":
+        from agcws.pipeline.aes import AesTemporal
+        return AesTemporal()
+    if domain == "dma-temporal":
+        from agcws.pipeline.dma import DmaTemporal
+        return DmaTemporal()
     raise ValueError(f"backend not implemented: {domain}")

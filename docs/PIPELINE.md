@@ -14,9 +14,26 @@ PYTHONPATH=src .venv/bin/python -m agcws.pipeline validate --config configs/stud
 ```
 
 The example is a configuration-shape example, not a pre-registered study or
-witnessed target bank. Only `ibex-temporal` is a maintained study backend.
-DMA/AES cross-design execution is planned, not implemented by changing this
-backend name. Historical adapters and tools remain available for a tested port.
+witnessed target bank. Backends are `ibex-temporal`, `aes-temporal` and
+`dma-temporal`. AES/DMA have new source-built schedule ports under engineering
+verification, not yet qualified target banks or completed Flash smokes.
+BaseJump and RedMulE are not yet registered as runnable temporal backends.
+
+Ibex takes an explicit simulator `binary`. AES/DMA require `binary: null`:
+the pinned image and source inventory identify container-built simulators.
+Their current contract is 64 work units and 6,000 idle cycles (AES: one block;
+DMA: one 64-byte copy), with fixed observation windows of 6,774 and 12,000
+clock edges respectively. These are development contracts, not frozen paper
+settings. AES uses a locked, content-keyed build cache. DMA uses independent
+per-replay Icarus build directories. No host simulator is used.
+
+Schedule ports expose one shared grammar/context template and support random,
+phase-random, phase-GA, Flash and Pro dispatch. Only CPU checks are complete so
+far; provider schema acceptance still needs a bounded Flash smoke. The schedule
+GA combines work partitions, idle partitions and ordering from selected parents,
+then applies a legal structural mutation, with 20% random immigrants. This is
+a schedule-specific GA, not an unchanged replication of the Ibex phase GA.
+Unsupported GeST/screening arms are rejected rather than silently substituted.
 
 For packed historical evidence, use `evidence-extract --study STUDY --destination
 /absolute/new/review` to reconstruct a read-only-use review workspace with original

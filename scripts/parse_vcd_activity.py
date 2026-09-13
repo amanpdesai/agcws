@@ -28,9 +28,10 @@ if __name__ == "__main__":
     parser.add_argument("vcd", type=Path)
     parser.add_argument("--clock", default="clk_i")
     parser.add_argument("--windows", type=int, default=16)
+    parser.add_argument("--scope", default=None)
     parser.add_argument("--output", type=Path)
     args = parser.parse_args()
-    result = parse(args.vcd, args.clock, args.windows)
+    result = parse_vcd(args.vcd, args.clock, args.windows, scope_prefix=args.scope)
     payload = json.dumps(result, indent=2) + "\n"
     if args.output:
         args.output.write_text(payload)

@@ -63,7 +63,10 @@ def main():
     driver = ROOT / 'experiments/aes_transactions.svh'
     version = subprocess.check_output([config.VERILATOR, '--version'])
     digest = hashlib.sha256(version + b'transactions-v1-coverage-line')
-    for path in [*map(Path, sources), harness, driver]:
+    headers = sorted((ROOT / 'third_party/opentitan/hw').rglob('*.svh'))
+    # Macro include files are not listed by the module closure resolver.
+    headers.extend(sorted((ROOT / 'third_party/opentitan/hw/ip/prim/rtl').glob('prim_assert*.sv')))
+    for path in [*map(Path, sources), harness, driver, *headers]:
         digest.update(str(path).encode())
         digest.update(path.read_bytes())
     build = ROOT / 'out/.cache' / ('aes-transactions-' + digest.hexdigest()[:20])
