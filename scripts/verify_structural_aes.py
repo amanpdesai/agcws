@@ -33,8 +33,10 @@ def main():
         workload = lower_schedule(schedule, contract)
         path = directory / 'workload.json'
         path.write_text(json.dumps(workload, sort_keys=True) + '\n')
-        subprocess.run([sys.executable, 'scripts/run_aes_transactions.py', str(path),
-                        '--out', str(directory)], check=True, capture_output=True, text=True)
+        with (directory / 'driver.log').open('w') as log:
+            subprocess.run([sys.executable, 'scripts/run_aes_transactions.py', str(path),
+                            '--out', str(directory)], check=True, stdout=log,
+                           stderr=subprocess.STDOUT, text=True)
         log = (directory / 'run.log').read_text()
         match = re.search(r'AES_CORE_WORKLOAD_DONE blocks=(\d+)', log)
         if not match or int(match[1]) != contract.work_units:

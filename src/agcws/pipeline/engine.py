@@ -11,8 +11,7 @@ import subprocess
 import time
 from pathlib import Path
 
-from agcws.pipeline.ibex.domain import evaluate
-from agcws.pipeline.ibex.native_schema import serving_schema
+from agcws.pipeline.backends import backend
 from agcws.pipeline.meter import Meter
 from agcws.pipeline.metrics import key, summarize
 from agcws.pipeline.model import MODELS, settings
@@ -54,7 +53,7 @@ def prepare(repo, spec_path, root):
         "measurement_fingerprint": key(
             {"sources": sources, "runtime": runtime, "domain": spec["domain"]}
         ),
-        "schema": serving_schema(spec["batch_size"], True),
+        "schema": backend(spec["domain"]).schema(spec["batch_size"]),
     }
     root.mkdir(parents=True, exist_ok=False)
     (root / BINARY).parent.mkdir(parents=True)
@@ -76,7 +75,7 @@ def verify_inputs(repo, root):
         }
     ):
         raise ValueError("measurement fingerprint differs")
-    if m["schema"] != serving_schema(m["spec"]["batch_size"], True):
+    if m["schema"] != backend(m["spec"]["domain"]).schema(m["spec"]["batch_size"]):
         raise ValueError("prepared response schema differs")
     if file_sha256(root / BINARY) != m["runtime"]["binary_sha256"]:
         raise ValueError("simulator changed")
@@ -91,8 +90,10 @@ def verify_inputs(repo, root):
     return m
 
 
-def cell(root, manifest, target, seed, arm, meter, evaluator=evaluate):
+def cell(root, manifest, target, seed, arm, meter, evaluator=None):
     spec = manifest["spec"]
+    if evaluator is None:
+        evaluator = backend(spec["domain"]).evaluate
     directory = root / "panel" / target / str(seed) / arm
     ident = {
         "target": target,

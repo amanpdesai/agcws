@@ -3,12 +3,9 @@
 import json
 import random
 
-from agcws.pipeline.ibex.contract import decode
-from agcws.pipeline.ibex.program import random_program
-from agcws.pipeline.ibex.prompt import payload
+from agcws.pipeline.backends import backend
 from agcws.pipeline.model import MODELS
 from agcws.pipeline.policies.controls import Control
-from agcws.pipeline.policies.phase import phase_ga, phase_random
 from agcws.pipeline.storage import ensure
 
 
@@ -16,6 +13,7 @@ class Policy:
     def __init__(self, arm, seed, spec, target, schema, meter):
         self.arm, self.spec, self.target = arm, spec, target
         self.schema, self.meter = schema, meter
+        self.backend = backend(spec["domain"])
         self.rng = random.Random(seed)
         self.control = (
             Control(arm, seed, spec["budget"], target, spec["scale"])
@@ -31,7 +29,7 @@ class Policy:
             return request["proposals"]
         n = min(self.spec["batch_size"], self.spec["budget"] - offset)
         if self.arm in MODELS and offset:
-            contents = payload(
+            contents = self.backend.payload(
                 history,
                 {
                     "profile": self.target,
@@ -39,7 +37,6 @@ class Policy:
                     "tolerance": self.spec["tolerance"],
                 },
                 n,
-                True,
             )
             if len(contents.encode()) + len(json.dumps(self.schema).encode()) + 4096 > 200000:
                 raise ValueError("payload exceeds declared bound; no silent truncation")
@@ -47,7 +44,7 @@ class Policy:
             response = self.meter.call(directory, self.arm, contents, self.schema, identity)
             if not response.get("api_error") and response["model_version"] != MODELS[self.arm]:
                 raise ValueError("provider model version changed")
-            decoded = decode(response["raw_text"], n, True)
+            decoded = self.backend.decode(response["raw_text"], n)
             ensure(directory / "decoded.json", decoded)
             return [
                 {
@@ -65,14 +62,9 @@ class Policy:
         for j in range(n):
             slot = offset + j + 1
             if not offset or self.arm == "random":
-                program, parents = random_program(self.rng), []
-            elif self.arm == "phase-random":
-                program, parents = phase_random(self.rng, slot), []
-            elif self.arm == "phase-ga":
-                program, note = phase_ga(self.rng, slot, history)
-                parents = note["parents"]
+                program, parents = self.backend.random(self.rng), []
             else:
-                raise ValueError(f"unsupported policy {self.arm}")
+                program, parents = self.backend.propose_classical(self.arm, self.rng, slot, history)
             proposals.append(
                 {"slot": slot, "program": program, "selected": True, "parents": parents}
             )

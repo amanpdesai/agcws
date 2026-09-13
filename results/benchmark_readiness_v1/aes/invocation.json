@@ -1,0 +1,13 @@
+{
+  "scope": "Reference replay only, not target qualification or comparative search",
+  "image_id": "sha256:14eaf03a061ed5ce89eb4ecceefdd3b52a5e5efe37505d4c59f2b6ef49d9085d",
+  "environment_override": {
+    "AGCWS_VERILATOR": "/usr/local/bin/verilator"
+  },
+  "command": "python3 scripts/verify_structural_aes.py --out out/benchmark-aes-fixed-window-v2 --archive out/benchmark-aes-fixed-window-v2.json",
+  "sources_sha256": {
+    "scripts/verify_structural_aes.py": "6dc7edd8acb8a7ccd2f8fa579fc677b398b590b4382bb8e3fbff47afc34545f3",
+    "scripts/run_aes_transactions.py": "e7600ff88743c0094055ca81a44bb9a7be33f62bdeda8dbf588985485fe2eb84",
+    "src/agcws/pipeline/build.py": "d72fe7520b91e58036d972803d587140262400cf4f4f564e5638ed503a75b4ea"
+  }
+}

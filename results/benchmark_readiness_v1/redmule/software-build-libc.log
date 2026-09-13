@@ -1,0 +1,8 @@
+make: Entering directory '/workspace/third_party/redmule'
+riscv64-unknown-elf-gcc -march=rv32imc_zicsr -mabi=ilp32 -O2 -g -ffunction-sections -fdata-sections -isystem /usr/lib/picolibc/riscv64-unknown-elf/include -c /workspace/third_party/redmule/sw/redmule.c -DW_COLS_OFFSET=0 -I/workspace/third_party/redmule/sw -I/workspace/out/redmule-reference-inputs/inc -I/workspace/third_party/redmule/sw/utils -o /workspace/out/redmule-reference-inputs/build/verif.o
+riscv64-unknown-elf-gcc -march=rv32imc_zicsr -mabi=ilp32 -nostartfiles -nostdlib -Wl,--gc-sections -o /workspace/out/redmule-reference-inputs/build/verif /workspace/out/redmule-reference-inputs/build/crt0.o /workspace/out/redmule-reference-inputs/build/verif.o -T/workspace/third_party/redmule/sw/kernel/link.ld
+riscv64-unknown-elf-objcopy --srec-len 1 --output-target=srec /workspace/out/redmule-reference-inputs/build/verif /workspace/out/redmule-reference-inputs/build/verif.s19
+python3 scripts/parse_s19.py < /workspace/out/redmule-reference-inputs/build/verif.s19 > /workspace/out/redmule-reference-inputs/build/verif.txt
+python3 scripts/s19tomem.py /workspace/out/redmule-reference-inputs/build/verif.txt /workspace/out/redmule-reference-inputs/build/stim_instr.txt /workspace/out/redmule-reference-inputs/build/stim_data.txt
+riscv64-unknown-elf-objdump -d /workspace/out/redmule-reference-inputs/build/verif > /workspace/out/redmule-reference-inputs/build/verif.dump
+make: Leaving directory '/workspace/third_party/redmule'

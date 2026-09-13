@@ -16,6 +16,7 @@ from agcws.adapters.aes.transactions import AESTransactionAdapter
 from agcws.nodes.activity import parse_vcd
 from agcws.nodes.coverage import read_line_coverage
 from agcws.nodes.validation import validate_static
+from agcws.pipeline.build import ensure_binary
 
 
 def packed_state(data):
@@ -66,9 +67,7 @@ def main():
         digest.update(str(path).encode())
         digest.update(path.read_bytes())
     build = ROOT / 'out/.cache' / ('aes-transactions-' + digest.hexdigest()[:20])
-    binary = build / 'simulate'
-    if not binary.exists():
-        build.mkdir(parents=True, exist_ok=True)
+    def compile_binary(binary):
         command = [config.VERILATOR, '--binary', '--trace-vcd', '--timing', '--sv',
                    '--coverage-line', '-DAGCWS_TRANSACTION_DRIVER', '--top-module', 'aes_core_smoke',
                    '-Wno-fatal', '-j', '2', '-Mdir', str(build), '-o', str(binary)]
@@ -82,6 +81,7 @@ def main():
         with (out / 'compile.log').open('w') as log:
             subprocess.run(command + sources + [str(harness)], stdout=log,
                            stderr=subprocess.STDOUT, check=True)
+    binary = ensure_binary(build, 'simulate', compile_binary)
     with (out / 'run.log').open('w') as log:
         subprocess.run([str(binary), '+PROGRAM=' + str(program),
                         '+verilator+coverage+file+' + str(out / 'coverage.dat')],

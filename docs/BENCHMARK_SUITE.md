@@ -21,6 +21,17 @@ and irregular multilevel activity. These are requested families, not yet
 qualified targets. Keep development and confirmation instances separate.
 Qualification failures are part of the deliverable, not replaceable successes.
 
+The authorized stopping point is the audited Flash smoke panel: all 40
+substantive design/target pairs (and separately labeled controls), one development
+seed each and a small budget supporting two measured-feedback model rounds.
+Freeze the actual cap and spending ceiling before calls. A smoke does not need
+to solve, but must exercise scoring, feedback, validity, accounting and artifact
+reproduction. Do not silently count an early-stop initial hit as two feedback
+rounds: use a declared smoke-only minimum or a separately labeled plumbing case.
+After qualification and smoke analysis, stop and request the user's execution
+decision. No full Flash study and no Pro call is authorized by this goal.
+Any later paper comparison needs fresh seeds and frozen matched settings.
+
 For new studies, 128 remains the proposal ceiling. Explicit `stop_on_success`
 stops at the end of the first batch containing a valid tolerance hit. Charge all
 requested siblings; retain exact first-hit slot and carry terminal best error
@@ -31,7 +42,42 @@ Current bring-up: unmodified upstream BaseJump 2x2 and 3x3 all-to-all tests pass
 under the existing immutable container with Verilator assertions enabled. Raw
 commands/source hashes/logs are in `out/mesh-reference-gate`; this is a reference
 gate, not target qualification or a new measured benchmark yet. RedMulE dependency
-preparation is in progress. AES/DMA maintained-backend ports remain outstanding.
+preparation and the first reference GEMM pass are complete. AES/DMA
+maintained-backend ports remain outstanding.
+
+RedMulE's 17 dependencies are resolved in a disposable writable checkout under
+`out/redmule-bringup`, with Bender.lock retained. Stock reference elaboration failed
+on Verilator 5.032 (enum typing, then mixed assignments to disjoint array/struct
+parts). A separate pinned Verilator 5.048 image layer successfully elaborates
+the 4x4 reference without `--bbox-unsup` or `-Wno-BLKANDNBLK`. Only the upstream
+enum-conversion diagnostic is suppressed. Simulator compilation and the first
+functional check subsequently passed as recorded below. This upgrade does not
+alter historical images/results.
+Elaboration image: `sha256:6b907b8720b9a719cb4fb40f823d1973862af51b1a79b6d8435092768d638b63`.
+Source/build recipe: `docker/benchmark.Dockerfile`. Docker builds require a local
+tag resolving to the verified base image, not an image-ID string in `FROM`.
+
+The subsequent image adds real RISC-V picolibc headers (no header stubs):
+`sha256:14eaf03a061ed5ce89eb4ecceefdd3b52a5e5efe37505d4c59f2b6ef49d9085d`.
+On it, the built 4x4 RedMulE reference passes a seeded FP16 GEMM with all 16
+outputs compared and zero errors. Generated input seed 7100, upstream golden
+model, no memory stalls in this first case. Minimal evidence is in
+`results/benchmark_readiness_v1`; this is not fixed-window profile qualification.
+
+`pipeline.targets` defines independent requested vectors and checks constant
+floors/witness errors. No requested vector is marked qualified by generation;
+the measurement, calibration provenance and qualification log are still required.
+
+AES replay revalidation passes in the upgraded tool image: four schedules of
+64 blocks all span 6,774 edges; repeat and expanded forms match exactly, while
+random schedules vary across bins. Evidence: `results/benchmark_readiness_v1/aes`.
+The first attempt exposed `.env` selecting the old system Verilator; the successful
+run records an explicit environment override and the benchmark Dockerfile now
+sets its installed tool explicitly. Failed scratch output is retained.
+Shared AES compilation now takes an interprocess lock and requires a completion
+stamp with the executable hash. Interrupted builds cannot masquerade as hits;
+changed completed binaries fail closed. This prevents concurrent cells racing
+on one build directory. No full study or provider run has started.
 
 ## Selection before agent outcomes
 
@@ -54,8 +100,9 @@ activity ranges or evidence that agents reason about the hardware.
 
 ## Primary-source inspection
 
-Read on 2026-09-13; shallow clones inspected outside the repository. No new
-candidate is yet a pinned project dependency or a demonstrated backend.
+Read on 2026-09-13; initially inspected outside the repository. BaseJump and
+RedMulE are now pinned dependencies with reference-test evidence, but neither
+is yet a demonstrated temporal search backend.
 
 - [BaseJump STL](https://github.com/bespoke-silicon-group/basejump_stl), inspected
   commit `11d19a888daa24e8239fc81c9c397b4d7bd58568`: Solderpad 0.51 root license;

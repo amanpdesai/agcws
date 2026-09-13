@@ -4,8 +4,22 @@ import argparse
 import hashlib
 import json
 import os
+import re
 import subprocess
 from pathlib import Path
+
+
+def validate_delivery(log, size):
+    deliveries = [tuple(map(int, row)) for row in re.findall(
+        r"\(x,y\)=\(\s*(\d+),\s*(\d+)\) receiving id=\s*(\d+)\.", log
+    )]
+    expected = {(x, y, sender) for x in range(size) for y in range(size)
+                for sender in range(size * size)}
+    if ("[BSG_FINISH] test successful." not in log
+            or len(deliveries) != len(expected) or set(deliveries) != expected):
+        raise ValueError("mesh reference did not deliver every source exactly once to every tile")
+    return {"delivered_packets": len(deliveries), "expected_packets": len(expected),
+            "duplicate_packets": 0, "complete": True}
 
 
 def main():
@@ -51,7 +65,9 @@ def main():
     with (output / "run.log").open("w") as log:
         subprocess.run([str(output / "obj/Vtestbench")], cwd=output,
                        stdout=log, stderr=subprocess.STDOUT, check=True)
-    print(json.dumps({"output": str(output), "exit_status": 0}))
+    result = validate_delivery((output / "run.log").read_text(), args.size)
+    (output / "functional.json").write_text(json.dumps(result, indent=2) + "\n")
+    print(json.dumps({"output": str(output), "exit_status": 0, **result}))
 
 
 if __name__ == "__main__":
