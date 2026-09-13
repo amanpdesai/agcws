@@ -33,6 +33,12 @@ software/reference overhead is included and actual start timestamps are absent.
 This motivates an isolated/paced-job diagnostic before choosing a new search
 budget. It does not prove that queueing alone caused the target misses.
 
+The subsequent [frozen pacing probe](REDMULE_PACING_PROBE_V1.md) completed 54
+cases, 48 valid. Paced size-16 jobs show separated activity pulses, while queued
+jobs concentrate them earlier. A [v2 witness procedure](REDMULE_PULSE_WITNESS_V2.md)
+will use those pulses only to propose schedules, then replay every candidate with
+the real evaluator against the unchanged requests and admission thresholds.
+
 ## Next slice
 
 1. Preserve v1 manifests, all attempted requests and complete witness archives.

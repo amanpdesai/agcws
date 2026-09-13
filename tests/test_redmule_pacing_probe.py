@@ -1,3 +1,5 @@
+import hashlib
+import json
 import runpy
 
 import pytest
@@ -28,7 +30,7 @@ def test_probe_resume_reuses_results_and_rejects_source_drift(tmp_path, monkeypa
 
     class FakeBackend:
         def measured(self, program, root, manifest):
-            key = str(len(calls))
+            key = hashlib.sha256(json.dumps(program, sort_keys=True).encode()).hexdigest()
             calls.append(program)
             result = {"valid": True, "cache_id": key}
             write(root / "cache" / key / "result.json", result)
