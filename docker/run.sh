@@ -20,6 +20,11 @@ case ${AGCWS_CONTAINER_CHECKOUT:-1} in
      mounts=() ;;
   *) echo 'AGCWS_CONTAINER_CHECKOUT must be 0 or 1' >&2; exit 2 ;;
 esac
+if [[ -n ${AGCWS_CONTAINER_DEPS:-} ]]; then
+  dependency_dir=$(realpath -e "$AGCWS_CONTAINER_DEPS")
+  [[ -d "$dependency_dir" ]] || { echo 'dependency mount must be a directory' >&2; exit 2; }
+  mounts+=(--mount "type=bind,src=$dependency_dir,dst=$work_root/.dependencies,readonly")
+fi
 exec docker run --rm --init --read-only --user "$task_uid:$task_gid" \
   --ulimit core=0:0 \
   --label io.agcws.project=agcws --label "io.agcws.owner=$task_uid" \

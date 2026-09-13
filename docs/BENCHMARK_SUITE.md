@@ -218,8 +218,8 @@ concurrency are separately bounded. No new paid comparative panel is authorized
 by the smoke-test goal.
 
 Readiness is per-design and per-gate, never inferred from a directory existing.
-The maintained runner admits Ibex, AES, DMA and mesh; RedMulE has passed its
-timed reference gate but is not yet a registered backend. The five-design goal is not
+The maintained runner now registers all five designs. RedMulE shared-runner
+execution is under admission testing, not yet a completed benchmark gate. The five-design goal is not
 complete until all five pass. If a preferred candidate fails, retain its failure
 evidence and explain any substitution before inspecting agent performance.
 
@@ -258,3 +258,19 @@ published evidence; archive and shared-runner reproduction remain admission gate
 The earlier v1 runner attempt used the wrong `fst2vcd` output syntax and failed
 without an activity result; v2 uses explicit `-o`. No failed attempt is counted
 as a valid benchmark observation.
+
+Prepare RedMulE's frozen dependency closure with
+`scripts/prepare_redmule_dependencies.py --out out/redmule-dependencies-v2 --bender <bender-0.32.1>`.
+`AGCWS_REDMULE_DEPS` selects that directory (the shown output is the default).
+Preparation verifies the RTL pin and preserves the archived Bender lock byte for
+byte. Seventeen dependency checkouts were restored locally. Their source contents
+are included in the study fingerprint. The container mounts them read-only at
+`.dependencies/`, separately from writable per-study artifacts. The pinned DUT
+submodule is not edited, and no dependency fetch occurs inside a search replay.
+
+The RedMulE phase-random distribution reserves boot/drain time and samples 1–8
+phases, matrix sizes and data patterns. The language permits up to 32 phases and
+later releases. Phase-GA uses tournament selection, phase crossover, structural and
+numeric edits, and 20% random immigrants. Invalid crossover or unfinished jobs
+remain charged proposals. These are disclosed representation-specific operators,
+not an assertion of identical proposal distributions across designs.

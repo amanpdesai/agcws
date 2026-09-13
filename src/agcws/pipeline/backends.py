@@ -54,4 +54,7 @@ def backend(domain):
     if domain == "mesh-temporal":
         from agcws.pipeline.mesh import MeshTemporal
         return MeshTemporal()
+    if domain == "redmule-temporal":
+        from agcws.pipeline.redmule import RedmuleTemporal
+        return RedmuleTemporal()
     raise ValueError(f"backend not implemented: {domain}")

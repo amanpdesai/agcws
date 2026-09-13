@@ -50,7 +50,15 @@ def source_inventory(repo, domain="ibex-temporal"):
                                       "third_party/basejump_stl/testing/bsg_noc/bsg_mesh_router/all_to_all/sv.include"))
         paths.extend(p for p in (repo / "third_party/basejump_stl").rglob("*")
                      if p.is_file() and p.suffix in (".sv", ".svh", ".v", ".vh"))
-    return {str(p.relative_to(repo)): file_sha256(p) for p in sorted(paths)}
+    extra = {}
+    if domain == "redmule-temporal":
+        from agcws.pipeline.redmule import dependency_inventory
+        extra = dependency_inventory()
+        paths.extend(repo / p for p in ("scripts/run_redmule_workload.py", "scripts/prepare_redmule_timed.py",
+                                      "scripts/prepare_redmule_dependencies.py", "third_party/harnesses/redmule_temporal.c"))
+        paths.extend(p for p in (repo / "third_party/redmule").rglob("*") if p.is_file()
+                     and ".git" not in p.parts and "__pycache__" not in p.parts)
+    return {**{str(p.relative_to(repo)): file_sha256(p) for p in sorted(paths)}, **extra}
 
 
 def prepare(repo, spec_path, root):

@@ -32,6 +32,9 @@ class ScheduleTemporal:
     def failed(self, attempt):
         return None
 
+    def environment(self):
+        return {}
+
     def schema(self, n):
         return schedules.response_schema(n, self.contract)
 
@@ -70,7 +73,8 @@ class ScheduleTemporal:
             relative = Path("out") / attempt.relative_to(root)
             command = self.invocation(canonical, attempt, relative)
             environment = {**os.environ, "AGCWS_CONTAINER_IMAGE": manifest["runtime"]["image_id"],
-                           "AGCWS_CONTAINER_CHECKOUT": "1", "AGCWS_CONTAINER_OUTPUT": str(root.resolve())}
+                           "AGCWS_CONTAINER_CHECKOUT": "1", "AGCWS_CONTAINER_OUTPUT": str(root.resolve()),
+                           **self.environment()}
             started = time.monotonic()
             with (attempt / "driver.log").open("w") as log:
                 result = subprocess.run(["bash", "docker/run.sh", *command], env=environment,
