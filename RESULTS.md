@@ -525,3 +525,14 @@ qualified; neither control qualified. [Per-design evidence](results/redmule/READ
 retains both stages. The pulse model is only a proposal mechanism, never the
 admission oracle. A finer-grid v3 is separately declared to test release-grid
 discretization; these are engineering iterations, not held-out policy studies.
+That v3 completed 338 replays: 0/8 development and 2/8 confirmation non-flat
+requests qualify, and neither control qualifies. Finer surrogate timing alone
+did not resolve the bank. This motivates measured-feedback refinement, not a
+claim of feasibility from predicted fits or a claim that the targets are impossible.
+
+AES/DMA v2 banks are separately frozen and their CPU witness searches are in
+progress. All eight families pass the necessary floor check in each split;
+admission still requires a valid measured witness. Their v1 calibration and
+measurement contracts remain unchanged. Stronger contrast and distinct
+development dwell/phase templates are recorded in
+[the v2 procedure](docs/TARGET_QUALIFICATION_V2.md), with every v1 failure retained.
