@@ -18,7 +18,7 @@ class AesTemporal(ScheduleTemporal):
         write(attempt / "workload.json", self.adapter().elaborate(program))
         return ["env", "AGCWS_VERILATOR=/usr/local/bin/verilator", "python3",
                 "scripts/run_aes_transactions.py", str(relative / "workload.json"),
-                "--out", str(relative)]
+                "--out", str(relative), "--bit-cycles", str(self.clock_edges)]
 
     def completed(self, attempt):
         match = re.search(r"AES_CORE_WORKLOAD_DONE blocks=(\d+)", (attempt / "run.log").read_text())

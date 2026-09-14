@@ -38,8 +38,12 @@ scope_args=()
 if [[ -n ${AGCWS_ACTIVITY_SCOPE:-} ]]; then
   scope_args=(--scope "$AGCWS_ACTIVITY_SCOPE")
 fi
+activity_args=(--clock clk)
+if [[ -n ${AGCWS_BIT_ACTIVITY_CYCLES:-} ]]; then
+  activity_args=(--clock axi_dma.clk --windows 8 --bit-cycles "$AGCWS_BIT_ACTIVITY_CYCLES")
+fi
 PYTHONPATH="$repo_root/src" "$python_bin" "$repo_root/scripts/parse_vcd_activity.py" \
-  "$out_dir/activity.vcd" --clock clk "${scope_args[@]}" --output "$out_dir/activity.json"
+  "$out_dir/activity.vcd" "${activity_args[@]}" "${scope_args[@]}" --output "$out_dir/activity.json"
 "$python_bin" - "$workload" "$out_dir" <<'PY'
 import hashlib
 import json

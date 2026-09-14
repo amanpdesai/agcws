@@ -6,6 +6,7 @@ import subprocess
 import time
 from pathlib import Path
 
+from agcws.nodes.bit_activity import CONTRACT
 from agcws.pipeline import schedules
 from agcws.pipeline.metrics import error, key
 from agcws.pipeline.storage import read, write
@@ -92,6 +93,8 @@ class ScheduleTemporal:
                 record = completion
             else:
                 activity = read(attempt / "activity.json")
+                if activity["activity_contract"] != CONTRACT:
+                    raise RuntimeError("activity measurement contract differs")
                 samples, edges = activity["per_cycle_toggles"], activity["clock_edges"]
                 if edges != self.clock_edges or len(samples) != edges:
                     raise RuntimeError("observation window differs from the fixed contract")
@@ -101,7 +104,11 @@ class ScheduleTemporal:
                           "profile": {"window_rates": rates, "clock_edges": edges,
                                       "useful_work": completion["useful_work"], "bin_edges": [len(v) for v in bins],
                                       "scope": self.scope, "fidelity": "activity",
-                                      "window": "full trace including reset"},
+                                      "window": "full trace including reset",
+                                      **{k: activity[k] for k in (
+                                          "activity_contract", "units", "clock", "exclusions", "timescale",
+                                          "period_ticks", "begin_tick", "end_tick", "selected_bits",
+                                          "remaining_unknown_bits", "initialized_bits_in_observation")}},
                           "provenance": completion["provenance"]}
             record.update(cache_id=identifier, canonical_program=canonical,
                           evaluation_s=time.monotonic() - started)

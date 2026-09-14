@@ -14,6 +14,7 @@ from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
 from agcws import config
 from agcws.adapters.aes.transactions import AESTransactionAdapter
 from agcws.nodes.activity import parse_vcd
+from agcws.nodes.bit_activity import Observation, read_bits
 from agcws.nodes.coverage import read_line_coverage
 from agcws.nodes.validation import validate_static
 from agcws.pipeline.build import ensure_binary
@@ -51,6 +52,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('workload', type=Path)
     parser.add_argument('--out', required=True, type=Path)
+    parser.add_argument('--bit-cycles', type=int, help='strict bit-activity observation horizon')
     args = parser.parse_args()
     out = args.out.resolve()
     out.mkdir(parents=True, exist_ok=True)
@@ -89,7 +91,10 @@ def main():
         subprocess.run([str(binary), '+PROGRAM=' + str(program),
                         '+verilator+coverage+file+' + str(out / 'coverage.dat')],
                        cwd=out, stdout=log, stderr=subprocess.STDOUT, check=True)
-    activity = parse_vcd(out / 'activity.vcd', 'clk_i', 8, scope_prefix='aes_core_smoke.dut')
+    if args.bit_cycles is not None:
+        activity = read_bits(out / 'activity.vcd', Observation('aes_core_smoke.dut', 'aes_core_smoke.clk_i', args.bit_cycles))
+    else:
+        activity = parse_vcd(out / 'activity.vcd', 'clk_i', 8, scope_prefix='aes_core_smoke.dut')
     (out / 'activity.json').write_text(json.dumps(activity) + '\n')
     coverage = read_line_coverage(out / 'coverage.dat', ROOT, 'aes_core_smoke.dut')
     (out / 'coverage.json').write_text(json.dumps(coverage, sort_keys=True) + '\n')

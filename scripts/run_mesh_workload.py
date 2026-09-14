@@ -10,7 +10,7 @@ from pathlib import Path
 import jsonschema
 
 from agcws import config
-from agcws.nodes.activity import parse_vcd
+from agcws.nodes.bit_activity import Observation, read_bits
 from agcws.pipeline.build import ensure_binary
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -89,7 +89,7 @@ def main():
     match = re.search(r"AGCWS_MESH_DONE sent=(\d+) received=(\d+) cycles=8200", (out / "run.log").read_text())
     if not match or tuple(map(int, match.groups())) != (len(workload["packets"]),) * 2:
         raise RuntimeError("mesh completion/useful-work check failed")
-    activity = parse_vcd(out / "activity.vcd", "clk", 8, scope_prefix="mesh_temporal.dut")
+    activity = read_bits(out / "activity.vcd", Observation("mesh_temporal.dut", "mesh_temporal.clk", 8200))
     if activity["clock_edges"] != 8200:
         raise RuntimeError("mesh observation window differs from 8200 clock edges")
     (out / "activity.json").write_text(json.dumps(activity) + "\n")

@@ -36,6 +36,15 @@ def test_timestamp_grouping_excludes_clock_and_preserves_bit_counts():
     assert stream_bits(text.splitlines(), SPEC) == result
 
 
+def test_bus_and_scalar_forms_have_identical_activity():
+    bus = stream_bits(trace({1: ["b0 d\n"], 5: ["b11111111 d\n"]}), SPEC)
+    declarations = "".join(f"$var wire 1 d{i} data_{i} $end\n" for i in range(8))
+    scalar = stream_bits(trace({1: [f"0d{i}\n" for i in range(8)],
+                                5: [f"1d{i}\n" for i in range(8)]}, declarations), SPEC)
+    assert scalar["window_bit_transitions"] == bus["window_bit_transitions"]
+    assert sum(scalar["window_bit_transitions"]) == 8
+
+
 def test_unknown_initialization_is_recorded_but_regression_rejected():
     result = stream_bits(trace({1: ["bx d\n"], 3: ["b0 d\n"], 5: ["b1 d\n"]}), SPEC)
     assert sum(result["window_bit_transitions"]) == 1

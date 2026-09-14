@@ -17,6 +17,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
 from agcws.nodes.activity import parse_vcd
+from agcws.nodes.bit_activity import Observation, read_bits
 
 
 def parse(path: Path, clock_name: str = "clk_i", windows: int = 16) -> dict:
@@ -30,8 +31,14 @@ if __name__ == "__main__":
     parser.add_argument("--windows", type=int, default=16)
     parser.add_argument("--scope", default=None)
     parser.add_argument("--output", type=Path)
+    parser.add_argument("--bit-cycles", type=int, help="select strict bit-activity v1 at this exact horizon")
     args = parser.parse_args()
-    result = parse_vcd(args.vcd, args.clock, args.windows, scope_prefix=args.scope)
+    if args.bit_cycles is not None:
+        if args.scope is None:
+            parser.error("bit activity requires an explicit scope")
+        result = read_bits(args.vcd, Observation(args.scope, args.clock, args.bit_cycles, args.windows))
+    else:
+        result = parse_vcd(args.vcd, args.clock, args.windows, scope_prefix=args.scope)
     payload = json.dumps(result, indent=2) + "\n"
     if args.output:
         args.output.write_text(payload)

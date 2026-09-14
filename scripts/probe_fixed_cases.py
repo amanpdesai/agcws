@@ -5,6 +5,7 @@ import concurrent.futures
 import fcntl
 import hashlib
 import json
+import shutil
 from pathlib import Path
 
 from agcws.config import ROOT
@@ -45,6 +46,10 @@ def prepare(reference, config_path, root):
     if measurement["spec"]["domain"] != config["domain"]:
         raise ValueError("measurement domain differs from cases")
     root.mkdir(parents=True, exist_ok=False)
+    binary_path = backend(config["domain"]).binary_path
+    if binary_path is not None:
+        (root / binary_path).parent.mkdir(parents=True)
+        shutil.copy2(reference / binary_path, root / binary_path)
     write(root / "manifest.json", {"kind": "fixed-native-diagnostic-v1", "config": config,
                                    "measurement": measurement, "config_sha256": sha(config_path),
                                    "driver_sha256": sha(Path(__file__))})
@@ -60,6 +65,8 @@ def run(reference, root):
     if manifest["driver_sha256"] != sha(Path(__file__)) or manifest["measurement"] != verify_inputs(ROOT, reference):
         raise ValueError("frozen driver or measurement changed")
     design = backend(config["domain"])
+    if design.binary_path is not None and sha(root / design.binary_path) != manifest["measurement"]["runtime"]["binary_sha256"]:
+        raise ValueError("diagnostic simulator binary changed")
 
     def measure(case):
         result, _ = design.measured(case["program"], root, manifest["measurement"])

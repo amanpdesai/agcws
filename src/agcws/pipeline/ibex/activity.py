@@ -6,6 +6,7 @@ import subprocess
 import time
 from pathlib import Path
 
+from agcws.nodes.bit_activity import Observation, stream_bits
 from agcws.pipeline.ibex.program import HORIZON
 from agcws.provenance import file_sha256
 
@@ -35,106 +36,11 @@ def markers(trace, pcs):
 
 
 def stream_activity(lines, begin, end):
-    scope, selected, values = [], set(), {}
-    clock = None
-    clock_value = None
-    edges, bins, previous_edge, period = 0, [0] * 8, None, None
-    timestamp, header, unknowns = 0, True, 0
-    last_tick = 0
-    timescale = None
-    scale_pending = False
-    checked_initial_state = False
-    for line in lines:
-        if header:
-            fields = line.split()
-            if not fields:
-                continue
-            if fields[0] == "$timescale":
-                scale_pending = True
-                if len(fields) > 1:
-                    timescale = fields[1]
-            elif scale_pending:
-                if fields[0] != "$end":
-                    timescale = fields[0]
-                else:
-                    scale_pending = False
-            if fields[0] == "$scope":
-                scope.append(fields[2])
-            elif fields[0] == "$upscope":
-                scope.pop()
-            elif fields[0] == "$var":
-                identifier, name = fields[3], ".".join([*scope, fields[4]])
-                if name == CLOCK:
-                    clock = identifier
-                if (
-                    name.startswith(CORE + ".")
-                    and ".cs_registers_i." not in name
-                    and fields[1] != "parameter"
-                ):
-                    selected.add(identifier)
-            elif fields[0] == "$enddefinitions":
-                header = False
-                if not selected or clock is None:
-                    raise ValueError("missing declared core or clock")
-                selected.discard(clock)
-            continue
-        if line.startswith("#"):
-            timestamp = int(line[1:])
-            last_tick = timestamp
-            if timestamp >= begin and not checked_initial_state:
-                if any(values.get(identifier) is None for identifier in selected):
-                    raise ValueError("unknown carried state at measurement start")
-                checked_initial_state = True
-            continue
-        if not line or line[0] in "$ \n":
-            continue
-        if line[0] == "b":
-            value, identifier = line[1:].split()
-        elif line[0] in "01xXzZ":
-            value, identifier = line[0], line[1:].strip()
-        else:
-            continue
-        if identifier == clock:
-            if clock_value == "0" and value == "1":
-                if previous_edge is not None:
-                    delta = timestamp - previous_edge
-                    if period is not None and period != delta:
-                        raise ValueError("nonuniform clock")
-                    period = delta
-                previous_edge = timestamp
-                if begin <= timestamp < end:
-                    edges += 1
-            clock_value = value
-        if identifier not in selected:
-            continue
-        old = values.get(identifier)
-        try:
-            new = int(value, 2)
-        except ValueError:
-            if begin <= timestamp < end:
-                unknowns += 1
-            new = None
-        if old is not None and new is not None and begin <= timestamp < end:
-            bins[(timestamp - begin) * 8 // (end - begin)] += (old ^ new).bit_count()
-        values[identifier] = new
-    if edges != HORIZON or last_tick < end or period != 2 or unknowns:
-        raise ValueError(
-            f"invalid observation: edges={edges}, period={period}, unknowns={unknowns}"
-        )
-    return {
-        "window_bit_transitions": bins,
-        "window_rates": [x / (HORIZON / 8) for x in bins],
-        "clock_edges": edges,
-        "period_ticks": period,
-        "begin_tick": begin,
-        "end_tick": end,
-        "timescale": timescale,
-        "selected_identifiers": len(selected),
-        "scope": CORE,
-        "exclusions": ["clock", "cs_registers_i"],
-        "unknown_events": unknowns,
-        "units": "unique core-net bit transitions per clock edge; not watts",
-    }
+    result = stream_bits(lines, Observation(CORE, CLOCK, HORIZON, begin=begin, end=end,
+                                           exclusions=(".cs_registers_i.",),
+                                           require_known_initial=True, period=2))
+    result.pop("per_cycle_toggles")
+    return {**result, "unknown_events": 0}
 
 
 def extract(root):

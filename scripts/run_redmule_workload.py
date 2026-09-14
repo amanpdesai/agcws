@@ -9,7 +9,7 @@ from pathlib import Path
 
 from agcws import config
 from agcws.adapters.redmule import RedmuleTemporalAdapter, stimulus_headers
-from agcws.nodes.activity import parse_vcd
+from agcws.nodes.bit_activity import Observation, read_bits
 from agcws.pipeline.build import ensure_binary
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -110,7 +110,7 @@ def main():
         raise RuntimeError("REDMULE_USEFUL_WORK below 1024 completed multiply-accumulates")
     subprocess.run(["fst2vcd", "-o", str(out / "activity.vcd"), str(out / "activity.fst")], check=True)
     scope = "redmule_tb_wrap.i_redmule_tb.i_redmule_wrap"
-    activity = parse_vcd(out / "activity.vcd", "redmule_tb_wrap.clk", 8, scope_prefix=scope)
+    activity = read_bits(out / "activity.vcd", Observation(scope, "redmule_tb_wrap.clk", cycles))
     if activity["clock_edges"] != cycles:
         raise RuntimeError(f"RedMulE observation window differs from {cycles} cycles")
     (out / "activity.json").write_text(json.dumps(activity) + "\n")

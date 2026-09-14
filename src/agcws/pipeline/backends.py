@@ -7,6 +7,11 @@ class IbexTemporal:
     binary_path = Path("toolchain/lowrisc_ibex_ibex_simple_system_0/sim-verilator/Vibex_simple_system")
 
     @staticmethod
+    def measured(program, root, manifest):
+        from agcws.pipeline.ibex.cache import measured
+        return measured(program, root, manifest["measurement_fingerprint"], manifest["runtime"]["image_id"])
+
+    @staticmethod
     def schema(n):
         from agcws.pipeline.ibex.native_schema import serving_schema
         return serving_schema(n, True)

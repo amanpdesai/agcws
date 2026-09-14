@@ -1,8 +1,21 @@
 """Versioned, streaming known-bit activity with explicit observation contracts."""
 
+import hashlib
 from dataclasses import dataclass
 
 CONTRACT = "known-bit-activity-v1"
+
+
+def read_bits(path, observation):
+    digest = hashlib.sha256()
+    with path.open("rb") as stream:
+        def lines():
+            for raw in stream:
+                digest.update(raw)
+                yield raw.decode("ascii")
+        result = stream_bits(lines(), observation)
+    return {**result, "vcd": path.name, "waveform_sha256": digest.hexdigest(),
+            "total_transitions": sum(result["window_bit_transitions"])}
 
 
 def binary_state(text, width):

@@ -29,6 +29,7 @@ class DmaTemporal(ScheduleTemporal):
         write(attempt / "workload.json", lowered["workload"])
         return ["env", "AGCWS_DMA_TEST_MODULE=axi_dma_pipelined_tb",
                 f"AGCWS_DMA_OBSERVATION_CYCLES={self.clock_edges}",
+                f"AGCWS_BIT_ACTIVITY_CYCLES={self.clock_edges}",
                 f"AGCWS_DMA_TRAILING_IDLE={lowered['trailing_idle_cycles']}",
                 "AGCWS_PYTHON=python3", "AGCWS_FST2VCD=fst2vcd", f"AGCWS_ACTIVITY_SCOPE={self.scope}",
                 "bash", "scripts/run_axi_dma_coupled.sh", str(relative / "workload.json"), str(relative)]
