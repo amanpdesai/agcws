@@ -1,5 +1,22 @@
 # Decision log
 
+## 2026-09-14 — Correct marker alignment before target admission
+
+The first common bit-counter replay completed all 410 fixed programs, retaining
+three Ibex and six RedMulE useful-work failures. Eight independent schedule
+recounts matched. Inspection of Ibex exposed a marker at tick 286 between clock
+rises: assigning changes by rising-edge ownership shifted a declared marker
+window. A phase-offset regression reproduced the error. Contract v2 anchors
+explicit marker windows to their declared start and retains half-open bounds;
+full-trace clock windows are unchanged. See
+[the pre-replay amendment](BIT_ACTIVITY_ALIGNMENT_V2.md).
+
+Preserve v1 diagnostic archives and repeat calibration and witness measurements
+under freshly frozen v2 manifests. Do not bridge source identities, reuse old
+event scales, or treat v1 AES's initial 18/18 witness qualification as final v2
+admission. This is CPU-only measurement correction, not a paid study or a
+tolerance adjustment.
+
 ## 2026-09-14 — Freeze task audit, preserve event-metric banks, hold full launch
 
 **Decision.** Preserve all five v6 banks and their exposed engineering studies.

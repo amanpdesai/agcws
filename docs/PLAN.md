@@ -1,6 +1,6 @@
 # Plan
 
-## Active goal — common bit-activity v1 and CPU requalification
+## Active goal — common bit activity and CPU requalification
 
 User approved the next slice after the audit. Implement and test
 [BIT_ACTIVITY_V1.md](BIT_ACTIVITY_V1.md), replay the fixed calibration/witness
@@ -8,6 +8,16 @@ programs, regenerate analytic targets from the new metric, and retain every
 failed qualification. No LLM calls or full panel. New source fingerprints must
 not be bridged as measurement-equivalent to the old identifier-event metric.
 The old banks stay intact and are not current-runtime launch inputs.
+
+The first 410 fixed-program replays completed with 401 valid measurements and
+nine retained useful-work failures. Independent recounts match all eight
+preselected schedule traces. A separate Ibex marker-offset regression exposed
+a boundary-assignment defect; [alignment v2](BIT_ACTIVITY_ALIGNMENT_V2.md)
+preserves the first round and declares the correction before fresh replay.
+Corrected five-design replays are in progress. Next: freeze new-unit analytic
+requests, exhaust only the declared CPU witness searches where necessary, and
+audit every attempt before admitting any bank. Full-study readiness is not
+restored merely by finishing a replay.
 
 ## Current stopping point — task audit finished, full-study gate on hold
 
