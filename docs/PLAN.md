@@ -1,5 +1,19 @@
 # Plan
 
+## Full-budget context gate — 2026-09-14
+
+An offline repeated-valid-workload stress check exposes a launch risk in
+AES/DMA/mesh: unbounded history can exceed the request guard before 64 slots.
+See `results/benchmark_readiness_v1/context_capacity.json`. This is synthetic
+capacity evidence, not an observed model failure or a policy result.
+
+A bounded-history correction is being tested on isolated branch
+`readiness-context-v4`; do not merge into the source mounted by live RedMulE
+qualification or Ibex smoke jobs. Integration, runtime provenance and fresh
+bounded smoke checks must precede the full 128-slot study. Do not weaken the
+guard, silently truncate payloads or assume successful short smokes prove
+full-budget capacity.
+
 ## Authorized RedMulE window experiment — 2026-09-14
 
 Test the independently versioned 262,144-cycle domain under
