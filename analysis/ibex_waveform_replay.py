@@ -3,6 +3,7 @@
 import argparse
 import concurrent.futures
 import hashlib
+import multiprocessing
 import subprocess
 from pathlib import Path
 
@@ -71,13 +72,20 @@ def audit(corpus, replay):
                 digest = hashlib.file_digest(stream, "sha256").hexdigest()
             if digest != expected_hash:
                 raise ValueError("waveform differs from recorded raw hash")
-        a, b = waveform(left), waveform(right)
+        futures = [decoder.submit(waveform, path) for path in (left, right)]
+        a, b = [future.result() for future in futures]
         return {"id": case["id"], "original": a, "replay": b,
                 "match": a["semantic_stream_sha256"] == b["semantic_stream_sha256"]}
 
-    with concurrent.futures.ThreadPoolExecutor(max_workers=8) as pool:
-        rows = list(pool.map(compare, zip(original, config["cases"], complete["results"], strict=True)))
+    with concurrent.futures.ProcessPoolExecutor(max_workers=8, mp_context=multiprocessing.get_context("spawn")) as decoder:
+        with concurrent.futures.ThreadPoolExecutor(max_workers=8) as pool:
+            rows = list(pool.map(compare, zip(original, config["cases"], complete["results"], strict=True)))
     return {"scope": "complete decoded waveforms compared after excluding only header date metadata",
+            "bindings": {name: hashlib.sha256(path.read_bytes()).hexdigest() for name, path in (
+                ("driver", Path(__file__)), ("replay_config", replay / "config.json"),
+                ("replay_complete", replay / "run/complete.json"),
+                ("replay_manifest", replay / "run/manifest.json"),
+                ("original_manifest", corpus / "manifest.json"))},
             "strict_binary_replay_passed": complete["exact_measurement_match"],
             "cases": 64, "matched": sum(r["match"] for r in rows), "records": rows,
             "full_study_ready": False}
