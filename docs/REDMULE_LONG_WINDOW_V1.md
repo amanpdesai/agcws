@@ -45,6 +45,11 @@ Any later smoke must use the admitted longer-window bank and matching runtime.
 
 ## Provenance and promotion
 
+Qualification rates between versions are descriptive, not a controlled causal
+estimate of horizon alone: offered-load sampling and freshly normalized target
+amplitudes also change. Do not describe easier admission as proof of a better
+search policy or improved physical power prediction.
+
 Record an independent manifest, calibration, request bank and qualification
 archive under the RedMulE design. Never overwrite the short-window artifacts.
 Current source inventory hashes all Python modules, so this change also alters
