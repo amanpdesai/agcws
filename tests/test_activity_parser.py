@@ -24,10 +24,20 @@ def test_extract_activity_rejects_failed_command(tmp_path: Path):
     with pytest.raises(RuntimeError, match="activity command failed"):
         extract_activity(["false"], waveform, tmp_path / "activity")
 
-def test_parse_smoke_vcd():
-    result = parse(Path("out/aes-core-smoke/activity.vcd"), windows=8)
-    assert result["clock_edges"] > 0
-    assert result["total_transitions"] > 0
+def test_parse_smoke_vcd(tmp_path):
+    waveform = tmp_path / "activity.vcd"
+    lines = ["$scope module dut $end", "$var wire 1 ! clk_i $end",
+             "$var wire 1 # data $end", "$upscope $end", "$enddefinitions $end",
+             "#0", "0!", "0#"]
+    for cycle in range(16):
+        lines.extend([f"#{cycle*10+5}", "1!", f"{(cycle+1)%2}#",
+                      f"#{cycle*10+10}", "0!"])
+    waveform.write_text("\n".join(lines) + "\n")
+    result = parse(waveform, windows=8)
+    assert result["clock_edges"] == 16
+    assert result["total_transitions"] == 48
+    assert result["per_cycle_toggles"] == [3] * 16
+    assert result["window_toggles"] == [6] * 8
     assert len(result["window_toggles"]) == 8
     assert len(result["per_cycle_toggles"]) == result["clock_edges"]
     assert sum(result["per_cycle_toggles"]) == result["total_transitions"]

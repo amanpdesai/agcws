@@ -39,4 +39,10 @@ explicit oversized-data handling, adversarial 128-slot request capacity, shared
 feedback execution and early stopping. The same repeated measured workload
 diagnostic now fits the byte guard on AES/DMA/mesh/RedMulE. This proves capacity
 for those tested histories, not guaranteed provider success or target solving.
+With pinned dependencies supplied, the complete isolated suite passes **692
+tests**, with three existing warnings. The initial isolated run failed because
+dependencies and the interpreter link were missing, and one parser test read
+a historical `out/` waveform. That test now creates a deterministic waveform
+with exact counts (16 clock edges, 48 transitions, eight bins of six), rather
+than depending on ignored scratch data. No tests were skipped to obtain green.
 Full tests and real smokes remain required after integration.
