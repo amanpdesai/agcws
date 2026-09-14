@@ -7,6 +7,7 @@ import json
 import runpy
 from pathlib import Path
 
+from admit_bit_bank import checked_trial
 from bit_bank import calibration
 
 from agcws.config import ROOT
@@ -30,7 +31,11 @@ def verify(directory):
         if freeze[key] != bundle[name]["sha256"]:
             raise ValueError("target-freeze digest differs")
     bank = read("qualification/requested-bank.json")
-    cal = calibration(read("replay/complete.json")["results"])
+    replay = read("replay/complete.json")
+    if replay["charged_slots"] != 82 or len(replay["results"]) != 82:
+        raise ValueError("incomplete fixed replay")
+    originals = {r["id"]: r for r in replay["results"]}
+    cal = calibration(replay["results"])
     if cal != bank["calibration"] or cal != read("qualification/calibration.json"):
         raise ValueError("calibration differs")
     fixed = runpy.run_path(ROOT / "scripts/prepare_target_bank.py")["fixed_work_requests"]
@@ -45,12 +50,23 @@ def verify(directory):
             raise ValueError("requested vectors differ from declared construction")
         for target in expected:
             targets[f"{split}-{target['id']}"] = target
+    ids = [r["id"] for r in admission["outcomes"]]
+    if len(ids) != 18 or set(ids) != set(targets) or admission["requests"] != 18:
+        raise ValueError("incomplete target admission")
+    if set(r["id"] for r in attempts) != set(targets):
+        raise ValueError("attempts do not cover the declared targets")
     for outcome in admission["outcomes"]:
         target = targets[outcome["id"]]
         rows = [r for r in attempts if r["id"] == outcome["id"]]
         original = [r for r in rows if r["source"] == "fixed-original-witness"]
         if len(original) != 1:
             raise ValueError("one original witness attempt required")
+        measured = originals[outcome["id"]]
+        profile = measured["measurement"]
+        rates = profile["profile"]["window_rates"] if profile["valid"] else None
+        if (original[0]["program"] != measured["program"] or original[0]["rates"] != rates
+                or original[0]["valid"] != profile["valid"]):
+            raise ValueError("original witness does not match replay")
         needed = not original[0]["qualified"] and (target["control"] or target["constant_floor"] > .12)
         if len(rows) != (513 if needed else 1):
             raise ValueError("declared witness budget differs")
@@ -59,6 +75,8 @@ def verify(directory):
             if slots != (list(range(1, 257)) if needed else []):
                 raise ValueError("classical proposal axis differs")
         for row in rows:
+            if row["source"] != "fixed-original-witness":
+                checked_trial(row, target["rates"], cal["scale"])
             result = qualify(target, row, scale=cal["scale"], tolerance=.1, nonflat_margin=.02)
             if any(row[k] != v for k, v in result.items()):
                 raise ValueError("qualification arithmetic differs")
@@ -68,10 +86,16 @@ def verify(directory):
                 or outcome["attempts"] != len(rows)):
             raise ValueError("admitted witness differs")
     if (admission["charged_witness_attempts"] != len(attempts)
-            or admission["qualified"] != sum(r["qualified"] for r in admission["outcomes"])):
+            or admission["qualified"] != sum(r["qualified"] for r in admission["outcomes"])
+            or admission["task_bank_qualified"] != all(r["qualified"] for r in admission["outcomes"])):
         raise ValueError("admission accounting differs")
     witnesses = {r["id"]: r["witness"] for r in admission["outcomes"]}
-    for row in read("qualification/cross-solves.json"):
+    crosses = read("qualification/cross-solves.json")
+    pairs = {(r["witness"], r["target"]) for r in crosses}
+    expected_pairs = {(w, t) for w, v in witnesses.items() if v is not None for t in targets}
+    if pairs != expected_pairs or len(crosses) != len(pairs):
+        raise ValueError("incomplete cross-solve matrix")
+    for row in crosses:
         error = distance(witnesses[row["witness"]]["rates"], targets[row["target"]]["rates"], cal["scale"])
         if error != row["error"] or row["within_tolerance"] != (error <= .1):
             raise ValueError("cross-solve arithmetic differs")
