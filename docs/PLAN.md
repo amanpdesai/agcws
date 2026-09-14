@@ -1,5 +1,14 @@
 # Plan
 
+## Active goal — common bit-activity v1 and CPU requalification
+
+User approved the next slice after the audit. Implement and test
+[BIT_ACTIVITY_V1.md](BIT_ACTIVITY_V1.md), replay the fixed calibration/witness
+programs, regenerate analytic targets from the new metric, and retain every
+failed qualification. No LLM calls or full panel. New source fingerprints must
+not be bridged as measurement-equivalent to the old identifier-event metric.
+The old banks stay intact and are not current-runtime launch inputs.
+
 ## Current stopping point — task audit finished, full-study gate on hold
 
 Operational readiness passed, but the user requested a separate critical task
