@@ -19,6 +19,13 @@ preserve measurement implementation and runtime identities; these are not new
 simulation replays. AES/DMA arithmetic compliance still needs prospective
 verification under the [v5 follow-up](BANK_SMOKE_V5.md). No full study has launched.
 
+The [prospective full Flash protocol](FULL_FLASH_V1.md) fixes ten fresh search
+seeds, nine confirmation requests per design (eight substantive plus control),
+three matched arms, 128-slot ceiling and batch-end early stopping. The target
+vectors themselves have been seen during engineering; do not call this unseen
+task generalization. All five configs may be prepared now, but launch remains
+unauthorized until feedback readiness and the user's spending approval.
+
 ## Current action — 2026-09-14, context v4
 
 All five current-runtime banks are admitted: eight nonflat requests plus a
