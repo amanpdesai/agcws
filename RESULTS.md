@@ -7,9 +7,19 @@ and target banks differ across studies: do not compare their raw AUC values.
 
 ## Five-design qualification and feedback readiness — operationally ready
 
+**Scientific launch hold after the CPU-only task audit:** calibration and all
+ninety witness calculations reproduce, as do 180 classical smoke-cell AUCs.
+Eight real-waveform recounts reproduce existing event counts, but mesh's flat
+control is materially nonflat under bit counting. Four designs count VCD
+identifier changes while Ibex counts bits. These remain valid declared-metric
+activity results, not a uniform bit-activity or power benchmark. No full panel
+has launched. See [frozen audit](docs/TASK_QUALITY_AUDIT.md) and
+[reproducible evidence](results/task_quality_v1/README.md) for geometry overlap,
+qualification failures, measurement limits and the recommended versioned fix.
+
 The [readiness receipt](results/benchmark_readiness_v1/full-flash-readiness-v1.json)
 checks all five current banks, 90/90 qualified requests and actual generated
-feedback for 90/90 requests. **Ready for launch approval, not already launched.**
+feedback for 90/90 requests. **Operationally ready; scientific hold above takes precedence.**
 The [prospective full-study protocol](docs/FULL_FLASH_V1.md) and per-design
 `full-flash-v1-plan/` configs are frozen: ten paired fresh search seeds, eight
 substantive confirmation profiles plus control, Flash/random/GA, 128-slot

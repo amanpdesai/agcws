@@ -1,10 +1,13 @@
 # Plan
 
-## Current action — CPU-only scientific task audit
+## Current stopping point — task audit finished, full-study gate on hold
 
 Operational readiness passed, but the user requested a separate critical task
-audit before any full baseline or LLM panel. Launch is on hold pending that
-audit and user approval. See [TASK_QUALITY_AUDIT.md](TASK_QUALITY_AUDIT.md).
+audit before any full baseline or LLM panel. The audit reproduces calibration,
+witnesses and baseline arithmetic, but finds representation-sensitive activity
+counting, especially for mesh. Launch remains on hold pending a versioned
+measurement-contract decision and user approval. See
+[TASK_QUALITY_AUDIT.md](TASK_QUALITY_AUDIT.md).
 Existing banks and measurements are preserved; any measurement correction needs
 a new version, not an in-place change to a frozen comparison.
 
@@ -16,7 +19,9 @@ diagnostic. The original v4 and v5 strict failures remain recorded. See
 [RESULTS.md](../RESULTS.md) and the
 [readiness receipt](../results/benchmark_readiness_v1/full-flash-readiness-v1.json).
 Full-study configurations are prepared and frozen, not executed. Next action
-is now the scientific task audit, followed by the user's launch/spending approval.
+is now the recommended common bit-transition contract and requalification,
+followed by the user's launch/spending approval. No corrective run is authorized
+by this audit completion alone.
 Read the cost caps and claim limits in [FULL_FLASH_V1.md](FULL_FLASH_V1.md).
 
 The intervention entries below describe the path to this stopping point.

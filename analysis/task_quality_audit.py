@@ -51,6 +51,8 @@ def difficulty(repo, design, target, rates, scale, inputs):
             raise ValueError(f"incomplete smoke slots: {directory}")
         best, curve, hits = math.inf, [], []
         for trial in trials:
+            if type(trial["valid"]) is not bool or (not trial["valid"] and trial["loss"] is not None):
+                raise ValueError(f"invalid trial has a score or malformed validity: {directory}")
             if trial["valid"]:
                 loss = rmse(trial["rates"], rates, scale)
                 if not math.isclose(loss, trial["loss"], abs_tol=1e-12):
@@ -64,6 +66,11 @@ def difficulty(repo, design, target, rates, scale, inputs):
         auc = sum((a+b)/2 for a, b in itertools.pairwise(curve))
         if not math.isclose(auc, summary["auc"], abs_tol=1e-12):
             raise ValueError(f"summary AUC mismatch: {directory}")
+        expected = {"budget": 16, "curve": curve, "final_loss": curve[-1], "solved": bool(hits),
+                    "evaluations_to_target": hits[0] if hits else 16, "right_censored": not hits,
+                    "valid_slots": sum(t["valid"] for t in trials)}
+        if any(summary[field] != value for field, value in expected.items()):
+            raise ValueError(f"summary curve/validity/censoring mismatch: {directory}")
         records.append({"policy": arm, "seed": seed, "budget": 16,
                         "valid_slots": sum(t["valid"] for t in trials),
                         "first_hit": hits[0] if hits else None,
@@ -97,6 +104,36 @@ def shape(values, scale):
             "fraction_above_own_midrange": sum(x > (low+high)/2 for x in values)/8}
 
 
+def calibration_check(rows, published):
+    samples = [r["measurement"] for r in rows if r["id"].startswith("calibration-")]
+    if len(samples) != 64:
+        raise ValueError("all 64 calibration attempts required")
+    valid = [r for r in samples if r["valid"]]
+    bins = sorted(x for r in valid for x in r["profile"]["window_rates"])
+    if len(valid) < 32:
+        raise ValueError("insufficient valid calibration")
+
+    def percentile(p):
+        index = (len(bins)-1)*p
+        left, right = math.floor(index), math.ceil(index)
+        return bins[left] + (bins[right]-bins[left])*(index-left)
+
+    low, high = percentile(.05), percentile(.95)
+    failures = {}
+    for r in samples:
+        if not r["valid"]:
+            failures[r["stage"]] = failures.get(r["stage"], 0) + 1
+    result = {"proposals": 64, "valid": len(valid), "low": low, "high": high,
+              "scale": high-low, "failure_stages": failures,
+              "median_window_mean": statistics.median(statistics.mean(r["profile"]["window_rates"]) for r in valid)}
+    for field in ("low", "high", "scale", "median_window_mean"):
+        if not math.isclose(result[field], published[field], abs_tol=1e-12):
+            raise ValueError(f"calibration {field} differs")
+    if result["valid"] != published["valid"] or failures != published["failure_stages"]:
+        raise ValueError("calibration validity differs")
+    return result
+
+
 def geometry(requests, scale, tolerance=.1):
     pairs = []
     for left, right in itertools.combinations(requests, 2):
@@ -115,6 +152,9 @@ def audit(repo, inputs=None):
         replay_path = repo / ("out/ibex-bank-admission-v5/run/complete.json" if name == "ibex"
                               else f"out/{name}-runtime-replay-v5/replay/complete.json")
         bank, replay = inputs.read(bank_path), inputs.read(replay_path)
+        calibration_path = (repo / "out/ibex-calibration-replay-v5/run/complete.json"
+                            if name == "ibex" else replay_path)
+        calibration = calibration_check(inputs.read(calibration_path)["results"], bank["calibration"])
         scale = bank["calibration"]["scale"]
         witnesses = {r["id"]: r for r in replay["results"]}
         requests, rows = [], []
@@ -146,13 +186,15 @@ def audit(repo, inputs=None):
             row["other_requests_solved_by_same_witness"] = [r["key"] for r in requests
                 if r["key"] != row["key"] and rmse(row["witness_rates"], r["rates"], scale) <= .1]
         pairs = geometry(requests, scale)
-        designs.append({"design": name, "scale": scale, "targets": rows, "pairwise": pairs,
+        designs.append({"design": name, "scale": scale, "calibration_check": calibration,
+                        "qualification_procedures": bank["qualification_procedures"],
+                        "targets": rows, "pairwise": pairs,
                         "sources": {str(p.relative_to(repo)): inputs.sha(p)
-                                    for p in (bank_path, replay_path)},
+                                    for p in (bank_path, replay_path, calibration_path)},
                         "within_confirmation_overlap_pairs": [p for p in pairs
                             if p["left"].startswith("confirmation-") and p["right"].startswith("confirmation-")
                             and p["unconstrained_tolerance_balls_overlap"]]})
-    return {"scope": "initial independent geometry/witness audit; not complete task-quality certification",
+    return {"scope": "frozen activity-task audit; scientific gate verdict in docs/TASK_QUALITY_AUDIT.md",
             "tolerance": .1, "simulation_calls": 0, "llm_calls": 0,
             "existing_banks_changed": False, "designs": designs}
 

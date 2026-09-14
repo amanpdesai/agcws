@@ -1,5 +1,25 @@
 # Decision log
 
+## 2026-09-14 — Freeze task audit, preserve event-metric banks, hold full launch
+
+**Decision.** Preserve all five v6 banks and their exposed engineering studies.
+The CPU-only audit reproduces calibration, witness and baseline arithmetic but
+does not certify a uniform bit-activity or dynamic-power benchmark. Full launch
+remains on hold; recommend a separately versioned bit-transition contract and
+fresh qualification before spending model tokens.
+**Evidence.** [Audit](TASK_QUALITY_AUDIT.md) and
+[snapshot](../results/task_quality_v1/README.md): 90 requests, 320 calibration
+attempts, 180 baseline smoke cells and eight waveform recounts. Mesh control
+flatness changes materially with event-versus-bit counting.
+**Rejected.** Silent parser corrections, reusing event-unit normalization with
+bit counts, claiming aggregate activity is universally proportional to power,
+or deleting unsuccessful target-qualification versions.
+**Consequence.** Activity synthesis remains a valid endpoint under its declared
+metric. Any correction changes task identity and requires matched-arm reruns;
+pure policy edits can reuse old model runs only with unchanged task, protocol
+and shared initializations. This audit does not authorize a new run.
+
+
 ## 2026-09-14 — Close operational readiness without erasing strict smoke failures
 
 All five banks have 18 admitted requests each and checked generated-feedback

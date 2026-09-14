@@ -1,12 +1,12 @@
-# Task-quality audit evidence — in progress
+# Frozen task-quality audit evidence
 
 No model calls, new simulations or full comparative panel. Existing v6 banks
-remain untouched. Scientific launch gate is not yet closed; see
+remain untouched. Audit is complete; scientific launch gate remains on hold. See
 [audit findings](../../docs/TASK_QUALITY_AUDIT.md).
 
 - `scorecards.json`: ninety targets, independent witness/constant-floor
-  calculations, pairwise geometry, witness cross-solves, and 180 independently
-  recomputed classical engineering-smoke cells.
+  calculations, all 320 calibration attempts, pairwise geometry, witness
+  cross-solves, and 180 independently recomputed classical engineering-smoke cells.
 - `inputs.json.gz`: compact source JSON for these calculations, with original
   file hashes and canonical decoded-content hashes. This includes programs and
   witnesses and is **audit-only**, never model context or initialization data.
@@ -30,3 +30,9 @@ scratch traces are available, with `analysis/task_waveform_audit.py --output
 <new-path>`. Waveform hashes and exact inputs are recorded; the compact JSON
 archive is not a replacement for waveforms and cannot independently resimulate
 the designs. Engineering data are exposed, not unseen-task evidence.
+
+Verification on 2026-09-14: 729 tests pass (three existing warnings), including
+nine focused audit tests; `make lint` and `git diff --check` pass. Offline
+regeneration with a deliberately nonexistent repository root reproduces the
+scorecards byte-for-byte from `inputs.json.gz`. The runtime source tree and
+all five v6 bank files are unchanged from pre-audit commit `78accac47`.

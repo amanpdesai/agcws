@@ -1,5 +1,5 @@
 {
-  "scope": "initial independent geometry/witness audit; not complete task-quality certification",
+  "scope": "frozen activity-task audit; scientific gate verdict in docs/TASK_QUALITY_AUDIT.md",
   "tolerance": 0.1,
   "simulation_calls": 0,
   "llm_calls": 0,
@@ -8,6 +8,20 @@
     {
       "design": "aes",
       "scale": 94.0478861563968,
+      "calibration_check": {
+        "proposals": 64,
+        "valid": 64,
+        "low": 2.0,
+        "high": 96.0478861563968,
+        "scale": 94.0478861563968,
+        "failure_stages": {},
+        "median_window_mean": 23.3474684500434
+      },
+      "qualification_procedures": [
+        "docs/TARGET_QUALIFICATION_V2.md",
+        "docs/SCHEDULE_WITNESS_REFINEMENT.md",
+        "docs/RUNTIME_REPLAY_V2.md"
+      ],
       "targets": [
         {
           "key": "confirmation-activation",
@@ -3602,6 +3616,20 @@
     {
       "design": "dma",
       "scale": 12.036762152777778,
+      "calibration_check": {
+        "proposals": 64,
+        "valid": 64,
+        "low": 1.9991319444444444,
+        "high": 14.03589409722222,
+        "scale": 12.036762152777776,
+        "failure_stages": {},
+        "median_window_mean": 7.069552951388889
+      },
+      "qualification_procedures": [
+        "docs/TARGET_QUALIFICATION_V2.md",
+        "docs/DMA_SERIAL_WITNESSES_V3.md",
+        "docs/RUNTIME_REPLAY_V2.md"
+      ],
       "targets": [
         {
           "key": "confirmation-activation",
@@ -7154,6 +7182,20 @@
     {
       "design": "mesh",
       "scale": 81.944,
+      "calibration_check": {
+        "proposals": 64,
+        "valid": 64,
+        "low": 6.500487804878048,
+        "high": 88.44448780487804,
+        "scale": 81.94399999999999,
+        "failure_stages": {},
+        "median_window_mean": 46.9715243902439
+      },
+      "qualification_procedures": [
+        "docs/TARGET_QUALIFICATION_V1.md",
+        "docs/WITNESS_REFINEMENT_V4.md",
+        "docs/RUNTIME_REPLAY_V2.md"
+      ],
       "targets": [
         {
           "key": "confirmation-activation",
@@ -10696,6 +10738,22 @@
     {
       "design": "ibex",
       "scale": 451.43010200000003,
+      "calibration_check": {
+        "proposals": 64,
+        "valid": 61,
+        "low": 313.98411,
+        "high": 765.414212,
+        "scale": 451.43010200000003,
+        "failure_stages": {
+          "USEFUL_WORK": 3
+        },
+        "median_window_mean": 713.68123
+      },
+      "qualification_procedures": [
+        "docs/TARGET_QUALIFICATION_V1.md",
+        "docs/IBEX_MODEL_WITNESSES_V1.md",
+        "docs/IBEX_BANK_ADMISSION_V1.md"
+      ],
       "targets": [
         {
           "key": "confirmation-activation",
@@ -14705,13 +14763,30 @@
       ],
       "sources": {
         "results/ibex/qualified-bank-v6.json": "d487ae3082595603488d1c9fbf96f01bc3b34e0203135e338142f59347ee3c09",
-        "out/ibex-bank-admission-v5/run/complete.json": "9852f82a6d352b321f5b170333a78bd9aa3a9719ac8d9d1a8674b969885fe121"
+        "out/ibex-bank-admission-v5/run/complete.json": "9852f82a6d352b321f5b170333a78bd9aa3a9719ac8d9d1a8674b969885fe121",
+        "out/ibex-calibration-replay-v5/run/complete.json": "8e80fd281ce5fbbcd4f52ee6b34cbdf7477389a1f083d7c55045e88cf3a6ce6b"
       },
       "within_confirmation_overlap_pairs": []
     },
     {
       "design": "redmule",
       "scale": 25.530169677734374,
+      "calibration_check": {
+        "proposals": 64,
+        "valid": 58,
+        "low": 1.999969482421875,
+        "high": 27.53013916015625,
+        "scale": 25.530169677734374,
+        "failure_stages": {
+          "USEFUL_WORK": 6
+        },
+        "median_window_mean": 7.897623062133789
+      },
+      "qualification_procedures": [
+        "docs/REDMULE_LONG_WINDOW_V1.md",
+        "docs/REDMULE_BIN_WITNESS_V1.md",
+        "docs/RUNTIME_REPLAY_V2.md"
+      ],
       "targets": [
         {
           "key": "confirmation-activation",
