@@ -631,3 +631,15 @@ exact-work/idle arithmetic violations. [AES](results/aes/bank-smoke-v2/README.md
 [mesh](results/mesh/bank-smoke-v2/README.md), and
 [DMA](results/dma/bank-smoke-v2/README.md) preserve failures and per-target audits.
 No full five-design paper study has launched.
+
+The [Ibex measured-mixture constructor](results/ibex/model-witnesses-v1/README.md)
+now witnesses all eighteen original five-design-suite requests in 216 measured
+proposals, with selected errors 0.0090–0.0579 at unchanged tolerance 0.10. The
+compact audit passes. This is not an agent result. Current-runtime normalization
+reuse remains gated on complete waveform-semantic replay: strict raw FST hashes
+changed with recording dates, which must not be confused with a proven signal
+change or silently ignored.
+
+RedMulE's [coarse timing extension](results/redmule/coarse-timing-v1/README.md)
+completed without additional qualifications. Its remaining seven requests stay
+unqualified; all failed searches remain archived and the targets are unchanged.
