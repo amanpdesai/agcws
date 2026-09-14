@@ -10,7 +10,9 @@ from agcws.pipeline.spec import validate
 from agcws.pipeline.storage import read, write
 
 
-def config(bank, manifest):
+def config(bank, manifest, version=2):
+    if version not in (2, 4):
+        raise ValueError("supported smoke versions are 2 and 4")
     if (bank.get("target_bank_qualified") is not True
             or bank["domain"] != manifest["spec"]["domain"]
             or bank["calibration"]["measurement_fingerprint"] != manifest["measurement_fingerprint"]):
@@ -30,11 +32,13 @@ def config(bank, manifest):
             targets[f"{split}-{request['id']}"] = request["rates"]
     if len(targets) != 18:
         raise ValueError("duplicate target identifiers")
-    return validate({**manifest["spec"], "name": f"{bank['domain']}-bank-smoke-v2",
-                     "targets": targets, "seeds": [8500], "budget": 6, "batch_size": 2,
+    return validate({**manifest["spec"], "name": f"{bank['domain']}-bank-smoke-v{version}",
+                     "targets": targets, "seeds": [8502 if version == 4 else 8500],
+                     "budget": 16 if version == 4 else 6, "batch_size": 2,
                      "policies": ["flash-4096", "phase-random", "phase-ga"],
                      "scale": bank["calibration"]["scale"], "tolerance": .1,
-                     "max_workers": 18, "provider_workers": 3, "cost_ceiling_usd": 5.0,
+                     "max_workers": 18, "provider_workers": 1 if version == 4 else 3,
+                     "cost_ceiling_usd": 12.0 if version == 4 else 5.0,
                      "stop_on_success": False, "image": manifest["runtime"]["image_id"]})
 
 
@@ -43,11 +47,13 @@ if __name__ == "__main__":
     parser.add_argument("--reference", type=Path, required=True)
     parser.add_argument("--bank", type=Path, required=True)
     parser.add_argument("--directory", type=Path, required=True)
+    parser.add_argument("--version", type=int, choices=(2, 4), default=2)
     args = parser.parse_args()
-    spec = config(read(args.bank), verify_inputs(ROOT, args.reference))
+    spec = config(read(args.bank), verify_inputs(ROOT, args.reference), args.version)
     args.directory.mkdir(parents=True, exist_ok=False)
     write(args.directory / "config.json", spec)
     write(args.directory / "qualification.json", {"bank_sha256": hashlib.sha256(args.bank.read_bytes()).hexdigest(),
           "scope": "qualification receipt, not model input; smoke seeds excluded from paper inference"})
     prepare(ROOT, args.directory / "config.json", args.directory / "run")
-    print({"cells": 54, "slots": 324, "max_model_calls": 36, "ceiling_usd": 5, "executed": False})
+    print({"cells": 54, "slots": 54*spec["budget"], "max_model_calls": 18*(spec["budget"]-2)//2,
+           "ceiling_usd": spec["cost_ceiling_usd"], "executed": False})

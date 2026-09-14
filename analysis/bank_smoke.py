@@ -16,7 +16,7 @@ def analyze(root):
     manifest = verify_inputs(ROOT, root)
     spec = manifest["spec"]
     protocol = (spec["budget"], spec["seeds"])
-    if (protocol not in ((6, [8500]), (16, [8501])) or spec["batch_size"] != 2
+    if (protocol not in ((6, [8500]), (16, [8501]), (16, [8502])) or spec["batch_size"] != 2
             or len(spec["targets"]) != 18 or spec["stop_on_success"] is not False
             or spec["policies"] != ["flash-4096", "phase-random", "phase-ga"]):
         raise ValueError("not the declared bank smoke")

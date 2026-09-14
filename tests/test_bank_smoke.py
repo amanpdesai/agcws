@@ -1,3 +1,4 @@
+import json
 import runpy
 
 import pytest
@@ -21,3 +22,20 @@ def test_bank_smoke_has_all_targets_and_matched_arms():
     assert len(result["targets"]) == 18 and result["budget"] == 6
     assert result["policies"] == ["flash-4096", "phase-random", "phase-ga"]
     assert result["stop_on_success"] is False
+
+
+def test_v4_smoke_is_bounded_and_does_not_copy_witness_context():
+    config = runpy.run_path("scripts/prepare_bank_smoke.py")["config"]
+    bank = read("results/dma/qualified-bank-v1.json")
+    bank["private_constructor_notes"] = "WITNESS_SECRET_DO_NOT_EXPOSE"
+    for part in bank["splits"].values():
+        for request in part["requests"]:
+            request["witness_program"] = {"secret": "WITNESS_SECRET_DO_NOT_EXPOSE"}
+    spec = read("results/dma/window-v3/calibration-config.json")
+    result = config(bank, {"spec": spec,
+                          "measurement_fingerprint": bank["calibration"]["measurement_fingerprint"],
+                          "runtime": {"image_id": spec["image"]}}, version=4)
+    assert result["seeds"] == [8502] and result["budget"] == 16
+    assert result["provider_workers"] == 1 and result["max_workers"] == 18
+    assert result["cost_ceiling_usd"] == 12 and not result["stop_on_success"]
+    assert "WITNESS_SECRET" not in json.dumps(result)
