@@ -4,7 +4,12 @@ import copy
 import hashlib
 import json
 
-from agcws.workloads.schedule import SCHEDULE_SCHEMA, expand_schedule, random_schedule
+from agcws.workloads.schedule import (
+    SCHEDULE_SCHEMA,
+    budget_diagnostics,
+    expand_schedule,
+    random_schedule,
+)
 from agcws.workloads.structural_edits import random_structural_edit
 
 
@@ -60,6 +65,13 @@ def payload(adapter, history, goal, n, *, schema=None):
     summarized = history_summary(history)
     resource_context = {}
     if hasattr(adapter, "contract"):
+        for row in summarized:
+            if row["program"] is not None:
+                try:
+                    row["budget_arithmetic"] = budget_diagnostics(row["program"], adapter.contract)
+                except ValueError:
+                    row["budget_arithmetic"] = {"unavailable": "invalid schedule shape or nesting; see rejection reason",
+                                                "scope": "shape/depth invalid; no arithmetic guessed"}
         resource_context = {"exact_resource_budget": {
             "work_units": adapter.contract.work_units, "idle_cycles": adapter.contract.idle_cycles,
             "max_expanded_operations": adapter.contract.max_expanded_ops,
@@ -67,7 +79,10 @@ def payload(adapter, history, goal, n, *, schema=None):
                 "Reordering its existing operations preserves totals. When editing numeric parameters, "
                 "transfer an amount between two operations of the same kind rather than changing totals "
                 "independently. Keep each parameter positive and within its bounds. Repeated bodies count "
-                "with their full multiplicity. These are suggestions, not automatic repairs."}}
+                "with their full multiplicity. These are suggestions, not automatic repairs. "
+                "History includes exact required-minus-actual deltas: positive means missing, negative "
+                "means excess. Correct the affected budget without changing the other operation kind. "
+                "Do not claim exact totals without checking both sums after edits."}}
     return json.dumps({
         **resource_context,
         "instruction": "Propose complete schedules to match the eight-bin activity target. "

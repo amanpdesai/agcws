@@ -85,6 +85,32 @@ def expand_schedule(workload, contract):
     return expanded
 
 
+def budget_diagnostics(workload, contract):
+    """Exact arithmetic feedback; never modify a workload or grant validity."""
+    validate_schedule_shape(workload, contract)
+    totals = {"work_units": 0, "idle_cycles": 0, "expanded_operations": 0}
+
+    def visit(nodes, depth, multiplicity):
+        if depth > contract.max_depth:
+            raise ValueError('repeat nesting exceeds depth limit')
+        for node in nodes:
+            if node['op'] == 'repeat':
+                visit(node['body'], depth + 1, multiplicity * node['count'])
+            else:
+                totals['expanded_operations'] += multiplicity
+                if node['op'] == 'work':
+                    totals['work_units'] += multiplicity * node['units']
+                else:
+                    totals['idle_cycles'] += multiplicity * node['cycles']
+
+    visit(workload['sequence'], 0, 1)
+    return {"actual": totals,
+            "required_minus_actual": {"work_units": contract.work_units - totals['work_units'],
+                                      "idle_cycles": contract.idle_cycles - totals['idle_cycles']},
+            "expanded_operation_limit_exceeded": totals['expanded_operations'] > contract.max_expanded_ops,
+            "scope": "arithmetic only; not a validity result or a repaired candidate"}
+
+
 def random_schedule(rng, contract):
     """Sample partitions and ordering without policy-specific legality repair."""
     if contract.max_expanded_ops < 2 and contract.idle_cycles:
