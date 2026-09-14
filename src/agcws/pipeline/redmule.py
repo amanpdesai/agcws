@@ -30,7 +30,7 @@ class RedmuleTemporal(ScheduleTemporal):
     scope = "redmule_tb_wrap.i_redmule_tb.i_redmule_wrap"
 
     def adapter(self):
-        return RedmuleTemporalAdapter()
+        return RedmuleTemporalAdapter(self.clock_edges)
 
     def canonical(self, program):
         return copy.deepcopy(program)
@@ -51,10 +51,11 @@ class RedmuleTemporal(ScheduleTemporal):
         size = rng.choice([4, 8, 16])
         count = rng.randint(1, 8)
         # Initial sampling reserves drain time; the language itself permits later releases.
-        width = 54000 // count
+        factor = self.clock_edges // 65536
+        width = (self.clock_edges - 11536) // count
         minimum = max(1, (1024 + size**3 * count - 1) // (size**3 * count))
         phases = [{"start": 2000 + i*width, "duration": rng.randint(1, width),
-                   "jobs": rng.randint(minimum, max(minimum, 12 // count))} for i in range(count)]
+                   "jobs": rng.randint(minimum, max(minimum, 12 * factor // count))} for i in range(count)]
         return {"size": size, "pattern": rng.choice(["zeros", "alternating", "random"]),
                 "data_seed": rng.randrange(65536), "phases": phases}
 
@@ -79,8 +80,8 @@ class RedmuleTemporal(ScheduleTemporal):
         else:
             phase = rng.choice(child["phases"])
             field = rng.choice(["start", "duration", "jobs"])
-            bounds = {"start": (0, 65536-phase["duration"]),
-                      "duration": (1, 65536-phase["start"]), "jobs": (1, 32)}
+            bounds = {"start": (0, self.clock_edges-phase["duration"]),
+                      "duration": (1, self.clock_edges-phase["start"]), "jobs": (1, 32)}
             phase[field] = rng.randint(*bounds[field])
         return child, sorted({p["slot"] for p in parents})
 
@@ -90,7 +91,8 @@ class RedmuleTemporal(ScheduleTemporal):
     def invocation(self, program, attempt, relative):
         return ["env", "AGCWS_VERILATOR=/usr/local/bin/verilator", "python3",
                 "scripts/run_redmule_workload.py", str(relative / "program.json"),
-                "--source-list", ".dependencies/sources.vlt", "--out", str(relative)]
+                "--source-list", ".dependencies/sources.vlt", "--out", str(relative),
+                "--observation-cycles", str(self.clock_edges)]
 
     def failed(self, attempt):
         log = "\n".join(p.read_text() for p in (attempt / "run.log", attempt / "driver.log") if p.exists())
@@ -109,3 +111,7 @@ class RedmuleTemporal(ScheduleTemporal):
                 or result["checked_outputs"] != jobs*program["size"]**2):
             return {"valid": False, "stage": "FUNCTIONAL", "reason": "GEMM completion record differs"}
         return {"valid": True, "useful_work": result["useful_work"], "provenance": read(attempt / "provenance.json")}
+
+
+class RedmuleTemporalLong(RedmuleTemporal):
+    clock_edges = 262144

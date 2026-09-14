@@ -1,5 +1,6 @@
 """Timed FP16 GEMM jobs with exactly representable reference arithmetic."""
 
+import copy
 import random
 import struct
 
@@ -43,6 +44,18 @@ class RedmuleTemporalAdapter(DesignAdapter):
         },
     }
 
+    def __init__(self, observation_cycles=65536):
+        if type(observation_cycles) is not int or observation_cycles not in (65536, 262144):
+            raise ValueError("unsupported frozen RedMulE observation window")
+        self.observation_cycles = observation_cycles
+        self.workload_schema = copy.deepcopy(type(self).workload_schema)
+        fields = self.workload_schema["properties"]["phases"]["items"]["properties"]
+        fields["start"]["maximum"] = observation_cycles - 1
+        fields["duration"]["maximum"] = observation_cycles
+        self.protocol_constraints = tuple(
+            text.replace("65536", str(observation_cycles)) for text in type(self).protocol_constraints
+        )
+
     def validate_schema(self, workload):
         error = next(Draft202012Validator(self.workload_schema).iter_errors(workload), None)
         return Validity(False, ValidityStage.SCHEMA, error.message) if error else Validity(True)
@@ -51,7 +64,7 @@ class RedmuleTemporalAdapter(DesignAdapter):
         jobs = sum(phase["jobs"] for phase in workload["phases"])
         if jobs > 128:
             return Validity(False, ValidityStage.PROTOCOL, "at most 128 jobs required")
-        if any(phase["start"] + phase["duration"] > 65536 for phase in workload["phases"]):
+        if any(phase["start"] + phase["duration"] > self.observation_cycles for phase in workload["phases"]):
             return Validity(False, ValidityStage.PROTOCOL, "phase extends beyond observation window")
         return Validity(True)
 
@@ -90,8 +103,8 @@ def reference_matrices(size, pattern, seed):
     return x, w, y, z
 
 
-def stimulus_headers(workload):
-    adapter = RedmuleTemporalAdapter()
+def stimulus_headers(workload, *, observation_cycles=65536):
+    adapter = RedmuleTemporalAdapter(observation_cycles)
     releases = adapter.elaborate(workload)
     size = workload["size"]
     matrices = reference_matrices(size, workload["pattern"], workload["data_seed"])

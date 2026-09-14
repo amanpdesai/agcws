@@ -1,5 +1,20 @@
 # Decision log
 
+## 2026-09-14 — Separately version RedMulE's longer observation window
+
+**Decision.** With explicit user authorization, test 262,144 cycles in a new
+`redmule-temporal-long` domain; preserve the original 65,536-cycle bank and all
+failed operand/coarse-timing attempts. Freeze fresh calibration and qualification
+under `REDMULE_LONG_WINDOW_V1.md` before measurements.
+**Rationale.** The short window produces coarse activity pulses; more jobs per
+bin may improve attainable shape resolution. This is a hypothesis, not an
+infeasibility proof or a promise that all requests will qualify.
+**Rejected.** Relaxing tolerance, deleting failed requests, silently changing old
+waveforms, or launching the full paid study before readiness is verified.
+**Consequence.** New provenance, calibration and bank are required. Existing
+other-design evidence retains its old runtime identity; promotion needs explicit
+compatibility/replay evidence because source inventory hashes all Python files.
+
 ## 2026-09-13 — Opt-in early stopping; preserve historical source identity
 
 **Decision.** New configurations may stop after a successful batch, charging

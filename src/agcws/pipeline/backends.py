@@ -57,4 +57,7 @@ def backend(domain):
     if domain == "redmule-temporal":
         from agcws.pipeline.redmule import RedmuleTemporal
         return RedmuleTemporal()
+    if domain == "redmule-temporal-long":
+        from agcws.pipeline.redmule import RedmuleTemporalLong
+        return RedmuleTemporalLong()
     raise ValueError(f"backend not implemented: {domain}")

@@ -51,7 +51,7 @@ def source_inventory(repo, domain="ibex-temporal"):
         paths.extend(p for p in (repo / "third_party/basejump_stl").rglob("*")
                      if p.is_file() and p.suffix in (".sv", ".svh", ".v", ".vh"))
     extra = {}
-    if domain == "redmule-temporal":
+    if domain in ("redmule-temporal", "redmule-temporal-long"):
         from agcws.pipeline.redmule import dependency_inventory
         extra = dependency_inventory()
         paths.extend(repo / p for p in ("scripts/run_redmule_workload.py", "scripts/prepare_redmule_timed.py",

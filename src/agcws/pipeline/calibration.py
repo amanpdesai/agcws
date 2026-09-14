@@ -28,7 +28,7 @@ def plan(destination, image, ibex_binary):
 def report(directory):
     manifest = read(directory / "manifest.json")
     spec = manifest["spec"]
-    if (spec["domain"] not in DOMAINS or spec["seeds"] != list(SEEDS)
+    if (spec["domain"] not in (*DOMAINS, "redmule-temporal-long") or spec["seeds"] != list(SEEDS)
             or spec["policies"] != ["random"] or spec["budget"] != BUDGET
             or spec.get("stop_on_success") is not False
             or spec["targets"] != {"calibration_only": [0.0]*8}):

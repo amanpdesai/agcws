@@ -45,12 +45,14 @@ def main():
     parser.add_argument("--source-list", type=Path, required=True)
     parser.add_argument("--out", type=Path, required=True)
     parser.add_argument("--jobs", type=int, default=8)
+    parser.add_argument("--observation-cycles", type=int, choices=(65536, 262144), default=65536)
     args = parser.parse_args()
     if args.jobs < 1:
         parser.error("positive compile jobs required")
     workload = json.loads(args.workload.read_text())
-    headers = stimulus_headers(workload)
-    releases = RedmuleTemporalAdapter().elaborate(workload)
+    cycles = args.observation_cycles
+    headers = stimulus_headers(workload, observation_cycles=cycles)
+    releases = RedmuleTemporalAdapter(cycles).elaborate(workload)
     out = args.out.resolve()
     out.mkdir(parents=True, exist_ok=True)
     inc = out / "inc"
@@ -60,7 +62,7 @@ def main():
     version = subprocess.check_output([config.VERILATOR, "--version"], text=True).strip()
     hashes = source_hashes(args.source_list)
     digest = hashlib.sha256(json.dumps({"sources": hashes, "verilator": version,
-                                      "recipe": "redmule4x4-fixed65536-v1"}, sort_keys=True).encode()).hexdigest()
+                                      "recipe": "redmule4x4-explicit-window-v2"}, sort_keys=True).encode()).hexdigest()
     build = ROOT / "out/.cache" / ("redmule-" + digest)
 
     def compile_binary(binary):
@@ -90,14 +92,14 @@ def main():
         subprocess.run(command, stdout=log, stderr=subprocess.STDOUT, check=True)
     with (out / "run.log").open("w") as log:
         subprocess.run([str(binary), f"+STIM_INSTR={software / 'stim_instr.txt'}",
-                        f"+STIM_DATA={software / 'stim_data.txt'}", "+OBSERVATION_CYCLES=65536"],
+                        f"+STIM_DATA={software / 'stim_data.txt'}", f"+OBSERVATION_CYCLES={cycles}"],
                        cwd=out, stdout=log, stderr=subprocess.STDOUT, check=True)
     log = (out / "run.log").read_text()
     jobs = [tuple(map(int, values)) for values in re.findall(
         r"AGCWS_REDMULE_JOB job=(\d+) cycle=(\d+) errors=(\d+)", log)]
     if (len(jobs) != len(releases) or [j[0] for j in jobs] != list(range(len(releases)))
-            or any(j[2] or not release <= j[1] < 65536 for release, j in zip(releases, jobs, strict=True))
-            or "[TB] - errors=00000000" not in log or "AGCWS_REDMULE_WINDOW_DONE cycles=65536" not in log):
+            or any(j[2] or not release <= j[1] < cycles for release, j in zip(releases, jobs, strict=True))
+            or "[TB] - errors=00000000" not in log or f"AGCWS_REDMULE_WINDOW_DONE cycles={cycles}" not in log):
         raise RuntimeError("RedMulE completion/reference record differs from requested jobs")
     useful_work = len(jobs) * workload["size"]**3
     functional = {"valid": useful_work >= RedmuleTemporalAdapter.useful_work_floor,
@@ -109,14 +111,14 @@ def main():
     subprocess.run(["fst2vcd", "-o", str(out / "activity.vcd"), str(out / "activity.fst")], check=True)
     scope = "redmule_tb_wrap.i_redmule_tb.i_redmule_wrap"
     activity = parse_vcd(out / "activity.vcd", "redmule_tb_wrap.clk", 8, scope_prefix=scope)
-    if activity["clock_edges"] != 65536:
-        raise RuntimeError("RedMulE observation window differs from 65536 cycles")
+    if activity["clock_edges"] != cycles:
+        raise RuntimeError(f"RedMulE observation window differs from {cycles} cycles")
     (out / "activity.json").write_text(json.dumps(activity) + "\n")
     (out / "provenance.json").write_text(json.dumps({"sources_sha256": hashes, "verilator": version,
         "build_key": digest, "simulator_sha256": hashlib.sha256(binary.read_bytes()).hexdigest(),
         "stimulus_headers_sha256": {name: hashlib.sha256(text.encode()).hexdigest() for name, text in headers.items()},
         "scope": scope, "clock": "redmule_tb_wrap.clk", "fidelity": "activity",
-        "observation_cycles": 65536, "functional": functional}, indent=2) + "\n")
+        "observation_cycles": cycles, "functional": functional}, indent=2) + "\n")
     print(json.dumps({"output": str(out), "completed_jobs": len(jobs), "useful_work": useful_work}))
 
 

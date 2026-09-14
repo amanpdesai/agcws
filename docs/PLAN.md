@@ -1,5 +1,20 @@
 # Plan
 
+## Authorized RedMulE window experiment — 2026-09-14
+
+Test the independently versioned 262,144-cycle domain under
+`REDMULE_LONG_WINDOW_V1.md`, with fresh 64-proposal calibration and unchanged
+qualification gates. Keep the 65,536-cycle bank and every failed attempt.
+Do not launch the full paid study. The runtime change requires explicit
+provenance bridges before any other-design bank is promoted as current.
+
+The sixteen-slot AES/DMA/mesh feedback smokes have finished, each with 17/18
+strict readiness; all failures and unknown-call liability are retained in
+per-design archives. The Ibex modeled witness panel qualifies all eighteen
+requests; its full 64-case calibration waveform comparison matches after
+excluding only VCD header date metadata. These are progress, not yet a
+five-design launch gate pass.
+
 ## Five-design readiness checkpoint — 2026-09-14
 
 DMA now qualifies all eighteen requests under its corrected 9,216-cycle window.
