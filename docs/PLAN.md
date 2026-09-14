@@ -2,6 +2,13 @@
 
 ## Active goal — common bit activity and CPU requalification
 
+Update: all ninety requested profiles now have valid bit-metric witnesses.
+Mesh's separate local-refinement supplement passed its 2,048-slot trajectory
+audit and archive restoration audit. Preserve the original 14/18 bank.
+Next: refresh full Flash/baseline configurations against the new banks, verify
+matched task identities and witness exclusion, then request launch approval.
+No further witness search or paid study is currently running.
+
 User approved the next slice after the audit. Implement and test
 [BIT_ACTIVITY_V1.md](BIT_ACTIVITY_V1.md), replay the fixed calibration/witness
 programs, regenerate analytic targets from the new metric, and retain every

@@ -19,5 +19,8 @@ capacitance weighting, gate-power prediction or signoff power. Waveform hashes
 identify what was recounted; raw traces remain local scratch.
 
 Per-design requalification evidence is under `results/<design>/bit-activity-v2/`.
-AES, DMA, Ibex and RedMulE have completed. Mesh witness searches are in progress;
-the overall scientific launch hold remains until their disposition is audited.
+AES, DMA, Ibex and RedMulE qualified 18/18 directly. Mesh's original search
+qualified 14/18; the separately frozen
+[local-refinement supplement](../mesh/bit-refinement-v1/README.md) supplies the
+remaining four without changing the targets. Full-study configurations still
+need refreshing before launch.

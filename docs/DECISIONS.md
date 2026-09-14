@@ -1,5 +1,19 @@
 # Decision log
 
+## 2026-09-14 — Admit mesh refinement without changing the task
+
+The frozen 512-slot local-refinement procedure per failed request qualified
+all four mesh misses. Errors are 0.064226, 0.039888, 0.025743 and 0.072803.
+All 2,048 proposals, parent updates and measured errors reproduce, also after
+archive restoration. Preserve the original 14/18 admission and every failed
+attempt. The new supplement combines its fourteen witnesses with these four;
+target vectors, calibration, runtime and tolerance remain unchanged.
+
+This demonstrates feasibility only: the finder received privileged warm starts
+and extra attempts. Do not compare it to agents or promote it silently into a
+baseline. All five banks now have eighteen witnesses; full-run configurations
+must still be refreshed and checked, with witnesses hidden, before launch.
+
 ## 2026-09-14 — Correct marker alignment before target admission
 
 The first common bit-counter replay completed all 410 fixed programs, retaining
