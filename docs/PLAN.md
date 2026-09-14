@@ -1,5 +1,23 @@
 # Plan
 
+## Current action — 2026-09-14, context v4
+
+All five current-runtime banks are admitted: eight nonflat requests plus a
+control in each split. RedMulE's expert bin constructor qualified 18/18 without
+changing the longer-window requests or gates; this is not an agent result.
+Bounded history is merged, with exact calibration/witness replay evidence.
+
+The frozen [v4 smoke](BANK_SMOKE_V4.md) is running across all five designs,
+all eighteen requests, Flash/random/GA, seed 8502 and sixteen slots. Do not
+change runtime sources during these runs. Preserve every failure and unknown
+call liability; no favorable-seed retry or full-study launch.
+
+Next: audit/archive every smoke, reconcile metered cost and remaining failures,
+then prepare fresh-seed full-study configurations and the launch readiness
+receipt. The full 128-slot Flash study still requires user approval.
+
+The dated entries below are historical milestones, not current launch status.
+
 ## Ibex all-target feedback gate passed — 2026-09-14
 
 The current-runtime Ibex bank is admitted and its single frozen v3 smoke
