@@ -89,9 +89,9 @@ def random_schedule(rng, contract):
     """Sample partitions and ordering without policy-specific legality repair."""
     if contract.max_expanded_ops < 2 and contract.idle_cycles:
         raise ValueError('contract cannot express both work and idle')
-    units = rng.randint(1, min(16, contract.work_units,
+    units = rng.randint(1, min(contract.work_units,
                               contract.max_expanded_ops - bool(contract.idle_cycles)))
-    waits = rng.randint(1, min(16, contract.idle_cycles, contract.max_expanded_ops - units)) if contract.idle_cycles else 0
+    waits = rng.randint(1, min(contract.idle_cycles, contract.max_expanded_ops - units)) if contract.idle_cycles else 0
 
     def partition(total, parts):
         cuts = [0, *sorted(rng.sample(range(1, total), parts - 1)), total]

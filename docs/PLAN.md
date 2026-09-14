@@ -22,6 +22,12 @@ observed Pro gap, with the frozen inference limits recorded in RESULTS.md.
 
 ## Active milestone — five-design benchmark readiness
 
+The next engineering gate is the [runtime refresh](RUNTIME_REFRESH_V2.md):
+verify the corrected DMA window, refresh its calibration, certify existing
+AES/mesh evidence against the new source identity, and complete Ibex/RedMulE
+witness qualification. Provider-grammar integration must be exercised through
+real bounded feedback smokes, not counted as complete from mocked tests.
+
 The September 13 user decision prioritizes five fully functioning designs over
 leaving cross-design work as a late optional port. Keep Ibex/AES/DMA and evaluate
 two additions before agent outcomes. Selection evidence, candidates and mandatory

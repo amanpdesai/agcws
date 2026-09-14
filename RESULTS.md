@@ -590,3 +590,9 @@ a 9,216-cycle replacement observation window. This is not yet a new measurement
 result: replay, calibration and qualification under that contract remain required.
 The current random generator's 16-work-group cap is also identified for correction
 before the paper baseline freezes; the legal DSL permits more groups.
+
+Ibex's five-design-suite v1 witness panels completed 4,608 slots each. Both
+splits qualify activation and quiet interval only (2/8 non-flat families), and
+neither flat control passes. [Per-design archives](results/ibex/target-qualification-v1/README.md)
+retain all failures. These are not new Pro results and do not supersede the
+historical confirmation on its different target family.

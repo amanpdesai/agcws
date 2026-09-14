@@ -27,6 +27,15 @@ def test_random_schedules_preserve_exact_budgets_and_are_deterministic():
         assert validate_static(AESTransactionAdapter(), lower_schedule(schedule, contract)).valid
 
 
+def test_random_can_reach_full_legal_group_range():
+    contract = ScheduleContract(64, 6000)
+    counts = set()
+    for seed in range(1024):
+        expanded = expand_schedule(random_schedule(random.Random(seed), contract), contract)
+        counts.add(sum(node['op'] == 'work' for node in expanded))
+    assert counts == set(range(1, 65))
+
+
 @pytest.mark.parametrize('node', [
     {'op': 'work', 'units': True}, {'op': 'wait', 'cycles': -1},
     {'op': 'repeat', 'count': 0, 'body': []}, {'op': 'unknown'},

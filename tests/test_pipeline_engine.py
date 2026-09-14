@@ -14,6 +14,7 @@ from agcws.pipeline.ibex.program import allocation, canonical, random_program
 from agcws.pipeline.meter import Meter
 from agcws.pipeline.metrics import error
 from agcws.pipeline.model import MODELS
+from agcws.pipeline.provider_schema import provenance
 from agcws.pipeline.spec import validate
 from agcws.pipeline.storage import read, write
 
@@ -206,6 +207,7 @@ def test_meter_replays_response_and_preserves_unknown_cost(tmp_path, monkeypatch
     write(directory / "request_started.json", {"reservation_usd": 0.5})
     response = {
         "identity": identity,
+        "schema_provenance": provenance({}),
         "usage_unknown": True,
         "estimated_usd": None,
         "raw_text": "",

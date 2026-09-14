@@ -1,5 +1,7 @@
 """Explicit model selection and metering; no repairs or replacement models."""
 
+from agcws.pipeline.provider_schema import VERSION, grammar
+
 MODELS = {
     "pro-4096": "gemini-2.5-pro",
     "flash-4096": "gemini-2.5-flash",
@@ -13,6 +15,7 @@ def settings(arm):
         "temperature": 0.7,
         "top_p": 0.95,
         "max_output_tokens": 16384,
+        "response_schema_projection": VERSION,
     }
 
 
@@ -78,7 +81,7 @@ def generate(project, arm, contents, schema):
                 "thinking_config": {"thinking_budget": s["thinking_budget"]},
                 "max_output_tokens": s["max_output_tokens"],
                 "response_mime_type": "application/json",
-                "response_json_schema": schema,
+                "response_json_schema": grammar(schema),
             },
         )
     return summarize_response(response, arm)

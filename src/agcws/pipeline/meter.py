@@ -5,6 +5,7 @@ import threading
 import time
 
 from agcws.pipeline.model import cost, generate, settings
+from agcws.pipeline.provider_schema import provenance
 from agcws.pipeline.storage import read, write
 
 
@@ -36,11 +37,14 @@ class Meter:
 
     def _call(self, directory, arm, contents, schema, identity, api_error, transport_error):
         response = directory / "response.json"
+        schema_provenance = provenance(schema)
         with self.lock:
             if response.exists():
                 info = read(response)
                 if info["identity"] != identity:
                     raise ValueError("saved response identity differs")
+                if info.get("schema_provenance") != schema_provenance:
+                    raise ValueError("saved response schema provenance differs")
                 return info
             if self.halted.is_set():
                 raise RuntimeError("stage halted after an infrastructure failure")
@@ -56,6 +60,7 @@ class Meter:
                     "identity": identity,
                     "reservation_usd": reservation,
                     "started_unix": time.time(),
+                    "schema_provenance": schema_provenance,
                 },
             )
             self.liability += reservation
@@ -75,7 +80,8 @@ class Meter:
                 "prompt_feedback": None,
                 "api_error": {"type": type(exc).__name__, "message": str(exc)},
             }
-        info.update(identity=identity, request_wall_clock_s=time.monotonic() - started)
+        info.update(identity=identity, request_wall_clock_s=time.monotonic() - started,
+                    schema_provenance=schema_provenance)
         with self.lock:
             write(response, info)
             if not info["usage_unknown"]:

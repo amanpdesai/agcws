@@ -6,11 +6,23 @@ from agcws.pipeline.storage import read, write
 
 
 class DmaTemporal(ScheduleTemporal):
-    clock_edges = 12000
+    clock_edges = 9216
     scope = "axi_dma"
 
     def adapter(self):
         return DmaTemporalAdapter(self.contract)
+
+    def failed(self, attempt):
+        path = attempt / "driver.log"
+        if not path.exists():
+            return None
+        text = path.read_text()
+        reasons = ("workload failed to complete within the declared observation horizon",
+                   "declared wait schedule exceeds observation horizon")
+        if any(f"AssertionError: {reason}" in text for reason in reasons):
+            return {"valid": False, "stage": "FUNCTIONAL",
+                    "reason": "workload did not complete within the fixed observation window"}
+        return None
 
     def invocation(self, program, attempt, relative):
         lowered = self.adapter().elaborate(program)
