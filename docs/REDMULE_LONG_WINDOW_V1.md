@@ -27,6 +27,11 @@ window. Its total initial job sampling upper bound scales from 12 to 48,
 preserving approximate offered load rather than diluting activity fourfold.
 These changes are frozen before measuring the new corpus.
 
+Independent calibration proposals may be premeasured in parallel through the
+same content-addressed evaluator locks. The ordinary runner still charges all
+64 slots and records every rejection; prewarm receipts preserve actual compute
+time. This acceleration is not used for adaptive policies or comparison timing.
+
 Use the existing calibration report's 5th/95th percentile bounds and existing
 v1 analytic target generator. Generate both development and confirmation
 banks: eight nonflat shapes and a separate flat control each. Use the existing
