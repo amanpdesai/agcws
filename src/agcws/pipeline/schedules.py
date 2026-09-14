@@ -58,7 +58,18 @@ def history_summary(history):
 
 def payload(adapter, history, goal, n, *, schema=None):
     summarized = history_summary(history)
+    resource_context = {}
+    if hasattr(adapter, "contract"):
+        resource_context = {"exact_resource_budget": {
+            "work_units": adapter.contract.work_units, "idle_cycles": adapter.contract.idle_cycles,
+            "max_expanded_operations": adapter.contract.max_expanded_ops,
+            "refinement_guidance": "Start from a valid previous schedule when correcting a budget violation. "
+                "Reordering its existing operations preserves totals. When editing numeric parameters, "
+                "transfer an amount between two operations of the same kind rather than changing totals "
+                "independently. Keep each parameter positive and within its bounds. Repeated bodies count "
+                "with their full multiplicity. These are suggestions, not automatic repairs."}}
     return json.dumps({
+        **resource_context,
         "instruction": "Propose complete schedules to match the eight-bin activity target. "
                        "Return hypothesis and candidates as strict JSON. Never modify the RTL, "
                        "harness or evaluator. Obey the supplied resource constraints; no "

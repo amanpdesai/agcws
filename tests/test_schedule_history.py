@@ -45,3 +45,15 @@ def test_128_slot_adversarial_history_stays_under_request_guard():
         assert value["history_policy"]["total_slots"] == 126
         assert [r["slot"] for r in value["history"]] == [123, 124, 125, 126]
         assert len(text.encode()) + len(json.dumps(design.schema(2)).encode()) + 4096 < 200000
+
+
+def test_resource_guidance_uses_contract_not_design_specific_examples():
+    for domain in ("aes-temporal", "dma-temporal", "mesh-temporal", "redmule-temporal-long"):
+        design = backend(domain)
+        value = json.loads(design.payload([], {"profile": [1]*8, "scale": 10, "tolerance": .1}, 2))
+        if domain in ("aes-temporal", "dma-temporal"):
+            assert value["exact_resource_budget"]["work_units"] == 64
+            assert value["exact_resource_budget"]["idle_cycles"] == 6000
+            assert "not automatic repairs" in value["exact_resource_budget"]["refinement_guidance"]
+        else:
+            assert "exact_resource_budget" not in value

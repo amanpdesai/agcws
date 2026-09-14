@@ -4,6 +4,22 @@ Prepared in an isolated worktree while the original RedMulE qualifications and
 Ibex smoke run. Do not merge into the live runtime until those studies finish.
 No new model calls are authorized by this document.
 
+## Corrective resource context
+
+The DMA v3 confirmation-activation smoke produced 13 protocol violations and
+one schema rejection across its 14 generated slots. Repeated exact-total errors
+occurred despite actual/required totals in the validator's response. For all
+exact-work schedule contracts, render numerical budgets and generic
+budget-preserving refinement guidance: reorder a valid reference, or transfer
+amounts between same-kind operations while respecting bounds and repeat
+multiplicity. No target-specific example, witness, automatic correction or free
+retry is added. Mesh and RedMulE do not receive fictitious exact-sum constraints.
+
+This is interface development informed by all-target smoke failures. Both
+named bank splits have been exposed to these smokes; a later fresh-seed study
+must not describe the target vectors as previously unseen. Preserve the old
+smokes and distinguish operational development from policy-performance claims.
+
 ## Failure and intervention
 
 The offline repeated-valid-workload capacity test finds a reachable request-size
@@ -39,7 +55,7 @@ explicit oversized-data handling, adversarial 128-slot request capacity, shared
 feedback execution and early stopping. The same repeated measured workload
 diagnostic now fits the byte guard on AES/DMA/mesh/RedMulE. This proves capacity
 for those tested histories, not guaranteed provider success or target solving.
-With pinned dependencies supplied, the complete isolated suite passes **692
+With pinned dependencies supplied, the complete isolated suite passes **693
 tests**, with three existing warnings. The initial isolated run failed because
 dependencies and the interpreter link were missing, and one parser test read
 a historical `out/` waveform. That test now creates a deterministic waveform
