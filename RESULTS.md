@@ -1,9 +1,51 @@
 # Research results
 
-Updated 2026-09-13. This is the authoritative findings document. All results
+Updated 2026-09-14. This is the authoritative findings document. All results
 below concern **activity-profile synthesis** unless explicitly labeled gate
 power. Lower best-so-far target-error AUC is better. Budgets, normalizations
 and target banks differ across studies: do not compare their raw AUC values.
+
+## Five-design qualification and feedback readiness — incomplete
+
+These are engineering/feasibility checks, not new policy comparisons. Each bank
+requests eight nonflat profiles plus a separate flat control in each of two
+splits. A necessary constant-vector-floor gate does not itself prove feasibility.
+
+| Design | Witness qualification | Latest bounded feedback smoke |
+|---|---|---|
+| AES | All 18 qualified; exact 82-case runtime replay archived | v3: 18/18 receive generated measured feedback, 17/18 strict readiness; one API 504 with reserved unknown usage |
+| DMA | All 18 qualified at 9,216 cycles | v3: 17/18 receive generated measured feedback; confirmation-activation has no valid generated proposal |
+| Mesh | All 18 qualified; exact 82-case runtime replay archived | v3: 18/18 receive generated measured feedback, 17/18 strict readiness; one API failure with reserved unknown usage |
+| Ibex | All 18 modeled witnesses reproduced on current runtime; complete 64-case calibration bridge passed | First all-target v3 smoke running |
+| RedMulE | Original 65,536-cycle bank remains 11/18 after operand/coarse-timing tests | Longer-window qualification running; no full paid run |
+
+The AES/DMA/mesh sixteen-slot smokes each charge 864 slots across Flash,
+phase-random and phase-GA. Known model costs are $1.5611813, $1.6204904 and
+$2.1220884 respectively; AES and mesh each retain $0.10096 unknown-call liability.
+These seeds are not paper inference units. Evidence:
+[AES](results/aes/bank-smoke-v3/README.md),
+[DMA](results/dma/bank-smoke-v3/README.md),
+[mesh](results/mesh/bank-smoke-v3/README.md).
+
+Ibex admission preserves the full 216-attempt modeled witness panel. Its
+selected eighteen programs reproduce numerical profiles and architectural
+execution. All 64 original calibration cases match complete decoded waveforms
+after omitting only VCD header date metadata; raw FST hash mismatches remain
+explicit. See [admission](results/ibex/bank-admission-v1/README.md) and
+[calibration bridge](results/ibex/calibration-replay-v3/README.md).
+
+RedMulE's independently versioned 262,144-cycle calibration completed 64 slots:
+58 valid, six USEFUL_WORK rejections. The new inclusive-percentile activity
+range is 1.99996948–27.53013916 transitions per edge. Both request banks are
+frozen and CPU witness searches are in progress. This changes the horizon,
+offered-load sampling and freshly normalized target amplitudes; any change in
+qualification rate is not a causal estimate of horizon alone. The original
+failed bank is retained. See [long-window evidence](results/redmule/long-window-v1/README.md).
+
+The longer-window implementation changes the global source fingerprint.
+AES/DMA/mesh evidence above retains its recorded pre-change runtime identity;
+it must not be silently relabeled current. Full five-design Flash readiness
+is **not achieved**, and the full study has not been launched.
 
 ## Phase-GA robustness extension — complete
 

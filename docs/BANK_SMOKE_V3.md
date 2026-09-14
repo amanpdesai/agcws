@@ -21,3 +21,11 @@ not alone satisfy the measured-feedback requirement. Report first-batch and
 all-generated validity separately. This longer test is not an improvement in
 the model or a policy result. Never select or combine favorable seeds for paper
 inference; both smoke seeds are excluded from that study.
+
+## Prospective Ibex application — 2026-09-14
+
+After current-runtime admission of all eighteen Ibex requests, apply this same
+16-slot/8501 procedure once to Ibex. This is its first all-target bank smoke,
+not a claim of improvement over an earlier six-slot Ibex panel. All settings,
+strict readiness criteria and the $12 ceiling above remain unchanged. Freeze
+the config before executing; do not provide witness programs to the model.
