@@ -8,7 +8,7 @@ from collections import defaultdict
 from pathlib import Path
 
 
-def recount(path, scope, clock):
+def recount(path, scope, clock, *, exclude_clock=False):
     widths, selected, clocks, stack, values, names = {}, set(), set(), [], {}, {}
     unknown_signals = {}
     counts = defaultdict(lambda: [0, 0, 0])
@@ -37,6 +37,8 @@ def recount(path, scope, clock):
                         clocks.add(identifier)
                 elif fields[0] == "$enddefinitions":
                     header = False
+                    if exclude_clock:
+                        selected -= clocks
                 continue
             if line.startswith("#"):
                 timestamp = int(line[1:])

@@ -57,6 +57,8 @@ def verified_replay(root):
     lineage = read(root / "lineage.json")
     if lineage["procedure_sha256"] != sha(ROOT / "docs/BIT_ACTIVITY_V1.md"):
         raise ValueError("qualification procedure changed")
+    if lineage["alignment_correction_sha256"] != sha(ROOT / "docs/BIT_ACTIVITY_ALIGNMENT_V2.md"):
+        raise ValueError("alignment correction changed")
     manifest = read(root / "replay/manifest.json")
     if (manifest["measurement"] != verify_inputs(ROOT, root / "reference")
             or manifest["driver_sha256"] != sha(ROOT / "scripts/probe_fixed_cases.py")

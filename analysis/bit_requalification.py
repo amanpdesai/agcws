@@ -55,6 +55,7 @@ def plan(destination, design):
     write(destination / "old-bank.json", bank)
     write(destination / "lineage.json", {"audit_inputs_sha256": sha(archive), "old_bank_sha256": sha(bank_path),
                                         "procedure_sha256": sha(ROOT / "docs/BIT_ACTIVITY_V1.md"),
+                                        "alignment_correction_sha256": sha(ROOT / "docs/BIT_ACTIVITY_ALIGNMENT_V2.md"),
                                         "driver_sha256": sha(Path(__file__))})
     prepare(ROOT, destination / "spec.json", destination / "reference")
     probe = runpy.run_path(ROOT / "scripts/probe_fixed_cases.py")

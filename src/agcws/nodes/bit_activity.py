@@ -1,9 +1,11 @@
 """Versioned, streaming known-bit activity with explicit observation contracts."""
 
 import hashlib
+import re
 from dataclasses import dataclass
 
-CONTRACT = "known-bit-activity-v1"
+CONTRACT = "known-bit-activity-v2"
+_KNOWN = re.compile(r"[01]+")
 
 
 def read_bits(path, observation):
@@ -20,7 +22,11 @@ def read_bits(path, observation):
 
 def binary_state(text, width):
     text = text.lower()
-    if not text or len(text) > width or set(text) - set("01xz"):
+    if not text or len(text) > width:
+        raise ValueError("malformed VCD binary value or width")
+    if _KNOWN.fullmatch(text):
+        return int(text, 2), (1 << width)-1
+    if set(text) - set("01xz"):
         raise ValueError("malformed VCD binary value or width")
     text = text.rjust(width, text[0] if text[0] in "xz" else "0")
     known = int("".join("1" if c in "01" else "0" for c in text), 2)
@@ -47,12 +53,15 @@ class Observation:
             raise ValueError("both time boundaries required")
         if self.begin is not None and self.begin >= self.end:
             raise ValueError("ordered half-open boundaries required")
+        if self.begin is not None and (self.period is None or self.period <= 0
+                                       or self.end-self.begin != self.cycles*self.period):
+            raise ValueError("marker window requires exact cycle duration and period")
 
 
 def stream_bits(lines, observation):
     spec = observation
     widths, selected, clocks, values, ever_known = {}, set(), set(), {}, {}
-    stack, samples, edge_ticks = [], [], []
+    stack, samples, edge_ticks = [], [0]*spec.cycles if spec.begin is not None else [], []
     header, timestamp, last_tick = True, 0, 0
     previous_edge, period, clock_value = None, None, None
     group_bits, group_edge, initial_checked = 0, False, False
@@ -65,8 +74,11 @@ def stream_bits(lines, observation):
         if inside(timestamp):
             if group_edge:
                 edge_ticks.append(timestamp)
-                samples.append(0)
-            if samples:
+                if spec.begin is None:
+                    samples.append(0)
+            if spec.begin is not None:
+                samples[(timestamp-spec.begin)//spec.period] += group_bits
+            elif samples:
                 samples[-1] += group_bits
 
     for raw in lines:
@@ -152,7 +164,7 @@ def stream_bits(lines, observation):
         values[identifier] = (value, known)
         ever_known[identifier] = seen | known
     flush()
-    if (header or len(samples) != spec.cycles or period is None
+    if (header or len(edge_ticks) != spec.cycles or len(samples) != spec.cycles or period is None
             or (spec.period is not None and period != spec.period)
             or (spec.end is not None and last_tick < spec.end)
             or (spec.require_known_initial and not initial_checked)):

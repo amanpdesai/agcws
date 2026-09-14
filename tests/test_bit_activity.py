@@ -66,3 +66,11 @@ def test_half_open_marker_boundary_and_known_carried_state():
     assert result["window_bit_transitions"] == [1, 0]
     with pytest.raises(ValueError, match="carried state"):
         stream_bits(trace({5: ["b0 d\n"]}), spec)
+
+
+def test_marker_between_edges_keeps_first_event_and_half_open_bin_ownership():
+    spec = Observation("top.dut", "top.clk", 4, windows=2,
+                       begin=4, end=12, period=2, require_known_initial=True)
+    result = stream_bits(trace({1: ["b0 d\n"], 4: ["b1 d\n"],
+                                8: ["b0 d\n"], 12: ["b1 d\n"]}), spec)
+    assert result["window_bit_transitions"] == [1, 1]
