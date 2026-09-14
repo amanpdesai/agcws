@@ -5,11 +5,48 @@ below concern **activity-profile synthesis** unless explicitly labeled gate
 power. Lower best-so-far target-error AUC is better. Budgets, normalizations
 and target banks differ across studies: do not compare their raw AUC values.
 
-## Five-design qualification and feedback readiness — incomplete
+## Five-design qualification and feedback readiness — operationally ready
+
+The [readiness receipt](results/benchmark_readiness_v1/full-flash-readiness-v1.json)
+checks all five current banks, 90/90 qualified requests and actual generated
+feedback for 90/90 requests. **Ready for launch approval, not already launched.**
+The [prospective full-study protocol](docs/FULL_FLASH_V1.md) and per-design
+`full-flash-v1-plan/` configs are frozen: ten paired fresh search seeds, eight
+substantive confirmation profiles plus control, Flash/random/GA, 128-slot
+ceiling with batch-end early stopping. These target vectors were already seen
+in engineering; do not claim unseen-task generalization.
+
+AES v5 passes all eighteen strict feedback checks; DMA v5 passes seventeen.
+DMA development-quiet-interval first produced a valid candidate at the final
+batch. A separately frozen [late-feedback delivery diagnostic](docs/LATE_FEEDBACK_V1.md)
+transmitted that exact measured history, charged two more proposals and measured
+both; one was valid. This closes operational feedback delivery, **not the
+failed sixteen-slot smoke**, which remains 17/18. Mesh, Ibex and RedMulE use
+their archived v4 feedback plus byte-exact controller-context replay and explicit
+measurement/transport compatibility; their API failures remain recorded.
+
+The two v5 smokes completed 1,728 slots and 252 Flash calls, costing $3.5961258
+with no unknown usage or API errors. The DMA diagnostic adds two slots and one
+call, $0.0234079. A successful AES request took 223.5 seconds, providing real
+evidence that the former 120-second client deadline was too short for some calls.
+It does not establish the internal cause of the provider's slow response tail.
+
+Compliance remains a model limitation: excluding the 36 shared initialization
+slots per design, AES v5 generated 140/252 valid candidates and DMA 141/252.
+Most rejections were exact-budget violations. Operational readiness is not a
+claim of strong search performance or reliable arithmetic; publish failure
+rates and keep charged-invalid accounting. New seeds and the deadline change
+also prevent attributing any improvement solely to the arithmetic helper.
+
+Evidence: [AES v5](results/aes/bank-smoke-v5/README.md),
+[DMA v5](results/dma/bank-smoke-v5/README.md), and
+[DMA delivery](results/dma/late-feedback-v1/README.md).
+
+### Preserved v4 findings and intervention history
 
 The subsequent [v5 arithmetic-feedback intervention](docs/BUDGET_FEEDBACK_V5.md)
 has passed current-runtime calibration/witness compatibility checks on all five
-designs. It has not yet been tested with new model calls. Context replay shows
+designs. It was subsequently tested as reported above. Context replay shows
 only AES/DMA payloads change; prior v4 smoke results below remain unchanged.
 The subsequent [deadline diagnosis](docs/SMOKE_FAILURE_DIAGNOSIS.md) found all
 four API 504s at 118.6–119.7 seconds against our own forwarded 120-second

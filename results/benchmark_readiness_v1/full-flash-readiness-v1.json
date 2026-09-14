@@ -1,0 +1,230 @@
+{
+  "ready_for_launch_approval": true,
+  "launch_authorized": false,
+  "scope": "operational engineering readiness, not model performance or zero-error certification",
+  "designs": [
+    {
+      "design": "aes",
+      "bank_sha256": "30426a69b5d067fc19eb4acbf693201889a4a576d938737cc9808d2115518a32",
+      "qualified_requests": 18,
+      "strict_smoke_targets_ready": 18,
+      "smoke_version": 5,
+      "accounting": {
+        "feedback_targets": [
+          "development-activation",
+          "development-deactivation",
+          "development-burst",
+          "development-quiet_interval",
+          "development-alternating",
+          "development-ramp",
+          "development-rise_fall",
+          "development-irregular",
+          "development-flat_control",
+          "confirmation-activation",
+          "confirmation-deactivation",
+          "confirmation-burst",
+          "confirmation-quiet_interval",
+          "confirmation-alternating",
+          "confirmation-ramp",
+          "confirmation-rise_fall",
+          "confirmation-irregular",
+          "confirmation-flat_control"
+        ],
+        "known_cost_usd": 1.8558573000000005,
+        "unknown_reserved_usd": 0.0,
+        "recorded_api_failures": [],
+        "slots": 864
+      },
+      "late_feedback": null,
+      "operational_feedback_targets": 18,
+      "full_plan_sha256": "16f90f9ee32dab947324d94798c289ecc78b6f9adf81f29dafb804db1c2c306f"
+    },
+    {
+      "design": "dma",
+      "bank_sha256": "b0c21dccb059a885ac64baaa3558ad1dc5d64e1816c6f12bc9c829399aab1c7a",
+      "qualified_requests": 18,
+      "strict_smoke_targets_ready": 17,
+      "smoke_version": 5,
+      "accounting": {
+        "feedback_targets": [
+          "development-activation",
+          "development-deactivation",
+          "development-burst",
+          "development-alternating",
+          "development-ramp",
+          "development-rise_fall",
+          "development-irregular",
+          "development-flat_control",
+          "confirmation-activation",
+          "confirmation-deactivation",
+          "confirmation-burst",
+          "confirmation-quiet_interval",
+          "confirmation-alternating",
+          "confirmation-ramp",
+          "confirmation-rise_fall",
+          "confirmation-irregular",
+          "confirmation-flat_control"
+        ],
+        "known_cost_usd": 1.740268499999999,
+        "unknown_reserved_usd": 0.0,
+        "recorded_api_failures": [],
+        "slots": 864
+      },
+      "late_feedback": {
+        "kind": "late-feedback-delivery-v1",
+        "charged_slots": 2,
+        "records": [
+          {
+            "target": "development-quiet_interval",
+            "delivered": true,
+            "known_cost_usd": 0.023407900000000002,
+            "valid_new_slots": 1
+          }
+        ],
+        "delivered": true,
+        "liability_usd": 0.02340790000000001,
+        "strict_smoke_status_changed": false
+      },
+      "operational_feedback_targets": 18,
+      "full_plan_sha256": "6efb15ceec4d0e8f6409df163c9cc1a9259d1ced952d7347df19739be974bf7d"
+    },
+    {
+      "design": "mesh",
+      "bank_sha256": "b38f369f2a04e80e86e893cfd1b0fdf0181b1877cd97b1df7836842112f7b2b4",
+      "qualified_requests": 18,
+      "strict_smoke_targets_ready": 16,
+      "smoke_version": 4,
+      "accounting": {
+        "feedback_targets": [
+          "development-activation",
+          "development-deactivation",
+          "development-burst",
+          "development-quiet_interval",
+          "development-alternating",
+          "development-ramp",
+          "development-rise_fall",
+          "development-irregular",
+          "development-flat_control",
+          "confirmation-activation",
+          "confirmation-deactivation",
+          "confirmation-burst",
+          "confirmation-quiet_interval",
+          "confirmation-alternating",
+          "confirmation-ramp",
+          "confirmation-rise_fall",
+          "confirmation-irregular",
+          "confirmation-flat_control"
+        ],
+        "known_cost_usd": 2.0012623,
+        "unknown_reserved_usd": 0.20192,
+        "recorded_api_failures": [
+          {
+            "target": "development-flat_control",
+            "first_slot": 11,
+            "error": {
+              "type": "ServerError",
+              "message": "504 DEADLINE_EXCEEDED. {'error': {'code': 504, 'message': 'Deadline expired before operation could complete.', 'status': 'DEADLINE_EXCEEDED'}}"
+            }
+          },
+          {
+            "target": "confirmation-activation",
+            "first_slot": 9,
+            "error": {
+              "type": "ServerError",
+              "message": "504 DEADLINE_EXCEEDED. {'error': {'code': 504, 'message': 'Deadline expired before operation could complete.', 'status': 'DEADLINE_EXCEEDED'}}"
+            }
+          }
+        ],
+        "slots": 864
+      },
+      "late_feedback": null,
+      "operational_feedback_targets": 18,
+      "full_plan_sha256": "d071693a5105b8407392748f875af3adad1c6c2cec113d035d2534893ce61e37"
+    },
+    {
+      "design": "ibex",
+      "bank_sha256": "d487ae3082595603488d1c9fbf96f01bc3b34e0203135e338142f59347ee3c09",
+      "qualified_requests": 18,
+      "strict_smoke_targets_ready": 18,
+      "smoke_version": 4,
+      "accounting": {
+        "feedback_targets": [
+          "development-activation",
+          "development-deactivation",
+          "development-burst",
+          "development-quiet_interval",
+          "development-alternating",
+          "development-ramp",
+          "development-rise_fall",
+          "development-irregular",
+          "development-flat_control",
+          "confirmation-activation",
+          "confirmation-deactivation",
+          "confirmation-burst",
+          "confirmation-quiet_interval",
+          "confirmation-alternating",
+          "confirmation-ramp",
+          "confirmation-rise_fall",
+          "confirmation-irregular",
+          "confirmation-flat_control"
+        ],
+        "known_cost_usd": 2.6823517,
+        "unknown_reserved_usd": 0.0,
+        "recorded_api_failures": [],
+        "slots": 864
+      },
+      "late_feedback": null,
+      "operational_feedback_targets": 18,
+      "full_plan_sha256": "4f6c7460a29f80795156526c91b0aabf8f1c3bc6020f91060e4d85be2fa7a5ad"
+    },
+    {
+      "design": "redmule",
+      "bank_sha256": "fb8ef33e6134266831266ed78c8ac77eee49af2d3603e2260926265991c5d245",
+      "qualified_requests": 18,
+      "strict_smoke_targets_ready": 17,
+      "smoke_version": 4,
+      "accounting": {
+        "feedback_targets": [
+          "development-activation",
+          "development-deactivation",
+          "development-burst",
+          "development-quiet_interval",
+          "development-alternating",
+          "development-ramp",
+          "development-rise_fall",
+          "development-irregular",
+          "development-flat_control",
+          "confirmation-activation",
+          "confirmation-deactivation",
+          "confirmation-burst",
+          "confirmation-quiet_interval",
+          "confirmation-alternating",
+          "confirmation-ramp",
+          "confirmation-rise_fall",
+          "confirmation-irregular",
+          "confirmation-flat_control"
+        ],
+        "known_cost_usd": 1.4633528,
+        "unknown_reserved_usd": 0.10096,
+        "recorded_api_failures": [
+          {
+            "target": "development-ramp",
+            "first_slot": 7,
+            "error": {
+              "type": "ServerError",
+              "message": "504 DEADLINE_EXCEEDED. {'error': {'code': 504, 'message': 'Deadline expired before operation could complete.', 'status': 'DEADLINE_EXCEEDED'}}"
+            }
+          }
+        ],
+        "slots": 864
+      },
+      "late_feedback": null,
+      "operational_feedback_targets": 18,
+      "full_plan_sha256": "7ea5bc6f23e8a91c54f6b08feef0929e7fbbfe3597ed3bcda7ac6c4fad715b6c"
+    }
+  ],
+  "qualified_requests": 90,
+  "feedback_requests": 90,
+  "paper_cells_prepared": 1350,
+  "full_study_calls_made": 0
+}

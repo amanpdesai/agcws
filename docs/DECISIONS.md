@@ -1,5 +1,24 @@
 # Decision log
 
+## 2026-09-14 — Close operational readiness without erasing strict smoke failures
+
+All five banks have 18 admitted requests each and checked generated-feedback
+delivery. AES v5 passes 18/18; DMA v5 remains 17/18. The predeclared single-call
+late-feedback diagnostic delivers DMA's actual terminal generated measurement,
+charges two additional slots and costs $0.0234079. It is not a baseline
+comparison or a retroactive smoke pass. Mesh/Ibex/RedMulE retain their old
+feedback evidence with explicit current-context and measurement bridges;
+all original server errors and unknown reservations remain in their archives.
+
+The full Flash plan is frozen but unlaunched: five designs, eight substantive
+confirmation requests plus control each, ten paired fresh search seeds,
+Flash/phase-random/phase-GA, 128-slot ceiling with batch-end early stopping.
+The proposed $600 suite cap requires launch/spending approval and is not a
+verified cloud balance. Engineering exposure means these are not unseen target
+families. Generated AES/DMA validity remains about 56%; readiness is not a
+claim of competitive performance. See the authoritative results and
+`results/benchmark_readiness_v1/full-flash-readiness-v1.json`.
+
 ## 2026-09-14 — Operational readiness approved; diagnose before using exceptions
 
 The user permits a separate operational assessment with actual generated
