@@ -1,5 +1,17 @@
 # Decision log
 
+## 2026-09-14 — Operational readiness approved; diagnose before using exceptions
+
+The user permits a separate operational assessment with actual generated
+feedback on every target, charged failures, reserved unknown cost and tested
+recovery. Original v4 strict failures remain failures; no clean-seed reruns or
+paper-accounting changes are permitted. The subsequent diagnosis identifies
+our own forwarded 120-second deadline as the likely cutoff for all four 504s,
+plus separate exact-budget and output-truncation failures. See
+[the diagnosis and evidence](SMOKE_FAILURE_DIAGNOSIS.md). Corrective transport
+settings must be explicitly versioned before further paid checks. No full
+study is authorized by this operational approval.
+
 ## 2026-09-14 — Separately version RedMulE's longer observation window
 
 **Decision.** With explicit user authorization, test 262,144 cycles in a new
