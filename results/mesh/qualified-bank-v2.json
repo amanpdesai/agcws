@@ -1,0 +1,858 @@
+{
+  "scope": "qualified activity targets; not full-study readiness or gate-power evidence",
+  "domain": "mesh-temporal",
+  "target_bank_qualified": true,
+  "full_study_ready": false,
+  "calibration": {
+    "domain": "mesh-temporal",
+    "proposals": 64,
+    "valid": 64,
+    "failure_stages": {},
+    "measurement_fingerprint": "33447617a43834e70c2e0ebf433b8fb683239b78c0fbd820842f4d5b33142de1",
+    "target_qualified": false,
+    "status": "calibrated",
+    "low": 6.500487804878048,
+    "high": 88.44448780487805,
+    "scale": 81.944,
+    "median_window_mean": 46.9715243902439,
+    "min_bin": 2.0,
+    "max_bin": 233.26829268292684,
+    "mean_range": [
+      12.984024390243901,
+      76.11914634146342
+    ]
+  },
+  "audit": {
+    "scope": "decision, functional-record and activity arithmetic audit; no independent waveform resimulation",
+    "domain": "mesh-temporal",
+    "cases": 18,
+    "qualified": 18,
+    "charged_slots": 140,
+    "unique_profiles_checked": 131,
+    "manifest_sha256": "51b6993951c56820b554cf8f4bb8a883d81ed1b9a79c7506f5deb9afb3f9d1fa"
+  },
+  "qualification_procedures": [
+    "docs/TARGET_QUALIFICATION_V1.md",
+    "docs/WITNESS_REFINEMENT_V4.md",
+    "docs/RUNTIME_REPLAY_V2.md"
+  ],
+  "splits": {
+    "development": {
+      "requests": [
+        {
+          "id": "activation",
+          "split": "development",
+          "rates": [
+            22.889287804878048,
+            22.889287804878048,
+            72.05568780487805,
+            72.05568780487805,
+            72.05568780487805,
+            72.05568780487805,
+            72.05568780487805,
+            72.05568780487805
+          ],
+          "control": false,
+          "qualified": true,
+          "constant_floor": 0.25980762113533157,
+          "best_constant_rate": 59.764087804878045,
+          "span_over_scale": 0.6,
+          "total_variation_over_scale": 0.6,
+          "necessary_floor_gate": true,
+          "witness_error": 0.0641660981063695,
+          "witness_cache_id": "9ffbb85f364fda37a6f33adaf8a5fa6e294ce82e7c30447ce1388d6204ce4411",
+          "witness_case": "development-activation"
+        },
+        {
+          "id": "deactivation",
+          "split": "development",
+          "rates": [
+            72.05568780487805,
+            72.05568780487805,
+            72.05568780487805,
+            72.05568780487805,
+            22.889287804878048,
+            22.889287804878048,
+            22.889287804878048,
+            22.889287804878048
+          ],
+          "control": false,
+          "qualified": true,
+          "constant_floor": 0.3,
+          "best_constant_rate": 47.47248780487805,
+          "span_over_scale": 0.6,
+          "total_variation_over_scale": 0.6,
+          "necessary_floor_gate": true,
+          "witness_error": 0.09275628091029502,
+          "witness_cache_id": "97fa376236da0e3ab057c8d5a343f2b3631f38a5fbd14c4f03bc28a7a556ca18",
+          "witness_case": "development-deactivation"
+        },
+        {
+          "id": "burst",
+          "split": "development",
+          "rates": [
+            22.889287804878048,
+            22.889287804878048,
+            22.889287804878048,
+            72.05568780487805,
+            72.05568780487805,
+            22.889287804878048,
+            22.889287804878048,
+            22.889287804878048
+          ],
+          "control": false,
+          "qualified": true,
+          "constant_floor": 0.25980762113533157,
+          "best_constant_rate": 35.18088780487805,
+          "span_over_scale": 0.6,
+          "total_variation_over_scale": 1.2,
+          "necessary_floor_gate": true,
+          "witness_error": 0.09737746731520516,
+          "witness_cache_id": "28eb8ea3231661c1997ea1cc6d38cabca4d8833820ada6724509597c06d6e6f7",
+          "witness_case": "development-burst"
+        },
+        {
+          "id": "quiet_interval",
+          "split": "development",
+          "rates": [
+            72.05568780487805,
+            72.05568780487805,
+            72.05568780487805,
+            22.889287804878048,
+            22.889287804878048,
+            72.05568780487805,
+            72.05568780487805,
+            72.05568780487805
+          ],
+          "control": false,
+          "qualified": true,
+          "constant_floor": 0.25980762113533157,
+          "best_constant_rate": 59.764087804878045,
+          "span_over_scale": 0.6,
+          "total_variation_over_scale": 1.2,
+          "necessary_floor_gate": true,
+          "witness_error": 0.08770357540181604,
+          "witness_cache_id": "b67529d0f610d122152ce5ff739143bb554d1212e833df9075fad6be9fc13e4e",
+          "witness_case": "development-quiet_interval"
+        },
+        {
+          "id": "alternating",
+          "split": "development",
+          "rates": [
+            22.889287804878048,
+            72.05568780487805,
+            22.889287804878048,
+            72.05568780487805,
+            22.889287804878048,
+            72.05568780487805,
+            22.889287804878048,
+            72.05568780487805
+          ],
+          "control": false,
+          "qualified": true,
+          "constant_floor": 0.3,
+          "best_constant_rate": 47.47248780487805,
+          "span_over_scale": 0.6,
+          "total_variation_over_scale": 4.199999999999999,
+          "necessary_floor_gate": true,
+          "witness_error": 0.0641668625124135,
+          "witness_cache_id": "9df954a4a38efec96c75c794c9bfb7f0f0c09f80794c87da0020a7ced544cd6f",
+          "witness_case": "development-alternating"
+        },
+        {
+          "id": "ramp",
+          "split": "development",
+          "rates": [
+            22.889287804878048,
+            22.889287804878048,
+            39.11419980487805,
+            39.11419980487805,
+            55.83077580487806,
+            55.83077580487806,
+            72.05568780487805,
+            72.05568780487805
+          ],
+          "control": false,
+          "qualified": true,
+          "constant_floor": 0.2240580281980541,
+          "best_constant_rate": 47.47248780487805,
+          "span_over_scale": 0.6,
+          "total_variation_over_scale": 0.6,
+          "necessary_floor_gate": true,
+          "witness_error": 0.09407456170564225,
+          "witness_cache_id": "7d313dc1d9c4014829ae01ef6e021802e1952aec3f06cb93fc69de49e28414c6",
+          "witness_case": "development-ramp"
+        },
+        {
+          "id": "rise_fall",
+          "split": "development",
+          "rates": [
+            22.889287804878048,
+            47.47248780487805,
+            72.05568780487805,
+            72.05568780487805,
+            72.05568780487805,
+            47.47248780487805,
+            22.889287804878048,
+            22.889287804878048
+          ],
+          "control": false,
+          "qualified": true,
+          "constant_floor": 0.25980762113533157,
+          "best_constant_rate": 47.47248780487805,
+          "span_over_scale": 0.6,
+          "total_variation_over_scale": 1.2,
+          "necessary_floor_gate": true,
+          "witness_error": 0.09265191449145833,
+          "witness_cache_id": "cd59c6810e2b6d1d13687be9303b9b579194c8045f280c87e74b02c09ced9fa5",
+          "witness_case": "development-rise_fall"
+        },
+        {
+          "id": "irregular",
+          "split": "development",
+          "rates": [
+            47.47248780487805,
+            72.05568780487805,
+            22.889287804878048,
+            22.889287804878048,
+            72.05568780487805,
+            47.47248780487805,
+            22.889287804878048,
+            72.05568780487805
+          ],
+          "control": false,
+          "qualified": true,
+          "constant_floor": 0.25980762113533157,
+          "best_constant_rate": 47.47248780487805,
+          "span_over_scale": 0.6,
+          "total_variation_over_scale": 2.6999999999999997,
+          "necessary_floor_gate": true,
+          "witness_error": 0.07844103413841753,
+          "witness_cache_id": "4972347c8d44281de314427c5c1caf9ab41f63096bebbae2bb9fe8a20c7edd39",
+          "witness_case": "development-irregular"
+        },
+        {
+          "id": "flat_control",
+          "split": "development",
+          "rates": [
+            42.555847804878056,
+            42.555847804878056,
+            42.555847804878056,
+            42.555847804878056,
+            42.555847804878056,
+            42.555847804878056,
+            42.555847804878056,
+            42.555847804878056
+          ],
+          "control": true,
+          "qualified": true,
+          "constant_floor": 0.0,
+          "best_constant_rate": 42.555847804878056,
+          "span_over_scale": 0.0,
+          "total_variation_over_scale": 0.0,
+          "necessary_floor_gate": true,
+          "witness_error": 0.05370439710924893,
+          "witness_cache_id": "c7f0bc8ef28d4cd2a1e54200abb63fe6446d5c8377473c17d4ca5306cb5c8d6e",
+          "witness_case": "development-flat_control"
+        }
+      ],
+      "pairwise_distances": [
+        {
+          "left": "activation",
+          "right": "deactivation",
+          "distance": 0.5196152422706631
+        },
+        {
+          "left": "activation",
+          "right": "burst",
+          "distance": 0.42426406871192845
+        },
+        {
+          "left": "activation",
+          "right": "quiet_interval",
+          "distance": 0.42426406871192845
+        },
+        {
+          "left": "activation",
+          "right": "alternating",
+          "distance": 0.42426406871192845
+        },
+        {
+          "left": "activation",
+          "right": "ramp",
+          "distance": 0.22405802819805407
+        },
+        {
+          "left": "activation",
+          "right": "rise_fall",
+          "distance": 0.33541019662496846
+        },
+        {
+          "left": "activation",
+          "right": "irregular",
+          "distance": 0.4499999999999999
+        },
+        {
+          "left": "activation",
+          "right": "flat_control",
+          "distance": 0.33406586176980124
+        },
+        {
+          "left": "deactivation",
+          "right": "burst",
+          "distance": 0.42426406871192845
+        },
+        {
+          "left": "deactivation",
+          "right": "quiet_interval",
+          "distance": 0.42426406871192845
+        },
+        {
+          "left": "deactivation",
+          "right": "alternating",
+          "distance": 0.42426406871192845
+        },
+        {
+          "left": "deactivation",
+          "right": "ramp",
+          "distance": 0.510687771539519
+        },
+        {
+          "left": "deactivation",
+          "right": "rise_fall",
+          "distance": 0.33541019662496846
+        },
+        {
+          "left": "deactivation",
+          "right": "irregular",
+          "distance": 0.4499999999999999
+        },
+        {
+          "left": "deactivation",
+          "right": "flat_control",
+          "distance": 0.30594117081556704
+        },
+        {
+          "left": "burst",
+          "right": "quiet_interval",
+          "distance": 0.6
+        },
+        {
+          "left": "burst",
+          "right": "alternating",
+          "distance": 0.42426406871192845
+        },
+        {
+          "left": "burst",
+          "right": "ramp",
+          "distance": 0.3744355752329097
+        },
+        {
+          "left": "burst",
+          "right": "rise_fall",
+          "distance": 0.25980762113533157
+        },
+        {
+          "left": "burst",
+          "right": "irregular",
+          "distance": 0.3968626966596886
+        },
+        {
+          "left": "burst",
+          "right": "flat_control",
+          "distance": 0.2749545416973504
+        },
+        {
+          "left": "quiet_interval",
+          "right": "alternating",
+          "distance": 0.42426406871192845
+        },
+        {
+          "left": "quiet_interval",
+          "right": "ramp",
+          "distance": 0.3744355752329097
+        },
+        {
+          "left": "quiet_interval",
+          "right": "rise_fall",
+          "distance": 0.49749371855331
+        },
+        {
+          "left": "quiet_interval",
+          "right": "irregular",
+          "distance": 0.3968626966596886
+        },
+        {
+          "left": "quiet_interval",
+          "right": "flat_control",
+          "distance": 0.33406586176980124
+        },
+        {
+          "left": "alternating",
+          "right": "ramp",
+          "distance": 0.3744355752329097
+        },
+        {
+          "left": "alternating",
+          "right": "rise_fall",
+          "distance": 0.3968626966596886
+        },
+        {
+          "left": "alternating",
+          "right": "irregular",
+          "distance": 0.33541019662496846
+        },
+        {
+          "left": "alternating",
+          "right": "flat_control",
+          "distance": 0.30594117081556704
+        },
+        {
+          "left": "ramp",
+          "right": "rise_fall",
+          "distance": 0.3845152792802907
+        },
+        {
+          "left": "ramp",
+          "right": "irregular",
+          "distance": 0.3424207937611266
+        },
+        {
+          "left": "ramp",
+          "right": "flat_control",
+          "distance": 0.23195258136093247
+        },
+        {
+          "left": "rise_fall",
+          "right": "irregular",
+          "distance": 0.3968626966596886
+        },
+        {
+          "left": "rise_fall",
+          "right": "flat_control",
+          "distance": 0.2666458325194676
+        },
+        {
+          "left": "irregular",
+          "right": "flat_control",
+          "distance": 0.2666458325194676
+        }
+      ]
+    },
+    "confirmation": {
+      "requests": [
+        {
+          "id": "activation",
+          "split": "confirmation",
+          "rates": [
+            14.694887804878048,
+            14.694887804878048,
+            80.25008780487805,
+            80.25008780487805,
+            80.25008780487805,
+            80.25008780487805,
+            80.25008780487805,
+            80.25008780487805
+          ],
+          "control": false,
+          "qualified": true,
+          "constant_floor": 0.34641016151377546,
+          "best_constant_rate": 63.861287804878046,
+          "span_over_scale": 0.7999999999999999,
+          "total_variation_over_scale": 0.7999999999999999,
+          "necessary_floor_gate": true,
+          "witness_error": 0.08440111556766519,
+          "witness_cache_id": "c5a687c68f563a565d1fe1a22335b53b907c0eb072dee0c0d83067912c4dbe44",
+          "witness_case": "confirmation-activation"
+        },
+        {
+          "id": "deactivation",
+          "split": "confirmation",
+          "rates": [
+            80.25008780487805,
+            80.25008780487805,
+            80.25008780487805,
+            80.25008780487805,
+            14.694887804878048,
+            14.694887804878048,
+            14.694887804878048,
+            14.694887804878048
+          ],
+          "control": false,
+          "qualified": true,
+          "constant_floor": 0.39999999999999997,
+          "best_constant_rate": 47.47248780487805,
+          "span_over_scale": 0.7999999999999999,
+          "total_variation_over_scale": 0.7999999999999999,
+          "necessary_floor_gate": true,
+          "witness_error": 0.07311711382141844,
+          "witness_cache_id": "9341ca950dc276607f13f916998a2f72bb0865ece8e59880286306028d67392b",
+          "witness_case": "confirmation-deactivation"
+        },
+        {
+          "id": "burst",
+          "split": "confirmation",
+          "rates": [
+            14.694887804878048,
+            14.694887804878048,
+            14.694887804878048,
+            80.25008780487805,
+            80.25008780487805,
+            14.694887804878048,
+            14.694887804878048,
+            14.694887804878048
+          ],
+          "control": false,
+          "qualified": true,
+          "constant_floor": 0.34641016151377546,
+          "best_constant_rate": 31.08368780487805,
+          "span_over_scale": 0.7999999999999999,
+          "total_variation_over_scale": 1.5999999999999999,
+          "necessary_floor_gate": true,
+          "witness_error": 0.06971969209218871,
+          "witness_cache_id": "14a273ad231b026648d357a95b9180167ef22c0cd28f1e345f6b244427948672",
+          "witness_case": "confirmation-burst"
+        },
+        {
+          "id": "quiet_interval",
+          "split": "confirmation",
+          "rates": [
+            80.25008780487805,
+            80.25008780487805,
+            80.25008780487805,
+            14.694887804878048,
+            14.694887804878048,
+            80.25008780487805,
+            80.25008780487805,
+            80.25008780487805
+          ],
+          "control": false,
+          "qualified": true,
+          "constant_floor": 0.34641016151377546,
+          "best_constant_rate": 63.861287804878046,
+          "span_over_scale": 0.7999999999999999,
+          "total_variation_over_scale": 1.5999999999999999,
+          "necessary_floor_gate": true,
+          "witness_error": 0.08753530776711393,
+          "witness_cache_id": "c2cd9b40f872e8d27716396b518c96bd9fe289794ad4bc98822dc8ee7e21c7dc",
+          "witness_case": "confirmation-quiet_interval"
+        },
+        {
+          "id": "alternating",
+          "split": "confirmation",
+          "rates": [
+            14.694887804878048,
+            80.25008780487805,
+            14.694887804878048,
+            80.25008780487805,
+            14.694887804878048,
+            80.25008780487805,
+            14.694887804878048,
+            80.25008780487805
+          ],
+          "control": false,
+          "qualified": true,
+          "constant_floor": 0.39999999999999997,
+          "best_constant_rate": 47.47248780487805,
+          "span_over_scale": 0.7999999999999999,
+          "total_variation_over_scale": 5.6,
+          "necessary_floor_gate": true,
+          "witness_error": 0.09661750631043614,
+          "witness_cache_id": "07a480a965369329631cfcef40c4732ced82a1fccd9cf2a3724b9687030d1919",
+          "witness_case": "confirmation-alternating"
+        },
+        {
+          "id": "ramp",
+          "split": "confirmation",
+          "rates": [
+            14.694887804878048,
+            14.694887804878048,
+            36.32810380487805,
+            36.32810380487805,
+            58.61687180487805,
+            58.61687180487805,
+            80.25008780487805,
+            80.25008780487805
+          ],
+          "control": false,
+          "qualified": true,
+          "constant_floor": 0.2987440375974054,
+          "best_constant_rate": 47.47248780487805,
+          "span_over_scale": 0.7999999999999999,
+          "total_variation_over_scale": 0.7999999999999999,
+          "necessary_floor_gate": true,
+          "witness_error": 0.040374243712967245,
+          "witness_cache_id": "9b856d9372f2fd1fcb9c8d2bebc0c1455054819ef8d031d370c18610c87a2f0f",
+          "witness_case": "confirmation-ramp"
+        },
+        {
+          "id": "rise_fall",
+          "split": "confirmation",
+          "rates": [
+            14.694887804878048,
+            47.47248780487805,
+            80.25008780487805,
+            80.25008780487805,
+            80.25008780487805,
+            47.47248780487805,
+            14.694887804878048,
+            14.694887804878048
+          ],
+          "control": false,
+          "qualified": true,
+          "constant_floor": 0.34641016151377546,
+          "best_constant_rate": 47.47248780487805,
+          "span_over_scale": 0.7999999999999999,
+          "total_variation_over_scale": 1.5999999999999999,
+          "necessary_floor_gate": true,
+          "witness_error": 0.03963114396774949,
+          "witness_cache_id": "155aa759591b905dcdd6ff5538c414d237db216482c263f41363c4000751b81c",
+          "witness_case": "confirmation-rise_fall"
+        },
+        {
+          "id": "irregular",
+          "split": "confirmation",
+          "rates": [
+            47.47248780487805,
+            80.25008780487805,
+            14.694887804878048,
+            14.694887804878048,
+            80.25008780487805,
+            47.47248780487805,
+            14.694887804878048,
+            80.25008780487805
+          ],
+          "control": false,
+          "qualified": true,
+          "constant_floor": 0.34641016151377546,
+          "best_constant_rate": 47.47248780487805,
+          "span_over_scale": 0.7999999999999999,
+          "total_variation_over_scale": 3.6,
+          "necessary_floor_gate": true,
+          "witness_error": 0.07687093726862224,
+          "witness_cache_id": "c887662a23415a8e13f3d11efa5c14412dca8c377587e97af3b0849030105c01",
+          "witness_case": "confirmation-irregular"
+        },
+        {
+          "id": "flat_control",
+          "split": "confirmation",
+          "rates": [
+            54.028007804878044,
+            54.028007804878044,
+            54.028007804878044,
+            54.028007804878044,
+            54.028007804878044,
+            54.028007804878044,
+            54.028007804878044,
+            54.028007804878044
+          ],
+          "control": true,
+          "qualified": true,
+          "constant_floor": 0.0,
+          "best_constant_rate": 54.028007804878044,
+          "span_over_scale": 0.0,
+          "total_variation_over_scale": 0.0,
+          "necessary_floor_gate": true,
+          "witness_error": 0.05037935851437547,
+          "witness_cache_id": "692f6127f7b02ab20bc160c5e7261f80003bfa2039088c5d3abb8de52b6c59fd",
+          "witness_case": "confirmation-flat_control"
+        }
+      ],
+      "pairwise_distances": [
+        {
+          "left": "activation",
+          "right": "deactivation",
+          "distance": 0.6928203230275509
+        },
+        {
+          "left": "activation",
+          "right": "burst",
+          "distance": 0.565685424949238
+        },
+        {
+          "left": "activation",
+          "right": "quiet_interval",
+          "distance": 0.565685424949238
+        },
+        {
+          "left": "activation",
+          "right": "alternating",
+          "distance": 0.565685424949238
+        },
+        {
+          "left": "activation",
+          "right": "ramp",
+          "distance": 0.2987440375974054
+        },
+        {
+          "left": "activation",
+          "right": "rise_fall",
+          "distance": 0.4472135954999579
+        },
+        {
+          "left": "activation",
+          "right": "irregular",
+          "distance": 0.6
+        },
+        {
+          "left": "activation",
+          "right": "flat_control",
+          "distance": 0.36660605559646725
+        },
+        {
+          "left": "deactivation",
+          "right": "burst",
+          "distance": 0.565685424949238
+        },
+        {
+          "left": "deactivation",
+          "right": "quiet_interval",
+          "distance": 0.565685424949238
+        },
+        {
+          "left": "deactivation",
+          "right": "alternating",
+          "distance": 0.565685424949238
+        },
+        {
+          "left": "deactivation",
+          "right": "ramp",
+          "distance": 0.6809170287193587
+        },
+        {
+          "left": "deactivation",
+          "right": "rise_fall",
+          "distance": 0.4472135954999579
+        },
+        {
+          "left": "deactivation",
+          "right": "irregular",
+          "distance": 0.6
+        },
+        {
+          "left": "deactivation",
+          "right": "flat_control",
+          "distance": 0.4079215610874227
+        },
+        {
+          "left": "burst",
+          "right": "quiet_interval",
+          "distance": 0.7999999999999999
+        },
+        {
+          "left": "burst",
+          "right": "alternating",
+          "distance": 0.565685424949238
+        },
+        {
+          "left": "burst",
+          "right": "ramp",
+          "distance": 0.4992474336438796
+        },
+        {
+          "left": "burst",
+          "right": "rise_fall",
+          "distance": 0.34641016151377546
+        },
+        {
+          "left": "burst",
+          "right": "irregular",
+          "distance": 0.529150262212918
+        },
+        {
+          "left": "burst",
+          "right": "flat_control",
+          "distance": 0.4454211490264017
+        },
+        {
+          "left": "quiet_interval",
+          "right": "alternating",
+          "distance": 0.565685424949238
+        },
+        {
+          "left": "quiet_interval",
+          "right": "ramp",
+          "distance": 0.4992474336438796
+        },
+        {
+          "left": "quiet_interval",
+          "right": "rise_fall",
+          "distance": 0.6633249580710798
+        },
+        {
+          "left": "quiet_interval",
+          "right": "irregular",
+          "distance": 0.529150262212918
+        },
+        {
+          "left": "quiet_interval",
+          "right": "flat_control",
+          "distance": 0.36660605559646725
+        },
+        {
+          "left": "alternating",
+          "right": "ramp",
+          "distance": 0.4992474336438796
+        },
+        {
+          "left": "alternating",
+          "right": "rise_fall",
+          "distance": 0.529150262212918
+        },
+        {
+          "left": "alternating",
+          "right": "irregular",
+          "distance": 0.4472135954999579
+        },
+        {
+          "left": "alternating",
+          "right": "flat_control",
+          "distance": 0.4079215610874227
+        },
+        {
+          "left": "ramp",
+          "right": "rise_fall",
+          "distance": 0.5126870390403877
+        },
+        {
+          "left": "ramp",
+          "right": "irregular",
+          "distance": 0.4565610583481688
+        },
+        {
+          "left": "ramp",
+          "right": "flat_control",
+          "distance": 0.3092701084812433
+        },
+        {
+          "left": "rise_fall",
+          "right": "irregular",
+          "distance": 0.529150262212918
+        },
+        {
+          "left": "rise_fall",
+          "right": "flat_control",
+          "distance": 0.35552777669262353
+        },
+        {
+          "left": "irregular",
+          "right": "flat_control",
+          "distance": 0.35552777669262353
+        }
+      ]
+    }
+  },
+  "runtime_replay": {
+    "cases": 82,
+    "exact_measurement_match": true,
+    "full_study_ready": false,
+    "old_measurement_fingerprint": "ab0c3aebd98bb107abb6eb45714296c50218a0046d282b28b08a52f81c3dfec7",
+    "new_measurement_fingerprint": "33447617a43834e70c2e0ebf433b8fb683239b78c0fbd820842f4d5b33142de1",
+    "scope": "exact rates, validity and complete profile replay, not a policy comparison",
+    "lineage": {
+      "bank_sha256": "d5bdf6e712521349ec37a8d20b6bb6c3efeb7db361e3ecdfeef614432e41c291",
+      "calibration_manifest_sha256": "1594041a39cc3136eb4072b9587bb6b1658341b2dc34e18ac43ccecb43f542de",
+      "witness_manifest_sha256": "51b6993951c56820b554cf8f4bb8a883d81ed1b9a79c7506f5deb9afb3f9d1fa"
+    }
+  }
+}

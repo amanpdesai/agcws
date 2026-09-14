@@ -1,0 +1,6370 @@
+{
+  "name": "aes-temporal-runtime-replay-v2",
+  "domain": "aes-temporal",
+  "scope": "exact calibration and witness replay; not a new policy comparison",
+  "max_workers": 18,
+  "cases": [
+    {
+      "id": "calibration-00",
+      "program": {
+        "sequence": [
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "work",
+            "units": 6
+          },
+          {
+            "op": "work",
+            "units": 10
+          },
+          {
+            "op": "wait",
+            "cycles": 1085
+          },
+          {
+            "op": "wait",
+            "cycles": 39
+          },
+          {
+            "op": "wait",
+            "cycles": 245
+          },
+          {
+            "op": "work",
+            "units": 7
+          },
+          {
+            "op": "wait",
+            "cycles": 215
+          },
+          {
+            "op": "work",
+            "units": 5
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "wait",
+            "cycles": 672
+          },
+          {
+            "op": "wait",
+            "cycles": 193
+          },
+          {
+            "op": "work",
+            "units": 18
+          },
+          {
+            "op": "wait",
+            "cycles": 391
+          },
+          {
+            "op": "wait",
+            "cycles": 275
+          },
+          {
+            "op": "wait",
+            "cycles": 573
+          },
+          {
+            "op": "wait",
+            "cycles": 314
+          },
+          {
+            "op": "work",
+            "units": 5
+          },
+          {
+            "op": "wait",
+            "cycles": 615
+          },
+          {
+            "op": "work",
+            "units": 7
+          },
+          {
+            "op": "wait",
+            "cycles": 682
+          },
+          {
+            "op": "wait",
+            "cycles": 656
+          },
+          {
+            "op": "wait",
+            "cycles": 45
+          }
+        ]
+      }
+    },
+    {
+      "id": "calibration-01",
+      "program": {
+        "sequence": [
+          {
+            "op": "wait",
+            "cycles": 803
+          },
+          {
+            "op": "wait",
+            "cycles": 209
+          },
+          {
+            "op": "work",
+            "units": 7
+          },
+          {
+            "op": "wait",
+            "cycles": 374
+          },
+          {
+            "op": "wait",
+            "cycles": 35
+          },
+          {
+            "op": "wait",
+            "cycles": 364
+          },
+          {
+            "op": "wait",
+            "cycles": 605
+          },
+          {
+            "op": "wait",
+            "cycles": 903
+          },
+          {
+            "op": "work",
+            "units": 31
+          },
+          {
+            "op": "wait",
+            "cycles": 272
+          },
+          {
+            "op": "work",
+            "units": 13
+          },
+          {
+            "op": "work",
+            "units": 6
+          },
+          {
+            "op": "wait",
+            "cycles": 670
+          },
+          {
+            "op": "wait",
+            "cycles": 15
+          },
+          {
+            "op": "wait",
+            "cycles": 119
+          },
+          {
+            "op": "wait",
+            "cycles": 69
+          },
+          {
+            "op": "wait",
+            "cycles": 15
+          },
+          {
+            "op": "wait",
+            "cycles": 225
+          },
+          {
+            "op": "wait",
+            "cycles": 1322
+          },
+          {
+            "op": "work",
+            "units": 7
+          }
+        ]
+      }
+    },
+    {
+      "id": "calibration-02",
+      "program": {
+        "sequence": [
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "wait",
+            "cycles": 679
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "work",
+            "units": 4
+          },
+          {
+            "op": "wait",
+            "cycles": 563
+          },
+          {
+            "op": "wait",
+            "cycles": 2120
+          },
+          {
+            "op": "work",
+            "units": 7
+          },
+          {
+            "op": "wait",
+            "cycles": 100
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "wait",
+            "cycles": 2477
+          },
+          {
+            "op": "work",
+            "units": 7
+          },
+          {
+            "op": "work",
+            "units": 7
+          },
+          {
+            "op": "work",
+            "units": 4
+          },
+          {
+            "op": "wait",
+            "cycles": 61
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "work",
+            "units": 11
+          },
+          {
+            "op": "work",
+            "units": 17
+          }
+        ]
+      }
+    },
+    {
+      "id": "calibration-03",
+      "program": {
+        "sequence": [
+          {
+            "op": "work",
+            "units": 7
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "work",
+            "units": 18
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "work",
+            "units": 5
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "wait",
+            "cycles": 6000
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "work",
+            "units": 28
+          }
+        ]
+      }
+    },
+    {
+      "id": "calibration-04",
+      "program": {
+        "sequence": [
+          {
+            "op": "work",
+            "units": 5
+          },
+          {
+            "op": "wait",
+            "cycles": 174
+          },
+          {
+            "op": "wait",
+            "cycles": 1243
+          },
+          {
+            "op": "wait",
+            "cycles": 25
+          },
+          {
+            "op": "wait",
+            "cycles": 79
+          },
+          {
+            "op": "work",
+            "units": 5
+          },
+          {
+            "op": "wait",
+            "cycles": 1206
+          },
+          {
+            "op": "work",
+            "units": 8
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "work",
+            "units": 5
+          },
+          {
+            "op": "wait",
+            "cycles": 868
+          },
+          {
+            "op": "wait",
+            "cycles": 412
+          },
+          {
+            "op": "work",
+            "units": 10
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "wait",
+            "cycles": 128
+          },
+          {
+            "op": "work",
+            "units": 6
+          },
+          {
+            "op": "wait",
+            "cycles": 232
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "wait",
+            "cycles": 887
+          },
+          {
+            "op": "work",
+            "units": 4
+          },
+          {
+            "op": "work",
+            "units": 7
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "wait",
+            "cycles": 746
+          },
+          {
+            "op": "work",
+            "units": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "calibration-05",
+      "program": {
+        "sequence": [
+          {
+            "op": "wait",
+            "cycles": 1392
+          },
+          {
+            "op": "wait",
+            "cycles": 407
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "wait",
+            "cycles": 151
+          },
+          {
+            "op": "wait",
+            "cycles": 506
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "work",
+            "units": 14
+          },
+          {
+            "op": "wait",
+            "cycles": 29
+          },
+          {
+            "op": "work",
+            "units": 46
+          },
+          {
+            "op": "wait",
+            "cycles": 566
+          },
+          {
+            "op": "wait",
+            "cycles": 848
+          },
+          {
+            "op": "wait",
+            "cycles": 586
+          },
+          {
+            "op": "wait",
+            "cycles": 104
+          },
+          {
+            "op": "wait",
+            "cycles": 734
+          },
+          {
+            "op": "wait",
+            "cycles": 228
+          },
+          {
+            "op": "wait",
+            "cycles": 449
+          }
+        ]
+      }
+    },
+    {
+      "id": "calibration-06",
+      "program": {
+        "sequence": [
+          {
+            "op": "work",
+            "units": 64
+          },
+          {
+            "op": "wait",
+            "cycles": 279
+          },
+          {
+            "op": "wait",
+            "cycles": 1086
+          },
+          {
+            "op": "wait",
+            "cycles": 1508
+          },
+          {
+            "op": "wait",
+            "cycles": 466
+          },
+          {
+            "op": "wait",
+            "cycles": 1504
+          },
+          {
+            "op": "wait",
+            "cycles": 1011
+          },
+          {
+            "op": "wait",
+            "cycles": 146
+          }
+        ]
+      }
+    },
+    {
+      "id": "calibration-07",
+      "program": {
+        "sequence": [
+          {
+            "op": "wait",
+            "cycles": 20
+          },
+          {
+            "op": "wait",
+            "cycles": 416
+          },
+          {
+            "op": "wait",
+            "cycles": 365
+          },
+          {
+            "op": "work",
+            "units": 29
+          },
+          {
+            "op": "wait",
+            "cycles": 216
+          },
+          {
+            "op": "work",
+            "units": 14
+          },
+          {
+            "op": "wait",
+            "cycles": 223
+          },
+          {
+            "op": "wait",
+            "cycles": 524
+          },
+          {
+            "op": "wait",
+            "cycles": 538
+          },
+          {
+            "op": "wait",
+            "cycles": 375
+          },
+          {
+            "op": "wait",
+            "cycles": 593
+          },
+          {
+            "op": "wait",
+            "cycles": 857
+          },
+          {
+            "op": "wait",
+            "cycles": 36
+          },
+          {
+            "op": "wait",
+            "cycles": 172
+          },
+          {
+            "op": "wait",
+            "cycles": 897
+          },
+          {
+            "op": "work",
+            "units": 21
+          },
+          {
+            "op": "wait",
+            "cycles": 588
+          },
+          {
+            "op": "wait",
+            "cycles": 180
+          }
+        ]
+      }
+    },
+    {
+      "id": "calibration-08",
+      "program": {
+        "sequence": [
+          {
+            "op": "work",
+            "units": 64
+          },
+          {
+            "op": "wait",
+            "cycles": 2154
+          },
+          {
+            "op": "wait",
+            "cycles": 161
+          },
+          {
+            "op": "wait",
+            "cycles": 429
+          },
+          {
+            "op": "wait",
+            "cycles": 62
+          },
+          {
+            "op": "wait",
+            "cycles": 377
+          },
+          {
+            "op": "wait",
+            "cycles": 836
+          },
+          {
+            "op": "wait",
+            "cycles": 142
+          },
+          {
+            "op": "wait",
+            "cycles": 1839
+          }
+        ]
+      }
+    },
+    {
+      "id": "calibration-09",
+      "program": {
+        "sequence": [
+          {
+            "op": "wait",
+            "cycles": 6000
+          },
+          {
+            "op": "work",
+            "units": 28
+          },
+          {
+            "op": "work",
+            "units": 13
+          },
+          {
+            "op": "work",
+            "units": 23
+          }
+        ]
+      }
+    },
+    {
+      "id": "calibration-10",
+      "program": {
+        "sequence": [
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "wait",
+            "cycles": 926
+          },
+          {
+            "op": "wait",
+            "cycles": 40
+          },
+          {
+            "op": "wait",
+            "cycles": 550
+          },
+          {
+            "op": "work",
+            "units": 10
+          },
+          {
+            "op": "wait",
+            "cycles": 37
+          },
+          {
+            "op": "work",
+            "units": 4
+          },
+          {
+            "op": "wait",
+            "cycles": 1070
+          },
+          {
+            "op": "work",
+            "units": 6
+          },
+          {
+            "op": "wait",
+            "cycles": 73
+          },
+          {
+            "op": "wait",
+            "cycles": 154
+          },
+          {
+            "op": "work",
+            "units": 4
+          },
+          {
+            "op": "work",
+            "units": 6
+          },
+          {
+            "op": "wait",
+            "cycles": 406
+          },
+          {
+            "op": "wait",
+            "cycles": 85
+          },
+          {
+            "op": "work",
+            "units": 15
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "wait",
+            "cycles": 803
+          },
+          {
+            "op": "work",
+            "units": 9
+          },
+          {
+            "op": "wait",
+            "cycles": 1456
+          },
+          {
+            "op": "wait",
+            "cycles": 102
+          },
+          {
+            "op": "work",
+            "units": 7
+          },
+          {
+            "op": "wait",
+            "cycles": 200
+          },
+          {
+            "op": "wait",
+            "cycles": 98
+          }
+        ]
+      }
+    },
+    {
+      "id": "calibration-11",
+      "program": {
+        "sequence": [
+          {
+            "op": "wait",
+            "cycles": 330
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "wait",
+            "cycles": 14
+          },
+          {
+            "op": "work",
+            "units": 4
+          },
+          {
+            "op": "work",
+            "units": 6
+          },
+          {
+            "op": "wait",
+            "cycles": 226
+          },
+          {
+            "op": "wait",
+            "cycles": 992
+          },
+          {
+            "op": "wait",
+            "cycles": 81
+          },
+          {
+            "op": "wait",
+            "cycles": 56
+          },
+          {
+            "op": "wait",
+            "cycles": 1391
+          },
+          {
+            "op": "wait",
+            "cycles": 102
+          },
+          {
+            "op": "wait",
+            "cycles": 890
+          },
+          {
+            "op": "work",
+            "units": 6
+          },
+          {
+            "op": "wait",
+            "cycles": 936
+          },
+          {
+            "op": "wait",
+            "cycles": 654
+          },
+          {
+            "op": "wait",
+            "cycles": 5
+          },
+          {
+            "op": "work",
+            "units": 21
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "wait",
+            "cycles": 216
+          },
+          {
+            "op": "work",
+            "units": 9
+          },
+          {
+            "op": "work",
+            "units": 6
+          },
+          {
+            "op": "wait",
+            "cycles": 107
+          },
+          {
+            "op": "work",
+            "units": 9
+          }
+        ]
+      }
+    },
+    {
+      "id": "calibration-12",
+      "program": {
+        "sequence": [
+          {
+            "op": "wait",
+            "cycles": 932
+          },
+          {
+            "op": "work",
+            "units": 9
+          },
+          {
+            "op": "work",
+            "units": 5
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "wait",
+            "cycles": 105
+          },
+          {
+            "op": "wait",
+            "cycles": 365
+          },
+          {
+            "op": "work",
+            "units": 15
+          },
+          {
+            "op": "wait",
+            "cycles": 12
+          },
+          {
+            "op": "wait",
+            "cycles": 757
+          },
+          {
+            "op": "work",
+            "units": 19
+          },
+          {
+            "op": "wait",
+            "cycles": 610
+          },
+          {
+            "op": "wait",
+            "cycles": 869
+          },
+          {
+            "op": "wait",
+            "cycles": 43
+          },
+          {
+            "op": "wait",
+            "cycles": 520
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "wait",
+            "cycles": 216
+          },
+          {
+            "op": "wait",
+            "cycles": 359
+          },
+          {
+            "op": "work",
+            "units": 5
+          },
+          {
+            "op": "wait",
+            "cycles": 464
+          },
+          {
+            "op": "work",
+            "units": 5
+          },
+          {
+            "op": "wait",
+            "cycles": 705
+          },
+          {
+            "op": "wait",
+            "cycles": 43
+          }
+        ]
+      }
+    },
+    {
+      "id": "calibration-13",
+      "program": {
+        "sequence": [
+          {
+            "op": "work",
+            "units": 11
+          },
+          {
+            "op": "work",
+            "units": 4
+          },
+          {
+            "op": "wait",
+            "cycles": 1318
+          },
+          {
+            "op": "work",
+            "units": 7
+          },
+          {
+            "op": "work",
+            "units": 8
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "work",
+            "units": 6
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "work",
+            "units": 9
+          },
+          {
+            "op": "work",
+            "units": 4
+          },
+          {
+            "op": "work",
+            "units": 10
+          },
+          {
+            "op": "wait",
+            "cycles": 4682
+          },
+          {
+            "op": "work",
+            "units": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "calibration-14",
+      "program": {
+        "sequence": [
+          {
+            "op": "work",
+            "units": 4
+          },
+          {
+            "op": "work",
+            "units": 11
+          },
+          {
+            "op": "work",
+            "units": 8
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "wait",
+            "cycles": 483
+          },
+          {
+            "op": "work",
+            "units": 4
+          },
+          {
+            "op": "work",
+            "units": 4
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "work",
+            "units": 6
+          },
+          {
+            "op": "wait",
+            "cycles": 1208
+          },
+          {
+            "op": "work",
+            "units": 10
+          },
+          {
+            "op": "wait",
+            "cycles": 455
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "wait",
+            "cycles": 1653
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "wait",
+            "cycles": 2201
+          },
+          {
+            "op": "work",
+            "units": 2
+          }
+        ]
+      }
+    },
+    {
+      "id": "calibration-15",
+      "program": {
+        "sequence": [
+          {
+            "op": "wait",
+            "cycles": 380
+          },
+          {
+            "op": "wait",
+            "cycles": 257
+          },
+          {
+            "op": "wait",
+            "cycles": 2845
+          },
+          {
+            "op": "work",
+            "units": 54
+          },
+          {
+            "op": "wait",
+            "cycles": 1544
+          },
+          {
+            "op": "wait",
+            "cycles": 260
+          },
+          {
+            "op": "work",
+            "units": 10
+          },
+          {
+            "op": "wait",
+            "cycles": 714
+          }
+        ]
+      }
+    },
+    {
+      "id": "calibration-16",
+      "program": {
+        "sequence": [
+          {
+            "op": "wait",
+            "cycles": 1194
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "wait",
+            "cycles": 142
+          },
+          {
+            "op": "wait",
+            "cycles": 1387
+          },
+          {
+            "op": "wait",
+            "cycles": 1045
+          },
+          {
+            "op": "wait",
+            "cycles": 440
+          },
+          {
+            "op": "work",
+            "units": 11
+          },
+          {
+            "op": "wait",
+            "cycles": 163
+          },
+          {
+            "op": "wait",
+            "cycles": 22
+          },
+          {
+            "op": "wait",
+            "cycles": 5
+          },
+          {
+            "op": "work",
+            "units": 4
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "wait",
+            "cycles": 358
+          },
+          {
+            "op": "work",
+            "units": 12
+          },
+          {
+            "op": "wait",
+            "cycles": 411
+          },
+          {
+            "op": "wait",
+            "cycles": 4
+          },
+          {
+            "op": "work",
+            "units": 8
+          },
+          {
+            "op": "work",
+            "units": 6
+          },
+          {
+            "op": "wait",
+            "cycles": 104
+          },
+          {
+            "op": "wait",
+            "cycles": 178
+          },
+          {
+            "op": "wait",
+            "cycles": 167
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "work",
+            "units": 17
+          },
+          {
+            "op": "wait",
+            "cycles": 60
+          },
+          {
+            "op": "wait",
+            "cycles": 320
+          },
+          {
+            "op": "work",
+            "units": 3
+          }
+        ]
+      }
+    },
+    {
+      "id": "calibration-17",
+      "program": {
+        "sequence": [
+          {
+            "op": "work",
+            "units": 7
+          },
+          {
+            "op": "wait",
+            "cycles": 515
+          },
+          {
+            "op": "wait",
+            "cycles": 1161
+          },
+          {
+            "op": "wait",
+            "cycles": 1650
+          },
+          {
+            "op": "wait",
+            "cycles": 203
+          },
+          {
+            "op": "work",
+            "units": 23
+          },
+          {
+            "op": "wait",
+            "cycles": 128
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "work",
+            "units": 25
+          },
+          {
+            "op": "wait",
+            "cycles": 320
+          },
+          {
+            "op": "wait",
+            "cycles": 1065
+          },
+          {
+            "op": "wait",
+            "cycles": 58
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "wait",
+            "cycles": 900
+          },
+          {
+            "op": "work",
+            "units": 5
+          }
+        ]
+      }
+    },
+    {
+      "id": "calibration-18",
+      "program": {
+        "sequence": [
+          {
+            "op": "wait",
+            "cycles": 609
+          },
+          {
+            "op": "work",
+            "units": 7
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "work",
+            "units": 13
+          },
+          {
+            "op": "wait",
+            "cycles": 214
+          },
+          {
+            "op": "work",
+            "units": 14
+          },
+          {
+            "op": "wait",
+            "cycles": 479
+          },
+          {
+            "op": "wait",
+            "cycles": 53
+          },
+          {
+            "op": "wait",
+            "cycles": 2667
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "wait",
+            "cycles": 942
+          },
+          {
+            "op": "work",
+            "units": 5
+          },
+          {
+            "op": "wait",
+            "cycles": 37
+          },
+          {
+            "op": "work",
+            "units": 4
+          },
+          {
+            "op": "wait",
+            "cycles": 176
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "work",
+            "units": 5
+          },
+          {
+            "op": "work",
+            "units": 10
+          },
+          {
+            "op": "wait",
+            "cycles": 657
+          },
+          {
+            "op": "wait",
+            "cycles": 166
+          }
+        ]
+      }
+    },
+    {
+      "id": "calibration-19",
+      "program": {
+        "sequence": [
+          {
+            "op": "wait",
+            "cycles": 740
+          },
+          {
+            "op": "work",
+            "units": 5
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "wait",
+            "cycles": 211
+          },
+          {
+            "op": "wait",
+            "cycles": 761
+          },
+          {
+            "op": "wait",
+            "cycles": 983
+          },
+          {
+            "op": "wait",
+            "cycles": 543
+          },
+          {
+            "op": "work",
+            "units": 6
+          },
+          {
+            "op": "wait",
+            "cycles": 107
+          },
+          {
+            "op": "wait",
+            "cycles": 468
+          },
+          {
+            "op": "wait",
+            "cycles": 233
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "wait",
+            "cycles": 257
+          },
+          {
+            "op": "wait",
+            "cycles": 521
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "work",
+            "units": 11
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "work",
+            "units": 8
+          },
+          {
+            "op": "wait",
+            "cycles": 553
+          },
+          {
+            "op": "wait",
+            "cycles": 31
+          },
+          {
+            "op": "work",
+            "units": 9
+          },
+          {
+            "op": "wait",
+            "cycles": 109
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "wait",
+            "cycles": 450
+          },
+          {
+            "op": "wait",
+            "cycles": 33
+          },
+          {
+            "op": "work",
+            "units": 10
+          },
+          {
+            "op": "work",
+            "units": 4
+          }
+        ]
+      }
+    },
+    {
+      "id": "calibration-20",
+      "program": {
+        "sequence": [
+          {
+            "op": "wait",
+            "cycles": 48
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "work",
+            "units": 17
+          },
+          {
+            "op": "work",
+            "units": 7
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "wait",
+            "cycles": 460
+          },
+          {
+            "op": "work",
+            "units": 4
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "wait",
+            "cycles": 148
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "wait",
+            "cycles": 77
+          },
+          {
+            "op": "wait",
+            "cycles": 247
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "wait",
+            "cycles": 88
+          },
+          {
+            "op": "wait",
+            "cycles": 884
+          },
+          {
+            "op": "wait",
+            "cycles": 162
+          },
+          {
+            "op": "wait",
+            "cycles": 445
+          },
+          {
+            "op": "work",
+            "units": 7
+          },
+          {
+            "op": "wait",
+            "cycles": 1425
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "wait",
+            "cycles": 886
+          },
+          {
+            "op": "wait",
+            "cycles": 417
+          },
+          {
+            "op": "wait",
+            "cycles": 263
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "work",
+            "units": 4
+          },
+          {
+            "op": "wait",
+            "cycles": 306
+          },
+          {
+            "op": "work",
+            "units": 5
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "wait",
+            "cycles": 144
+          }
+        ]
+      }
+    },
+    {
+      "id": "calibration-21",
+      "program": {
+        "sequence": [
+          {
+            "op": "work",
+            "units": 19
+          },
+          {
+            "op": "wait",
+            "cycles": 1204
+          },
+          {
+            "op": "wait",
+            "cycles": 74
+          },
+          {
+            "op": "wait",
+            "cycles": 1563
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "work",
+            "units": 14
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "wait",
+            "cycles": 2136
+          },
+          {
+            "op": "work",
+            "units": 17
+          },
+          {
+            "op": "wait",
+            "cycles": 83
+          },
+          {
+            "op": "wait",
+            "cycles": 940
+          },
+          {
+            "op": "work",
+            "units": 8
+          },
+          {
+            "op": "work",
+            "units": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "calibration-22",
+      "program": {
+        "sequence": [
+          {
+            "op": "work",
+            "units": 8
+          },
+          {
+            "op": "wait",
+            "cycles": 593
+          },
+          {
+            "op": "work",
+            "units": 20
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "wait",
+            "cycles": 95
+          },
+          {
+            "op": "wait",
+            "cycles": 839
+          },
+          {
+            "op": "wait",
+            "cycles": 280
+          },
+          {
+            "op": "wait",
+            "cycles": 71
+          },
+          {
+            "op": "wait",
+            "cycles": 878
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "work",
+            "units": 7
+          },
+          {
+            "op": "wait",
+            "cycles": 514
+          },
+          {
+            "op": "work",
+            "units": 21
+          },
+          {
+            "op": "wait",
+            "cycles": 2081
+          },
+          {
+            "op": "wait",
+            "cycles": 649
+          }
+        ]
+      }
+    },
+    {
+      "id": "calibration-23",
+      "program": {
+        "sequence": [
+          {
+            "op": "wait",
+            "cycles": 29
+          },
+          {
+            "op": "wait",
+            "cycles": 693
+          },
+          {
+            "op": "wait",
+            "cycles": 1006
+          },
+          {
+            "op": "wait",
+            "cycles": 218
+          },
+          {
+            "op": "work",
+            "units": 11
+          },
+          {
+            "op": "wait",
+            "cycles": 293
+          },
+          {
+            "op": "wait",
+            "cycles": 228
+          },
+          {
+            "op": "wait",
+            "cycles": 851
+          },
+          {
+            "op": "wait",
+            "cycles": 273
+          },
+          {
+            "op": "wait",
+            "cycles": 1144
+          },
+          {
+            "op": "wait",
+            "cycles": 1
+          },
+          {
+            "op": "wait",
+            "cycles": 134
+          },
+          {
+            "op": "work",
+            "units": 11
+          },
+          {
+            "op": "wait",
+            "cycles": 133
+          },
+          {
+            "op": "work",
+            "units": 27
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "wait",
+            "cycles": 26
+          },
+          {
+            "op": "work",
+            "units": 8
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "wait",
+            "cycles": 667
+          },
+          {
+            "op": "wait",
+            "cycles": 304
+          },
+          {
+            "op": "work",
+            "units": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "calibration-24",
+      "program": {
+        "sequence": [
+          {
+            "op": "work",
+            "units": 5
+          },
+          {
+            "op": "work",
+            "units": 9
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "wait",
+            "cycles": 4093
+          },
+          {
+            "op": "wait",
+            "cycles": 170
+          },
+          {
+            "op": "work",
+            "units": 7
+          },
+          {
+            "op": "work",
+            "units": 12
+          },
+          {
+            "op": "wait",
+            "cycles": 509
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "wait",
+            "cycles": 1228
+          },
+          {
+            "op": "work",
+            "units": 17
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "work",
+            "units": 5
+          }
+        ]
+      }
+    },
+    {
+      "id": "calibration-25",
+      "program": {
+        "sequence": [
+          {
+            "op": "wait",
+            "cycles": 188
+          },
+          {
+            "op": "wait",
+            "cycles": 781
+          },
+          {
+            "op": "wait",
+            "cycles": 34
+          },
+          {
+            "op": "wait",
+            "cycles": 184
+          },
+          {
+            "op": "work",
+            "units": 55
+          },
+          {
+            "op": "wait",
+            "cycles": 312
+          },
+          {
+            "op": "wait",
+            "cycles": 1393
+          },
+          {
+            "op": "work",
+            "units": 6
+          },
+          {
+            "op": "wait",
+            "cycles": 227
+          },
+          {
+            "op": "wait",
+            "cycles": 60
+          },
+          {
+            "op": "wait",
+            "cycles": 152
+          },
+          {
+            "op": "wait",
+            "cycles": 35
+          },
+          {
+            "op": "wait",
+            "cycles": 71
+          },
+          {
+            "op": "wait",
+            "cycles": 647
+          },
+          {
+            "op": "wait",
+            "cycles": 554
+          },
+          {
+            "op": "wait",
+            "cycles": 143
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "wait",
+            "cycles": 353
+          },
+          {
+            "op": "wait",
+            "cycles": 866
+          }
+        ]
+      }
+    },
+    {
+      "id": "calibration-26",
+      "program": {
+        "sequence": [
+          {
+            "op": "wait",
+            "cycles": 205
+          },
+          {
+            "op": "work",
+            "units": 4
+          },
+          {
+            "op": "work",
+            "units": 4
+          },
+          {
+            "op": "work",
+            "units": 4
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "wait",
+            "cycles": 567
+          },
+          {
+            "op": "wait",
+            "cycles": 481
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "work",
+            "units": 14
+          },
+          {
+            "op": "work",
+            "units": 17
+          },
+          {
+            "op": "wait",
+            "cycles": 1616
+          },
+          {
+            "op": "wait",
+            "cycles": 3131
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "work",
+            "units": 7
+          },
+          {
+            "op": "work",
+            "units": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "calibration-27",
+      "program": {
+        "sequence": [
+          {
+            "op": "work",
+            "units": 21
+          },
+          {
+            "op": "work",
+            "units": 7
+          },
+          {
+            "op": "wait",
+            "cycles": 269
+          },
+          {
+            "op": "wait",
+            "cycles": 269
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "wait",
+            "cycles": 106
+          },
+          {
+            "op": "work",
+            "units": 12
+          },
+          {
+            "op": "wait",
+            "cycles": 467
+          },
+          {
+            "op": "wait",
+            "cycles": 164
+          },
+          {
+            "op": "wait",
+            "cycles": 62
+          },
+          {
+            "op": "wait",
+            "cycles": 1810
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "wait",
+            "cycles": 183
+          },
+          {
+            "op": "wait",
+            "cycles": 783
+          },
+          {
+            "op": "wait",
+            "cycles": 319
+          },
+          {
+            "op": "wait",
+            "cycles": 1252
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "work",
+            "units": 5
+          },
+          {
+            "op": "work",
+            "units": 15
+          },
+          {
+            "op": "wait",
+            "cycles": 316
+          }
+        ]
+      }
+    },
+    {
+      "id": "calibration-28",
+      "program": {
+        "sequence": [
+          {
+            "op": "work",
+            "units": 5
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "wait",
+            "cycles": 426
+          },
+          {
+            "op": "work",
+            "units": 7
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "work",
+            "units": 8
+          },
+          {
+            "op": "wait",
+            "cycles": 1047
+          },
+          {
+            "op": "wait",
+            "cycles": 690
+          },
+          {
+            "op": "work",
+            "units": 5
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "wait",
+            "cycles": 117
+          },
+          {
+            "op": "work",
+            "units": 7
+          },
+          {
+            "op": "wait",
+            "cycles": 269
+          },
+          {
+            "op": "wait",
+            "cycles": 776
+          },
+          {
+            "op": "wait",
+            "cycles": 1086
+          },
+          {
+            "op": "wait",
+            "cycles": 262
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "wait",
+            "cycles": 54
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "work",
+            "units": 6
+          },
+          {
+            "op": "wait",
+            "cycles": 998
+          },
+          {
+            "op": "work",
+            "units": 4
+          },
+          {
+            "op": "work",
+            "units": 10
+          },
+          {
+            "op": "wait",
+            "cycles": 275
+          }
+        ]
+      }
+    },
+    {
+      "id": "calibration-29",
+      "program": {
+        "sequence": [
+          {
+            "op": "wait",
+            "cycles": 586
+          },
+          {
+            "op": "wait",
+            "cycles": 330
+          },
+          {
+            "op": "wait",
+            "cycles": 80
+          },
+          {
+            "op": "wait",
+            "cycles": 46
+          },
+          {
+            "op": "wait",
+            "cycles": 1003
+          },
+          {
+            "op": "wait",
+            "cycles": 731
+          },
+          {
+            "op": "wait",
+            "cycles": 407
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "wait",
+            "cycles": 564
+          },
+          {
+            "op": "wait",
+            "cycles": 660
+          },
+          {
+            "op": "work",
+            "units": 35
+          },
+          {
+            "op": "work",
+            "units": 15
+          },
+          {
+            "op": "wait",
+            "cycles": 1593
+          },
+          {
+            "op": "work",
+            "units": 11
+          }
+        ]
+      }
+    },
+    {
+      "id": "calibration-30",
+      "program": {
+        "sequence": [
+          {
+            "op": "wait",
+            "cycles": 1005
+          },
+          {
+            "op": "work",
+            "units": 17
+          },
+          {
+            "op": "work",
+            "units": 21
+          },
+          {
+            "op": "work",
+            "units": 10
+          },
+          {
+            "op": "wait",
+            "cycles": 1931
+          },
+          {
+            "op": "wait",
+            "cycles": 22
+          },
+          {
+            "op": "wait",
+            "cycles": 1058
+          },
+          {
+            "op": "work",
+            "units": 16
+          },
+          {
+            "op": "wait",
+            "cycles": 237
+          },
+          {
+            "op": "wait",
+            "cycles": 619
+          },
+          {
+            "op": "wait",
+            "cycles": 1128
+          }
+        ]
+      }
+    },
+    {
+      "id": "calibration-31",
+      "program": {
+        "sequence": [
+          {
+            "op": "wait",
+            "cycles": 788
+          },
+          {
+            "op": "wait",
+            "cycles": 102
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "wait",
+            "cycles": 364
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "wait",
+            "cycles": 1568
+          },
+          {
+            "op": "wait",
+            "cycles": 115
+          },
+          {
+            "op": "wait",
+            "cycles": 114
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "wait",
+            "cycles": 573
+          },
+          {
+            "op": "wait",
+            "cycles": 919
+          },
+          {
+            "op": "work",
+            "units": 10
+          },
+          {
+            "op": "wait",
+            "cycles": 1
+          },
+          {
+            "op": "wait",
+            "cycles": 175
+          },
+          {
+            "op": "work",
+            "units": 7
+          },
+          {
+            "op": "wait",
+            "cycles": 14
+          },
+          {
+            "op": "work",
+            "units": 15
+          },
+          {
+            "op": "work",
+            "units": 12
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "work",
+            "units": 10
+          },
+          {
+            "op": "wait",
+            "cycles": 104
+          },
+          {
+            "op": "wait",
+            "cycles": 46
+          },
+          {
+            "op": "wait",
+            "cycles": 1117
+          }
+        ]
+      }
+    },
+    {
+      "id": "calibration-32",
+      "program": {
+        "sequence": [
+          {
+            "op": "wait",
+            "cycles": 560
+          },
+          {
+            "op": "work",
+            "units": 64
+          },
+          {
+            "op": "wait",
+            "cycles": 1055
+          },
+          {
+            "op": "wait",
+            "cycles": 2
+          },
+          {
+            "op": "wait",
+            "cycles": 233
+          },
+          {
+            "op": "wait",
+            "cycles": 44
+          },
+          {
+            "op": "wait",
+            "cycles": 644
+          },
+          {
+            "op": "wait",
+            "cycles": 1078
+          },
+          {
+            "op": "wait",
+            "cycles": 1517
+          },
+          {
+            "op": "wait",
+            "cycles": 661
+          },
+          {
+            "op": "wait",
+            "cycles": 206
+          }
+        ]
+      }
+    },
+    {
+      "id": "calibration-33",
+      "program": {
+        "sequence": [
+          {
+            "op": "work",
+            "units": 20
+          },
+          {
+            "op": "wait",
+            "cycles": 825
+          },
+          {
+            "op": "work",
+            "units": 9
+          },
+          {
+            "op": "wait",
+            "cycles": 514
+          },
+          {
+            "op": "wait",
+            "cycles": 467
+          },
+          {
+            "op": "wait",
+            "cycles": 199
+          },
+          {
+            "op": "work",
+            "units": 35
+          },
+          {
+            "op": "wait",
+            "cycles": 5
+          },
+          {
+            "op": "wait",
+            "cycles": 115
+          },
+          {
+            "op": "wait",
+            "cycles": 85
+          },
+          {
+            "op": "wait",
+            "cycles": 10
+          },
+          {
+            "op": "wait",
+            "cycles": 866
+          },
+          {
+            "op": "wait",
+            "cycles": 1397
+          },
+          {
+            "op": "wait",
+            "cycles": 1517
+          }
+        ]
+      }
+    },
+    {
+      "id": "calibration-34",
+      "program": {
+        "sequence": [
+          {
+            "op": "work",
+            "units": 4
+          },
+          {
+            "op": "work",
+            "units": 17
+          },
+          {
+            "op": "work",
+            "units": 8
+          },
+          {
+            "op": "wait",
+            "cycles": 340
+          },
+          {
+            "op": "wait",
+            "cycles": 217
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "wait",
+            "cycles": 653
+          },
+          {
+            "op": "wait",
+            "cycles": 59
+          },
+          {
+            "op": "wait",
+            "cycles": 109
+          },
+          {
+            "op": "work",
+            "units": 8
+          },
+          {
+            "op": "wait",
+            "cycles": 452
+          },
+          {
+            "op": "wait",
+            "cycles": 2150
+          },
+          {
+            "op": "work",
+            "units": 4
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "work",
+            "units": 9
+          },
+          {
+            "op": "wait",
+            "cycles": 2020
+          },
+          {
+            "op": "work",
+            "units": 6
+          }
+        ]
+      }
+    },
+    {
+      "id": "calibration-35",
+      "program": {
+        "sequence": [
+          {
+            "op": "wait",
+            "cycles": 251
+          },
+          {
+            "op": "wait",
+            "cycles": 282
+          },
+          {
+            "op": "wait",
+            "cycles": 28
+          },
+          {
+            "op": "work",
+            "units": 7
+          },
+          {
+            "op": "wait",
+            "cycles": 1177
+          },
+          {
+            "op": "wait",
+            "cycles": 103
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "work",
+            "units": 16
+          },
+          {
+            "op": "wait",
+            "cycles": 1140
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "wait",
+            "cycles": 470
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "work",
+            "units": 12
+          },
+          {
+            "op": "wait",
+            "cycles": 3
+          },
+          {
+            "op": "wait",
+            "cycles": 833
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "wait",
+            "cycles": 590
+          },
+          {
+            "op": "wait",
+            "cycles": 462
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "wait",
+            "cycles": 336
+          },
+          {
+            "op": "work",
+            "units": 17
+          },
+          {
+            "op": "wait",
+            "cycles": 325
+          }
+        ]
+      }
+    },
+    {
+      "id": "calibration-36",
+      "program": {
+        "sequence": [
+          {
+            "op": "wait",
+            "cycles": 307
+          },
+          {
+            "op": "work",
+            "units": 4
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "wait",
+            "cycles": 661
+          },
+          {
+            "op": "work",
+            "units": 9
+          },
+          {
+            "op": "work",
+            "units": 10
+          },
+          {
+            "op": "work",
+            "units": 5
+          },
+          {
+            "op": "work",
+            "units": 7
+          },
+          {
+            "op": "work",
+            "units": 5
+          },
+          {
+            "op": "wait",
+            "cycles": 1077
+          },
+          {
+            "op": "wait",
+            "cycles": 836
+          },
+          {
+            "op": "work",
+            "units": 6
+          },
+          {
+            "op": "work",
+            "units": 10
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "wait",
+            "cycles": 3119
+          }
+        ]
+      }
+    },
+    {
+      "id": "calibration-37",
+      "program": {
+        "sequence": [
+          {
+            "op": "work",
+            "units": 15
+          },
+          {
+            "op": "wait",
+            "cycles": 43
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "work",
+            "units": 6
+          },
+          {
+            "op": "work",
+            "units": 4
+          },
+          {
+            "op": "wait",
+            "cycles": 339
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "wait",
+            "cycles": 473
+          },
+          {
+            "op": "wait",
+            "cycles": 18
+          },
+          {
+            "op": "work",
+            "units": 4
+          },
+          {
+            "op": "work",
+            "units": 7
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "wait",
+            "cycles": 326
+          },
+          {
+            "op": "wait",
+            "cycles": 711
+          },
+          {
+            "op": "work",
+            "units": 13
+          },
+          {
+            "op": "work",
+            "units": 7
+          },
+          {
+            "op": "wait",
+            "cycles": 401
+          },
+          {
+            "op": "wait",
+            "cycles": 1572
+          },
+          {
+            "op": "wait",
+            "cycles": 1209
+          },
+          {
+            "op": "wait",
+            "cycles": 908
+          }
+        ]
+      }
+    },
+    {
+      "id": "calibration-38",
+      "program": {
+        "sequence": [
+          {
+            "op": "work",
+            "units": 4
+          },
+          {
+            "op": "wait",
+            "cycles": 182
+          },
+          {
+            "op": "wait",
+            "cycles": 190
+          },
+          {
+            "op": "work",
+            "units": 11
+          },
+          {
+            "op": "wait",
+            "cycles": 720
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "wait",
+            "cycles": 146
+          },
+          {
+            "op": "work",
+            "units": 12
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "wait",
+            "cycles": 815
+          },
+          {
+            "op": "wait",
+            "cycles": 172
+          },
+          {
+            "op": "wait",
+            "cycles": 8
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "wait",
+            "cycles": 821
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "work",
+            "units": 9
+          },
+          {
+            "op": "wait",
+            "cycles": 566
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "wait",
+            "cycles": 73
+          },
+          {
+            "op": "wait",
+            "cycles": 483
+          },
+          {
+            "op": "work",
+            "units": 6
+          },
+          {
+            "op": "work",
+            "units": 6
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "wait",
+            "cycles": 59
+          },
+          {
+            "op": "wait",
+            "cycles": 412
+          },
+          {
+            "op": "wait",
+            "cycles": 819
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "wait",
+            "cycles": 249
+          },
+          {
+            "op": "work",
+            "units": 5
+          },
+          {
+            "op": "wait",
+            "cycles": 285
+          }
+        ]
+      }
+    },
+    {
+      "id": "calibration-39",
+      "program": {
+        "sequence": [
+          {
+            "op": "wait",
+            "cycles": 2451
+          },
+          {
+            "op": "wait",
+            "cycles": 328
+          },
+          {
+            "op": "work",
+            "units": 16
+          },
+          {
+            "op": "work",
+            "units": 4
+          },
+          {
+            "op": "wait",
+            "cycles": 747
+          },
+          {
+            "op": "wait",
+            "cycles": 425
+          },
+          {
+            "op": "work",
+            "units": 21
+          },
+          {
+            "op": "wait",
+            "cycles": 461
+          },
+          {
+            "op": "wait",
+            "cycles": 272
+          },
+          {
+            "op": "work",
+            "units": 12
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "work",
+            "units": 7
+          },
+          {
+            "op": "wait",
+            "cycles": 1316
+          },
+          {
+            "op": "work",
+            "units": 3
+          }
+        ]
+      }
+    },
+    {
+      "id": "calibration-40",
+      "program": {
+        "sequence": [
+          {
+            "op": "wait",
+            "cycles": 1984
+          },
+          {
+            "op": "wait",
+            "cycles": 1777
+          },
+          {
+            "op": "work",
+            "units": 31
+          },
+          {
+            "op": "wait",
+            "cycles": 952
+          },
+          {
+            "op": "wait",
+            "cycles": 381
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "wait",
+            "cycles": 336
+          },
+          {
+            "op": "wait",
+            "cycles": 213
+          },
+          {
+            "op": "wait",
+            "cycles": 357
+          },
+          {
+            "op": "work",
+            "units": 17
+          },
+          {
+            "op": "work",
+            "units": 14
+          }
+        ]
+      }
+    },
+    {
+      "id": "calibration-41",
+      "program": {
+        "sequence": [
+          {
+            "op": "work",
+            "units": 64
+          },
+          {
+            "op": "wait",
+            "cycles": 392
+          },
+          {
+            "op": "wait",
+            "cycles": 371
+          },
+          {
+            "op": "wait",
+            "cycles": 2599
+          },
+          {
+            "op": "wait",
+            "cycles": 2492
+          },
+          {
+            "op": "wait",
+            "cycles": 146
+          }
+        ]
+      }
+    },
+    {
+      "id": "calibration-42",
+      "program": {
+        "sequence": [
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "wait",
+            "cycles": 254
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "wait",
+            "cycles": 221
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "wait",
+            "cycles": 1596
+          },
+          {
+            "op": "work",
+            "units": 15
+          },
+          {
+            "op": "wait",
+            "cycles": 1868
+          },
+          {
+            "op": "wait",
+            "cycles": 2061
+          },
+          {
+            "op": "work",
+            "units": 14
+          },
+          {
+            "op": "work",
+            "units": 30
+          }
+        ]
+      }
+    },
+    {
+      "id": "calibration-43",
+      "program": {
+        "sequence": [
+          {
+            "op": "wait",
+            "cycles": 1693
+          },
+          {
+            "op": "wait",
+            "cycles": 661
+          },
+          {
+            "op": "wait",
+            "cycles": 3071
+          },
+          {
+            "op": "wait",
+            "cycles": 466
+          },
+          {
+            "op": "work",
+            "units": 64
+          },
+          {
+            "op": "wait",
+            "cycles": 109
+          }
+        ]
+      }
+    },
+    {
+      "id": "calibration-44",
+      "program": {
+        "sequence": [
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "wait",
+            "cycles": 1729
+          },
+          {
+            "op": "wait",
+            "cycles": 116
+          },
+          {
+            "op": "work",
+            "units": 6
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "wait",
+            "cycles": 414
+          },
+          {
+            "op": "work",
+            "units": 5
+          },
+          {
+            "op": "wait",
+            "cycles": 65
+          },
+          {
+            "op": "work",
+            "units": 6
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "work",
+            "units": 8
+          },
+          {
+            "op": "wait",
+            "cycles": 1030
+          },
+          {
+            "op": "wait",
+            "cycles": 1660
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "work",
+            "units": 8
+          },
+          {
+            "op": "work",
+            "units": 13
+          },
+          {
+            "op": "wait",
+            "cycles": 204
+          },
+          {
+            "op": "work",
+            "units": 5
+          },
+          {
+            "op": "wait",
+            "cycles": 782
+          },
+          {
+            "op": "work",
+            "units": 4
+          }
+        ]
+      }
+    },
+    {
+      "id": "calibration-45",
+      "program": {
+        "sequence": [
+          {
+            "op": "work",
+            "units": 16
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "work",
+            "units": 12
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "work",
+            "units": 7
+          },
+          {
+            "op": "work",
+            "units": 7
+          },
+          {
+            "op": "work",
+            "units": 5
+          },
+          {
+            "op": "wait",
+            "cycles": 6000
+          },
+          {
+            "op": "work",
+            "units": 10
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "work",
+            "units": 2
+          }
+        ]
+      }
+    },
+    {
+      "id": "calibration-46",
+      "program": {
+        "sequence": [
+          {
+            "op": "work",
+            "units": 10
+          },
+          {
+            "op": "wait",
+            "cycles": 71
+          },
+          {
+            "op": "wait",
+            "cycles": 567
+          },
+          {
+            "op": "work",
+            "units": 11
+          },
+          {
+            "op": "wait",
+            "cycles": 303
+          },
+          {
+            "op": "work",
+            "units": 5
+          },
+          {
+            "op": "wait",
+            "cycles": 3935
+          },
+          {
+            "op": "wait",
+            "cycles": 136
+          },
+          {
+            "op": "wait",
+            "cycles": 563
+          },
+          {
+            "op": "work",
+            "units": 5
+          },
+          {
+            "op": "work",
+            "units": 16
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "work",
+            "units": 9
+          },
+          {
+            "op": "wait",
+            "cycles": 88
+          },
+          {
+            "op": "wait",
+            "cycles": 337
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "work",
+            "units": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "calibration-47",
+      "program": {
+        "sequence": [
+          {
+            "op": "wait",
+            "cycles": 8
+          },
+          {
+            "op": "wait",
+            "cycles": 257
+          },
+          {
+            "op": "wait",
+            "cycles": 339
+          },
+          {
+            "op": "wait",
+            "cycles": 1366
+          },
+          {
+            "op": "wait",
+            "cycles": 72
+          },
+          {
+            "op": "work",
+            "units": 32
+          },
+          {
+            "op": "wait",
+            "cycles": 274
+          },
+          {
+            "op": "wait",
+            "cycles": 1031
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "work",
+            "units": 14
+          },
+          {
+            "op": "wait",
+            "cycles": 399
+          },
+          {
+            "op": "wait",
+            "cycles": 159
+          },
+          {
+            "op": "wait",
+            "cycles": 939
+          },
+          {
+            "op": "wait",
+            "cycles": 675
+          },
+          {
+            "op": "work",
+            "units": 17
+          },
+          {
+            "op": "wait",
+            "cycles": 481
+          }
+        ]
+      }
+    },
+    {
+      "id": "calibration-48",
+      "program": {
+        "sequence": [
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "wait",
+            "cycles": 281
+          },
+          {
+            "op": "wait",
+            "cycles": 18
+          },
+          {
+            "op": "work",
+            "units": 13
+          },
+          {
+            "op": "work",
+            "units": 6
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "work",
+            "units": 8
+          },
+          {
+            "op": "wait",
+            "cycles": 349
+          },
+          {
+            "op": "wait",
+            "cycles": 1454
+          },
+          {
+            "op": "wait",
+            "cycles": 192
+          },
+          {
+            "op": "wait",
+            "cycles": 393
+          },
+          {
+            "op": "wait",
+            "cycles": 85
+          },
+          {
+            "op": "wait",
+            "cycles": 58
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "wait",
+            "cycles": 104
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "wait",
+            "cycles": 404
+          },
+          {
+            "op": "work",
+            "units": 4
+          },
+          {
+            "op": "wait",
+            "cycles": 1129
+          },
+          {
+            "op": "wait",
+            "cycles": 348
+          },
+          {
+            "op": "wait",
+            "cycles": 188
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "wait",
+            "cycles": 345
+          },
+          {
+            "op": "work",
+            "units": 18
+          },
+          {
+            "op": "wait",
+            "cycles": 652
+          }
+        ]
+      }
+    },
+    {
+      "id": "calibration-49",
+      "program": {
+        "sequence": [
+          {
+            "op": "wait",
+            "cycles": 50
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "wait",
+            "cycles": 268
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "wait",
+            "cycles": 1009
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "work",
+            "units": 6
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "work",
+            "units": 7
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "wait",
+            "cycles": 1019
+          },
+          {
+            "op": "work",
+            "units": 14
+          },
+          {
+            "op": "wait",
+            "cycles": 345
+          },
+          {
+            "op": "wait",
+            "cycles": 205
+          },
+          {
+            "op": "work",
+            "units": 9
+          },
+          {
+            "op": "wait",
+            "cycles": 2094
+          },
+          {
+            "op": "work",
+            "units": 4
+          },
+          {
+            "op": "work",
+            "units": 4
+          },
+          {
+            "op": "wait",
+            "cycles": 1010
+          }
+        ]
+      }
+    },
+    {
+      "id": "calibration-50",
+      "program": {
+        "sequence": [
+          {
+            "op": "wait",
+            "cycles": 97
+          },
+          {
+            "op": "wait",
+            "cycles": 362
+          },
+          {
+            "op": "wait",
+            "cycles": 357
+          },
+          {
+            "op": "wait",
+            "cycles": 66
+          },
+          {
+            "op": "wait",
+            "cycles": 451
+          },
+          {
+            "op": "wait",
+            "cycles": 272
+          },
+          {
+            "op": "work",
+            "units": 64
+          },
+          {
+            "op": "wait",
+            "cycles": 297
+          },
+          {
+            "op": "wait",
+            "cycles": 154
+          },
+          {
+            "op": "wait",
+            "cycles": 1802
+          },
+          {
+            "op": "wait",
+            "cycles": 1087
+          },
+          {
+            "op": "wait",
+            "cycles": 91
+          },
+          {
+            "op": "wait",
+            "cycles": 510
+          },
+          {
+            "op": "wait",
+            "cycles": 454
+          }
+        ]
+      }
+    },
+    {
+      "id": "calibration-51",
+      "program": {
+        "sequence": [
+          {
+            "op": "wait",
+            "cycles": 417
+          },
+          {
+            "op": "work",
+            "units": 64
+          },
+          {
+            "op": "wait",
+            "cycles": 529
+          },
+          {
+            "op": "wait",
+            "cycles": 2566
+          },
+          {
+            "op": "wait",
+            "cycles": 292
+          },
+          {
+            "op": "wait",
+            "cycles": 17
+          },
+          {
+            "op": "wait",
+            "cycles": 2017
+          },
+          {
+            "op": "wait",
+            "cycles": 162
+          }
+        ]
+      }
+    },
+    {
+      "id": "calibration-52",
+      "program": {
+        "sequence": [
+          {
+            "op": "work",
+            "units": 10
+          },
+          {
+            "op": "wait",
+            "cycles": 909
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "work",
+            "units": 6
+          },
+          {
+            "op": "wait",
+            "cycles": 23
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "work",
+            "units": 6
+          },
+          {
+            "op": "work",
+            "units": 4
+          },
+          {
+            "op": "wait",
+            "cycles": 1749
+          },
+          {
+            "op": "wait",
+            "cycles": 720
+          },
+          {
+            "op": "work",
+            "units": 5
+          },
+          {
+            "op": "work",
+            "units": 11
+          },
+          {
+            "op": "wait",
+            "cycles": 1331
+          },
+          {
+            "op": "wait",
+            "cycles": 1268
+          },
+          {
+            "op": "work",
+            "units": 5
+          },
+          {
+            "op": "work",
+            "units": 11
+          },
+          {
+            "op": "work",
+            "units": 2
+          }
+        ]
+      }
+    },
+    {
+      "id": "calibration-53",
+      "program": {
+        "sequence": [
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "work",
+            "units": 11
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "work",
+            "units": 8
+          },
+          {
+            "op": "work",
+            "units": 8
+          },
+          {
+            "op": "work",
+            "units": 6
+          },
+          {
+            "op": "wait",
+            "cycles": 1935
+          },
+          {
+            "op": "work",
+            "units": 6
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "wait",
+            "cycles": 130
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "work",
+            "units": 6
+          },
+          {
+            "op": "wait",
+            "cycles": 276
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "wait",
+            "cycles": 1840
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "work",
+            "units": 4
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "wait",
+            "cycles": 1819
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "work",
+            "units": 4
+          }
+        ]
+      }
+    },
+    {
+      "id": "calibration-54",
+      "program": {
+        "sequence": [
+          {
+            "op": "wait",
+            "cycles": 2351
+          },
+          {
+            "op": "work",
+            "units": 5
+          },
+          {
+            "op": "work",
+            "units": 5
+          },
+          {
+            "op": "work",
+            "units": 6
+          },
+          {
+            "op": "wait",
+            "cycles": 635
+          },
+          {
+            "op": "wait",
+            "cycles": 104
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "wait",
+            "cycles": 187
+          },
+          {
+            "op": "work",
+            "units": 8
+          },
+          {
+            "op": "wait",
+            "cycles": 726
+          },
+          {
+            "op": "wait",
+            "cycles": 325
+          },
+          {
+            "op": "wait",
+            "cycles": 1061
+          },
+          {
+            "op": "work",
+            "units": 8
+          },
+          {
+            "op": "work",
+            "units": 10
+          },
+          {
+            "op": "work",
+            "units": 5
+          },
+          {
+            "op": "wait",
+            "cycles": 433
+          },
+          {
+            "op": "work",
+            "units": 12
+          },
+          {
+            "op": "wait",
+            "cycles": 178
+          }
+        ]
+      }
+    },
+    {
+      "id": "calibration-55",
+      "program": {
+        "sequence": [
+          {
+            "op": "work",
+            "units": 4
+          },
+          {
+            "op": "wait",
+            "cycles": 664
+          },
+          {
+            "op": "wait",
+            "cycles": 34
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "work",
+            "units": 4
+          },
+          {
+            "op": "wait",
+            "cycles": 178
+          },
+          {
+            "op": "wait",
+            "cycles": 20
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "work",
+            "units": 9
+          },
+          {
+            "op": "work",
+            "units": 4
+          },
+          {
+            "op": "work",
+            "units": 4
+          },
+          {
+            "op": "wait",
+            "cycles": 1825
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "work",
+            "units": 10
+          },
+          {
+            "op": "work",
+            "units": 4
+          },
+          {
+            "op": "wait",
+            "cycles": 1355
+          },
+          {
+            "op": "wait",
+            "cycles": 79
+          },
+          {
+            "op": "work",
+            "units": 11
+          },
+          {
+            "op": "wait",
+            "cycles": 805
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "wait",
+            "cycles": 245
+          },
+          {
+            "op": "wait",
+            "cycles": 151
+          },
+          {
+            "op": "work",
+            "units": 4
+          },
+          {
+            "op": "wait",
+            "cycles": 644
+          },
+          {
+            "op": "work",
+            "units": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "calibration-56",
+      "program": {
+        "sequence": [
+          {
+            "op": "work",
+            "units": 4
+          },
+          {
+            "op": "wait",
+            "cycles": 698
+          },
+          {
+            "op": "wait",
+            "cycles": 1546
+          },
+          {
+            "op": "wait",
+            "cycles": 877
+          },
+          {
+            "op": "work",
+            "units": 7
+          },
+          {
+            "op": "work",
+            "units": 16
+          },
+          {
+            "op": "work",
+            "units": 12
+          },
+          {
+            "op": "work",
+            "units": 25
+          },
+          {
+            "op": "wait",
+            "cycles": 838
+          },
+          {
+            "op": "wait",
+            "cycles": 405
+          },
+          {
+            "op": "wait",
+            "cycles": 1636
+          }
+        ]
+      }
+    },
+    {
+      "id": "calibration-57",
+      "program": {
+        "sequence": [
+          {
+            "op": "work",
+            "units": 5
+          },
+          {
+            "op": "wait",
+            "cycles": 6000
+          },
+          {
+            "op": "work",
+            "units": 8
+          },
+          {
+            "op": "work",
+            "units": 13
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "work",
+            "units": 18
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "work",
+            "units": 13
+          }
+        ]
+      }
+    },
+    {
+      "id": "calibration-58",
+      "program": {
+        "sequence": [
+          {
+            "op": "wait",
+            "cycles": 1224
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "wait",
+            "cycles": 101
+          },
+          {
+            "op": "wait",
+            "cycles": 111
+          },
+          {
+            "op": "work",
+            "units": 11
+          },
+          {
+            "op": "wait",
+            "cycles": 819
+          },
+          {
+            "op": "wait",
+            "cycles": 1669
+          },
+          {
+            "op": "work",
+            "units": 4
+          },
+          {
+            "op": "wait",
+            "cycles": 76
+          },
+          {
+            "op": "work",
+            "units": 6
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "wait",
+            "cycles": 768
+          },
+          {
+            "op": "work",
+            "units": 4
+          },
+          {
+            "op": "wait",
+            "cycles": 77
+          },
+          {
+            "op": "wait",
+            "cycles": 343
+          },
+          {
+            "op": "wait",
+            "cycles": 40
+          },
+          {
+            "op": "wait",
+            "cycles": 408
+          },
+          {
+            "op": "wait",
+            "cycles": 155
+          },
+          {
+            "op": "work",
+            "units": 7
+          },
+          {
+            "op": "work",
+            "units": 18
+          },
+          {
+            "op": "wait",
+            "cycles": 140
+          },
+          {
+            "op": "wait",
+            "cycles": 69
+          },
+          {
+            "op": "work",
+            "units": 4
+          }
+        ]
+      }
+    },
+    {
+      "id": "calibration-59",
+      "program": {
+        "sequence": [
+          {
+            "op": "wait",
+            "cycles": 31
+          },
+          {
+            "op": "work",
+            "units": 19
+          },
+          {
+            "op": "work",
+            "units": 10
+          },
+          {
+            "op": "wait",
+            "cycles": 62
+          },
+          {
+            "op": "wait",
+            "cycles": 70
+          },
+          {
+            "op": "wait",
+            "cycles": 606
+          },
+          {
+            "op": "wait",
+            "cycles": 95
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "wait",
+            "cycles": 134
+          },
+          {
+            "op": "wait",
+            "cycles": 478
+          },
+          {
+            "op": "work",
+            "units": 13
+          },
+          {
+            "op": "wait",
+            "cycles": 85
+          },
+          {
+            "op": "wait",
+            "cycles": 196
+          },
+          {
+            "op": "wait",
+            "cycles": 1909
+          },
+          {
+            "op": "wait",
+            "cycles": 1265
+          },
+          {
+            "op": "wait",
+            "cycles": 396
+          },
+          {
+            "op": "work",
+            "units": 18
+          },
+          {
+            "op": "wait",
+            "cycles": 419
+          },
+          {
+            "op": "wait",
+            "cycles": 254
+          }
+        ]
+      }
+    },
+    {
+      "id": "calibration-60",
+      "program": {
+        "sequence": [
+          {
+            "op": "wait",
+            "cycles": 2095
+          },
+          {
+            "op": "work",
+            "units": 10
+          },
+          {
+            "op": "wait",
+            "cycles": 1601
+          },
+          {
+            "op": "work",
+            "units": 54
+          },
+          {
+            "op": "wait",
+            "cycles": 2304
+          }
+        ]
+      }
+    },
+    {
+      "id": "calibration-61",
+      "program": {
+        "sequence": [
+          {
+            "op": "wait",
+            "cycles": 1074
+          },
+          {
+            "op": "wait",
+            "cycles": 416
+          },
+          {
+            "op": "work",
+            "units": 15
+          },
+          {
+            "op": "wait",
+            "cycles": 891
+          },
+          {
+            "op": "wait",
+            "cycles": 487
+          },
+          {
+            "op": "wait",
+            "cycles": 36
+          },
+          {
+            "op": "work",
+            "units": 19
+          },
+          {
+            "op": "wait",
+            "cycles": 457
+          },
+          {
+            "op": "work",
+            "units": 15
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "wait",
+            "cycles": 1437
+          },
+          {
+            "op": "wait",
+            "cycles": 303
+          },
+          {
+            "op": "work",
+            "units": 6
+          },
+          {
+            "op": "wait",
+            "cycles": 332
+          },
+          {
+            "op": "wait",
+            "cycles": 567
+          },
+          {
+            "op": "work",
+            "units": 6
+          }
+        ]
+      }
+    },
+    {
+      "id": "calibration-62",
+      "program": {
+        "sequence": [
+          {
+            "op": "wait",
+            "cycles": 190
+          },
+          {
+            "op": "wait",
+            "cycles": 754
+          },
+          {
+            "op": "wait",
+            "cycles": 902
+          },
+          {
+            "op": "work",
+            "units": 19
+          },
+          {
+            "op": "wait",
+            "cycles": 274
+          },
+          {
+            "op": "wait",
+            "cycles": 43
+          },
+          {
+            "op": "wait",
+            "cycles": 1384
+          },
+          {
+            "op": "work",
+            "units": 10
+          },
+          {
+            "op": "wait",
+            "cycles": 360
+          },
+          {
+            "op": "work",
+            "units": 5
+          },
+          {
+            "op": "wait",
+            "cycles": 13
+          },
+          {
+            "op": "wait",
+            "cycles": 39
+          },
+          {
+            "op": "work",
+            "units": 7
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "wait",
+            "cycles": 1424
+          },
+          {
+            "op": "wait",
+            "cycles": 108
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "wait",
+            "cycles": 5
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "wait",
+            "cycles": 504
+          },
+          {
+            "op": "work",
+            "units": 20
+          }
+        ]
+      }
+    },
+    {
+      "id": "calibration-63",
+      "program": {
+        "sequence": [
+          {
+            "op": "work",
+            "units": 4
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "wait",
+            "cycles": 312
+          },
+          {
+            "op": "wait",
+            "cycles": 5688
+          },
+          {
+            "op": "work",
+            "units": 15
+          },
+          {
+            "op": "work",
+            "units": 26
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "work",
+            "units": 11
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "work",
+            "units": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "development-activation",
+      "program": {
+        "sequence": [
+          {
+            "op": "wait",
+            "cycles": 1936
+          },
+          {
+            "op": "wait",
+            "cycles": 920
+          },
+          {
+            "op": "work",
+            "units": 5
+          },
+          {
+            "op": "work",
+            "units": 6
+          },
+          {
+            "op": "wait",
+            "cycles": 875
+          },
+          {
+            "op": "wait",
+            "cycles": 231
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "work",
+            "units": 8
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "work",
+            "units": 5
+          },
+          {
+            "op": "wait",
+            "cycles": 684
+          },
+          {
+            "op": "work",
+            "units": 5
+          },
+          {
+            "op": "work",
+            "units": 16
+          },
+          {
+            "op": "wait",
+            "cycles": 1143
+          },
+          {
+            "op": "work",
+            "units": 8
+          },
+          {
+            "op": "work",
+            "units": 4
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "wait",
+            "cycles": 211
+          }
+        ]
+      }
+    },
+    {
+      "id": "development-deactivation",
+      "program": {
+        "sequence": [
+          {
+            "op": "wait",
+            "cycles": 285
+          },
+          {
+            "op": "wait",
+            "cycles": 305
+          },
+          {
+            "op": "work",
+            "units": 33
+          },
+          {
+            "op": "wait",
+            "cycles": 94
+          },
+          {
+            "op": "wait",
+            "cycles": 430
+          },
+          {
+            "op": "work",
+            "units": 9
+          },
+          {
+            "op": "wait",
+            "cycles": 94
+          },
+          {
+            "op": "wait",
+            "cycles": 13
+          },
+          {
+            "op": "work",
+            "units": 10
+          },
+          {
+            "op": "work",
+            "units": 11
+          },
+          {
+            "op": "wait",
+            "cycles": 444
+          },
+          {
+            "op": "wait",
+            "cycles": 2769
+          },
+          {
+            "op": "wait",
+            "cycles": 103
+          },
+          {
+            "op": "wait",
+            "cycles": 478
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "wait",
+            "cycles": 664
+          },
+          {
+            "op": "wait",
+            "cycles": 321
+          }
+        ]
+      }
+    },
+    {
+      "id": "development-burst",
+      "program": {
+        "sequence": [
+          {
+            "op": "wait",
+            "cycles": 418
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "wait",
+            "cycles": 1177
+          },
+          {
+            "op": "wait",
+            "cycles": 484
+          },
+          {
+            "op": "wait",
+            "cycles": 44
+          },
+          {
+            "op": "work",
+            "units": 14
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "work",
+            "units": 9
+          },
+          {
+            "op": "wait",
+            "cycles": 140
+          },
+          {
+            "op": "wait",
+            "cycles": 116
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "work",
+            "units": 29
+          },
+          {
+            "op": "wait",
+            "cycles": 3621
+          },
+          {
+            "op": "work",
+            "units": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "development-quiet_interval",
+      "program": {
+        "sequence": [
+          {
+            "op": "wait",
+            "cycles": 689
+          },
+          {
+            "op": "work",
+            "units": 13
+          },
+          {
+            "op": "wait",
+            "cycles": 702
+          },
+          {
+            "op": "work",
+            "units": 12
+          },
+          {
+            "op": "wait",
+            "cycles": 835
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "wait",
+            "cycles": 835
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "wait",
+            "cycles": 835
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "wait",
+            "cycles": 702
+          },
+          {
+            "op": "work",
+            "units": 12
+          },
+          {
+            "op": "wait",
+            "cycles": 701
+          },
+          {
+            "op": "work",
+            "units": 12
+          },
+          {
+            "op": "wait",
+            "cycles": 701
+          },
+          {
+            "op": "work",
+            "units": 12
+          }
+        ]
+      }
+    },
+    {
+      "id": "development-alternating",
+      "program": {
+        "sequence": [
+          {
+            "op": "wait",
+            "cycles": 168
+          },
+          {
+            "op": "wait",
+            "cycles": 27
+          },
+          {
+            "op": "work",
+            "units": 6
+          },
+          {
+            "op": "work",
+            "units": 9
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "wait",
+            "cycles": 582
+          },
+          {
+            "op": "wait",
+            "cycles": 81
+          },
+          {
+            "op": "wait",
+            "cycles": 742
+          },
+          {
+            "op": "wait",
+            "cycles": 365
+          },
+          {
+            "op": "work",
+            "units": 13
+          },
+          {
+            "op": "wait",
+            "cycles": 1439
+          },
+          {
+            "op": "work",
+            "units": 11
+          },
+          {
+            "op": "work",
+            "units": 9
+          },
+          {
+            "op": "wait",
+            "cycles": 630
+          },
+          {
+            "op": "wait",
+            "cycles": 324
+          },
+          {
+            "op": "wait",
+            "cycles": 370
+          },
+          {
+            "op": "work",
+            "units": 6
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "work",
+            "units": 4
+          },
+          {
+            "op": "wait",
+            "cycles": 116
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "wait",
+            "cycles": 238
+          },
+          {
+            "op": "wait",
+            "cycles": 127
+          },
+          {
+            "op": "wait",
+            "cycles": 791
+          }
+        ]
+      }
+    },
+    {
+      "id": "development-ramp",
+      "program": {
+        "sequence": [
+          {
+            "op": "wait",
+            "cycles": 53
+          },
+          {
+            "op": "wait",
+            "cycles": 218
+          },
+          {
+            "op": "wait",
+            "cycles": 1037
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "work",
+            "units": 5
+          },
+          {
+            "op": "wait",
+            "cycles": 367
+          },
+          {
+            "op": "wait",
+            "cycles": 49
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "wait",
+            "cycles": 967
+          },
+          {
+            "op": "wait",
+            "cycles": 229
+          },
+          {
+            "op": "work",
+            "units": 10
+          },
+          {
+            "op": "wait",
+            "cycles": 344
+          },
+          {
+            "op": "wait",
+            "cycles": 106
+          },
+          {
+            "op": "wait",
+            "cycles": 221
+          },
+          {
+            "op": "wait",
+            "cycles": 65
+          },
+          {
+            "op": "work",
+            "units": 5
+          },
+          {
+            "op": "wait",
+            "cycles": 616
+          },
+          {
+            "op": "wait",
+            "cycles": 288
+          },
+          {
+            "op": "work",
+            "units": 13
+          },
+          {
+            "op": "wait",
+            "cycles": 54
+          },
+          {
+            "op": "work",
+            "units": 6
+          },
+          {
+            "op": "wait",
+            "cycles": 221
+          },
+          {
+            "op": "work",
+            "units": 5
+          },
+          {
+            "op": "wait",
+            "cycles": 374
+          },
+          {
+            "op": "wait",
+            "cycles": 791
+          },
+          {
+            "op": "work",
+            "units": 5
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "work",
+            "units": 9
+          }
+        ]
+      }
+    },
+    {
+      "id": "development-rise_fall",
+      "program": {
+        "sequence": [
+          {
+            "op": "work",
+            "units": 7
+          },
+          {
+            "op": "wait",
+            "cycles": 1424
+          },
+          {
+            "op": "wait",
+            "cycles": 26
+          },
+          {
+            "op": "work",
+            "units": 34
+          },
+          {
+            "op": "wait",
+            "cycles": 792
+          },
+          {
+            "op": "work",
+            "units": 12
+          },
+          {
+            "op": "wait",
+            "cycles": 58
+          },
+          {
+            "op": "work",
+            "units": 5
+          },
+          {
+            "op": "wait",
+            "cycles": 387
+          },
+          {
+            "op": "wait",
+            "cycles": 163
+          },
+          {
+            "op": "wait",
+            "cycles": 237
+          },
+          {
+            "op": "wait",
+            "cycles": 182
+          },
+          {
+            "op": "wait",
+            "cycles": 148
+          },
+          {
+            "op": "work",
+            "units": 6
+          },
+          {
+            "op": "wait",
+            "cycles": 2583
+          }
+        ]
+      }
+    },
+    {
+      "id": "development-irregular",
+      "program": {
+        "sequence": [
+          {
+            "op": "work",
+            "units": 6
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "work",
+            "units": 7
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "wait",
+            "cycles": 1091
+          },
+          {
+            "op": "wait",
+            "cycles": 342
+          },
+          {
+            "op": "wait",
+            "cycles": 209
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "wait",
+            "cycles": 380
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "wait",
+            "cycles": 1638
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "work",
+            "units": 22
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "wait",
+            "cycles": 637
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "wait",
+            "cycles": 756
+          },
+          {
+            "op": "work",
+            "units": 12
+          },
+          {
+            "op": "wait",
+            "cycles": 947
+          }
+        ]
+      }
+    },
+    {
+      "id": "development-flat_control",
+      "program": {
+        "sequence": [
+          {
+            "op": "work",
+            "units": 8
+          },
+          {
+            "op": "wait",
+            "cycles": 750
+          },
+          {
+            "op": "work",
+            "units": 8
+          },
+          {
+            "op": "wait",
+            "cycles": 750
+          },
+          {
+            "op": "work",
+            "units": 8
+          },
+          {
+            "op": "wait",
+            "cycles": 750
+          },
+          {
+            "op": "work",
+            "units": 8
+          },
+          {
+            "op": "wait",
+            "cycles": 750
+          },
+          {
+            "op": "work",
+            "units": 8
+          },
+          {
+            "op": "wait",
+            "cycles": 750
+          },
+          {
+            "op": "work",
+            "units": 8
+          },
+          {
+            "op": "wait",
+            "cycles": 750
+          },
+          {
+            "op": "work",
+            "units": 8
+          },
+          {
+            "op": "wait",
+            "cycles": 750
+          },
+          {
+            "op": "work",
+            "units": 8
+          },
+          {
+            "op": "wait",
+            "cycles": 750
+          }
+        ]
+      }
+    },
+    {
+      "id": "confirmation-activation",
+      "program": {
+        "sequence": [
+          {
+            "op": "wait",
+            "cycles": 847
+          },
+          {
+            "op": "wait",
+            "cycles": 847
+          },
+          {
+            "op": "wait",
+            "cycles": 714
+          },
+          {
+            "op": "work",
+            "units": 11
+          },
+          {
+            "op": "wait",
+            "cycles": 714
+          },
+          {
+            "op": "work",
+            "units": 11
+          },
+          {
+            "op": "wait",
+            "cycles": 713
+          },
+          {
+            "op": "work",
+            "units": 11
+          },
+          {
+            "op": "wait",
+            "cycles": 713
+          },
+          {
+            "op": "work",
+            "units": 11
+          },
+          {
+            "op": "wait",
+            "cycles": 726
+          },
+          {
+            "op": "work",
+            "units": 10
+          },
+          {
+            "op": "wait",
+            "cycles": 726
+          },
+          {
+            "op": "work",
+            "units": 10
+          }
+        ]
+      }
+    },
+    {
+      "id": "confirmation-deactivation",
+      "program": {
+        "sequence": [
+          {
+            "op": "work",
+            "units": 6
+          },
+          {
+            "op": "work",
+            "units": 4
+          },
+          {
+            "op": "wait",
+            "cycles": 892
+          },
+          {
+            "op": "work",
+            "units": 21
+          },
+          {
+            "op": "wait",
+            "cycles": 584
+          },
+          {
+            "op": "wait",
+            "cycles": 45
+          },
+          {
+            "op": "work",
+            "units": 6
+          },
+          {
+            "op": "wait",
+            "cycles": 51
+          },
+          {
+            "op": "wait",
+            "cycles": 424
+          },
+          {
+            "op": "work",
+            "units": 16
+          },
+          {
+            "op": "work",
+            "units": 9
+          },
+          {
+            "op": "wait",
+            "cycles": 248
+          },
+          {
+            "op": "wait",
+            "cycles": 400
+          },
+          {
+            "op": "wait",
+            "cycles": 849
+          },
+          {
+            "op": "wait",
+            "cycles": 573
+          },
+          {
+            "op": "wait",
+            "cycles": 361
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "wait",
+            "cycles": 1573
+          }
+        ]
+      }
+    },
+    {
+      "id": "confirmation-burst",
+      "program": {
+        "sequence": [
+          {
+            "op": "wait",
+            "cycles": 202
+          },
+          {
+            "op": "wait",
+            "cycles": 191
+          },
+          {
+            "op": "wait",
+            "cycles": 158
+          },
+          {
+            "op": "wait",
+            "cycles": 1983
+          },
+          {
+            "op": "wait",
+            "cycles": 54
+          },
+          {
+            "op": "wait",
+            "cycles": 457
+          },
+          {
+            "op": "work",
+            "units": 45
+          },
+          {
+            "op": "work",
+            "units": 7
+          },
+          {
+            "op": "work",
+            "units": 12
+          },
+          {
+            "op": "wait",
+            "cycles": 184
+          },
+          {
+            "op": "wait",
+            "cycles": 649
+          },
+          {
+            "op": "wait",
+            "cycles": 365
+          },
+          {
+            "op": "wait",
+            "cycles": 898
+          },
+          {
+            "op": "wait",
+            "cycles": 81
+          },
+          {
+            "op": "wait",
+            "cycles": 406
+          },
+          {
+            "op": "wait",
+            "cycles": 372
+          }
+        ]
+      }
+    },
+    {
+      "id": "confirmation-quiet_interval",
+      "program": {
+        "sequence": [
+          {
+            "op": "work",
+            "units": 14
+          },
+          {
+            "op": "wait",
+            "cycles": 778
+          },
+          {
+            "op": "work",
+            "units": 7
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "wait",
+            "cycles": 365
+          },
+          {
+            "op": "wait",
+            "cycles": 649
+          },
+          {
+            "op": "work",
+            "units": 8
+          },
+          {
+            "op": "wait",
+            "cycles": 184
+          },
+          {
+            "op": "wait",
+            "cycles": 1983
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "work",
+            "units": 4
+          },
+          {
+            "op": "wait",
+            "cycles": 158
+          },
+          {
+            "op": "work",
+            "units": 4
+          },
+          {
+            "op": "wait",
+            "cycles": 104
+          },
+          {
+            "op": "wait",
+            "cycles": 154
+          },
+          {
+            "op": "wait",
+            "cycles": 1
+          },
+          {
+            "op": "wait",
+            "cycles": 457
+          },
+          {
+            "op": "wait",
+            "cycles": 78
+          },
+          {
+            "op": "work",
+            "units": 12
+          },
+          {
+            "op": "wait",
+            "cycles": 191
+          },
+          {
+            "op": "wait",
+            "cycles": 898
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "work",
+            "units": 8
+          }
+        ]
+      }
+    },
+    {
+      "id": "confirmation-alternating",
+      "program": {
+        "sequence": [
+          {
+            "op": "wait",
+            "cycles": 778
+          },
+          {
+            "op": "wait",
+            "cycles": 184
+          },
+          {
+            "op": "work",
+            "units": 13
+          },
+          {
+            "op": "wait",
+            "cycles": 1983
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "work",
+            "units": 14
+          },
+          {
+            "op": "wait",
+            "cycles": 385
+          },
+          {
+            "op": "wait",
+            "cycles": 264
+          },
+          {
+            "op": "wait",
+            "cycles": 365
+          },
+          {
+            "op": "wait",
+            "cycles": 79
+          },
+          {
+            "op": "work",
+            "units": 7
+          },
+          {
+            "op": "work",
+            "units": 9
+          },
+          {
+            "op": "wait",
+            "cycles": 104
+          },
+          {
+            "op": "wait",
+            "cycles": 457
+          },
+          {
+            "op": "wait",
+            "cycles": 31
+          },
+          {
+            "op": "wait",
+            "cycles": 314
+          },
+          {
+            "op": "wait",
+            "cycles": 79
+          },
+          {
+            "op": "wait",
+            "cycles": 977
+          },
+          {
+            "op": "work",
+            "units": 5
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "work",
+            "units": 12
+          }
+        ]
+      }
+    },
+    {
+      "id": "confirmation-ramp",
+      "program": {
+        "sequence": [
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "wait",
+            "cycles": 150
+          },
+          {
+            "op": "wait",
+            "cycles": 774
+          },
+          {
+            "op": "wait",
+            "cycles": 184
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "wait",
+            "cycles": 657
+          },
+          {
+            "op": "wait",
+            "cycles": 1814
+          },
+          {
+            "op": "work",
+            "units": 12
+          },
+          {
+            "op": "wait",
+            "cycles": 538
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "work",
+            "units": 6
+          },
+          {
+            "op": "work",
+            "units": 5
+          },
+          {
+            "op": "wait",
+            "cycles": 561
+          },
+          {
+            "op": "wait",
+            "cycles": 345
+          },
+          {
+            "op": "wait",
+            "cycles": 79
+          },
+          {
+            "op": "work",
+            "units": 18
+          },
+          {
+            "op": "wait",
+            "cycles": 898
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "work",
+            "units": 4
+          },
+          {
+            "op": "work",
+            "units": 5
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "work",
+            "units": 7
+          }
+        ]
+      }
+    },
+    {
+      "id": "confirmation-rise_fall",
+      "program": {
+        "sequence": [
+          {
+            "op": "wait",
+            "cycles": 521
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "work",
+            "units": 4
+          },
+          {
+            "op": "wait",
+            "cycles": 633
+          },
+          {
+            "op": "work",
+            "units": 6
+          },
+          {
+            "op": "wait",
+            "cycles": 385
+          },
+          {
+            "op": "work",
+            "units": 7
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "wait",
+            "cycles": 313
+          },
+          {
+            "op": "work",
+            "units": 4
+          },
+          {
+            "op": "wait",
+            "cycles": 576
+          },
+          {
+            "op": "work",
+            "units": 8
+          },
+          {
+            "op": "wait",
+            "cycles": 280
+          },
+          {
+            "op": "work",
+            "units": 4
+          },
+          {
+            "op": "wait",
+            "cycles": 57
+          },
+          {
+            "op": "wait",
+            "cycles": 670
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "work",
+            "units": 3
+          },
+          {
+            "op": "work",
+            "units": 5
+          },
+          {
+            "op": "wait",
+            "cycles": 114
+          },
+          {
+            "op": "work",
+            "units": 8
+          },
+          {
+            "op": "work",
+            "units": 8
+          },
+          {
+            "op": "work",
+            "units": 2
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "wait",
+            "cycles": 1988
+          },
+          {
+            "op": "wait",
+            "cycles": 463
+          }
+        ]
+      }
+    },
+    {
+      "id": "confirmation-irregular",
+      "program": {
+        "sequence": [
+          {
+            "op": "work",
+            "units": 4
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "wait",
+            "cycles": 833
+          },
+          {
+            "op": "work",
+            "units": 13
+          },
+          {
+            "op": "wait",
+            "cycles": 86
+          },
+          {
+            "op": "wait",
+            "cycles": 256
+          },
+          {
+            "op": "wait",
+            "cycles": 649
+          },
+          {
+            "op": "wait",
+            "cycles": 1983
+          },
+          {
+            "op": "work",
+            "units": 9
+          },
+          {
+            "op": "work",
+            "units": 11
+          },
+          {
+            "op": "wait",
+            "cycles": 365
+          },
+          {
+            "op": "work",
+            "units": 9
+          },
+          {
+            "op": "wait",
+            "cycles": 104
+          },
+          {
+            "op": "wait",
+            "cycles": 40
+          },
+          {
+            "op": "wait",
+            "cycles": 406
+          },
+          {
+            "op": "wait",
+            "cycles": 345
+          },
+          {
+            "op": "wait",
+            "cycles": 898
+          },
+          {
+            "op": "work",
+            "units": 15
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "work",
+            "units": 1
+          },
+          {
+            "op": "wait",
+            "cycles": 35
+          }
+        ]
+      }
+    },
+    {
+      "id": "confirmation-flat_control",
+      "program": {
+        "sequence": [
+          {
+            "op": "work",
+            "units": 8
+          },
+          {
+            "op": "wait",
+            "cycles": 750
+          },
+          {
+            "op": "work",
+            "units": 8
+          },
+          {
+            "op": "wait",
+            "cycles": 750
+          },
+          {
+            "op": "work",
+            "units": 8
+          },
+          {
+            "op": "wait",
+            "cycles": 750
+          },
+          {
+            "op": "work",
+            "units": 8
+          },
+          {
+            "op": "wait",
+            "cycles": 750
+          },
+          {
+            "op": "work",
+            "units": 8
+          },
+          {
+            "op": "wait",
+            "cycles": 750
+          },
+          {
+            "op": "work",
+            "units": 8
+          },
+          {
+            "op": "wait",
+            "cycles": 750
+          },
+          {
+            "op": "work",
+            "units": 8
+          },
+          {
+            "op": "wait",
+            "cycles": 750
+          },
+          {
+            "op": "work",
+            "units": 8
+          },
+          {
+            "op": "wait",
+            "cycles": 750
+          }
+        ]
+      }
+    }
+  ]
+}

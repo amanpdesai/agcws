@@ -601,5 +601,17 @@ DMA window v3 has now been replayed at 9,216 cycles: all twelve timing corners
 pass, with a compact activity/window audit. Fresh calibration records 64/64
 valid workloads and a 1.9991–14.0359 transitions/edge bin normalization range.
 [New requested banks](results/dma/window-v3/README.md) pass the necessary floor
-checks; witnessed admission remains pending. These measurements are separate
+checks; the subsequent serialized pass now admits all eighteen requests. These measurements are separate
 from the failed old-window bank, not a relabeling of it.
+
+DMA's serialized pass completed 54/54 functionally valid fixed proposals. Eight
+non-flat profiles plus the control qualify in each split; witness errors are
+0.0033–0.0232 at tolerance 0.10. The [bank and evidence](results/dma/window-v3/README.md)
+establish feasibility under the corrected observation window, not agent success.
+
+AES and mesh each passed exact updated-runtime replay of all 64 calibration
+programs and all 18 admitted witnesses. Validity, rates and complete profiles
+match bit-for-bit. [AES evidence](results/aes/runtime-replay-v2/README.md) and
+[mesh evidence](results/mesh/runtime-replay-v2/README.md) preserve both source
+identities; new v2 banks retain the original target vectors and normalization.
+This clears their replay gate, not the live feedback-loop smoke gate.

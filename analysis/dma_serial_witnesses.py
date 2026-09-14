@@ -7,6 +7,7 @@ from pathlib import Path
 
 from agcws.config import ROOT
 from agcws.pipeline.dma import DmaTemporal
+from agcws.pipeline.engine import source_inventory
 from agcws.pipeline.metrics import error, key
 from agcws.pipeline.storage import read, write
 from agcws.pipeline.targets import qualify
@@ -40,6 +41,10 @@ def config(bank):
 def analyze(root, bank_path):
     bank = read(bank_path)
     manifest = read(root / "manifest.json")
+    if manifest["measurement"]["sources"] != source_inventory(ROOT, "dma-temporal"):
+        raise ValueError("measurement sources differ; audit at the recorded runtime")
+    if manifest["driver_sha256"] != hashlib.sha256((ROOT / "scripts/probe_fixed_cases.py").read_bytes()).hexdigest():
+        raise ValueError("diagnostic driver differs")
     if read(root / "freeze.json")["manifest_sha256"] != hashlib.sha256((root / "manifest.json").read_bytes()).hexdigest():
         raise ValueError("manifest changed")
     if (manifest["config"] != config(bank)
@@ -95,13 +100,38 @@ def analyze(root, bank_path):
             "qualified": sum(r["qualified"] for r in reports), "charged_slots": 54}
 
 
+def admitted_bank(root, bank_path):
+    audit = analyze(root, bank_path)
+    bank = read(bank_path)
+    if audit["qualified"] != 18:
+        raise ValueError("all eighteen requests must qualify")
+    reports = {r["id"]: r for r in audit["reports"]}
+    splits = {}
+    for split, part in bank["splits"].items():
+        if len(part["requests"]) != 9 or sum(r["control"] for r in part["requests"]) != 1:
+            raise ValueError("eight nonflat requests plus one control required")
+        requests = []
+        for request in part["requests"]:
+            report = reports[f"{split}-{request['id']}"]
+            requests.append({**request, "qualified": True, "witness_error": report["witness_error"],
+                             "witness_cache_id": report["witness"]["cache_id"],
+                             "witness_case": report["witness_case"]})
+        splits[split] = {"requests": requests, "pairwise_distances": part["pairwise_distances"]}
+    return {"scope": "qualified activity targets, not policy results or gate-power validation",
+            "domain": "dma-temporal", "target_bank_qualified": True, "full_study_ready": False,
+            "calibration": bank["calibration"], "splits": splits,
+            "qualification_procedures": [bank["procedure"], "docs/DMA_SERIAL_WITNESSES_V3.md"],
+            "audit": {k: v for k, v in audit.items() if k != "reports"}}
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("action", choices=("prepare", "audit"))
+    parser.add_argument("action", choices=("prepare", "audit", "admit"))
     parser.add_argument("--bank", type=Path, required=True)
     parser.add_argument("--directory", type=Path)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
-    if args.action == "audit" and args.directory is None:
+    if args.action != "prepare" and args.directory is None:
         parser.error("audit requires --directory")
-    write(args.output, config(read(args.bank)) if args.action == "prepare" else analyze(args.directory, args.bank))
+    write(args.output, config(read(args.bank)) if args.action == "prepare" else
+          (admitted_bank if args.action == "admit" else analyze)(args.directory, args.bank))
