@@ -1,6 +1,7 @@
 """Fixed-work schedule context and classical operators shared across adapters."""
 
 import copy
+import hashlib
 import json
 
 from agcws.workloads.schedule import SCHEDULE_SCHEMA, expand_schedule, random_schedule
@@ -30,8 +31,45 @@ def response_schema(n, contract):
                 "type": "array", "minItems": n, "maxItems": n, "items": program}}}
 
 
+def history_summary(history):
+    """Four best valid plus four recent trials; complete evidence stays in the ledger."""
+    selected = history if len(history) <= 8 else sorted(
+        {t["slot"]: t for t in [
+            *sorted((t for t in history if t["valid"] is True), key=lambda t: (t["loss"], t["slot"]))[:4],
+            *history[-4:]]}.values(), key=lambda t: t["slot"])
+    rows = []
+    for trial in selected:
+        row = {k: copy.deepcopy(trial.get(k)) for k in (
+            "slot", "program", "valid", "stage", "reason", "rates", "residual", "loss")}
+        encoded = json.dumps(row["program"], sort_keys=True).encode()
+        if len(encoded) > 12000:
+            row["program"] = None
+            row["program_omitted"] = {"reason": "history display limit; full submitted program remains in the slot artifact",
+                                      "bytes": len(encoded), "sha256": hashlib.sha256(encoded).hexdigest()}
+        reason = row["reason"]
+        if isinstance(reason, str) and len(reason.encode()) > 2000:
+            row["reason"] = None
+            row["reason_excerpt"] = {"text": reason.encode()[:2000].decode(errors="ignore"),
+                                     "sha256": hashlib.sha256(reason.encode()).hexdigest(),
+                                     "bytes": len(reason.encode()), "complete": False}
+        rows.append(row)
+    return rows
+
+
 def payload(adapter, history, goal, n, *, schema=None):
+    summarized = history_summary(history)
+    resource_context = {}
+    if hasattr(adapter, "contract"):
+        resource_context = {"exact_resource_budget": {
+            "work_units": adapter.contract.work_units, "idle_cycles": adapter.contract.idle_cycles,
+            "max_expanded_operations": adapter.contract.max_expanded_ops,
+            "refinement_guidance": "Start from a valid previous schedule when correcting a budget violation. "
+                "Reordering its existing operations preserves totals. When editing numeric parameters, "
+                "transfer an amount between two operations of the same kind rather than changing totals "
+                "independently. Keep each parameter positive and within its bounds. Repeated bodies count "
+                "with their full multiplicity. These are suggestions, not automatic repairs."}}
     return json.dumps({
+        **resource_context,
         "instruction": "Propose complete schedules to match the eight-bin activity target. "
                        "Return hypothesis and candidates as strict JSON. Never modify the RTL, "
                        "harness or evaluator. Obey the supplied resource constraints; no "
@@ -41,9 +79,11 @@ def payload(adapter, history, goal, n, *, schema=None):
                    "protocol_constraints": adapter.protocol_constraints},
         "response_schema": schema if schema is not None else response_schema(n, adapter.contract),
         "goal": goal,
-        "history": [{k: t.get(k) for k in (
-            "slot", "program", "valid", "stage", "reason", "rates", "residual", "loss"
-        )} for t in history],
+        "history_policy": {"version": "best4-recent4-v1", "total_slots": len(history),
+                           "shown_slots": [t["slot"] for t in summarized],
+                           "omitted_slots": len(history) - len(summarized),
+                           "note": "History selection and marked display omissions only; no proposal repair or free retry."},
+        "history": summarized,
     }, sort_keys=True)
 
 
