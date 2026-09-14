@@ -1,0 +1,6710 @@
+{
+  "procedure": "docs/BIT_ACTIVITY_V1.md",
+  "activity_contract": "known-bit-activity-v2",
+  "domain": "dma-temporal",
+  "calibration": {
+    "proposals": 64,
+    "valid": 64,
+    "failure_stages": {},
+    "activity_contract": "known-bit-activity-v2",
+    "status": "calibrated",
+    "low": 0.0,
+    "high": 47.93302951388888,
+    "scale": 47.93302951388888,
+    "median_window_mean": 20.0556640625
+  },
+  "measurement_fingerprint": "01fc423adc19a19fbee6557cdcc49c4abef55b5c3f506613c395eee272ebdc4b",
+  "splits": {
+    "development": {
+      "requests": [
+        {
+          "id": "activation",
+          "split": "development",
+          "rates": [
+            2.0055664062500007,
+            2.0055664062500007,
+            2.0055664062500007,
+            30.88572265625,
+            30.88572265625,
+            30.88572265625,
+            30.88572265625,
+            30.88572265625
+          ],
+          "control": false,
+          "qualified": false,
+          "constant_floor": 0.29168916852967786,
+          "best_constant_rate": 20.0556640625,
+          "span_over_scale": 0.602510555725083,
+          "total_variation_over_scale": 0.602510555725083
+        },
+        {
+          "id": "deactivation",
+          "split": "development",
+          "rates": [
+            45.14529296875,
+            45.14529296875,
+            45.14529296875,
+            5.001886718750001,
+            5.001886718750001,
+            5.001886718750001,
+            5.001886718750001,
+            5.001886718750001
+          ],
+          "control": false,
+          "qualified": false,
+          "constant_floor": 0.40544783378765725,
+          "best_constant_rate": 20.0556640625,
+          "span_over_scale": 0.837489444274917,
+          "total_variation_over_scale": 0.837489444274917
+        },
+        {
+          "id": "burst",
+          "split": "development",
+          "rates": [
+            11.692454427083334,
+            11.692454427083334,
+            45.14529296875,
+            45.14529296875,
+            11.692454427083334,
+            11.692454427083334,
+            11.692454427083334,
+            11.692454427083334
+          ],
+          "control": false,
+          "qualified": false,
+          "constant_floor": 0.3022029725597459,
+          "best_constant_rate": 20.0556640625,
+          "span_over_scale": 0.6979078702290975,
+          "total_variation_over_scale": 1.395815740458195
+        },
+        {
+          "id": "quiet_interval",
+          "split": "development",
+          "rates": [
+            30.88572265625,
+            30.88572265625,
+            2.0055664062500007,
+            2.0055664062500007,
+            2.0055664062500007,
+            30.88572265625,
+            30.88572265625,
+            30.88572265625
+          ],
+          "control": false,
+          "qualified": false,
+          "constant_floor": 0.29168916852967786,
+          "best_constant_rate": 20.0556640625,
+          "span_over_scale": 0.602510555725083,
+          "total_variation_over_scale": 1.205021111450166
+        },
+        {
+          "id": "alternating",
+          "split": "development",
+          "rates": [
+            38.10576171875,
+            2.0055664062500007,
+            38.10576171875,
+            2.0055664062500007,
+            38.10576171875,
+            2.0055664062500007,
+            38.10576171875,
+            2.0055664062500007
+          ],
+          "control": false,
+          "qualified": false,
+          "constant_floor": 0.376569097328177,
+          "best_constant_rate": 20.0556640625,
+          "span_over_scale": 0.753138194656354,
+          "total_variation_over_scale": 5.271967362594478
+        },
+        {
+          "id": "ramp",
+          "split": "development",
+          "rates": [
+            2.0055664062500007,
+            7.059593750000001,
+            12.474623046875,
+            17.528650390625,
+            22.582677734374997,
+            27.636705078124997,
+            33.051734374999995,
+            38.10576171875
+          ],
+          "control": false,
+          "qualified": false,
+          "constant_floor": 0.2465305591155229,
+          "best_constant_rate": 20.0556640625,
+          "span_over_scale": 0.753138194656354,
+          "total_variation_over_scale": 0.753138194656354
+        },
+        {
+          "id": "rise_fall",
+          "split": "development",
+          "rates": [
+            5.001886718750001,
+            25.07358984375,
+            45.14529296875,
+            45.14529296875,
+            25.07358984375,
+            5.001886718750001,
+            5.001886718750001,
+            5.001886718750001
+          ],
+          "control": false,
+          "qualified": false,
+          "constant_floor": 0.34720478156789464,
+          "best_constant_rate": 20.0556640625,
+          "span_over_scale": 0.837489444274917,
+          "total_variation_over_scale": 1.674978888549834
+        },
+        {
+          "id": "irregular",
+          "split": "development",
+          "rates": [
+            45.14529296875,
+            5.001886718750001,
+            25.07358984375,
+            5.001886718750001,
+            45.14529296875,
+            5.001886718750001,
+            25.07358984375,
+            5.001886718750001
+          ],
+          "control": false,
+          "qualified": false,
+          "constant_floor": 0.34720478156789464,
+          "best_constant_rate": 20.0556640625,
+          "span_over_scale": 0.837489444274917,
+          "total_variation_over_scale": 4.187447221374585
+        },
+        {
+          "id": "flat_control",
+          "split": "development",
+          "rates": [
+            20.0556640625,
+            20.0556640625,
+            20.0556640625,
+            20.0556640625,
+            20.0556640625,
+            20.0556640625,
+            20.0556640625,
+            20.0556640625
+          ],
+          "control": true,
+          "qualified": false,
+          "constant_floor": 0.0,
+          "best_constant_rate": 20.0556640625,
+          "span_over_scale": 0.0,
+          "total_variation_over_scale": 0.0
+        }
+      ],
+      "pairwise_distances": [
+        {
+          "left": "activation",
+          "right": "deactivation",
+          "distance": 0.6971370023173352
+        },
+        {
+          "left": "activation",
+          "right": "burst",
+          "distance": 0.4502113518476867
+        },
+        {
+          "left": "activation",
+          "right": "quiet_interval",
+          "distance": 0.42603929968968146
+        },
+        {
+          "left": "activation",
+          "right": "alternating",
+          "distance": 0.5325491246121018
+        },
+        {
+          "left": "activation",
+          "right": "ramp",
+          "distance": 0.15644621951903315
+        },
+        {
+          "left": "activation",
+          "right": "rise_fall",
+          "distance": 0.5029310370110563
+        },
+        {
+          "left": "activation",
+          "right": "irregular",
+          "distance": 0.5029310370110563
+        },
+        {
+          "left": "activation",
+          "right": "flat_control",
+          "distance": 0.29168916852967786
+        },
+        {
+          "left": "deactivation",
+          "right": "burst",
+          "distance": 0.4681708319593092
+        },
+        {
+          "left": "deactivation",
+          "right": "quiet_interval",
+          "distance": 0.48342722798577914
+        },
+        {
+          "left": "deactivation",
+          "right": "alternating",
+          "distance": 0.47681135679903985
+        },
+        {
+          "left": "deactivation",
+          "right": "ramp",
+          "distance": 0.6276062675507583
+        },
+        {
+          "left": "deactivation",
+          "right": "rise_fall",
+          "distance": 0.4681708319593092
+        },
+        {
+          "left": "deactivation",
+          "right": "irregular",
+          "distance": 0.4681708319593092
+        },
+        {
+          "left": "deactivation",
+          "right": "flat_control",
+          "distance": 0.40544783378765725
+        },
+        {
+          "left": "burst",
+          "right": "quiet_interval",
+          "distance": 0.5548103063360326
+        },
+        {
+          "left": "burst",
+          "right": "alternating",
+          "distance": 0.4828363301228529
+        },
+        {
+          "left": "burst",
+          "right": "ramp",
+          "distance": 0.43462331776058116
+        },
+        {
+          "left": "burst",
+          "right": "rise_fall",
+          "distance": 0.17095181695338277
+        },
+        {
+          "left": "burst",
+          "right": "irregular",
+          "distance": 0.49840591049578714
+        },
+        {
+          "left": "burst",
+          "right": "flat_control",
+          "distance": 0.3022029725597459
+        },
+        {
+          "left": "quiet_interval",
+          "right": "alternating",
+          "distance": 0.5325491246121018
+        },
+        {
+          "left": "quiet_interval",
+          "right": "ramp",
+          "distance": 0.34933761281149983
+        },
+        {
+          "left": "quiet_interval",
+          "right": "rise_fall",
+          "distance": 0.6157017830167535
+        },
+        {
+          "left": "quiet_interval",
+          "right": "irregular",
+          "distance": 0.5029310370110563
+        },
+        {
+          "left": "quiet_interval",
+          "right": "flat_control",
+          "distance": 0.29168916852967786
+        },
+        {
+          "left": "alternating",
+          "right": "ramp",
+          "distance": 0.49222637216821963
+        },
+        {
+          "left": "alternating",
+          "right": "rise_fall",
+          "distance": 0.512206448032595
+        },
+        {
+          "left": "alternating",
+          "right": "irregular",
+          "distance": 0.16070458103864335
+        },
+        {
+          "left": "alternating",
+          "right": "flat_control",
+          "distance": 0.376569097328177
+        },
+        {
+          "left": "ramp",
+          "right": "rise_fall",
+          "distance": 0.4983424161985152
+        },
+        {
+          "left": "ramp",
+          "right": "irregular",
+          "distance": 0.4871417876149996
+        },
+        {
+          "left": "ramp",
+          "right": "flat_control",
+          "distance": 0.2465305591155229
+        },
+        {
+          "left": "rise_fall",
+          "right": "irregular",
+          "distance": 0.5128554508601484
+        },
+        {
+          "left": "rise_fall",
+          "right": "flat_control",
+          "distance": 0.34720478156789464
+        },
+        {
+          "left": "irregular",
+          "right": "flat_control",
+          "distance": 0.34720478156789464
+        }
+      ]
+    },
+    "confirmation": {
+      "requests": [
+        {
+          "id": "activation",
+          "split": "confirmation",
+          "rates": [
+            0.0,
+            0.0,
+            26.740885416666668,
+            26.740885416666668,
+            26.740885416666668,
+            26.740885416666668,
+            26.740885416666668,
+            26.740885416666668
+          ],
+          "control": false,
+          "qualified": false,
+          "constant_floor": 0.24156918856768594,
+          "best_constant_rate": 20.0556640625,
+          "span_over_scale": 0.5578801441898917,
+          "total_variation_over_scale": 0.5578801441898917
+        },
+        {
+          "id": "deactivation",
+          "split": "confirmation",
+          "rates": [
+            40.111328125,
+            40.111328125,
+            40.111328125,
+            40.111328125,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "control": false,
+          "qualified": false,
+          "constant_floor": 0.4184101081424188,
+          "best_constant_rate": 20.0556640625,
+          "span_over_scale": 0.8368202162848376,
+          "total_variation_over_scale": 0.8368202162848376
+        },
+        {
+          "id": "burst",
+          "split": "confirmation",
+          "rates": [
+            10.763208912037038,
+            10.763208912037038,
+            10.763208912037038,
+            47.93302951388888,
+            47.93302951388888,
+            10.763208912037038,
+            10.763208912037038,
+            10.763208912037038
+          ],
+          "control": false,
+          "qualified": false,
+          "constant_floor": 0.33578108062193984,
+          "best_constant_rate": 20.0556640625,
+          "span_over_scale": 0.7754531891434416,
+          "total_variation_over_scale": 1.5509063782868833
+        },
+        {
+          "id": "quiet_interval",
+          "split": "confirmation",
+          "rates": [
+            26.740885416666668,
+            26.740885416666668,
+            26.740885416666668,
+            0.0,
+            0.0,
+            26.740885416666668,
+            26.740885416666668,
+            26.740885416666668
+          ],
+          "control": false,
+          "qualified": false,
+          "constant_floor": 0.24156918856768594,
+          "best_constant_rate": 20.0556640625,
+          "span_over_scale": 0.5578801441898917,
+          "total_variation_over_scale": 1.1157602883797835
+        },
+        {
+          "id": "alternating",
+          "split": "confirmation",
+          "rates": [
+            0.0,
+            40.111328125,
+            0.0,
+            40.111328125,
+            0.0,
+            40.111328125,
+            0.0,
+            40.111328125
+          ],
+          "control": false,
+          "qualified": false,
+          "constant_floor": 0.4184101081424188,
+          "best_constant_rate": 20.0556640625,
+          "span_over_scale": 0.8368202162848376,
+          "total_variation_over_scale": 5.857741513993863
+        },
+        {
+          "id": "ramp",
+          "split": "confirmation",
+          "rates": [
+            0.0,
+            0.0,
+            13.236738281250002,
+            13.236738281250002,
+            26.87458984375,
+            26.87458984375,
+            40.111328125,
+            40.111328125
+          ],
+          "control": false,
+          "qualified": false,
+          "constant_floor": 0.3124938126950831,
+          "best_constant_rate": 20.0556640625,
+          "span_over_scale": 0.8368202162848376,
+          "total_variation_over_scale": 0.8368202162848376
+        },
+        {
+          "id": "rise_fall",
+          "split": "confirmation",
+          "rates": [
+            0.0,
+            20.0556640625,
+            40.111328125,
+            40.111328125,
+            40.111328125,
+            20.0556640625,
+            0.0,
+            0.0
+          ],
+          "control": false,
+          "qualified": false,
+          "constant_floor": 0.3623537828515289,
+          "best_constant_rate": 20.0556640625,
+          "span_over_scale": 0.8368202162848376,
+          "total_variation_over_scale": 1.6736404325696752
+        },
+        {
+          "id": "irregular",
+          "split": "confirmation",
+          "rates": [
+            20.0556640625,
+            40.111328125,
+            0.0,
+            0.0,
+            40.111328125,
+            20.0556640625,
+            0.0,
+            40.111328125
+          ],
+          "control": false,
+          "qualified": false,
+          "constant_floor": 0.3623537828515289,
+          "best_constant_rate": 20.0556640625,
+          "span_over_scale": 0.8368202162848376,
+          "total_variation_over_scale": 3.765690973281769
+        },
+        {
+          "id": "flat_control",
+          "split": "confirmation",
+          "rates": [
+            20.0556640625,
+            20.0556640625,
+            20.0556640625,
+            20.0556640625,
+            20.0556640625,
+            20.0556640625,
+            20.0556640625,
+            20.0556640625
+          ],
+          "control": true,
+          "qualified": false,
+          "constant_floor": 0.0,
+          "best_constant_rate": 20.0556640625,
+          "span_over_scale": 0.0,
+          "total_variation_over_scale": 0.0
+        }
+      ],
+      "pairwise_distances": [
+        {
+          "left": "activation",
+          "right": "deactivation",
+          "distance": 0.5917212495690021
+        },
+        {
+          "left": "activation",
+          "right": "burst",
+          "distance": 0.34209408771185457
+        },
+        {
+          "left": "activation",
+          "right": "quiet_interval",
+          "distance": 0.39448083304600134
+        },
+        {
+          "left": "activation",
+          "right": "alternating",
+          "distance": 0.4831383771353719
+        },
+        {
+          "left": "activation",
+          "right": "ramp",
+          "distance": 0.19823397818603017
+        },
+        {
+          "left": "activation",
+          "right": "rise_fall",
+          "distance": 0.3623537828515289
+        },
+        {
+          "left": "activation",
+          "right": "irregular",
+          "distance": 0.4980076401796596
+        },
+        {
+          "left": "activation",
+          "right": "flat_control",
+          "distance": 0.24156918856768594
+        },
+        {
+          "left": "deactivation",
+          "right": "burst",
+          "distance": 0.5364848112476143
+        },
+        {
+          "left": "deactivation",
+          "right": "quiet_interval",
+          "distance": 0.4831383771353719
+        },
+        {
+          "left": "deactivation",
+          "right": "alternating",
+          "distance": 0.5917212495690021
+        },
+        {
+          "left": "deactivation",
+          "right": "ramp",
+          "distance": 0.7122564190562034
+        },
+        {
+          "left": "deactivation",
+          "right": "rise_fall",
+          "distance": 0.4677967221397434
+        },
+        {
+          "left": "deactivation",
+          "right": "irregular",
+          "distance": 0.6276151622136282
+        },
+        {
+          "left": "deactivation",
+          "right": "flat_control",
+          "distance": 0.4184101081424188
+        },
+        {
+          "left": "burst",
+          "right": "quiet_interval",
+          "distance": 0.5773502691896258
+        },
+        {
+          "left": "burst",
+          "right": "alternating",
+          "distance": 0.5364848112476143
+        },
+        {
+          "left": "burst",
+          "right": "ramp",
+          "distance": 0.4586952333263857
+        },
+        {
+          "left": "burst",
+          "right": "rise_fall",
+          "distance": 0.2860427794683955
+        },
+        {
+          "left": "burst",
+          "right": "irregular",
+          "distance": 0.49401335817005054
+        },
+        {
+          "left": "burst",
+          "right": "flat_control",
+          "distance": 0.33578108062193984
+        },
+        {
+          "left": "quiet_interval",
+          "right": "alternating",
+          "distance": 0.4831383771353719
+        },
+        {
+          "left": "quiet_interval",
+          "right": "ramp",
+          "distance": 0.3949785511112723
+        },
+        {
+          "left": "quiet_interval",
+          "right": "rise_fall",
+          "distance": 0.5535045460902409
+        },
+        {
+          "left": "quiet_interval",
+          "right": "irregular",
+          "distance": 0.43549504797651045
+        },
+        {
+          "left": "quiet_interval",
+          "right": "flat_control",
+          "distance": 0.24156918856768594
+        },
+        {
+          "left": "alternating",
+          "right": "ramp",
+          "distance": 0.5222254317519018
+        },
+        {
+          "left": "alternating",
+          "right": "rise_fall",
+          "distance": 0.5535045460902409
+        },
+        {
+          "left": "alternating",
+          "right": "irregular",
+          "distance": 0.4677967221397434
+        },
+        {
+          "left": "alternating",
+          "right": "flat_control",
+          "distance": 0.4184101081424188
+        },
+        {
+          "left": "ramp",
+          "right": "rise_fall",
+          "distance": 0.5362835986202628
+        },
+        {
+          "left": "ramp",
+          "right": "irregular",
+          "distance": 0.47757440449268623
+        },
+        {
+          "left": "ramp",
+          "right": "flat_control",
+          "distance": 0.3124938126950831
+        },
+        {
+          "left": "rise_fall",
+          "right": "irregular",
+          "distance": 0.5535045460902409
+        },
+        {
+          "left": "rise_fall",
+          "right": "flat_control",
+          "distance": 0.3623537828515289
+        },
+        {
+          "left": "irregular",
+          "right": "flat_control",
+          "distance": 0.3623537828515289
+        }
+      ]
+    }
+  },
+  "full_study_ready": false,
+  "admission": {
+    "activity_contract": "known-bit-activity-v2",
+    "domain": "dma-temporal",
+    "measurement_fingerprint": "01fc423adc19a19fbee6557cdcc49c4abef55b5c3f506613c395eee272ebdc4b",
+    "qualified": 18,
+    "requests": 18,
+    "charged_witness_attempts": 18,
+    "outcomes": [
+      {
+        "id": "development-activation",
+        "qualified": true,
+        "attempts": 1,
+        "witness": {
+          "id": "development-activation",
+          "source": "fixed-original-witness",
+          "program": {
+            "sequence": [
+              {
+                "cycles": 1102,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 1102,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 1102,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 498,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 549,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 549,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 549,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 549,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              }
+            ]
+          },
+          "valid": true,
+          "rates": [
+            2.396701388888889,
+            2.5225694444444446,
+            2.478298611111111,
+            32.497395833333336,
+            29.92534722222222,
+            30.00607638888889,
+            29.952256944444443,
+            29.96527777777778
+          ],
+          "qualified": true,
+          "reasons": [],
+          "witness_error": 0.01902936026930849
+        },
+        "failure_reasons": []
+      },
+      {
+        "id": "development-deactivation",
+        "qualified": true,
+        "attempts": 1,
+        "witness": {
+          "id": "development-deactivation",
+          "source": "fixed-original-witness",
+          "program": {
+            "sequence": [
+              {
+                "cycles": 248,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 248,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 248,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 1052,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 1051,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 1051,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 1051,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 1051,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              }
+            ]
+          },
+          "valid": true,
+          "rates": [
+            44.864583333333336,
+            44.96875,
+            44.91493055555556,
+            5.0234375,
+            4.969618055555555,
+            4.996527777777778,
+            4.969618055555555,
+            5.036458333333333
+          ],
+          "qualified": true,
+          "reasons": [],
+          "witness_error": 0.0030124657291875547
+        },
+        "failure_reasons": []
+      },
+      {
+        "id": "development-burst",
+        "qualified": true,
+        "attempts": 1,
+        "witness": {
+          "id": "development-burst",
+          "source": "fixed-original-witness",
+          "program": {
+            "sequence": [
+              {
+                "cycles": 450,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 451,
+                "op": "wait"
+              },
+              {
+                "cycles": 450,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 451,
+                "op": "wait"
+              },
+              {
+                "cycles": 123,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 124,
+                "op": "wait"
+              },
+              {
+                "cycles": 123,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 124,
+                "op": "wait"
+              },
+              {
+                "cycles": 450,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 451,
+                "op": "wait"
+              },
+              {
+                "cycles": 450,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 451,
+                "op": "wait"
+              },
+              {
+                "cycles": 475,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 476,
+                "op": "wait"
+              },
+              {
+                "cycles": 475,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 476,
+                "op": "wait"
+              }
+            ]
+          },
+          "valid": true,
+          "rates": [
+            12.389756944444445,
+            12.488715277777779,
+            44.94184027777778,
+            44.94184027777778,
+            12.49826388888889,
+            12.511284722222221,
+            9.966145833333334,
+            10.00607638888889
+          ],
+          "qualified": true,
+          "reasons": [],
+          "witness_error": 0.02130992951468784
+        },
+        "failure_reasons": []
+      },
+      {
+        "id": "development-quiet_interval",
+        "qualified": true,
+        "attempts": 1,
+        "witness": {
+          "id": "development-quiet_interval",
+          "source": "fixed-original-witness",
+          "program": {
+            "sequence": [
+              {
+                "cycles": 249,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 250,
+                "op": "wait"
+              },
+              {
+                "cycles": 274,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 275,
+                "op": "wait"
+              },
+              {
+                "cycles": 551,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 551,
+                "op": "wait"
+              },
+              {
+                "cycles": 551,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 551,
+                "op": "wait"
+              },
+              {
+                "cycles": 550,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 551,
+                "op": "wait"
+              },
+              {
+                "cycles": 274,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 275,
+                "op": "wait"
+              },
+              {
+                "cycles": 274,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 275,
+                "op": "wait"
+              },
+              {
+                "cycles": 274,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 275,
+                "op": "wait"
+              }
+            ]
+          },
+          "valid": true,
+          "rates": [
+            32.348958333333336,
+            29.979166666666668,
+            2.4956597222222223,
+            2.478298611111111,
+            2.5182291666666665,
+            30.00607638888889,
+            29.952256944444443,
+            29.96527777777778
+          ],
+          "qualified": true,
+          "reasons": [],
+          "witness_error": 0.01833900424212417
+        },
+        "failure_reasons": []
+      },
+      {
+        "id": "development-alternating",
+        "qualified": true,
+        "attempts": 1,
+        "witness": {
+          "id": "development-alternating",
+          "source": "fixed-original-witness",
+          "program": {
+            "sequence": [
+              {
+                "cycles": 398,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 1102,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 398,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 1102,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 398,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 1102,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 398,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 1102,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              }
+            ]
+          },
+          "valid": true,
+          "rates": [
+            37.33159722222222,
+            2.5633680555555554,
+            37.38628472222222,
+            2.5859375,
+            37.38194444444444,
+            2.5633680555555554,
+            37.390625,
+            2.540798611111111
+          ],
+          "qualified": true,
+          "reasons": [],
+          "witness_error": 0.013596445240428292
+        },
+        "failure_reasons": []
+      },
+      {
+        "id": "development-ramp",
+        "qualified": true,
+        "attempts": 1,
+        "witness": {
+          "id": "development-ramp",
+          "source": "fixed-original-witness",
+          "program": {
+            "sequence": [
+              {
+                "cycles": 1102,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 1001,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 901,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 800,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 700,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 599,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 499,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 398,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              }
+            ]
+          },
+          "valid": true,
+          "rates": [
+            2.396701388888889,
+            7.519097222222222,
+            12.46701388888889,
+            17.51215277777778,
+            22.43315972222222,
+            27.505208333333332,
+            32.453125,
+            37.45746527777778
+          ],
+          "qualified": true,
+          "reasons": [],
+          "witness_error": 0.00802163086059283
+        },
+        "failure_reasons": []
+      },
+      {
+        "id": "development-rise_fall",
+        "qualified": true,
+        "attempts": 1,
+        "witness": {
+          "id": "development-rise_fall",
+          "source": "fixed-original-witness",
+          "program": {
+            "sequence": [
+              {
+                "cycles": 526,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 526,
+                "op": "wait"
+              },
+              {
+                "cycles": 325,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 325,
+                "op": "wait"
+              },
+              {
+                "cycles": 124,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 124,
+                "op": "wait"
+              },
+              {
+                "cycles": 124,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 124,
+                "op": "wait"
+              },
+              {
+                "cycles": 324,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 325,
+                "op": "wait"
+              },
+              {
+                "cycles": 525,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 526,
+                "op": "wait"
+              },
+              {
+                "cycles": 525,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 526,
+                "op": "wait"
+              },
+              {
+                "cycles": 525,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 526,
+                "op": "wait"
+              }
+            ]
+          },
+          "valid": true,
+          "rates": [
+            4.919270833333333,
+            24.955729166666668,
+            44.91493055555556,
+            45.02256944444444,
+            24.928819444444443,
+            4.996527777777778,
+            4.969618055555555,
+            5.036458333333333
+          ],
+          "qualified": true,
+          "reasons": [],
+          "witness_error": 0.0024692274181201427
+        },
+        "failure_reasons": []
+      },
+      {
+        "id": "development-irregular",
+        "qualified": true,
+        "attempts": 1,
+        "witness": {
+          "id": "development-irregular",
+          "source": "fixed-original-witness",
+          "program": {
+            "sequence": [
+              {
+                "cycles": 248,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 1052,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 650,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 1052,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 247,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 1051,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 649,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 1051,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              }
+            ]
+          },
+          "valid": true,
+          "rates": [
+            44.864583333333336,
+            4.996527777777778,
+            24.928819444444443,
+            5.077256944444445,
+            44.91493055555556,
+            4.996527777777778,
+            24.928819444444443,
+            5.036458333333333
+          ],
+          "qualified": true,
+          "reasons": [],
+          "witness_error": 0.003135575100629138
+        },
+        "failure_reasons": []
+      },
+      {
+        "id": "development-flat_control",
+        "qualified": true,
+        "attempts": 1,
+        "witness": {
+          "id": "development-flat_control",
+          "source": "fixed-original-witness",
+          "program": {
+            "sequence": [
+              {
+                "cycles": 375,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 375,
+                "op": "wait"
+              },
+              {
+                "cycles": 375,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 375,
+                "op": "wait"
+              },
+              {
+                "cycles": 375,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 375,
+                "op": "wait"
+              },
+              {
+                "cycles": 375,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 375,
+                "op": "wait"
+              },
+              {
+                "cycles": 375,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 375,
+                "op": "wait"
+              },
+              {
+                "cycles": 375,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 375,
+                "op": "wait"
+              },
+              {
+                "cycles": 375,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 375,
+                "op": "wait"
+              },
+              {
+                "cycles": 375,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 375,
+                "op": "wait"
+              }
+            ]
+          },
+          "valid": true,
+          "rates": [
+            19.908854166666668,
+            19.98611111111111,
+            19.95920138888889,
+            20.013020833333332,
+            19.95920138888889,
+            19.98611111111111,
+            19.95920138888889,
+            19.97222222222222
+          ],
+          "qualified": true,
+          "reasons": [],
+          "witness_error": 0.0019223539369752384
+        },
+        "failure_reasons": []
+      },
+      {
+        "id": "confirmation-activation",
+        "qualified": true,
+        "attempts": 1,
+        "witness": {
+          "id": "confirmation-activation",
+          "source": "fixed-original-witness",
+          "program": {
+            "sequence": [
+              {
+                "cycles": 576,
+                "op": "wait"
+              },
+              {
+                "cycles": 576,
+                "op": "wait"
+              },
+              {
+                "cycles": 576,
+                "op": "wait"
+              },
+              {
+                "cycles": 576,
+                "op": "wait"
+              },
+              {
+                "cycles": 299,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 300,
+                "op": "wait"
+              },
+              {
+                "cycles": 299,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 300,
+                "op": "wait"
+              },
+              {
+                "cycles": 299,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 300,
+                "op": "wait"
+              },
+              {
+                "cycles": 299,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 300,
+                "op": "wait"
+              },
+              {
+                "cycles": 325,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 325,
+                "op": "wait"
+              },
+              {
+                "cycles": 325,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 325,
+                "op": "wait"
+              }
+            ]
+          },
+          "valid": true,
+          "rates": [
+            0.0546875,
+            0.0,
+            27.302083333333332,
+            27.473958333333332,
+            27.510416666666668,
+            27.45138888888889,
+            24.955729166666668,
+            24.99565972222222
+          ],
+          "qualified": true,
+          "reasons": [],
+          "witness_error": 0.02110217964740545
+        },
+        "failure_reasons": []
+      },
+      {
+        "id": "confirmation-deactivation",
+        "qualified": true,
+        "attempts": 1,
+        "witness": {
+          "id": "confirmation-deactivation",
+          "source": "fixed-original-witness",
+          "program": {
+            "sequence": [
+              {
+                "cycles": 348,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 348,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 348,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 348,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 1152,
+                "op": "wait"
+              },
+              {
+                "cycles": 1152,
+                "op": "wait"
+              },
+              {
+                "cycles": 1152,
+                "op": "wait"
+              },
+              {
+                "cycles": 1152,
+                "op": "wait"
+              }
+            ]
+          },
+          "valid": true,
+          "rates": [
+            39.89496527777778,
+            39.97222222222222,
+            39.9453125,
+            39.931423611111114,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "qualified": true,
+          "reasons": [],
+          "witness_error": 0.002619152092862151
+        },
+        "failure_reasons": []
+      },
+      {
+        "id": "confirmation-burst",
+        "qualified": true,
+        "attempts": 1,
+        "witness": {
+          "id": "confirmation-burst",
+          "source": "fixed-original-witness",
+          "program": {
+            "sequence": [
+              {
+                "cycles": 901,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 901,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 951,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 197,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 197,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 951,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 951,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 951,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              }
+            ]
+          },
+          "valid": true,
+          "rates": [
+            12.389756944444445,
+            12.488715277777779,
+            9.966145833333334,
+            47.49652777777778,
+            47.4375,
+            9.993055555555555,
+            9.966145833333334,
+            10.00607638888889
+          ],
+          "qualified": true,
+          "reasons": [],
+          "witness_error": 0.021499601965876483
+        },
+        "failure_reasons": []
+      },
+      {
+        "id": "confirmation-quiet_interval",
+        "qualified": true,
+        "attempts": 1,
+        "witness": {
+          "id": "confirmation-quiet_interval",
+          "source": "fixed-original-witness",
+          "program": {
+            "sequence": [
+              {
+                "cycles": 299,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 300,
+                "op": "wait"
+              },
+              {
+                "cycles": 299,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 300,
+                "op": "wait"
+              },
+              {
+                "cycles": 299,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 300,
+                "op": "wait"
+              },
+              {
+                "cycles": 576,
+                "op": "wait"
+              },
+              {
+                "cycles": 576,
+                "op": "wait"
+              },
+              {
+                "cycles": 576,
+                "op": "wait"
+              },
+              {
+                "cycles": 576,
+                "op": "wait"
+              },
+              {
+                "cycles": 299,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 300,
+                "op": "wait"
+              },
+              {
+                "cycles": 325,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 325,
+                "op": "wait"
+              },
+              {
+                "cycles": 325,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 325,
+                "op": "wait"
+              }
+            ]
+          },
+          "valid": true,
+          "rates": [
+            27.356770833333332,
+            27.473958333333332,
+            27.510416666666668,
+            0.0,
+            0.0,
+            27.45138888888889,
+            24.955729166666668,
+            24.99565972222222
+          ],
+          "qualified": true,
+          "reasons": [],
+          "witness_error": 0.02118115746276302
+        },
+        "failure_reasons": []
+      },
+      {
+        "id": "confirmation-alternating",
+        "qualified": true,
+        "attempts": 1,
+        "witness": {
+          "id": "confirmation-alternating",
+          "source": "fixed-original-witness",
+          "program": {
+            "sequence": [
+              {
+                "cycles": 1152,
+                "op": "wait"
+              },
+              {
+                "cycles": 348,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 1152,
+                "op": "wait"
+              },
+              {
+                "cycles": 348,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 1152,
+                "op": "wait"
+              },
+              {
+                "cycles": 348,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 1152,
+                "op": "wait"
+              },
+              {
+                "cycles": 348,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              }
+            ]
+          },
+          "valid": true,
+          "rates": [
+            0.0546875,
+            39.84027777777778,
+            0.0,
+            39.97222222222222,
+            0.0,
+            39.9453125,
+            0.0,
+            39.931423611111114
+          ],
+          "qualified": true,
+          "reasons": [],
+          "witness_error": 0.0029108178978560196
+        },
+        "failure_reasons": []
+      },
+      {
+        "id": "confirmation-ramp",
+        "qualified": true,
+        "attempts": 1,
+        "witness": {
+          "id": "confirmation-ramp",
+          "source": "fixed-original-witness",
+          "program": {
+            "sequence": [
+              {
+                "cycles": 1152,
+                "op": "wait"
+              },
+              {
+                "cycles": 1152,
+                "op": "wait"
+              },
+              {
+                "cycles": 901,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 901,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 599,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 599,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 348,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 348,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              }
+            ]
+          },
+          "valid": true,
+          "rates": [
+            0.0546875,
+            0.0,
+            12.335069444444445,
+            12.488715277777779,
+            27.45659722222222,
+            27.532118055555557,
+            39.9453125,
+            39.931423611111114
+          ],
+          "qualified": true,
+          "reasons": [],
+          "witness_error": 0.010956602129156676
+        },
+        "failure_reasons": []
+      },
+      {
+        "id": "confirmation-rise_fall",
+        "qualified": true,
+        "attempts": 1,
+        "witness": {
+          "id": "confirmation-rise_fall",
+          "source": "fixed-original-witness",
+          "program": {
+            "sequence": [
+              {
+                "cycles": 576,
+                "op": "wait"
+              },
+              {
+                "cycles": 576,
+                "op": "wait"
+              },
+              {
+                "cycles": 375,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 375,
+                "op": "wait"
+              },
+              {
+                "cycles": 174,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 174,
+                "op": "wait"
+              },
+              {
+                "cycles": 174,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 174,
+                "op": "wait"
+              },
+              {
+                "cycles": 174,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 174,
+                "op": "wait"
+              },
+              {
+                "cycles": 375,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 375,
+                "op": "wait"
+              },
+              {
+                "cycles": 576,
+                "op": "wait"
+              },
+              {
+                "cycles": 576,
+                "op": "wait"
+              },
+              {
+                "cycles": 576,
+                "op": "wait"
+              },
+              {
+                "cycles": 576,
+                "op": "wait"
+              }
+            ]
+          },
+          "valid": true,
+          "rates": [
+            0.0546875,
+            19.854166666666668,
+            39.9453125,
+            39.97222222222222,
+            39.9453125,
+            19.97222222222222,
+            0.0,
+            0.0
+          ],
+          "qualified": true,
+          "reasons": [],
+          "witness_error": 0.0026080897933518383
+        },
+        "failure_reasons": []
+      },
+      {
+        "id": "confirmation-irregular",
+        "qualified": true,
+        "attempts": 1,
+        "witness": {
+          "id": "confirmation-irregular",
+          "source": "fixed-original-witness",
+          "program": {
+            "sequence": [
+              {
+                "cycles": 750,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 348,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 1152,
+                "op": "wait"
+              },
+              {
+                "cycles": 1152,
+                "op": "wait"
+              },
+              {
+                "cycles": 348,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 750,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 1152,
+                "op": "wait"
+              },
+              {
+                "cycles": 348,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              }
+            ]
+          },
+          "valid": true,
+          "rates": [
+            19.908854166666668,
+            39.9453125,
+            0.0,
+            0.0,
+            39.97222222222222,
+            19.98611111111111,
+            0.0,
+            39.931423611111114
+          ],
+          "qualified": true,
+          "reasons": [],
+          "witness_error": 0.0023976839640513867
+        },
+        "failure_reasons": []
+      },
+      {
+        "id": "confirmation-flat_control",
+        "qualified": true,
+        "attempts": 1,
+        "witness": {
+          "id": "confirmation-flat_control",
+          "source": "fixed-original-witness",
+          "program": {
+            "sequence": [
+              {
+                "cycles": 375,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 375,
+                "op": "wait"
+              },
+              {
+                "cycles": 375,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 375,
+                "op": "wait"
+              },
+              {
+                "cycles": 375,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 375,
+                "op": "wait"
+              },
+              {
+                "cycles": 375,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 375,
+                "op": "wait"
+              },
+              {
+                "cycles": 375,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 375,
+                "op": "wait"
+              },
+              {
+                "cycles": 375,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 375,
+                "op": "wait"
+              },
+              {
+                "cycles": 375,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 375,
+                "op": "wait"
+              },
+              {
+                "cycles": 375,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 375,
+                "op": "wait"
+              }
+            ]
+          },
+          "valid": true,
+          "rates": [
+            19.908854166666668,
+            19.98611111111111,
+            19.95920138888889,
+            20.013020833333332,
+            19.95920138888889,
+            19.98611111111111,
+            19.95920138888889,
+            19.97222222222222
+          ],
+          "qualified": true,
+          "reasons": [],
+          "witness_error": 0.0019223539369752384
+        },
+        "failure_reasons": []
+      }
+    ],
+    "task_bank_qualified": true,
+    "full_study_ready": false,
+    "scope": "CPU target qualification, not provider readiness"
+  },
+  "task_bank_qualified": true
+}

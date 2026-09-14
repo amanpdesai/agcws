@@ -1,0 +1,2662 @@
+{
+  "procedure": "docs/BIT_ACTIVITY_V1.md",
+  "activity_contract": "known-bit-activity-v2",
+  "domain": "aes-temporal",
+  "calibration": {
+    "proposals": 64,
+    "valid": 64,
+    "failure_stages": {},
+    "activity_contract": "known-bit-activity-v2",
+    "status": "calibrated",
+    "low": 0.0,
+    "high": 1406.6109284332688,
+    "scale": 1406.6109284332688,
+    "median_window_mean": 319.7704621163277
+  },
+  "measurement_fingerprint": "999919b9698595800e342402b59cd6a6fcf7970bb7f64f7cda3bc6b8d7607c76",
+  "splits": {
+    "development": {
+      "requests": [
+        {
+          "id": "activation",
+          "split": "development",
+          "rates": [
+            31.97704621163274,
+            31.97704621163274,
+            31.97704621163274,
+            492.4465116591446,
+            492.4465116591446,
+            492.4465116591446,
+            492.4465116591446,
+            492.4465116591446
+          ],
+          "control": false,
+          "qualified": false,
+          "constant_floor": 0.1584829300577849,
+          "best_constant_rate": 319.7704621163277,
+          "span_over_scale": 0.32736093267837646,
+          "total_variation_over_scale": 0.32736093267837646
+        },
+        {
+          "id": "deactivation",
+          "split": "development",
+          "rates": [
+            799.4261552908192,
+            799.4261552908192,
+            799.4261552908192,
+            31.97704621163274,
+            31.97704621163274,
+            31.97704621163274,
+            31.97704621163274,
+            31.97704621163274
+          ],
+          "control": false,
+          "qualified": false,
+          "constant_floor": 0.26413821676297483,
+          "best_constant_rate": 319.7704621163277,
+          "span_over_scale": 0.5456015544639607,
+          "total_variation_over_scale": 0.5456015544639607
+        },
+        {
+          "id": "burst",
+          "split": "development",
+          "rates": [
+            31.97704621163274,
+            31.97704621163274,
+            1183.1507098304126,
+            1183.1507098304126,
+            31.97704621163274,
+            31.97704621163274,
+            31.97704621163274,
+            31.97704621163274
+          ],
+          "control": false,
+          "qualified": false,
+          "constant_floor": 0.3543786048825518,
+          "best_constant_rate": 319.7704621163277,
+          "span_over_scale": 0.8184023316959411,
+          "total_variation_over_scale": 1.6368046633918822
+        },
+        {
+          "id": "quiet_interval",
+          "split": "development",
+          "rates": [
+            492.4465116591446,
+            492.4465116591446,
+            31.97704621163274,
+            31.97704621163274,
+            31.97704621163274,
+            492.4465116591446,
+            492.4465116591446,
+            492.4465116591446
+          ],
+          "control": false,
+          "qualified": false,
+          "constant_floor": 0.1584829300577849,
+          "best_constant_rate": 319.7704621163277,
+          "span_over_scale": 0.32736093267837646,
+          "total_variation_over_scale": 0.6547218653567529
+        },
+        {
+          "id": "alternating",
+          "split": "development",
+          "rates": [
+            607.5638780210227,
+            31.97704621163274,
+            607.5638780210227,
+            31.97704621163274,
+            607.5638780210227,
+            31.97704621163274,
+            607.5638780210227,
+            31.97704621163274
+          ],
+          "control": false,
+          "qualified": false,
+          "constant_floor": 0.20460058292398534,
+          "best_constant_rate": 319.77046211632774,
+          "span_over_scale": 0.40920116584797056,
+          "total_variation_over_scale": 2.864408160935794
+        },
+        {
+          "id": "ramp",
+          "split": "development",
+          "rates": [
+            31.97704621163274,
+            112.55920266494732,
+            198.8972274363558,
+            279.4793838896704,
+            360.0615403429849,
+            440.64369679629954,
+            526.9817215677081,
+            607.5638780210227
+          ],
+          "control": false,
+          "qualified": false,
+          "constant_floor": 0.1339469873165235,
+          "best_constant_rate": 319.7704621163277,
+          "span_over_scale": 0.40920116584797056,
+          "total_variation_over_scale": 0.40920116584797056
+        },
+        {
+          "id": "rise_fall",
+          "split": "development",
+          "rates": [
+            31.97704621163274,
+            415.701600751226,
+            799.4261552908192,
+            799.4261552908192,
+            415.701600751226,
+            31.97704621163274,
+            31.97704621163274,
+            31.97704621163274
+          ],
+          "control": false,
+          "qualified": false,
+          "constant_floor": 0.22619445514895176,
+          "best_constant_rate": 319.7704621163277,
+          "span_over_scale": 0.5456015544639607,
+          "total_variation_over_scale": 1.0912031089279215
+        },
+        {
+          "id": "irregular",
+          "split": "development",
+          "rates": [
+            799.4261552908192,
+            31.97704621163274,
+            415.701600751226,
+            31.97704621163274,
+            799.4261552908192,
+            31.97704621163274,
+            415.701600751226,
+            31.97704621163274
+          ],
+          "control": false,
+          "qualified": false,
+          "constant_floor": 0.22619445514895176,
+          "best_constant_rate": 319.7704621163277,
+          "span_over_scale": 0.5456015544639607,
+          "total_variation_over_scale": 2.7280077723198035
+        },
+        {
+          "id": "flat_control",
+          "split": "development",
+          "rates": [
+            319.7704621163277,
+            319.7704621163277,
+            319.7704621163277,
+            319.7704621163277,
+            319.7704621163277,
+            319.7704621163277,
+            319.7704621163277,
+            319.7704621163277
+          ],
+          "control": true,
+          "qualified": false,
+          "constant_floor": 0.0,
+          "best_constant_rate": 319.7704621163277,
+          "span_over_scale": 0.0,
+          "total_variation_over_scale": 0.0
+        }
+      ],
+      "pairwise_distances": [
+        {
+          "left": "activation",
+          "right": "deactivation",
+          "distance": 0.42262114682075974
+        },
+        {
+          "left": "activation",
+          "right": "burst",
+          "distance": 0.40920116584797056
+        },
+        {
+          "left": "activation",
+          "right": "quiet_interval",
+          "distance": 0.23147913539243284
+        },
+        {
+          "left": "activation",
+          "right": "alternating",
+          "distance": 0.28934891924054107
+        },
+        {
+          "left": "activation",
+          "right": "ramp",
+          "distance": 0.08500163167120528
+        },
+        {
+          "left": "activation",
+          "right": "rise_fall",
+          "distance": 0.3050005411027425
+        },
+        {
+          "left": "activation",
+          "right": "irregular",
+          "distance": 0.3050005411027425
+        },
+        {
+          "left": "activation",
+          "right": "flat_control",
+          "distance": 0.1584829300577849
+        },
+        {
+          "left": "deactivation",
+          "right": "burst",
+          "distance": 0.40920116584797056
+        },
+        {
+          "left": "deactivation",
+          "right": "quiet_interval",
+          "distance": 0.29883827878979474
+        },
+        {
+          "left": "deactivation",
+          "right": "alternating",
+          "distance": 0.289348919240541
+        },
+        {
+          "left": "deactivation",
+          "right": "ramp",
+          "distance": 0.38397012236988076
+        },
+        {
+          "left": "deactivation",
+          "right": "rise_fall",
+          "distance": 0.3050005411027425
+        },
+        {
+          "left": "deactivation",
+          "right": "irregular",
+          "distance": 0.3050005411027425
+        },
+        {
+          "left": "deactivation",
+          "right": "flat_control",
+          "distance": 0.26413821676297483
+        },
+        {
+          "left": "burst",
+          "right": "quiet_interval",
+          "distance": 0.4841733488987943
+        },
+        {
+          "left": "burst",
+          "right": "alternating",
+          "distance": 0.40920116584797056
+        },
+        {
+          "left": "burst",
+          "right": "ramp",
+          "distance": 0.4086176381264813
+        },
+        {
+          "left": "burst",
+          "right": "rise_fall",
+          "distance": 0.19289927949369406
+        },
+        {
+          "left": "burst",
+          "right": "irregular",
+          "distance": 0.4523889102979035
+        },
+        {
+          "left": "burst",
+          "right": "flat_control",
+          "distance": 0.3543786048825518
+        },
+        {
+          "left": "quiet_interval",
+          "right": "alternating",
+          "distance": 0.28934891924054107
+        },
+        {
+          "left": "quiet_interval",
+          "right": "ramp",
+          "distance": 0.1898049514036908
+        },
+        {
+          "left": "quiet_interval",
+          "right": "rise_fall",
+          "distance": 0.3710491726280888
+        },
+        {
+          "left": "quiet_interval",
+          "right": "irregular",
+          "distance": 0.3050005411027425
+        },
+        {
+          "left": "quiet_interval",
+          "right": "flat_control",
+          "distance": 0.1584829300577849
+        },
+        {
+          "left": "alternating",
+          "right": "ramp",
+          "distance": 0.2674404336169106
+        },
+        {
+          "left": "alternating",
+          "right": "rise_fall",
+          "distance": 0.3050005411027425
+        },
+        {
+          "left": "alternating",
+          "right": "irregular",
+          "distance": 0.09644963974684702
+        },
+        {
+          "left": "alternating",
+          "right": "flat_control",
+          "distance": 0.20460058292398534
+        },
+        {
+          "left": "ramp",
+          "right": "rise_fall",
+          "distance": 0.30467554237239053
+        },
+        {
+          "left": "ramp",
+          "right": "irregular",
+          "distance": 0.29819477234996217
+        },
+        {
+          "left": "ramp",
+          "right": "flat_control",
+          "distance": 0.1339469873165235
+        },
+        {
+          "left": "rise_fall",
+          "right": "irregular",
+          "distance": 0.33411135282650734
+        },
+        {
+          "left": "rise_fall",
+          "right": "flat_control",
+          "distance": 0.22619445514895176
+        },
+        {
+          "left": "irregular",
+          "right": "flat_control",
+          "distance": 0.22619445514895176
+        }
+      ]
+    },
+    "confirmation": {
+      "requests": [
+        {
+          "id": "activation",
+          "split": "confirmation",
+          "rates": [
+            0.0,
+            0.0,
+            426.36061615510357,
+            426.36061615510357,
+            426.36061615510357,
+            426.36061615510357,
+            426.36061615510357,
+            426.36061615510357
+          ],
+          "control": false,
+          "qualified": false,
+          "constant_floor": 0.13125133514168583,
+          "best_constant_rate": 319.7704621163277,
+          "span_over_scale": 0.3031119747022004,
+          "total_variation_over_scale": 0.3031119747022004
+        },
+        {
+          "id": "deactivation",
+          "split": "confirmation",
+          "rates": [
+            639.5409242326554,
+            639.5409242326554,
+            639.5409242326554,
+            639.5409242326554,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "control": false,
+          "qualified": false,
+          "constant_floor": 0.22733398102665028,
+          "best_constant_rate": 319.7704621163277,
+          "span_over_scale": 0.45466796205330057,
+          "total_variation_over_scale": 0.45466796205330057
+        },
+        {
+          "id": "burst",
+          "split": "confirmation",
+          "rates": [
+            0.0,
+            0.0,
+            0.0,
+            1279.0818484653107,
+            1279.0818484653107,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "control": false,
+          "qualified": false,
+          "constant_floor": 0.39375400542505745,
+          "best_constant_rate": 319.7704621163277,
+          "span_over_scale": 0.9093359241066011,
+          "total_variation_over_scale": 1.8186718482132023
+        },
+        {
+          "id": "quiet_interval",
+          "split": "confirmation",
+          "rates": [
+            426.36061615510357,
+            426.36061615510357,
+            426.36061615510357,
+            0.0,
+            0.0,
+            426.36061615510357,
+            426.36061615510357,
+            426.36061615510357
+          ],
+          "control": false,
+          "qualified": false,
+          "constant_floor": 0.13125133514168583,
+          "best_constant_rate": 319.7704621163277,
+          "span_over_scale": 0.3031119747022004,
+          "total_variation_over_scale": 0.6062239494044008
+        },
+        {
+          "id": "alternating",
+          "split": "confirmation",
+          "rates": [
+            0.0,
+            639.5409242326554,
+            0.0,
+            639.5409242326554,
+            0.0,
+            639.5409242326554,
+            0.0,
+            639.5409242326554
+          ],
+          "control": false,
+          "qualified": false,
+          "constant_floor": 0.22733398102665028,
+          "best_constant_rate": 319.7704621163277,
+          "span_over_scale": 0.45466796205330057,
+          "total_variation_over_scale": 3.1826757343731042
+        },
+        {
+          "id": "ramp",
+          "split": "confirmation",
+          "rates": [
+            0.0,
+            0.0,
+            211.04850499677627,
+            211.04850499677627,
+            428.4924192358791,
+            428.4924192358791,
+            639.5409242326554,
+            639.5409242326554
+          ],
+          "control": false,
+          "qualified": false,
+          "constant_floor": 0.16978667843748368,
+          "best_constant_rate": 319.7704621163277,
+          "span_over_scale": 0.45466796205330057,
+          "total_variation_over_scale": 0.45466796205330057
+        },
+        {
+          "id": "rise_fall",
+          "split": "confirmation",
+          "rates": [
+            0.0,
+            319.7704621163277,
+            639.5409242326554,
+            639.5409242326554,
+            639.5409242326554,
+            319.7704621163277,
+            0.0,
+            0.0
+          ],
+          "control": false,
+          "qualified": false,
+          "constant_floor": 0.19687700271252873,
+          "best_constant_rate": 319.7704621163277,
+          "span_over_scale": 0.45466796205330057,
+          "total_variation_over_scale": 0.9093359241066011
+        },
+        {
+          "id": "irregular",
+          "split": "confirmation",
+          "rates": [
+            319.7704621163277,
+            639.5409242326554,
+            0.0,
+            0.0,
+            639.5409242326554,
+            319.7704621163277,
+            0.0,
+            639.5409242326554
+          ],
+          "control": false,
+          "qualified": false,
+          "constant_floor": 0.19687700271252873,
+          "best_constant_rate": 319.7704621163277,
+          "span_over_scale": 0.45466796205330057,
+          "total_variation_over_scale": 2.0460058292398524
+        },
+        {
+          "id": "flat_control",
+          "split": "confirmation",
+          "rates": [
+            319.7704621163277,
+            319.7704621163277,
+            319.7704621163277,
+            319.7704621163277,
+            319.7704621163277,
+            319.7704621163277,
+            319.7704621163277,
+            319.7704621163277
+          ],
+          "control": true,
+          "qualified": false,
+          "constant_floor": 0.0,
+          "best_constant_rate": 319.7704621163277,
+          "span_over_scale": 0.0,
+          "total_variation_over_scale": 0.0
+        }
+      ],
+      "pairwise_distances": [
+        {
+          "left": "activation",
+          "right": "deactivation",
+          "distance": 0.3214987991561567
+        },
+        {
+          "left": "activation",
+          "right": "burst",
+          "distance": 0.371234836473897
+        },
+        {
+          "left": "activation",
+          "right": "quiet_interval",
+          "distance": 0.2143325327707711
+        },
+        {
+          "left": "activation",
+          "right": "alternating",
+          "distance": 0.26250267028337165
+        },
+        {
+          "left": "activation",
+          "right": "ramp",
+          "distance": 0.10770609638436607
+        },
+        {
+          "left": "activation",
+          "right": "rise_fall",
+          "distance": 0.19687700271252873
+        },
+        {
+          "left": "activation",
+          "right": "irregular",
+          "distance": 0.27058155914625687
+        },
+        {
+          "left": "activation",
+          "right": "flat_control",
+          "distance": 0.13125133514168583
+        },
+        {
+          "left": "deactivation",
+          "right": "burst",
+          "distance": 0.45466796205330057
+        },
+        {
+          "left": "deactivation",
+          "right": "quiet_interval",
+          "distance": 0.26250267028337165
+        },
+        {
+          "left": "deactivation",
+          "right": "alternating",
+          "distance": 0.3214987991561567
+        },
+        {
+          "left": "deactivation",
+          "right": "ramp",
+          "distance": 0.38698894721902444
+        },
+        {
+          "left": "deactivation",
+          "right": "rise_fall",
+          "distance": 0.2541671175856188
+        },
+        {
+          "left": "deactivation",
+          "right": "irregular",
+          "distance": 0.34100097153997544
+        },
+        {
+          "left": "deactivation",
+          "right": "flat_control",
+          "distance": 0.22733398102665028
+        },
+        {
+          "left": "burst",
+          "right": "quiet_interval",
+          "distance": 0.5250053405667433
+        },
+        {
+          "left": "burst",
+          "right": "alternating",
+          "distance": 0.45466796205330057
+        },
+        {
+          "left": "burst",
+          "right": "ramp",
+          "distance": 0.42880034160796754
+        },
+        {
+          "left": "burst",
+          "right": "rise_fall",
+          "distance": 0.30073458917539636
+        },
+        {
+          "left": "burst",
+          "right": "irregular",
+          "distance": 0.4402303612716248
+        },
+        {
+          "left": "burst",
+          "right": "flat_control",
+          "distance": 0.39375400542505745
+        },
+        {
+          "left": "quiet_interval",
+          "right": "alternating",
+          "distance": 0.26250267028337165
+        },
+        {
+          "left": "quiet_interval",
+          "right": "ramp",
+          "distance": 0.21460295699572413
+        },
+        {
+          "left": "quiet_interval",
+          "right": "rise_fall",
+          "distance": 0.30073458917539636
+        },
+        {
+          "left": "quiet_interval",
+          "right": "irregular",
+          "distance": 0.2366167094132284
+        },
+        {
+          "left": "quiet_interval",
+          "right": "flat_control",
+          "distance": 0.13125133514168583
+        },
+        {
+          "left": "alternating",
+          "right": "ramp",
+          "distance": 0.283739766519004
+        },
+        {
+          "left": "alternating",
+          "right": "rise_fall",
+          "distance": 0.30073458917539636
+        },
+        {
+          "left": "alternating",
+          "right": "irregular",
+          "distance": 0.2541671175856188
+        },
+        {
+          "left": "alternating",
+          "right": "flat_control",
+          "distance": 0.22733398102665028
+        },
+        {
+          "left": "ramp",
+          "right": "rise_fall",
+          "distance": 0.2913779640145426
+        },
+        {
+          "left": "ramp",
+          "right": "irregular",
+          "distance": 0.259479607440075
+        },
+        {
+          "left": "ramp",
+          "right": "flat_control",
+          "distance": 0.16978667843748368
+        },
+        {
+          "left": "rise_fall",
+          "right": "irregular",
+          "distance": 0.30073458917539636
+        },
+        {
+          "left": "rise_fall",
+          "right": "flat_control",
+          "distance": 0.19687700271252873
+        },
+        {
+          "left": "irregular",
+          "right": "flat_control",
+          "distance": 0.19687700271252873
+        }
+      ]
+    }
+  },
+  "full_study_ready": false,
+  "admission": {
+    "activity_contract": "known-bit-activity-v2",
+    "domain": "aes-temporal",
+    "measurement_fingerprint": "999919b9698595800e342402b59cd6a6fcf7970bb7f64f7cda3bc6b8d7607c76",
+    "qualified": 18,
+    "requests": 18,
+    "charged_witness_attempts": 18,
+    "outcomes": [
+      {
+        "id": "development-activation",
+        "qualified": true,
+        "attempts": 1,
+        "witness": {
+          "id": "development-activation",
+          "source": "fixed-original-witness",
+          "program": {
+            "sequence": [
+              {
+                "cycles": 1936,
+                "op": "wait"
+              },
+              {
+                "cycles": 920,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 5
+              },
+              {
+                "op": "work",
+                "units": 6
+              },
+              {
+                "cycles": 875,
+                "op": "wait"
+              },
+              {
+                "cycles": 231,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 3
+              },
+              {
+                "op": "work",
+                "units": 8
+              },
+              {
+                "op": "work",
+                "units": 2
+              },
+              {
+                "op": "work",
+                "units": 5
+              },
+              {
+                "cycles": 684,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 5
+              },
+              {
+                "op": "work",
+                "units": 16
+              },
+              {
+                "cycles": 1143,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 8
+              },
+              {
+                "op": "work",
+                "units": 4
+              },
+              {
+                "op": "work",
+                "units": 2
+              },
+              {
+                "cycles": 211,
+                "op": "wait"
+              }
+            ]
+          },
+          "valid": true,
+          "rates": [
+            0.1288416075650118,
+            0.0,
+            0.0,
+            438.8902007083825,
+            442.40661938534276,
+            542.5442739079102,
+            574.2821723730815,
+            559.5371900826447
+          ],
+          "qualified": true,
+          "reasons": [],
+          "witness_error": 0.0373995605416764
+        },
+        "failure_reasons": []
+      },
+      {
+        "id": "development-deactivation",
+        "qualified": true,
+        "attempts": 1,
+        "witness": {
+          "id": "development-deactivation",
+          "source": "fixed-original-witness",
+          "program": {
+            "sequence": [
+              {
+                "cycles": 285,
+                "op": "wait"
+              },
+              {
+                "cycles": 305,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 33
+              },
+              {
+                "cycles": 94,
+                "op": "wait"
+              },
+              {
+                "cycles": 430,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 9
+              },
+              {
+                "cycles": 94,
+                "op": "wait"
+              },
+              {
+                "cycles": 13,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 10
+              },
+              {
+                "op": "work",
+                "units": 11
+              },
+              {
+                "cycles": 444,
+                "op": "wait"
+              },
+              {
+                "cycles": 2769,
+                "op": "wait"
+              },
+              {
+                "cycles": 103,
+                "op": "wait"
+              },
+              {
+                "cycles": 478,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 664,
+                "op": "wait"
+              },
+              {
+                "cycles": 321,
+                "op": "wait"
+              }
+            ]
+          },
+          "valid": true,
+          "rates": [
+            832.3238770685579,
+            846.6528925619834,
+            839.305785123967,
+            0.0,
+            0.0,
+            0.0,
+            39.96694214876033,
+            0.0
+          ],
+          "qualified": true,
+          "reasons": [],
+          "witness_error": 0.023920628220767477
+        },
+        "failure_reasons": []
+      },
+      {
+        "id": "development-burst",
+        "qualified": true,
+        "attempts": 1,
+        "witness": {
+          "id": "development-burst",
+          "source": "fixed-original-witness",
+          "program": {
+            "sequence": [
+              {
+                "cycles": 418,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 2
+              },
+              {
+                "cycles": 1177,
+                "op": "wait"
+              },
+              {
+                "cycles": 484,
+                "op": "wait"
+              },
+              {
+                "cycles": 44,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 14
+              },
+              {
+                "op": "work",
+                "units": 3
+              },
+              {
+                "op": "work",
+                "units": 3
+              },
+              {
+                "op": "work",
+                "units": 9
+              },
+              {
+                "cycles": 140,
+                "op": "wait"
+              },
+              {
+                "cycles": 116,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 3
+              },
+              {
+                "op": "work",
+                "units": 29
+              },
+              {
+                "cycles": 3621,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              }
+            ]
+          },
+          "valid": true,
+          "rates": [
+            79.41016548463357,
+            0.0,
+            1159.0413223140497,
+            1278.9421487603306,
+            0.0,
+            0.0,
+            0.0,
+            39.96694214876033
+          ],
+          "qualified": true,
+          "reasons": [],
+          "witness_error": 0.03195338320350479
+        },
+        "failure_reasons": []
+      },
+      {
+        "id": "development-quiet_interval",
+        "qualified": true,
+        "attempts": 1,
+        "witness": {
+          "id": "development-quiet_interval",
+          "source": "fixed-original-witness",
+          "program": {
+            "sequence": [
+              {
+                "cycles": 689,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 13
+              },
+              {
+                "cycles": 702,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 12
+              },
+              {
+                "cycles": 835,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 835,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 835,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 702,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 12
+              },
+              {
+                "cycles": 701,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 12
+              },
+              {
+                "cycles": 701,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 12
+              }
+            ]
+          },
+          "valid": true,
+          "rates": [
+            501.4208037825059,
+            482.9822904368359,
+            39.96694214876033,
+            39.96694214876033,
+            36.63120567375886,
+            482.9822904368359,
+            487.0011806375443,
+            486.9504132231405
+          ],
+          "qualified": true,
+          "reasons": [],
+          "witness_error": 0.005442654959151162
+        },
+        "failure_reasons": []
+      },
+      {
+        "id": "development-alternating",
+        "qualified": true,
+        "attempts": 1,
+        "witness": {
+          "id": "development-alternating",
+          "source": "fixed-original-witness",
+          "program": {
+            "sequence": [
+              {
+                "cycles": 168,
+                "op": "wait"
+              },
+              {
+                "cycles": 27,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 6
+              },
+              {
+                "op": "work",
+                "units": 9
+              },
+              {
+                "op": "work",
+                "units": 3
+              },
+              {
+                "cycles": 582,
+                "op": "wait"
+              },
+              {
+                "cycles": 81,
+                "op": "wait"
+              },
+              {
+                "cycles": 742,
+                "op": "wait"
+              },
+              {
+                "cycles": 365,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 13
+              },
+              {
+                "cycles": 1439,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 11
+              },
+              {
+                "op": "work",
+                "units": 9
+              },
+              {
+                "cycles": 630,
+                "op": "wait"
+              },
+              {
+                "cycles": 324,
+                "op": "wait"
+              },
+              {
+                "cycles": 370,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 6
+              },
+              {
+                "op": "work",
+                "units": 2
+              },
+              {
+                "op": "work",
+                "units": 4
+              },
+              {
+                "cycles": 116,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 238,
+                "op": "wait"
+              },
+              {
+                "cycles": 127,
+                "op": "wait"
+              },
+              {
+                "cycles": 791,
+                "op": "wait"
+              }
+            ]
+          },
+          "valid": true,
+          "rates": [
+            719.6371158392435,
+            0.0,
+            519.5702479338843,
+            0.0,
+            800.2836879432624,
+            0.0,
+            519.5702479338843,
+            0.0
+          ],
+          "qualified": true,
+          "reasons": [],
+          "witness_error": 0.06615706711730282
+        },
+        "failure_reasons": []
+      },
+      {
+        "id": "development-ramp",
+        "qualified": true,
+        "attempts": 1,
+        "witness": {
+          "id": "development-ramp",
+          "source": "fixed-original-witness",
+          "program": {
+            "sequence": [
+              {
+                "cycles": 53,
+                "op": "wait"
+              },
+              {
+                "cycles": 218,
+                "op": "wait"
+              },
+              {
+                "cycles": 1037,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 5
+              },
+              {
+                "cycles": 367,
+                "op": "wait"
+              },
+              {
+                "cycles": 49,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 2
+              },
+              {
+                "op": "work",
+                "units": 2
+              },
+              {
+                "cycles": 967,
+                "op": "wait"
+              },
+              {
+                "cycles": 229,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 10
+              },
+              {
+                "cycles": 344,
+                "op": "wait"
+              },
+              {
+                "cycles": 106,
+                "op": "wait"
+              },
+              {
+                "cycles": 221,
+                "op": "wait"
+              },
+              {
+                "cycles": 65,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 5
+              },
+              {
+                "cycles": 616,
+                "op": "wait"
+              },
+              {
+                "cycles": 288,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 13
+              },
+              {
+                "cycles": 54,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 6
+              },
+              {
+                "cycles": 221,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 5
+              },
+              {
+                "cycles": 374,
+                "op": "wait"
+              },
+              {
+                "cycles": 791,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 5
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 9
+              }
+            ]
+          },
+          "valid": true,
+          "rates": [
+            0.1288416075650118,
+            239.0554899645809,
+            159.86776859504133,
+            399.6694214876033,
+            200.0709219858156,
+            530.4155844155844,
+            428.79102715466354,
+            599.5041322314049
+          ],
+          "qualified": true,
+          "reasons": [],
+          "witness_error": 0.06945072638050019
+        },
+        "failure_reasons": []
+      },
+      {
+        "id": "development-rise_fall",
+        "qualified": true,
+        "attempts": 1,
+        "witness": {
+          "id": "development-rise_fall",
+          "source": "fixed-original-witness",
+          "program": {
+            "sequence": [
+              {
+                "op": "work",
+                "units": 7
+              },
+              {
+                "cycles": 1424,
+                "op": "wait"
+              },
+              {
+                "cycles": 26,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 34
+              },
+              {
+                "cycles": 792,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 12
+              },
+              {
+                "cycles": 58,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 5
+              },
+              {
+                "cycles": 387,
+                "op": "wait"
+              },
+              {
+                "cycles": 163,
+                "op": "wait"
+              },
+              {
+                "cycles": 237,
+                "op": "wait"
+              },
+              {
+                "cycles": 182,
+                "op": "wait"
+              },
+              {
+                "cycles": 148,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 6
+              },
+              {
+                "cycles": 2583,
+                "op": "wait"
+              }
+            ]
+          },
+          "valid": true,
+          "rates": [
+            279.48108747044915,
+            508.4120425029516,
+            850.4639905548996,
+            679.4380165289256,
+            240.08510638297872,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "qualified": true,
+          "reasons": [],
+          "witness_error": 0.08734744220319124
+        },
+        "failure_reasons": []
+      },
+      {
+        "id": "development-irregular",
+        "qualified": true,
+        "attempts": 1,
+        "witness": {
+          "id": "development-irregular",
+          "source": "fixed-original-witness",
+          "program": {
+            "sequence": [
+              {
+                "op": "work",
+                "units": 6
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 7
+              },
+              {
+                "op": "work",
+                "units": 2
+              },
+              {
+                "cycles": 1091,
+                "op": "wait"
+              },
+              {
+                "cycles": 342,
+                "op": "wait"
+              },
+              {
+                "cycles": 209,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 3
+              },
+              {
+                "cycles": 380,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 1638,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 3
+              },
+              {
+                "op": "work",
+                "units": 22
+              },
+              {
+                "op": "work",
+                "units": 3
+              },
+              {
+                "cycles": 637,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 2
+              },
+              {
+                "cycles": 756,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 12
+              },
+              {
+                "cycles": 947,
+                "op": "wait"
+              }
+            ]
+          },
+          "valid": true,
+          "rates": [
+            639.6087470449172,
+            0.0,
+            239.80165289256198,
+            0.0,
+            1007.6016548463357,
+            192.59622195985833,
+            479.60330578512395,
+            0.0
+          ],
+          "qualified": true,
+          "reasons": [],
+          "witness_error": 0.09158604866204045
+        },
+        "failure_reasons": []
+      },
+      {
+        "id": "development-flat_control",
+        "qualified": true,
+        "attempts": 1,
+        "witness": {
+          "id": "development-flat_control",
+          "source": "fixed-original-witness",
+          "program": {
+            "sequence": [
+              {
+                "op": "work",
+                "units": 8
+              },
+              {
+                "cycles": 750,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 8
+              },
+              {
+                "cycles": 750,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 8
+              },
+              {
+                "cycles": 750,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 8
+              },
+              {
+                "cycles": 750,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 8
+              },
+              {
+                "cycles": 750,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 8
+              },
+              {
+                "cycles": 750,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 8
+              },
+              {
+                "cycles": 750,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 8
+              },
+              {
+                "cycles": 750,
+                "op": "wait"
+              }
+            ]
+          },
+          "valid": true,
+          "rates": [
+            319.4952718676123,
+            319.73553719008265,
+            319.73553719008265,
+            319.73553719008265,
+            320.11347517730496,
+            319.73553719008265,
+            319.73553719008265,
+            319.73553719008265
+          ],
+          "qualified": true,
+          "reasons": [],
+          "witness_error": 0.0001126059513402682
+        },
+        "failure_reasons": []
+      },
+      {
+        "id": "confirmation-activation",
+        "qualified": true,
+        "attempts": 1,
+        "witness": {
+          "id": "confirmation-activation",
+          "source": "fixed-original-witness",
+          "program": {
+            "sequence": [
+              {
+                "cycles": 847,
+                "op": "wait"
+              },
+              {
+                "cycles": 847,
+                "op": "wait"
+              },
+              {
+                "cycles": 714,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 11
+              },
+              {
+                "cycles": 714,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 11
+              },
+              {
+                "cycles": 713,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 11
+              },
+              {
+                "cycles": 713,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 11
+              },
+              {
+                "cycles": 726,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 10
+              },
+              {
+                "cycles": 726,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 10
+              }
+            ]
+          },
+          "valid": true,
+          "rates": [
+            0.1288416075650118,
+            0.0,
+            417.10153482880753,
+            443.30106257378986,
+            443.5390070921986,
+            447.03423848878396,
+            403.63990554899647,
+            403.0460448642267
+          ],
+          "qualified": true,
+          "reasons": [],
+          "witness_error": 0.011668279786245395
+        },
+        "failure_reasons": []
+      },
+      {
+        "id": "confirmation-deactivation",
+        "qualified": true,
+        "attempts": 1,
+        "witness": {
+          "id": "confirmation-deactivation",
+          "source": "fixed-original-witness",
+          "program": {
+            "sequence": [
+              {
+                "op": "work",
+                "units": 6
+              },
+              {
+                "op": "work",
+                "units": 4
+              },
+              {
+                "cycles": 892,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 21
+              },
+              {
+                "cycles": 584,
+                "op": "wait"
+              },
+              {
+                "cycles": 45,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 6
+              },
+              {
+                "cycles": 51,
+                "op": "wait"
+              },
+              {
+                "cycles": 424,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 16
+              },
+              {
+                "op": "work",
+                "units": 9
+              },
+              {
+                "cycles": 248,
+                "op": "wait"
+              },
+              {
+                "cycles": 400,
+                "op": "wait"
+              },
+              {
+                "cycles": 849,
+                "op": "wait"
+              },
+              {
+                "cycles": 573,
+                "op": "wait"
+              },
+              {
+                "cycles": 361,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 2
+              },
+              {
+                "cycles": 1573,
+                "op": "wait"
+              }
+            ]
+          },
+          "valid": true,
+          "rates": [
+            399.52364066193854,
+            839.305785123967,
+            552.1900826446281,
+            686.7851239669421,
+            0.0,
+            0.0,
+            79.93388429752066,
+            0.0
+          ],
+          "qualified": true,
+          "reasons": [],
+          "witness_error": 0.08477876462317732
+        },
+        "failure_reasons": []
+      },
+      {
+        "id": "confirmation-burst",
+        "qualified": true,
+        "attempts": 1,
+        "witness": {
+          "id": "confirmation-burst",
+          "source": "fixed-original-witness",
+          "program": {
+            "sequence": [
+              {
+                "cycles": 202,
+                "op": "wait"
+              },
+              {
+                "cycles": 191,
+                "op": "wait"
+              },
+              {
+                "cycles": 158,
+                "op": "wait"
+              },
+              {
+                "cycles": 1983,
+                "op": "wait"
+              },
+              {
+                "cycles": 54,
+                "op": "wait"
+              },
+              {
+                "cycles": 457,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 45
+              },
+              {
+                "op": "work",
+                "units": 7
+              },
+              {
+                "op": "work",
+                "units": 12
+              },
+              {
+                "cycles": 184,
+                "op": "wait"
+              },
+              {
+                "cycles": 649,
+                "op": "wait"
+              },
+              {
+                "cycles": 365,
+                "op": "wait"
+              },
+              {
+                "cycles": 898,
+                "op": "wait"
+              },
+              {
+                "cycles": 81,
+                "op": "wait"
+              },
+              {
+                "cycles": 406,
+                "op": "wait"
+              },
+              {
+                "cycles": 372,
+                "op": "wait"
+              }
+            ]
+          },
+          "valid": true,
+          "rates": [
+            0.1288416075650118,
+            0.0,
+            0.0,
+            1118.9079102715466,
+            1439.9302600472813,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "qualified": true,
+          "reasons": [],
+          "witness_error": 0.0570561310764687
+        },
+        "failure_reasons": []
+      },
+      {
+        "id": "confirmation-quiet_interval",
+        "qualified": true,
+        "attempts": 1,
+        "witness": {
+          "id": "confirmation-quiet_interval",
+          "source": "fixed-original-witness",
+          "program": {
+            "sequence": [
+              {
+                "op": "work",
+                "units": 14
+              },
+              {
+                "cycles": 778,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 7
+              },
+              {
+                "op": "work",
+                "units": 2
+              },
+              {
+                "cycles": 365,
+                "op": "wait"
+              },
+              {
+                "cycles": 649,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 8
+              },
+              {
+                "cycles": 184,
+                "op": "wait"
+              },
+              {
+                "cycles": 1983,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 2
+              },
+              {
+                "op": "work",
+                "units": 4
+              },
+              {
+                "cycles": 158,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 4
+              },
+              {
+                "cycles": 104,
+                "op": "wait"
+              },
+              {
+                "cycles": 154,
+                "op": "wait"
+              },
+              {
+                "cycles": 1,
+                "op": "wait"
+              },
+              {
+                "cycles": 457,
+                "op": "wait"
+              },
+              {
+                "cycles": 78,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 12
+              },
+              {
+                "cycles": 191,
+                "op": "wait"
+              },
+              {
+                "cycles": 898,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 3
+              },
+              {
+                "op": "work",
+                "units": 8
+              }
+            ]
+          },
+          "valid": true,
+          "rates": [
+            559.580378250591,
+            359.702479338843,
+            319.73553719008265,
+            0.0,
+            0.0,
+            399.6694214876033,
+            479.60330578512395,
+            439.6363636363636
+          ],
+          "qualified": true,
+          "reasons": [],
+          "witness_error": 0.04853303259278782
+        },
+        "failure_reasons": []
+      },
+      {
+        "id": "confirmation-alternating",
+        "qualified": true,
+        "attempts": 1,
+        "witness": {
+          "id": "confirmation-alternating",
+          "source": "fixed-original-witness",
+          "program": {
+            "sequence": [
+              {
+                "cycles": 778,
+                "op": "wait"
+              },
+              {
+                "cycles": 184,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 13
+              },
+              {
+                "cycles": 1983,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 2
+              },
+              {
+                "op": "work",
+                "units": 14
+              },
+              {
+                "cycles": 385,
+                "op": "wait"
+              },
+              {
+                "cycles": 264,
+                "op": "wait"
+              },
+              {
+                "cycles": 365,
+                "op": "wait"
+              },
+              {
+                "cycles": 79,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 7
+              },
+              {
+                "op": "work",
+                "units": 9
+              },
+              {
+                "cycles": 104,
+                "op": "wait"
+              },
+              {
+                "cycles": 457,
+                "op": "wait"
+              },
+              {
+                "cycles": 31,
+                "op": "wait"
+              },
+              {
+                "cycles": 314,
+                "op": "wait"
+              },
+              {
+                "cycles": 79,
+                "op": "wait"
+              },
+              {
+                "cycles": 977,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 5
+              },
+              {
+                "op": "work",
+                "units": 2
+              },
+              {
+                "op": "work",
+                "units": 12
+              }
+            ]
+          },
+          "valid": true,
+          "rates": [
+            0.1288416075650118,
+            518.8240850059032,
+            0.0,
+            639.4710743801653,
+            0.0,
+            639.4710743801653,
+            0.0,
+            759.3719008264463
+          ],
+          "qualified": true,
+          "reasons": [],
+          "witness_error": 0.042753392516958
+        },
+        "failure_reasons": []
+      },
+      {
+        "id": "confirmation-ramp",
+        "qualified": true,
+        "attempts": 1,
+        "witness": {
+          "id": "confirmation-ramp",
+          "source": "fixed-original-witness",
+          "program": {
+            "sequence": [
+              {
+                "op": "work",
+                "units": 2
+              },
+              {
+                "cycles": 150,
+                "op": "wait"
+              },
+              {
+                "cycles": 774,
+                "op": "wait"
+              },
+              {
+                "cycles": 184,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 657,
+                "op": "wait"
+              },
+              {
+                "cycles": 1814,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 12
+              },
+              {
+                "cycles": 538,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 2
+              },
+              {
+                "op": "work",
+                "units": 6
+              },
+              {
+                "op": "work",
+                "units": 5
+              },
+              {
+                "cycles": 561,
+                "op": "wait"
+              },
+              {
+                "cycles": 345,
+                "op": "wait"
+              },
+              {
+                "cycles": 79,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 18
+              },
+              {
+                "cycles": 898,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 4
+              },
+              {
+                "op": "work",
+                "units": 5
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 7
+              }
+            ]
+          },
+          "valid": true,
+          "rates": [
+            79.41016548463357,
+            39.96694214876033,
+            0.0,
+            0.0,
+            480.17021276595744,
+            519.5702479338843,
+            719.404958677686,
+            719.404958677686
+          ],
+          "qualified": true,
+          "reasons": [],
+          "witness_error": 0.0873273067435608
+        },
+        "failure_reasons": []
+      },
+      {
+        "id": "confirmation-rise_fall",
+        "qualified": true,
+        "attempts": 1,
+        "witness": {
+          "id": "confirmation-rise_fall",
+          "source": "fixed-original-witness",
+          "program": {
+            "sequence": [
+              {
+                "cycles": 521,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 4
+              },
+              {
+                "cycles": 633,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 6
+              },
+              {
+                "cycles": 385,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 7
+              },
+              {
+                "op": "work",
+                "units": 2
+              },
+              {
+                "cycles": 313,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 4
+              },
+              {
+                "cycles": 576,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 8
+              },
+              {
+                "cycles": 280,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 4
+              },
+              {
+                "cycles": 57,
+                "op": "wait"
+              },
+              {
+                "cycles": 670,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 3
+              },
+              {
+                "op": "work",
+                "units": 5
+              },
+              {
+                "cycles": 114,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 8
+              },
+              {
+                "op": "work",
+                "units": 8
+              },
+              {
+                "op": "work",
+                "units": 2
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 1988,
+                "op": "wait"
+              },
+              {
+                "cycles": 463,
+                "op": "wait"
+              }
+            ]
+          },
+          "valid": true,
+          "rates": [
+            199.45271867612294,
+            290.6139315230224,
+            468.75796930342386,
+            479.60330578512395,
+            818.483451536643,
+            301.5572609208973,
+            0.0,
+            0.0
+          ],
+          "qualified": true,
+          "reasons": [],
+          "witness_error": 0.0898314320065274
+        },
+        "failure_reasons": []
+      },
+      {
+        "id": "confirmation-irregular",
+        "qualified": true,
+        "attempts": 1,
+        "witness": {
+          "id": "confirmation-irregular",
+          "source": "fixed-original-witness",
+          "program": {
+            "sequence": [
+              {
+                "op": "work",
+                "units": 4
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 833,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 13
+              },
+              {
+                "cycles": 86,
+                "op": "wait"
+              },
+              {
+                "cycles": 256,
+                "op": "wait"
+              },
+              {
+                "cycles": 649,
+                "op": "wait"
+              },
+              {
+                "cycles": 1983,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 9
+              },
+              {
+                "op": "work",
+                "units": 11
+              },
+              {
+                "cycles": 365,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 9
+              },
+              {
+                "cycles": 104,
+                "op": "wait"
+              },
+              {
+                "cycles": 40,
+                "op": "wait"
+              },
+              {
+                "cycles": 406,
+                "op": "wait"
+              },
+              {
+                "cycles": 345,
+                "op": "wait"
+              },
+              {
+                "cycles": 898,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 15
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "op": "work",
+                "units": 1
+              },
+              {
+                "cycles": 35,
+                "op": "wait"
+              }
+            ]
+          },
+          "valid": true,
+          "rates": [
+            199.45271867612294,
+            519.5702479338843,
+            0.0,
+            0.0,
+            680.8215130023641,
+            479.0236127508855,
+            0.0,
+            679.4380165289256
+          ],
+          "qualified": true,
+          "reasons": [],
+          "witness_error": 0.0602859282150022
+        },
+        "failure_reasons": []
+      },
+      {
+        "id": "confirmation-flat_control",
+        "qualified": true,
+        "attempts": 1,
+        "witness": {
+          "id": "confirmation-flat_control",
+          "source": "fixed-original-witness",
+          "program": {
+            "sequence": [
+              {
+                "op": "work",
+                "units": 8
+              },
+              {
+                "cycles": 750,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 8
+              },
+              {
+                "cycles": 750,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 8
+              },
+              {
+                "cycles": 750,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 8
+              },
+              {
+                "cycles": 750,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 8
+              },
+              {
+                "cycles": 750,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 8
+              },
+              {
+                "cycles": 750,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 8
+              },
+              {
+                "cycles": 750,
+                "op": "wait"
+              },
+              {
+                "op": "work",
+                "units": 8
+              },
+              {
+                "cycles": 750,
+                "op": "wait"
+              }
+            ]
+          },
+          "valid": true,
+          "rates": [
+            319.4952718676123,
+            319.73553719008265,
+            319.73553719008265,
+            319.73553719008265,
+            320.11347517730496,
+            319.73553719008265,
+            319.73553719008265,
+            319.73553719008265
+          ],
+          "qualified": true,
+          "reasons": [],
+          "witness_error": 0.0001126059513402682
+        },
+        "failure_reasons": []
+      }
+    ],
+    "task_bank_qualified": true,
+    "full_study_ready": false,
+    "scope": "CPU target qualification, not provider readiness"
+  },
+  "task_bank_qualified": true
+}
