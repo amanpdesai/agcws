@@ -7,6 +7,11 @@ and target banks differ across studies: do not compare their raw AUC values.
 
 ## Five-design qualification and feedback readiness — incomplete
 
+The subsequent [v5 arithmetic-feedback intervention](docs/BUDGET_FEEDBACK_V5.md)
+has passed current-runtime calibration/witness compatibility checks on all five
+designs. It has not yet been tested with new model calls. Context replay shows
+only AES/DMA payloads change; prior v4 smoke results below remain unchanged.
+
 These are engineering/feasibility checks, not new policy comparisons. Each bank
 requests eight nonflat profiles plus a separate flat control in each of two
 splits. A necessary constant-vector-floor gate does not itself prove feasibility.

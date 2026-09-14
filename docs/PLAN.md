@@ -5,8 +5,11 @@
 The archived v4 failures motivate explicit signed budget arithmetic in visible
 AES/DMA history, with no candidate repair, new oracle access or changed gates.
 See [frozen intervention](BUDGET_FEEDBACK_V5.md). This changes runtime source
-identity; current-source calibration/witness replays are being prepared before
-any further paid checks. All v4 manifests and results remain unchanged.
+identity; current-source calibration/witness replays have passed for all five
+designs, with versioned v5 banks and compact evidence. Exact context replay of
+126 calls each shows mesh/Ibex/RedMulE payloads, schemas and parsing unchanged;
+only AES/DMA require new-context feedback checks. All v4 manifests and results
+remain unchanged.
 Operational readiness with recorded 504s still awaits explicit approval;
 no additional paid panel or full-study run has been launched for v5.
 
