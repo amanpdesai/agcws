@@ -17,7 +17,7 @@ splits. A necessary constant-vector-floor gate does not itself prove feasibility
 | DMA | All 18 qualified at 9,216 cycles | v3: 17/18 receive generated measured feedback; confirmation-activation has no valid generated proposal |
 | Mesh | All 18 qualified; exact 82-case runtime replay archived | v3: 18/18 receive generated measured feedback, 17/18 strict readiness; one API failure with reserved unknown usage |
 | Ibex | All 18 modeled witnesses reproduced on current runtime; complete 64-case calibration bridge passed | v3: 18/18 strict readiness, 864 slots; $2.8029289 known usage, no unknown-call reserve |
-| RedMulE | Original 65,536-cycle bank remains 11/18 after operand/coarse-timing tests | Longer-window qualification running; no full paid run |
+| RedMulE | Original 65,536-cycle bank remains 11/18; longer-window random/GA qualification admits 2/18 after 9,216 slots | No qualified longer-window bank or all-target smoke yet |
 
 The AES/DMA/mesh sixteen-slot smokes each charge 864 slots across Flash,
 phase-random and phase-GA. Known model costs are $1.5611813, $1.6204904 and
@@ -38,8 +38,11 @@ also passes all eighteen measured-feedback and strict accounting checks.
 
 RedMulE's independently versioned 262,144-cycle calibration completed 64 slots:
 58 valid, six USEFUL_WORK rejections. The new inclusive-percentile activity
-range is 1.99996948–27.53013916 transitions per edge. Both request banks are
-frozen and CPU witness searches are in progress. This changes the horizon,
+range is 1.99996948–27.53013916 transitions per edge. Both CPU witness panels
+completed 4,608 slots: only development burst and confirmation quiet interval
+qualify, and neither flat control qualifies. The new version therefore fails
+bank admission under this search; it does not prove the requests infeasible.
+This changes the horizon,
 offered-load sampling and freshly normalized target amplitudes; any change in
 qualification rate is not a causal estimate of horizon alone. The original
 failed bank is retained. See [long-window evidence](results/redmule/long-window-v1/README.md).
