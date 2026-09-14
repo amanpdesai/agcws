@@ -31,3 +31,13 @@ def test_duplicate_case_id_rejected():
     value["cases"].append(value["cases"][0])
     with pytest.raises(ValueError, match="unique"):
         probe["validate"](value)
+
+
+def test_window_rule_rounds_up_after_adding_guard():
+    rule = runpy.run_path("analysis/dma_timing_probe_audit.py")["candidate_window"]
+    assert rule([7771.5, 8000]) == 8320
+    assert rule([8192]) == 8448
+    with pytest.raises(ValueError, match="shortening"):
+        rule([11900])
+    with pytest.raises(ValueError):
+        rule([float("nan")])

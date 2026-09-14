@@ -582,3 +582,11 @@ profiles. No paired refinement batches were needed. The
 reproduce exactly. This establishes witnessed feasibility of the v2 requests,
 not agent performance; the allocation constructor, not an LLM, produced the
 new witnesses. Flash/baseline end-to-end smokes remain outstanding.
+
+DMA's [twelve timing corners](results/dma/window-probe-v1/README.md) all pass
+functional checks. Serialized single-unit groups end at cycle 8,947.5, beyond
+the previous random corpus maximum. The predeclared guard-and-round rule selects
+a 9,216-cycle replacement observation window. This is not yet a new measurement
+result: replay, calibration and qualification under that contract remain required.
+The current random generator's 16-work-group cap is also identified for correction
+before the paper baseline freezes; the legal DSL permits more groups.

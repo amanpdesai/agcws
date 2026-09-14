@@ -1,6 +1,7 @@
 # AXI DMA evidence
 
 - [Fixed-work target qualification v2](target-qualification-v2/README.md)
+- [Timing corners and replacement-window decision](window-probe-v1/README.md)
 - [Calibration](../benchmark_calibration_v1/dma-temporal/calibration.json)
 - [Retained v1 request failures](../benchmark_targets_v1/dma-temporal/requested_bank.json)
 
