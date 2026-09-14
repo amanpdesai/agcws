@@ -4,6 +4,10 @@ Prospective configuration, 2026-09-14. Execution requires the completed readines
 audit and a separate user launch approval. Do not treat this document as a
 completion receipt. Preserve all preceding smoke failures and costs.
 
+Scientific task-quality audit is now in progress separately from operational
+readiness. Do not execute this panel until that audit is resolved; see
+[TASK_QUALITY_AUDIT.md](TASK_QUALITY_AUDIT.md). No frozen bank is silently changed.
+
 ## Panel and endpoint
 
 Five designs: AES, DMA, Ibex, BaseJump mesh and longer-window RedMulE. Use the

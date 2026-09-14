@@ -1,6 +1,14 @@
 # Plan
 
-## Current stopping point — ready for full Flash launch approval
+## Current action — CPU-only scientific task audit
+
+Operational readiness passed, but the user requested a separate critical task
+audit before any full baseline or LLM panel. Launch is on hold pending that
+audit and user approval. See [TASK_QUALITY_AUDIT.md](TASK_QUALITY_AUDIT.md).
+Existing banks and measurements are preserved; any measurement correction needs
+a new version, not an in-place change to a frozen comparison.
+
+## Previous stopping point — operational readiness
 
 All five banks have eighteen admitted requests; all ninety have actual generated
 measurement feedback, including the explicitly separate DMA late-delivery
@@ -8,7 +16,7 @@ diagnostic. The original v4 and v5 strict failures remain recorded. See
 [RESULTS.md](../RESULTS.md) and the
 [readiness receipt](../results/benchmark_readiness_v1/full-flash-readiness-v1.json).
 Full-study configurations are prepared and frozen, not executed. Next action
-is the user's launch/spending approval, not another engineering seed search.
+is now the scientific task audit, followed by the user's launch/spending approval.
 Read the cost caps and claim limits in [FULL_FLASH_V1.md](FULL_FLASH_V1.md).
 
 The intervention entries below describe the path to this stopping point.
