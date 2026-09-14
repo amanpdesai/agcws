@@ -1,0 +1,1324 @@
+{
+  "scope": "target qualification; witnesses must not be supplied to search policies",
+  "domain": "dma-temporal",
+  "split": "confirmation",
+  "request_bank_sha256": "cdf70b7a53f022e594b63187cf654b4c3194c8697f1cfdfd2219ab42d1df93d8",
+  "run_manifest_sha256": "86ef39e6d81e681a3be1811fa471a8e9618c161e0d85f01f3a2e0a37f99ac5ea",
+  "qualified_nonflat": 3,
+  "qualified_controls": 0,
+  "requests": [
+    {
+      "id": "activation",
+      "control": false,
+      "arms": {
+        "phase-random": {
+          "proposals": 256,
+          "invalid_by_stage": {},
+          "first_hit": null,
+          "right_censored": true
+        },
+        "phase-ga": {
+          "proposals": 256,
+          "invalid_by_stage": {},
+          "first_hit": null,
+          "right_censored": true
+        }
+      },
+      "qualified": false,
+      "reasons": [
+        "witness_misses_request"
+      ],
+      "witness_error": 0.18760831471788292,
+      "witness": {
+        "policy": "phase-ga",
+        "slot": 252,
+        "cache_id": "cea25e522090d09139525a7016032c253050e33f46d500243f6f03832802804b",
+        "program": {
+          "sequence": [
+            {
+              "op": "wait",
+              "cycles": 778
+            },
+            {
+              "op": "wait",
+              "cycles": 649
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "work",
+              "units": 4
+            },
+            {
+              "op": "wait",
+              "cycles": 2288
+            },
+            {
+              "op": "wait",
+              "cycles": 158
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "work",
+              "units": 9
+            },
+            {
+              "op": "work",
+              "units": 13
+            },
+            {
+              "op": "wait",
+              "cycles": 345
+            },
+            {
+              "op": "wait",
+              "cycles": 561
+            },
+            {
+              "op": "wait",
+              "cycles": 184
+            },
+            {
+              "op": "wait",
+              "cycles": 60
+            },
+            {
+              "op": "work",
+              "units": 12
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "work",
+              "units": 2
+            },
+            {
+              "op": "wait",
+              "cycles": 79
+            },
+            {
+              "op": "wait",
+              "cycles": 898
+            },
+            {
+              "op": "work",
+              "units": 2
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "work",
+              "units": 14
+            }
+          ]
+        },
+        "rates": [
+          2.7826666666666666,
+          4.674,
+          9.074,
+          9.937333333333333,
+          10.834,
+          5.826666666666667,
+          2.0,
+          1.9993333333333334
+        ]
+      }
+    },
+    {
+      "id": "deactivation",
+      "control": false,
+      "arms": {
+        "phase-random": {
+          "proposals": 256,
+          "invalid_by_stage": {},
+          "first_hit": 165,
+          "right_censored": false
+        },
+        "phase-ga": {
+          "proposals": 256,
+          "invalid_by_stage": {},
+          "first_hit": 70,
+          "right_censored": false
+        }
+      },
+      "qualified": true,
+      "reasons": [],
+      "witness_error": 0.035278938984955086,
+      "witness": {
+        "policy": "phase-ga",
+        "slot": 249,
+        "cache_id": "17b658c2840f09d354aac3fe8e3e6eaf172588fe38049cf1055448a42f871b40",
+        "program": {
+          "sequence": [
+            {
+              "op": "wait",
+              "cycles": 315
+            },
+            {
+              "op": "work",
+              "units": 13
+            },
+            {
+              "op": "wait",
+              "cycles": 446
+            },
+            {
+              "op": "wait",
+              "cycles": 649
+            },
+            {
+              "op": "work",
+              "units": 12
+            },
+            {
+              "op": "wait",
+              "cycles": 85
+            },
+            {
+              "op": "wait",
+              "cycles": 509
+            },
+            {
+              "op": "work",
+              "units": 6
+            },
+            {
+              "op": "wait",
+              "cycles": 784
+            },
+            {
+              "op": "wait",
+              "cycles": 365
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "wait",
+              "cycles": 26
+            },
+            {
+              "op": "work",
+              "units": 6
+            },
+            {
+              "op": "work",
+              "units": 9
+            },
+            {
+              "op": "wait",
+              "cycles": 300
+            },
+            {
+              "op": "work",
+              "units": 17
+            },
+            {
+              "op": "wait",
+              "cycles": 91
+            },
+            {
+              "op": "wait",
+              "cycles": 1439
+            },
+            {
+              "op": "wait",
+              "cycles": 79
+            },
+            {
+              "op": "wait",
+              "cycles": 912
+            }
+          ]
+        },
+        "rates": [
+          8.378666666666666,
+          10.746,
+          9.774,
+          10.239333333333333,
+          2.0,
+          2.0,
+          2.0,
+          1.9993333333333334
+        ]
+      }
+    },
+    {
+      "id": "burst",
+      "control": false,
+      "arms": {
+        "phase-random": {
+          "proposals": 256,
+          "invalid_by_stage": {},
+          "first_hit": 108,
+          "right_censored": false
+        },
+        "phase-ga": {
+          "proposals": 256,
+          "invalid_by_stage": {},
+          "first_hit": 69,
+          "right_censored": false
+        }
+      },
+      "qualified": true,
+      "reasons": [],
+      "witness_error": 0.0011595301725265703,
+      "witness": {
+        "policy": "phase-ga",
+        "slot": 214,
+        "cache_id": "6bb2216f0d5640967a170d06e054159e51761c6622266a51d8e4e21a1e1b1b8c",
+        "program": {
+          "sequence": [
+            {
+              "op": "wait",
+              "cycles": 1850
+            },
+            {
+              "op": "wait",
+              "cycles": 1495
+            },
+            {
+              "op": "wait",
+              "cycles": 620
+            },
+            {
+              "op": "wait",
+              "cycles": 783
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "work",
+              "units": 2
+            },
+            {
+              "op": "wait",
+              "cycles": 47
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "work",
+              "units": 2
+            },
+            {
+              "op": "wait",
+              "cycles": 17
+            },
+            {
+              "op": "work",
+              "units": 8
+            },
+            {
+              "op": "work",
+              "units": 8
+            },
+            {
+              "op": "work",
+              "units": 8
+            },
+            {
+              "op": "work",
+              "units": 2
+            },
+            {
+              "op": "wait",
+              "cycles": 181
+            },
+            {
+              "op": "wait",
+              "cycles": 12
+            },
+            {
+              "op": "wait",
+              "cycles": 237
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "wait",
+              "cycles": 227
+            },
+            {
+              "op": "wait",
+              "cycles": 16
+            },
+            {
+              "op": "wait",
+              "cycles": 461
+            },
+            {
+              "op": "work",
+              "units": 12
+            },
+            {
+              "op": "work",
+              "units": 14
+            },
+            {
+              "op": "work",
+              "units": 5
+            },
+            {
+              "op": "wait",
+              "cycles": 54
+            }
+          ]
+        },
+        "rates": [
+          2.036,
+          2.0,
+          2.0,
+          17.578666666666667,
+          17.53,
+          2.0,
+          2.0,
+          1.9993333333333334
+        ]
+      }
+    },
+    {
+      "id": "quiet_interval",
+      "control": false,
+      "arms": {
+        "phase-random": {
+          "proposals": 256,
+          "invalid_by_stage": {},
+          "first_hit": null,
+          "right_censored": true
+        },
+        "phase-ga": {
+          "proposals": 256,
+          "invalid_by_stage": {},
+          "first_hit": null,
+          "right_censored": true
+        }
+      },
+      "qualified": false,
+      "reasons": [
+        "witness_misses_request"
+      ],
+      "witness_error": 0.18046625464638005,
+      "witness": {
+        "policy": "phase-ga",
+        "slot": 221,
+        "cache_id": "6e8398dd14c83d5f3eb8f014651b12123fbd6a71a65921762a86a34f9fd33189",
+        "program": {
+          "sequence": [
+            {
+              "op": "work",
+              "units": 9
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "wait",
+              "cycles": 87
+            },
+            {
+              "op": "wait",
+              "cycles": 13
+            },
+            {
+              "op": "work",
+              "units": 3
+            },
+            {
+              "op": "wait",
+              "cycles": 13
+            },
+            {
+              "op": "wait",
+              "cycles": 990
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "wait",
+              "cycles": 331
+            },
+            {
+              "op": "work",
+              "units": 4
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "work",
+              "units": 6
+            },
+            {
+              "op": "work",
+              "units": 4
+            },
+            {
+              "op": "wait",
+              "cycles": 454
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "wait",
+              "cycles": 1169
+            },
+            {
+              "op": "work",
+              "units": 7
+            },
+            {
+              "op": "work",
+              "units": 2
+            },
+            {
+              "op": "work",
+              "units": 5
+            },
+            {
+              "op": "wait",
+              "cycles": 315
+            },
+            {
+              "op": "work",
+              "units": 3
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "wait",
+              "cycles": 93
+            },
+            {
+              "op": "wait",
+              "cycles": 633
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "wait",
+              "cycles": 1095
+            },
+            {
+              "op": "work",
+              "units": 5
+            },
+            {
+              "op": "wait",
+              "cycles": 807
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "work",
+              "units": 8
+            }
+          ]
+        },
+        "rates": [
+          8.863333333333333,
+          9.776,
+          8.805333333333333,
+          4.432666666666667,
+          4.941333333333334,
+          6.318,
+          2.0,
+          1.9993333333333334
+        ]
+      }
+    },
+    {
+      "id": "alternating",
+      "control": false,
+      "arms": {
+        "phase-random": {
+          "proposals": 256,
+          "invalid_by_stage": {},
+          "first_hit": null,
+          "right_censored": true
+        },
+        "phase-ga": {
+          "proposals": 256,
+          "invalid_by_stage": {},
+          "first_hit": null,
+          "right_censored": true
+        }
+      },
+      "qualified": false,
+      "reasons": [
+        "witness_misses_request"
+      ],
+      "witness_error": 0.24634347380131627,
+      "witness": {
+        "policy": "phase-ga",
+        "slot": 200,
+        "cache_id": "c14e6f994522200aa96e5023a5933b616d846cc1cda697f577b5519a93afda09",
+        "program": {
+          "sequence": [
+            {
+              "op": "wait",
+              "cycles": 158
+            },
+            {
+              "op": "wait",
+              "cycles": 778
+            },
+            {
+              "op": "wait",
+              "cycles": 119
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "wait",
+              "cycles": 649
+            },
+            {
+              "op": "work",
+              "units": 12
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "work",
+              "units": 12
+            },
+            {
+              "op": "wait",
+              "cycles": 1983
+            },
+            {
+              "op": "work",
+              "units": 4
+            },
+            {
+              "op": "work",
+              "units": 9
+            },
+            {
+              "op": "work",
+              "units": 6
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "wait",
+              "cycles": 228
+            },
+            {
+              "op": "wait",
+              "cycles": 137
+            },
+            {
+              "op": "wait",
+              "cycles": 454
+            },
+            {
+              "op": "wait",
+              "cycles": 172
+            },
+            {
+              "op": "work",
+              "units": 14
+            },
+            {
+              "op": "wait",
+              "cycles": 345
+            },
+            {
+              "op": "wait",
+              "cycles": 79
+            },
+            {
+              "op": "wait",
+              "cycles": 898
+            },
+            {
+              "op": "work",
+              "units": 3
+            }
+          ]
+        },
+        "rates": [
+          2.5493333333333332,
+          14.143333333333333,
+          5.61,
+          11.966666666666667,
+          5.516,
+          3.3486666666666665,
+          2.0,
+          1.9993333333333334
+        ]
+      }
+    },
+    {
+      "id": "ramp",
+      "control": false,
+      "arms": {
+        "phase-random": {
+          "proposals": 256,
+          "invalid_by_stage": {},
+          "first_hit": null,
+          "right_censored": true
+        },
+        "phase-ga": {
+          "proposals": 256,
+          "invalid_by_stage": {},
+          "first_hit": null,
+          "right_censored": true
+        }
+      },
+      "qualified": false,
+      "reasons": [
+        "witness_misses_request"
+      ],
+      "witness_error": 0.27958317711021796,
+      "witness": {
+        "policy": "phase-ga",
+        "slot": 248,
+        "cache_id": "85872ab3e8f189aedfcf98f7884e353024e3ee317579a09535107ce2b6e333b5",
+        "program": {
+          "sequence": [
+            {
+              "op": "wait",
+              "cycles": 198
+            },
+            {
+              "op": "wait",
+              "cycles": 561
+            },
+            {
+              "op": "wait",
+              "cycles": 144
+            },
+            {
+              "op": "work",
+              "units": 13
+            },
+            {
+              "op": "wait",
+              "cycles": 2632
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "work",
+              "units": 9
+            },
+            {
+              "op": "wait",
+              "cycles": 345
+            },
+            {
+              "op": "wait",
+              "cycles": 365
+            },
+            {
+              "op": "wait",
+              "cycles": 778
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "work",
+              "units": 2
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "work",
+              "units": 4
+            },
+            {
+              "op": "work",
+              "units": 3
+            },
+            {
+              "op": "wait",
+              "cycles": 79
+            },
+            {
+              "op": "wait",
+              "cycles": 898
+            },
+            {
+              "op": "work",
+              "units": 5
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "work",
+              "units": 2
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "work",
+              "units": 2
+            },
+            {
+              "op": "work",
+              "units": 9
+            },
+            {
+              "op": "work",
+              "units": 7
+            }
+          ]
+        },
+        "rates": [
+          8.376666666666667,
+          2.0,
+          7.822666666666667,
+          7.236,
+          11.108666666666666,
+          6.591333333333333,
+          2.0,
+          1.9993333333333334
+        ]
+      }
+    },
+    {
+      "id": "rise_fall",
+      "control": false,
+      "arms": {
+        "phase-random": {
+          "proposals": 256,
+          "invalid_by_stage": {},
+          "first_hit": 63,
+          "right_censored": false
+        },
+        "phase-ga": {
+          "proposals": 256,
+          "invalid_by_stage": {},
+          "first_hit": 72,
+          "right_censored": false
+        }
+      },
+      "qualified": true,
+      "reasons": [],
+      "witness_error": 0.02931917207651165,
+      "witness": {
+        "policy": "phase-ga",
+        "slot": 221,
+        "cache_id": "70652ca5fb644d89274151eddf33dee1c29c8aa11a7854ec0236f49fe7bdc515",
+        "program": {
+          "sequence": [
+            {
+              "op": "wait",
+              "cycles": 85
+            },
+            {
+              "op": "wait",
+              "cycles": 73
+            },
+            {
+              "op": "wait",
+              "cycles": 778
+            },
+            {
+              "op": "wait",
+              "cycles": 649
+            },
+            {
+              "op": "wait",
+              "cycles": 184
+            },
+            {
+              "op": "work",
+              "units": 9
+            },
+            {
+              "op": "wait",
+              "cycles": 1983
+            },
+            {
+              "op": "work",
+              "units": 12
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "wait",
+              "cycles": 365
+            },
+            {
+              "op": "work",
+              "units": 4
+            },
+            {
+              "op": "work",
+              "units": 13
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "wait",
+              "cycles": 561
+            },
+            {
+              "op": "wait",
+              "cycles": 345
+            },
+            {
+              "op": "wait",
+              "cycles": 79
+            },
+            {
+              "op": "work",
+              "units": 2
+            },
+            {
+              "op": "work",
+              "units": 4
+            },
+            {
+              "op": "wait",
+              "cycles": 898
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "work",
+              "units": 13
+            }
+          ]
+        },
+        "rates": [
+          2.038,
+          6.3966666666666665,
+          9.282,
+          10.746666666666666,
+          9.598,
+          5.068666666666667,
+          2.0,
+          1.9993333333333334
+        ]
+      }
+    },
+    {
+      "id": "irregular",
+      "control": false,
+      "arms": {
+        "phase-random": {
+          "proposals": 256,
+          "invalid_by_stage": {},
+          "first_hit": null,
+          "right_censored": true
+        },
+        "phase-ga": {
+          "proposals": 256,
+          "invalid_by_stage": {},
+          "first_hit": null,
+          "right_censored": true
+        }
+      },
+      "qualified": false,
+      "reasons": [
+        "witness_misses_request"
+      ],
+      "witness_error": 0.17440792877681158,
+      "witness": {
+        "policy": "phase-ga",
+        "slot": 253,
+        "cache_id": "e32cb4483cc34e34d625ced523b66e71c496126b46e12eb7ed6314f48ddf1d8f",
+        "program": {
+          "sequence": [
+            {
+              "op": "work",
+              "units": 3
+            },
+            {
+              "op": "wait",
+              "cycles": 33
+            },
+            {
+              "op": "work",
+              "units": 5
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "wait",
+              "cycles": 332
+            },
+            {
+              "op": "wait",
+              "cycles": 835
+            },
+            {
+              "op": "wait",
+              "cycles": 218
+            },
+            {
+              "op": "wait",
+              "cycles": 611
+            },
+            {
+              "op": "work",
+              "units": 19
+            },
+            {
+              "op": "wait",
+              "cycles": 273
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "wait",
+              "cycles": 378
+            },
+            {
+              "op": "work",
+              "units": 2
+            },
+            {
+              "op": "wait",
+              "cycles": 860
+            },
+            {
+              "op": "wait",
+              "cycles": 135
+            },
+            {
+              "op": "work",
+              "units": 5
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "wait",
+              "cycles": 84
+            },
+            {
+              "op": "wait",
+              "cycles": 197
+            },
+            {
+              "op": "wait",
+              "cycles": 398
+            },
+            {
+              "op": "wait",
+              "cycles": 636
+            },
+            {
+              "op": "wait",
+              "cycles": 185
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "work",
+              "units": 10
+            },
+            {
+              "op": "wait",
+              "cycles": 739
+            },
+            {
+              "op": "wait",
+              "cycles": 80
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "work",
+              "units": 3
+            },
+            {
+              "op": "work",
+              "units": 2
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "work",
+              "units": 6
+            },
+            {
+              "op": "work",
+              "units": 2
+            },
+            {
+              "op": "wait",
+              "cycles": 6
+            }
+          ]
+        },
+        "rates": [
+          6.442666666666667,
+          11.454666666666666,
+          3.718,
+          4.916666666666667,
+          10.656,
+          5.967333333333333,
+          2.0,
+          1.9993333333333334
+        ]
+      }
+    },
+    {
+      "id": "flat_control",
+      "control": true,
+      "arms": {
+        "phase-random": {
+          "proposals": 256,
+          "invalid_by_stage": {},
+          "first_hit": null,
+          "right_censored": true
+        },
+        "phase-ga": {
+          "proposals": 256,
+          "invalid_by_stage": {},
+          "first_hit": null,
+          "right_censored": true
+        }
+      },
+      "qualified": false,
+      "reasons": [
+        "witness_misses_request",
+        "control_not_near_flat"
+      ],
+      "witness_error": 0.14981135765835585,
+      "witness": {
+        "policy": "phase-ga",
+        "slot": 242,
+        "cache_id": "21a0680af3c4f5a79dd78ff381b2678711cbeb872eefb74bd682612cd12eb8aa",
+        "program": {
+          "sequence": [
+            {
+              "op": "work",
+              "units": 2
+            },
+            {
+              "op": "work",
+              "units": 4
+            },
+            {
+              "op": "wait",
+              "cycles": 778
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "wait",
+              "cycles": 91
+            },
+            {
+              "op": "wait",
+              "cycles": 93
+            },
+            {
+              "op": "wait",
+              "cycles": 649
+            },
+            {
+              "op": "work",
+              "units": 10
+            },
+            {
+              "op": "work",
+              "units": 2
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "wait",
+              "cycles": 1983
+            },
+            {
+              "op": "work",
+              "units": 14
+            },
+            {
+              "op": "work",
+              "units": 6
+            },
+            {
+              "op": "work",
+              "units": 5
+            },
+            {
+              "op": "wait",
+              "cycles": 365
+            },
+            {
+              "op": "wait",
+              "cycles": 561
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "wait",
+              "cycles": 345
+            },
+            {
+              "op": "wait",
+              "cycles": 79
+            },
+            {
+              "op": "wait",
+              "cycles": 898
+            },
+            {
+              "op": "work",
+              "units": 2
+            },
+            {
+              "op": "wait",
+              "cycles": 158
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "work",
+              "units": 14
+            }
+          ]
+        },
+        "rates": [
+          5.473333333333334,
+          8.323333333333334,
+          9.488666666666667,
+          7.1433333333333335,
+          7.896,
+          4.825333333333333,
+          2.0,
+          1.9993333333333334
+        ]
+      }
+    }
+  ]
+}

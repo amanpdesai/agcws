@@ -530,9 +530,10 @@ requests qualify, and neither control qualifies. Finer surrogate timing alone
 did not resolve the bank. This motivates measured-feedback refinement, not a
 claim of feasibility from predicted fits or a claim that the targets are impossible.
 
-AES/DMA v2 banks are separately frozen and their CPU witness searches are in
-progress. All eight families pass the necessary floor check in each split;
-admission still requires a valid measured witness. Their v1 calibration and
+AES/DMA v2 CPU witness searches completed 4,608 slots per design/split. AES
+qualifies 7/8 non-flat requests in each split; DMA qualifies 3/8 in each. Neither
+design qualifies its flat controls. All eight families pass the necessary floor
+check, but that alone does not establish feasibility. Their v1 calibration and
 measurement contracts remain unchanged. Stronger contrast and distinct
 development dwell/phase templates are recorded in
 [the v2 procedure](docs/TARGET_QUALIFICATION_V2.md), with every v1 failure retained.
@@ -557,3 +558,9 @@ stop and eight-bin rate, and verifies functional records. The
 [admitted bank and audit](results/mesh/witness-refinement-v4/README.md) preserve
 the failed v1 search rather than replacing its accounting. This clears the mesh
 target gate, not Flash-loop readiness, gate-power validation or policy superiority.
+
+RedMulE measured-feedback refinement v4 completed with 2/8 development and 7/8
+confirmation non-flat requests qualified, plus both controls. All remaining
+requests exhausted their declared 257 slots. [Archived evidence](results/redmule/witness-refinement-v4/README.md)
+retains the misses and passing compact audit. Additional qualification work is
+required; neither failed search nor an approximate fit licenses target admission.

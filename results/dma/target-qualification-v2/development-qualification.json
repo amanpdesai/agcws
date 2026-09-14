@@ -1,0 +1,1188 @@
+{
+  "scope": "target qualification; witnesses must not be supplied to search policies",
+  "domain": "dma-temporal",
+  "split": "development",
+  "request_bank_sha256": "cdf70b7a53f022e594b63187cf654b4c3194c8697f1cfdfd2219ab42d1df93d8",
+  "run_manifest_sha256": "ac09c6df4ccceaec02935cf166b3de28303f12f530f7289f912f0df300348681",
+  "qualified_nonflat": 3,
+  "qualified_controls": 0,
+  "requests": [
+    {
+      "id": "activation",
+      "control": false,
+      "arms": {
+        "phase-random": {
+          "proposals": 256,
+          "invalid_by_stage": {},
+          "first_hit": null,
+          "right_censored": true
+        },
+        "phase-ga": {
+          "proposals": 256,
+          "invalid_by_stage": {},
+          "first_hit": null,
+          "right_censored": true
+        }
+      },
+      "qualified": false,
+      "reasons": [
+        "witness_misses_request"
+      ],
+      "witness_error": 0.23002203862299483,
+      "witness": {
+        "policy": "phase-ga",
+        "slot": 248,
+        "cache_id": "89f2c48a1029dfad9ebe053deb02736ced5ae553b90e33dfe00c3923c4dd7408",
+        "program": {
+          "sequence": [
+            {
+              "op": "work",
+              "units": 3
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "wait",
+              "cycles": 723
+            },
+            {
+              "op": "wait",
+              "cycles": 481
+            },
+            {
+              "op": "work",
+              "units": 4
+            },
+            {
+              "op": "work",
+              "units": 8
+            },
+            {
+              "op": "wait",
+              "cycles": 56
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "wait",
+              "cycles": 404
+            },
+            {
+              "op": "wait",
+              "cycles": 1581
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "work",
+              "units": 2
+            },
+            {
+              "op": "wait",
+              "cycles": 782
+            },
+            {
+              "op": "work",
+              "units": 3
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "work",
+              "units": 13
+            },
+            {
+              "op": "wait",
+              "cycles": 959
+            },
+            {
+              "op": "wait",
+              "cycles": 472
+            },
+            {
+              "op": "wait",
+              "cycles": 542
+            },
+            {
+              "op": "work",
+              "units": 17
+            },
+            {
+              "op": "work",
+              "units": 2
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "work",
+              "units": 6
+            }
+          ]
+        },
+        "rates": [
+          7.38,
+          4.9446666666666665,
+          3.458666666666667,
+          10.745333333333333,
+          11.457333333333333,
+          5.153333333333333,
+          2.0,
+          1.9993333333333334
+        ]
+      }
+    },
+    {
+      "id": "deactivation",
+      "control": false,
+      "arms": {
+        "phase-random": {
+          "proposals": 256,
+          "invalid_by_stage": {},
+          "first_hit": 135,
+          "right_censored": false
+        },
+        "phase-ga": {
+          "proposals": 256,
+          "invalid_by_stage": {},
+          "first_hit": 119,
+          "right_censored": false
+        }
+      },
+      "qualified": true,
+      "reasons": [],
+      "witness_error": 0.028530571664389298,
+      "witness": {
+        "policy": "phase-ga",
+        "slot": 240,
+        "cache_id": "de40ec100d0651db85eb44f5c45942e15e6de3df8ed6ec6947a05ccbdb8f1e2f",
+        "program": {
+          "sequence": [
+            {
+              "op": "wait",
+              "cycles": 405
+            },
+            {
+              "op": "work",
+              "units": 9
+            },
+            {
+              "op": "work",
+              "units": 4
+            },
+            {
+              "op": "work",
+              "units": 6
+            },
+            {
+              "op": "work",
+              "units": 2
+            },
+            {
+              "op": "wait",
+              "cycles": 174
+            },
+            {
+              "op": "wait",
+              "cycles": 477
+            },
+            {
+              "op": "wait",
+              "cycles": 444
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "work",
+              "units": 4
+            },
+            {
+              "op": "work",
+              "units": 3
+            },
+            {
+              "op": "work",
+              "units": 10
+            },
+            {
+              "op": "wait",
+              "cycles": 177
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "wait",
+              "cycles": 3
+            },
+            {
+              "op": "wait",
+              "cycles": 86
+            },
+            {
+              "op": "wait",
+              "cycles": 118
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "work",
+              "units": 7
+            },
+            {
+              "op": "work",
+              "units": 16
+            },
+            {
+              "op": "wait",
+              "cycles": 157
+            },
+            {
+              "op": "wait",
+              "cycles": 1094
+            },
+            {
+              "op": "wait",
+              "cycles": 292
+            },
+            {
+              "op": "wait",
+              "cycles": 1052
+            },
+            {
+              "op": "wait",
+              "cycles": 292
+            },
+            {
+              "op": "wait",
+              "cycles": 369
+            },
+            {
+              "op": "wait",
+              "cycles": 860
+            }
+          ]
+        },
+        "rates": [
+          12.268666666666666,
+          12.414666666666667,
+          12.46,
+          2.0,
+          2.0,
+          2.0,
+          2.0,
+          1.9993333333333334
+        ]
+      }
+    },
+    {
+      "id": "burst",
+      "control": false,
+      "arms": {
+        "phase-random": {
+          "proposals": 256,
+          "invalid_by_stage": {},
+          "first_hit": 10,
+          "right_censored": false
+        },
+        "phase-ga": {
+          "proposals": 256,
+          "invalid_by_stage": {},
+          "first_hit": 93,
+          "right_censored": false
+        }
+      },
+      "qualified": true,
+      "reasons": [],
+      "witness_error": 0.03781880484424272,
+      "witness": {
+        "policy": "phase-random",
+        "slot": 90,
+        "cache_id": "a471f9d47d129b1bfd2427cfdec759a62f7c5a9bb1f2c23f6d4d9c0315942adc",
+        "program": {
+          "sequence": [
+            {
+              "op": "wait",
+              "cycles": 1730
+            },
+            {
+              "op": "wait",
+              "cycles": 420
+            },
+            {
+              "op": "wait",
+              "cycles": 85
+            },
+            {
+              "op": "wait",
+              "cycles": 1555
+            },
+            {
+              "op": "work",
+              "units": 41
+            },
+            {
+              "op": "wait",
+              "cycles": 260
+            },
+            {
+              "op": "work",
+              "units": 23
+            },
+            {
+              "op": "wait",
+              "cycles": 1950
+            }
+          ]
+        },
+        "rates": [
+          2.038,
+          2.0,
+          17.778,
+          17.307333333333332,
+          2.0,
+          2.0,
+          2.0,
+          1.9993333333333334
+        ]
+      }
+    },
+    {
+      "id": "quiet_interval",
+      "control": false,
+      "arms": {
+        "phase-random": {
+          "proposals": 256,
+          "invalid_by_stage": {},
+          "first_hit": null,
+          "right_censored": true
+        },
+        "phase-ga": {
+          "proposals": 256,
+          "invalid_by_stage": {},
+          "first_hit": null,
+          "right_censored": true
+        }
+      },
+      "qualified": false,
+      "reasons": [
+        "witness_misses_request"
+      ],
+      "witness_error": 0.239924916241782,
+      "witness": {
+        "policy": "phase-ga",
+        "slot": 250,
+        "cache_id": "35d401383bad45ececb351f19fe5b1ee5e3bfd5923aaf2176d2910428048dd19",
+        "program": {
+          "sequence": [
+            {
+              "op": "work",
+              "units": 17
+            },
+            {
+              "op": "work",
+              "units": 4
+            },
+            {
+              "op": "wait",
+              "cycles": 733
+            },
+            {
+              "op": "wait",
+              "cycles": 1240
+            },
+            {
+              "op": "work",
+              "units": 7
+            },
+            {
+              "op": "wait",
+              "cycles": 148
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "work",
+              "units": 5
+            },
+            {
+              "op": "work",
+              "units": 11
+            },
+            {
+              "op": "wait",
+              "cycles": 267
+            },
+            {
+              "op": "wait",
+              "cycles": 742
+            },
+            {
+              "op": "wait",
+              "cycles": 962
+            },
+            {
+              "op": "work",
+              "units": 2
+            },
+            {
+              "op": "wait",
+              "cycles": 63
+            },
+            {
+              "op": "wait",
+              "cycles": 475
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "work",
+              "units": 2
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "wait",
+              "cycles": 63
+            },
+            {
+              "op": "wait",
+              "cycles": 74
+            },
+            {
+              "op": "wait",
+              "cycles": 163
+            },
+            {
+              "op": "wait",
+              "cycles": 727
+            },
+            {
+              "op": "wait",
+              "cycles": 28
+            },
+            {
+              "op": "wait",
+              "cycles": 72
+            },
+            {
+              "op": "wait",
+              "cycles": 243
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "work",
+              "units": 9
+            },
+            {
+              "op": "work",
+              "units": 3
+            }
+          ]
+        },
+        "rates": [
+          12.262666666666666,
+          9.803333333333333,
+          5.859333333333334,
+          4.923333333333333,
+          6.335333333333334,
+          3.9566666666666666,
+          2.0,
+          1.9993333333333334
+        ]
+      }
+    },
+    {
+      "id": "alternating",
+      "control": false,
+      "arms": {
+        "phase-random": {
+          "proposals": 256,
+          "invalid_by_stage": {},
+          "first_hit": null,
+          "right_censored": true
+        },
+        "phase-ga": {
+          "proposals": 256,
+          "invalid_by_stage": {},
+          "first_hit": null,
+          "right_censored": true
+        }
+      },
+      "qualified": false,
+      "reasons": [
+        "witness_misses_request"
+      ],
+      "witness_error": 0.17747631854127185,
+      "witness": {
+        "policy": "phase-ga",
+        "slot": 235,
+        "cache_id": "368c28cbf29ac7725dc111e769e6a79bb2c764fc7808dd43ee90f3b6af46c16a",
+        "program": {
+          "sequence": [
+            {
+              "op": "wait",
+              "cycles": 723
+            },
+            {
+              "op": "work",
+              "units": 6
+            },
+            {
+              "op": "work",
+              "units": 9
+            },
+            {
+              "op": "wait",
+              "cycles": 481
+            },
+            {
+              "op": "work",
+              "units": 5
+            },
+            {
+              "op": "work",
+              "units": 2
+            },
+            {
+              "op": "wait",
+              "cycles": 56
+            },
+            {
+              "op": "wait",
+              "cycles": 1985
+            },
+            {
+              "op": "work",
+              "units": 6
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "work",
+              "units": 2
+            },
+            {
+              "op": "work",
+              "units": 3
+            },
+            {
+              "op": "wait",
+              "cycles": 463
+            },
+            {
+              "op": "wait",
+              "cycles": 319
+            },
+            {
+              "op": "wait",
+              "cycles": 959
+            },
+            {
+              "op": "work",
+              "units": 8
+            },
+            {
+              "op": "work",
+              "units": 2
+            },
+            {
+              "op": "wait",
+              "cycles": 472
+            },
+            {
+              "op": "wait",
+              "cycles": 542
+            },
+            {
+              "op": "work",
+              "units": 19
+            }
+          ]
+        },
+        "rates": [
+          9.350666666666667,
+          5.4046666666666665,
+          8.322,
+          4.414,
+          12.312666666666667,
+          3.3486666666666665,
+          2.0,
+          1.9993333333333334
+        ]
+      }
+    },
+    {
+      "id": "ramp",
+      "control": false,
+      "arms": {
+        "phase-random": {
+          "proposals": 256,
+          "invalid_by_stage": {},
+          "first_hit": null,
+          "right_censored": true
+        },
+        "phase-ga": {
+          "proposals": 256,
+          "invalid_by_stage": {},
+          "first_hit": null,
+          "right_censored": true
+        }
+      },
+      "qualified": false,
+      "reasons": [
+        "witness_misses_request"
+      ],
+      "witness_error": 0.268978664842624,
+      "witness": {
+        "policy": "phase-ga",
+        "slot": 250,
+        "cache_id": "740ab1e6414b98b27b92f301fbc162bc48e08c15a503c3b576421d9835f1b3b8",
+        "program": {
+          "sequence": [
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "work",
+              "units": 3
+            },
+            {
+              "op": "wait",
+              "cycles": 340
+            },
+            {
+              "op": "work",
+              "units": 8
+            },
+            {
+              "op": "wait",
+              "cycles": 2708
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "work",
+              "units": 10
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "wait",
+              "cycles": 782
+            },
+            {
+              "op": "work",
+              "units": 5
+            },
+            {
+              "op": "wait",
+              "cycles": 959
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "work",
+              "units": 2
+            },
+            {
+              "op": "wait",
+              "cycles": 141
+            },
+            {
+              "op": "work",
+              "units": 21
+            },
+            {
+              "op": "wait",
+              "cycles": 472
+            },
+            {
+              "op": "wait",
+              "cycles": 56
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "wait",
+              "cycles": 542
+            },
+            {
+              "op": "work",
+              "units": 3
+            },
+            {
+              "op": "work",
+              "units": 5
+            }
+          ]
+        },
+        "rates": [
+          7.890666666666666,
+          2.0,
+          8.522666666666666,
+          9.073333333333334,
+          10.537333333333333,
+          5.115333333333333,
+          2.0,
+          1.9993333333333334
+        ]
+      }
+    },
+    {
+      "id": "rise_fall",
+      "control": false,
+      "arms": {
+        "phase-random": {
+          "proposals": 256,
+          "invalid_by_stage": {},
+          "first_hit": 6,
+          "right_censored": false
+        },
+        "phase-ga": {
+          "proposals": 256,
+          "invalid_by_stage": {},
+          "first_hit": 130,
+          "right_censored": false
+        }
+      },
+      "qualified": true,
+      "reasons": [],
+      "witness_error": 0.05480922819596706,
+      "witness": {
+        "policy": "phase-ga",
+        "slot": 252,
+        "cache_id": "b0da08c06603b369f973e5dfd9166f698538d878bfc46589080754f438ef53b9",
+        "program": {
+          "sequence": [
+            {
+              "op": "wait",
+              "cycles": 1936
+            },
+            {
+              "op": "work",
+              "units": 11
+            },
+            {
+              "op": "wait",
+              "cycles": 1815
+            },
+            {
+              "op": "work",
+              "units": 2
+            },
+            {
+              "op": "work",
+              "units": 7
+            },
+            {
+              "op": "work",
+              "units": 12
+            },
+            {
+              "op": "work",
+              "units": 8
+            },
+            {
+              "op": "wait",
+              "cycles": 875
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "wait",
+              "cycles": 231
+            },
+            {
+              "op": "work",
+              "units": 8
+            },
+            {
+              "op": "work",
+              "units": 7
+            },
+            {
+              "op": "work",
+              "units": 2
+            },
+            {
+              "op": "wait",
+              "cycles": 1143
+            },
+            {
+              "op": "work",
+              "units": 6
+            }
+          ]
+        },
+        "rates": [
+          2.038,
+          7.371333333333333,
+          12.242,
+          10.306,
+          9.19,
+          2.0,
+          2.0,
+          1.9993333333333334
+        ]
+      }
+    },
+    {
+      "id": "irregular",
+      "control": false,
+      "arms": {
+        "phase-random": {
+          "proposals": 256,
+          "invalid_by_stage": {},
+          "first_hit": null,
+          "right_censored": true
+        },
+        "phase-ga": {
+          "proposals": 256,
+          "invalid_by_stage": {},
+          "first_hit": null,
+          "right_censored": true
+        }
+      },
+      "qualified": false,
+      "reasons": [
+        "witness_misses_request"
+      ],
+      "witness_error": 0.11553079866264451,
+      "witness": {
+        "policy": "phase-ga",
+        "slot": 254,
+        "cache_id": "241fe99da3d13f7c5e34e334cb49d47afba8b722104c6995bf0dd42c2ee542ef",
+        "program": {
+          "sequence": [
+            {
+              "op": "wait",
+              "cycles": 69
+            },
+            {
+              "op": "wait",
+              "cycles": 322
+            },
+            {
+              "op": "work",
+              "units": 2
+            },
+            {
+              "op": "wait",
+              "cycles": 202
+            },
+            {
+              "op": "work",
+              "units": 6
+            },
+            {
+              "op": "work",
+              "units": 4
+            },
+            {
+              "op": "wait",
+              "cycles": 344
+            },
+            {
+              "op": "work",
+              "units": 4
+            },
+            {
+              "op": "work",
+              "units": 6
+            },
+            {
+              "op": "wait",
+              "cycles": 732
+            },
+            {
+              "op": "wait",
+              "cycles": 572
+            },
+            {
+              "op": "wait",
+              "cycles": 100
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "work",
+              "units": 2
+            },
+            {
+              "op": "work",
+              "units": 8
+            },
+            {
+              "op": "work",
+              "units": 3
+            },
+            {
+              "op": "wait",
+              "cycles": 593
+            },
+            {
+              "op": "wait",
+              "cycles": 2359
+            },
+            {
+              "op": "work",
+              "units": 4
+            },
+            {
+              "op": "work",
+              "units": 10
+            },
+            {
+              "op": "wait",
+              "cycles": 133
+            },
+            {
+              "op": "work",
+              "units": 7
+            },
+            {
+              "op": "wait",
+              "cycles": 2
+            },
+            {
+              "op": "wait",
+              "cycles": 329
+            },
+            {
+              "op": "wait",
+              "cycles": 243
+            },
+            {
+              "op": "work",
+              "units": 6
+            }
+          ]
+        },
+        "rates": [
+          12.762666666666666,
+          3.362,
+          7.931333333333333,
+          2.0,
+          13.539333333333333,
+          3.566666666666667,
+          2.0,
+          1.9993333333333334
+        ]
+      }
+    },
+    {
+      "id": "flat_control",
+      "control": true,
+      "arms": {
+        "phase-random": {
+          "proposals": 256,
+          "invalid_by_stage": {},
+          "first_hit": null,
+          "right_censored": true
+        },
+        "phase-ga": {
+          "proposals": 256,
+          "invalid_by_stage": {},
+          "first_hit": null,
+          "right_censored": true
+        }
+      },
+      "qualified": false,
+      "reasons": [
+        "witness_misses_request",
+        "control_not_near_flat"
+      ],
+      "witness_error": 0.13295137284831696,
+      "witness": {
+        "policy": "phase-ga",
+        "slot": 209,
+        "cache_id": "ab077e05a0d30067fb846b8b436e4680234c1ebdf9d6f96b40e3cd48262b2f7d",
+        "program": {
+          "sequence": [
+            {
+              "op": "work",
+              "units": 5
+            },
+            {
+              "op": "work",
+              "units": 2
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "wait",
+              "cycles": 23
+            },
+            {
+              "op": "wait",
+              "cycles": 481
+            },
+            {
+              "op": "work",
+              "units": 3
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "wait",
+              "cycles": 723
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "work",
+              "units": 10
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "wait",
+              "cycles": 1985
+            },
+            {
+              "op": "work",
+              "units": 3
+            },
+            {
+              "op": "work",
+              "units": 3
+            },
+            {
+              "op": "work",
+              "units": 2
+            },
+            {
+              "op": "wait",
+              "cycles": 992
+            },
+            {
+              "op": "work",
+              "units": 3
+            },
+            {
+              "op": "work",
+              "units": 3
+            },
+            {
+              "op": "work",
+              "units": 3
+            },
+            {
+              "op": "wait",
+              "cycles": 782
+            },
+            {
+              "op": "wait",
+              "cycles": 53
+            },
+            {
+              "op": "wait",
+              "cycles": 489
+            },
+            {
+              "op": "work",
+              "units": 2
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "work",
+              "units": 4
+            },
+            {
+              "op": "work",
+              "units": 1
+            },
+            {
+              "op": "wait",
+              "cycles": 472
+            },
+            {
+              "op": "work",
+              "units": 15
+            }
+          ]
+        },
+        "rates": [
+          7.9013333333333335,
+          7.831333333333333,
+          5.897333333333333,
+          6.386,
+          7.810666666666667,
+          7.346,
+          2.0,
+          1.9993333333333334
+        ]
+      }
+    }
+  ]
+}
