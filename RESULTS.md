@@ -615,3 +615,19 @@ match bit-for-bit. [AES evidence](results/aes/runtime-replay-v2/README.md) and
 [mesh evidence](results/mesh/runtime-replay-v2/README.md) preserve both source
 identities; new v2 banks retain the original target vectors and normalization.
 This clears their replay gate, not the live feedback-loop smoke gate.
+
+RedMulE's [fixed operand probe](results/redmule/operand-probe-v1/README.md)
+completed 354/354 valid measurements with exact parent replays. Changing operands
+at fixed timing did not qualify any of the seven remaining requests. The
+development bank remains 2/8 non-flat and confirmation 7/8, with both controls
+qualified. No tolerance or target was changed to conceal these misses.
+
+The updated-runtime all-target Flash/random/GA smokes completed on AES, mesh
+and DMA: 54 cells and 324 slots per design, 108 Flash calls total, $1.2939385
+known estimated cost and zero unknown-call liability. Strict generated-feedback
+readiness passes 12/18 AES, 17/18 mesh, and 13/18 DMA targets. Successful API
+responses do not imply valid schedules; AES/DMA failures are predominantly
+exact-work/idle arithmetic violations. [AES](results/aes/bank-smoke-v2/README.md),
+[mesh](results/mesh/bank-smoke-v2/README.md), and
+[DMA](results/dma/bank-smoke-v2/README.md) preserve failures and per-target audits.
+No full five-design paper study has launched.

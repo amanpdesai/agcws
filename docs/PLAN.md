@@ -1,5 +1,36 @@
 # Plan
 
+## Five-design readiness checkpoint — 2026-09-14
+
+DMA now qualifies all eighteen requests under its corrected 9,216-cycle window.
+AES and mesh passed exact current-runtime replay of all 64 calibration programs
+and eighteen witnesses each. Their original banks remain intact; the new bank
+versions carry explicit replay lineage.
+
+Bounded six-slot Flash/random/GA smokes are complete across these three designs,
+all eighteen requests each. Generated-feedback readiness passes AES 12/18,
+mesh 17/18, DMA 13/18; API calls succeed with known usage, but first generated
+batches sometimes contain no valid workloads. Exact work/idle arithmetic is the
+main AES/DMA failure. Preserve this evidence before any new smoke protocol;
+do not repair candidates, relax gates, or repeat until a favorable draw appears.
+
+RedMulE's 354-slot fixed operand sweep added no qualified targets. Ibex's 88
+fixed-operation measurements all pass functional checks and identify division
+operands as low-activity building blocks; no new target witness is claimed.
+
+Next work, in order:
+
+1. Freeze a target-guided Ibex construction using the measured operation profiles;
+   retain every attempt and the original requested vectors and tolerance.
+2. Diagnose RedMulE timing/quantization limits before another broad search. Its
+   remaining misses are not yet proof of infeasibility or grounds to drop shapes.
+3. Separate Flash contract-compliance limitations from transport correctness.
+   Declare any longer feedback smoke or interface change before execution,
+   preserving failed v2 smokes. Do not substitute Pro for the requested Flash test.
+4. Finish missing qualifications and all-target feedback checks, archive/replay
+   audits, then freeze full-study settings and seek launch approval. The full
+   five-design study is still not ready and has not launched.
+
 Updated 2026-09-13. Findings and completion status live only in
 [RESULTS.md](../RESULTS.md); compact evidence lives in `results/`.
 
