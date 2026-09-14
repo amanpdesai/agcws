@@ -51,3 +51,31 @@ def test_parallel_reservations_cannot_overspend(tmp_path, monkeypatch):
             release.set()
         first.result()
     assert meter.liability == pytest.approx(0.01)
+
+
+def test_server_failure_is_reserved_replayed_and_later_call_can_succeed(tmp_path, monkeypatch):
+    from google.genai.errors import ServerError
+
+    monkeypatch.setenv("AGCWS_GCP_PROJECT", "test-project")
+    calls = []
+
+    def generate(*args):
+        calls.append(args)
+        if len(calls) == 1:
+            raise ServerError(504, {"error": {"message": "injected deadline", "status": "DEADLINE_EXCEEDED"}})
+        return {"raw_text": "{}", "usage_unknown": False, "estimated_usd": .01}
+
+    monkeypatch.setattr("agcws.pipeline.meter.generate", generate)
+    first = tmp_path / "panel/t/8502/flash-4096/batches/003"
+    second = tmp_path / "panel/t/8502/flash-4096/batches/005"
+    meter = Meter(tmp_path, 1)
+    failed = meter.call(first, "flash-4096", "prompt", {}, {"slot": 3})
+    reserved = read(first / "request_started.json")["reservation_usd"]
+    assert failed["usage_unknown"] and failed["api_error"]["type"] == "ServerError"
+    assert meter.liability == pytest.approx(reserved)
+    resumed = Meter(tmp_path, 1)
+    assert resumed.call(first, "flash-4096", "prompt", {}, {"slot": 3}) == failed
+    assert len(calls) == 1  # No invisible resampling of the failed batch.
+    assert resumed.call(second, "flash-4096", "prompt", {}, {"slot": 5})["estimated_usd"] == .01
+    assert len(calls) == 2
+    assert Meter(tmp_path, 1).liability == pytest.approx(reserved+.01)
