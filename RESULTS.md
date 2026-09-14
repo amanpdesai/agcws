@@ -564,3 +564,12 @@ confirmation non-flat requests qualified, plus both controls. All remaining
 requests exhausted their declared 257 slots. [Archived evidence](results/redmule/witness-refinement-v4/README.md)
 retains the misses and passing compact audit. Additional qualification work is
 required; neither failed search nor an approximate fit licenses target admission.
+
+A [DMA window audit](results/dma/target-qualification-v2/README.md#window-audit)
+identifies a measurement/DSL mismatch in v2 qualification. Across 2,154 development
+and 2,183 confirmation unique valid workloads, every schedule ends before cycle
+7,772, followed by more than 4,200 padded cycles in a 12,000-cycle observation.
+The final two bins have identical idle rates across the entire measured corpus.
+This makes the current misses unsuitable for policy interpretation; a corrected
+DMA measurement contract requires new calibration and qualification. Existing v2
+attempts and vectors remain unchanged. No paid comparison has used this bank.

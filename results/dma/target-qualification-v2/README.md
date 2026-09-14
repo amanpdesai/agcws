@@ -20,3 +20,21 @@ errors are 0.1330 and 0.1498, respectively, above the unchanged 0.10 tolerance.
 Per-split archives in `development/` and `confirmation/` preserve every attempt;
 packing verified restored file hashes. These misses are not proof of infeasibility,
 and the bank is not ready for the full study.
+
+## Window audit
+
+[Development](development-window-audit.json) and
+[confirmation](confirmation-window-audit.json) audits reconstruct all eight rates
+from activity samples and check completion, cache identity and exact work counts.
+They cover 2,154 and 2,183 distinct valid workloads within their respective splits.
+The latest declared schedule end is cycle 7,771.5 / 7,743.5, respectively, leaving
+at least 4,228.5 / 4,256.5 padded cycles in the 12,000-cycle observation window.
+Every measured workload has bin 7 at 2.0 transitions/edge and bin 8 at
+1.9993333333333334. The small final-bin offset is common to all workloads.
+
+Thus the existing corpus cannot exercise the full requested temporal horizon.
+This is not a theorem about every legal program, but it identifies a concrete
+window/DSL mismatch rather than evidence that an agent cannot shape DMA activity.
+Further local refinement on this contract is paused. Correcting the observation
+contract requires versioned calibration and qualification, not reinterpreting
+these measurements or quietly changing the existing target vectors.

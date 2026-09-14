@@ -2,9 +2,45 @@
 
 import copy
 import itertools
+import math
 import random
 
 from agcws.workloads.schedule import expand_schedule
+
+
+def allocate(total, weights):
+    if not weights or any(not math.isfinite(w) or w < 0 for w in weights) or sum(weights) <= 0:
+        raise ValueError("finite nonnegative allocation weights required")
+    exact = [total*w/sum(weights) for w in weights]
+    values = [math.floor(v) for v in exact]
+    order = sorted(range(len(values)), key=lambda i: (-(exact[i]-values[i]), i))
+    for i in order[:total-sum(values)]:
+        values[i] += 1
+    return values
+
+
+def initial_schedules(rates, baseline, contract, edges):
+    """Three explicitly measured proposals, not inferred feasible witnesses."""
+    if len(rates) != 8 or edges <= contract.idle_cycles:
+        raise ValueError("eight bins and positive estimated active duration required")
+    work = allocate(contract.work_units, [max(0, r-baseline) for r in rates])
+    unit_cycles = (edges-contract.idle_cycles)/contract.work_units
+    waits = allocate(contract.idle_cycles, [max(0, edges/8-w*unit_cycles) for w in work])
+    candidates = []
+    for lead in (0, .5, 1):
+        sequence = []
+        for units, cycles in zip(work, waits, strict=True):
+            before = int(cycles*lead)
+            if before:
+                sequence.append({"op": "wait", "cycles": before})
+            if units:
+                sequence.append({"op": "work", "units": units})
+            if cycles-before:
+                sequence.append({"op": "wait", "cycles": cycles-before})
+        candidate = {"sequence": sequence}
+        expand_schedule(candidate, contract)
+        candidates.append(candidate)
+    return candidates
 
 
 def paired_transfer(program, contract, batch, seed):

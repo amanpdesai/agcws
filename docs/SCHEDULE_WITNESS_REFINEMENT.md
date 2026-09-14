@@ -1,7 +1,7 @@
 # Fixed-work witness refinement — development plan
 
-Status: proposal operator tested; runner and frozen execution manifest pending.
-No new qualification search has been launched under this procedure.
+Status: AES v3 procedure fixed before execution; run manifests pin these sources
+and the selected v2 parents. DMA execution is excluded pending its window audit.
 
 ## Evidence motivating the change
 
@@ -34,11 +34,33 @@ split must therefore be an explicit, measured and charged proposal, not a hidden
 rewrite of a parent. In particular, an equal-allocation control is a candidate,
 not a witness until its measured profile passes both control gates.
 
-Before execution, freeze the runner, parent evidence hashes, candidate schedule,
-seed assignment, exact budget and stop rule. Keep development/confirmation
+The AES v3 runner first replays each selected parent exactly (one charged slot).
+Already-qualified parents stop there. Otherwise, three explicit target-guided
+initializations allocate the 64 work units by largest remainder of target rate
+above the calibrated idle baseline. Estimated unit duration is
+`(6774 - 6000) / 64`; the residual per-bin durations allocate the 6,000 waits.
+Three candidates put each bin's waits after, half before/after, or before work.
+All three are measured and charged before selecting an improvement. This timing
+estimate only proposes candidates; measured profiles decide admission.
+
+Unqualified incumbents then receive the 128 paired steps, giving a maximum of
+260 charged slots per request. Seeds are 8300 development and 8400 confirmation;
+18 request workers run concurrently. Stop only after a complete seed/paired batch
+passes the unchanged qualification gate. Strictly smaller measured target error
+selects incumbents; ties retain the earlier candidate. Frozen replay mismatch or
+unknown infrastructure failure stops the run, never substitutes a score.
+
+The runner and helper hashes, parent manifest hashes, requested bank, initial
+candidates, budget and measurement provenance are frozen before execution.
+Keep development/confirmation
 qualification costs separate from later policy budgets. Audit restored archives
 against paired decisions, native validity, measurement identity and bin arithmetic.
 Do not edit measurement sources while the current Ibex qualification is live.
+
+DMA's v2 timing audit found more than 4,200 padded cycles after every measured
+schedule; the last two bins have no workload-dependent activity in either split.
+It is excluded from this refinement version. A new DMA observation contract
+requires new calibration and fresh qualification, with the old evidence retained.
 
 ## Interpretation limits
 
