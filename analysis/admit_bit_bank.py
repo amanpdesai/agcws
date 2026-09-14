@@ -30,9 +30,11 @@ def checked_trial(trial, target, scale):
 def search_attempts(root, targets, scale):
     manifest = verify_inputs(ROOT, root)
     spec = manifest["spec"]
+    split = root.name
     if (spec["policies"] != ["phase-random", "phase-ga"] or spec["budget"] != 256
             or spec["batch_size"] != 2 or spec["stop_on_success"] is not False
-            or spec["targets"] != targets or spec["scale"] != scale):
+            or spec["targets"] != targets or spec["scale"] != scale
+            or spec["seeds"] != [7300 if split == "development" else 7400]):
         raise ValueError("qualification search differs from declaration")
     complete = read(root / "complete.json")
     attempts, summaries = [], []
@@ -119,10 +121,19 @@ def audit(root):
                 attempts.append(row)
         for name, choices in candidates.items():
             successful = [r for r in choices if r["qualified"]]
-            best = min(successful, key=lambda r: r["witness_error"]) if successful else None
+            best = min(successful, key=lambda r: (r["witness_error"], r["source"], r.get("slot", 0))) if successful else None
             outcomes.append({"id": name, "qualified": bool(successful), "attempts": len(choices),
                              "witness": best, "failure_reasons": sorted({
                                  reason for r in choices for reason in r["reasons"]}) if not best else []})
+    cross_solves = []
+    for source in outcomes:
+        if source["witness"] is None:
+            continue
+        for split, part in bank["splits"].items():
+            for target in part["requests"]:
+                error = distance(source["witness"]["rates"], target["rates"], scale)
+                cross_solves.append({"witness": source["id"], "target": f"{split}-{target['id']}",
+                                     "error": error, "within_tolerance": error <= .1})
     result = {"activity_contract": CONTRACT, "domain": bank["domain"],
               "measurement_fingerprint": bank["measurement_fingerprint"],
               "qualified": sum(r["qualified"] for r in outcomes), "requests": 18,
@@ -130,6 +141,7 @@ def audit(root):
               "task_bank_qualified": all(r["qualified"] for r in outcomes),
               "full_study_ready": False, "scope": "CPU target qualification, not provider readiness"}
     ensure(directory / "audited-attempts.json", attempts)
+    ensure(directory / "cross-solves.json", cross_solves)
     ensure(directory / "admission.json", result)
     return {k: v for k, v in result.items() if k != "outcomes"}
 
