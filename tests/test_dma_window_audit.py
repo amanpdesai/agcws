@@ -27,3 +27,11 @@ def test_inconsistent_records_rejected(field, value):
     record[field] = value
     with pytest.raises(ValueError):
         timing(record)
+
+
+def test_new_window_requires_its_own_duration_and_padding():
+    record = observed()
+    record.update(observation_cycles=9216, padded_until_ns=92165)
+    assert timing(record, 9216)["padding_cycles"] == 1556.5
+    with pytest.raises(ValueError):
+        timing(record)

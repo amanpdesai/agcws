@@ -596,3 +596,10 @@ splits qualify activation and quiet interval only (2/8 non-flat families), and
 neither flat control passes. [Per-design archives](results/ibex/target-qualification-v1/README.md)
 retain all failures. These are not new Pro results and do not supersede the
 historical confirmation on its different target family.
+
+DMA window v3 has now been replayed at 9,216 cycles: all twelve timing corners
+pass, with a compact activity/window audit. Fresh calibration records 64/64
+valid workloads and a 1.9991–14.0359 transitions/edge bin normalization range.
+[New requested banks](results/dma/window-v3/README.md) pass the necessary floor
+checks; witnessed admission remains pending. These measurements are separate
+from the failed old-window bank, not a relabeling of it.

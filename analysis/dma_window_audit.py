@@ -11,22 +11,24 @@ from agcws.pipeline.storage import read, write
 from agcws.workloads.schedule import ScheduleContract, expand_schedule
 
 
-def timing(observed):
+def timing(observed, horizon=12000):
+    if type(horizon) is not int or horizon <= 0:
+        raise ValueError("positive integer observation horizon required")
     required = {"read_descriptors": 64, "write_completions": 64,
-                "useful_work_bytes": 4096, "observation_cycles": 12000,
-                "padded_until_ns": 120005}
+                "useful_work_bytes": 4096, "observation_cycles": horizon,
+                "padded_until_ns": horizon*10+5}
     if any(observed.get(k) != v for k, v in required.items()):
-        raise ValueError("DMA functional/window record differs from v2 contract")
+        raise ValueError("DMA functional/window record differs from declared contract")
     completion = observed["completion_ns"]
     end = observed["declared_schedule_end_ns"]
-    if not 0 <= completion <= end <= 120000:
+    if not 0 <= completion <= end <= horizon*10:
         raise ValueError("completion/schedule end outside observation window")
     trailing = observed["trailing_idle_cycles"]
     if type(trailing) is not int or trailing < 0 or abs(end-completion-trailing*10) > 20:
         raise ValueError("trailing wait does not reconstruct schedule end")
     return {"completion_cycles": completion/10,
             "schedule_end_cycles": end/10,
-            "padding_cycles": (120000-end)/10}
+            "padding_cycles": (horizon*10-end)/10}
 
 
 def analyze(root):

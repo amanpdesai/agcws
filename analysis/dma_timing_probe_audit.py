@@ -21,7 +21,9 @@ def candidate_window(ends):
     return horizon
 
 
-def analyze(root, development, confirmation):
+def analyze(root, development, confirmation, expected_horizon=12000):
+    if expected_horizon not in (12000, 9216):
+        raise ValueError("only declared old/new window versions may be audited")
     digest = hashlib.sha256()
 
     def record(path):
@@ -66,22 +68,30 @@ def analyze(root, development, confirmation):
         observed = record(attempt / "sim_build/observed.json")
         activity = record(matches[0])
         samples = activity["per_cycle_toggles"]
-        if activity["clock_edges"] != 12000 or len(samples) != 12000:
+        if activity["clock_edges"] != expected_horizon or len(samples) != expected_horizon:
             raise ValueError("corner measurement used a different window")
-        rates = [sum(samples[i*1500:(i+1)*1500])/1500 for i in range(8)]
-        if result["rates"] != rates or result["profile"]["scope"] != "axi_dma":
+        width = expected_horizon//8
+        rates = [sum(samples[i*width:(i+1)*width])/width for i in range(8)]
+        if (result["rates"] != rates or result["profile"]["scope"] != "axi_dma"
+                or result["profile"]["clock_edges"] != expected_horizon
+                or result["profile"]["fidelity"] != "activity"):
             raise ValueError("DUT profile does not reconstruct")
-        rows.append({"id": case["id"], **timing(observed), "rates": rates})
+        rows.append({"id": case["id"], **timing(observed, expected_horizon), "rates": rates})
     prior = [record(path) for path in (development, confirmation)]
     if any(p["slots"] != 4608 or p["unique_valid"] <= 0 for p in prior):
         raise ValueError("completed v2 corpus timing audits required")
     ends = [r["schedule_end_cycles"] for r in rows]
     ends.extend(p["timing"]["schedule_end_cycles"]["max"] for p in prior)
-    return {"scope": "timing-based candidate window; not new-window qualification or policy evidence",
+    result = {"scope": "timing-based candidate window; not new-window qualification or policy evidence",
             "old_horizon_cycles": 12000, "candidate_horizon_cycles": candidate_window(ends),
             "maximum_observed_schedule_end_cycles": max(ends), "guard_cycles": 256,
             "round_up_multiple": 128, "all_corners_valid": True, "cases": rows,
             "input_evidence_sha256": digest.hexdigest(), "new_measurement_ready": False}
+    if expected_horizon != 12000:
+        if result["candidate_horizon_cycles"] != expected_horizon:
+            raise ValueError("replayed corner timing contradicts the selected horizon")
+        result.update(observation_horizon_cycles=expected_horizon, new_window_corners_verified=True)
+    return result
 
 
 if __name__ == "__main__":
@@ -90,5 +100,6 @@ if __name__ == "__main__":
     parser.add_argument("--development", type=Path, required=True)
     parser.add_argument("--confirmation", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--expected-horizon", type=int, choices=(12000, 9216), default=12000)
     args = parser.parse_args()
-    write(args.output, analyze(args.directory, args.development, args.confirmation))
+    write(args.output, analyze(args.directory, args.development, args.confirmation, args.expected_horizon))
