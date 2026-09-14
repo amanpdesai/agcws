@@ -13,10 +13,11 @@ remain unchanged.
 The user approved audited operational readiness with retained failures and
 liability. Subsequent [failure diagnosis](SMOKE_FAILURE_DIAGNOSIS.md) found that
 our 120-second client deadline is forwarded to Vertex and all four 504s occur
-at that boundary. Correct and version the transport policy before paid checks;
-approval is not a substitute for fixing a local cutoff. AES/DMA arithmetic
-compliance still needs prospective verification. No additional paid panel or
-full-study run has been launched for v5.
+at that boundary. The transport policy now records a ten-minute deadline and
+one SDK attempt in model settings. All five static transport-only bridges
+preserve measurement implementation and runtime identities; these are not new
+simulation replays. AES/DMA arithmetic compliance still needs prospective
+verification under the [v5 follow-up](BANK_SMOKE_V5.md). No full study has launched.
 
 ## Current action — 2026-09-14, context v4
 

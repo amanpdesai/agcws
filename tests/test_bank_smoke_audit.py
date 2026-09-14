@@ -63,3 +63,32 @@ def test_changed_feedback_payload_fails_closed(tmp_path, monkeypatch):
     path.write_text(json.dumps({"payload": "[]"}))
     with pytest.raises(ValueError, match="feedback payload"):
         analyze(tmp_path)
+
+
+@pytest.mark.parametrize(("error_type", "stage", "operational"), [
+    ("ServerError", "API", True), ("TransportError", "API", False),
+    ("ServerError", "SCHEMA", False),
+])
+def test_operational_gate_preserves_strict_failure(tmp_path, monkeypatch, error_type, stage, operational):
+    analyze = fixture(tmp_path, monkeypatch, 7)
+    batch = tmp_path / "panel/t0/8501/flash-4096/batches/003"
+    response = json.loads((batch / "response.json").read_text())
+    response.update(raw_text="", usage_unknown=True, estimated_usd=None,
+                    api_error={"type": error_type, "message": "504 DEADLINE_EXCEEDED. test"})
+    (batch / "response.json").write_text(json.dumps(response))
+    (batch / "decoded.json").write_text(json.dumps({"text": "", "n": 2}))
+    trials = json.loads((batch / "trials.json").read_text())
+    for trial in trials:
+        trial["stage"] = stage
+    (batch / "trials.json").write_text(json.dumps(trials))
+    result = analyze(tmp_path)
+    assert result["ready"] is False
+    assert result["operational_ready"] is operational
+    assert result["unknown_reserved_usd"] == .1
+
+
+def test_orphan_request_fails_operational_audit(tmp_path, monkeypatch):
+    analyze = fixture(tmp_path, monkeypatch, 7)
+    write(tmp_path / "panel/t0/8501/flash-4096/batches/099/request_started.json", {})
+    with pytest.raises(ValueError, match="unresolved or unexpected"):
+        analyze(tmp_path)

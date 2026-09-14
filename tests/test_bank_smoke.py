@@ -39,3 +39,17 @@ def test_v4_smoke_is_bounded_and_does_not_copy_witness_context():
     assert result["provider_workers"] == 1 and result["max_workers"] == 18
     assert result["cost_ceiling_usd"] == 12 and not result["stop_on_success"]
     assert "WITNESS_SECRET" not in json.dumps(result)
+
+
+def test_v5_followup_is_fixed_before_calls():
+    config = runpy.run_path("scripts/prepare_bank_smoke.py")["config"]
+    bank = read("results/dma/qualified-bank-v1.json")
+    spec = read("results/dma/window-v3/calibration-config.json")
+    result = config(bank, {"spec": spec,
+                          "measurement_fingerprint": bank["calibration"]["measurement_fingerprint"],
+                          "runtime": {"image_id": spec["image"]}}, version=5)
+    assert result["seeds"] == [8503] and result["budget"] == 16
+    assert result["provider_workers"] == 1 and result["cost_ceiling_usd"] == 12
+    bank["domain"] = "mesh-temporal"
+    with pytest.raises(ValueError, match="AES/DMA"):
+        config(bank, {}, version=5)

@@ -1,4 +1,4 @@
-"""Prepare a six-slot Flash/random/GA smoke for every admitted target, never run it."""
+"""Prepare a versioned Flash/random/GA feedback smoke, never run it."""
 
 import argparse
 import hashlib
@@ -11,8 +11,10 @@ from agcws.pipeline.storage import read, write
 
 
 def config(bank, manifest, version=2):
-    if version not in (2, 4):
-        raise ValueError("supported smoke versions are 2 and 4")
+    if version not in (2, 4, 5):
+        raise ValueError("supported smoke versions are 2, 4 and 5")
+    if version == 5 and bank["domain"] not in ("aes-temporal", "dma-temporal"):
+        raise ValueError("v5 is the AES/DMA arithmetic-feedback follow-up only")
     if (bank.get("target_bank_qualified") is not True
             or bank["domain"] != manifest["spec"]["domain"]
             or bank["calibration"]["measurement_fingerprint"] != manifest["measurement_fingerprint"]):
@@ -33,12 +35,12 @@ def config(bank, manifest, version=2):
     if len(targets) != 18:
         raise ValueError("duplicate target identifiers")
     return validate({**manifest["spec"], "name": f"{bank['domain']}-bank-smoke-v{version}",
-                     "targets": targets, "seeds": [8502 if version == 4 else 8500],
-                     "budget": 16 if version == 4 else 6, "batch_size": 2,
+                     "targets": targets, "seeds": [{2: 8500, 4: 8502, 5: 8503}[version]],
+                     "budget": 6 if version == 2 else 16, "batch_size": 2,
                      "policies": ["flash-4096", "phase-random", "phase-ga"],
                      "scale": bank["calibration"]["scale"], "tolerance": .1,
-                     "max_workers": 18, "provider_workers": 1 if version == 4 else 3,
-                     "cost_ceiling_usd": 12.0 if version == 4 else 5.0,
+                     "max_workers": 18, "provider_workers": 3 if version == 2 else 1,
+                     "cost_ceiling_usd": 5.0 if version == 2 else 12.0,
                      "stop_on_success": False, "image": manifest["runtime"]["image_id"]})
 
 
@@ -47,7 +49,7 @@ if __name__ == "__main__":
     parser.add_argument("--reference", type=Path, required=True)
     parser.add_argument("--bank", type=Path, required=True)
     parser.add_argument("--directory", type=Path, required=True)
-    parser.add_argument("--version", type=int, choices=(2, 4), default=2)
+    parser.add_argument("--version", type=int, choices=(2, 4, 5), default=2)
     args = parser.parse_args()
     spec = config(read(args.bank), verify_inputs(ROOT, args.reference), args.version)
     args.directory.mkdir(parents=True, exist_ok=False)

@@ -26,7 +26,10 @@ def audit(root, reference, bank_path):
             or spec["domain"] != bank["domain"] or spec["targets"] != expected_targets
             or spec["scale"] != bank["calibration"]["scale"]):
         raise ValueError("admitted bank/current reference differs from smoke targets")
-    if old["models"] != {a: settings(a) for a in spec["policies"] if a in MODELS}:
+    current_models = {a: settings(a) for a in spec["policies"] if a in MODELS}
+    generation_models = {a: {k: v for k, v in s.items() if k != "transport"}
+                         for a, s in current_models.items()}
+    if old["models"] != generation_models:
         raise ValueError("model configuration changed")
     complete = read(root / "complete.json")
     if complete["cells"] != 54 or complete["slots"] != 864:
@@ -55,6 +58,8 @@ def audit(root, reference, bank_path):
             "current_reference_sha256": hashlib.sha256((reference / "manifest.json").read_bytes()).hexdigest(),
             "bank_sha256": hashlib.sha256(bank_path.read_bytes()).hexdigest(),
             "scope": "payload/schema/parsing compatibility only; historical errors and strict readiness unchanged",
+            "current_transport": {a: s["transport"] for a, s in current_models.items()},
+            "transport_equivalence_claimed": False,
             "model_calls": 0, "full_study_ready": False}
 
 

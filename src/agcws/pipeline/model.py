@@ -16,6 +16,8 @@ def settings(arm):
         "top_p": 0.95,
         "max_output_tokens": 16384,
         "response_schema_projection": VERSION,
+        "transport": {"version": "vertex-deadline-v1", "timeout_ms": 600000,
+                      "sdk_attempts": 1},
     }
 
 
@@ -69,7 +71,8 @@ def generate(project, arm, contents, schema):
         project=project,
         location="global",
         http_options=types.HttpOptions(
-            timeout=120000, retry_options=types.HttpRetryOptions(attempts=1)
+            timeout=s["transport"]["timeout_ms"],
+            retry_options=types.HttpRetryOptions(attempts=s["transport"]["sdk_attempts"]),
         ),
     ) as api:
         response = api.models.generate_content(

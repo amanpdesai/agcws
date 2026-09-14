@@ -12,7 +12,9 @@ attempt. The installed SDK converts milliseconds to seconds and sends
 `X-Server-Timeout: 120`, in addition to setting the HTTP transport timeout.
 The offline test `tests/test_vertex_deadline_diagnostic.py` exercises our actual
 `generate()` function through the installed SDK and a mocked HTTP transport;
-it confirms both settings without credentials or a network request.
+At diagnostic commit `5d79314db`, it confirms both settings without credentials
+or a network request. The prospective correction updates this regression test
+to require a 600-second header and read timeout instead.
 
 | Design / target | Failed slots | Elapsed seconds | Next scheduled call seconds |
 |---|---|---:|---:|

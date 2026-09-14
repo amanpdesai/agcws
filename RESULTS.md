@@ -11,6 +11,11 @@ The subsequent [v5 arithmetic-feedback intervention](docs/BUDGET_FEEDBACK_V5.md)
 has passed current-runtime calibration/witness compatibility checks on all five
 designs. It has not yet been tested with new model calls. Context replay shows
 only AES/DMA payloads change; prior v4 smoke results below remain unchanged.
+The subsequent [deadline diagnosis](docs/SMOKE_FAILURE_DIAGNOSIS.md) found all
+four API 504s at 118.6–119.7 seconds against our own forwarded 120-second
+deadline. A prospective ten-minute transport policy is now recorded in model
+settings; it does not erase those failures. The separately frozen
+[AES/DMA v5 follow-up](docs/BANK_SMOKE_V5.md) retains the sixteen-slot budget.
 
 These are engineering/feasibility checks, not new policy comparisons. Each bank
 requests eight nonflat profiles plus a separate flat control in each of two
@@ -40,7 +45,7 @@ yet establish full-study readiness.
 
 The frozen [v4 protocol](docs/BANK_SMOKE_V4.md) completed 4,320 slots across
 270 cells, including 630 Flash calls. Known usage totals $9.6408998; four
-server-side 504s retain $0.40384 unknown-call reserve. No failed call was
+504 deadline responses retain $0.40384 unknown-call reserve. No failed call was
 resampled or replaced. Strict readiness passes 85/90 target instances;
 actual generated measured feedback is observed on 88/90. These are plumbing
 checks, not comparative paper results. Each per-design `bank-smoke-v4/`

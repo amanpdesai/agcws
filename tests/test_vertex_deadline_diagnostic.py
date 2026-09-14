@@ -32,6 +32,6 @@ def test_current_deadline_is_forwarded_to_vertex(monkeypatch):
         result = generate("offline-test-project", "flash-4096", "test", {"type": "object"})
 
     assert len(captured) == 1
-    assert captured[0].headers["X-Server-Timeout"] == "120"
-    assert captured[0].extensions["timeout"]["read"] == 120
+    assert captured[0].headers["X-Server-Timeout"] == "600"
+    assert captured[0].extensions["timeout"]["read"] == 600
     assert result["usage_unknown"] is False
