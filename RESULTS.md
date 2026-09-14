@@ -11,6 +11,13 @@ These are engineering/feasibility checks, not new policy comparisons. Each bank
 requests eight nonflat profiles plus a separate flat control in each of two
 splits. A necessary constant-vector-floor gate does not itself prove feasibility.
 
+The bounded-context v4 runtime now has exact replay/admission evidence for
+AES, DMA, mesh and Ibex; see [runtime replay](results/benchmark_readiness_v1/runtime-v4.md).
+This does not promote the older v3 smoke results to v4 readiness. RedMulE's
+separate [18-case pulse diagnostic](docs/REDMULE_LONG_PULSE_DIAGNOSTIC_V1.md)
+passed all functional checks but exposed job-count-dependent timing, so a
+translated single-job pulse cannot yet be assumed to model queued workloads.
+
 | Design | Witness qualification | Latest bounded feedback smoke |
 |---|---|---|
 | AES | All 18 qualified; exact 82-case runtime replay archived | v3: 18/18 receive generated measured feedback, 17/18 strict readiness; one API 504 with reserved unknown usage |

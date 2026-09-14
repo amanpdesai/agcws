@@ -9,6 +9,7 @@ from agcws.config import ROOT
 from agcws.pipeline.calibration import report
 from agcws.pipeline.engine import prepare, verify_inputs
 from agcws.pipeline.storage import read, write
+from agcws.pipeline.targets import qualify
 
 
 def comparable(row):
@@ -22,12 +23,16 @@ def plan(calibration, witnesses, bank_path, destination):
     rows = [t for p in sorted((calibration / "panel").rglob("trials.json")) for t in read(p)]
     cases = [{"id": f"calibration-{i:02}", "program": t["program"]} for i, t in enumerate(rows)]
     expected = {c["id"]: comparable(t) for c, t in zip(cases, rows, strict=True)}
-    reports = {r["id"]: r for r in read(witnesses / "complete.json")["reports"]}
+    complete = read(witnesses / "complete.json")
+    fixed_cases = complete.get("kind") == "fixed-native-diagnostic-v1"
+    reports = {r["id"]: r for r in complete["results" if fixed_cases else "reports"]}
     for split, part in bank["splits"].items():
         for request in part["requests"]:
             name = f"{split}-{request['id']}"
-            row = reports[name]
-            if not row["qualified"] or row["measurement"]["cache_id"] != request["witness_cache_id"]:
+            row = reports[request["witness_case"] if fixed_cases else name]
+            checked = qualify(request, row["measurement"], scale=bank["calibration"]["scale"],
+                              tolerance=.1, nonflat_margin=.02)
+            if not checked["qualified"] or row["measurement"]["cache_id"] != request["witness_cache_id"]:
                 raise ValueError("witness identity differs")
             cases.append({"id": name, "program": row["program"]})
             expected[name] = comparable(row["measurement"])
