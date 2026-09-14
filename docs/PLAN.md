@@ -1,5 +1,13 @@
 # Plan
 
+## Ibex all-target feedback gate passed — 2026-09-14
+
+The current-runtime Ibex bank is admitted and its single frozen v3 smoke
+passes 18/18 requests: actual generated measured feedback, known Flash usage,
+shared initialization and charged-slot checks. Archive:
+`results/ibex/bank-smoke-v3/`. The full five-design study remains unlaunched;
+RedMulE qualification and the other documented readiness gaps remain open.
+
 ## Full-budget context gate — 2026-09-14
 
 An offline repeated-valid-workload stress check exposes a launch risk in

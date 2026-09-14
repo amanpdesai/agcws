@@ -16,7 +16,7 @@ splits. A necessary constant-vector-floor gate does not itself prove feasibility
 | AES | All 18 qualified; exact 82-case runtime replay archived | v3: 18/18 receive generated measured feedback, 17/18 strict readiness; one API 504 with reserved unknown usage |
 | DMA | All 18 qualified at 9,216 cycles | v3: 17/18 receive generated measured feedback; confirmation-activation has no valid generated proposal |
 | Mesh | All 18 qualified; exact 82-case runtime replay archived | v3: 18/18 receive generated measured feedback, 17/18 strict readiness; one API failure with reserved unknown usage |
-| Ibex | All 18 modeled witnesses reproduced on current runtime; complete 64-case calibration bridge passed | First all-target v3 smoke running |
+| Ibex | All 18 modeled witnesses reproduced on current runtime; complete 64-case calibration bridge passed | v3: 18/18 strict readiness, 864 slots; $2.8029289 known usage, no unknown-call reserve |
 | RedMulE | Original 65,536-cycle bank remains 11/18 after operand/coarse-timing tests | Longer-window qualification running; no full paid run |
 
 The AES/DMA/mesh sixteen-slot smokes each charge 864 slots across Flash,
@@ -33,6 +33,8 @@ execution. All 64 original calibration cases match complete decoded waveforms
 after omitting only VCD header date metadata; raw FST hash mismatches remain
 explicit. See [admission](results/ibex/bank-admission-v1/README.md) and
 [calibration bridge](results/ibex/calibration-replay-v3/README.md).
+Its [all-target Flash/random/GA smoke](results/ibex/bank-smoke-v3/README.md)
+also passes all eighteen measured-feedback and strict accounting checks.
 
 RedMulE's independently versioned 262,144-cycle calibration completed 64 slots:
 58 valid, six USEFUL_WORK rejections. The new inclusive-percentile activity
