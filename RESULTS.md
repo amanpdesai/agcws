@@ -573,3 +573,12 @@ The final two bins have identical idle rates across the entire measured corpus.
 This makes the current misses unsuitable for policy interpretation; a corrected
 DMA measurement contract requires new calibration and qualification. Existing v2
 attempts and vectors remain unchanged. No paid comparison has used this bank.
+
+AES measured refinement v3 now qualifies all eight non-flat requests and the
+control in both splits. It used 30 charged slots (18 parent replays plus 12
+explicit target-guided initialization proposals), with 27 unique measured
+profiles. No paired refinement batches were needed. The
+[archive-only audit and admitted bank](results/aes/witness-refinement-v3/README.md)
+reproduce exactly. This establishes witnessed feasibility of the v2 requests,
+not agent performance; the allocation constructor, not an LLM, produced the
+new witnesses. Flash/baseline end-to-end smokes remain outstanding.
