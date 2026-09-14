@@ -18,6 +18,12 @@ separate [18-case pulse diagnostic](docs/REDMULE_LONG_PULSE_DIAGNOSTIC_V1.md)
 passed all functional checks but exposed job-count-dependent timing, so a
 translated single-job pulse cannot yet be assumed to model queued workloads.
 
+The separately frozen [per-bin constructor](results/redmule/long-bin-witness-v1/README.md)
+subsequently found real qualifying witnesses for all eighteen unchanged
+long-window RedMulE requests (486 proposals, 267 valid). The integer-activity
+and functional-record audit passed. This is expert target qualification, not
+an agent result; bank admission and new Flash smokes are still required.
+
 | Design | Witness qualification | Latest bounded feedback smoke |
 |---|---|---|
 | AES | All 18 qualified; exact 82-case runtime replay archived | v3: 18/18 receive generated measured feedback, 17/18 strict readiness; one API 504 with reserved unknown usage |
