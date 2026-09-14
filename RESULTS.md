@@ -5,6 +5,40 @@ below concern **activity-profile synthesis** unless explicitly labeled gate
 power. Lower best-so-far target-error AUC is better. Budgets, normalizations
 and target banks differ across studies: do not compare their raw AUC values.
 
+## Common bit-activity requalification — four banks complete, mesh pending
+
+The corrected `known-bit-activity-v2` contract counts known-bit transitions,
+normalizes vector widths, excludes explicit clocks and preserves declared
+observation windows. This is still unweighted RTL activity, not watts. The
+first implementation's Ibex marker-offset defect is retained as a diagnostic
+and corrected in a [separately declared amendment](docs/BIT_ACTIVITY_ALIGNMENT_V2.md).
+
+All 410 fixed-program replays completed. New calibration uses the original
+64 programs per design, not the old scores; targets are regenerated from the
+new calibration before witness errors are inspected.
+
+| Design | Valid calibration / 64 | Initial qualifying witnesses / 18 | Disposition |
+|---|---:|---:|---|
+| AES | 64 | 18 | [Audited new bank](results/aes/bit-activity-v2/README.md) |
+| DMA | 64 | 18 | [Audited new bank](results/dma/bit-activity-v2/README.md) |
+| Ibex | 61 | 18 | [Audited new bank](results/ibex/bit-activity-v2/README.md) |
+| RedMulE | 58 | 18 | [Audited new bank](results/redmule/bit-activity-v2/README.md) |
+| Mesh | 64 | 2 | Declared CPU witness qualification in progress |
+
+The nine invalid calibration attempts fail the useful-work gate and remain in
+the evidence. Mesh's 16 initial misses include both flat controls; event-metric
+witness feasibility does not transfer automatically to bit activity. No target
+has been replaced and tolerance remains 0.1. The frozen procedure permits only
+256 phase-random and 256 phase-GA proposals for each eligible missed request.
+
+[Independent verification](results/bit_activity_v2/README.md) exactly matches
+eight schedule waveforms and three Ibex marker-window waveforms. The four
+completed archives independently reproduce calibration, target construction,
+qualification, selected witnesses and cross-solves offline. These checks do not
+establish gate-power agreement. No LLM calls or full comparative runs were made.
+Overall launch remains on hold pending mesh's audited disposition; the old full
+study manifests are not current-runtime launch inputs.
+
 ## Five-design qualification and feedback readiness — operationally ready
 
 **Scientific launch hold after the CPU-only task audit:** calibration and all
