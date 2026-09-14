@@ -7,14 +7,17 @@ control in each split. RedMulE's expert bin constructor qualified 18/18 without
 changing the longer-window requests or gates; this is not an agent result.
 Bounded history is merged, with exact calibration/witness replay evidence.
 
-The frozen [v4 smoke](BANK_SMOKE_V4.md) is running across all five designs,
-all eighteen requests, Flash/random/GA, seed 8502 and sixteen slots. Do not
-change runtime sources during these runs. Preserve every failure and unknown
-call liability; no favorable-seed retry or full-study launch.
+The frozen [v4 smoke](BANK_SMOKE_V4.md) finished across all five designs,
+all eighteen requests, Flash/random/GA, seed 8502 and sixteen slots. It passes
+88/90 measured-feedback checks and 85/90 strict checks. All failures and
+unknown-call liability remain recorded; do not seek a favorable-seed retry.
 
-Next: audit/archive every smoke, reconcile metered cost and remaining failures,
-then prepare fresh-seed full-study configurations and the launch readiness
-receipt. The full 128-slot Flash study still requires user approval.
+Next: address the measured AES/DMA exact-budget feedback limitations with a
+separately declared corrective interface/procedure. Resolve the explicit
+approval question about operational readiness with recorded server failures;
+do not silently weaken the strict v4 gate. Then prepare fresh-seed full-study
+configurations and the readiness receipt. The full 128-slot Flash study still
+requires user approval.
 
 The dated entries below are historical milestones, not current launch status.
 

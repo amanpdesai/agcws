@@ -22,15 +22,36 @@ The separately frozen [per-bin constructor](results/redmule/long-bin-witness-v1/
 subsequently found real qualifying witnesses for all eighteen unchanged
 long-window RedMulE requests (486 proposals, 267 valid). The integer-activity
 and functional-record audit passed. This is expert target qualification, not
-an agent result; bank admission and new Flash smokes are still required.
+an agent result. The bank is now admitted; the v4 smoke results below do not
+yet establish full-study readiness.
 
 | Design | Witness qualification | Latest bounded feedback smoke |
 |---|---|---|
-| AES | All 18 qualified; exact 82-case runtime replay archived | v3: 18/18 receive generated measured feedback, 17/18 strict readiness; one API 504 with reserved unknown usage |
-| DMA | All 18 qualified at 9,216 cycles | v3: 17/18 receive generated measured feedback; confirmation-activation has no valid generated proposal |
-| Mesh | All 18 qualified; exact 82-case runtime replay archived | v3: 18/18 receive generated measured feedback, 17/18 strict readiness; one API failure with reserved unknown usage |
-| Ibex | All 18 modeled witnesses reproduced on current runtime; complete 64-case calibration bridge passed | v3: 18/18 strict readiness, 864 slots; $2.8029289 known usage, no unknown-call reserve |
-| RedMulE | Original 65,536-cycle bank remains 11/18; longer-window random/GA qualification admits 2/18 after 9,216 slots | No qualified longer-window bank or all-target smoke yet |
+| AES | All 18 qualified; exact 82-case runtime replay archived | v4: 17/18 feedback and strict readiness; quiet-interval candidates first become valid in the final batch |
+| DMA | All 18 qualified at 9,216 cycles | v4: 17/18 feedback and strict readiness; confirmation-burst has a 504 and persistent exact-idle-budget failures |
+| Mesh | All 18 qualified; exact 82-case runtime replay archived | v4: 18/18 feedback, 16/18 strict readiness; two 504s |
+| Ibex | All 18 modeled witnesses reproduced on current runtime; complete 64-case calibration bridge passed | v4: 18/18 feedback and strict readiness |
+| RedMulE | All 18 longer-window requests admitted; original failures retained | v4: 18/18 feedback, 17/18 strict readiness; one 504 |
+
+The frozen [v4 protocol](docs/BANK_SMOKE_V4.md) completed 4,320 slots across
+270 cells, including 630 Flash calls. Known usage totals $9.6408998; four
+server-side 504s retain $0.40384 unknown-call reserve. No failed call was
+resampled or replaced. Strict readiness passes 85/90 target instances;
+actual generated measured feedback is observed on 88/90. These are plumbing
+checks, not comparative paper results. Each per-design `bank-smoke-v4/`
+archive includes raw compact evidence and the unchanged strict audit.
+
+AES development-quiet-interval slots 3–14 fail exact totals; slots 15–16 are
+valid but have no subsequent feedback call within the frozen budget. DMA
+confirmation-burst slots 3–4 record the API error; slots 5–16 repeatedly miss
+the exact 6,000 idle-cycle sum despite reporting that constraint in hypotheses.
+This is evidence for a concrete arithmetic-compliance limitation, not a
+reason to repeat the same panel until it passes. A new corrective interface
+or bounded follow-up must be declared separately. Any operational-readiness
+rule allowing metered server failures requires explicit approval; v4 remains
+a strict failure. No full study has launched.
+
+### Earlier v3 smoke evidence (preserved)
 
 The AES/DMA/mesh sixteen-slot smokes each charge 864 slots across Flash,
 phase-random and phase-GA. Known model costs are $1.5611813, $1.6204904 and
