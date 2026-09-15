@@ -5,6 +5,28 @@ below concern **activity-profile synthesis** unless explicitly labeled gate
 power. Lower best-so-far target-error AUC is better. Budgets, normalizations
 and target banks differ across studies: do not compare their raw AUC values.
 
+## All-bin Ibex pilot — one Pro solve, panel stopped at cost cap
+
+The [published pilot](results/ibex/maxbin-pilot-v1/README.md) uses maximum
+normalized bin error <=0.05, not RMSE acceptance. Pro seed 9501 solves at slot
+11 (12 charged), with worst-bin error 0.023667. Pro seed 9500 reaches 0.064915
+in 40 slots; Flash reaches 0.289983/0.065422 in 58/56 slots. Those three cells
+were interrupted by the shared spending cap and are not complete failures.
+Both phase-GA and phase-random exhaust 128 slots on each seed without solving.
+
+The eight-cell panel is incomplete, with 79 calls and $3.58204965 estimated
+liability. Combined pilot liability is $9.91681075. No comparative inference
+or complete-panel AUC claim is warranted. Requests, responses and measurements
+are archived; recorded errors, terminal metrics and accounting reproduce.
+This supports one precise eight-bin activity waveform, not cycle-wise tracking.
+
+**New full-matrix gate still needs bank qualification:** testing the currently
+selected confirmation witnesses against max-bin <=0.05 gives AES 2/9, DMA 9/9,
+Ibex 5/9, RedMulE 1/9 and mesh 0/9. These are checks of existing witnesses,
+not infeasibility results. The ninety witnessed tasks below were admitted using
+RMSE <=0.10 and must not be described as all-bin-0.05 qualified. No full study
+is launched by publication of this pilot.
+
 ## Common bit-activity requalification — all ninety requests witnessed
 
 The separately frozen [mesh local refinement](results/mesh/bit-refinement-v1/README.md)
