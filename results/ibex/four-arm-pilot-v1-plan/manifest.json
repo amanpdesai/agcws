@@ -1,0 +1,321 @@
+{
+  "version": 1,
+  "spec": {
+    "name": "ibex-four-arm-pilot-v1",
+    "domain": "ibex-temporal",
+    "targets": {
+      "confirmation-alternating": [
+        359.1271202,
+        720.2712018,
+        359.1271202,
+        720.2712018,
+        359.1271202,
+        720.2712018,
+        359.1271202,
+        720.2712018
+      ]
+    },
+    "seeds": [
+      9500,
+      9501
+    ],
+    "policies": [
+      "phase-random",
+      "phase-ga",
+      "flash-4096",
+      "pro-4096"
+    ],
+    "budget": 128,
+    "batch_size": 2,
+    "scale": 451.43010200000003,
+    "tolerance": 0.1,
+    "binary": "/home/aman/agcws/out/phase-ga-robustness-v1/toolchain/lowrisc_ibex_ibex_simple_system_0/sim-verilator/Vibex_simple_system",
+    "image": "sha256:14eaf03a061ed5ce89eb4ecceefdd3b52a5e5efe37505d4c59f2b6ef49d9085d",
+    "max_workers": 8,
+    "cost_ceiling_usd": 10.0,
+    "stop_on_success": true,
+    "provider_workers": 2
+  },
+  "sources": {
+    "docker/run.sh": "f67af31a525f04914aabc779e7e739ac165b5fd624e6d85bf08edc35820523b5",
+    "src/agcws/__init__.py": "8bcd0df8f3dd775ad1c76bdf46a824a7127b185ea64ddb089b9abfab3175572a",
+    "src/agcws/adapters/__init__.py": "832206b42b083c9325e46b7d5d243f58a2562fa8001b9d3a39cd58c03b7984e2",
+    "src/agcws/adapters/aes/__init__.py": "ba84a635a7958973eb73601a1cfb64766dada022897b51caebedcaa16cc36458",
+    "src/agcws/adapters/aes/adapter.py": "1cfa04d411edcf8e299e52ea740bd63e448d35fbea0c07fe3c9603abc233414d",
+    "src/agcws/adapters/aes/temporal.py": "7f5fb74304b9557abcb84e9a0f2e851fb6bec9721065b9a79f3a796633aab049",
+    "src/agcws/adapters/aes/transactions.py": "52c48a394f3028b6772348cb78ad2e2fb708178b6e4cef449ac867dde94db489",
+    "src/agcws/adapters/axi_dma/__init__.py": "b301d0b0e46478f1e72aa3ad11e3f32ed38aa9f9b04b8823688d363b8fe3d5fe",
+    "src/agcws/adapters/axi_dma/adapter.py": "20728f3bce9edd11abe10a87cfe80db5cfa14ec18a7c38f644f41d119039cd1d",
+    "src/agcws/adapters/axi_dma/pipelined.py": "6668ea2a28a0a21227f224166ba6286b3d78d4478d4e9fec039c27deb0f0c6f9",
+    "src/agcws/adapters/axi_dma/runtime.py": "d77189195bc2a28cacf306921c955d3caf4ad129968f5db4872dc0d01b0efffe",
+    "src/agcws/adapters/axi_dma/temporal.py": "8a4423ada39898a603ab8cbf1cd3eea891a440d30ea12787530d06701ad27562",
+    "src/agcws/adapters/base.py": "8a31f15f539a87f7bd3aba69607ea11166e868b3913c04caff8f64fb308430e1",
+    "src/agcws/adapters/ibex/__init__.py": "c80e7fa5e4b643d45ec9afebe201e31a401ef0576d039c845adfb732abdd5edc",
+    "src/agcws/adapters/ibex/adapter.py": "7a6bc499d31ee843d5238dccf52531f64e9525d41cb8464e7816bffd66f6229a",
+    "src/agcws/adapters/mesh.py": "1ebc7be97ebfdaeea1f3c39786e76d8129d9a0dd57cdfb130f8240cd500e43c9",
+    "src/agcws/adapters/redmule.py": "06963dcfd589a14b5fdd21ca1922cae2b356d72c6645638d5020dc5b69375b10",
+    "src/agcws/adapters/temporal.py": "dd8c25e21f0b2709b6e5c2b02ccb8a5fb798c53af7f7092b06f2585a57cdb7a8",
+    "src/agcws/analysis/__init__.py": "380f47be563ba80f847b27bc09189f5d8ccaa5148102cb4387cf8becfaf03027",
+    "src/agcws/analysis/aggregate.py": "7eaba64f9c98a7cc9d83acac909a82e03424ca74185ce1c48ed97502f8895e12",
+    "src/agcws/analysis/controller_selection.py": "7e847d00708f7a7bdb671247114ba017d6e2d02d19c1c171c54aa085a6be44fa",
+    "src/agcws/analysis/inference.py": "d66116d7884f7c9df624f4277154de707c9c9bec9616315d5fe70f9f11185eb7",
+    "src/agcws/analysis/ledger_audit.py": "60ce1fadd951c4572617b7ab5b04273e896f115b77325fe535534e9f3e4c1faf",
+    "src/agcws/analysis/metrics.py": "53313cc19482f96a65c148fb7a21ee4960d28df5a1ce48f83ffa9d7442455d20",
+    "src/agcws/analysis/rank_agreement.py": "08417f4a572cbd1935d81572768e7fe197ac59636cda69058bd4df4bfc2b2620",
+    "src/agcws/analysis/semantic_comparison.py": "f8282d147fd05af15f7a65fea227d92a9c8b788193af7e235072e304b106847e",
+    "src/agcws/config.py": "4713aa413b5e08b0b382fef6c52be3275dd6f13471220f5cf38acddca306be26",
+    "src/agcws/experiments/__init__.py": "abd8294c8deba6f1083717f7c47507099518bfc8673cd2831486147bbfb772cc",
+    "src/agcws/experiments/calibration.py": "33bf513939958c76d97f3006cdcf268b42e4e4793cd307bed372696650f8258f",
+    "src/agcws/experiments/freeze.py": "44bac7d2377a693737062dec1fb1d7ddb20432eb768c9ece9af32c8b02d60d4b",
+    "src/agcws/experiments/provenance.py": "7834e9e9f28ecbb873bd3411c8b7b4bafd2b3ff0ebc6e4694bf8035af7e5d05c",
+    "src/agcws/goals/__init__.py": "f75c8ff1d35a3083a55949316fcc8d9f19cec71b7e51785412706387c837ec86",
+    "src/agcws/goals/loss.py": "8f47e27e3d68da03390864ecf0aede40dc1c23743329e047a5644e83e9c8195c",
+    "src/agcws/goals/schema.py": "f8beb1dc36408543252b3b254c794c33e9a0d4a8f5b99c8b8291984cce0ced37",
+    "src/agcws/nodes/__init__.py": "045861ce1eeab591d9f352aaca126f97ca0dbf22b6e4df6d4cde88a5ec16def8",
+    "src/agcws/nodes/activity.py": "f0c10e02db9b49991c37667ea47f936cacf4e55d26269fe9c4205931f166a580",
+    "src/agcws/nodes/artifacts.py": "576431ee82f26c56170682437e3e3fbc6cd7eea30dedb8ea26b1a0dc520aefae",
+    "src/agcws/nodes/bit_activity.py": "b94d47205a656f72dd6788797e06c9fe64cde97546cc5ed1363b01228527ba29",
+    "src/agcws/nodes/commands.py": "7cd15fd109a44376384a08a4a8ad7a9ee948223181b27a4e6388a33fdd38f29e",
+    "src/agcws/nodes/coverage.py": "d6e8f36845e788887e9b7d5f30e7d73631600fd239f3903bdfdddd92950db05a",
+    "src/agcws/nodes/evaluate.py": "ffb2bc2933582bf5c29e20b09e3347f99dbf80f005d36eae2620586b304935b2",
+    "src/agcws/nodes/evaluator.py": "c1847771b165b82716633321bcc108ef4d137b05be3da092d7c4a138ceb7fe6a",
+    "src/agcws/nodes/power.py": "e76580ba459b05c774978801647340612875009ab39a153536dcdd53e211ab28",
+    "src/agcws/nodes/simulate.py": "e2d86bd20789c8f7ffd9f016487df97f4ec9e8bd0922f39ff4b2b68f71f7c6d6",
+    "src/agcws/nodes/synthesize.py": "8df1d77f0f2fedc4747985ecceebec7990fbe9d31969bf8b3111c612e40d9c57",
+    "src/agcws/nodes/validation.py": "984fbb2e0ef34fb2b7304d085d591a9932640e497dffd9e51d64c53c0a181364",
+    "src/agcws/pipeline/__init__.py": "361abf883bf498c0e2fbc0176de629c58fad6be7fa3e383be8c45c130b90868c",
+    "src/agcws/pipeline/__main__.py": "70800a0b5e9185e324e2c7341965c78aed182b38acfbdef1f2a2795abe63b266",
+    "src/agcws/pipeline/aes.py": "872ad116431fa8913ea772b920881194c9af821565a67ea2a023d85f1aa173b7",
+    "src/agcws/pipeline/archive.py": "a8247137747283d3270d3afcd2d5a5ac04183dcff5fc78279b8c6fdc31287af5",
+    "src/agcws/pipeline/backends.py": "c226f4ced38346bc00a8cec4866c04184e12b4eccb78a401077cf21cf8e108b2",
+    "src/agcws/pipeline/build.py": "d72fe7520b91e58036d972803d587140262400cf4f4f564e5638ed503a75b4ea",
+    "src/agcws/pipeline/calibration.py": "63101ed3f88496bf1aa0d9704e3b56d67dcdf07280b2d46614905149ba5d716c",
+    "src/agcws/pipeline/dma.py": "f79b67693b3fcf74152c5e459fbd4971d6b50a92e2743a8d5da33205a3ab2e9a",
+    "src/agcws/pipeline/engine.py": "4452ba9224136dab00682994b84c8e775ebf2c4c963f2128e04a70e7b34fdea6",
+    "src/agcws/pipeline/evidence.py": "8dab71e90cbc7d165ba4aa419cba1cb2fffa4bfcaed610574df6b09d00efd817",
+    "src/agcws/pipeline/ibex/__init__.py": "361abf883bf498c0e2fbc0176de629c58fad6be7fa3e383be8c45c130b90868c",
+    "src/agcws/pipeline/ibex/activity.py": "8119fc2f398c79b9530d2b19321f15dee870c68219825d7face8977e7204f1b2",
+    "src/agcws/pipeline/ibex/cache.py": "dfff462db9caa1fe1f4f426ea7cdd9247d6bf28622e5d728a5bdd7aaf58aa8f5",
+    "src/agcws/pipeline/ibex/compiler.py": "ac93303097f18d9d28d946f3e526a3c2219abdeed66d249df78fddf98b4d48fd",
+    "src/agcws/pipeline/ibex/context.py": "1e398156de290d37d1735320f2d507d62333c176fa35fd35e0e74f67e574a3f9",
+    "src/agcws/pipeline/ibex/contract.py": "2f3a31c85d4cd1ced73ea9f76414d0b40335da093099864d6b51d383a76d70aa",
+    "src/agcws/pipeline/ibex/domain.py": "a2035c6e4a2466e55da37e025e13963a0ec71035a1929d6fa950a8fed8098911",
+    "src/agcws/pipeline/ibex/evaluate.py": "591a4a5b86c3e0c51f1eb0ff97075bbc1aaeb4ad5649e39b2fc2a189a4f7f7be",
+    "src/agcws/pipeline/ibex/events.py": "8b8dcdfefa4c67fea12bcf5719f1be2d8c19dfb7681179f96c124ec41ef8bfeb",
+    "src/agcws/pipeline/ibex/feedback.py": "70b273a6cd6dfe98006f2293ee64fff7fb8f2332e095e950c4f07a90aee69a2f",
+    "src/agcws/pipeline/ibex/native_schema.py": "e185271d197bde04ae681b0e9b09ded7d1b12f16327f23a7df6ac250b385c2fb",
+    "src/agcws/pipeline/ibex/notebook.py": "79ac01c8323e02350d803c2129d841bd30542f4137a850c5ac147a986e8eda89",
+    "src/agcws/pipeline/ibex/program.py": "ebadd746b5e8f2035997c5c6a2ef86473810dc839983d2b19fa365af7966fb28",
+    "src/agcws/pipeline/ibex/prompt.py": "5399b2b3036f913870a21629b2497d095ab1751333297089453749af8504ebcb",
+    "src/agcws/pipeline/mesh.py": "51e732759440cbe1d27d6c9f7cca992b9f99c12edc2e34c8cfd51970306d297d",
+    "src/agcws/pipeline/meter.py": "beb6d94796d33b028b80b98d5ee9c594f8f788579c233fdc4e10c122b4a6cb8e",
+    "src/agcws/pipeline/metrics.py": "8c1b09e72fb6920dd23f2f053eb2a64143767dc7eea8b4818154166f71bf58f1",
+    "src/agcws/pipeline/model.py": "79c68c743d4a9b92dfea4fab4ce40f028fb477afee7aaf77db9ba271ff6b1f73",
+    "src/agcws/pipeline/policies/__init__.py": "361abf883bf498c0e2fbc0176de629c58fad6be7fa3e383be8c45c130b90868c",
+    "src/agcws/pipeline/policies/controls.py": "8e9942099b744741b28f6981fec74048b476be188bdc6f52314a727d23e18e0b",
+    "src/agcws/pipeline/policies/dispatch.py": "fe0a380d74338f17fc50b9890bb94e5df4348eb0f8cdf17fac1eed55ae50600f",
+    "src/agcws/pipeline/policies/gest.py": "46e0053e5a8e425620b3042dfc4f42f89b718000af4e559d1d22f1c34f6ea58d",
+    "src/agcws/pipeline/policies/phase.py": "8b38119b47089ed3d7d3745e3d75e5cbdae2b18c17e392538d9b88e2010decce",
+    "src/agcws/pipeline/policies/screening.py": "e838ab8484ac894ef943dc41b44731d0dee8c7c172a4d1d66a1f6ef95edb5da8",
+    "src/agcws/pipeline/policies/surrogate.py": "cf47ae7e5d3d90b07011e27f25f4108408a8c7d529b6e1f5cef2387266abd0aa",
+    "src/agcws/pipeline/provider_schema.py": "f205832a4b427f7872547c5a626621db3cb00da7be9595c27a12cbf304b71a93",
+    "src/agcws/pipeline/redmule.py": "b9e58f9e673f27c35e1339f117f9c931398caf28b4abe4d35ce6e04405ddc6d4",
+    "src/agcws/pipeline/schedule_backend.py": "d6b953cda91b43531030865a1f473cfe50c47fbd19ead3fc14d7ea9dc6484e67",
+    "src/agcws/pipeline/schedules.py": "64ee5c6e5449e9ac0349e618e5d7de01e4a44fdf9d4f3420a758e5c4cc6bd07d",
+    "src/agcws/pipeline/spec.py": "6615f3c9be86a1cbbe086fa11550c4fc8b151b667e6bab107825502d75465725",
+    "src/agcws/pipeline/storage.py": "07a031e6c08bd72bd3c599e14318d57ce354c9f230cb18dff5fc05284c2bc139",
+    "src/agcws/pipeline/targets.py": "4793c6e14289dc4b91728ee5ec1f534a1212dd4dc57ae18b14e872d94565dbb6",
+    "src/agcws/policies/__init__.py": "0dd78bf9240f7b591b5ef908519b4fc9ed62944fc6302b91c684f94a544cb998",
+    "src/agcws/policies/agent.py": "2b16d3cc478e8fe2d249018f0a054424ee6866a9f014ed196096078e302926f8",
+    "src/agcws/policies/base.py": "f0d1ce0ba6409464b32ab0e1b1bc40c36b449f3f6181768b9be86902d81f7dc5",
+    "src/agcws/policies/coverage_guided.py": "74a533fd43e9e93e06dbacf5dc9a5dc40ec12bc87ea960bd50c6b75a8e248ff4",
+    "src/agcws/policies/evolutionary.py": "a04785fd542ef6c6c7d68126eaa95c7c4724e7801d8a94388de9f1777bbc2c38",
+    "src/agcws/policies/hybrid.py": "182a0717cef70ad3dbf1aeb1c66116a795a8686ececd6bd860374e360d58864c",
+    "src/agcws/policies/mutation.py": "a9f7152c97d6ef49dd1831df99b174fbf13c7d41648a3c95c3691e2457f9bfd8",
+    "src/agcws/policies/profile.py": "2c1d03d8ca4aceea13f73c2c8e49e1478404faebe3fe81dd42b96a584a9957b9",
+    "src/agcws/policies/prompt.py": "634540ad9bd1188d83aa0b277a434c67c88762064eea3ecd64e1cd793999f918",
+    "src/agcws/policies/random_search.py": "3c634cecbbf9dd137d884b86e22e2d73787999a2f7d99703dc1642ffbca50437",
+    "src/agcws/policies/scalar_edits.py": "0f8f33f7521e6d7a42fb0a9b5dbc68bc568b9c48338323b095bf31e119e86e63",
+    "src/agcws/policies/semantic.py": "188e7d82d09f9bd1c095c42e3126f7d762236f90e6afba6b149abcc4a8f60096",
+    "src/agcws/policies/semantic_catalog.py": "dcab300f6155def0a29bfce5d68b466e9c27cdacb0c2ff59bca32c5387911661",
+    "src/agcws/policies/semantic_edits.py": "5e8bb39b667f0402d9383eea017d72352a6782a98225b8957188e201a2342fdf",
+    "src/agcws/policies/source_context.py": "53c69932b6df5289e2c4aa50595cb4ae7b4a71e0420c7748f4b3483659fd8a30",
+    "src/agcws/policies/structural.py": "e05e3b8329a73be3476efcb155f4f447c6cb2d0a062cc742639ecc6c6661ce78",
+    "src/agcws/policies/structural_agent.py": "20f6344a0adacee963b20a4cb9225f161bef73602553f577120bed357f554239",
+    "src/agcws/policies/structural_edit_agent.py": "065042983babc21e1c99e67dd86ed19ec8ae9d892e9cb53074d8298720735ea3",
+    "src/agcws/policies/structural_population.py": "09d7679aec55d7629640c2e5d2a16d9265d21688c9b58be7950d3a89afb6c7ba",
+    "src/agcws/policies/temporal_search.py": "ffaa6b1448a36a9a99f9e0e2fe7ccf1e639d6b20cf86e8b99ab53d8da2e07b41",
+    "src/agcws/policies/vertex.py": "5a59a937ac7ce1be1cd4b7de4ccb30bb574a639d9617e089ae6af9683034c951",
+    "src/agcws/provenance.py": "6857eda6486bd4efd1f163f8a5572bc0f8eab4fd69922203a17a1216c7195c2d",
+    "src/agcws/tasks.py": "1e9d3c71519961716fe55f485c1a77cd6ae3d42442a17c933315852e28e35bdd",
+    "src/agcws/telemetry/__init__.py": "95fb3261d735f46f5ff09278cdef5dd7b8fe0f043391e13bc37d75fabf57368a",
+    "src/agcws/telemetry/ledger.py": "d5ac2b3676871da1c8331b2841f04e38be79f31d9c7bd28a1485c656152db686",
+    "src/agcws/workloads/__init__.py": "471da9a870625bcfd75e59462e773d8abd19a84fc851286437cf2b2b885d5643",
+    "src/agcws/workloads/schedule.py": "1015d3cbe7e03f99c31146c59434324f4f63ae2a9ad1950cfd52f83f57a3341c",
+    "src/agcws/workloads/structural_edits.py": "e8c642b33904b15cc9b8389e1e381efe7eab089a78dc63fddb00641febad0e34",
+    "third_party/ibex/examples/sw/simple_system/common/crt0.S": "b0117f2e94ab0f65eb54806c67c727cd54142713a15422d5bc81e8431d853b9f",
+    "third_party/ibex/examples/sw/simple_system/common/link.ld": "318b9ed40edb2cd0e329e5617f58cacad59d8137f12e550260be29c33f824068",
+    "third_party/ibex/examples/sw/simple_system/common/simple_system_common.c": "f8824f1224fa4d0b308403eadc4fa7aed6462346e81b4e7f9d93daeed80aabcc",
+    "third_party/ibex/examples/sw/simple_system/common/simple_system_common.h": "c8ddc64a84549759e6890630e5b8e043f3bce4ddf9f188d7566eb78880a636b1",
+    "third_party/ibex/examples/sw/simple_system/common/simple_system_regs.h": "f4e77e4a26518219584b51161c9780da918f3998acf366494f1418962bd219d8"
+  },
+  "runtime": {
+    "image_id": "sha256:14eaf03a061ed5ce89eb4ecceefdd3b52a5e5efe37505d4c59f2b6ef49d9085d",
+    "binary_sha256": "d8628e9b588350c0a55412dd224f527798c24bac6455fad17deb816c3dd14391"
+  },
+  "models": {
+    "flash-4096": {
+      "model": "gemini-2.5-flash",
+      "thinking_budget": 4096,
+      "temperature": 0.7,
+      "top_p": 0.95,
+      "max_output_tokens": 16384,
+      "response_schema_projection": "bounds-projection-v1",
+      "transport": {
+        "version": "vertex-deadline-v1",
+        "timeout_ms": 600000,
+        "sdk_attempts": 1
+      }
+    },
+    "pro-4096": {
+      "model": "gemini-2.5-pro",
+      "thinking_budget": 4096,
+      "temperature": 0.7,
+      "top_p": 0.95,
+      "max_output_tokens": 16384,
+      "response_schema_projection": "bounds-projection-v1",
+      "transport": {
+        "version": "vertex-deadline-v1",
+        "timeout_ms": 600000,
+        "sdk_attempts": 1
+      }
+    }
+  },
+  "measurement_fingerprint": "b20b9c3ed39b63f7e2a9952bdb3da2ae14aeba2ff5ace9b7c0c05ed4f37bc657",
+  "schema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "hypothesis",
+      "candidates",
+      "predictions"
+    ],
+    "properties": {
+      "hypothesis": {
+        "type": "string"
+      },
+      "candidates": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": [
+            "registers",
+            "memory_seed",
+            "segments"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "registers": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
+            },
+            "memory_seed": {
+              "type": "integer"
+            },
+            "segments": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": [
+                  "weight",
+                  "release",
+                  "body"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "release": {
+                    "type": "integer"
+                  },
+                  "weight": {
+                    "type": "integer"
+                  },
+                  "body": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "required": [
+                        "op",
+                        "a"
+                      ],
+                      "additionalProperties": false,
+                      "properties": {
+                        "op": {
+                          "type": "string",
+                          "enum": [
+                            "add",
+                            "xor",
+                            "and",
+                            "or",
+                            "sll",
+                            "srl",
+                            "mul",
+                            "divu",
+                            "cmovz",
+                            "load",
+                            "store"
+                          ]
+                        },
+                        "a": {
+                          "type": "integer"
+                        },
+                        "b": {
+                          "type": "integer"
+                        },
+                        "dst": {
+                          "type": "integer"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "predictions": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "reference_slot",
+            "changed_factor",
+            "window_directions"
+          ],
+          "properties": {
+            "reference_slot": {
+              "type": "integer"
+            },
+            "changed_factor": {
+              "type": "string"
+            },
+            "window_directions": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "enum": [
+                  -1,
+                  0,
+                  1
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
