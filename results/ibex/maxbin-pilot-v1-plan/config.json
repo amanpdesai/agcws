@@ -1,0 +1,37 @@
+{
+  "name": "ibex-maxbin-pilot-v1",
+  "domain": "ibex-temporal",
+  "targets": {
+    "confirmation-alternating": [
+      359.1271202,
+      720.2712018,
+      359.1271202,
+      720.2712018,
+      359.1271202,
+      720.2712018,
+      359.1271202,
+      720.2712018
+    ]
+  },
+  "seeds": [
+    9500,
+    9501
+  ],
+  "policies": [
+    "phase-random",
+    "phase-ga",
+    "flash-4096",
+    "pro-4096"
+  ],
+  "budget": 128,
+  "batch_size": 2,
+  "scale": 451.43010200000003,
+  "tolerance": 0.05,
+  "binary": "/home/aman/agcws/out/phase-ga-robustness-v1/toolchain/lowrisc_ibex_ibex_simple_system_0/sim-verilator/Vibex_simple_system",
+  "image": "sha256:14eaf03a061ed5ce89eb4ecceefdd3b52a5e5efe37505d4c59f2b6ef49d9085d",
+  "max_workers": 8,
+  "cost_ceiling_usd": 3.66,
+  "stop_on_success": true,
+  "provider_workers": 2,
+  "success_metric": "max-bin"
+}

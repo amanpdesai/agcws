@@ -16,7 +16,25 @@ def error(rates, target, scale):
     return math.sqrt(sum(((a - b) ** 2 for a, b in zip(rates, target))) / 8) / scale
 
 
-def summarize(history, budget, tolerance, *, stop_on_success=False):
+def max_bin_error(rates, target, scale):
+    if (len(rates) != 8 or len(target) != 8 or not math.isfinite(scale) or scale <= 0
+            or any(not math.isfinite(x) for x in [*rates, *target])):
+        raise ValueError("eight finite bins and positive scale required")
+    return max(abs(a-b)/scale for a, b in zip(rates, target))
+
+
+def success(trial, tolerance, metric="nrmse"):
+    if metric not in ("nrmse", "max-bin"):
+        raise ValueError("unknown success metric")
+    if trial["valid"] is not True:
+        return False
+    value = trial["max_bin_error"] if metric == "max-bin" else trial["loss"]
+    if value is None or not math.isfinite(value) or value < 0:
+        raise ValueError("valid finite success error required")
+    return value <= tolerance
+
+
+def summarize(history, budget, tolerance, *, stop_on_success=False, success_metric="nrmse"):
     rows = history[:budget]
     if budget < 2 or not rows or [t["slot"] for t in rows] != list(range(1, len(rows) + 1)):
         raise ValueError("complete ordered prefix required")
@@ -34,7 +52,7 @@ def summarize(history, budget, tolerance, *, stop_on_success=False):
         elif loss is not None:
             raise ValueError("invalid workload must not have a score")
         curve.append(best)
-    solved = next((t["slot"] for t in rows if t["valid"] and t["loss"] <= tolerance), None)
+    solved = next((t["slot"] for t in rows if success(t, tolerance, success_metric)), None)
     if len(rows) < budget:
         if solved is None:
             raise ValueError("short trajectory requires a valid tolerance hit")
@@ -57,4 +75,7 @@ def summarize(history, budget, tolerance, *, stop_on_success=False):
             stopped_early=len(rows) < budget,
             auc_completion="terminal_best_carried_forward",
         )
+    if success_metric == "max-bin":
+        result.update(success_metric=success_metric, auc_metric="nrmse",
+                      best_max_bin_error=min((t["max_bin_error"] for t in rows if t["valid"]), default=None))
     return result

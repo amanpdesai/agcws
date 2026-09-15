@@ -13,7 +13,7 @@ from pathlib import Path
 
 from agcws.pipeline.backends import backend
 from agcws.pipeline.meter import Meter
-from agcws.pipeline.metrics import key, summarize
+from agcws.pipeline.metrics import key, max_bin_error, success, summarize
 from agcws.pipeline.model import MODELS, settings
 from agcws.pipeline.policies.dispatch import Policy
 from agcws.pipeline.spec import validate
@@ -185,19 +185,24 @@ def cell(root, manifest, target, seed, arm, meter, evaluator=None):
                     if trial["valid"] is not True and trial["loss"] is not None:
                         raise ValueError("invalid workload received a score")
                 trial.update(proposal)
+                if spec.get("success_metric") == "max-bin":
+                    trial["max_bin_error"] = max_bin_error(
+                        trial["rates"], spec["targets"][target], spec["scale"]
+                    ) if trial["valid"] is True else None
                 trials.append(trial)
             write(batch / "trials.json", trials)
         policy.observe(trials)
         history.extend(trials)
         print(json.dumps({"cell": ident, "completed_slots": len(history)}), flush=True)
         if spec.get("stop_on_success", False) and any(
-            t["valid"] is True and t["loss"] <= spec["tolerance"] for t in trials
+            success(t, spec["tolerance"], spec.get("success_metric", "nrmse")) for t in trials
         ):
             break
     numeric = [{**t, "valid": t["valid"] is True} for t in history]
     summary = summarize(
         numeric, spec["budget"], spec["tolerance"],
         stop_on_success=spec.get("stop_on_success", False),
+        success_metric=spec.get("success_metric", "nrmse"),
     )
     summary.update(cell=ident, filtered=sum(t["valid"] is None for t in history))
     ensure(directory / "complete.json", summary)

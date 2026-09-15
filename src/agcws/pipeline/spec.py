@@ -24,8 +24,10 @@ def validate(spec):
         "max_workers",
         "cost_ceiling_usd",
     }
-    if set(spec) - {"stop_on_success", "provider_workers"} != required:
+    if set(spec) - {"stop_on_success", "provider_workers", "success_metric"} != required:
         raise ValueError(f"exact study fields required: {sorted(required)}")
+    if spec.get("success_metric", "nrmse") not in ("nrmse", "max-bin"):
+        raise ValueError("success_metric must be nrmse or max-bin")
     if "stop_on_success" in spec and type(spec["stop_on_success"]) is not bool:
         raise ValueError("stop_on_success must be boolean")
     if "provider_workers" in spec and (

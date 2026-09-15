@@ -35,6 +35,11 @@ class Policy:
                     "profile": self.target,
                     "scale": self.spec["scale"],
                     "tolerance": self.spec["tolerance"],
+                    **({"success_metric": "max-bin", "acceptance":
+                        "Every bin must satisfy abs(achieved-target)/scale <= tolerance. "
+                        "RMSE remains the ranking score; it is not sufficient for success. "
+                        "Use signed per-bin residuals to correct the worst interval."}
+                       if self.spec.get("success_metric") == "max-bin" else {}),
                 },
                 n,
             )
