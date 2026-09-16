@@ -46,3 +46,27 @@ def test_resume_checks_retained_bytes(tmp_path):
     (tmp_path / receipt["retained"]).write_bytes(b"corrupt")
     with pytest.raises(ValueError, match="changed"):
         retirement.retire_or_verify(vcd)
+
+
+@pytest.mark.parametrize("failure", [None, "archive", "waveform"])
+def test_recorded_digest_retirement(tmp_path, monkeypatch, failure):
+    vcd, fst, record = (tmp_path / n for n in ("activity.vcd", "activity.fst", "activity.json"))
+    vcd.write_bytes(b"waveform")
+    fst.write_bytes(b"compressed")
+    digest = hashlib.sha256(b"waveform").hexdigest()
+    record.write_text(json.dumps({"vcd": vcd.name, "waveform_sha256": digest}))
+    record_hash = hashlib.sha256(record.read_bytes()).hexdigest()
+    monkeypatch.setattr(retirement, "command_digest", lambda command: (digest, 8))
+    if failure == "archive":
+        record.write_text("{}")
+    if failure == "waveform":
+        monkeypatch.setattr(retirement, "command_digest", lambda command: ("wrong", 8))
+    if failure:
+        with pytest.raises(ValueError):
+            retirement.retire_archived_fst(vcd, record_hash)
+        assert vcd.exists()
+    else:
+        receipt = retirement.retire_archived_fst(vcd, record_hash)
+        assert receipt["sha256"] == digest
+        assert not vcd.exists()
+        assert retirement.retire_or_verify(vcd) == receipt

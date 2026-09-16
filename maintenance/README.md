@@ -18,6 +18,14 @@ checks retained file hashes for paths already retired. Existing partial archives
 without verification receipts fail closed; they must be inspected, not silently
 overwritten. No full experiments are launched by this maintenance script.
 
+For historical FST-backed traces with archived activity JSON, retirement first
+checks that JSON against its verified archive member hash, then reconstructs the
+FST and compares its full SHA-256 and size with the measured waveform digest and
+VCD size. This avoids rereading terabytes of cold expanded VCDs without weakening
+the check against the originally measured waveform. Unrecorded traces still use
+direct byte hashing. This optimization affects maintenance only, not frozen
+experiment code or measurements.
+
 Restore with `python maintenance/restore_waveform.py RECEIPT.json NEW_PATH.vcd`.
 The restore verifies both hashes and refuses to overwrite a file. Host tools
 `zstd`, `fst2vcd` (GTKWave) and GNU `find` must be installed.
