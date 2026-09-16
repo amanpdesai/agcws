@@ -1,0 +1,35 @@
+{
+  "name": "dma-baselines-model-v1-dev",
+  "domain": "dma-temporal",
+  "targets": {
+    "development-alternating": [
+      38.10576171875,
+      2.0055664062500007,
+      38.10576171875,
+      2.0055664062500007,
+      38.10576171875,
+      2.0055664062500007,
+      38.10576171875,
+      2.0055664062500007
+    ]
+  },
+  "seeds": [
+    9300
+  ],
+  "policies": [
+    "phase-random",
+    "phase-ga",
+    "phase-model"
+  ],
+  "budget": 12,
+  "batch_size": 2,
+  "scale": 47.93302951388888,
+  "tolerance": 0.05,
+  "binary": null,
+  "image": "sha256:14eaf03a061ed5ce89eb4ecceefdd3b52a5e5efe37505d4c59f2b6ef49d9085d",
+  "max_workers": 3,
+  "cost_ceiling_usd": 1.0,
+  "stop_on_success": true,
+  "success_metric": "max-bin",
+  "provider_workers": 1
+}

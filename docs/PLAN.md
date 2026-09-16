@@ -10,6 +10,13 @@ cells/caches are reused. See [BASELINES_MODEL_V1.md](BASELINES_MODEL_V1.md).
 Do not launch a full or paid matrix in this slice. Earlier progress entries
 below are historical and do not override this decision.
 
+Implementation and smoke are complete: 15 CPU cells / 180 proposals across all
+five designs, archived and restored exactly. Full three-arm manifests are
+prepared for 1,350 fresh cells at runtime commit `a025d4f9f`; task contracts,
+images and simulator identities match the stopped panel. No full cells or API
+calls have started. Bulk historical waveform verification/retirement remains
+in progress; do not describe that cleanup as complete until its receipt exists.
+
 ## Previous goal — common bit activity and CPU requalification
 
 Update: all ninety requested profiles now have valid bit-metric witnesses.

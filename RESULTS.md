@@ -1,9 +1,27 @@
 # Research results
 
-Updated 2026-09-15. This is the authoritative findings document. All results
+Updated 2026-09-16. This is the authoritative findings document. All results
 below concern **activity-profile synthesis** unless explicitly labeled gate
 power. Lower best-so-far target-error AUC is better. Budgets, normalizations
 and target banks differ across studies: do not compare their raw AUC values.
+
+## Clean baseline restart — development verification only
+
+The old CPU panel was stopped at the user's request: 824/900 cells completed
+(AES, DMA, mesh and RedMulE 180 each; Ibex 104). It is historical and incomplete,
+not a completed comparison. Its measurements and caches will not enter the new
+panel. Per-design compact archives are verified before raw waveforms are
+losslessly retired; cleanup completion is reported separately from run completion.
+
+The [new three-arm smoke](results/baselines_model_v1_dev/README.md) completed
+15/15 development cells and 180 charged proposals across all five designs.
+`phase-model` adds measured-history surrogate ranking and constraint-aware timing
+edits alongside unchanged phase-random and phase-GA. All designs exercised its
+refinement path; no LLM calls were made. No cell solved within 12 proposals and
+the new policy did not consistently outperform the controls. This validates
+execution and retention, not a research win. The full 1,350-cell plan is
+preparation only and requires a separate launch decision. See
+[protocol](docs/BASELINES_MODEL_V1.md).
 
 ## Gemini 3 compatibility smoke (not comparative evidence)
 

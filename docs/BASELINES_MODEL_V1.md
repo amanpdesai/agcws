@@ -74,6 +74,15 @@ run each design via `scripts/run_baseline_design.py DESIGN --panel baselines-mod
 Full preparation creates `results/DESIGN/baselines-model-v1-plan/` and fresh
 `out/baselines-model-v1/DESIGN/`. The full panel has 1,350 cells, not 900.
 
+Verification completed: all fifteen development cells finished (180 charged
+proposals, zero API calls); all five packed evidence exports were restored and
+byte-verified. See [smoke report](../results/baselines_model_v1_dev/README.md).
+The full plan is prepared against runtime commit `a025d4f9f`, with repository
+files checked against Git, dependencies against submodule pins, and generated
+RedMulE dependency files separately content-hashed and unchanged from the prior
+reference. Docker image and simulator hashes remain unchanged. No full cells
+have started. Strict ≤0.05 feasibility is still not established for every target.
+
 ## Storage lifecycle
 
 Containers already use `--rm`; host-bound artifacts caused the growth. After a

@@ -1,0 +1,35 @@
+{
+  "name": "mesh-baselines-model-v1-dev",
+  "domain": "mesh-temporal",
+  "targets": {
+    "development-alternating": [
+      110.56141463414632,
+      427.2602926829267,
+      110.56141463414632,
+      427.2602926829267,
+      110.56141463414632,
+      427.2602926829267,
+      110.56141463414632,
+      427.2602926829267
+    ]
+  },
+  "seeds": [
+    9300
+  ],
+  "policies": [
+    "phase-random",
+    "phase-ga",
+    "phase-model"
+  ],
+  "budget": 12,
+  "batch_size": 2,
+  "scale": 527.831463414634,
+  "tolerance": 0.05,
+  "binary": null,
+  "image": "sha256:14eaf03a061ed5ce89eb4ecceefdd3b52a5e5efe37505d4c59f2b6ef49d9085d",
+  "max_workers": 3,
+  "cost_ceiling_usd": 1.0,
+  "stop_on_success": true,
+  "success_metric": "max-bin",
+  "provider_workers": 1
+}

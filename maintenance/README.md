@@ -1,5 +1,27 @@
 # Artifact retention
 
+## Automatic checkpoint retention (2026-09-16)
+
+The common schedule and Ibex caches now call `agcws.pipeline.retention` after
+durable result checkpoints. Expanded VCDs are replaced by verified exact FST or
+zstd representations; hashes and sizes are retained beside each waveform.
+Cache reads resume interrupted retention without another simulator invocation.
+This bounds expanded-waveform accumulation; it does not bound the total size
+of retained compressed evidence. The runner still stops at a 500 GiB free-space
+reserve. Docker `--rm` does not clean host bind mounts.
+
+`retire_baseline_panel.py` is restricted to the historical
+`out/baselines-maxbin-v1` panel. It takes runner locks, rejects active matching
+containers, archives compact evidence and verifies every archive member before
+deleting any waveform. Its immutable waveform plan supports resumption and
+checks retained file hashes for paths already retired. Existing partial archives
+without verification receipts fail closed; they must be inspected, not silently
+overwritten. No full experiments are launched by this maintenance script.
+
+Restore with `python maintenance/restore_waveform.py RECEIPT.json NEW_PATH.vcd`.
+The restore verifies both hashes and refuses to overwrite a file. Host tools
+`zstd`, `fst2vcd` (GTKWave) and GNU `find` must be installed.
+
 ## Verified compressed objects
 
 `python -m maintenance.trace_store pack --plan <plan.json> --index <new-index.json>`
