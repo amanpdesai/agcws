@@ -2,6 +2,7 @@
 
 import argparse
 import hashlib
+import posixpath
 import subprocess
 from functools import lru_cache
 
@@ -20,11 +21,18 @@ def pinned_submodules(repository, commit):
             if line.startswith("160000 commit ")}
 
 
-def committed_file(repository, commit, name):
+def committed_file(repository, commit, name, depth=0):
+    if depth > 40 or name.startswith("../") or name.startswith("/"):
+        raise ValueError("unsafe committed source link")
     for path, pin in pinned_submodules(repository, commit).items():
         if name.startswith(path + "/"):
-            return committed_file(repository / path, pin, name[len(path) + 1:])
-    return subprocess.check_output(["git", "show", f"{commit}:{name}"], cwd=repository)
+            return committed_file(repository / path, pin, name[len(path) + 1:], depth + 1)
+    entry = subprocess.check_output(["git", "ls-tree", commit, "--", name], cwd=repository, text=True)
+    data = subprocess.check_output(["git", "show", f"{commit}:{name}"], cwd=repository)
+    if entry.startswith("120000 blob "):
+        target = posixpath.normpath(posixpath.join(posixpath.dirname(name), data.decode()))
+        return committed_file(repository, commit, target, depth + 1)
+    return data
 
 
 def main():
@@ -43,6 +51,10 @@ def main():
         old = read(ROOT / "out/bit-activity-v2" / design / "reference/manifest.json")
         current = source_inventory(ROOT, old["spec"]["domain"])
         for name, expected in current.items():
+            if name.startswith(".dependencies/"):
+                if expected != old["sources"].get(name):
+                    raise ValueError(f"generated dependency changed: {name}")
+                continue
             committed = committed_file(ROOT, commit, name)
             if hashlib.sha256(committed).hexdigest() != expected:
                 raise ValueError(f"commit runtime sources before preparation: {name}")
@@ -74,6 +86,7 @@ def main():
         write(destination / "manifest.json", manifest)
         write(destination / "freeze.json", {"bank_sha256": file_sha256(path),
               "runtime_commit": commit,
+              "generated_dependencies": "separately content-hashed; unchanged from reference manifest",
               "manifest_sha256": file_sha256(root / "manifest.json"),
               "changed_sources": sorted(changed), "cells": len(targets)*len(seeds)*3,
               "strict_target_feasibility": "not established for every request",
