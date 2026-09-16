@@ -1,6 +1,8 @@
 """Prepare a fresh three-arm panel; never execute or reuse historical caches."""
 
 import argparse
+import hashlib
+import subprocess
 
 from agcws.config import ROOT
 from agcws.pipeline.engine import prepare, source_inventory
@@ -14,6 +16,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--development-smoke", action="store_true")
     args = parser.parse_args()
+    commit = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip()
     split = "development" if args.development_smoke else "confirmation"
     version = "baselines-model-v1-dev" if args.development_smoke else "baselines-model-v1"
     allowed = {f"src/agcws/pipeline/{p}" for p in
@@ -24,6 +27,10 @@ def main():
         bank = read(path)
         old = read(ROOT / "out/bit-activity-v2" / design / "reference/manifest.json")
         current = source_inventory(ROOT, old["spec"]["domain"])
+        for name, expected in current.items():
+            committed = subprocess.check_output(["git", "show", f"{commit}:{name}"], cwd=ROOT)
+            if hashlib.sha256(committed).hexdigest() != expected:
+                raise ValueError(f"commit runtime sources before preparation: {name}")
         changed = {p for p in set(current) | set(old["sources"])
                    if current.get(p) != old["sources"].get(p)}
         if changed != allowed:
@@ -51,6 +58,7 @@ def main():
             raise ValueError("CPU-only unchanged runtime required")
         write(destination / "manifest.json", manifest)
         write(destination / "freeze.json", {"bank_sha256": file_sha256(path),
+              "runtime_commit": commit,
               "manifest_sha256": file_sha256(root / "manifest.json"),
               "changed_sources": sorted(changed), "cells": len(targets)*len(seeds)*3,
               "strict_target_feasibility": "not established for every request",
