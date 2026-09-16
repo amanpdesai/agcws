@@ -15,10 +15,15 @@ from agcws.pipeline.storage import read
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("design", choices=("aes", "dma", "ibex", "mesh", "redmule"))
+    parser.add_argument("--panel", choices=("baselines-model-v1", "baselines-model-v1-dev"),
+                        default="baselines-model-v1")
     args = parser.parse_args()
-    root = ROOT / "out/baselines-maxbin-v1" / args.design
+    for command in ("zstd", "fst2vcd", "find"):
+        if shutil.which(command) is None:
+            raise RuntimeError(f"waveform retention requires host executable: {command}")
+    root = ROOT / "out" / args.panel / args.design
     manifest = verify_inputs(ROOT, root)
-    if manifest["models"] or manifest["spec"]["policies"] != ["phase-random", "phase-ga"]:
+    if manifest["models"] or manifest["spec"]["policies"] != ["phase-random", "phase-ga", "phase-model"]:
         raise ValueError("baseline runner prohibits model arms")
     reserve = 500*1024**3
     if shutil.disk_usage(ROOT).free < reserve:
@@ -26,7 +31,8 @@ def main():
     with (root / "runner.log").open("a", buffering=1) as log:
         process = subprocess.Popen([sys.executable, "-u", "-m", "agcws.pipeline", "run",
                                    "--directory", str(root), "--execute"], cwd=ROOT,
-                                   stdout=log, stderr=subprocess.STDOUT, start_new_session=True)
+                                   stdout=log, stderr=subprocess.STDOUT, start_new_session=True,
+                                   env={**os.environ, "OPENBLAS_NUM_THREADS": "1"})
         print(f"Running {args.design}; PID {process.pid}; log {root / 'runner.log'}", flush=True)
         while True:
             try:

@@ -19,6 +19,7 @@ in mutable prose defaults. [RESULTS.md](../RESULTS.md) records current findings.
 | bsg_fakeram | Compatible memory collateral | Pinned `third_party/bsg_fakeram` |
 | Sky130 HD / Nangate45 | Characterized cell power | `AGCWS_LIBERTY`, `AGCWS_LIBERTY_NANGATE45` |
 | GeST source | Qualified evolutionary operators | Pinned third-party source; hash-checked bridge |
+| zstd, fst2vcd, find | Host-side lossless waveform retention | Install `zstd` and `gtkwave`; baseline runner checks availability before launch |
 
 The pipeline pins the resolved Docker image digest and simulator binary hash.
 Host-specific paths stay in `.env`; no credentials enter source or exports.

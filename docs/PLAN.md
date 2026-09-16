@@ -1,6 +1,16 @@
 # Plan
 
-## Active goal — common bit activity and CPU requalification
+## Active slice — clean three-arm baseline restart (2026-09-16)
+
+The user superseded the old panel and stopped Ibex. Preserve historical evidence,
+reclaim redundant traces losslessly, and enable automatic retention. Implement
+`phase-model` alongside unchanged phase-random and phase-GA; validate only on
+development targets before freezing a clean full-panel source state. No old
+cells/caches are reused. See [BASELINES_MODEL_V1.md](BASELINES_MODEL_V1.md).
+Do not launch a full or paid matrix in this slice. Earlier progress entries
+below are historical and do not override this decision.
+
+## Previous goal — common bit activity and CPU requalification
 
 Update: all ninety requested profiles now have valid bit-metric witnesses.
 Mesh's separate local-refinement supplement passed its 2,048-slot trajectory

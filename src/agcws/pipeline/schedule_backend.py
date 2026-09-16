@@ -9,6 +9,7 @@ from pathlib import Path
 from agcws.nodes.bit_activity import CONTRACT
 from agcws.pipeline import schedules
 from agcws.pipeline.metrics import error, key
+from agcws.pipeline.retention import finalize
 from agcws.pipeline.storage import read, write
 from agcws.workloads.schedule import ScheduleContract, expand_schedule, random_schedule
 
@@ -16,7 +17,7 @@ from agcws.workloads.schedule import ScheduleContract, expand_schedule, random_s
 class ScheduleTemporal:
     binary_path = None
     contract = ScheduleContract(64, 6000)
-    allowed_policies = ("random", "phase-random", "phase-ga", "flash-4096", "pro-4096")
+    allowed_policies = ("random", "phase-random", "phase-ga", "phase-model", "flash-4096", "pro-4096")
 
     def adapter(self):
         raise NotImplementedError
@@ -66,6 +67,7 @@ class ScheduleTemporal:
             directory = root / "cache" / identifier
             result_path = directory / "result.json"
             if result_path.exists():
+                finalize(directory, result_path)
                 return read(result_path), True
             directory.mkdir(parents=True, exist_ok=True)
             attempt = directory / f"attempt-{len(list(directory.glob('attempt-*'))) + 1:03}"
@@ -87,6 +89,7 @@ class ScheduleTemporal:
                 failure.update(cache_id=identifier, canonical_program=canonical,
                                evaluation_s=time.monotonic() - started)
                 write(result_path, failure)
+                finalize(directory, result_path)
                 return failure, False
             completion = self.completed(attempt)
             if not completion["valid"]:
@@ -113,6 +116,7 @@ class ScheduleTemporal:
             record.update(cache_id=identifier, canonical_program=canonical,
                           evaluation_s=time.monotonic() - started)
             write(result_path, record)
+            finalize(directory, result_path)
             return record, False
 
     def evaluate(self, proposal, slot, history, manifest, root, mode):

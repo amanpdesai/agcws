@@ -68,6 +68,10 @@ class Policy:
             slot = offset + j + 1
             if not offset or self.arm == "random":
                 program, parents = self.backend.random(self.rng), []
+            elif self.arm == "phase-model":
+                from agcws.pipeline.policies.temporal_model import propose
+                program, parents, decision = propose(self.backend, self.rng, slot, history)
+                ensure(directory / f"model-decision-{slot}.json", decision)
             else:
                 program, parents = self.backend.propose_classical(self.arm, self.rng, slot, history)
             proposals.append(

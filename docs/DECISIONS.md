@@ -1,5 +1,21 @@
 # Decision log
 
+## 2026-09-16 — Supersede the old panel; clean restart and lossless retention
+
+User requests one implementation state for phase-random, phase-GA and a stronger
+conventional baseline. Stop the old Ibex run; preserve all completed/partial
+records and label the panel historical rather than complete. Do not reuse its
+cells or caches. Add a PaTGen/SAGA-inspired surrogate/timing policy, developed
+against development targets, with explicit per-bin objective and internal-search
+accounting. No claim of novelty or verbatim reproduction of those algorithms.
+
+Retain compressed waveforms, not expanded duplicates: require verified exact
+reconstruction, checkpoint-first cleanup and per-file hash receipts. The old
+RedMulE cache alone held about 5,943 GiB of VCD plus 148 GiB of FST. Archive
+compact evidence before retroactive retirement. The new run keeps all tasks,
+budgets, metrics and validity gates, but has fresh source fingerprints. See
+[protocol](BASELINES_MODEL_V1.md). Full execution is not part of this slice.
+
 ## 2026-09-14 — Admit mesh refinement without changing the task
 
 The frozen 512-slot local-refinement procedure per failed request qualified

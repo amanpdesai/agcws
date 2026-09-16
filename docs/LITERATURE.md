@@ -1,5 +1,21 @@
 # Literature review
 
+## 2026-09-16 — PaTGen verified from supplied primary PDF
+
+Yin et al., *PaTGen: Temporal Similarity-Driven Proxy Benchmark Generation Method
+for Cloud Workloads*, TACO 23(2), Article 72, June 2026,
+[DOI 10.1145/3816437](https://doi.org/10.1145/3816437). [V] Methods and evaluation
+checked against `/home/aman/3816437.pdf`. §§3.3–3.4 combine SLSQP block composition
+with a GA over start delays to reproduce CPI/MPKI trajectories. Population 20,
+50 generations, crossover .81, mutation .37; text specifies two elites, whereas
+Algorithm 3 explicitly retains one. Do not silently resolve this discrepancy
+when claiming a reproduction. Fitness combines level, slope and direction terms.
+Its additive profiled-block model is not an RTL power model; §4.6.4 separately
+assesses DVFS governor ranking using EDP. No LLM controller or heterogeneous RTL
+stimulus interface is demonstrated. Temporal workload composition/timing search
+is established prior art; our new policy is an adaptation, not algorithmic novelty.
+See [baseline protocol](BASELINES_MODEL_V1.md) for the borrowing and limits.
+
 ## Verification legend
 
 `[V]` verified against a primary source; `[P]` metadata confirmed but full text not read; `[U]` unverified secondary summary. No `[U]` entry may support a novelty claim.

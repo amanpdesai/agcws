@@ -10,6 +10,7 @@ import jsonschema
 
 from agcws.pipeline.ibex.program import allocation, canonical
 from agcws.pipeline.metrics import key
+from agcws.pipeline.retention import finalize
 
 
 def measured(program, root, fingerprint, image):
@@ -32,6 +33,7 @@ def measured(program, root, fingerprint, image):
         directory = root / "cache" / identifier
         record_path = directory / "result.json"
         if record_path.exists():
+            finalize(directory, record_path)
             return json.loads(record_path.read_text()), True
         directory.mkdir(parents=True, exist_ok=False)
         source = directory / "program.json"
@@ -106,4 +108,5 @@ def measured(program, root, fingerprint, image):
             evaluation_s=time.monotonic() - started,
         )
         record_path.write_text(json.dumps(record, indent=2) + "\n")
+        finalize(directory, record_path)
         return record, False

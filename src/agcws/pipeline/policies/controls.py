@@ -12,6 +12,7 @@ ARMS = (
     "random",
     "phase-random",
     "phase-ga",
+    "phase-model",
     "gest-batch2",
     "gest-pool4",
     "ridge-screen",

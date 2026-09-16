@@ -57,6 +57,7 @@ def evaluate(proposal, slot, history, manifest, root, arm):
         ("random", 2),
         ("phase-random", 2),
         ("phase-ga", 2),
+        ("phase-model", 2),
         ("gest-batch2", 4),
         ("gest-pool4", 4),
         ("ridge-screen", 4),
@@ -102,6 +103,23 @@ def test_short_model_batch_charges_every_requested_slot(tmp_path):
     assert meter.calls == 1 and result["budget"] == 4 and result["valid_slots"] == 3
     rows = read(tmp_path / "panel/example/0/pro-4096/batches/003/trials.json")
     assert rows[1]["stage"] == "SCHEMA" and rows[1]["loss"] is None
+
+
+def test_phase_model_refinement_resume_charges_only_common_engine(tmp_path):
+    m = manifest(tmp_path, "phase-model", 12, 2)
+    meter = Meter(tmp_path, 1)
+    calls = []
+
+    def measured(*args):
+        calls.append(args[1])
+        return evaluate(*args)
+
+    first = engine.cell(tmp_path, m, "example", 0, "phase-model", meter, measured)
+    assert calls == list(range(1, 13))
+    second = engine.cell(tmp_path, m, "example", 0, "phase-model", meter, measured)
+    assert first == second and calls == list(range(1, 13))
+    decisions = list(tmp_path.glob("panel/*/*/*/batches/*/model-decision-*.json"))
+    assert any(read(p)["mode"] == "ridge-timing-refinement" for p in decisions)
 
 
 def test_phase_ga_128_slots_has_no_model_calls_or_sibling_feedback(tmp_path):
