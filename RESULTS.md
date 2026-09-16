@@ -1,9 +1,17 @@
 # Research results
 
-Updated 2026-09-14. This is the authoritative findings document. All results
+Updated 2026-09-15. This is the authoritative findings document. All results
 below concern **activity-profile synthesis** unless explicitly labeled gate
 power. Lower best-so-far target-error AUC is better. Budgets, normalizations
 and target banks differ across studies: do not compare their raw AUC values.
+
+## Gemini 3 compatibility smoke (not comparative evidence)
+
+[Four-call AES smoke](results/gemini3-migration-smoke-v1/README.md): both
+3.5 Flash-Lite and 3.8 Flash returned two valid workloads and consumed measured
+feedback. Maximum normalized bin error was 0.227578 → 0.257371 for Lite and
+0.013465 → 0.000580 for 3.8. Total estimated cost was $0.05045655.
+No full agent matrix was launched; baseline measurement inputs were unchanged.
 
 ## All-bin Ibex pilot — one Pro solve, panel stopped at cost cap
 
