@@ -3,6 +3,7 @@
 import argparse
 import hashlib
 import subprocess
+from functools import lru_cache
 
 from agcws.config import ROOT
 from agcws.pipeline.engine import prepare, source_inventory
@@ -10,6 +11,20 @@ from agcws.pipeline.storage import read, write
 from agcws.provenance import file_sha256
 
 DESIGNS = ("aes", "dma", "ibex", "mesh", "redmule")
+
+
+@lru_cache(maxsize=None)
+def pinned_submodules(repository, commit):
+    entries = subprocess.check_output(["git", "ls-tree", "-r", commit], cwd=repository, text=True)
+    return {line.split("\t")[1]: line.split()[2] for line in entries.splitlines()
+            if line.startswith("160000 commit ")}
+
+
+def committed_file(repository, commit, name):
+    for path, pin in pinned_submodules(repository, commit).items():
+        if name.startswith(path + "/"):
+            return committed_file(repository / path, pin, name[len(path) + 1:])
+    return subprocess.check_output(["git", "show", f"{commit}:{name}"], cwd=repository)
 
 
 def main():
@@ -28,7 +43,7 @@ def main():
         old = read(ROOT / "out/bit-activity-v2" / design / "reference/manifest.json")
         current = source_inventory(ROOT, old["spec"]["domain"])
         for name, expected in current.items():
-            committed = subprocess.check_output(["git", "show", f"{commit}:{name}"], cwd=ROOT)
+            committed = committed_file(ROOT, commit, name)
             if hashlib.sha256(committed).hexdigest() != expected:
                 raise ValueError(f"commit runtime sources before preparation: {name}")
         changed = {p for p in set(current) | set(old["sources"])
