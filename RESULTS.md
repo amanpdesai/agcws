@@ -12,6 +12,8 @@ The old CPU panel was stopped at the user's request: 824/900 cells completed
 not a completed comparison. Its measurements and caches will not enter the new
 panel. Per-design compact archives are verified before raw waveforms are
 losslessly retired; cleanup completion is reported separately from run completion.
+The [retirement inventory](results/baselines_maxbin_v1_retirement/README.md)
+records archive identities and the incomplete-panel disposition.
 
 The [new three-arm smoke](results/baselines_model_v1_dev/README.md) completed
 15/15 development cells and 180 charged proposals across all five designs.
