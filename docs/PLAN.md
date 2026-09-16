@@ -1,6 +1,6 @@
 # Plan
 
-## Active slice — clean three-arm baseline restart (2026-09-16)
+## Completed slice — clean three-arm baseline restart (2026-09-16)
 
 The user superseded the old panel and stopped Ibex. Preserve historical evidence,
 reclaim redundant traces losslessly, and enable automatic retention. Implement
@@ -14,8 +14,16 @@ Implementation and smoke are complete: 15 CPU cells / 180 proposals across all
 five designs, archived and restored exactly. Full three-arm manifests are
 prepared for 1,350 fresh cells at runtime commit `a025d4f9f`; task contracts,
 images and simulator identities match the stopped panel. No full cells or API
-calls have started. Bulk historical waveform verification/retirement remains
-in progress; do not describe that cleanup as complete until its receipt exists.
+calls have started. Cleanup and its independent audit are complete: 42,081
+expanded VCDs (7,013,915,049,008 bytes) retired, all retained-file hashes verified,
+zero raw VCDs remaining in the old panel, all five archive identities preserved.
+The full suite passes 763 tests; lint is clean. See the
+[cleanup receipt](../results/baselines_maxbin_v1_retirement/cleanup.json).
+
+Next: a separate launch decision for the frozen CPU-only three-arm panel. Do not
+mix in historical cells or change runtime sources after launch. Strict max-bin
+≤0.05 feasibility remains unproven for some requests; preserve failures and
+right-censoring rather than retuning targets or thresholds.
 
 ## Previous goal — common bit activity and CPU requalification
 

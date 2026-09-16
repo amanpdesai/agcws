@@ -83,6 +83,13 @@ RedMulE dependency files separately content-hashed and unchanged from the prior
 reference. Docker image and simulator hashes remain unchanged. No full cells
 have started. Strict ≤0.05 feasibility is still not established for every target.
 
+Final verification: 763 tests pass, lint is clean, and the historical cleanup
+audit verifies all 42,081 retained waveforms by hash and size. The old panel has
+no expanded VCDs left. Its five compact archives, member indexes, source
+manifests and 824 completed-cell records are unchanged. The verified
+[cleanup receipt](../results/baselines_maxbin_v1_retirement/cleanup.json) records
+7,013,915,049,008 raw bytes retired; no new full or paid matrix was launched.
+
 ## Storage lifecycle
 
 Containers already use `--rm`; host-bound artifacts caused the growth. After a

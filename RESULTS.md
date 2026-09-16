@@ -14,6 +14,10 @@ panel. Per-design compact archives are verified before raw waveforms are
 losslessly retired; cleanup completion is reported separately from run completion.
 The [retirement inventory](results/baselines_maxbin_v1_retirement/README.md)
 records archive identities and the incomplete-panel disposition.
+Cleanup is now audited complete: 42,081 expanded VCDs (7.01 TB) retired, zero
+remaining in the old panel, with all retained waveform hashes and all five
+compact archive identities verified. This is a storage result, not new research
+evidence or a completed baseline comparison.
 
 The [new three-arm smoke](results/baselines_model_v1_dev/README.md) completed
 15/15 development cells and 180 charged proposals across all five designs.
