@@ -66,3 +66,41 @@ def test_oversized_member_is_not_silently_written(tmp_path):
     path.write_bytes(b"x" * 70000)
     with pytest.raises(ValueError, match="individual evidence member"):
         shard_groups([path], 128*1024)
+
+
+def test_streaming_export_matches_common_export_selection(tmp_path):
+    from agcws.pipeline.engine import export
+
+    root, output, restored, ordinary = (tmp_path/n for n in ('run', 'pack', 'restored', 'ordinary'))
+    write(root/'manifest.json', {})
+    write(root/'complete.json', {})
+    write(root/'cache/abc/result.json', {'valid': True})
+    write(root/'panel/t/1/phase-ga/complete.json', {'solved': False})
+    write(root/'toolchain/build.json', {'exclude': True})
+    (root/'cache/abc/trace_core_00000000.log').write_text('excluded trace')
+    (root/'cache/abc/driver.log').write_text('retained log')
+    export(root, ordinary)
+    pack(root, output)
+    restore(output, restored)
+    import json
+
+    expected = json.loads((ordinary/'inventory.json').read_text())
+    assert set(expected) == {str(p.relative_to(restored)) for p in restored.rglob('*') if p.is_file()}
+
+
+def test_changed_source_after_pack_fails_verification(tmp_path, monkeypatch):
+    from agcws.pipeline import evidence
+
+    root = tmp_path/'run'
+    write(root/'manifest.json', {})
+    write(root/'complete.json', {})
+    original = evidence.verify
+
+    def tamper(*args, **kwargs):
+        result = original(*args, **kwargs)
+        (root/'complete.json').write_text('{"changed": true}')
+        return result
+
+    monkeypatch.setattr(evidence, 'verify', tamper)
+    with pytest.raises(ValueError, match='restored raw bytes differ'):
+        pack(root, tmp_path/'archive')

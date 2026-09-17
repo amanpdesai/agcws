@@ -1,9 +1,62 @@
 # Research results
 
-Updated 2026-09-16. This is the authoritative findings document. All results
+Updated 2026-09-17. This is the authoritative findings document. All results
 below concern **activity-profile synthesis** unless explicitly labeled gate
 power. Lower best-so-far target-error AUC is better. Budgets, normalizations
 and target banks differ across studies: do not compare their raw AUC values.
+
+## Completed five-design baseline matrix — 2026-09-17
+
+All **1,350 cells / 170,152 charged proposals** completed with no provider calls:
+five designs × nine profiles (eight nonflat plus control) × ten seeds × three
+CPU arms. Frozen 128-slot maximum, batch-two early stopping, and every-bin
+normalized absolute error ≤0.05. RMSE best-so-far AUC remains the primary score,
+with terminal-best carry-forward after success. This is post-hoc robustness on
+an observed bank, not fresh held-out confirmation. Evidence, full curves,
+per-target results and reproduction: [baseline matrix](results/baselines_model_v1/README.md).
+
+| Design | Random AUC / solves | GA AUC / solves | Model-guided AUC / solves |
+|---|---:|---:|---:|
+| AES | 17.4493 / 1 | 18.6464 / 2 | 11.4305 / 40 |
+| DMA | 31.0415 / 0 | 31.4362 / 1 | 28.4167 / 1 |
+| Ibex | 43.7966 / 0 | 40.7835 / 1 | 45.6025 / 0 |
+| Mesh | 34.8326 / 0 | 30.2006 / 0 | 31.2966 / 0 |
+| RedMulE | 43.5003 / 0 | 36.7412 / 0 | 44.8396 / 0 |
+
+Solves are out of 90 per design/arm. The model-guided policy improves mean AUC
+on AES and DMA but is not uniformly stronger: GA has the lowest mean AUC on
+Ibex, Mesh and RedMulE. AES model-guided solves include 33/80 nonflat cases and
+7/10 controls; its DMA solve is a control. No arm solves Mesh or RedMulE.
+Do not interpret this as infeasibility: strict max-bin feasibility has not been
+demonstrated for every requested profile. New policy selection optimizes worst-bin
+error while unchanged GA selection uses RMSE, so objective alignment is a
+confound in attributing improvements to the learned model alone.
+
+All invalid slots remain charged; unsolved runs remain right-censored at 128.
+Exploratory inference uses ten seed means per design, averaging all nine fixed
+targets, with paired bootstrap intervals, exact sign flips, and Holm adjustment
+over fifteen contrasts. No LLM superiority claim follows from this CPU-only
+panel, nor can old Pro studies be compared directly across changed contracts.
+All runners exited successfully; approximate concurrent makespan was 21.48 h.
+Publication verification: 777 tests pass, lint is clean, and bounded per-design
+archives stream-restore to the exact compact source records. Waveforms remain
+local; this is not independent all-trial resimulation.
+
+## Answer-visibility audit — 2026-09-16
+
+The [offline audit](results/model_visibility_audit_v1/README.md) reconstructs all
+82 saved Ibex all-bin pilot payloads, verifies 527 prior same-cell history rows,
+468 notebook notes, 79 decoded provider responses, and seed-only shared
+initialization. No full-program witness matches were found against 216 Ibex
+construction candidates. Four AES migration requests also reconstruct; both
+models began with identical empty-history inputs and all measurements were fresh.
+Lite's unsuccessful equal-allocation schedule matches one of 27 AES witness
+candidates; neither strong-model program does. This is not evidence of a hidden
+answer channel: the strong model's simple alternating schedule is derivable from
+public budgets and the target. No direct answer leakage was found within this
+scope; context usefulness, target simplicity and prior pilot exposure remain
+limitations. These checks do not establish semantic understanding or certify
+uninspected studies. Running CPU baselines were not changed.
 
 ## Clean baseline restart — development verification only
 

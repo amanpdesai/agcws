@@ -1,5 +1,16 @@
 # Artifact retention
 
+## Full-panel publication archives
+
+`archive_study.py pack` streams the common compact-export selection directly
+into bounded tar shards, avoiding a temporary loose-file copy of every record.
+It verifies every packed member, decompresses every raw record, and compares
+the restored bytes against the source. `restore` still supports ordinary review
+directories. The default bound is 32 MiB; full panels with large inventory
+members can explicitly request `--max-shard-mib 64`. Oversized members fail
+closed; no record is silently dropped. This changes packaging only, not frozen
+runtime inputs or experiment accounting.
+
 ## Automatic checkpoint retention (2026-09-16)
 
 The common schedule and Ibex caches now call `agcws.pipeline.retention` after

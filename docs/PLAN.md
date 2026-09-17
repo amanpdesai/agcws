@@ -1,6 +1,20 @@
 # Plan
 
-## Completed slice — clean three-arm baseline restart (2026-09-16)
+## Current stopping point — baseline matrix completed (2026-09-17)
+
+The user authorized execution after the preparation below. All 1,350 CPU cells
+completed: five designs × nine profiles × ten seeds × three policies, with
+170,152 charged proposals and no API calls. The publication audit, per-design
+archives and aggregate results are indexed in
+[baselines_model_v1](../results/baselines_model_v1/README.md).
+The max-bin ≤0.05 gate and frozen runtime were not changed.
+
+Next requires a user decision: matched model runs on these exact contracts,
+after explicit model/settings and spend approval. Do not launch new experiments
+as a side effect of publishing. Older Pro pilots are not matched results for
+this matrix. Low solve counts do not establish target infeasibility.
+
+## Historical preparation — clean three-arm restart (2026-09-16)
 
 The user superseded the old panel and stopped Ibex. Preserve historical evidence,
 reclaim redundant traces losslessly, and enable automatic retention. Implement
@@ -20,7 +34,7 @@ zero raw VCDs remaining in the old panel, all five archive identities preserved.
 The full suite passes 763 tests; lint is clean. See the
 [cleanup receipt](../results/baselines_maxbin_v1_retirement/cleanup.json).
 
-Next: a separate launch decision for the frozen CPU-only three-arm panel. Do not
+At that preparation checkpoint, next was a separate launch decision. Do not
 mix in historical cells or change runtime sources after launch. Strict max-bin
 ≤0.05 feasibility remains unproven for some requests; preserve failures and
 right-censoring rather than retuning targets or thresholds.

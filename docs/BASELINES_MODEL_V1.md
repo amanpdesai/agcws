@@ -2,6 +2,12 @@
 
 ## Status and scope
 
+Update 2026-09-17: the subsequently authorized full panel completed all 1,350
+cells and 170,152 charged proposals, with zero model calls. Publication and audit
+details: [baseline matrix](../results/baselines_model_v1/README.md). Preparation
+and launch-gate statements below describe the earlier checkpoint, not an
+unstarted current run. No runtime changes were made during this panel.
+
 On 2026-09-16 the user requested a clean implementation state across all arms,
 not a mixture of reused measurements and new code. The old `baselines-maxbin-v1`
 panel is historical. Its incomplete Ibex runner was terminated; no old cells or

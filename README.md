@@ -6,6 +6,10 @@ stages, shared interfaces and proposal-counted comparisons.
 
 ## Results
 
+The [five-design CPU baseline matrix](results/baselines_model_v1/README.md)
+completed 1,350 cells under a frozen every-bin ≤0.05 gate. It compares
+phase-random, phase-GA and a model-guided classical policy; no LLM arm is included.
+
 The completed non-flat Ibex confirmation has 36 trajectories / 4,608 slots.
 Pro solved 18/18 cases; phase-random solved 5/18. Earlier frozen Flash studies
 on AES/DMA did not beat random. These are different study regimes.

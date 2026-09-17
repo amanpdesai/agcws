@@ -12,6 +12,8 @@ available unless an explicitly verified relocation is recorded.
 
 | Claim / evidence | Direct entry point |
 |---|---|
+| Completed five-design CPU baseline matrix, 1,350 cells | [report and per-design archives](baselines_model_v1/README.md), [all cells and aggregates](baselines_model_v1/summary.json) |
+| Recorded model-input visibility audit | [scope and checks](model_visibility_audit_v1/README.md) |
 | Scoped Pro versus phase-random confirmation | [summary](nonflat_temporal_v1/summary.json), [frozen targets](nonflat_temporal_v1/targets.json), [costs](nonflat_temporal_v1/cost_summary.json) |
 | Earlier scalar held-out comparison | [comparison](semantic_heldout_comparison.json) |
 | Earlier structural/temporal held-out study | [held-out evidence](structural_temporal_heldout_v1/heldout.json) |
