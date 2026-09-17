@@ -21,6 +21,8 @@ def normalized(source):
     tree = ast.parse(source)
     for node in ast.walk(tree):
         if isinstance(node, ast.FunctionDef) and node.name == "settings":
+            if not isinstance(node.body[0], ast.Return) or not isinstance(node.body[0].value, ast.Dict):
+                raise ValueError("changes extend beyond transport settings")
             value = node.body[0].value
             pairs = [(k, v) for k, v in zip(value.keys, value.values, strict=True)
                      if not isinstance(k, ast.Constant) or k.value != "transport"]

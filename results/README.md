@@ -4,6 +4,9 @@ Findings, statistics and claim limits live in the single root
 [RESULTS.md](../RESULTS.md). This directory stores compact machine-readable
 inputs, outputs, failures and provenance. It is not scratch.
 
+Prepared, not executed: [matched Flash-Lite plans](flash_lite_matched_v1_plan/README.md)
+reuse the completed CPU tasks and seeds. These plans contain no new results.
+
 New evidence uses per-design entry points, then frozen study versions and labeled
 splits. See [AES](aes/README.md), [AXI DMA](dma/README.md),
 [BaseJump mesh](mesh/README.md) and [RedMulE](redmule/README.md). Large studies use bounded compressed

@@ -1,5 +1,20 @@
 # Decision log
 
+## 2026-09-17 — Matched Flash-Lite preparation without rerunning CPU controls
+
+User selected `gemini-3.5-flash-lite`, the tested economy migration model.
+Pin a new `flash-lite-medium` arm rather than relabeling the historical
+`flash-4096` arm. Freeze MEDIUM thinking, 8192 output tokens and explicit
+pricing; MEDIUM is not a 4096-token budget equivalence claim.
+Reuse the published three-arm CPU panel only after verifying task, seed,
+initialization, schema, simulator and evaluator equivalence. The two reviewed
+provider-registration edits change the broad source fingerprint, which is
+recorded rather than hidden; no measurement cache is imported.
+The obsolete full-Flash plans are superseded, not overwritten. Preparation
+does not authorize paid execution; $120/design is a proposed liability cap.
+See [protocol](FLASH_MATCHED_V1.md) and
+[readiness evidence](../results/flash_lite_matched_v1_plan/README.md).
+
 ## 2026-09-16 — Supersede the old panel; clean restart and lossless retention
 
 User requests one implementation state for phase-random, phase-GA and a stronger

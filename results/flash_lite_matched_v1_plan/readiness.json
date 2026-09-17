@@ -1,0 +1,123 @@
+{
+  "runtime_commit": "1e0ae0d433cabb71cf682320bed645c3eb56adca",
+  "model": {
+    "model": "gemini-3.5-flash-lite",
+    "thinking_level": "MEDIUM",
+    "temperature": 0.7,
+    "top_p": 0.95,
+    "max_output_tokens": 8192,
+    "response_schema_projection": "bounds-projection-v1",
+    "input_usd_per_million": 0.3,
+    "output_usd_per_million": 2.5,
+    "pricing_verified": "2026-09-17",
+    "transport": {
+      "version": "vertex-deadline-v1",
+      "timeout_ms": 600000,
+      "sdk_attempts": 1
+    }
+  },
+  "designs": [
+    {
+      "design": "aes",
+      "cells": 90,
+      "baseline_manifest_sha256": "c3fed4673b9f70560f8ba32234c927d284e2533a772ae2101f1e93699670fdb4",
+      "manifest_sha256": "b51afb9d3b7cb35abf4056c626cebf9ab2afef23b0b3960ce403cdb497b8bae2",
+      "provider_only_source_changes": {
+        "src/agcws/pipeline/model.py": {
+          "baseline": "79c68c743d4a9b92dfea4fab4ce40f028fb477afee7aaf77db9ba271ff6b1f73",
+          "flash": "5bbe7d6e5b45737d1e55beb4de692a4799bcd9c950c4a4fb7706ee39e2355638"
+        },
+        "src/agcws/pipeline/schedule_backend.py": {
+          "baseline": "8804d88447924112a1c4ffdb387c79b04cc47722897a6c90a0bad6f881561a0b",
+          "flash": "90b7caf9eeabdf520dde2c4da89c5a6bb5e9a1e4963b2f4305407ef2168af818"
+        }
+      },
+      "schema_runtime_and_task_contract_equal": true,
+      "measurement_fingerprint_equal": false,
+      "run_directory": "/home/aman/agcws/out/flash-lite-matched-v1/aes"
+    },
+    {
+      "design": "dma",
+      "cells": 90,
+      "baseline_manifest_sha256": "a7df474896bf03f9b39ffb77188cda1a60c231fa9ace3ab061ce3dd0406adb89",
+      "manifest_sha256": "679eb550c3a3320dfded7950affcf6b5e51df70ebde9c1ff8a413e294c4e853c",
+      "provider_only_source_changes": {
+        "src/agcws/pipeline/model.py": {
+          "baseline": "79c68c743d4a9b92dfea4fab4ce40f028fb477afee7aaf77db9ba271ff6b1f73",
+          "flash": "5bbe7d6e5b45737d1e55beb4de692a4799bcd9c950c4a4fb7706ee39e2355638"
+        },
+        "src/agcws/pipeline/schedule_backend.py": {
+          "baseline": "8804d88447924112a1c4ffdb387c79b04cc47722897a6c90a0bad6f881561a0b",
+          "flash": "90b7caf9eeabdf520dde2c4da89c5a6bb5e9a1e4963b2f4305407ef2168af818"
+        }
+      },
+      "schema_runtime_and_task_contract_equal": true,
+      "measurement_fingerprint_equal": false,
+      "run_directory": "/home/aman/agcws/out/flash-lite-matched-v1/dma"
+    },
+    {
+      "design": "ibex",
+      "cells": 90,
+      "baseline_manifest_sha256": "2058b753bbfb687590e42a8a19b2f41ca131c223283673157293e9ed7cebef47",
+      "manifest_sha256": "c8a41fc1f1250818447b05a6bafd2f13667790c96a406c136a8d2542b103064e",
+      "provider_only_source_changes": {
+        "src/agcws/pipeline/model.py": {
+          "baseline": "79c68c743d4a9b92dfea4fab4ce40f028fb477afee7aaf77db9ba271ff6b1f73",
+          "flash": "5bbe7d6e5b45737d1e55beb4de692a4799bcd9c950c4a4fb7706ee39e2355638"
+        },
+        "src/agcws/pipeline/schedule_backend.py": {
+          "baseline": "8804d88447924112a1c4ffdb387c79b04cc47722897a6c90a0bad6f881561a0b",
+          "flash": "90b7caf9eeabdf520dde2c4da89c5a6bb5e9a1e4963b2f4305407ef2168af818"
+        }
+      },
+      "schema_runtime_and_task_contract_equal": true,
+      "measurement_fingerprint_equal": false,
+      "run_directory": "/home/aman/agcws/out/flash-lite-matched-v1/ibex"
+    },
+    {
+      "design": "mesh",
+      "cells": 90,
+      "baseline_manifest_sha256": "3d28a747a7ae1ec9149c923561bed0385cf5b5ca409d416efdc312e97100029a",
+      "manifest_sha256": "2c74a11840b4373b133eabaf25216a91e0badae2e673f309b0bebf42fdb64ed0",
+      "provider_only_source_changes": {
+        "src/agcws/pipeline/model.py": {
+          "baseline": "79c68c743d4a9b92dfea4fab4ce40f028fb477afee7aaf77db9ba271ff6b1f73",
+          "flash": "5bbe7d6e5b45737d1e55beb4de692a4799bcd9c950c4a4fb7706ee39e2355638"
+        },
+        "src/agcws/pipeline/schedule_backend.py": {
+          "baseline": "8804d88447924112a1c4ffdb387c79b04cc47722897a6c90a0bad6f881561a0b",
+          "flash": "90b7caf9eeabdf520dde2c4da89c5a6bb5e9a1e4963b2f4305407ef2168af818"
+        }
+      },
+      "schema_runtime_and_task_contract_equal": true,
+      "measurement_fingerprint_equal": false,
+      "run_directory": "/home/aman/agcws/out/flash-lite-matched-v1/mesh"
+    },
+    {
+      "design": "redmule",
+      "cells": 90,
+      "baseline_manifest_sha256": "fc770b4474447792a781fadc0f51c69dac7dd4ce232944db652fe37694a1b8db",
+      "manifest_sha256": "d4203f2d4924cb4dd408968372b07c2d4aa67a2dfcf65b7c9753980454e59511",
+      "provider_only_source_changes": {
+        "src/agcws/pipeline/model.py": {
+          "baseline": "79c68c743d4a9b92dfea4fab4ce40f028fb477afee7aaf77db9ba271ff6b1f73",
+          "flash": "5bbe7d6e5b45737d1e55beb4de692a4799bcd9c950c4a4fb7706ee39e2355638"
+        },
+        "src/agcws/pipeline/schedule_backend.py": {
+          "baseline": "8804d88447924112a1c4ffdb387c79b04cc47722897a6c90a0bad6f881561a0b",
+          "flash": "90b7caf9eeabdf520dde2c4da89c5a6bb5e9a1e4963b2f4305407ef2168af818"
+        }
+      },
+      "schema_runtime_and_task_contract_equal": true,
+      "measurement_fingerprint_equal": false,
+      "run_directory": "/home/aman/agcws/out/flash-lite-matched-v1/redmule"
+    }
+  ],
+  "cells": 450,
+  "paid_calls": 0,
+  "execution_authorized": false,
+  "proposed_total_ceiling_usd": 600,
+  "baseline_reuse": "same tasks/runtime/schema; only reviewed provider registration differs",
+  "fingerprint_note": "whole-source hashes change with model registration; no cache reuse",
+  "live_smoke_scope": "prior AES two-call migration smoke; no new live calls in preparation"
+}
