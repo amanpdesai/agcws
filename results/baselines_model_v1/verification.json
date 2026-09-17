@@ -1,0 +1,18 @@
+{
+  "date": "2026-09-17",
+  "tests_passed": 777,
+  "existing_warnings": 3,
+  "lint": "make lint passed",
+  "cells_audited": 1350,
+  "charged_slots_audited": 170152,
+  "model_calls": 0,
+  "model_liability_usd": 0,
+  "success_rule": "maximum absolute normalized bin error <= 0.05",
+  "budget": 128,
+  "batch_size": 2,
+  "audit": "analysis/publish_baseline_matrix.py",
+  "archive_receipts": "archive-verification.json",
+  "source_runtime_check": "all five frozen input inventories verified before publication",
+  "scope": "metric/cache/accounting audit, deterministic random/GA replay and model history visibility; not independent waveform resimulation or full surrogate-fit replay",
+  "packaging": "streamed exact-byte restoration; explicit 64 MiB shard bound; first 32 MiB attempt superseded before publication"
+}
