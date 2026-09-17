@@ -1,0 +1,81 @@
+{
+  "scope": "offline recorded-input and dataflow audit; no API calls or resimulation",
+  "pilot": {
+    "archive_sha256": "79685e60ffcbaca13d4fcf871dc01bbebb705e67786088aac395b5b395867b0f",
+    "witness_archive_sha256": "e77d6f6de8893e161a77142457fdd8e9eebec619ba6cdc3995c2d5567412acae",
+    "witness_programs_compared": 216,
+    "counts": {
+      "cells": 8,
+      "payloads": 82,
+      "history_rows": 527,
+      "notebook_notes": 468,
+      "responses_decoded": 79,
+      "trials": 678,
+      "cache_records_checked": 677,
+      "initialization_programs": 16
+    },
+    "exact_witness_matches": [],
+    "witness_matches_in_history": [],
+    "same_opcode_shape_matches": [],
+    "shape_match_interpretation": "Descriptive, not a leakage test; shared DSL admits common shapes.",
+    "reconstruction_sources": [
+      "backends.py",
+      "ibex/context.py",
+      "ibex/prompt.py",
+      "ibex/notebook.py",
+      "ibex/program.py",
+      "ibex/contract.py",
+      "ibex/native_schema.py"
+    ]
+  },
+  "migration": {
+    "witness_archive_sha256": "778522f33a07b34fb3cb5766eb690477688faeb6386666f701786c290934e03d",
+    "witness_programs_compared": 27,
+    "calls": [
+      {
+        "model": "gemini-3.5-flash-lite",
+        "turn": 0,
+        "history_rows": 0,
+        "payload_sha256": "61489590614a81f6d5f67b4f2aa51a7771bbef9682bccc88280c1e93af19315e",
+        "response_sha256": "64a1ec375bb56d06fca3f4173d4fdd87e91ceab20b08c2b42e038304026a208a",
+        "cache_hit": false,
+        "canonical_witness_matches": [
+          "cache/fa75f97b84349f4dd7d55bc384b5ba6db10fe1b33dd9a122d77e4a7ad9a63900/attempt-001/program.json.gz"
+        ]
+      },
+      {
+        "model": "gemini-3.5-flash-lite",
+        "turn": 1,
+        "history_rows": 1,
+        "payload_sha256": "8b175ae19c7412905b8119d4ae03b12f57316992540e5bc6bd2da73d9b637b9d",
+        "response_sha256": "6a4f1c846a55890c64ed931b680532f9697c0d6f1b027b8898281d5506247629",
+        "cache_hit": false,
+        "canonical_witness_matches": []
+      },
+      {
+        "model": "gemini-3.8-flash",
+        "turn": 0,
+        "history_rows": 0,
+        "payload_sha256": "61489590614a81f6d5f67b4f2aa51a7771bbef9682bccc88280c1e93af19315e",
+        "response_sha256": "345777ae7e77a33191c57be9c2594c1e6b6fcbe77dff52af156245ff7e286817",
+        "cache_hit": false,
+        "canonical_witness_matches": []
+      },
+      {
+        "model": "gemini-3.8-flash",
+        "turn": 1,
+        "history_rows": 1,
+        "payload_sha256": "af1783e41a1b05315d9ff5084eec748639d81b1e193fe0b104dc605116d77104",
+        "response_sha256": "9191295f97b0756bda9dca54e40e7903533be714c5cdbad608a7bd2a37accc28",
+        "cache_hit": false,
+        "canonical_witness_matches": []
+      }
+    ]
+  },
+  "limits": [
+    "Not an independent waveform or binary-integrity audit.",
+    "Witness comparison covers 216 Ibex mixture candidates and 27 AES refinement programs, not every historical bank.",
+    "Shared grammar and hardware hints can make tasks easy without leaking answers.",
+    "Historical and future studies are not automatically certified."
+  ]
+}
