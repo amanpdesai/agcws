@@ -1,5 +1,17 @@
 # Decision log
 
+## 2026-09-17 — Resume two budget-stopped designs without raising caps
+
+User authorized correcting accounting and resuming Mesh/RedMulE. Preserve the
+original manifest and every proposal/response/trial. For a successful response
+with an available prompt-token count but unknown reasoning usage, reserve the
+reported input plus the unchanged full output allowance, not 200,000 hypothetical
+input tokens. Missing reasoning is still unknown, never silently zero.
+Use the disclosed accounting-only maintenance wrapper; original runtime source
+hashes and per-design $120 limits remain unchanged. API errors and unresolved
+requests retain full reservations. Keep the failed launch evidence and hash
+every pre-resume checkpoint. Details: [resume audit](../results/flash_budget_resume_v1/README.md).
+
 ## 2026-09-17 — Matched Flash-Lite preparation without rerunning CPU controls
 
 User selected `gemini-3.5-flash-lite`, the tested economy migration model.

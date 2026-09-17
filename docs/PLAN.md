@@ -1,5 +1,14 @@
 # Plan
 
+## Flash continuation — accounting-only resume (2026-09-17)
+
+AES, DMA and Ibex finished. Mesh (82/90) and RedMulE (38/90) stopped at
+conservative reservation caps. User authorized reconciliation and resume.
+Keep caps at $120/design: the observed-input/full-output reservation adjustment
+releases unused input allowances without treating missing reasoning as zero.
+No task/model/evaluator change or reset of prior spend. Preserve originals and
+resume checkpoints using the [audited wrapper](../results/flash_budget_resume_v1/README.md).
+
 ## Next launch preparation — matched Flash-Lite (2026-09-17)
 
 User selected `gemini-3.5-flash-lite`. Prepare only; no paid launch yet.
