@@ -1,5 +1,9 @@
 # Five-design Flash study v1 — prepared, not authorized to run
 
+**Superseded launch configuration.** Its targets, tolerance and model predate
+the completed baseline matrix. Use [FLASH_MATCHED_V1.md](FLASH_MATCHED_V1.md)
+and its separately prepared plans instead. Retained for historical provenance.
+
 Prospective configuration, 2026-09-14. Execution requires the completed readiness
 audit and a separate user launch approval. Do not treat this document as a
 completion receipt. Preserve all preceding smoke failures and costs.

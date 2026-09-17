@@ -5,10 +5,21 @@ from agcws.pipeline.provider_schema import VERSION, grammar
 MODELS = {
     "pro-4096": "gemini-2.5-pro",
     "flash-4096": "gemini-2.5-flash",
+    "flash-lite-medium": "gemini-3.5-flash-lite",
 }
 
 
 def settings(arm):
+    if arm == "flash-lite-medium":
+        return {
+            "model": MODELS[arm], "thinking_level": "MEDIUM",
+            "temperature": 0.7, "top_p": 0.95, "max_output_tokens": 8192,
+            "response_schema_projection": VERSION,
+            "input_usd_per_million": 0.30, "output_usd_per_million": 2.50,
+            "pricing_verified": "2026-09-17",
+            "transport": {"version": "vertex-deadline-v1", "timeout_ms": 600000,
+                          "sdk_attempts": 1},
+        }
     return {
         "model": MODELS[arm],
         "thinking_budget": 4096,
@@ -24,7 +35,7 @@ def settings(arm):
 def cost(arm, tokens_in, tokens_out):
     if arm not in MODELS or min(tokens_in, tokens_out) < 0:
         raise ValueError("known model and nonnegative token counts required")
-    if arm == "flash-4096":
+    if arm in ("flash-4096", "flash-lite-medium"):
         incoming, outgoing = 0.3, 2.5
     elif tokens_in <= 200000:
         incoming, outgoing = 1.25, 10.0
@@ -81,7 +92,9 @@ def generate(project, arm, contents, schema):
             config={
                 "temperature": s["temperature"],
                 "top_p": s["top_p"],
-                "thinking_config": {"thinking_budget": s["thinking_budget"]},
+                "thinking_config": ({"thinking_level": s["thinking_level"]}
+                                    if "thinking_level" in s else
+                                    {"thinking_budget": s["thinking_budget"]}),
                 "max_output_tokens": s["max_output_tokens"],
                 "response_mime_type": "application/json",
                 "response_json_schema": grammar(schema),

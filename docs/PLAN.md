@@ -1,5 +1,13 @@
 # Plan
 
+## Next launch preparation — matched Flash-Lite (2026-09-17)
+
+User selected `gemini-3.5-flash-lite`. Prepare only; no paid launch yet.
+Use [the matched protocol](FLASH_MATCHED_V1.md): 450 agent-only cells on the
+published baseline contracts, seeds 9100–9109, batch two, 128 slots, max-bin
+≤0.05. Old `full-flash-v1-plan` files are superseded and must not be launched.
+Reuse all three completed CPU arms. Proposed spend caps need launch approval.
+
 ## Current stopping point — baseline matrix completed (2026-09-17)
 
 The user authorized execution after the preparation below. All 1,350 CPU cells

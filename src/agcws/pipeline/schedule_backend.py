@@ -17,7 +17,8 @@ from agcws.workloads.schedule import ScheduleContract, expand_schedule, random_s
 class ScheduleTemporal:
     binary_path = None
     contract = ScheduleContract(64, 6000)
-    allowed_policies = ("random", "phase-random", "phase-ga", "phase-model", "flash-4096", "pro-4096")
+    allowed_policies = ("random", "phase-random", "phase-ga", "phase-model", "flash-4096", "pro-4096",
+                        "flash-lite-medium")
 
     def adapter(self):
         raise NotImplementedError
