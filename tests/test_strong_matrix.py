@@ -49,7 +49,7 @@ def test_strong_transport_and_cost(monkeypatch):
     response = model.generate("fake", ARM, "history", {"type": "object"})
     assert calls[0]["model"] == "gemini-3.8-flash"
     assert calls[0]["config"]["thinking_config"] == {"thinking_level": "MEDIUM"}
-    assert calls[0]["config"]["max_output_tokens"] == 8192
+    assert calls[0]["config"]["max_output_tokens"] == 32768
     assert "tools" not in calls[0]["config"]
     assert response["estimated_usd"] == pytest.approx(.0002625)
     assert model.settings("pro-4096")["model"] == "gemini-2.5-pro"
@@ -59,16 +59,16 @@ def test_strong_unknown_usage_and_resume(tmp_path, monkeypatch):
     from tests.test_budget_resume import unknown
 
     response = unknown()
-    reserve = model.cost(ARM, 200000, 8192)
-    assert reserve == pytest.approx(.18072)
-    assert reservation_bound(response, reserve, ARM) == pytest.approx(.03372)
+    reserve = model.cost(ARM, 200000, 32768)
+    assert reserve == pytest.approx(.27288)
+    assert reservation_bound(response, reserve, ARM) == pytest.approx(.12588)
     monkeypatch.setenv("AGCWS_GCP_PROJECT", "fake")
     monkeypatch.setattr("agcws.pipeline.meter.generate", lambda *args: copy.deepcopy(response))
     path = tmp_path / "panel/t/9100" / ARM / "batches/003"
     meter = ReconciledMeter(tmp_path, 120)
     meter.call(path, ARM, "history", {}, {})
-    assert meter.liability == pytest.approx(.03372)
-    assert ReconciledMeter(tmp_path, 120).liability == pytest.approx(.03372)
+    assert meter.liability == pytest.approx(.12588)
+    assert ReconciledMeter(tmp_path, 120).liability == pytest.approx(.12588)
 
 
 def test_launch_refuses_unapproved_or_changed_support(tmp_path):

@@ -15,7 +15,7 @@ from agcws.provenance import file_sha256
 from maintenance.prepare_flash_matrix import DESIGNS, PROVIDER_ONLY, matched
 from maintenance.resume_budget import VERSION, ReconciledMeter
 
-ARM = "strong-medium"
+ARM = "strong-medium-32k"
 SUPPORT = ("maintenance/strong_matrix.py", "maintenance/resume_budget.py",
            "maintenance/prepare_flash_matrix.py")
 
@@ -37,7 +37,7 @@ def prepare(directory, evidence, smoke=False):
         reference_path = ROOT / f"results/{design}/baselines-model-v1-plan/manifest.json"
         reference = read(reference_path)
         spec = copy.deepcopy(reference["spec"])
-        spec.update(name=f"{design}-strong-{'smoke' if smoke else 'matched'}-v1",
+        spec.update(name=f"{design}-strong-{'smoke' if smoke else 'matched'}-v2",
                     policies=[ARM], cost_ceiling_usd=2 if smoke else 120)
         if smoke:
             spec.update(targets={"confirmation-alternating": spec["targets"]["confirmation-alternating"]},
@@ -78,7 +78,7 @@ def prepare(directory, evidence, smoke=False):
               "scope": "smoke" if smoke else "full-matched",
               "ceiling_per_design_usd": 2 if smoke else 120,
               "maximum_calls": 10 if smoke else 28350,
-              "full_input_output_reservation_per_call_usd": cost(ARM, 200000, 8192)}
+              "full_input_output_reservation_per_call_usd": cost(ARM, 200000, settings(ARM)["max_output_tokens"])}
     write(evidence / "preparation.json", result)
     return result
 
