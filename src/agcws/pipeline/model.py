@@ -6,17 +6,19 @@ MODELS = {
     "pro-4096": "gemini-2.5-pro",
     "flash-4096": "gemini-2.5-flash",
     "flash-lite-medium": "gemini-3.5-flash-lite",
+    "strong-medium": "gemini-3.8-flash",
 }
 
 
 def settings(arm):
-    if arm == "flash-lite-medium":
+    if arm in ("flash-lite-medium", "strong-medium"):
         return {
             "model": MODELS[arm], "thinking_level": "MEDIUM",
             "temperature": 0.7, "top_p": 0.95, "max_output_tokens": 8192,
             "response_schema_projection": VERSION,
-            "input_usd_per_million": 0.30, "output_usd_per_million": 2.50,
-            "pricing_verified": "2026-09-17",
+            "input_usd_per_million": 0.75 if arm == "strong-medium" else 0.30,
+            "output_usd_per_million": 3.75 if arm == "strong-medium" else 2.50,
+            "pricing_verified": "2026-09-18" if arm == "strong-medium" else "2026-09-17",
             "transport": {"version": "vertex-deadline-v1", "timeout_ms": 600000,
                           "sdk_attempts": 1},
         }
@@ -35,7 +37,9 @@ def settings(arm):
 def cost(arm, tokens_in, tokens_out):
     if arm not in MODELS or min(tokens_in, tokens_out) < 0:
         raise ValueError("known model and nonnegative token counts required")
-    if arm in ("flash-4096", "flash-lite-medium"):
+    if arm == "strong-medium":
+        incoming, outgoing = 0.75, 3.75
+    elif arm in ("flash-4096", "flash-lite-medium"):
         incoming, outgoing = 0.3, 2.5
     elif tokens_in <= 200000:
         incoming, outgoing = 1.25, 10.0

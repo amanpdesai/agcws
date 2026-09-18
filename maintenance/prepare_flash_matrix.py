@@ -19,7 +19,7 @@ PROVIDER_ONLY = {"src/agcws/pipeline/model.py", "src/agcws/pipeline/schedule_bac
 CONFIG_CHANGES = {"name", "policies", "cost_ceiling_usd"}
 
 
-def matched(reference, candidate):
+def matched(reference, candidate, arm=ARM):
     for field in set(reference["spec"]) | set(candidate["spec"]):
         if field not in CONFIG_CHANGES and reference["spec"].get(field) != candidate["spec"].get(field):
             raise ValueError(f"task contract changed: {field}")
@@ -30,7 +30,7 @@ def matched(reference, candidate):
                if reference["sources"].get(p) != candidate["sources"].get(p)}
     if changed - PROVIDER_ONLY:
         raise ValueError(f"non-provider sources changed: {sorted(changed - PROVIDER_ONLY)}")
-    if candidate["spec"]["policies"] != [ARM] or candidate["models"] != {ARM: settings(ARM)}:
+    if candidate["spec"]["policies"] != [arm] or candidate["models"] != {arm: settings(arm)}:
         raise ValueError("unexpected model arm or settings")
     return {p: {"baseline": reference["sources"][p], "flash": candidate["sources"][p]}
             for p in sorted(changed)}
