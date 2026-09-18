@@ -1,6 +1,16 @@
 # Plan
 
-## Current slice — freeze Gemini 3.8 matched panel (2026-09-18)
+## Current slice — approved MEDIUM/64k readiness follow-up (2026-09-18)
+
+User selected 65536 output tokens, retaining MEDIUM. The
+[v3 protocol](STRONG_MATCHED_V3.md) versions this explicitly and adds cross-design
+provider admission (one API call at a time, simulations remain parallel).
+Preserve both failed smokes. Prepare the same 450 cells, test the separate
+ten-call smoke and replay audit. Stop before full launch; $600 in pause caps
+does not guarantee completion given measured reasoning usage. No new benchmark
+targets or prompt tuning in this slice.
+
+## Previous slice — blocked Gemini 3.8 v2 panel (2026-09-18)
 
 **Blocked after v2 smoke:** four designs generated valid workloads, but Ibex
 hit MAX_TOKENS and a provider 429. No full runs launched. Await user's choice

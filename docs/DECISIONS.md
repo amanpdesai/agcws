@@ -1,5 +1,18 @@
 # Decision log
 
+## 2026-09-18 — User approves MEDIUM/65536; serialize provider admission
+
+V2 removed most truncation, but Ibex exhausted 32768 tokens, then received a
+server-side 429. User explicitly selected keeping MEDIUM and raising the
+combined reasoning/output ceiling to 65536 rather than reducing reasoning.
+New arm `strong-medium-64k`, v3 manifests; v1/v2 remain failed evidence.
+Serialize provider calls across sibling design processes with an OS lock,
+leaving simulation concurrency intact. This reduces concurrent demand; it
+does not prove the cause of the 429 or guarantee quota availability. Freeze
+admission and accounting code, record queue wait, retain charged failures.
+The price is unchanged per token; total usage, latency and liability may rise.
+Full launch remains separately authorized, with explicit cost uncertainty.
+
 ## 2026-09-18 — Version strong-model output allowance after smoke truncation
 
 **Decision.** Register Gemini 3.8 Flash explicitly, retaining old 2.5 Pro and

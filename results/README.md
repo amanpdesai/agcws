@@ -11,6 +11,9 @@ remain the original prospective configuration, not a separate result.
 Prepared but blocked by smoke failures, not launched:
 [matched Gemini 3.8 strong-model panel](strong_matched_v2_plan/README.md).
 
+Current follow-up, prepared but not launched:
+[user-approved MEDIUM/64k panel](strong_matched_v3_plan/README.md).
+
 New evidence uses per-design entry points, then frozen study versions and labeled
 splits. See [AES](aes/README.md), [AXI DMA](dma/README.md),
 [BaseJump mesh](mesh/README.md) and [RedMulE](redmule/README.md). Large studies use bounded compressed

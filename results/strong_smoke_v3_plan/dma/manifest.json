@@ -1,0 +1,524 @@
+{
+  "version": 1,
+  "spec": {
+    "name": "dma-strong-smoke-v3",
+    "domain": "dma-temporal",
+    "targets": {
+      "confirmation-alternating": [
+        0.0,
+        40.111328125,
+        0.0,
+        40.111328125,
+        0.0,
+        40.111328125,
+        0.0,
+        40.111328125
+      ]
+    },
+    "seeds": [
+      9100
+    ],
+    "policies": [
+      "strong-medium-64k"
+    ],
+    "budget": 6,
+    "batch_size": 2,
+    "scale": 47.93302951388888,
+    "tolerance": 0.05,
+    "binary": null,
+    "image": "sha256:14eaf03a061ed5ce89eb4ecceefdd3b52a5e5efe37505d4c59f2b6ef49d9085d",
+    "max_workers": 1,
+    "cost_ceiling_usd": 2,
+    "stop_on_success": false,
+    "success_metric": "max-bin",
+    "provider_workers": 1
+  },
+  "sources": {
+    "docker/run.sh": "f67af31a525f04914aabc779e7e739ac165b5fd624e6d85bf08edc35820523b5",
+    "scripts/parse_vcd_activity.py": "d89c6f4285b9a45502bfaf787ede5bab635a7f1c569cd93f8ecfff2cc2a053b5",
+    "scripts/run_axi_dma_coupled.sh": "84a59ef76e24809d11d7a7ee4d84c6e7e015dfdf362d979afbdea86afcc02868",
+    "src/agcws/__init__.py": "8bcd0df8f3dd775ad1c76bdf46a824a7127b185ea64ddb089b9abfab3175572a",
+    "src/agcws/adapters/__init__.py": "832206b42b083c9325e46b7d5d243f58a2562fa8001b9d3a39cd58c03b7984e2",
+    "src/agcws/adapters/aes/__init__.py": "ba84a635a7958973eb73601a1cfb64766dada022897b51caebedcaa16cc36458",
+    "src/agcws/adapters/aes/adapter.py": "1cfa04d411edcf8e299e52ea740bd63e448d35fbea0c07fe3c9603abc233414d",
+    "src/agcws/adapters/aes/temporal.py": "7f5fb74304b9557abcb84e9a0f2e851fb6bec9721065b9a79f3a796633aab049",
+    "src/agcws/adapters/aes/transactions.py": "52c48a394f3028b6772348cb78ad2e2fb708178b6e4cef449ac867dde94db489",
+    "src/agcws/adapters/axi_dma/__init__.py": "b301d0b0e46478f1e72aa3ad11e3f32ed38aa9f9b04b8823688d363b8fe3d5fe",
+    "src/agcws/adapters/axi_dma/adapter.py": "20728f3bce9edd11abe10a87cfe80db5cfa14ec18a7c38f644f41d119039cd1d",
+    "src/agcws/adapters/axi_dma/pipelined.py": "6668ea2a28a0a21227f224166ba6286b3d78d4478d4e9fec039c27deb0f0c6f9",
+    "src/agcws/adapters/axi_dma/runtime.py": "d77189195bc2a28cacf306921c955d3caf4ad129968f5db4872dc0d01b0efffe",
+    "src/agcws/adapters/axi_dma/temporal.py": "8a4423ada39898a603ab8cbf1cd3eea891a440d30ea12787530d06701ad27562",
+    "src/agcws/adapters/base.py": "8a31f15f539a87f7bd3aba69607ea11166e868b3913c04caff8f64fb308430e1",
+    "src/agcws/adapters/ibex/__init__.py": "c80e7fa5e4b643d45ec9afebe201e31a401ef0576d039c845adfb732abdd5edc",
+    "src/agcws/adapters/ibex/adapter.py": "7a6bc499d31ee843d5238dccf52531f64e9525d41cb8464e7816bffd66f6229a",
+    "src/agcws/adapters/mesh.py": "1ebc7be97ebfdaeea1f3c39786e76d8129d9a0dd57cdfb130f8240cd500e43c9",
+    "src/agcws/adapters/redmule.py": "06963dcfd589a14b5fdd21ca1922cae2b356d72c6645638d5020dc5b69375b10",
+    "src/agcws/adapters/temporal.py": "dd8c25e21f0b2709b6e5c2b02ccb8a5fb798c53af7f7092b06f2585a57cdb7a8",
+    "src/agcws/analysis/__init__.py": "380f47be563ba80f847b27bc09189f5d8ccaa5148102cb4387cf8becfaf03027",
+    "src/agcws/analysis/aggregate.py": "7eaba64f9c98a7cc9d83acac909a82e03424ca74185ce1c48ed97502f8895e12",
+    "src/agcws/analysis/controller_selection.py": "7e847d00708f7a7bdb671247114ba017d6e2d02d19c1c171c54aa085a6be44fa",
+    "src/agcws/analysis/inference.py": "d66116d7884f7c9df624f4277154de707c9c9bec9616315d5fe70f9f11185eb7",
+    "src/agcws/analysis/ledger_audit.py": "60ce1fadd951c4572617b7ab5b04273e896f115b77325fe535534e9f3e4c1faf",
+    "src/agcws/analysis/metrics.py": "53313cc19482f96a65c148fb7a21ee4960d28df5a1ce48f83ffa9d7442455d20",
+    "src/agcws/analysis/rank_agreement.py": "08417f4a572cbd1935d81572768e7fe197ac59636cda69058bd4df4bfc2b2620",
+    "src/agcws/analysis/semantic_comparison.py": "f8282d147fd05af15f7a65fea227d92a9c8b788193af7e235072e304b106847e",
+    "src/agcws/config.py": "4713aa413b5e08b0b382fef6c52be3275dd6f13471220f5cf38acddca306be26",
+    "src/agcws/experiments/__init__.py": "abd8294c8deba6f1083717f7c47507099518bfc8673cd2831486147bbfb772cc",
+    "src/agcws/experiments/calibration.py": "33bf513939958c76d97f3006cdcf268b42e4e4793cd307bed372696650f8258f",
+    "src/agcws/experiments/freeze.py": "44bac7d2377a693737062dec1fb1d7ddb20432eb768c9ece9af32c8b02d60d4b",
+    "src/agcws/experiments/provenance.py": "7834e9e9f28ecbb873bd3411c8b7b4bafd2b3ff0ebc6e4694bf8035af7e5d05c",
+    "src/agcws/goals/__init__.py": "f75c8ff1d35a3083a55949316fcc8d9f19cec71b7e51785412706387c837ec86",
+    "src/agcws/goals/loss.py": "8f47e27e3d68da03390864ecf0aede40dc1c23743329e047a5644e83e9c8195c",
+    "src/agcws/goals/schema.py": "f8beb1dc36408543252b3b254c794c33e9a0d4a8f5b99c8b8291984cce0ced37",
+    "src/agcws/nodes/__init__.py": "045861ce1eeab591d9f352aaca126f97ca0dbf22b6e4df6d4cde88a5ec16def8",
+    "src/agcws/nodes/activity.py": "f0c10e02db9b49991c37667ea47f936cacf4e55d26269fe9c4205931f166a580",
+    "src/agcws/nodes/artifacts.py": "576431ee82f26c56170682437e3e3fbc6cd7eea30dedb8ea26b1a0dc520aefae",
+    "src/agcws/nodes/bit_activity.py": "b94d47205a656f72dd6788797e06c9fe64cde97546cc5ed1363b01228527ba29",
+    "src/agcws/nodes/commands.py": "7cd15fd109a44376384a08a4a8ad7a9ee948223181b27a4e6388a33fdd38f29e",
+    "src/agcws/nodes/coverage.py": "d6e8f36845e788887e9b7d5f30e7d73631600fd239f3903bdfdddd92950db05a",
+    "src/agcws/nodes/evaluate.py": "ffb2bc2933582bf5c29e20b09e3347f99dbf80f005d36eae2620586b304935b2",
+    "src/agcws/nodes/evaluator.py": "c1847771b165b82716633321bcc108ef4d137b05be3da092d7c4a138ceb7fe6a",
+    "src/agcws/nodes/power.py": "e76580ba459b05c774978801647340612875009ab39a153536dcdd53e211ab28",
+    "src/agcws/nodes/simulate.py": "e2d86bd20789c8f7ffd9f016487df97f4ec9e8bd0922f39ff4b2b68f71f7c6d6",
+    "src/agcws/nodes/synthesize.py": "8df1d77f0f2fedc4747985ecceebec7990fbe9d31969bf8b3111c612e40d9c57",
+    "src/agcws/nodes/validation.py": "984fbb2e0ef34fb2b7304d085d591a9932640e497dffd9e51d64c53c0a181364",
+    "src/agcws/pipeline/__init__.py": "361abf883bf498c0e2fbc0176de629c58fad6be7fa3e383be8c45c130b90868c",
+    "src/agcws/pipeline/__main__.py": "70800a0b5e9185e324e2c7341965c78aed182b38acfbdef1f2a2795abe63b266",
+    "src/agcws/pipeline/aes.py": "872ad116431fa8913ea772b920881194c9af821565a67ea2a023d85f1aa173b7",
+    "src/agcws/pipeline/archive.py": "a8247137747283d3270d3afcd2d5a5ac04183dcff5fc78279b8c6fdc31287af5",
+    "src/agcws/pipeline/backends.py": "c226f4ced38346bc00a8cec4866c04184e12b4eccb78a401077cf21cf8e108b2",
+    "src/agcws/pipeline/build.py": "d72fe7520b91e58036d972803d587140262400cf4f4f564e5638ed503a75b4ea",
+    "src/agcws/pipeline/calibration.py": "63101ed3f88496bf1aa0d9704e3b56d67dcdf07280b2d46614905149ba5d716c",
+    "src/agcws/pipeline/dma.py": "f79b67693b3fcf74152c5e459fbd4971d6b50a92e2743a8d5da33205a3ab2e9a",
+    "src/agcws/pipeline/engine.py": "2a15a30e6e063c9943fdfb41d9406c0709a8a24697260cfd5acb2681d3311708",
+    "src/agcws/pipeline/evidence.py": "8dab71e90cbc7d165ba4aa419cba1cb2fffa4bfcaed610574df6b09d00efd817",
+    "src/agcws/pipeline/ibex/__init__.py": "361abf883bf498c0e2fbc0176de629c58fad6be7fa3e383be8c45c130b90868c",
+    "src/agcws/pipeline/ibex/activity.py": "8119fc2f398c79b9530d2b19321f15dee870c68219825d7face8977e7204f1b2",
+    "src/agcws/pipeline/ibex/cache.py": "5a1820b47835587c054d2b933e61b16db7ebe13a916f53c94e0830f15b590a36",
+    "src/agcws/pipeline/ibex/compiler.py": "ac93303097f18d9d28d946f3e526a3c2219abdeed66d249df78fddf98b4d48fd",
+    "src/agcws/pipeline/ibex/context.py": "1e398156de290d37d1735320f2d507d62333c176fa35fd35e0e74f67e574a3f9",
+    "src/agcws/pipeline/ibex/contract.py": "2f3a31c85d4cd1ced73ea9f76414d0b40335da093099864d6b51d383a76d70aa",
+    "src/agcws/pipeline/ibex/domain.py": "a2035c6e4a2466e55da37e025e13963a0ec71035a1929d6fa950a8fed8098911",
+    "src/agcws/pipeline/ibex/evaluate.py": "591a4a5b86c3e0c51f1eb0ff97075bbc1aaeb4ad5649e39b2fc2a189a4f7f7be",
+    "src/agcws/pipeline/ibex/events.py": "8b8dcdfefa4c67fea12bcf5719f1be2d8c19dfb7681179f96c124ec41ef8bfeb",
+    "src/agcws/pipeline/ibex/feedback.py": "70b273a6cd6dfe98006f2293ee64fff7fb8f2332e095e950c4f07a90aee69a2f",
+    "src/agcws/pipeline/ibex/native_schema.py": "e185271d197bde04ae681b0e9b09ded7d1b12f16327f23a7df6ac250b385c2fb",
+    "src/agcws/pipeline/ibex/notebook.py": "79ac01c8323e02350d803c2129d841bd30542f4137a850c5ac147a986e8eda89",
+    "src/agcws/pipeline/ibex/program.py": "ebadd746b5e8f2035997c5c6a2ef86473810dc839983d2b19fa365af7966fb28",
+    "src/agcws/pipeline/ibex/prompt.py": "5399b2b3036f913870a21629b2497d095ab1751333297089453749af8504ebcb",
+    "src/agcws/pipeline/mesh.py": "51e732759440cbe1d27d6c9f7cca992b9f99c12edc2e34c8cfd51970306d297d",
+    "src/agcws/pipeline/meter.py": "beb6d94796d33b028b80b98d5ee9c594f8f788579c233fdc4e10c122b4a6cb8e",
+    "src/agcws/pipeline/metrics.py": "40bd464d897d5ef11acf9ef11e2583ef28b919602bc3e6b7561774621115d1d8",
+    "src/agcws/pipeline/model.py": "354d008d94c7475ddfeb91c6ecd211a1b4cee98499ddc7114a9f2dbd94406b18",
+    "src/agcws/pipeline/policies/__init__.py": "361abf883bf498c0e2fbc0176de629c58fad6be7fa3e383be8c45c130b90868c",
+    "src/agcws/pipeline/policies/controls.py": "d50e668cce0f10e18ab3011eefd580be8fb6a4589809ca0db68cdad5b29bc6c2",
+    "src/agcws/pipeline/policies/dispatch.py": "dd1dc5c2b5f33a6a6fdd547c23dc8e1d953c0af65ff39a1cd2f9b977e9669a5e",
+    "src/agcws/pipeline/policies/gest.py": "46e0053e5a8e425620b3042dfc4f42f89b718000af4e559d1d22f1c34f6ea58d",
+    "src/agcws/pipeline/policies/phase.py": "8b38119b47089ed3d7d3745e3d75e5cbdae2b18c17e392538d9b88e2010decce",
+    "src/agcws/pipeline/policies/screening.py": "e838ab8484ac894ef943dc41b44731d0dee8c7c172a4d1d66a1f6ef95edb5da8",
+    "src/agcws/pipeline/policies/surrogate.py": "cf47ae7e5d3d90b07011e27f25f4108408a8c7d529b6e1f5cef2387266abd0aa",
+    "src/agcws/pipeline/policies/temporal_model.py": "a6d2a450cd3cbefe87a8777b764598cd31b87824d076665b3ba7c44d00ae00e5",
+    "src/agcws/pipeline/provider_schema.py": "f205832a4b427f7872547c5a626621db3cb00da7be9595c27a12cbf304b71a93",
+    "src/agcws/pipeline/redmule.py": "b9e58f9e673f27c35e1339f117f9c931398caf28b4abe4d35ce6e04405ddc6d4",
+    "src/agcws/pipeline/retention.py": "0b787201f9566ea5775974f9727e0bec664ce381209da5fc0c4c7451e26544b0",
+    "src/agcws/pipeline/schedule_backend.py": "5c9b8189983a04546af4a0ecb7c5b86a639f2d46d4cae73dd6648d59cf89b4c9",
+    "src/agcws/pipeline/schedules.py": "64ee5c6e5449e9ac0349e618e5d7de01e4a44fdf9d4f3420a758e5c4cc6bd07d",
+    "src/agcws/pipeline/spec.py": "7090294a7ed8634f36d584f95500728867f7db10b309bb8e5edf375d381c8b74",
+    "src/agcws/pipeline/storage.py": "07a031e6c08bd72bd3c599e14318d57ce354c9f230cb18dff5fc05284c2bc139",
+    "src/agcws/pipeline/targets.py": "4793c6e14289dc4b91728ee5ec1f534a1212dd4dc57ae18b14e872d94565dbb6",
+    "src/agcws/policies/__init__.py": "0dd78bf9240f7b591b5ef908519b4fc9ed62944fc6302b91c684f94a544cb998",
+    "src/agcws/policies/agent.py": "2b16d3cc478e8fe2d249018f0a054424ee6866a9f014ed196096078e302926f8",
+    "src/agcws/policies/base.py": "f0d1ce0ba6409464b32ab0e1b1bc40c36b449f3f6181768b9be86902d81f7dc5",
+    "src/agcws/policies/coverage_guided.py": "74a533fd43e9e93e06dbacf5dc9a5dc40ec12bc87ea960bd50c6b75a8e248ff4",
+    "src/agcws/policies/evolutionary.py": "a04785fd542ef6c6c7d68126eaa95c7c4724e7801d8a94388de9f1777bbc2c38",
+    "src/agcws/policies/hybrid.py": "182a0717cef70ad3dbf1aeb1c66116a795a8686ececd6bd860374e360d58864c",
+    "src/agcws/policies/mutation.py": "a9f7152c97d6ef49dd1831df99b174fbf13c7d41648a3c95c3691e2457f9bfd8",
+    "src/agcws/policies/profile.py": "2c1d03d8ca4aceea13f73c2c8e49e1478404faebe3fe81dd42b96a584a9957b9",
+    "src/agcws/policies/prompt.py": "634540ad9bd1188d83aa0b277a434c67c88762064eea3ecd64e1cd793999f918",
+    "src/agcws/policies/random_search.py": "3c634cecbbf9dd137d884b86e22e2d73787999a2f7d99703dc1642ffbca50437",
+    "src/agcws/policies/scalar_edits.py": "0f8f33f7521e6d7a42fb0a9b5dbc68bc568b9c48338323b095bf31e119e86e63",
+    "src/agcws/policies/semantic.py": "188e7d82d09f9bd1c095c42e3126f7d762236f90e6afba6b149abcc4a8f60096",
+    "src/agcws/policies/semantic_catalog.py": "dcab300f6155def0a29bfce5d68b466e9c27cdacb0c2ff59bca32c5387911661",
+    "src/agcws/policies/semantic_edits.py": "5e8bb39b667f0402d9383eea017d72352a6782a98225b8957188e201a2342fdf",
+    "src/agcws/policies/source_context.py": "53c69932b6df5289e2c4aa50595cb4ae7b4a71e0420c7748f4b3483659fd8a30",
+    "src/agcws/policies/structural.py": "e05e3b8329a73be3476efcb155f4f447c6cb2d0a062cc742639ecc6c6661ce78",
+    "src/agcws/policies/structural_agent.py": "20f6344a0adacee963b20a4cb9225f161bef73602553f577120bed357f554239",
+    "src/agcws/policies/structural_edit_agent.py": "065042983babc21e1c99e67dd86ed19ec8ae9d892e9cb53074d8298720735ea3",
+    "src/agcws/policies/structural_population.py": "09d7679aec55d7629640c2e5d2a16d9265d21688c9b58be7950d3a89afb6c7ba",
+    "src/agcws/policies/temporal_search.py": "ffaa6b1448a36a9a99f9e0e2fe7ccf1e639d6b20cf86e8b99ab53d8da2e07b41",
+    "src/agcws/policies/vertex.py": "5a59a937ac7ce1be1cd4b7de4ccb30bb574a639d9617e089ae6af9683034c951",
+    "src/agcws/provenance.py": "6857eda6486bd4efd1f163f8a5572bc0f8eab4fd69922203a17a1216c7195c2d",
+    "src/agcws/tasks.py": "1e9d3c71519961716fe55f485c1a77cd6ae3d42442a17c933315852e28e35bdd",
+    "src/agcws/telemetry/__init__.py": "95fb3261d735f46f5ff09278cdef5dd7b8fe0f043391e13bc37d75fabf57368a",
+    "src/agcws/telemetry/ledger.py": "d5ac2b3676871da1c8331b2841f04e38be79f31d9c7bd28a1485c656152db686",
+    "src/agcws/workloads/__init__.py": "471da9a870625bcfd75e59462e773d8abd19a84fc851286437cf2b2b885d5643",
+    "src/agcws/workloads/schedule.py": "1015d3cbe7e03f99c31146c59434324f4f63ae2a9ad1950cfd52f83f57a3341c",
+    "src/agcws/workloads/structural_edits.py": "e8c642b33904b15cc9b8389e1e381efe7eab089a78dc63fddb00641febad0e34",
+    "third_party/harnesses/axi_dma_coupled_tb.py": "d75e36573e2ea86454b1e8b2f6666d8930f6cc18ec2a3185f39e5e6df118bfec",
+    "third_party/harnesses/axi_dma_pipelined_tb.py": "15f0d0fbdc8a86e4672484896882af8e8506f53f2c35b66f928cdf078c2fbfc4",
+    "third_party/verilog-axi/rtl/arbiter.v": "a001507c82843e36e133dea75491fc044f56660fac0aff0127cf3afec7f927e0",
+    "third_party/verilog-axi/rtl/axi_adapter.v": "38f7a2ca6396fc95bcc74050b0298c8682dbd4b0a7b0b095b90d980ca73f7e9e",
+    "third_party/verilog-axi/rtl/axi_adapter_rd.v": "e9031d79a7699c1b7fa55400fa41106645d141f56615eacd0f5973cdc4459036",
+    "third_party/verilog-axi/rtl/axi_adapter_wr.v": "915b13883a1f13fd7b2c279186e5857778812802c52aea1580aacd804b82abe1",
+    "third_party/verilog-axi/rtl/axi_axil_adapter.v": "b3aec5057016d4cc8a7114b02d88b8d7cce8021c178741d310af3d93b0f9659e",
+    "third_party/verilog-axi/rtl/axi_axil_adapter_rd.v": "838caa3b52268f2c9c2778a30b899ebfa374ea5e11975681d613e37904d61cbe",
+    "third_party/verilog-axi/rtl/axi_axil_adapter_wr.v": "9f0ee91dd9b70e642e992262e8ff3151bb4ae52fc616f01d6964f28789cae0e2",
+    "third_party/verilog-axi/rtl/axi_cdma.v": "5fef148a3d21ede1f6e43eb7eac8b5a1a7cbb68a8ab76a2bd569a35d6e56c8e2",
+    "third_party/verilog-axi/rtl/axi_cdma_desc_mux.v": "9ea015e93946c6415f9ce87b4119e56dbb30db2ecb189dc8b8849dcb3fa3c5f7",
+    "third_party/verilog-axi/rtl/axi_crossbar.v": "f2e5177a8c8bbe4ed844554eece7abd207365a8a7a20796e0654e08362b51b3d",
+    "third_party/verilog-axi/rtl/axi_crossbar_addr.v": "5d0e1a5b885c6b271b864b64a834057496428147ce3c3ae633459251239048fb",
+    "third_party/verilog-axi/rtl/axi_crossbar_rd.v": "d42e9e3b8d94ba9e135cd3e5841ee570dce2cd15d50e7ca87621c8eca246fe98",
+    "third_party/verilog-axi/rtl/axi_crossbar_wr.v": "0892781788371df9d3449608d342542269eb05efd0b6827fdea575d538368816",
+    "third_party/verilog-axi/rtl/axi_dma.v": "6063279cc0ae29d663108dd7e1aab17fa1b8143ca7f98dfb802efd2c76b0d6b6",
+    "third_party/verilog-axi/rtl/axi_dma_desc_mux.v": "5ab36d7829d1b3ee3c56944b6299cc10eae6c3ed4394d027ce4f22baedee0537",
+    "third_party/verilog-axi/rtl/axi_dma_rd.v": "853ff3aedc44ec0c12ef3ae8b84d7559800d372f76832c7c133ed5eecac61dd8",
+    "third_party/verilog-axi/rtl/axi_dma_wr.v": "91b24115e3a5940a6057d06554fb5c61594a22fc71391e871e5c14f1e21ea0b2",
+    "third_party/verilog-axi/rtl/axi_dp_ram.v": "e7c5e853a1cac5a79e057ccbb8ea25f5335bfc5c061c95edf378d7f52ce4da43",
+    "third_party/verilog-axi/rtl/axi_fifo.v": "bae5ea55dcd8c145a56d75931c555697d284a5c7972c0914ac12df4a452cc71d",
+    "third_party/verilog-axi/rtl/axi_fifo_rd.v": "ecdb21c322732e8e185c6a1408438565d6990f852a8f271b5442e878174a20aa",
+    "third_party/verilog-axi/rtl/axi_fifo_wr.v": "e0f06c5c6e3deae0b764e85319e16395c7b2e428b7419853c264129350df67ca",
+    "third_party/verilog-axi/rtl/axi_interconnect.v": "2a06ac654ea73fc960b24922466cb50990584a8318959bea3912cefb0bbf6e65",
+    "third_party/verilog-axi/rtl/axi_ram.v": "2eb669f3cd1fd912a74c024df3bea5765a3599eead1a007c63f19b6b185d55c4",
+    "third_party/verilog-axi/rtl/axi_ram_rd_if.v": "a7e81cb85d1c922b29c01ac9c3570f8cebc16e676fd0f9df3cbb37443a394a3d",
+    "third_party/verilog-axi/rtl/axi_ram_wr_if.v": "cec0682f902f11d61c852812426ffa61417d281b82df10625cbfafd621209743",
+    "third_party/verilog-axi/rtl/axi_ram_wr_rd_if.v": "36997f5e6de6accab4211704b25c97a5a53319004d2046fe93b1b7d44edb68a2",
+    "third_party/verilog-axi/rtl/axi_register.v": "76eea19cf4967cfeb40cb4c0f10de3e20b70e841a79271134de685df7e91e3a2",
+    "third_party/verilog-axi/rtl/axi_register_rd.v": "63f1bd6f9d72ae28643fd7af3a5d5bcb05d45cbfb290c59c120c327ba49aa575",
+    "third_party/verilog-axi/rtl/axi_register_wr.v": "02dd26f56ee04ad834a28e02ef2726852ab527fb23c3a88b377f3ce55a719c4b",
+    "third_party/verilog-axi/rtl/axi_vfifo.v": "1fed2250a36b21275d22bd05eeb3ce6185c38bdfbb367c5fa862e374698bbee6",
+    "third_party/verilog-axi/rtl/axi_vfifo_dec.v": "c8f86151e2721bd9c4e96e9845c8efccbbeceffb5ec0df0949ab0a6febc7ed56",
+    "third_party/verilog-axi/rtl/axi_vfifo_enc.v": "ec401dd8d0f29e6bf816c4709bb2b9e9afc89ec4eb046cbcb23b2db6abdc46fa",
+    "third_party/verilog-axi/rtl/axi_vfifo_raw.v": "3ee0d011b2d769f58254be0e53ad0406222f2813f063e346c62a2b6b4fc74806",
+    "third_party/verilog-axi/rtl/axi_vfifo_raw_rd.v": "3173828129ebb045f8127d5658469f7aef1bae58c065f8b3b3fffb86684901a5",
+    "third_party/verilog-axi/rtl/axi_vfifo_raw_wr.v": "3d9161cd40ae9697bedf1af27de74d18b97b0321efd9da0a3e4ef7f2ce851ca3",
+    "third_party/verilog-axi/rtl/axil_adapter.v": "7bc9936dc5c19d42397b638397064aa3ba51906c2cfbf1200d80a8f28ddaea26",
+    "third_party/verilog-axi/rtl/axil_adapter_rd.v": "8d79906e62200be851fb4eead9f094b6598a728ad729c1fddfcdce8402506dfa",
+    "third_party/verilog-axi/rtl/axil_adapter_wr.v": "1945be51e41c4c8b6c1e48af9d85f13cf761af5d1dfc42dad66cda40afc60f07",
+    "third_party/verilog-axi/rtl/axil_cdc.v": "fbb8018e34b7173e9a8de97c9e70be092abbb9a581dc83ec037561f401d11edb",
+    "third_party/verilog-axi/rtl/axil_cdc_rd.v": "49b0e680b3f69918f6cc0628bdda3fdaf0fb80914b43a0ae9638554b6dc905ec",
+    "third_party/verilog-axi/rtl/axil_cdc_wr.v": "a997547ca0b34c281be57184805ea5f91d74e29882017e36e718d8e9bb84a9ed",
+    "third_party/verilog-axi/rtl/axil_crossbar.v": "f48acdb965988038196bc0742f2f18174a1ecd35386a061f634bc64ccf6adb27",
+    "third_party/verilog-axi/rtl/axil_crossbar_addr.v": "a687cef2780b571b1a1b85746e4e093d0d7131d77bf9d6c610f333b0e27480c0",
+    "third_party/verilog-axi/rtl/axil_crossbar_rd.v": "b43f1a86164949e78e01e29864c9a2cad5bd442be8356231d2993beaeb3d4e99",
+    "third_party/verilog-axi/rtl/axil_crossbar_wr.v": "6b415d4d265a6694810913b67f62f93bd01128c59afe962d2784d45b9f310663",
+    "third_party/verilog-axi/rtl/axil_dp_ram.v": "5751657db197c9505aa2d57d64d32417e3a142c9fa725a013655f163d43fa33c",
+    "third_party/verilog-axi/rtl/axil_interconnect.v": "f685b0861d4d7a93a8ce4a938589d57e5fdd186204dea32436828496e1426efe",
+    "third_party/verilog-axi/rtl/axil_ram.v": "5a5ae8c10ab01d8ab3ed18418f4dadfa9c7cadb584ab14838a8d18ac4c3b5644",
+    "third_party/verilog-axi/rtl/axil_reg_if.v": "6aac73057466d4c16f79a5575f5fb4136b494d41cd63aaa83fefe90319006a39",
+    "third_party/verilog-axi/rtl/axil_reg_if_rd.v": "57f196a4e073bfe1b483c19127088006e1d5fdd33f514d4c6672ab08fd7d8359",
+    "third_party/verilog-axi/rtl/axil_reg_if_wr.v": "ec2f3d3d97b694dd4ff046d791fc7a0f95856c41049a107eac1aa3b3daab7412",
+    "third_party/verilog-axi/rtl/axil_register.v": "b58a923af874e3600727f214897cee868591487d8c00317603e5f232d9f2fa07",
+    "third_party/verilog-axi/rtl/axil_register_rd.v": "ae1a35af8be25b3fa0f2245ce0ca33287f566279ea5bcf04d822d417ffa5f463",
+    "third_party/verilog-axi/rtl/axil_register_wr.v": "af7fd3bc697c3e2d8e921105bf33fab62199a211e4aca031ba28bf08054b6563",
+    "third_party/verilog-axi/rtl/priority_encoder.v": "df28220d95b47df349a72803a9751aad331eb8e1435416e8686d00572a974dd5"
+  },
+  "runtime": {
+    "image_id": "sha256:14eaf03a061ed5ce89eb4ecceefdd3b52a5e5efe37505d4c59f2b6ef49d9085d",
+    "binary_sha256": null
+  },
+  "models": {
+    "strong-medium-64k": {
+      "model": "gemini-3.8-flash",
+      "thinking_level": "MEDIUM",
+      "temperature": 0.7,
+      "top_p": 0.95,
+      "max_output_tokens": 65536,
+      "response_schema_projection": "bounds-projection-v1",
+      "input_usd_per_million": 0.75,
+      "output_usd_per_million": 3.75,
+      "pricing_verified": "2026-09-18",
+      "transport": {
+        "version": "vertex-deadline-v1",
+        "timeout_ms": 600000,
+        "sdk_attempts": 1
+      }
+    }
+  },
+  "measurement_fingerprint": "f9c846125a1aa2a2b72d2e3cbb74bb9e426f2307a3b29518d0e7eee8c316de54",
+  "schema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "hypothesis",
+      "candidates"
+    ],
+    "properties": {
+      "hypothesis": {
+        "type": "string"
+      },
+      "candidates": {
+        "type": "array",
+        "minItems": 2,
+        "maxItems": 2,
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "sequence"
+          ],
+          "properties": {
+            "sequence": {
+              "type": "array",
+              "minItems": 1,
+              "maxItems": 128,
+              "items": {
+                "anyOf": [
+                  {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "op",
+                      "units"
+                    ],
+                    "properties": {
+                      "op": {
+                        "enum": [
+                          "work"
+                        ]
+                      },
+                      "units": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 256
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "op",
+                      "cycles"
+                    ],
+                    "properties": {
+                      "op": {
+                        "enum": [
+                          "wait"
+                        ]
+                      },
+                      "cycles": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 10000
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "op",
+                      "count",
+                      "body"
+                    ],
+                    "properties": {
+                      "op": {
+                        "enum": [
+                          "repeat"
+                        ]
+                      },
+                      "count": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 64
+                      },
+                      "body": {
+                        "type": "array",
+                        "minItems": 1,
+                        "maxItems": 128,
+                        "items": {
+                          "anyOf": [
+                            {
+                              "type": "object",
+                              "additionalProperties": false,
+                              "required": [
+                                "op",
+                                "units"
+                              ],
+                              "properties": {
+                                "op": {
+                                  "enum": [
+                                    "work"
+                                  ]
+                                },
+                                "units": {
+                                  "type": "integer",
+                                  "minimum": 1,
+                                  "maximum": 256
+                                }
+                              }
+                            },
+                            {
+                              "type": "object",
+                              "additionalProperties": false,
+                              "required": [
+                                "op",
+                                "cycles"
+                              ],
+                              "properties": {
+                                "op": {
+                                  "enum": [
+                                    "wait"
+                                  ]
+                                },
+                                "cycles": {
+                                  "type": "integer",
+                                  "minimum": 1,
+                                  "maximum": 10000
+                                }
+                              }
+                            },
+                            {
+                              "type": "object",
+                              "additionalProperties": false,
+                              "required": [
+                                "op",
+                                "count",
+                                "body"
+                              ],
+                              "properties": {
+                                "op": {
+                                  "enum": [
+                                    "repeat"
+                                  ]
+                                },
+                                "count": {
+                                  "type": "integer",
+                                  "minimum": 1,
+                                  "maximum": 64
+                                },
+                                "body": {
+                                  "type": "array",
+                                  "minItems": 1,
+                                  "maxItems": 128,
+                                  "items": {
+                                    "anyOf": [
+                                      {
+                                        "type": "object",
+                                        "additionalProperties": false,
+                                        "required": [
+                                          "op",
+                                          "units"
+                                        ],
+                                        "properties": {
+                                          "op": {
+                                            "enum": [
+                                              "work"
+                                            ]
+                                          },
+                                          "units": {
+                                            "type": "integer",
+                                            "minimum": 1,
+                                            "maximum": 256
+                                          }
+                                        }
+                                      },
+                                      {
+                                        "type": "object",
+                                        "additionalProperties": false,
+                                        "required": [
+                                          "op",
+                                          "cycles"
+                                        ],
+                                        "properties": {
+                                          "op": {
+                                            "enum": [
+                                              "wait"
+                                            ]
+                                          },
+                                          "cycles": {
+                                            "type": "integer",
+                                            "minimum": 1,
+                                            "maximum": 10000
+                                          }
+                                        }
+                                      },
+                                      {
+                                        "type": "object",
+                                        "additionalProperties": false,
+                                        "required": [
+                                          "op",
+                                          "count",
+                                          "body"
+                                        ],
+                                        "properties": {
+                                          "op": {
+                                            "enum": [
+                                              "repeat"
+                                            ]
+                                          },
+                                          "count": {
+                                            "type": "integer",
+                                            "minimum": 1,
+                                            "maximum": 64
+                                          },
+                                          "body": {
+                                            "type": "array",
+                                            "minItems": 1,
+                                            "maxItems": 128,
+                                            "items": {
+                                              "anyOf": [
+                                                {
+                                                  "type": "object",
+                                                  "additionalProperties": false,
+                                                  "required": [
+                                                    "op",
+                                                    "units"
+                                                  ],
+                                                  "properties": {
+                                                    "op": {
+                                                      "enum": [
+                                                        "work"
+                                                      ]
+                                                    },
+                                                    "units": {
+                                                      "type": "integer",
+                                                      "minimum": 1,
+                                                      "maximum": 256
+                                                    }
+                                                  }
+                                                },
+                                                {
+                                                  "type": "object",
+                                                  "additionalProperties": false,
+                                                  "required": [
+                                                    "op",
+                                                    "cycles"
+                                                  ],
+                                                  "properties": {
+                                                    "op": {
+                                                      "enum": [
+                                                        "wait"
+                                                      ]
+                                                    },
+                                                    "cycles": {
+                                                      "type": "integer",
+                                                      "minimum": 1,
+                                                      "maximum": 10000
+                                                    }
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        }
+                                      }
+                                    ]
+                                  }
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
