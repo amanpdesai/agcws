@@ -1,5 +1,13 @@
 # Strong-model readiness v3 — 2026-09-18
 
+**Smoke completed; operational signoff pending.** Ten calls, zero API errors
+or truncations, 16/20 valid generated proposals. The strict per-batch validity
+gate fails on AES round one and RedMulE round two. All failures are retained;
+the requested operational-readiness exception has not been approved. See the
+[complete outcome and measured cost](../results/strong_smoke_v3_plan/README.md).
+The full panel remains unlaunched. Do not equate successful transport with a
+guarantee of candidate legality, target feasibility or a completed study.
+
 The user approved MEDIUM reasoning with a 65,536-token ceiling. This replaces
 the blocked v2 launch candidate, not its evidence. Full matrix execution is
 not authorized by the configuration approval.
@@ -49,6 +57,12 @@ $0.0806722, implying $2,287 if all slots are exhausted at that average. This is
 not a 64k forecast: early stopping can reduce calls and the larger allowance can
 increase usage. At the illustrative 10k/full-output case the matrix is $7,180;
 the full reservation bound is $11,219.796. None of these is a Google invoice.
+
+The completed v3 smoke cost estimate is $0.67590675 for ten calls, averaging
+$0.067590675. Exhausting every call at that average is $1,916.20. Serial provider
+latency extrapolates to 31.7 days if all calls are used at the smoke's mean
+latency. Neither extrapolation is a forecast; both make clear that budget and
+throughput need a deliberate full-launch decision, not an unconditional promise.
 
 Prepared pause caps stay $120/design ($600 total), not a verified remaining
 balance or a promise the panel completes under $600. Full launch needs explicit

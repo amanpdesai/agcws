@@ -1,5 +1,12 @@
 # Gemini 3.8 MEDIUM/64k matched matrix — prepared, not launched
 
+**Pending operational signoff.** The smoke has no API/truncation errors and
+16/20 valid generated workloads, but the strict per-batch validity criterion
+fails. [Measured outcome and pricing](../strong_smoke_v3_plan/README.md).
+User approval of a different operational criterion is pending; the scientific
+every-bin ≤0.05 gate is unchanged. Budget and full-run concurrency also require
+acknowledgement. No full-matrix provider calls have been made.
+
 [Protocol](../../docs/STRONG_MATCHED_V3.md) and [preparation.json](preparation.json).
 Five designs × nine profiles × ten matched seeds = 450 cells. Same tasks and
 CPU/Flash-Lite evidence; explicit arm `strong-medium-64k`. The 65536-token

@@ -2,6 +2,13 @@
 
 ## Current slice — approved MEDIUM/64k readiness follow-up (2026-09-18)
 
+Smoke completed: ten STOP responses, no API/truncation errors, 16/20 valid
+model workloads. Ibex now returns four valid programs. AES corrects its first
+invalid batch after feedback; RedMulE's second batch fails useful work. Retain
+the strict per-batch gate failure and await the user's operational-readiness
+decision. Full launch stays stopped; actual smoke estimate $0.676 does not
+establish that the full panel fits $600. Review API throughput before launch.
+
 User selected 65536 output tokens, retaining MEDIUM. The
 [v3 protocol](STRONG_MATCHED_V3.md) versions this explicitly and adds cross-design
 provider admission (one API call at a time, simulations remain parallel).
