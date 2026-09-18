@@ -2,8 +2,10 @@
 
 import argparse
 import copy
+import fcntl
 import json
 import subprocess
+import time
 from pathlib import Path
 
 from agcws.config import ROOT
@@ -15,13 +17,35 @@ from agcws.provenance import file_sha256
 from maintenance.prepare_flash_matrix import DESIGNS, PROVIDER_ONLY, matched
 from maintenance.resume_budget import VERSION, ReconciledMeter
 
-ARM = "strong-medium-32k"
+ARM = "strong-medium-64k"
 SUPPORT = ("maintenance/strong_matrix.py", "maintenance/resume_budget.py",
-           "maintenance/prepare_flash_matrix.py")
+           "maintenance/prepare_flash_matrix.py", "maintenance/check_strong_readiness.py")
 
 
 def support_hashes():
     return {p: file_sha256(ROOT / p) for p in SUPPORT}
+
+
+class StrongMeter(ReconciledMeter):
+    """One in-flight provider call across sibling design runners; no retries."""
+
+    def __init__(self, root, ceiling, provider_workers=1):
+        super().__init__(root, ceiling, provider_workers)
+        self.admission_path = root.resolve().parent / "provider-global.lock"
+
+    def call(self, directory, arm, contents, schema, identity):
+        if (directory / "response.json").exists():
+            return super().call(directory, arm, contents, schema, identity)
+        queued = time.monotonic()
+        with self.admission_path.open("a") as admission:
+            fcntl.flock(admission, fcntl.LOCK_EX)
+            if not (directory / "admission.json").exists():
+                ensure(directory / "admission.json", {
+                    "version": "cross-design-provider-serial-v1",
+                    "queue_seconds": time.monotonic() - queued,
+                    "admitted_unix": time.time(), "max_inflight": 1,
+                })
+            return super().call(directory, arm, contents, schema, identity)
 
 
 def prepare(directory, evidence, smoke=False):
@@ -37,7 +61,7 @@ def prepare(directory, evidence, smoke=False):
         reference_path = ROOT / f"results/{design}/baselines-model-v1-plan/manifest.json"
         reference = read(reference_path)
         spec = copy.deepcopy(reference["spec"])
-        spec.update(name=f"{design}-strong-{'smoke' if smoke else 'matched'}-v2",
+        spec.update(name=f"{design}-strong-{'smoke' if smoke else 'matched'}-v3",
                     policies=[ARM], cost_ceiling_usd=2 if smoke else 120)
         if smoke:
             spec.update(targets={"confirmation-alternating": spec["targets"]["confirmation-alternating"]},
@@ -62,6 +86,7 @@ def prepare(directory, evidence, smoke=False):
                 raise ValueError("shared initialization differs")
         freeze = {"manifest_sha256": file_sha256(root / "manifest.json"),
                   "support_sha256": support_hashes(), "accounting": VERSION,
+                  "provider_admission": "cross-design-provider-serial-v1",
                   "scope": "smoke" if smoke else "full-matched",
                   "full_matrix_launch_authorized": False}
         ensure(root / "launch-contract.json", freeze)
@@ -75,6 +100,8 @@ def prepare(directory, evidence, smoke=False):
     result = {"runtime_commit": commit, "model": settings(ARM), "designs": receipts,
               "cells": sum(r["cells"] for r in receipts), "paid_calls_during_preparation": 0,
               "full_matrix_launch_authorized": False, "accounting": VERSION,
+              "provider_admission": "cross-design-provider-serial-v1",
+              "max_cross_design_provider_calls": 1,
               "scope": "smoke" if smoke else "full-matched",
               "ceiling_per_design_usd": 2 if smoke else 120,
               "maximum_calls": 10 if smoke else 28350,
@@ -92,9 +119,10 @@ def execute(root, allow_paid=False):
     if contract["manifest_sha256"] != file_sha256(root / "manifest.json"):
         raise ValueError("frozen manifest changed")
     manifest = engine.verify_inputs(ROOT, root)
-    if manifest["spec"]["policies"] != [ARM] or contract["accounting"] != VERSION:
+    if (manifest["spec"]["policies"] != [ARM] or contract["accounting"] != VERSION
+            or contract["provider_admission"] != "cross-design-provider-serial-v1"):
         raise ValueError("unexpected arm or accounting version")
-    engine.Meter = ReconciledMeter
+    engine.Meter = StrongMeter
     engine.run(ROOT, root, allow_paid=True)
 
 

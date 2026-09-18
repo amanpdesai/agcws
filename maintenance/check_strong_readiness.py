@@ -32,6 +32,8 @@ def audit(full, smoke):
                 raise ValueError("launch/accounting code differs")
             if contract["manifest_sha256"] != file_sha256(directory / "manifest.json"):
                 raise ValueError("manifest differs")
+            if contract.get("provider_admission") != "cross-design-provider-serial-v1":
+                raise ValueError("provider admission contract differs")
         reference = read(ROOT / f"results/{design}/baselines-model-v1-plan/manifest.json")
         matched(reference, manifest, ARM)
         matched(read(ROOT / f"results/flash_lite_matched_v1_plan/{design}/manifest.json"), manifest, ARM)
