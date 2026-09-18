@@ -1,5 +1,15 @@
 # Plan
 
+## Current stopping point — Flash matrix completed and audited (2026-09-18)
+
+All 450 cells completed with 52,072 proposals. Results and evidence:
+[matched Flash-Lite matrix](../results/flash_lite_matched_v1/README.md).
+Primary analysis uses nonflat targets, matched published CPU arms and paired
+seed inference. Mesh is the positive comparison; other designs are mixed.
+Publish all outcomes, controls, failures and accounting limitations. No new
+experiments or model runs are authorized by publication. Older preparation and
+continuation entries below are historical, not current run status.
+
 ## Flash continuation — accounting-only resume (2026-09-17)
 
 AES, DMA and Ibex finished. Mesh (82/90) and RedMulE (38/90) stopped at

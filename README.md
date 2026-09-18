@@ -6,6 +6,12 @@ stages, shared interfaces and proposal-counted comparisons.
 
 ## Results
 
+The [matched Flash-Lite matrix](results/flash_lite_matched_v1/README.md) completed
+450 cells across five designs. On nonflat Mesh targets, Flash-Lite has lower AUC
+than all three matched CPU baselines and solves 20/80 versus 0/80; other designs
+show mixed or negative comparisons. Controls, uncertainty and cost-accounting
+limitations are reported separately. This is not a uniform agent-superiority claim.
+
 The [five-design CPU baseline matrix](results/baselines_model_v1/README.md)
 completed 1,350 cells under a frozen every-bin ≤0.05 gate. It compares
 phase-random, phase-GA and a model-guided classical policy; no LLM arm is included.

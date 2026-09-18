@@ -1,5 +1,9 @@
 # Matched Flash-Lite launch plans
 
+**Historical preparation record.** The subsequent authorized run completed;
+see [audited results](../flash_lite_matched_v1/README.md). The frozen files here
+remain unchanged, including the original no-execution preparation receipt.
+
 Prepared only, 2026-09-17. **No simulations or paid calls launched.**
 Protocol: [FLASH_MATCHED_V1.md](../../docs/FLASH_MATCHED_V1.md).
 

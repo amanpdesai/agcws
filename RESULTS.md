@@ -1,9 +1,86 @@
 # Research results
 
-Updated 2026-09-17. This is the authoritative findings document. All results
+Updated 2026-09-18. This is the authoritative findings document. All results
 below concern **activity-profile synthesis** unless explicitly labeled gate
 power. Lower best-so-far target-error AUC is better. Budgets, normalizations
 and target banks differ across studies: do not compare their raw AUC values.
+
+## Matched five-design Flash-Lite results — 2026-09-18
+
+The completed `gemini-3.5-flash-lite` MEDIUM study has **450/450 cells,
+52,072 charged proposals and 25,586 provider calls**. Same tasks, initializations,
+seeds 9100–9109, budget 128, batch two and every-bin normalized absolute-error
+≤0.05 gate as the three published CPU arms. No baseline reruns. This comparison
+is prospective on an observed target bank, **not unseen-target confirmation**.
+Evidence and reproduction: [Flash matrix](results/flash_lite_matched_v1/README.md).
+
+Primary endpoint: mean best-so-far RMSE AUC on the **eight nonflat targets**,
+averaged within each seed before paired inference. Lower is better. Each solve
+denominator below is 80; controls are excluded from the primary comparison.
+
+| Design | Flash-Lite AUC | Random AUC | GA AUC | Model-guided AUC | Flash nonflat solves |
+|---|---:|---:|---:|---:|---:|
+| AES | 17.3791 | 18.4342 | 19.6012 | 12.1275 | 21/80 |
+| DMA | 40.5210 | 32.7974 | 33.1103 | 30.1702 | 1/80 |
+| Ibex | 51.3116 | 44.8644 | 41.7477 | 46.9123 | 4/80 |
+| Mesh | 24.6232 | 36.4972 | 31.4087 | 32.7557 | 20/80 |
+| RedMulE | 40.6332 | 45.7227 | 37.8335 | 46.5732 | 0/80 |
+
+**Mesh is the positive result, not a uniform cross-design win.** Flash-Lite's
+AUC is 21.6% lower than GA's (difference −6.7855, paired-seed bootstrap 95% CI
+[−8.6328, −5.0282]); all three Mesh contrasts have Holm-adjusted exact sign-flip
+p=0.02930. CPU nonflat solves are 0/80 for each arm versus Flash's 20/80.
+Those twenty Flash solves span seven of eight profile families; quiet-interval
+remains unsolved. This is not uniform success over the target bank.
+At equal observed valid-evaluation counts, mean best RMSE is 0.1148 versus
+GA's 0.1830: the descriptive direction survives this secondary diagnostic,
+which remains conditioned on the early-stopped observed prefixes.
+
+AES does not significantly beat random or GA after Holm correction; it is worse
+than model-guided search (p=0.03125). DMA is worse than all three controls
+(p=0.02930 each). Ibex is worse than random (p=0.04102) and GA (p=0.02930), but
+its difference from model-guided search is not significant (p=0.17188).
+RedMulE beats random and model-guided search on AUC (p=0.04688 each), but not
+GA (p=0.52734), and **no arm solves a RedMulE nonflat target**.
+The fifteen contrasts use ten seed units/design, 10,000 paired seed bootstrap
+replicates and Holm correction. CIs are nominal, not simultaneous intervals.
+Non-significance is not equivalence, and seed replication does not establish
+generalization to unseen target families or identify a causal semantic mechanism.
+
+Flat controls are diagnostic: Flash solves AES 10/10, DMA 0/10, Ibex 0/10,
+Mesh 7/10 and RedMulE 6/10. Thus the pooled **69/450 solves include 23 controls**;
+the temporal headline is 46/400 nonflat solves, not the pooled count.
+More solves on a few cells do not override a worse mean AUC on the declared panel.
+These are RTL bit-activity results, not a five-design gate-power validation.
+
+### Cost, reliability and accounting
+
+| Design | Valid / charged slots | Known-usage price subtotal | Conservative total liability | Sum provider latency (h) |
+|---|---:|---:|---:|---:|
+| AES | 8,156 / 8,418 | $23.26 | $32.01 | 6.14 |
+| DMA | 11,074 / 11,466 | $32.74 | $44.92 | 8.55 |
+| Ibex | 11,134 / 11,266 | $82.02 | $86.63 | 13.71 |
+| Mesh | 9,765 / 9,942 | $31.70 | $57.09 | 9.44 |
+| RedMulE | 10,587 / 10,980 | $12.83 | $66.51 | 5.43 |
+
+Totals: **$182.56 known-usage list-price subtotal; $287.15 conservative total
+liability**, not Google-confirmed charges. 4,674 calls have incomplete usage.
+The reported approximately $50 billing-console figure remains unreconciled;
+do not present either local total as an invoice. Liability reserves full output
+where usage is unknown and uses reported input where available. This rule is
+applied consistently to all designs in the table; original run receipts remain
+intact. Mesh/RedMulE's budget stops and accounting-only resumes are preserved in
+[the resume audit](results/flash_budget_resume_v1/README.md), including unchanged
+checkpoint hashes and $120/design caps. Latency sums are neither CPU-hours nor
+end-to-end makespan and exclude simulation, queueing and the manual pause.
+
+Four API-error responses consumed eight slots; thirteen responses reached
+MAX_TOKENS. These were retained and charged, not retried for cleaner outcomes.
+Nonflat cost-per-solve, 16/32/64/128 budget slices and equal-valid diagnostics
+are in [secondary.json](results/flash_lite_matched_v1/secondary.json).
+Per-design compact archives reproduce recorded bytes; the audit reconstructs
+payload history, proposals, metrics, cache identities, stopping and liabilities.
+It does **not** independently resimulate waveforms or inspect private model reasoning.
 
 ## Completed five-design baseline matrix — 2026-09-17
 

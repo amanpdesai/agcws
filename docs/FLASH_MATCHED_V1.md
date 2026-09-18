@@ -1,5 +1,10 @@
 # Matched Flash-Lite matrix — preparation, not execution
 
+**Completed 2026-09-18:** [audited evidence](../results/flash_lite_matched_v1/README.md).
+The preparation text below is retained as the prospective protocol. User
+subsequently authorized execution and the documented accounting-only resume;
+no target, model, metric or search-budget setting changed.
+
 2026-09-17. The user selected `gemini-3.5-flash-lite`. This supersedes the old
 `full-flash-v1-plan` launch files, which contain obsolete measurement targets
 and tolerance. Do not launch those files. No paid calls are authorized by this
