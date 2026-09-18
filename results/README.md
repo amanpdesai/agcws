@@ -8,6 +8,9 @@ Completed: [matched Flash-Lite results](flash_lite_matched_v1/README.md), compar
 with the three published CPU arms. The [launch plans](flash_lite_matched_v1_plan/README.md)
 remain the original prospective configuration, not a separate result.
 
+Prepared but blocked by smoke failures, not launched:
+[matched Gemini 3.8 strong-model panel](strong_matched_v2_plan/README.md).
+
 New evidence uses per-design entry points, then frozen study versions and labeled
 splits. See [AES](aes/README.md), [AXI DMA](dma/README.md),
 [BaseJump mesh](mesh/README.md) and [RedMulE](redmule/README.md). Large studies use bounded compressed

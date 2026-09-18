@@ -1,0 +1,427 @@
+{
+  "operational_ready": false,
+  "max_output_tokens": 8192,
+  "reason": "8/10 responses exhausted the combined reasoning/output ceiling; all failures retained",
+  "designs": [
+    {
+      "design": "aes",
+      "completion": {
+        "cells": 1,
+        "slots": 6,
+        "summaries": [
+          {
+            "budget": 6,
+            "auc": 1.5306836826339998,
+            "mean_auc": 0.30613673652679996,
+            "curve": [
+              0.32709466123626607,
+              0.3038080782257482,
+              0.3038080782257482,
+              0.3038080782257482,
+              0.3038080782257482,
+              0.3038080782257482
+            ],
+            "final_loss": 0.3038080782257482,
+            "solved": false,
+            "evaluations_to_target": 6,
+            "right_censored": true,
+            "valid_slots": 2,
+            "success_metric": "max-bin",
+            "auc_metric": "nrmse",
+            "best_max_bin_error": 0.480631409500936,
+            "cell": {
+              "target": "confirmation-alternating",
+              "seed": 9100,
+              "arm": "strong-medium",
+              "manifest_sha256": "9c96fec8506e926e97b3a6962c0bcff35d27f2ea1983f47d8505b8a6a7ecfff7"
+            },
+            "filtered": 0
+          }
+        ],
+        "liability_usd": 0.07067399999999999
+      },
+      "responses": [
+        {
+          "usage": {
+            "prompt_token_count": 6189,
+            "candidates_token_count": 312,
+            "thoughts_token_count": 7863
+          },
+          "finish_reasons": [
+            "FinishReason.MAX_TOKENS"
+          ],
+          "estimated_usd": 0.035298
+        },
+        {
+          "usage": {
+            "prompt_token_count": 6293,
+            "candidates_token_count": 313,
+            "thoughts_token_count": 7862
+          },
+          "finish_reasons": [
+            "FinishReason.MAX_TOKENS"
+          ],
+          "estimated_usd": 0.035376
+        }
+      ],
+      "invalid_reasons": [
+        {
+          "slot": 3,
+          "stage": "SCHEMA",
+          "reason": "None is not of type 'object'"
+        },
+        {
+          "slot": 4,
+          "stage": "SCHEMA",
+          "reason": "None is not of type 'object'"
+        },
+        {
+          "slot": 5,
+          "stage": "SCHEMA",
+          "reason": "None is not of type 'object'"
+        },
+        {
+          "slot": 6,
+          "stage": "SCHEMA",
+          "reason": "None is not of type 'object'"
+        }
+      ]
+    },
+    {
+      "design": "dma",
+      "completion": {
+        "cells": 1,
+        "slots": 6,
+        "summaries": [
+          {
+            "budget": 6,
+            "auc": 2.776329686099654,
+            "mean_auc": 0.5552659372199308,
+            "curve": [
+              0.6169485271061679,
+              0.54841231612146,
+              0.54841231612146,
+              0.54841231612146,
+              0.54841231612146,
+              0.54841231612146
+            ],
+            "final_loss": 0.54841231612146,
+            "solved": false,
+            "evaluations_to_target": 6,
+            "right_censored": true,
+            "valid_slots": 2,
+            "success_metric": "max-bin",
+            "auc_metric": "nrmse",
+            "best_max_bin_error": 0.9719688113751012,
+            "cell": {
+              "target": "confirmation-alternating",
+              "seed": 9100,
+              "arm": "strong-medium",
+              "manifest_sha256": "db26d9c8e7d363f4ce274285bd873e603475cf309f0c9ff84002f745907daa0e"
+            },
+            "filtered": 0
+          }
+        ],
+        "liability_usd": 0.07064699999999999
+      },
+      "responses": [
+        {
+          "usage": {
+            "prompt_token_count": 6166,
+            "candidates_token_count": 315,
+            "thoughts_token_count": 7862
+          },
+          "finish_reasons": [
+            "FinishReason.MAX_TOKENS"
+          ],
+          "estimated_usd": 0.03528825
+        },
+        {
+          "usage": {
+            "prompt_token_count": 6270,
+            "candidates_token_count": 315,
+            "thoughts_token_count": 7860
+          },
+          "finish_reasons": [
+            "FinishReason.MAX_TOKENS"
+          ],
+          "estimated_usd": 0.03535875
+        }
+      ],
+      "invalid_reasons": [
+        {
+          "slot": 3,
+          "stage": "SCHEMA",
+          "reason": "None is not of type 'object'"
+        },
+        {
+          "slot": 4,
+          "stage": "SCHEMA",
+          "reason": "None is not of type 'object'"
+        },
+        {
+          "slot": 5,
+          "stage": "SCHEMA",
+          "reason": "None is not of type 'object'"
+        },
+        {
+          "slot": 6,
+          "stage": "SCHEMA",
+          "reason": "None is not of type 'object'"
+        }
+      ]
+    },
+    {
+      "design": "ibex",
+      "completion": {
+        "cells": 1,
+        "slots": 6,
+        "summaries": [
+          {
+            "budget": 6,
+            "auc": 1.9349324296323704,
+            "mean_auc": 0.3869864859264741,
+            "curve": [
+              1.0,
+              0.6066728966079016,
+              0.6066728966079016,
+              0.08863465456662686,
+              0.08863465456662686,
+              0.08863465456662686
+            ],
+            "final_loss": 0.08863465456662686,
+            "solved": false,
+            "evaluations_to_target": 6,
+            "right_censored": true,
+            "valid_slots": 2,
+            "success_metric": "max-bin",
+            "auc_metric": "nrmse",
+            "best_max_bin_error": 0.13154869278079293,
+            "cell": {
+              "target": "confirmation-alternating",
+              "seed": 9100,
+              "arm": "strong-medium",
+              "manifest_sha256": "e8648fcb6e6103334a8244ac118a517609ea3fb9167da7cab2eb5a1fc4e7f8f0"
+            },
+            "filtered": 0
+          }
+        ],
+        "liability_usd": 0.07223550000000001
+      },
+      "responses": [
+        {
+          "usage": {
+            "prompt_token_count": 10861,
+            "candidates_token_count": 1555,
+            "thoughts_token_count": 2878
+          },
+          "finish_reasons": [
+            "FinishReason.STOP"
+          ],
+          "estimated_usd": 0.0247695
+        },
+        {
+          "usage": {
+            "prompt_token_count": 22398,
+            "candidates_token_count": 318,
+            "thoughts_token_count": 7860
+          },
+          "finish_reasons": [
+            "FinishReason.MAX_TOKENS"
+          ],
+          "estimated_usd": 0.047466
+        }
+      ],
+      "invalid_reasons": [
+        {
+          "slot": 1,
+          "stage": "USEFUL_WORK",
+          "reason": "body or fixed observation did not complete in the declared window"
+        },
+        {
+          "slot": 3,
+          "stage": "USEFUL_WORK",
+          "reason": "body or fixed observation did not complete in the declared window"
+        },
+        {
+          "slot": 5,
+          "stage": "SCHEMA",
+          "reason": "None is not of type 'object'"
+        },
+        {
+          "slot": 6,
+          "stage": "SCHEMA",
+          "reason": "None is not of type 'object'"
+        }
+      ]
+    },
+    {
+      "design": "mesh",
+      "completion": {
+        "cells": 1,
+        "slots": 6,
+        "summaries": [
+          {
+            "budget": 6,
+            "auc": 2.6017765173469565,
+            "mean_auc": 0.5203553034693913,
+            "curve": [
+              0.5203553034693913,
+              0.5203553034693913,
+              0.5203553034693913,
+              0.5203553034693913,
+              0.5203553034693913,
+              0.5203553034693913
+            ],
+            "final_loss": 0.5203553034693913,
+            "solved": false,
+            "evaluations_to_target": 6,
+            "right_censored": true,
+            "valid_slots": 2,
+            "success_metric": "max-bin",
+            "auc_metric": "nrmse",
+            "best_max_bin_error": 0.9094634789652462,
+            "cell": {
+              "target": "confirmation-alternating",
+              "seed": 9100,
+              "arm": "strong-medium",
+              "manifest_sha256": "2fec6d08a847ac9523bffe724816953d0a689de194da1b673638c702a368b028"
+            },
+            "filtered": 0
+          }
+        ],
+        "liability_usd": 0.0652395
+      },
+      "responses": [
+        {
+          "usage": {
+            "prompt_token_count": 2556,
+            "candidates_token_count": 315,
+            "thoughts_token_count": 7862
+          },
+          "finish_reasons": [
+            "FinishReason.MAX_TOKENS"
+          ],
+          "estimated_usd": 0.03258075
+        },
+        {
+          "usage": {
+            "prompt_token_count": 2660,
+            "candidates_token_count": 314,
+            "thoughts_token_count": 7863
+          },
+          "finish_reasons": [
+            "FinishReason.MAX_TOKENS"
+          ],
+          "estimated_usd": 0.03265875
+        }
+      ],
+      "invalid_reasons": [
+        {
+          "slot": 3,
+          "stage": "SCHEMA",
+          "reason": "None is not of type 'object'"
+        },
+        {
+          "slot": 4,
+          "stage": "SCHEMA",
+          "reason": "None is not of type 'object'"
+        },
+        {
+          "slot": 5,
+          "stage": "SCHEMA",
+          "reason": "None is not of type 'object'"
+        },
+        {
+          "slot": 6,
+          "stage": "SCHEMA",
+          "reason": "None is not of type 'object'"
+        }
+      ]
+    },
+    {
+      "design": "redmule",
+      "completion": {
+        "cells": 1,
+        "slots": 6,
+        "summaries": [
+          {
+            "budget": 6,
+            "auc": 2.5283624566416845,
+            "mean_auc": 0.5056724913283369,
+            "curve": [
+              0.515776318455839,
+              0.5045498438697256,
+              0.5045498438697256,
+              0.5045498438697256,
+              0.5045498438697256,
+              0.5045498438697256
+            ],
+            "final_loss": 0.5045498438697256,
+            "solved": false,
+            "evaluations_to_target": 6,
+            "right_censored": true,
+            "valid_slots": 2,
+            "success_metric": "max-bin",
+            "auc_metric": "nrmse",
+            "best_max_bin_error": 0.9000000000000001,
+            "cell": {
+              "target": "confirmation-alternating",
+              "seed": 9100,
+              "arm": "strong-medium",
+              "manifest_sha256": "2add162eff0888b13d141f2ba99cb5fc5cac92f57a63f74abb00659f8b3c0b6a"
+            },
+            "filtered": 0
+          }
+        ],
+        "liability_usd": 0.045827250000000014
+      },
+      "responses": [
+        {
+          "usage": {
+            "prompt_token_count": 2241,
+            "candidates_token_count": 644,
+            "thoughts_token_count": 2385
+          },
+          "finish_reasons": [
+            "FinishReason.STOP"
+          ],
+          "estimated_usd": 0.0130395
+        },
+        {
+          "usage": {
+            "prompt_token_count": 2832,
+            "candidates_token_count": 317,
+            "thoughts_token_count": 7860
+          },
+          "finish_reasons": [
+            "FinishReason.MAX_TOKENS"
+          ],
+          "estimated_usd": 0.03278775
+        }
+      ],
+      "invalid_reasons": [
+        {
+          "slot": 3,
+          "stage": "USEFUL_WORK",
+          "reason": "required GEMM work did not complete within the fixed window"
+        },
+        {
+          "slot": 4,
+          "stage": "USEFUL_WORK",
+          "reason": "required GEMM work did not complete within the fixed window"
+        },
+        {
+          "slot": 5,
+          "stage": "SCHEMA",
+          "reason": "None is not of type 'object'"
+        },
+        {
+          "slot": 6,
+          "stage": "SCHEMA",
+          "reason": "None is not of type 'object'"
+        }
+      ]
+    }
+  ]
+}

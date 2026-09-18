@@ -1,6 +1,22 @@
 # Plan
 
-## Current stopping point — Flash matrix completed and audited (2026-09-18)
+## Current slice — freeze Gemini 3.8 matched panel (2026-09-18)
+
+**Blocked after v2 smoke:** four designs generated valid workloads, but Ibex
+hit MAX_TOKENS and a provider 429. No full runs launched. Await user's choice
+of MEDIUM/65536 or a LOW/32768 diagnostic before another candidate freeze;
+provider concurrency reduction is proposed, not implemented. Preserve all
+v1/v2 outcomes and the 818-test validation. Do not launch the v2 candidate.
+
+User requested the selected newer strong model, `gemini-3.8-flash`, prepared for
+the full matrix. [Frozen protocol](STRONG_MATCHED_V2.md): 450 matched agent-only
+cells, reuse CPU and Flash-Lite results, unchanged every-bin ≤0.05 success gate.
+The ten-call v1 compatibility smoke failed on output truncation (8/10 calls).
+Retain it and test v2 with 32768 output tokens; disclose the unequal ceiling
+against Flash-Lite. Verify accounting/resume and input equality, freeze launch manifests,
+publish readiness. Stop before full execution; launch requires authorization.
+
+## Completed — Flash matrix audited (2026-09-18)
 
 All 450 cells completed with 52,072 proposals. Results and evidence:
 [matched Flash-Lite matrix](../results/flash_lite_matched_v1/README.md).

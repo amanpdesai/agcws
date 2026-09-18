@@ -1,5 +1,24 @@
 # Decision log
 
+## 2026-09-18 — Version strong-model output allowance after smoke truncation
+
+**Decision.** Register Gemini 3.8 Flash explicitly, retaining old 2.5 Pro and
+completed Flash-Lite settings. Freeze the same 450 tasks/seeds and reuse existing
+CPU arms. The initial MEDIUM/8192 smoke is failed, retained and never promoted:
+eight of ten calls hit MAX_TOKENS with approximately 7860 thought tokens and
+315 final-response tokens. Test MEDIUM/32768 as `strong-medium-32k` in v2.
+No prompt, target, metric, proposal budget or legality changes.
+
+**Rationale.** The provider's output ceiling includes reasoning. A nominally
+equal ceiling does not assure usable structured output across models. Readiness
+requires actual feedback-loop checks, not the older one-candidate API smoke.
+
+**Consequence.** Report a model/configuration comparison, not a model-only
+ablation or a Gemini 2.5 Pro result. Preserve v1 failures and both freezes.
+Use the hash-pinned reconciled accounting wrapper from the start; unknown usage
+retains conservative liability. Full execution remains unlaunched pending user
+authorization and confirmation of the $120/design pause caps.
+
 ## 2026-09-17 — Resume two budget-stopped designs without raising caps
 
 User authorized correcting accounting and resuming Mesh/RedMulE. Preserve the

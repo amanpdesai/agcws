@@ -1,0 +1,114 @@
+{
+  "runtime_commit": "0a86f43b726d1caa79f9b50fdc2923f33d32a6fc",
+  "model": {
+    "model": "gemini-3.8-flash",
+    "thinking_level": "MEDIUM",
+    "temperature": 0.7,
+    "top_p": 0.95,
+    "max_output_tokens": 32768,
+    "response_schema_projection": "bounds-projection-v1",
+    "input_usd_per_million": 0.75,
+    "output_usd_per_million": 3.75,
+    "pricing_verified": "2026-09-18",
+    "transport": {
+      "version": "vertex-deadline-v1",
+      "timeout_ms": 600000,
+      "sdk_attempts": 1
+    }
+  },
+  "designs": [
+    {
+      "design": "aes",
+      "cells": 90,
+      "baseline_manifest_sha256": "c3fed4673b9f70560f8ba32234c927d284e2533a772ae2101f1e93699670fdb4",
+      "manifest_sha256": "dc7c2ffc1609eab7e98c4f0c7cef8b1a3c50e0b9d82c5c029d9246aef07479e8",
+      "provider_only_source_changes": {
+        "src/agcws/pipeline/model.py": {
+          "baseline": "79c68c743d4a9b92dfea4fab4ce40f028fb477afee7aaf77db9ba271ff6b1f73",
+          "flash": "c967cddfc041552282f7276f86a9e5abf60d53e3bdb4ffc4be73f7d2ba9fec85"
+        },
+        "src/agcws/pipeline/schedule_backend.py": {
+          "baseline": "8804d88447924112a1c4ffdb387c79b04cc47722897a6c90a0bad6f881561a0b",
+          "flash": "d331d92b4c1b637af707709b47faddd440051df868748754d344cffa5e9c6ae9"
+        }
+      },
+      "runtime_schema_and_shared_initializations_match": true
+    },
+    {
+      "design": "dma",
+      "cells": 90,
+      "baseline_manifest_sha256": "a7df474896bf03f9b39ffb77188cda1a60c231fa9ace3ab061ce3dd0406adb89",
+      "manifest_sha256": "3bb1eff59f9644634fdd347f01da40c45ae590715e4eaf2a6aee7164d0ae3922",
+      "provider_only_source_changes": {
+        "src/agcws/pipeline/model.py": {
+          "baseline": "79c68c743d4a9b92dfea4fab4ce40f028fb477afee7aaf77db9ba271ff6b1f73",
+          "flash": "c967cddfc041552282f7276f86a9e5abf60d53e3bdb4ffc4be73f7d2ba9fec85"
+        },
+        "src/agcws/pipeline/schedule_backend.py": {
+          "baseline": "8804d88447924112a1c4ffdb387c79b04cc47722897a6c90a0bad6f881561a0b",
+          "flash": "d331d92b4c1b637af707709b47faddd440051df868748754d344cffa5e9c6ae9"
+        }
+      },
+      "runtime_schema_and_shared_initializations_match": true
+    },
+    {
+      "design": "ibex",
+      "cells": 90,
+      "baseline_manifest_sha256": "2058b753bbfb687590e42a8a19b2f41ca131c223283673157293e9ed7cebef47",
+      "manifest_sha256": "2c2109484f130464bbcf534601fe09821be6d1c636a27e685d23530126f31c81",
+      "provider_only_source_changes": {
+        "src/agcws/pipeline/model.py": {
+          "baseline": "79c68c743d4a9b92dfea4fab4ce40f028fb477afee7aaf77db9ba271ff6b1f73",
+          "flash": "c967cddfc041552282f7276f86a9e5abf60d53e3bdb4ffc4be73f7d2ba9fec85"
+        },
+        "src/agcws/pipeline/schedule_backend.py": {
+          "baseline": "8804d88447924112a1c4ffdb387c79b04cc47722897a6c90a0bad6f881561a0b",
+          "flash": "d331d92b4c1b637af707709b47faddd440051df868748754d344cffa5e9c6ae9"
+        }
+      },
+      "runtime_schema_and_shared_initializations_match": true
+    },
+    {
+      "design": "mesh",
+      "cells": 90,
+      "baseline_manifest_sha256": "3d28a747a7ae1ec9149c923561bed0385cf5b5ca409d416efdc312e97100029a",
+      "manifest_sha256": "b911432f551ebf4725538ae84bd34cc12ba827710049e3dcde62b2ae358101d2",
+      "provider_only_source_changes": {
+        "src/agcws/pipeline/model.py": {
+          "baseline": "79c68c743d4a9b92dfea4fab4ce40f028fb477afee7aaf77db9ba271ff6b1f73",
+          "flash": "c967cddfc041552282f7276f86a9e5abf60d53e3bdb4ffc4be73f7d2ba9fec85"
+        },
+        "src/agcws/pipeline/schedule_backend.py": {
+          "baseline": "8804d88447924112a1c4ffdb387c79b04cc47722897a6c90a0bad6f881561a0b",
+          "flash": "d331d92b4c1b637af707709b47faddd440051df868748754d344cffa5e9c6ae9"
+        }
+      },
+      "runtime_schema_and_shared_initializations_match": true
+    },
+    {
+      "design": "redmule",
+      "cells": 90,
+      "baseline_manifest_sha256": "fc770b4474447792a781fadc0f51c69dac7dd4ce232944db652fe37694a1b8db",
+      "manifest_sha256": "a242fbf9740087504acf16efef89e20ad9846af41ef4fdbbe52310a9bb5d9822",
+      "provider_only_source_changes": {
+        "src/agcws/pipeline/model.py": {
+          "baseline": "79c68c743d4a9b92dfea4fab4ce40f028fb477afee7aaf77db9ba271ff6b1f73",
+          "flash": "c967cddfc041552282f7276f86a9e5abf60d53e3bdb4ffc4be73f7d2ba9fec85"
+        },
+        "src/agcws/pipeline/schedule_backend.py": {
+          "baseline": "8804d88447924112a1c4ffdb387c79b04cc47722897a6c90a0bad6f881561a0b",
+          "flash": "d331d92b4c1b637af707709b47faddd440051df868748754d344cffa5e9c6ae9"
+        }
+      },
+      "runtime_schema_and_shared_initializations_match": true
+    }
+  ],
+  "cells": 450,
+  "paid_calls_during_preparation": 0,
+  "full_matrix_launch_authorized": false,
+  "accounting": "observed-input-full-output-reserve-v1",
+  "scope": "full-matched",
+  "ceiling_per_design_usd": 120,
+  "maximum_calls": 28350,
+  "full_input_output_reservation_per_call_usd": 0.27288
+}

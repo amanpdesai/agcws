@@ -1,0 +1,370 @@
+{
+  "operational_ready": false,
+  "full_matrix_started": false,
+  "max_output_tokens": 32768,
+  "reason": "Ibex MAX_TOKENS and provider 429; configuration decision required before new freeze",
+  "designs": [
+    {
+      "design": "aes",
+      "completion": {
+        "cells": 1,
+        "slots": 6,
+        "summaries": [
+          {
+            "budget": 6,
+            "auc": 0.4680899243580159,
+            "mean_auc": 0.09361798487160318,
+            "curve": [
+              0.32709466123626607,
+              0.3038080782257482,
+              0.00020986157546705656,
+              0.00020986157546705656,
+              0.00020986157546705656,
+              0.00020986157546705656
+            ],
+            "final_loss": 0.00020986157546705656,
+            "solved": true,
+            "evaluations_to_target": 3,
+            "right_censored": false,
+            "valid_slots": 6,
+            "success_metric": "max-bin",
+            "auc_metric": "nrmse",
+            "best_max_bin_error": 0.0005801268595147857,
+            "cell": {
+              "target": "confirmation-alternating",
+              "seed": 9100,
+              "arm": "strong-medium-32k",
+              "manifest_sha256": "bc812f0b2f986f727f0206a06d68d3cfe6c65a03940663bad523b4a3921011f4"
+            },
+            "filtered": 0
+          }
+        ],
+        "liability_usd": 0.15081899999999998
+      },
+      "valid_generated": 4,
+      "responses": [
+        {
+          "usage": {
+            "prompt_token_count": 6189,
+            "candidates_token_count": 346,
+            "thoughts_token_count": 17579
+          },
+          "finish_reasons": [
+            "FinishReason.STOP"
+          ],
+          "estimated_usd": 0.0718605,
+          "api_error": null
+        },
+        {
+          "usage": {
+            "prompt_token_count": 7093,
+            "candidates_token_count": 378,
+            "thoughts_token_count": 19259
+          },
+          "finish_reasons": [
+            "FinishReason.STOP"
+          ],
+          "estimated_usd": 0.0789585,
+          "api_error": null
+        }
+      ],
+      "invalid_reasons": []
+    },
+    {
+      "design": "dma",
+      "completion": {
+        "cells": 1,
+        "slots": 6,
+        "summaries": [
+          {
+            "budget": 6,
+            "auc": 2.484442680272082,
+            "mean_auc": 0.49688853605441635,
+            "curve": [
+              0.6169485271061679,
+              0.54841231612146,
+              0.54841231612146,
+              0.45084669416547773,
+              0.41886472687373333,
+              0.41886472687373333
+            ],
+            "final_loss": 0.41886472687373333,
+            "solved": false,
+            "evaluations_to_target": 6,
+            "right_censored": true,
+            "valid_slots": 6,
+            "success_metric": "max-bin",
+            "auc_metric": "nrmse",
+            "best_max_bin_error": 0.8386266646263006,
+            "cell": {
+              "target": "confirmation-alternating",
+              "seed": 9100,
+              "arm": "strong-medium-32k",
+              "manifest_sha256": "bceb9026115ce9d4185bbf0e54154ffecbd0bb4909c03abfb83bc90834a23086"
+            },
+            "filtered": 0
+          }
+        ],
+        "liability_usd": 0.2492025
+      },
+      "valid_generated": 4,
+      "responses": [
+        {
+          "usage": {
+            "prompt_token_count": 6166,
+            "candidates_token_count": 385,
+            "thoughts_token_count": 31453
+          },
+          "finish_reasons": [
+            "FinishReason.STOP"
+          ],
+          "estimated_usd": 0.124017,
+          "api_error": null
+        },
+        {
+          "usage": {
+            "prompt_token_count": 7224,
+            "candidates_token_count": 484,
+            "thoughts_token_count": 31454
+          },
+          "finish_reasons": [
+            "FinishReason.STOP"
+          ],
+          "estimated_usd": 0.1251855,
+          "api_error": null
+        }
+      ],
+      "invalid_reasons": []
+    },
+    {
+      "design": "ibex",
+      "completion": {
+        "cells": 1,
+        "slots": 6,
+        "summaries": [
+          {
+            "budget": 6,
+            "auc": 3.230028034735557,
+            "mean_auc": 0.6460056069471114,
+            "curve": [
+              1.0,
+              0.6066728966079016,
+              0.6066728966079016,
+              0.6066728966079016,
+              0.6066728966079016,
+              0.6066728966079016
+            ],
+            "final_loss": 0.6066728966079016,
+            "solved": false,
+            "evaluations_to_target": 6,
+            "right_censored": true,
+            "valid_slots": 1,
+            "success_metric": "max-bin",
+            "auc_metric": "nrmse",
+            "best_max_bin_error": 0.8811816492467751,
+            "cell": {
+              "target": "confirmation-alternating",
+              "seed": 9100,
+              "arm": "strong-medium-32k",
+              "manifest_sha256": "8e35768ba839a288bf4fabf421c36a47d01d704de7e8e648e0e7a77530314a63"
+            },
+            "filtered": 0
+          }
+        ],
+        "liability_usd": 0.40385325000000005
+      },
+      "valid_generated": 0,
+      "responses": [
+        {
+          "usage": {
+            "prompt_token_count": 10861,
+            "candidates_token_count": 1296,
+            "thoughts_token_count": 31458
+          },
+          "finish_reasons": [
+            "FinishReason.MAX_TOKENS"
+          ],
+          "estimated_usd": 0.13097325,
+          "api_error": null
+        },
+        {
+          "usage": null,
+          "finish_reasons": [],
+          "estimated_usd": null,
+          "api_error": {
+            "type": "ClientError",
+            "message": "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.', 'status': 'RESOURCE_EXHAUSTED'}}"
+          }
+        }
+      ],
+      "invalid_reasons": [
+        {
+          "slot": 1,
+          "stage": "USEFUL_WORK",
+          "reason": "body or fixed observation did not complete in the declared window"
+        },
+        {
+          "slot": 3,
+          "stage": "SCHEMA",
+          "reason": "None is not of type 'object'"
+        },
+        {
+          "slot": 4,
+          "stage": "SCHEMA",
+          "reason": "None is not of type 'object'"
+        },
+        {
+          "slot": 5,
+          "stage": "API",
+          "reason": "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.', 'status': 'RESOURCE_EXHAUSTED'}}"
+        },
+        {
+          "slot": 6,
+          "stage": "API",
+          "reason": "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.', 'status': 'RESOURCE_EXHAUSTED'}}"
+        }
+      ]
+    },
+    {
+      "design": "mesh",
+      "completion": {
+        "cells": 1,
+        "slots": 6,
+        "summaries": [
+          {
+            "budget": 6,
+            "auc": 0.8191631813597332,
+            "mean_auc": 0.16383263627194664,
+            "curve": [
+              0.5203553034693913,
+              0.5203553034693913,
+              0.01641835914873912,
+              0.01641835914873912,
+              0.004239618330606226,
+              0.003107779055123506
+            ],
+            "final_loss": 0.003107779055123506,
+            "solved": true,
+            "evaluations_to_target": 3,
+            "right_censored": false,
+            "valid_slots": 6,
+            "success_metric": "max-bin",
+            "auc_metric": "nrmse",
+            "best_max_bin_error": 0.007950662374214598,
+            "cell": {
+              "target": "confirmation-alternating",
+              "seed": 9100,
+              "arm": "strong-medium-32k",
+              "manifest_sha256": "63b9ce3560b15b7fa1e57602198dab4186690247c396a89f3366171e85631133"
+            },
+            "filtered": 0
+          }
+        ],
+        "liability_usd": 0.07549199999999998
+      },
+      "valid_generated": 4,
+      "responses": [
+        {
+          "usage": {
+            "prompt_token_count": 2556,
+            "candidates_token_count": 1039,
+            "thoughts_token_count": 11623
+          },
+          "finish_reasons": [
+            "FinishReason.STOP"
+          ],
+          "estimated_usd": 0.0493995,
+          "api_error": null
+        },
+        {
+          "usage": {
+            "prompt_token_count": 4200,
+            "candidates_token_count": 1056,
+            "thoughts_token_count": 5062
+          },
+          "finish_reasons": [
+            "FinishReason.STOP"
+          ],
+          "estimated_usd": 0.0260925,
+          "api_error": null
+        }
+      ],
+      "invalid_reasons": []
+    },
+    {
+      "design": "redmule",
+      "completion": {
+        "cells": 1,
+        "slots": 6,
+        "summaries": [
+          {
+            "budget": 6,
+            "auc": 1.1293347751152307,
+            "mean_auc": 0.22586695502304616,
+            "curve": [
+              0.515776318455839,
+              0.5045498438697256,
+              0.1204955865564772,
+              0.1204955865564772,
+              0.08393706593642089,
+              0.08393706593642089
+            ],
+            "final_loss": 0.08393706593642089,
+            "solved": false,
+            "evaluations_to_target": 6,
+            "right_censored": true,
+            "valid_slots": 5,
+            "success_metric": "max-bin",
+            "auc_metric": "nrmse",
+            "best_max_bin_error": 0.11664204963123465,
+            "cell": {
+              "target": "confirmation-alternating",
+              "seed": 9100,
+              "arm": "strong-medium-32k",
+              "manifest_sha256": "34adf4c95810c9d636c82164ad215b37841072874d905d4f5beb8fddb57920c5"
+            },
+            "filtered": 0
+          }
+        ],
+        "liability_usd": 0.11956275
+      },
+      "valid_generated": 3,
+      "responses": [
+        {
+          "usage": {
+            "prompt_token_count": 2241,
+            "candidates_token_count": 658,
+            "thoughts_token_count": 1326
+          },
+          "finish_reasons": [
+            "FinishReason.STOP"
+          ],
+          "estimated_usd": 0.00912075,
+          "api_error": null
+        },
+        {
+          "usage": {
+            "prompt_token_count": 3156,
+            "candidates_token_count": 709,
+            "thoughts_token_count": 28111
+          },
+          "finish_reasons": [
+            "FinishReason.STOP"
+          ],
+          "estimated_usd": 0.110442,
+          "api_error": null
+        }
+      ],
+      "invalid_reasons": [
+        {
+          "slot": 4,
+          "stage": "USEFUL_WORK",
+          "reason": "required GEMM work did not complete within the fixed window"
+        }
+      ]
+    }
+  ],
+  "tests_passed": 818,
+  "lint": "passed",
+  "next_choice": "MEDIUM/65536 versus a separately tested LOW/32768; neither applied or launched"
+}
