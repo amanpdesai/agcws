@@ -1,12 +1,16 @@
-"""Publication retains failures and compares identical measured subsets."""
+"""Final power records are complete, validated, and compared on matched runs."""
 
 import copy
 import gzip
 import importlib.util
 import json
+import shutil
 from pathlib import Path
 
 import pytest
+
+from agcws.evidence.power import checked_bytes
+from agcws.evidence.power import load as load_power
 
 SPEC=importlib.util.spec_from_file_location('power_publication','paper/scripts/extract_power.py')
 power=importlib.util.module_from_spec(SPEC)
@@ -34,20 +38,18 @@ def test_no_failures_silently_filled_and_matched_redmule():
     assert sum(c['planned'] for c in coverage)==2295
     assert sum(c['measured'] for c in coverage)==2295
     assert sum(c['failed'] for c in coverage)==0
-    assert sum(c.get('recovered', 0) for c in coverage)==22
     red=summary['designs']['redmule']
     for arm,pair in red['matched_strong'].items():
         assert pair['strong']['n']==pair['comparator']['n']
         assert pair['strong']['n']==red['nonflat_by_arm'][arm]['n']
     assert red['matched_strong']['phase-ga']['strong']['n']==80
-    assert len(red['recovered_failures']) == 22
     assert not red['failures']
     assert red['qualified_reference_by_arm']['strong-medium-64k']['n']==80
 
 
-def test_repaired_references_and_ibex_validation():
+def test_qualified_references_and_ibex_validation():
     summary=json.loads(Path('results/summaries/power.json').read_text())
-    assert summary['power_revision']=='power-revision-v2'
+    assert summary['version']==3 and 'power_revision' not in summary
     references=[r for d in summary['designs'].values() for t,r in d['references'].items()
                 if not t.endswith('flat_control')]
     assert len(references)==40 and all(r['reference_activity_solved'] for r in references)
@@ -63,8 +65,10 @@ def test_repaired_references_and_ibex_validation():
     red=summary['designs']['redmule']['exclusions_by_arm']
     assert [red[a]['total'] for a in power.ARMS]==[0,0,0,0,0]
     assert [red[a]['nonflat'] for a in power.ARMS]==[0,0,0,0,0]
-    recovered=summary['designs']['redmule']['recovered_failures']
-    assert [sum(r['case']['policy']==a for r in recovered) for a in power.ARMS]==[0,4,12,6,0]
+    buckets, _ = load_power(Path.cwd(), 'redmule')
+    audited = [r for b in buckets for r in b['records'] if r.get('validation') == 'clipping']
+    assert [sum(r['case']['policy']==a for r in audited) for a in power.ARMS]==[0,4,12,6,0]
+    assert all(r['failures'] for r in audited)
 
 
 def test_constant_reference_diagnostic_is_undefined_not_zero():
@@ -74,41 +78,62 @@ def test_constant_reference_diagnostic_is_undefined_not_zero():
     assert power.describe([])=={'n':0}
 
 
-def test_revision_hashes_and_paths_are_checked(tmp_path, monkeypatch):
-    monkeypatch.setattr(power, 'ROOT', tmp_path)
+def test_evidence_hashes_and_paths_are_checked(tmp_path):
     path = tmp_path / 'measurement.json'
     path.write_text('{}')
     entry = dict(path='measurement.json', sha256=power.digest(path.read_bytes()))
-    assert power.checked_json(entry, {}) == {}
+    assert json.loads(checked_bytes(tmp_path, entry)) == {}
     path.write_text('{"changed":true}')
     with pytest.raises(ValueError, match='hash mismatch'):
-        power.checked_json(entry, {})
+        checked_bytes(tmp_path, entry)
     with pytest.raises(ValueError, match='unsafe catalog path'):
-        power.checked_json(dict(path='../measurement.json', sha256=entry['sha256']), {})
+        checked_bytes(tmp_path, dict(path='../measurement.json', sha256=entry['sha256']))
 
 
-def test_candidate_revision_cannot_change_search_or_native_power(tmp_path, monkeypatch):
-    bucket = json.loads(gzip.decompress(Path('results/aes/power/measurements.jsonl.gz').read_bytes()).splitlines()[0])
-    row = bucket['records'][0]
-    original = power.unpack_record(row)
-    original['_archive_sha256'] = row['receipt']['measurement_sha256']
-    monkeypatch.setattr(power, 'ROOT', tmp_path)
-    path = tmp_path / 'measurement.json'
-    for field in ('activity', 'gate_dynamic_power_w'):
-        changed = copy.deepcopy(original)
-        changed.pop('_archive_sha256')
-        changed[field] = {} if field == 'activity' else [0]*8
-        path.write_text(json.dumps(changed))
-        entry = dict(path=path.name, sha256=power.digest(path.read_bytes()),
-                     original_sha256=original['_archive_sha256'])
-        with pytest.raises(ValueError, match='changes frozen'):
-            power.revised_candidate(original, entry, {})
-    changed = copy.deepcopy(original)
-    changed['power']['clock_period_s'] *= 2
-    path.write_text(json.dumps(changed))
-    entry['sha256'] = power.digest(path.read_bytes())
-    with pytest.raises(ValueError, match='changes native power'):
-        power.revised_candidate(original, entry, {})
+def test_final_archive_needs_no_revision_overlay():
+    for design in power.DESIGNS:
+        buckets, records = load_power(Path.cwd(), design)
+        assert len(records) == 459
+        assert all(row['status'] == 'measured' for b in buckets for row in b['records'])
+        refs = {m['activity']['target']:m for m in records.values()
+                if m['activity'].get('role') == 'power_reference'}
+        assert len(refs) == 9
+        for record in records.values():
+            power.compare_measurements(record, refs[record['activity']['target']])
+
+
+def test_unpacked_plan_must_match_record():
+    bucket=json.loads(gzip.decompress(Path('results/aes/power/measurements.jsonl.gz').read_bytes()).splitlines()[0])
+    row=copy.deepcopy(bucket['records'][0])
+    row['plan_sha256'] = 'wrong'
+    with pytest.raises(ValueError, match='plan mismatch'):
+        power.unpack_record(row)
+
+
+@pytest.mark.parametrize('change', ['failed', 'duplicate', 'proof', 'source'])
+def test_final_inventory_rejects_missing_or_mismatched_evidence(tmp_path, change):
+    root = Path.cwd()
+    shutil.copytree(root / 'results/aes/power', tmp_path / 'results/aes/power')
+    shutil.copytree(root / 'results/aes/tasks/references', tmp_path / 'results/aes/tasks/references')
+    shutil.copy2(root / 'results/index.json', tmp_path / 'results/index.json')
+    catalog = json.loads((tmp_path / 'results/index.json').read_text())
+    archive = tmp_path / 'results/aes/power/measurements.jsonl.gz'
+    buckets = [json.loads(line) for line in gzip.decompress(archive.read_bytes()).splitlines()]
+    if change == 'failed':
+        buckets[0]['records'][0]['status'] = 'failed'
+    elif change == 'duplicate':
+        buckets[0]['records'].append(buckets[0]['records'][0])
+    elif change == 'proof':
+        proof = tmp_path / 'results/aes/power/validation/references.json.gz'
+        proof.write_bytes(proof.read_bytes() + b' ')
+    else:
+        buckets[0]['records'][0]['plan_sha256'] = 'another-plan'
+    raw = ''.join(json.dumps(b) + '\n' for b in buckets).encode()
+    archive.write_bytes(gzip.compress(raw, mtime=0))
+    catalog['designs']['aes']['power_sha256'] = power.digest(archive.read_bytes())
+    (tmp_path / 'results/index.json').write_text(json.dumps(catalog))
+    with pytest.raises(ValueError):
+        load_power(tmp_path, 'aes')
 
 
 def test_excluding_ibex_sensitivity_uses_matched_weights():

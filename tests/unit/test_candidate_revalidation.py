@@ -42,10 +42,10 @@ def test_overlay_pending_and_failed_are_not_all_passed(tmp_path, monkeypatch):
                  'audit_required_count': 1, 'strict_pass_count': 193,
                  'cases': [{'case_id': 'case', 'strict_pass': False}]}
     batch.write(work / 'inventory.json', inventory)
-    destination = tmp_path / 'results/ibex/power/slew-validation-v1'
+    destination = tmp_path / 'results/ibex/power/test-audit'
     index = overlay.publish(work, destination)
     assert not index['complete'] and not index['all_passed']
-    provenance = 'results/ibex/power/slew-validation-v1/provenance.json'
+    provenance = 'results/ibex/power/test-audit/provenance.json'
     assert index['inputs'][provenance] == batch.file_digest(tmp_path / provenance)[0]
     (work / 'cases/case').mkdir(parents=True)
     batch.write(work / 'cases/case/status.json', {'state': 'failed', 'error': 'unexplained'})

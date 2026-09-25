@@ -331,7 +331,7 @@ def main():
     if args.submission and r"\todo{" in source:
         raise ValueError("Resolve visible TODOs before preparing the submission PDF")
     from agcws.reporting.mesh_sensitivity import verify as verify_mesh_sensitivity
-    sensitivity_path = ROOT / 'results/mesh/sink-sensitivity-v1'
+    sensitivity_path = ROOT / 'results/mesh/sink-sensitivity'
     if verify_mesh_sensitivity(sensitivity_path) != json.loads((sensitivity_path/'summary.json').read_text()):
         raise ValueError('Regenerate the Mesh sensitivity summary from its evidence')
     subprocess.run([sys.executable, str(PAPER / "scripts/extract.py")], cwd=ROOT, check=True)
@@ -359,11 +359,13 @@ def main():
                       "paper/figures/mesh_waveforms.pdf", "paper/figures/power_table.tex", "paper/figures/supplementary/mesh_power_profiles.pdf", "paper/references.bib"]
     power = json.loads((ROOT / INPUTS[4]).read_text())
     paths.extend(power['inputs'])
-    paths.extend(['results/mesh/sink-sensitivity-v1/evidence.json.gz',
-                  'results/mesh/sink-sensitivity-v1/summary.json',
+    paths.extend(['results/mesh/sink-sensitivity/evidence.json.gz',
+                  'results/mesh/sink-sensitivity/summary.json',
                   'src/agcws/reporting/mesh_sensitivity.py',
                   'src/agcws/evaluation/power/mesh_sensitivity.py'])
-    paths.extend(['src/agcws/reporting/redmule_recovery.py',
+    paths.extend(['src/agcws/reporting/redmule_validation.py',
+                  'src/agcws/reporting/references.py',
+                  'src/agcws/evidence/power.py',
                   'src/agcws/evaluation/power/windows.py',
                   'src/agcws/reporting/power_reference.py'])
     tasks = json.loads((PAPER / "evidence/task_vectors.json").read_text())

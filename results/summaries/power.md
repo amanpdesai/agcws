@@ -1,6 +1,6 @@
 # Completed mapped-gate power assessment
 
-Completed finalist power, controls separate, aligned reference-mean normalization. Original failures and verified recoveries retained. No power-space solve gate or silicon-accuracy claim.
+Completed finalist power, controls separate, aligned reference-mean normalization. Validation evidence is retained with each design. No power-space solve gate or silicon-accuracy claim.
 
 | Design | Random | GA | Phase-model | Flash-Lite | Gemini 3.8 |
 | --- | ---: | ---: | ---: | ---: | ---: |
@@ -12,10 +12,10 @@ Completed finalist power, controls separate, aligned reference-mean normalizatio
 
 Entries are mean normalized RMS power error, with measured nonflat run count in parentheses. Normalization uses the duration-weighted mean of the fixed reference, not the activity span. Failed cases are absent, never replaced by zeros. `matched_strong` reports identical measured subsets for each comparator.
 
-450/450 strong and 45/45 reference replays completed. 0 measurements remain excluded. Original failures and verified recoveries are retained separately. Ibex and recovered RedMulE measurements pass strict reconstruction or the per-case slew-clipping audit. Original control measurements remain separate.
+450/450 strong and 45/45 reference replays completed. 0 measurements remain excluded. Measurements pass strict reconstruction or the per-case slew-clipping audit. Controls remain separate.
 
 Of 40 nonflat reference workloads, 40 meet the activity gate. Other reference comparisons describe workloads, not validation of the requested target. Reference modulation and the best constant approximation (the eight-bin mean) are retained for every task. 399/400 strong nonflat measurements beat their reference's constant approximation.
 
-Reproduce with `.venv/bin/python paper/scripts/extract_power.py`. `--capture` is the one-time local collection capture and refuses archive overwrite. The five compressed archives preserve full measurement JSON, receipt hashes, selection cases, collection identities, and failed attempts. This verifies recorded measurements and comparison arithmetic, not an independent OpenSTA rerun.
+Reproduce with `.venv/bin/python paper/scripts/extract_power.py`. The five compressed archives contain the final measurements and validation receipts. Extraction checks the recorded evidence and comparison arithmetic without rerunning OpenSTA.
 
 Excluding Ibex leaves 320 measured pairs. Mean NRMSE is 1.961% for Gemini and 8.907% for the selected classical comparators. The comparison remains descriptive, not a power-space success rate.

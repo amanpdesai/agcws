@@ -91,7 +91,7 @@ finalists reuse their unchanged measurements.
 
 This is post-search replay of fixed finalists, not a restricted-policy search.
 It does not revise the search AUC or proposal counts. The
-[sensitivity evidence](../results/mesh/sink-sensitivity-v1/README.md) preserves
+[sensitivity evidence](../results/mesh/sink-sensitivity/README.md) preserves
 both results and the exact intervention.
 
 ## Estimated power against reference workloads

@@ -3,7 +3,6 @@
 import argparse
 import concurrent.futures
 import copy
-import gzip
 import json
 import os
 import subprocess
@@ -16,6 +15,7 @@ from statistics import mean
 from agcws.core import config
 from agcws.designs.aes.gls import sha
 from agcws.evaluation.power.frozen import verify_sources
+from agcws.evidence.power import load as load_power
 from agcws.reporting.metrics import error, key, max_bin_error
 from agcws.reporting.power_reference import compare_measurements
 
@@ -50,8 +50,8 @@ def restrict(program):
 
 def inventory():
     cases, references = [], {}
-    for line in gzip.decompress(ARCHIVE.read_bytes()).splitlines():
-        bucket = json.loads(line)
+    buckets, _ = load_power(ROOT, 'mesh')
+    for bucket in buckets:
         for row in bucket["records"]:
             if row["status"] != "measured":
                 raise ValueError("Mesh source contains an unmeasured case")
@@ -63,7 +63,7 @@ def inventory():
             measured = json.loads(raw)
             if (
                 measured["activity"] != row["case"]
-                or measured["plan_sha256"] != bucket["plan_sha256"]
+                or measured["plan_sha256"] != row["plan_sha256"]
             ):
                 raise ValueError("original selection identity differs")
             c = row["case"]
@@ -95,13 +95,7 @@ def inventory():
         group = [c for c in cases if c["case"]["policy"] == arm]
         assert len(group) == 90
         verify_sources(read(Path(group[0]["case"]["root"]) / "manifest.json"), RUNTIMES[arm])
-    index_path = ROOT / "results/mesh/power/repaired-references-v1/index.json"
-    index = read(index_path)
-    for target, entry in index["references"].items():
-        path = ROOT / entry["path"]
-        if sha(path) != entry["sha256"]:
-            raise ValueError("repaired reference checksum mismatch")
-        references[target] = read(path)
+    index_path = ROOT / "results/mesh/tasks/references/index.json"
     result = {
         "version": "mesh-sink-sensitivity-v1",
         "intervention": "sink_period=8; sink_pause=min(max(original,0),3); all other fields unchanged",

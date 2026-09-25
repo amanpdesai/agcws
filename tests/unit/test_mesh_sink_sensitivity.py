@@ -8,7 +8,7 @@ import pytest
 from agcws.evaluation.power.mesh_sensitivity import restrict
 from agcws.reporting.mesh_sensitivity import verify
 
-EVIDENCE = Path("results/mesh/sink-sensitivity-v1")
+EVIDENCE = Path("results/mesh/sink-sensitivity")
 
 
 @pytest.mark.parametrize("pause,expected", [(-2, 0), (0, 0), (2, 2), (3, 3), (9, 3)])

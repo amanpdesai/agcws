@@ -8,10 +8,11 @@ from pathlib import Path
 
 from agcws.core import config
 from agcws.evaluation.power.mesh_sensitivity import restrict, summarize
+from agcws.evidence.power import load as load_power
 from agcws.reporting.metrics import error, max_bin_error
 from agcws.reporting.power_reference import compare_measurements
 
-DESTINATION = Path("results/mesh/sink-sensitivity-v1")
+DESTINATION = Path("results/mesh/sink-sensitivity")
 
 
 def digest(raw):
@@ -62,12 +63,10 @@ def capture(source, destination):
             ]
         },
     }
-    ref_index = config.ROOT / "results/mesh/power/repaired-references-v1/index.json"
+    ref_index = config.ROOT / "results/mesh/tasks/references/index.json"
     record["external_inputs"][str(ref_index.relative_to(config.ROOT))] = digest(
         ref_index.read_bytes()
     )
-    for entry in json.loads(ref_index.read_text())["references"].values():
-        record["external_inputs"][entry["path"]] = entry["sha256"]
     raw = gzip.compress((json.dumps(record, sort_keys=True) + "\n").encode(), mtime=0)
     destination.mkdir(parents=True, exist_ok=True)
     path = destination / "evidence.json.gz"
@@ -96,17 +95,13 @@ def verify(destination, root=config.ROOT):
         inventory["inputs"][str(Path(archive["source_root"]) / "run.py")]
         == files["run.py"]["sha256"]
     )
-    originals = {}
-    for line in gzip.decompress(
-        (root / "results/mesh/power/measurements.jsonl.gz").read_bytes()
-    ).splitlines():
-        for row in json.loads(line)["records"]:
-            originals[row["case"]["id"]] = row
+    buckets, measurements = load_power(root, 'mesh')
+    originals = {row['case']['id']:row for bucket in buckets for row in bucket['records']}
     ref_index = json.loads(
-        (root / "results/mesh/power/repaired-references-v1/index.json").read_text()
+        (root / "results/mesh/tasks/references/index.json").read_text()
     )
     for target, entry in ref_index["references"].items():
-        assert inventory["references"][target] == json.loads((root / entry["path"]).read_text())
+        assert inventory["references"][target] == measurements[entry['case_id']]
     for row in originals.values():
         if row["case"].get("role") == "power_reference" and row["case"]["target"].endswith(
             "flat_control"

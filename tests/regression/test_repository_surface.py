@@ -68,8 +68,12 @@ def test_current_evidence_index_resolves_and_records_completed_state():
     for path in index['summaries'].values():
         assert Path(path).is_file()
     for row in index['designs'].values():
-        for path in row.values():
-            assert Path(path).exists()
+        for name, path in row.items():
+            if name.endswith('_sha256'):
+                import hashlib
+                assert hashlib.sha256(Path(row[name[:-7]]).read_bytes()).hexdigest() == path
+            else:
+                assert Path(path).exists()
     assert json.loads(Path(index['summaries']['gemini_3_8']).read_text())['designs']['aes']['nonflat']['solved'] == 80
 
 
