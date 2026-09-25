@@ -29,9 +29,9 @@ def test_package_is_self_contained_and_deterministic(tmp_path):
     module.package(tmp_path, out)
     assert out.read_bytes() == original
     with zipfile.ZipFile(out) as archive:
-        assert sorted(archive.namelist()) == ['README.md', 'SOURCE_MANIFEST.json', 'figures/a.pdf', 'main.tex']
-        manifest = json.loads(archive.read('SOURCE_MANIFEST.json'))
-        assert all(module.digest(archive.read(k)) == v for k, v in manifest['files'].items())
+        assert sorted(archive.namelist()) == ['figures/a.pdf', 'main.tex']
+        assert archive.read('main.tex') == (tmp_path / 'report.tex').read_bytes()
+        assert archive.read('figures/a.pdf') == (tmp_path / 'figures/a.pdf').read_bytes()
 
 
 def test_changed_source_requires_rebuild(tmp_path):
@@ -69,7 +69,7 @@ def test_dependencies_cannot_escape_paper_directory(tmp_path):
         module.dependencies(paper)
 
 
-def test_overlength_bundle_warns_reader(tmp_path):
+def test_overlength_bundle_still_contains_only_latex_dependencies(tmp_path):
     fixture(tmp_path)
     receipt = tmp_path / 'evidence/build_provenance.json'
     build = json.loads(receipt.read_text())
@@ -78,4 +78,4 @@ def test_overlength_bundle_warns_reader(tmp_path):
     output = tmp_path / 'upload.zip'
     module.package(tmp_path, output)
     with zipfile.ZipFile(output) as archive:
-        assert b'WARNING: This working draft is 5 pages' in archive.read('README.md')
+        assert sorted(archive.namelist()) == ['figures/a.pdf', 'main.tex']
