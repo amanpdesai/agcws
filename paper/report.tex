@@ -29,6 +29,8 @@ zw3306@columbia.edu
 }
 }
 \begin{document}
+\IEEEoverridecommandlockouts
+\IEEEaftertitletext{\vspace{-10pt}}
 \maketitle
 \begin{abstract}
 Temporal power characterization requires executable workloads that produce
@@ -86,7 +88,7 @@ The resulting workloads can be inspected, executed, and reused.
 
 \begin{figure*}[t]
 \centering
-\includegraphics[width=\textwidth]{figures/architecture.pdf}
+\includegraphics[width=0.95\textwidth]{figures/architecture.pdf}
 \caption{Simulation feedback guides workload proposals. After search, the selected
 workload and a separately constructed reference are replayed on the synthesized design under
 the same conditions. Estimated power assesses the result but does not guide search.}
@@ -157,6 +159,7 @@ measurement intervals. The model cannot alter the RTL or measurement rules.
 \centering\small
 \caption{Evaluated hardware interfaces and controllable workload parameters.}
 \label{tab:designs}
+\vspace{-2pt}
 \begin{tabular}{l>{\raggedright\arraybackslash}p{0.63\columnwidth}}
 \toprule
 Design & Workload control \\
@@ -168,6 +171,7 @@ BaseJump mesh & Packet timing, routes, data patterns and sink behavior \\
 RedMulE & FP16 GEMM size, operands, job counts and releases \\
 \bottomrule
 \end{tabular}
+\vspace{-5pt}
 \end{table}
 
 \begin{table*}[t]
@@ -176,18 +180,21 @@ RedMulE & FP16 GEMM size, operands, job counts and releases \\
 nonflat runs per design. Bold marks the lowest mean AUC, not significance.
 Gemini 3.8 denotes Gemini 3.8 Flash.}
 \label{tab:final}
+\vspace{-1pt}
 \input{figures/final_table.tex}
+\vspace{-3pt}
 \end{table*}
 
 \begin{figure*}[t]
 \centering
-\includegraphics[width=\textwidth]{figures/mesh_waveforms.pdf}
+\includegraphics[width=0.9\textwidth]{figures/mesh_waveforms.pdf}
 \caption{Both LLMs match these Mesh targets at seed 9100. Steps show 1,025-cycle
 average activity divided by the fixed scale, not within-interval changes.
 Shading marks the $\pm0.05$ tolerance. Counts include initialization and full
 batches. Selection minimizes valid $E_{\max}$ with earliest-slot ties.
 Classical runs use 128 slots. These are individual examples.}
 \label{fig:waveforms}
+\vspace{-4pt}
 \end{figure*}
 
 \subsection{Baselines with temporal control}
@@ -235,7 +242,6 @@ For each target and seed, policies share two initial workloads and 128 proposal
 slots. Both candidates in each LLM response count, even if the first matches.
 Observation periods span 6,774 to 262,144 cycles. Work requirements prevent
 quiet matches obtained by omitting work.
-
 Targets include steps, bursts, quiet intervals, alternation, ramps and irregular
 levels. Calibration measurements set their amplitudes. AES and DMA preserve
 mean requested activity across shapes, so bursts request more activity in fewer
@@ -247,6 +253,8 @@ Gemini 3.5 Flash-Lite and Gemini 3.8 Flash use MEDIUM reasoning, temperature
 RTL simulation uses Verilator, except for DMA's Icarus flow. Yosys/Slang
 synthesizes to Sky130 HD at typical 25$^\circ$C, 1.8 V. Released CHIA bindings
 expose tool stages, while scores use the frozen benchmark evaluator.
+Code, workloads, and results are available in the
+\href{https://github.com/amanpdesai/agcws}{project repository}.
 
 For each design, we average paired AUC differences across eight targets per
 seed. Ten averages support bootstrap intervals and exact sign-flip tests.
@@ -264,42 +272,36 @@ Flash-Lite and 1, 4, and 33 for Phase-random, Phase-GA, and Phase-model
 search, reducing mean error-curve AUC by 85.9\% to 92.9\% relative to the
 lowest-AUC classical baseline on each design. All 15 baseline comparisons
 favor Gemini 3.8 and remain significant after adjustment for multiple testing.
-
 Flash-Lite improves on the classical policies on Mesh but has higher AUC than
-all of them on DMA. Gemini 3.8 also has a larger token allowance, so its
-advantage cannot be attributed to model choice alone.
+all of them on DMA. Gemini 3.8 also has a larger token allowance.
 
 Across nonflat runs, Gemini 3.8 uses 6,008 charged proposals, compared with
 49,290 to 51,088 for the classical policies. Counts include initialization
 and unsuccessful runs. Both LLMs match the targets in Figure~\ref{fig:waveforms},
 but Gemini 3.8 reaches tolerance earlier without always having smaller final error.
-
 The illustrated Flash-Lite workload alternates 35-packet neighbor phases and
 320-packet hotspot phases. All 1,420 packets complete and every interval meets
 tolerance. Its 900-cycle release phases need not align with measurement bins.
 
 Only Gemini 3.8 solves nonflat RedMulE requests. Across all designs, controls
 yield 50/50 Gemini matches and 23/50 Flash-Lite matches, separate from nonflat totals.
-
-To test whether the selected Mesh workloads depend on sink settings outside
-the baseline range, we replay them with sink period 8 and pauses capped at 3.
-All 80 Gemini and 20 Flash-Lite nonflat matches are preserved, although one
-Flash-Lite near-flat control no longer meets tolerance. Mean reference-power
-error changes by less than 0.001 percentage point for either LLM. These results
-show that the nonflat matches survive the restriction,
-but do not establish how search would perform with those settings fixed throughout.
+We replay the selected Mesh workloads using the baselines' sink settings,
+with period 8 and pauses capped at 3. All 80 Gemini and 20 Flash-Lite nonflat
+matches remain within tolerance, while one Flash-Lite control no longer matches.
+Mean reference-power error changes by less than 0.001 percentage point for
+either model.
 
 \subsection{Mapped-Gate Assessment}
 Without gate-power feedback during search, Gemini 3.8 also lowers mean
 error against reference workloads' estimated power on every design
 (Table~\ref{tab:power}). All 40 nonflat references meet the activity tolerance.
+Each design's power comparison includes all 80 nonflat runs per policy.
 Power agreement is a comparison with those workloads,
 not a separate power-target success rate.
 
 Of 400 nonflat Gemini profiles, 399 beat the reference's best constant approximation,
 its eight-bin mean. Nearly flat references can have small errors without close
 temporal tracking. DMA's peak-to-trough variation is 3.0\% to 4.3\% of mean power.
-Each design's power comparison includes all 80 nonflat runs per policy.
 
 \begin{table}[t]
 \centering\small
@@ -307,7 +309,9 @@ Each design's power comparison includes all 80 nonflat runs per policy.
 (NRMSE, \% of reference mean). Classical selects Phase-model for AES/DMA and
 Phase-GA otherwise by lowest mean error. Columns share $n$ measured pairs.}
 \label{tab:power}
+\vspace{-2pt}
 \input{figures/power_table.tex}
+\vspace{-5pt}
 \end{table}
 
 \section{Related Work}
@@ -327,10 +331,12 @@ CHIA provides composable infrastructure for such experiments~\cite{chia}.
 
 \section{Discussion and Conclusion}
 Gemini 3.8 Flash meets the activity specification in 387 of 400 nonflat runs
-and lowers reference-power error on all five designs. These findings compare
-complete configurations, not semantic reasoning alone, and eight intervals
-leave finer timing unresolved. Workloads can be inspected and replayed at
-\url{https://github.com/amanpdesai/agcws}.
+and lowers reference-power error on all five designs. These comparisons evaluate
+complete policy configurations, not model choice alone. The Mesh replay tests
+selected workloads but does not establish search performance under restricted
+settings. Eight intervals leave finer timing unresolved. The resulting workloads
+can be inspected and replayed to study temporal activity and assess estimated
+dynamic power.
 
 \section*{Acknowledgment}
 AI tools supported proofreading and editing of the manuscript.
