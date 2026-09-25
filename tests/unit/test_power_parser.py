@@ -1,0 +1,34 @@
+import pytest
+
+from agcws.evaluation.power.reports import (
+    parse_annotated_pin_count,
+    parse_annotation_summary,
+    parse_opensta_power_report,
+)
+
+
+def test_parse_opensta_power_report():
+    profile = parse_opensta_power_report("Total Power = 1.25e-03\n")
+    assert profile.valid
+    assert profile.mean_power == pytest.approx(0.00125)
+    assert profile.fidelity == "synthesis"
+
+
+def test_power_parser_rejects_missing_total():
+    with pytest.raises(ValueError, match="Total Power"):
+        parse_opensta_power_report("Switching Power = 1.0e-03\n")
+
+
+def test_parse_real_opensta_summary_table():
+    report = "Total                  1.99e-02   1.26e-03   1.36e-07   2.12e-02 100.0%\n"
+    profile = parse_opensta_power_report(report)
+    assert profile.mean_power == pytest.approx(2.12e-2)
+
+
+def test_parser_reads_opensta_annotation_count():
+    assert parse_annotated_pin_count("Annotated 203 pin activities.\n") == 203
+    assert parse_annotated_pin_count("Total Power = 1.0\n") is None
+    summary = parse_annotation_summary("vcd           203\nunannotated 153856\n")
+    assert summary["annotated"] == 203
+    assert summary["unannotated"] == 153856
+    assert summary["fraction"] == pytest.approx(203 / (203 + 153856))

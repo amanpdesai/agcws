@@ -1,0 +1,145 @@
+#!/usr/bin/env python3
+"""Generate deterministic memory-macro collateral from a Yosys inventory.
+
+This deliberately emits a manifest and black-box contracts, not a fabricated
+SRAM implementation. A later backend can map each contract to bsg_fakeram (or
+another characterized macro) once its port semantics are confirmed.
+"""
+from __future__ import annotations
+
+import argparse
+import json
+import math
+from pathlib import Path
+
+
+def generate(inventory_path: Path, output_dir: Path, *, backend: str = "bsg_fakeram",
+             tech_nm: int = 130, voltage: float = 1.8) -> dict:
+    data = json.loads(inventory_path.read_text())
+    output_dir.mkdir(parents=True, exist_ok=True)
+    macros = []
+    seen_geometries = {}
+    for index, memory in enumerate(data.get("memories", [])):
+        width = memory.get("width")
+        depth = memory.get("size")
+        abits = memory.get("abits")
+        if not all(isinstance(value, int) and value > 0 for value in (width, depth, abits)):
+            raise ValueError(f"memory has incomplete geometry: {memory.get('name')}")
+        physical_width = 1 << math.ceil(math.log2(width))
+        geometry = (width, depth, abits, memory.get("rd_ports", 0), memory.get("wr_ports", 0))
+        is_new = geometry not in seen_geometries
+        macro_index = seen_geometries.setdefault(geometry, len(seen_geometries))
+        name = f"agcws_mem_{macro_index}_{memory['name'].replace('$', 'mem_')}"
+        if not is_new:
+            continue
+        macros.append({
+            "source_module": memory["module"],
+            "source_name": memory["name"],
+            "macro_module": name,
+            "yosys_cell_type": f"$__AGCWS_MEM_{macro_index}_{width}x{depth}",
+            "backend": backend,
+            "width": width,
+            "depth": depth,
+            # CACTI used by bsg_fakeram requires at least 64 bytes. Keep the
+            # logical geometry and record the padded physical depth explicitly.
+            "physical_depth": max(depth, (64 * 8 + width - 1) // width),
+            "physical_width": physical_width,
+            "address_bits": abits,
+            "read_ports": memory.get("rd_ports", 0),
+            "write_ports": memory.get("wr_ports", 0),
+            "status": "contract-only",
+            # bsg_fakeram is a single synchronous 1RW port. A memory with
+            # independent read and write ports needs a dual-port backend.
+            "read_clock_enable": memory.get("parameters", {}).get("RD_CLK_ENABLE") ==
+            "1" or memory.get("parameters", {}).get("RD_CLK_ENABLE") == 1,
+            "mapping_eligible": (
+                memory.get("rd_ports", 0) == 1 and memory.get("wr_ports", 0) == 0
+                and (memory.get("parameters", {}).get("RD_CLK_ENABLE") == "1"
+                     or memory.get("parameters", {}).get("RD_CLK_ENABLE") == 1)
+            ),
+        })
+    manifest = {
+        "schema": 1,
+        "top": data.get("top"),
+        "inventory": str(inventory_path),
+        "backend": backend,
+        "macros": macros,
+        # This is intentionally not an all-or-nothing gate.  Synthesis may map
+        # eligible memories and flatten the remainder into ordinary logic.
+        "mapping_ready": bool(macros) and all(macro["mapping_eligible"] for macro in macros),
+        "mapping_policy": "map_eligible_flatten_incompatible",
+        "mapped_memory_count": sum(macro["mapping_eligible"] for macro in macros),
+        "flattened_memory_count": sum(not macro["mapping_eligible"] for macro in macros),
+        "mapping_blockers": [macro["source_name"] for macro in macros if not macro["mapping_eligible"]],
+        "note": "Eligible memories use the characterized backend; incompatible memories are flattened by the synthesis flow.",
+    }
+    bsg_config = {
+        "tech_nm": tech_nm,
+        "voltage": voltage,
+        "metalPrefix": "met",
+        "pinWidth_nm": 300,
+        "pinHeight_nm": 800,
+        "pinPitch_nm": 600,
+        "snapWidth_nm": 460,
+        "snapHeight_nm": 2720,
+        "flipPins": True,
+        "srams": [{"name": f"fakeram{tech_nm}_{macro['physical_depth']}x{macro['physical_width']}",
+                   "width": macro["physical_width"], "depth": macro["physical_depth"], "banks": 1}
+                  for macro in macros],
+    }
+    (output_dir / "memory-macros.json").write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n")
+    (output_dir / "bsg_fakeram.json").write_text(json.dumps(bsg_config, indent=2, sort_keys=True) + "\n")
+    libmap = ["# Generated memory_libmap definitions for BSG-compatible memories.",
+              "# Physical dimensions are explicit in memory-macros.json.",
+              "# Independent read/write FIFO addresses are intentionally excluded."]
+    for macro in macros:
+        if not macro["mapping_eligible"]:
+            continue
+        port_kind = "sr" if macro["write_ports"] == 0 else "srsw"
+        libmap.extend([
+            # AXI's RTL marks these FIFO memories as distributed; matching the
+            # class is required for Yosys' ram_style attribute selection.
+            f"ram distributed {macro['yosys_cell_type']} {{",
+            f"  abits {int(math.log2(macro['physical_depth']))};",
+            f"  width {macro['physical_width']};",
+            "  cost 1;",
+            "  init any;",
+            f'  port {port_kind} "A" {{',
+            "    clock posedge;",
+            "    clken;",
+            "  }",
+            "}",
+            "",
+        ])
+    (output_dir / "memory_libmap.txt").write_text("\n".join(libmap))
+    lines = ["// Generated by src/agcws/evaluation/synthesis/memory_models.py", "// Contract-only: do not use for power claims."]
+    for macro in macros:
+        lines.extend([
+            f"module {macro['macro_module']} (",
+            f"  input wire clk, input wire [{macro['address_bits'] - 1}:0] addr,",
+            f"  input wire [{macro['width'] - 1}:0] din, input wire we,",
+            f"  output wire [{macro['width'] - 1}:0] dout",
+            ");",
+            "  // Implement with a characterized macro backend before mapping.",
+            "endmodule",
+            "",
+        ])
+    (output_dir / "memory_macros.v").write_text("\n".join(lines))
+    return manifest
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("inventory", type=Path)
+    parser.add_argument("output", type=Path)
+    parser.add_argument("--backend", default="bsg_fakeram")
+    parser.add_argument("--tech-nm", type=int, default=130)
+    parser.add_argument("--voltage", type=float, default=1.8)
+    args = parser.parse_args()
+    result = generate(args.inventory, args.output, backend=args.backend,
+                       tech_nm=args.tech_nm, voltage=args.voltage)
+    print(json.dumps({"out": str(args.output), "macros": len(result["macros"])}, sort_keys=True))
+
+
+if __name__ == "__main__":
+    main()

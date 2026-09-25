@@ -1,0 +1,10 @@
+{
+  "phases": [
+    {"start": 0, "duration": 32, "packets": 64, "sources": [0, 1, 2, 3], "route": "opposite", "pattern": "alternating"},
+    {"start": 1020, "duration": 32, "packets": 64, "sources": [0, 1, 2, 3], "route": "hotspot0", "pattern": "counter"},
+    {"start": 4100, "duration": 64, "packets": 64, "sources": [0, 1, 2, 3], "route": "neighbor", "pattern": "zeros"},
+    {"start": 7100, "duration": 64, "packets": 64, "sources": [0, 1, 2, 3], "route": "self", "pattern": "counter"}
+  ],
+  "sink_period": 8,
+  "sink_pause": 3
+}

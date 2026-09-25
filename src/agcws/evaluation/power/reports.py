@@ -1,0 +1,81 @@
+import re
+from dataclasses import dataclass
+from pathlib import Path
+from typing import Literal
+
+
+@dataclass(frozen=True)
+class PowerProfile:
+    mean_power: float
+    peak_power: float
+    windowed: list[float] | None = None
+    by_region: dict[str, float] | None = None
+    useful_work: float = 0.0
+    valid: bool = False
+    fidelity: Literal["activity", "synthesis"] = "activity"
+    provenance: dict[str, str] | None = None
+    per_cycle_toggles: list[int] | None = None
+
+
+_POWER_LINE = re.compile(
+    r"(?im)^\s*(?P<label>total|internal|switching|leakage)\s+power\s*"
+    r"(?:=|:)\s*(?P<value>[-+]?\d+(?:\.\d*)?(?:[eE][-+]?\d+)?)"
+)
+_POWER_TABLE_TOTAL = re.compile(
+    r"(?im)^\s*Total\s+"
+    r"(?P<internal>[-+]?\d+(?:\.\d*)?(?:[eE][-+]?\d+)?)\s+"
+    r"(?P<switching>[-+]?\d+(?:\.\d*)?(?:[eE][-+]?\d+)?)\s+"
+    r"(?P<leakage>[-+]?\d+(?:\.\d*)?(?:[eE][-+]?\d+)?)\s+"
+    r"(?P<total>[-+]?\d+(?:\.\d*)?(?:[eE][-+]?\d+)?)\s+100\.0%"
+)
+_ANNOTATED_PINS = re.compile(r"(?im)^\s*Annotated\s+(?P<count>\d+)\s+pin activities\.")
+_ANNOTATION_SUMMARY = re.compile(
+    r"(?im)^\s*vcd\s+(?P<annotated>\d+)\s*$.*?^\s*unannotated\s+(?P<unannotated>\d+)\s*$",
+    re.MULTILINE | re.DOTALL,
+)
+
+
+def parse_annotated_pin_count(report: str) -> int | None:
+    """Return OpenSTA's reported activity annotation count, when present."""
+    match = _ANNOTATED_PINS.search(report)
+    return int(match.group("count")) if match else None
+
+
+def parse_annotation_summary(report: str) -> dict[str, int | float] | None:
+    """Parse OpenSTA's VCD/unannotated pin summary and compute its fraction."""
+    match = _ANNOTATION_SUMMARY.search(report)
+    if not match:
+        return None
+    annotated = int(match.group("annotated"))
+    unannotated = int(match.group("unannotated"))
+    total = annotated + unannotated
+    return {"annotated": annotated, "unannotated": unannotated,
+            "fraction": annotated / total if total else 0.0}
+
+
+def parse_opensta_power_report(report: str, *, provenance: dict[str, str] | None = None) -> PowerProfile:
+    """Parse the strict scalar power fields emitted by an OpenSTA report.
+
+    A total is mandatory; silently turning an unrecognized report into zero is
+    forbidden because that would create a valid-looking fake measurement.
+    """
+    values = {match.group("label").lower(): float(match.group("value"))
+              for match in _POWER_LINE.finditer(report)}
+    table = _POWER_TABLE_TOTAL.search(report)
+    if "total" not in values and table:
+        values = {name: float(table.group(name)) for name in
+                  ("internal", "switching", "leakage", "total")}
+    if "total" not in values:
+        raise ValueError("OpenSTA report has no parseable Total Power field")
+    return PowerProfile(
+        mean_power=values["total"],
+        peak_power=values["total"],
+        useful_work=0.0,
+        valid=True,
+        fidelity="synthesis",
+        provenance=provenance,
+    )
+
+
+def parse_opensta_power_file(path: Path, *, provenance: dict[str, str] | None = None) -> PowerProfile:
+    return parse_opensta_power_report(path.read_text(), provenance=provenance)

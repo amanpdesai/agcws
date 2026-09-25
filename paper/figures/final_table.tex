@@ -1,0 +1,12 @@
+\begin{tabular}{l*{5}{rr}}
+\toprule
+Design & \multicolumn{2}{c}{Phase-random} & \multicolumn{2}{c}{Phase-GA} & \multicolumn{2}{c}{Phase-model} & \multicolumn{2}{c}{Flash-Lite} & \multicolumn{2}{c}{Gemini 3.8} \\
+ & AUC $\downarrow$ & Solves & AUC $\downarrow$ & Solves & AUC $\downarrow$ & Solves & AUC $\downarrow$ & Solves & AUC $\downarrow$ & Solves \\
+\midrule
+AES & 18.43 & 1 & 19.60 & 2 & 12.13 & 33 & 17.38 & 21 & \textbf{1.23} & 80 \\
+DMA & 32.80 & 0 & 33.11 & 1 & 30.17 & 0 & 40.52 & 1 & \textbf{3.72} & 78 \\
+Ibex & 44.86 & 0 & 41.75 & 1 & 46.91 & 0 & 51.31 & 4 & \textbf{4.86} & 80 \\
+Mesh & 36.50 & 0 & 31.41 & 0 & 32.76 & 0 & 24.62 & 20 & \textbf{2.24} & 80 \\
+RedMulE & 45.72 & 0 & 37.83 & 0 & 46.57 & 0 & 40.63 & 0 & \textbf{5.33} & 69 \\
+\bottomrule
+\end{tabular}

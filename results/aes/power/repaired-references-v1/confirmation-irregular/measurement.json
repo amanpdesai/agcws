@@ -1,0 +1,419 @@
+{
+  "version": "finalist-power-v1",
+  "case_id": "9598c556738ce308d469117629071622929c8002d895abe03796bf491fca84a5",
+  "plan_sha256": "3d09975892e7cf8db21b057d8d1002980c68524dd69b930ecda569c40d3768c8",
+  "activity": {
+    "domain": "aes-temporal",
+    "target": "confirmation-irregular",
+    "seed": null,
+    "policy": "repaired-reference-v1",
+    "id": "9598c556738ce308d469117629071622929c8002d895abe03796bf491fca84a5",
+    "role": "power_reference",
+    "reference_mode": "repaired-reference-v1",
+    "root": "/home/aman/agcws/out/release-flash-smoke-20260924-v1/aes/study",
+    "manifest_sha256": "d953a42398d808b8fb08218d94ad3cb4fb8c4f03f463a6faef6d476e83c3edd1",
+    "slot": null,
+    "program": {
+      "sequence": [
+        {
+          "op": "wait",
+          "cycles": 369
+        },
+        {
+          "op": "work",
+          "units": 8
+        },
+        {
+          "op": "wait",
+          "cycles": 702
+        },
+        {
+          "op": "work",
+          "units": 16
+        },
+        {
+          "op": "wait",
+          "cycles": 2349
+        },
+        {
+          "op": "work",
+          "units": 16
+        },
+        {
+          "op": "wait",
+          "cycles": 702
+        },
+        {
+          "op": "work",
+          "units": 8
+        },
+        {
+          "op": "wait",
+          "cycles": 1550
+        },
+        {
+          "op": "work",
+          "units": 16
+        },
+        {
+          "op": "wait",
+          "cycles": 328
+        }
+      ]
+    },
+    "rates": [
+      319.4952718676123,
+      639.4710743801653,
+      0.0,
+      0.0,
+      640.2269503546099,
+      319.73553719008265,
+      0.0,
+      639.4710743801653
+    ],
+    "target_rates": [
+      319.7704621163277,
+      639.5409242326554,
+      0.0,
+      0.0,
+      639.5409242326554,
+      319.7704621163277,
+      0.0,
+      639.5409242326554
+    ],
+    "scale": 1406.6109284332688,
+    "loss": 0.0001876466607534149,
+    "max_bin_error": 0.000487715620636254,
+    "activity_solved": true,
+    "replay_id": "5078280720d6500f125804893857bf260914979cc490ee9449bd2d74a0673abd",
+    "gate_support": "supported",
+    "reference_source": "/home/aman/agcws/out/reference-repair-v1/aes-constructed-v1/confirmation-irregular/qualification.json"
+  },
+  "gate_dynamic_power_w": [
+    0.0044533191830847,
+    0.006029105279595,
+    0.002886859932914,
+    0.002886859932914,
+    0.006032870383932999,
+    0.0044573943596338,
+    0.002886859932914,
+    0.006030971067958
+  ],
+  "gate_dynamic_energy_j": [
+    3.7697342431492804e-08,
+    5.106652171816965e-08,
+    2.445170363178158e-08,
+    2.445170363178158e-08,
+    5.1038083448073177e-08,
+    3.775413022609829e-08,
+    2.445170363178158e-08,
+    5.105217612123554e-08
+  ],
+  "pin_annotation_fractions": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+  ],
+  "power": {
+    "scope": "Selected-case native-window validation, not new search or superiority inference.",
+    "grid": {
+      "span": {
+        "timescale_s": 1e-12,
+        "first_timestamp": 0,
+        "last_timestamp": 67740000,
+        "start_s": 0.0,
+        "end_s": 6.774e-05,
+        "duration_s": 6.774e-05
+      },
+      "clock": "clk_i",
+      "clock_edges": 6774,
+      "clock_period_ticks": 10000,
+      "edge_indices": [
+        0,
+        846,
+        1693,
+        2540,
+        3387,
+        4233,
+        5080,
+        5927,
+        6774
+      ],
+      "bounds_ticks": [
+        0,
+        8464999,
+        16934999,
+        25404999,
+        33874999,
+        42334999,
+        50804999,
+        59274999,
+        67740000
+      ],
+      "durations_ticks": [
+        8464999,
+        8470000,
+        8470000,
+        8470000,
+        8460000,
+        8470000,
+        8470000,
+        8465001
+      ],
+      "durations_s": [
+        8.464999e-06,
+        8.47e-06,
+        8.47e-06,
+        8.47e-06,
+        8.46e-06,
+        8.47e-06,
+        8.47e-06,
+        8.465001e-06
+      ],
+      "edge_timestamps_sha256": "523a577817562fe7585e1231f31a15dbf5abc3b31c96398bd489442488d59f34",
+      "relative_edges_sha256": "523a577817562fe7585e1231f31a15dbf5abc3b31c96398bd489442488d59f34",
+      "boundary_rule": "Internal cuts one tick before indexed edge; no timestamp at any cut."
+    },
+    "rtl_grid": {
+      "span": {
+        "timescale_s": 1e-12,
+        "first_timestamp": 0,
+        "last_timestamp": 67740000,
+        "start_s": 0.0,
+        "end_s": 6.774e-05,
+        "duration_s": 6.774e-05
+      },
+      "clock": "clk_i",
+      "clock_edges": 6774,
+      "clock_period_ticks": 10000,
+      "edge_indices": [
+        0,
+        846,
+        1693,
+        2540,
+        3387,
+        4233,
+        5080,
+        5927,
+        6774
+      ],
+      "bounds_ticks": [
+        0,
+        8464999,
+        16934999,
+        25404999,
+        33874999,
+        42334999,
+        50804999,
+        59274999,
+        67740000
+      ],
+      "durations_ticks": [
+        8464999,
+        8470000,
+        8470000,
+        8470000,
+        8460000,
+        8470000,
+        8470000,
+        8465001
+      ],
+      "durations_s": [
+        8.464999e-06,
+        8.47e-06,
+        8.47e-06,
+        8.47e-06,
+        8.46e-06,
+        8.47e-06,
+        8.47e-06,
+        8.465001e-06
+      ],
+      "edge_timestamps_sha256": "523a577817562fe7585e1231f31a15dbf5abc3b31c96398bd489442488d59f34",
+      "relative_edges_sha256": "523a577817562fe7585e1231f31a15dbf5abc3b31c96398bd489442488d59f34",
+      "boundary_rule": "Internal cuts one tick before indexed edge; no timestamp at any cut."
+    },
+    "clock_period_s": 1e-08,
+    "alignment": "whole waveform",
+    "tool_version": "OpenSTA 3.1.0 a9a3f30ca9 Copyright (c) 2026, Parallax Software, Inc.",
+    "inputs": {
+      "/home/aman/agcws/out/reference-repair-v1/power-preparation-v2/aes/9598c556738ce308d469117629071622929c8002d895abe03796bf491fca84a5/gls/activity.vcd": "417047c216e79148d1ec10a8059cdf66c54bab400aa39c4da99dbedfea169a82",
+      "/home/aman/agcws/out/reference-repair-v1/power-preparation-v2/aes/9598c556738ce308d469117629071622929c8002d895abe03796bf491fca84a5/rtl/cache/5824f5f49470a3e99d551c6ab88ea302472ef3d6fbaadda0e98e770ab75f278f/attempt-001/activity.vcd": "d0202e0219db162e3e3d792cfc440f96ef47a2d8fd49cf7a663c9e7308c4044d",
+      "/home/aman/agcws/out/reference-repair-v1/power-preparation-v2/aes/synthesis/mapped.v": "55ca92c3f9950e315862874684e085ed82b3442471ad5139ea7774048f3b22a2",
+      "/home/aman/agcws/out/reference-repair-v1/power-preparation-v2/aes/synthesis/manifest.json": "a979ee5714656ee5948d16892cb49bb5f3c750afd73f12aaaf33399e293541ae",
+      "/home/aman/agcws/benchmarks/support/liberty/sky130hd/sky130_fd_sc_hd__tt_025C_1v80.lib": "92eb4e93a3d4c2563018ac81cdec2f02fdeaced9b39337ed5c141fa63e0ad8f8",
+      "/home/aman/agcws/out/tools/opensta-a9a3f30/bin/sta": "03b254efca66fad5a838d9966eba28c8c03c016b409119f73682685942f211d8",
+      "/home/aman/agcws/src/agcws/evaluation/power/windows.py": "03e67038dff260b47f9c1439c00401b2c740b65634e4ccd80696af0944c4ad55",
+      "src/agcws/evaluation/waveforms/grid.py": "278975748e596cd20c303247dc26b3db307caab8138af83b52f2a466d65675f6"
+    },
+    "full": {
+      "name": "full",
+      "begin_tick": 0,
+      "end_tick": 67740000,
+      "internal_power_w": 0.003531197085977,
+      "switching_power_w": 0.0009260321385227,
+      "dynamic_power_w": 0.0044572292244997,
+      "leakage_power_w": 5.034546290972e-08,
+      "total_power_w": 0.004457279574126,
+      "annotated_pins": 90247,
+      "unannotated_pins": 0,
+      "leaf_count": 22901,
+      "leaf_switching_sum_w": 0.000926056017985892
+    },
+    "windows": [
+      {
+        "name": "bin-0",
+        "begin_tick": 0,
+        "end_tick": 8464999,
+        "internal_power_w": 0.003529593814164,
+        "switching_power_w": 0.0009237253689207,
+        "dynamic_power_w": 0.0044533191830847,
+        "leakage_power_w": 5.053807328181e-08,
+        "total_power_w": 0.004453369881958,
+        "annotated_pins": 90247,
+        "unannotated_pins": 0,
+        "leaf_count": 22901,
+        "leaf_switching_sum_w": 0.0009237347105399418
+      },
+      {
+        "name": "bin-1",
+        "begin_tick": 8464999,
+        "end_tick": 16934999,
+        "internal_power_w": 0.004176833666861,
+        "switching_power_w": 0.001852271612734,
+        "dynamic_power_w": 0.006029105279595,
+        "leakage_power_w": 5.043077067057e-08,
+        "total_power_w": 0.006029155571014,
+        "annotated_pins": 90247,
+        "unannotated_pins": 0,
+        "leaf_count": 22901,
+        "leaf_switching_sum_w": 0.0018523063392290595
+      },
+      {
+        "name": "bin-2",
+        "begin_tick": 16934999,
+        "end_tick": 25404999,
+        "internal_power_w": 0.002886859932914,
+        "switching_power_w": 0.0,
+        "dynamic_power_w": 0.002886859932914,
+        "leakage_power_w": 5.019754922841e-08,
+        "total_power_w": 0.002886910224333,
+        "annotated_pins": 90247,
+        "unannotated_pins": 0,
+        "leaf_count": 22901,
+        "leaf_switching_sum_w": 0.0
+      },
+      {
+        "name": "bin-3",
+        "begin_tick": 25404999,
+        "end_tick": 33874999,
+        "internal_power_w": 0.002886859932914,
+        "switching_power_w": 0.0,
+        "dynamic_power_w": 0.002886859932914,
+        "leakage_power_w": 5.019754922841e-08,
+        "total_power_w": 0.002886910224333,
+        "annotated_pins": 90247,
+        "unannotated_pins": 0,
+        "leaf_count": 22901,
+        "leaf_switching_sum_w": 0.0
+      },
+      {
+        "name": "bin-4",
+        "begin_tick": 33874999,
+        "end_tick": 42334999,
+        "internal_power_w": 0.004178358707577,
+        "switching_power_w": 0.001854511676356,
+        "dynamic_power_w": 0.006032870383932999,
+        "leakage_power_w": 5.043104422953e-08,
+        "total_power_w": 0.006032920442522,
+        "annotated_pins": 90247,
+        "unannotated_pins": 0,
+        "leaf_count": 22901,
+        "leaf_switching_sum_w": 0.0018544958758903718
+      },
+      {
+        "name": "bin-5",
+        "begin_tick": 42334999,
+        "end_tick": 50804999,
+        "internal_power_w": 0.003531258553267,
+        "switching_power_w": 0.0009261358063668,
+        "dynamic_power_w": 0.0044573943596338,
+        "leakage_power_w": 5.031115435372e-08,
+        "total_power_w": 0.004457444883883,
+        "annotated_pins": 90247,
+        "unannotated_pins": 0,
+        "leaf_count": 22901,
+        "leaf_switching_sum_w": 0.0009261531696145298
+      },
+      {
+        "name": "bin-6",
+        "begin_tick": 50804999,
+        "end_tick": 59274999,
+        "internal_power_w": 0.002886859932914,
+        "switching_power_w": 0.0,
+        "dynamic_power_w": 0.002886859932914,
+        "leakage_power_w": 5.019754922841e-08,
+        "total_power_w": 0.002886910224333,
+        "annotated_pins": 90247,
+        "unannotated_pins": 0,
+        "leaf_count": 22901,
+        "leaf_switching_sum_w": 0.0
+      },
+      {
+        "name": "bin-7",
+        "begin_tick": 59274999,
+        "end_tick": 67740000,
+        "internal_power_w": 0.004177593626082,
+        "switching_power_w": 0.001853377441876,
+        "dynamic_power_w": 0.006030971067958,
+        "leakage_power_w": 5.043081330314e-08,
+        "total_power_w": 0.006031021475792,
+        "annotated_pins": 90247,
+        "unannotated_pins": 0,
+        "leaf_count": 22901,
+        "leaf_switching_sum_w": 0.0018534002333820965
+      }
+    ],
+    "weighted_means": {
+      "switching_power_w": 0.0009260474733510729,
+      "internal_power_w": 0.0035316343223444424,
+      "dynamic_power_w": 0.004457681795695515
+    },
+    "weighted_leaf_switching_w": 0.0009260560286374863,
+    "switching_additivity_pass": true,
+    "artifact_sha256": {
+      "full.tcl": "b0d34a48f67efa57fd56a4b89dbdd3af6f3641df622027ac5f3a5780c19bf61d",
+      "full.rpt": "f8dee254a901789bcaea5c22166e9758984b8a7d809d011ab7d2cf506d8787c0",
+      "bin-0.tcl": "fba21cbedb9e36fe6068c34ed4abb8db13969ce03122b78a3503137e80471165",
+      "bin-0.rpt": "ecba46a9b7de2b3737dc39ee2bb5cd3d46be2754fe5e89e2ab2f1edd174474c9",
+      "bin-1.tcl": "dd328726a4a9ad2201816f9bef47f803ed1ba3b2fb7accd5915ac3dc7500765f",
+      "bin-1.rpt": "ab464a4e9810905c458dac7ae8fab83f9af0cf2db108bbe7f8f5c2357f70d9aa",
+      "bin-2.tcl": "cc324ead8f1c6062877e770fddd9c4ac7fd90f28b91c3c3a3f9ebd0adfa1f408",
+      "bin-2.rpt": "3ba101e580445dde3f729d4cd223c55784a90c73f1e2089b2421ff7f6680fce9",
+      "bin-3.tcl": "b1cdbc86eebeccd5262c81c93bb52c30af7fc57a26416fb5c783e584c41574cb",
+      "bin-3.rpt": "3ba101e580445dde3f729d4cd223c55784a90c73f1e2089b2421ff7f6680fce9",
+      "bin-4.tcl": "5022fa9a4547c421c56d547be2ca8460037078c705c2f8a94421cf41a88ae2ef",
+      "bin-4.rpt": "e699aa370a03d8c43227af088a4815c30f9cbba853e694c29c5af8d78f0178f0",
+      "bin-5.tcl": "6bbb665b9676d147d8fc30b3897433ae04f4826c003bb607f16de0169f8649f4",
+      "bin-5.rpt": "b29a7c402b5049427605d5fb4705300a75084661ad62183c699168af56c59d7c",
+      "bin-6.tcl": "07a8f8a91d9684aa8d6f9c6b5292acfc45e90a13f614984c5a6e06d047e5bb06",
+      "bin-6.rpt": "3ba101e580445dde3f729d4cd223c55784a90c73f1e2089b2421ff7f6680fce9",
+      "bin-7.tcl": "ba02b7c77bf00eb238fc6bfee4ab2a2a45556849acf235c7331634e6459eb9ba",
+      "bin-7.rpt": "71ded6eef63a41641d05ef034a2728bd12e81d5cc5a5bdb07766c822f9fe93c6"
+    },
+    "switching_reconstruction": {
+      "policy": "strict",
+      "pass": true,
+      "absolute_error_w": 1.0651594298423384e-11,
+      "relative_error": 1.1502105803048357e-08,
+      "accepted_estimate": true
+    },
+    "wall_clock_s": 50.46655134303728
+  },
+  "claim": "Zero-delay mapped-gate dynamic power; not signoff or activity-target power accuracy."
+}

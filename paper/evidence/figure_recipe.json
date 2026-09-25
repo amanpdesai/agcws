@@ -1,0 +1,19 @@
+{
+  "version": 6,
+  "presentation": "Presentation-only update to v5: preserves targets, seed, selected workloads, curves, normalization and styles. Both panels annotate charged proposals for Gemini 3.8 and Flash-Lite in the same fixed order, including initialization and full batches. Counts come from the selected evidence records, not model-call counts or a new selection rule.",
+  "display_order": ["Phase-random", "Phase-GA", "Phase-model", "Flash-Lite", "Gemini 3.8", "Strong"],
+  "annotation_policies": ["Gemini 3.8", "Flash-Lite"],
+  "legend_columns": 3,
+  "design": "mesh",
+  "seed": 9100,
+  "targets": ["confirmation-alternating", "confirmation-irregular"],
+  "selection": "minimum valid max-bin error, earliest slot breaks ties",
+  "scope": "Completed baseline, Flash-Lite and Gemini 3.8 illustrations, not population inference. Alternating and irregular profiles show repeated transitions and uneven levels at fixed seed 9100. This editorial choice is not a preregistered difficulty comparison.",
+  "sources": {
+    "Gemini 3.8": {"archive": "results/mesh/strong-completed-v1", "arm": "strong-medium-64k"},
+    "Flash-Lite": {"archive": "results/mesh/flash-lite-matched-v1", "arm": "flash-lite-medium"},
+    "Phase-random": {"archive": "results/mesh/baselines-model-v1", "arm": "phase-random"},
+    "Phase-GA": {"archive": "results/mesh/baselines-model-v1", "arm": "phase-ga"},
+    "Phase-model": {"archive": "results/mesh/baselines-model-v1", "arm": "phase-model"}
+  }
+}

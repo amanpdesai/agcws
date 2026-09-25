@@ -1,0 +1,68 @@
+{
+  "scope": "CPU backend plumbing, not qualified targets or policy inference",
+  "source_commit": "3716f0df3",
+  "archive_sha256": "6938f8b4d258b474d7f864b9004c2d2c85af1665ca3fcc4951984cca34031964",
+  "complete": {
+    "cells": 2,
+    "slots": 16,
+    "summaries": [
+      {
+        "budget": 8,
+        "auc": 0.78620777089947,
+        "mean_auc": 0.11231539584278143,
+        "curve": [
+          0.15334297966474505,
+          0.15334297966474505,
+          0.15334297966474505,
+          0.15334297966474505,
+          0.0712878120208178,
+          0.0712878120208178,
+          0.0712878120208178,
+          0.0712878120208178
+        ],
+        "final_loss": 0.0712878120208178,
+        "solved": true,
+        "evaluations_to_target": 5,
+        "right_censored": false,
+        "valid_slots": 8,
+        "cell": {
+          "target": "plumbing_only",
+          "seed": 7104,
+          "arm": "phase-random",
+          "manifest_sha256": "05920771ecd67aa6b265fd8fc4dcc5ebe89f1443a65ae7dd6c25aa9e263aae0c"
+        },
+        "filtered": 0
+      },
+      {
+        "budget": 8,
+        "auc": 0.9073921826604596,
+        "mean_auc": 0.12962745466577993,
+        "curve": [
+          0.15334297966474505,
+          0.15334297966474505,
+          0.14855024359897495,
+          0.14855024359897495,
+          0.10865063599011203,
+          0.10865063599011203,
+          0.10865063599011203,
+          0.10865063599011203
+        ],
+        "final_loss": 0.10865063599011203,
+        "solved": false,
+        "evaluations_to_target": 8,
+        "right_censored": true,
+        "valid_slots": 8,
+        "cell": {
+          "target": "plumbing_only",
+          "seed": 7104,
+          "arm": "phase-ga",
+          "manifest_sha256": "05920771ecd67aa6b265fd8fc4dcc5ebe89f1443a65ae7dd6c25aa9e263aae0c"
+        },
+        "filtered": 0
+      }
+    ],
+    "liability_usd": 0.0
+  },
+  "files": 95,
+  "model_calls": 0
+}

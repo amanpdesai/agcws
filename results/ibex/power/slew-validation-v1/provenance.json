@@ -1,0 +1,66 @@
+{
+  "version": "ibex-candidate-slew-revalidation-v1",
+  "inventory_sha256": "dc9e47975ef72729510adc1015e430dbd72de7f4661bdf5c00a24bd425f7c328",
+  "archive": "results/ibex/power/measurements.jsonl.gz",
+  "archive_sha256": "0d5beb891e9ab3d78fedcefc501de619819bfbe3e4cf09bb2de39f1db4701058",
+  "implementation_sha256": {
+    "/home/aman/agcws/src/agcws/evaluation/power/candidate_revalidation.py": "c80e51622b491b7bb46478bea2e1dc17196fd2b9c76e10a464e1345526532e1c",
+    "/home/aman/agcws/src/agcws/evaluation/power/reconstruction_audit.py": "8226acc4c6b907ff03af24aed090458ad386fc06eb180f7ba06c35782964a2b5",
+    "/home/aman/agcws/src/agcws/evaluation/power/windows.py": "03e67038dff260b47f9c1439c00401b2c740b65634e4ccd80696af0944c4ad55",
+    "/home/aman/agcws/src/agcws/reporting/power_reference.py": "e38aca0583beef7e418e065d39940ef4ade8436f19d313fe3bd86186e7eaf61e"
+  },
+  "references": {
+    "confirmation-activation": {
+      "path": "/home/aman/agcws/out/reference-repair-v1/power-preparation-v2/ibex/retry-47574de91e3b7b6040131ccf55f683e60566c54616f954168e3db0a2d5411348/measurement.json",
+      "sha256": "51f80bc57fb69585eef985fc5ee1bbb08d0df533633d359f30cb322518377e30"
+    },
+    "confirmation-deactivation": {
+      "path": "/home/aman/agcws/out/reference-repair-v1/power-preparation-v2/ibex/retry-525691dbd8ac3c4c6cca8eeaadacf220274a48842da6db257416c465126400a3/measurement.json",
+      "sha256": "7f7c15c2ac15c0c42f4e3c574b2fb9116672db005325e2714a6c1f060a2f89f8"
+    },
+    "confirmation-burst": {
+      "path": "/home/aman/agcws/out/reference-repair-v1/power-preparation-v2/ibex/retry-0309c72672bd8facca348aaeb34fc7c2751758eacb215d936c7a657179f8c529/measurement.json",
+      "sha256": "5f24a59afc6b1d25fc2557ddca785b65fffa8618d13bd2367a012a1d161647fd"
+    },
+    "confirmation-quiet_interval": {
+      "path": "/home/aman/agcws/out/reference-repair-v1/power-preparation-v2/ibex/retry-d838e718cd47cd9e0a5e3ae45804af4146293d06ffab8cd764a25354f0a055c3/measurement.json",
+      "sha256": "6cf95480aa86c7fdf4549471d533d46152c31c9ee00353fe3412a58c22b6c24d"
+    },
+    "confirmation-alternating": {
+      "path": "/home/aman/agcws/out/reference-repair-v1/power-preparation-v2/ibex/retry-55e92004f57aeee4b3d6bac178eef9649df9d54a91ecff6451b854f38c6cbb91/measurement.json",
+      "sha256": "8403e61408a345355e9880efeca7d2286f2c259eac5419a5cbe981d79dd256c6"
+    },
+    "confirmation-ramp": {
+      "path": "/home/aman/agcws/out/reference-repair-v1/power-preparation-v2/ibex/retry-d032e64041f99202b56a0f45854d148b69c890bbaca146d86a1676675394e19b/measurement.json",
+      "sha256": "fbecd73df8860a8f7c55fb33582a933161ad961bb7414b4d36189bd0ed7b64c5"
+    },
+    "confirmation-rise_fall": {
+      "path": "/home/aman/agcws/out/reference-repair-v1/power-preparation-v2/ibex/retry-fb42881e6aa02665f426757b221380da8a1c811d5a5656828d4def458a502b0b/measurement.json",
+      "sha256": "78ab9cf828ba24d3511a60f64b70ce6e84c547d4ce7652a6c54eb46d512d171f"
+    },
+    "confirmation-irregular": {
+      "path": "/home/aman/agcws/out/reference-repair-v1/power-preparation-v2/ibex/retry-f17ed5d12868523b678ad2adfcab4647a26d559fb0e3cfd2b35007539483ca46/measurement.json",
+      "sha256": "1f6cf3e9c4e9937a44dd9f7fb181321e94d6d834155fc425da1939ab7bf878d0"
+    }
+  },
+  "buckets": [
+    {
+      "bucket": "baselines-ibex",
+      "plan_sha256": "77b2e84bed534962642e2b7c17622797d28175dd3f7db78d2eda3eb0565509b1",
+      "plan_path": "results/power_completed_v1/shared_queue_v3/baselines-ibex.json",
+      "plan_file_sha256": "ae6334302dd9ec7b18dd29b9d795e34829702b9f31cfee99b7b88a7913c3fb1c"
+    },
+    {
+      "bucket": "flash-ibex",
+      "plan_sha256": "9258d358b185b78a9be0d1d9eeebe09739ec9051f8a9975d51fe9611b004f974",
+      "plan_path": "results/power_completed_v1/shared_queue_v3/flash-ibex.json",
+      "plan_file_sha256": "7ec777bb9e7c9959eda2754491ac6851a3fd6225285187cfe151f13909e73a87"
+    },
+    {
+      "bucket": "strong-ibex",
+      "plan_sha256": "3e05a8e91972b1002251ffa2a2dd46bb5f96a179c758754ba8d914b8ef8685df",
+      "plan_path": "results/power_strong_v1/plans/ibex.json",
+      "plan_file_sha256": "ddc20584ff4b946eedd4a641266dd876ade3fa1fffc737e759a94385e7a24847"
+    }
+  ]
+}

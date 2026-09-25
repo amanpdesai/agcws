@@ -1,0 +1,2766 @@
+{
+  "cases": [
+    {
+      "arms": {
+        "Flash-Lite": {
+          "charged_slots": 50,
+          "manifest_sha256": "2c74a11840b4373b133eabaf25216a91e0badae2e673f309b0bebf42fdb64ed0",
+          "max_bin_error": 0.026310181233939425,
+          "model": "gemini-3.5-flash-lite",
+          "profile": {
+            "activity_contract": "known-bit-activity-v2",
+            "begin_tick": 5000,
+            "bin_edges": [
+              1025,
+              1025,
+              1025,
+              1025,
+              1025,
+              1025,
+              1025,
+              1025
+            ],
+            "clock": "mesh_temporal.clk",
+            "clock_edges": 8200,
+            "end_tick": 82000000,
+            "exclusions": [
+              "clock",
+              "parameters"
+            ],
+            "fidelity": "activity",
+            "initialized_bits_in_observation": 38726,
+            "period_ticks": 10000,
+            "remaining_unknown_bits": 0,
+            "scope": "mesh_temporal.dut",
+            "selected_bits": 38726,
+            "timescale": "1ps",
+            "units": "known bit transitions per rising clock edge; not watts",
+            "useful_work": 1420,
+            "window": "full trace including reset",
+            "window_rates": [
+              58.38341463414634,
+              466.1560975609756,
+              63.68195121951219,
+              481.4409756097561,
+              64.22829268292683,
+              490.45853658536583,
+              62.59512195121951,
+              488.7541463414634
+            ]
+          },
+          "program": {
+            "phases": [
+              {
+                "duration": 900,
+                "packets": 35,
+                "pattern": "counter",
+                "route": "neighbor",
+                "sources": [
+                  0,
+                  2
+                ],
+                "start": 50
+              },
+              {
+                "duration": 900,
+                "packets": 320,
+                "pattern": "alternating",
+                "route": "hotspot0",
+                "sources": [
+                  1,
+                  3
+                ],
+                "start": 1050
+              },
+              {
+                "duration": 900,
+                "packets": 35,
+                "pattern": "counter",
+                "route": "neighbor",
+                "sources": [
+                  0,
+                  2
+                ],
+                "start": 2050
+              },
+              {
+                "duration": 900,
+                "packets": 320,
+                "pattern": "alternating",
+                "route": "hotspot0",
+                "sources": [
+                  1,
+                  3
+                ],
+                "start": 3100
+              },
+              {
+                "duration": 900,
+                "packets": 35,
+                "pattern": "counter",
+                "route": "neighbor",
+                "sources": [
+                  0,
+                  2
+                ],
+                "start": 4100
+              },
+              {
+                "duration": 900,
+                "packets": 320,
+                "pattern": "alternating",
+                "route": "hotspot0",
+                "sources": [
+                  1,
+                  3
+                ],
+                "start": 5200
+              },
+              {
+                "duration": 900,
+                "packets": 35,
+                "pattern": "counter",
+                "route": "neighbor",
+                "sources": [
+                  0,
+                  2
+                ],
+                "start": 6150
+              },
+              {
+                "duration": 900,
+                "packets": 320,
+                "pattern": "alternating",
+                "route": "hotspot0",
+                "sources": [
+                  1,
+                  3
+                ],
+                "start": 7200
+              }
+            ],
+            "sink_pause": 0,
+            "sink_period": 8
+          },
+          "rates": [
+            58.38341463414634,
+            466.1560975609756,
+            63.68195121951219,
+            481.4409756097561,
+            64.22829268292683,
+            490.45853658536583,
+            62.59512195121951,
+            488.7541463414634
+          ],
+          "selected_slot": 49,
+          "shards": {
+            "evidence-000.tar.gz": "115711e07b804a2c2902dcb06a4fa49f238e6433c9e7bec0606cfb60d6032683",
+            "evidence-001.tar.gz": "fbdf3e68aec4832d19e556d9c7c1b1600d47271e4399c768919b7298d4d10c8d",
+            "evidence-002.tar.gz": "639923563584df91206be8e0d62848b7bf3045504ec88cb52be4e3d508c1d75e",
+            "evidence-003.tar.gz": "654e931861e1246194f86ace0798d80db7b0770e7b1ed31d0445eb7d15f3daf5",
+            "evidence-004.tar.gz": "5d041978b00b9e814903e3c91a25c6ce687650cee8e635bca6f225f15e2f65b2",
+            "evidence-005.tar.gz": "2eb452eba17a10ee70984a31b7401f1422d6fbac027969efbc25290c69a14fb9",
+            "evidence-006.tar.gz": "b8344e3bc77b3259c39d43ae0b215700c724e5e9fe66985f8ddfc9a0b04603d7"
+          },
+          "source_archive": "results/mesh/flash-lite-matched-v1",
+          "source_member": "panel/confirmation-alternating/9100/flash-lite-medium/batches/049/trials.json",
+          "source_sha256": "a3a752372514844ec57179cecb522d846739bdf5cc643827a981c7f38880e23a"
+        },
+        "Gemini 3.8": {
+          "charged_slots": 4,
+          "manifest_sha256": "058a6acf2fef84b43618d05fba34ac93bd306fb020795e8c0509f2ea60453150",
+          "max_bin_error": 0.043159609797842606,
+          "model": "gemini-3.8-flash",
+          "profile": {
+            "activity_contract": "known-bit-activity-v2",
+            "begin_tick": 5000,
+            "bin_edges": [
+              1025,
+              1025,
+              1025,
+              1025,
+              1025,
+              1025,
+              1025,
+              1025
+            ],
+            "clock": "mesh_temporal.clk",
+            "clock_edges": 8200,
+            "end_tick": 82000000,
+            "exclusions": [
+              "clock",
+              "parameters"
+            ],
+            "fidelity": "activity",
+            "initialized_bits_in_observation": 38726,
+            "period_ticks": 10000,
+            "remaining_unknown_bits": 0,
+            "scope": "mesh_temporal.dut",
+            "selected_bits": 38726,
+            "timescale": "1ps",
+            "units": "known bit transitions per rising clock edge; not watts",
+            "useful_work": 1172,
+            "window": "full trace including reset",
+            "window_rates": [
+              55.7990243902439,
+              457.26243902439023,
+              55.19317073170732,
+              472.0,
+              55.53756097560976,
+              479.17756097560977,
+              58.63512195121951,
+              479.8478048780488
+            ]
+          },
+          "program": {
+            "phases": [
+              {
+                "duration": 600,
+                "packets": 31,
+                "pattern": "alternating",
+                "route": "opposite",
+                "sources": [
+                  0,
+                  1,
+                  2,
+                  3
+                ],
+                "start": 100
+              },
+              {
+                "duration": 600,
+                "packets": 262,
+                "pattern": "alternating",
+                "route": "opposite",
+                "sources": [
+                  0,
+                  1,
+                  2,
+                  3
+                ],
+                "start": 1124
+              },
+              {
+                "duration": 600,
+                "packets": 31,
+                "pattern": "alternating",
+                "route": "opposite",
+                "sources": [
+                  0,
+                  1,
+                  2,
+                  3
+                ],
+                "start": 2148
+              },
+              {
+                "duration": 600,
+                "packets": 262,
+                "pattern": "alternating",
+                "route": "opposite",
+                "sources": [
+                  0,
+                  1,
+                  2,
+                  3
+                ],
+                "start": 3172
+              },
+              {
+                "duration": 600,
+                "packets": 31,
+                "pattern": "alternating",
+                "route": "opposite",
+                "sources": [
+                  0,
+                  1,
+                  2,
+                  3
+                ],
+                "start": 4196
+              },
+              {
+                "duration": 600,
+                "packets": 262,
+                "pattern": "alternating",
+                "route": "opposite",
+                "sources": [
+                  0,
+                  1,
+                  2,
+                  3
+                ],
+                "start": 5220
+              },
+              {
+                "duration": 600,
+                "packets": 31,
+                "pattern": "alternating",
+                "route": "opposite",
+                "sources": [
+                  0,
+                  1,
+                  2,
+                  3
+                ],
+                "start": 6244
+              },
+              {
+                "duration": 600,
+                "packets": 262,
+                "pattern": "alternating",
+                "route": "opposite",
+                "sources": [
+                  0,
+                  1,
+                  2,
+                  3
+                ],
+                "start": 7268
+              }
+            ],
+            "sink_pause": 0,
+            "sink_period": 8
+          },
+          "rates": [
+            55.7990243902439,
+            457.26243902439023,
+            55.19317073170732,
+            472.0,
+            55.53756097560976,
+            479.17756097560977,
+            58.63512195121951,
+            479.8478048780488
+          ],
+          "selected_slot": 3,
+          "shards": {
+            "evidence-000.tar.gz": "4b7fc19870c07a0803f5f0b58111bb2732f65e89bf6e9f4e5e3e857513ddb485"
+          },
+          "source_archive": "results/mesh/strong-completed-v1",
+          "source_member": "panel/confirmation-alternating/9100/strong-medium-64k/batches/003/trials.json",
+          "source_sha256": "baff4dfebbe799b4b9e9cca442d178d5bb4442b461d02b8752796cdcbdbbbd8c"
+        },
+        "Phase-GA": {
+          "charged_slots": 128,
+          "manifest_sha256": "3d28a747a7ae1ec9149c923561bed0385cf5b5ca409d416efdc312e97100029a",
+          "max_bin_error": 0.3651286048900492,
+          "model": null,
+          "profile": {
+            "activity_contract": "known-bit-activity-v2",
+            "begin_tick": 5000,
+            "bin_edges": [
+              1025,
+              1025,
+              1025,
+              1025,
+              1025,
+              1025,
+              1025,
+              1025
+            ],
+            "clock": "mesh_temporal.clk",
+            "clock_edges": 8200,
+            "end_tick": 82000000,
+            "exclusions": [
+              "clock",
+              "parameters"
+            ],
+            "fidelity": "activity",
+            "initialized_bits_in_observation": 38726,
+            "period_ticks": 10000,
+            "remaining_unknown_bits": 0,
+            "scope": "mesh_temporal.dut",
+            "selected_bits": 38726,
+            "timescale": "1ps",
+            "units": "known bit transitions per rising clock edge; not watts",
+            "useful_work": 2728,
+            "window": "full trace including reset",
+            "window_rates": [
+              68.83707317073171,
+              312.2946341463415,
+              244.87024390243903,
+              314.90829268292686,
+              220.20097560975609,
+              287.3170731707317,
+              90.12,
+              432.22439024390246
+            ]
+          },
+          "program": {
+            "phases": [
+              {
+                "duration": 181,
+                "packets": 20,
+                "pattern": "counter",
+                "route": "self",
+                "sources": [
+                  1,
+                  3
+                ],
+                "start": 34
+              },
+              {
+                "duration": 80,
+                "packets": 103,
+                "pattern": "alternating",
+                "route": "neighbor",
+                "sources": [
+                  0,
+                  1,
+                  2,
+                  3
+                ],
+                "start": 284
+              },
+              {
+                "duration": 99,
+                "packets": 9,
+                "pattern": "zeros",
+                "route": "self",
+                "sources": [
+                  2
+                ],
+                "start": 6124
+              },
+              {
+                "duration": 112,
+                "packets": 88,
+                "pattern": "counter",
+                "route": "hotspot0",
+                "sources": [
+                  0,
+                  1,
+                  2
+                ],
+                "start": 3895
+              },
+              {
+                "duration": 130,
+                "packets": 86,
+                "pattern": "zeros",
+                "route": "neighbor",
+                "sources": [
+                  0,
+                  1
+                ],
+                "start": 1025
+              },
+              {
+                "duration": 92,
+                "packets": 91,
+                "pattern": "zeros",
+                "route": "opposite",
+                "sources": [
+                  0,
+                  2
+                ],
+                "start": 1299
+              },
+              {
+                "duration": 127,
+                "packets": 18,
+                "pattern": "counter",
+                "route": "hotspot0",
+                "sources": [
+                  0,
+                  1,
+                  2,
+                  3
+                ],
+                "start": 1550
+              },
+              {
+                "duration": 10,
+                "packets": 78,
+                "pattern": "zeros",
+                "route": "hotspot0",
+                "sources": [
+                  2
+                ],
+                "start": 1841
+              },
+              {
+                "duration": 37,
+                "packets": 39,
+                "pattern": "zeros",
+                "route": "hotspot0",
+                "sources": [
+                  0,
+                  1,
+                  2,
+                  3
+                ],
+                "start": 2102
+              },
+              {
+                "duration": 20,
+                "packets": 18,
+                "pattern": "counter",
+                "route": "opposite",
+                "sources": [
+                  0,
+                  1,
+                  2,
+                  3
+                ],
+                "start": 2353
+              },
+              {
+                "duration": 188,
+                "packets": 370,
+                "pattern": "alternating",
+                "route": "hotspot0",
+                "sources": [
+                  1,
+                  2
+                ],
+                "start": 2595
+              },
+              {
+                "duration": 32,
+                "packets": 106,
+                "pattern": "zeros",
+                "route": "neighbor",
+                "sources": [
+                  0,
+                  1,
+                  3
+                ],
+                "start": 2858
+              },
+              {
+                "duration": 80,
+                "packets": 103,
+                "pattern": "alternating",
+                "route": "neighbor",
+                "sources": [
+                  0,
+                  1,
+                  2,
+                  3
+                ],
+                "start": 284
+              },
+              {
+                "duration": 45,
+                "packets": 28,
+                "pattern": "zeros",
+                "route": "opposite",
+                "sources": [
+                  0,
+                  1,
+                  3
+                ],
+                "start": 3351
+              },
+              {
+                "duration": 131,
+                "packets": 120,
+                "pattern": "alternating",
+                "route": "self",
+                "sources": [
+                  0,
+                  1,
+                  2
+                ],
+                "start": 3626
+              },
+              {
+                "duration": 190,
+                "packets": 68,
+                "pattern": "counter",
+                "route": "opposite",
+                "sources": [
+                  0,
+                  1,
+                  2,
+                  3
+                ],
+                "start": 5381
+              },
+              {
+                "duration": 178,
+                "packets": 121,
+                "pattern": "alternating",
+                "route": "self",
+                "sources": [
+                  0,
+                  2,
+                  3
+                ],
+                "start": 4400
+              },
+              {
+                "duration": 75,
+                "packets": 26,
+                "pattern": "counter",
+                "route": "opposite",
+                "sources": [
+                  0,
+                  1
+                ],
+                "start": 4905
+              },
+              {
+                "duration": 160,
+                "packets": 131,
+                "pattern": "zeros",
+                "route": "hotspot0",
+                "sources": [
+                  1
+                ],
+                "start": 5175
+              },
+              {
+                "duration": 190,
+                "packets": 68,
+                "pattern": "counter",
+                "route": "opposite",
+                "sources": [
+                  0,
+                  1,
+                  2,
+                  3
+                ],
+                "start": 5381
+              },
+              {
+                "duration": 13,
+                "packets": 89,
+                "pattern": "counter",
+                "route": "opposite",
+                "sources": [
+                  2,
+                  3
+                ],
+                "start": 5910
+              },
+              {
+                "duration": 1583,
+                "packets": 89,
+                "pattern": "zeros",
+                "route": "neighbor",
+                "sources": [
+                  0,
+                  1,
+                  2
+                ],
+                "start": 6164
+              },
+              {
+                "duration": 80,
+                "packets": 103,
+                "pattern": "alternating",
+                "route": "neighbor",
+                "sources": [
+                  0,
+                  1,
+                  2,
+                  3
+                ],
+                "start": 284
+              },
+              {
+                "duration": 112,
+                "packets": 88,
+                "pattern": "counter",
+                "route": "hotspot0",
+                "sources": [
+                  0,
+                  1,
+                  2
+                ],
+                "start": 3895
+              },
+              {
+                "duration": 98,
+                "packets": 44,
+                "pattern": "counter",
+                "route": "self",
+                "sources": [
+                  1,
+                  2,
+                  3
+                ],
+                "start": 6698
+              },
+              {
+                "duration": 127,
+                "packets": 172,
+                "pattern": "counter",
+                "route": "hotspot0",
+                "sources": [
+                  0,
+                  1,
+                  2,
+                  3
+                ],
+                "start": 1550
+              },
+              {
+                "duration": 188,
+                "packets": 110,
+                "pattern": "alternating",
+                "route": "hotspot0",
+                "sources": [
+                  1,
+                  2
+                ],
+                "start": 2595
+              },
+              {
+                "duration": 166,
+                "packets": 111,
+                "pattern": "alternating",
+                "route": "neighbor",
+                "sources": [
+                  3
+                ],
+                "start": 7175
+              },
+              {
+                "duration": 57,
+                "packets": 132,
+                "pattern": "counter",
+                "route": "hotspot0",
+                "sources": [
+                  3
+                ],
+                "start": 7483
+              },
+              {
+                "duration": 24,
+                "packets": 99,
+                "pattern": "alternating",
+                "route": "self",
+                "sources": [
+                  1,
+                  2,
+                  3
+                ],
+                "start": 7699
+              }
+            ],
+            "sink_pause": 2,
+            "sink_period": 8
+          },
+          "rates": [
+            68.83707317073171,
+            312.2946341463415,
+            244.87024390243903,
+            314.90829268292686,
+            220.20097560975609,
+            287.3170731707317,
+            90.12,
+            432.22439024390246
+          ],
+          "selected_slot": 118,
+          "shards": {
+            "evidence-000.tar.gz": "19b7af2711feba1b7c693bc5dec49d576e70e9f52b852f10a0a4dcb3c53e0db7",
+            "evidence-001.tar.gz": "f41f2e31faa7ea7913a05a9b5eeaaa5b5e0acec013415a65176d1b8bec02f440",
+            "evidence-002.tar.gz": "0bf1cf9bce6307ca5463e61b51326d22b55d5b10e5ed0c9e27f52b3f631bd550",
+            "evidence-003.tar.gz": "fca4ab91e87d5ac4a7bd22e5b90d925826d0c5f7d11a812516c7edb8e2c10359",
+            "evidence-004.tar.gz": "521439f2efd6dfe0cd4fb776cf5d3514c45cddb739f3b4deb5d402672e6de3bc",
+            "evidence-005.tar.gz": "bbb4675f2f2811ab0c4199f4e3804a021c0d96a2500d6d41f2e3712499660d73",
+            "evidence-006.tar.gz": "f20778ed815ccdc38482d0929eacca06a10ec3636c98758b8af0b2ad7c99d6de",
+            "evidence-007.tar.gz": "9c410f88e23b31101f0d555f0e128cab132161c6caf5d2961a7f0a854e9eac17",
+            "evidence-008.tar.gz": "08b14652d3dc5754b1e5b44e371fc03844985d0bd7fc4c6f39adf48392c5cc91",
+            "evidence-009.tar.gz": "4d7917ee2f4776669e7e25bc691aaa63c1f1117ff2d0459861d8921b1d3557d3",
+            "evidence-010.tar.gz": "3f337fd58fcb813405cdae90ab4ec357ceeac1018063b7ea8ec2ff6a2072551d",
+            "evidence-011.tar.gz": "4b7968a9e9a1ced7b7f2df9577dacaf46aeea631e46b8d72a9b0c6cd6fb50f1e"
+          },
+          "source_archive": "results/mesh/baselines-model-v1",
+          "source_member": "panel/confirmation-alternating/9100/phase-ga/batches/117/trials.json",
+          "source_sha256": "cde0ceb133373c56356b4f5f2699fc71dbd391916f7139e9fb01c49cdaf6866f"
+        },
+        "Phase-model": {
+          "charged_slots": 128,
+          "manifest_sha256": "3d28a747a7ae1ec9149c923561bed0385cf5b5ca409d416efdc312e97100029a",
+          "max_bin_error": 0.3879014874019748,
+          "model": null,
+          "profile": {
+            "activity_contract": "known-bit-activity-v2",
+            "begin_tick": 5000,
+            "bin_edges": [
+              1025,
+              1025,
+              1025,
+              1025,
+              1025,
+              1025,
+              1025,
+              1025
+            ],
+            "clock": "mesh_temporal.clk",
+            "clock_edges": 8200,
+            "end_tick": 82000000,
+            "exclusions": [
+              "clock",
+              "parameters"
+            ],
+            "fidelity": "activity",
+            "initialized_bits_in_observation": 38726,
+            "period_ticks": 10000,
+            "remaining_unknown_bits": 0,
+            "scope": "mesh_temporal.dut",
+            "selected_bits": 38726,
+            "timescale": "1ps",
+            "units": "known bit transitions per rising clock edge; not watts",
+            "useful_work": 2115,
+            "window": "full trace including reset",
+            "window_rates": [
+              262.52487804878047,
+              288.1268292682927,
+              177.30536585365854,
+              445.4419512195122,
+              55.15317073170732,
+              297.3180487804878,
+              153.48292682926828,
+              520.8780487804878
+            ]
+          },
+          "program": {
+            "phases": [
+              {
+                "duration": 1,
+                "packets": 184,
+                "pattern": "alternating",
+                "route": "hotspot0",
+                "sources": [
+                  0,
+                  1,
+                  3
+                ],
+                "start": 77
+              },
+              {
+                "duration": 169,
+                "packets": 35,
+                "pattern": "counter",
+                "route": "opposite",
+                "sources": [
+                  0,
+                  1,
+                  2,
+                  3
+                ],
+                "start": 5541
+              },
+              {
+                "duration": 10,
+                "packets": 14,
+                "pattern": "zeros",
+                "route": "opposite",
+                "sources": [
+                  0,
+                  1,
+                  2,
+                  3
+                ],
+                "start": 1374
+              },
+              {
+                "duration": 306,
+                "packets": 29,
+                "pattern": "zeros",
+                "route": "opposite",
+                "sources": [
+                  3
+                ],
+                "start": 1273
+              },
+              {
+                "duration": 262,
+                "packets": 121,
+                "pattern": "alternating",
+                "route": "self",
+                "sources": [
+                  2
+                ],
+                "start": 1710
+              },
+              {
+                "duration": 31,
+                "packets": 115,
+                "pattern": "alternating",
+                "route": "neighbor",
+                "sources": [
+                  0,
+                  2,
+                  3
+                ],
+                "start": 2188
+              },
+              {
+                "duration": 194,
+                "packets": 132,
+                "pattern": "counter",
+                "route": "self",
+                "sources": [
+                  0,
+                  1,
+                  3
+                ],
+                "start": 1458
+              },
+              {
+                "duration": 1,
+                "packets": 106,
+                "pattern": "alternating",
+                "route": "hotspot0",
+                "sources": [
+                  0,
+                  1,
+                  2,
+                  3
+                ],
+                "start": 3365
+              },
+              {
+                "duration": 1,
+                "packets": 99,
+                "pattern": "zeros",
+                "route": "self",
+                "sources": [
+                  0,
+                  1,
+                  3
+                ],
+                "start": 4455
+              },
+              {
+                "duration": 1,
+                "packets": 194,
+                "pattern": "alternating",
+                "route": "opposite",
+                "sources": [
+                  1
+                ],
+                "start": 3794
+              },
+              {
+                "duration": 157,
+                "packets": 163,
+                "pattern": "zeros",
+                "route": "hotspot0",
+                "sources": [
+                  1
+                ],
+                "start": 4170
+              },
+              {
+                "duration": 60,
+                "packets": 36,
+                "pattern": "counter",
+                "route": "hotspot0",
+                "sources": [
+                  0,
+                  1,
+                  3
+                ],
+                "start": 6766
+              },
+              {
+                "duration": 41,
+                "packets": 99,
+                "pattern": "zeros",
+                "route": "self",
+                "sources": [
+                  0,
+                  1,
+                  3
+                ],
+                "start": 4455
+              },
+              {
+                "duration": 25,
+                "packets": 156,
+                "pattern": "counter",
+                "route": "opposite",
+                "sources": [
+                  1,
+                  2,
+                  3
+                ],
+                "start": 5443
+              },
+              {
+                "duration": 84,
+                "packets": 130,
+                "pattern": "zeros",
+                "route": "self",
+                "sources": [
+                  0,
+                  1,
+                  2
+                ],
+                "start": 5932
+              },
+              {
+                "duration": 277,
+                "packets": 84,
+                "pattern": "counter",
+                "route": "self",
+                "sources": [
+                  3
+                ],
+                "start": 6282
+              },
+              {
+                "duration": 1,
+                "packets": 36,
+                "pattern": "counter",
+                "route": "hotspot0",
+                "sources": [
+                  0,
+                  1,
+                  3
+                ],
+                "start": 6766
+              },
+              {
+                "duration": 50,
+                "packets": 207,
+                "pattern": "zeros",
+                "route": "hotspot0",
+                "sources": [
+                  1,
+                  2,
+                  3
+                ],
+                "start": 7185
+              },
+              {
+                "duration": 202,
+                "packets": 175,
+                "pattern": "counter",
+                "route": "opposite",
+                "sources": [
+                  0,
+                  1,
+                  2,
+                  3
+                ],
+                "start": 7501
+              }
+            ],
+            "sink_pause": 3,
+            "sink_period": 8
+          },
+          "rates": [
+            262.52487804878047,
+            288.1268292682927,
+            177.30536585365854,
+            445.4419512195122,
+            55.15317073170732,
+            297.3180487804878,
+            153.48292682926828,
+            520.8780487804878
+          ],
+          "selected_slot": 110,
+          "shards": {
+            "evidence-000.tar.gz": "19b7af2711feba1b7c693bc5dec49d576e70e9f52b852f10a0a4dcb3c53e0db7",
+            "evidence-001.tar.gz": "f41f2e31faa7ea7913a05a9b5eeaaa5b5e0acec013415a65176d1b8bec02f440",
+            "evidence-002.tar.gz": "0bf1cf9bce6307ca5463e61b51326d22b55d5b10e5ed0c9e27f52b3f631bd550",
+            "evidence-003.tar.gz": "fca4ab91e87d5ac4a7bd22e5b90d925826d0c5f7d11a812516c7edb8e2c10359",
+            "evidence-004.tar.gz": "521439f2efd6dfe0cd4fb776cf5d3514c45cddb739f3b4deb5d402672e6de3bc",
+            "evidence-005.tar.gz": "bbb4675f2f2811ab0c4199f4e3804a021c0d96a2500d6d41f2e3712499660d73",
+            "evidence-006.tar.gz": "f20778ed815ccdc38482d0929eacca06a10ec3636c98758b8af0b2ad7c99d6de",
+            "evidence-007.tar.gz": "9c410f88e23b31101f0d555f0e128cab132161c6caf5d2961a7f0a854e9eac17",
+            "evidence-008.tar.gz": "08b14652d3dc5754b1e5b44e371fc03844985d0bd7fc4c6f39adf48392c5cc91",
+            "evidence-009.tar.gz": "4d7917ee2f4776669e7e25bc691aaa63c1f1117ff2d0459861d8921b1d3557d3",
+            "evidence-010.tar.gz": "3f337fd58fcb813405cdae90ab4ec357ceeac1018063b7ea8ec2ff6a2072551d",
+            "evidence-011.tar.gz": "4b7968a9e9a1ced7b7f2df9577dacaf46aeea631e46b8d72a9b0c6cd6fb50f1e"
+          },
+          "source_archive": "results/mesh/baselines-model-v1",
+          "source_member": "panel/confirmation-alternating/9100/phase-model/batches/109/trials.json",
+          "source_sha256": "91aefed2d4bc9675e16a466be1a3b82a41c0170f89f17be593a6356a49b53095"
+        },
+        "Phase-random": {
+          "charged_slots": 128,
+          "manifest_sha256": "3d28a747a7ae1ec9149c923561bed0385cf5b5ca409d416efdc312e97100029a",
+          "max_bin_error": 0.5019165393240357,
+          "model": null,
+          "profile": {
+            "activity_contract": "known-bit-activity-v2",
+            "begin_tick": 5000,
+            "bin_edges": [
+              1025,
+              1025,
+              1025,
+              1025,
+              1025,
+              1025,
+              1025,
+              1025
+            ],
+            "clock": "mesh_temporal.clk",
+            "clock_edges": 8200,
+            "end_tick": 82000000,
+            "exclusions": [
+              "clock",
+              "parameters"
+            ],
+            "fidelity": "activity",
+            "initialized_bits_in_observation": 38726,
+            "period_ticks": 10000,
+            "remaining_unknown_bits": 0,
+            "scope": "mesh_temporal.dut",
+            "selected_bits": 38726,
+            "timescale": "1ps",
+            "units": "known bit transitions per rising clock edge; not watts",
+            "useful_work": 2048,
+            "window": "full trace including reset",
+            "window_rates": [
+              304.4107317073171,
+              268.0292682926829,
+              161.3151219512195,
+              226.9180487804878,
+              189.27609756097561,
+              215.11609756097562,
+              223.25658536585365,
+              217.8009756097561
+            ]
+          },
+          "program": {
+            "phases": [
+              {
+                "duration": 150,
+                "packets": 103,
+                "pattern": "zeros",
+                "route": "opposite",
+                "sources": [
+                  0,
+                  1
+                ],
+                "start": 54
+              },
+              {
+                "duration": 32,
+                "packets": 74,
+                "pattern": "counter",
+                "route": "self",
+                "sources": [
+                  1,
+                  3
+                ],
+                "start": 305
+              },
+              {
+                "duration": 6,
+                "packets": 117,
+                "pattern": "counter",
+                "route": "neighbor",
+                "sources": [
+                  0,
+                  1,
+                  3
+                ],
+                "start": 582
+              },
+              {
+                "duration": 197,
+                "packets": 55,
+                "pattern": "counter",
+                "route": "hotspot0",
+                "sources": [
+                  1,
+                  2,
+                  3
+                ],
+                "start": 836
+              },
+              {
+                "duration": 38,
+                "packets": 23,
+                "pattern": "alternating",
+                "route": "self",
+                "sources": [
+                  2
+                ],
+                "start": 1118
+              },
+              {
+                "duration": 3,
+                "packets": 86,
+                "pattern": "counter",
+                "route": "self",
+                "sources": [
+                  0,
+                  2,
+                  3
+                ],
+                "start": 1361
+              },
+              {
+                "duration": 190,
+                "packets": 83,
+                "pattern": "alternating",
+                "route": "opposite",
+                "sources": [
+                  0,
+                  1,
+                  2,
+                  3
+                ],
+                "start": 1604
+              },
+              {
+                "duration": 155,
+                "packets": 124,
+                "pattern": "zeros",
+                "route": "self",
+                "sources": [
+                  0,
+                  1,
+                  2,
+                  3
+                ],
+                "start": 1867
+              },
+              {
+                "duration": 32,
+                "packets": 27,
+                "pattern": "alternating",
+                "route": "hotspot0",
+                "sources": [
+                  1,
+                  2,
+                  3
+                ],
+                "start": 2167
+              },
+              {
+                "duration": 21,
+                "packets": 19,
+                "pattern": "zeros",
+                "route": "neighbor",
+                "sources": [
+                  0
+                ],
+                "start": 2439
+              },
+              {
+                "duration": 108,
+                "packets": 39,
+                "pattern": "alternating",
+                "route": "hotspot0",
+                "sources": [
+                  1
+                ],
+                "start": 2687
+              },
+              {
+                "duration": 131,
+                "packets": 58,
+                "pattern": "zeros",
+                "route": "hotspot0",
+                "sources": [
+                  0,
+                  1,
+                  3
+                ],
+                "start": 2939
+              },
+              {
+                "duration": 9,
+                "packets": 108,
+                "pattern": "alternating",
+                "route": "opposite",
+                "sources": [
+                  0,
+                  1,
+                  2,
+                  3
+                ],
+                "start": 3220
+              },
+              {
+                "duration": 33,
+                "packets": 52,
+                "pattern": "counter",
+                "route": "hotspot0",
+                "sources": [
+                  0,
+                  1,
+                  2,
+                  3
+                ],
+                "start": 3460
+              },
+              {
+                "duration": 114,
+                "packets": 80,
+                "pattern": "counter",
+                "route": "self",
+                "sources": [
+                  0,
+                  1,
+                  2,
+                  3
+                ],
+                "start": 3717
+              },
+              {
+                "duration": 35,
+                "packets": 35,
+                "pattern": "counter",
+                "route": "hotspot0",
+                "sources": [
+                  1,
+                  2,
+                  3
+                ],
+                "start": 3991
+              },
+              {
+                "duration": 115,
+                "packets": 39,
+                "pattern": "counter",
+                "route": "opposite",
+                "sources": [
+                  0,
+                  1
+                ],
+                "start": 4273
+              },
+              {
+                "duration": 54,
+                "packets": 113,
+                "pattern": "counter",
+                "route": "self",
+                "sources": [
+                  3
+                ],
+                "start": 4521
+              },
+              {
+                "duration": 57,
+                "packets": 30,
+                "pattern": "zeros",
+                "route": "hotspot0",
+                "sources": [
+                  0,
+                  1,
+                  2,
+                  3
+                ],
+                "start": 4814
+              },
+              {
+                "duration": 159,
+                "packets": 84,
+                "pattern": "zeros",
+                "route": "hotspot0",
+                "sources": [
+                  0,
+                  2,
+                  3
+                ],
+                "start": 5056
+              },
+              {
+                "duration": 176,
+                "packets": 68,
+                "pattern": "counter",
+                "route": "self",
+                "sources": [
+                  0,
+                  3
+                ],
+                "start": 5337
+              },
+              {
+                "duration": 145,
+                "packets": 24,
+                "pattern": "zeros",
+                "route": "hotspot0",
+                "sources": [
+                  0,
+                  2
+                ],
+                "start": 5591
+              },
+              {
+                "duration": 132,
+                "packets": 85,
+                "pattern": "counter",
+                "route": "neighbor",
+                "sources": [
+                  0
+                ],
+                "start": 5841
+              },
+              {
+                "duration": 68,
+                "packets": 62,
+                "pattern": "zeros",
+                "route": "neighbor",
+                "sources": [
+                  2
+                ],
+                "start": 6129
+              },
+              {
+                "duration": 41,
+                "packets": 29,
+                "pattern": "alternating",
+                "route": "neighbor",
+                "sources": [
+                  2,
+                  3
+                ],
+                "start": 6358
+              },
+              {
+                "duration": 120,
+                "packets": 105,
+                "pattern": "alternating",
+                "route": "hotspot0",
+                "sources": [
+                  2,
+                  3
+                ],
+                "start": 6600
+              },
+              {
+                "duration": 49,
+                "packets": 56,
+                "pattern": "counter",
+                "route": "opposite",
+                "sources": [
+                  2
+                ],
+                "start": 6895
+              },
+              {
+                "duration": 179,
+                "packets": 63,
+                "pattern": "zeros",
+                "route": "self",
+                "sources": [
+                  0,
+                  2,
+                  3
+                ],
+                "start": 7170
+              },
+              {
+                "duration": 133,
+                "packets": 77,
+                "pattern": "alternating",
+                "route": "hotspot0",
+                "sources": [
+                  2,
+                  3
+                ],
+                "start": 7414
+              },
+              {
+                "duration": 193,
+                "packets": 130,
+                "pattern": "zeros",
+                "route": "hotspot0",
+                "sources": [
+                  0,
+                  3
+                ],
+                "start": 7669
+              }
+            ],
+            "sink_pause": 2,
+            "sink_period": 8
+          },
+          "rates": [
+            304.4107317073171,
+            268.0292682926829,
+            161.3151219512195,
+            226.9180487804878,
+            189.27609756097561,
+            215.11609756097562,
+            223.25658536585365,
+            217.8009756097561
+          ],
+          "selected_slot": 25,
+          "shards": {
+            "evidence-000.tar.gz": "19b7af2711feba1b7c693bc5dec49d576e70e9f52b852f10a0a4dcb3c53e0db7",
+            "evidence-001.tar.gz": "f41f2e31faa7ea7913a05a9b5eeaaa5b5e0acec013415a65176d1b8bec02f440",
+            "evidence-002.tar.gz": "0bf1cf9bce6307ca5463e61b51326d22b55d5b10e5ed0c9e27f52b3f631bd550",
+            "evidence-003.tar.gz": "fca4ab91e87d5ac4a7bd22e5b90d925826d0c5f7d11a812516c7edb8e2c10359",
+            "evidence-004.tar.gz": "521439f2efd6dfe0cd4fb776cf5d3514c45cddb739f3b4deb5d402672e6de3bc",
+            "evidence-005.tar.gz": "bbb4675f2f2811ab0c4199f4e3804a021c0d96a2500d6d41f2e3712499660d73",
+            "evidence-006.tar.gz": "f20778ed815ccdc38482d0929eacca06a10ec3636c98758b8af0b2ad7c99d6de",
+            "evidence-007.tar.gz": "9c410f88e23b31101f0d555f0e128cab132161c6caf5d2961a7f0a854e9eac17",
+            "evidence-008.tar.gz": "08b14652d3dc5754b1e5b44e371fc03844985d0bd7fc4c6f39adf48392c5cc91",
+            "evidence-009.tar.gz": "4d7917ee2f4776669e7e25bc691aaa63c1f1117ff2d0459861d8921b1d3557d3",
+            "evidence-010.tar.gz": "3f337fd58fcb813405cdae90ab4ec357ceeac1018063b7ea8ec2ff6a2072551d",
+            "evidence-011.tar.gz": "4b7968a9e9a1ced7b7f2df9577dacaf46aeea631e46b8d72a9b0c6cd6fb50f1e"
+          },
+          "source_archive": "results/mesh/baselines-model-v1",
+          "source_member": "panel/confirmation-alternating/9100/phase-random/batches/025/trials.json",
+          "source_sha256": "268d3db16e8dcd866bbf8179f21c6ff53065e153f113fcca0b2786ad9cfd39f3"
+        }
+      },
+      "target": "confirmation-alternating",
+      "target_rates": [
+        57.77826829268291,
+        480.04343902439007,
+        57.77826829268291,
+        480.04343902439007,
+        57.77826829268291,
+        480.04343902439007,
+        57.77826829268291,
+        480.04343902439007
+      ]
+    },
+    {
+      "arms": {
+        "Flash-Lite": {
+          "charged_slots": 116,
+          "manifest_sha256": "2c74a11840b4373b133eabaf25216a91e0badae2e673f309b0bebf42fdb64ed0",
+          "max_bin_error": 0.04787240383917821,
+          "model": "gemini-3.5-flash-lite",
+          "profile": {
+            "activity_contract": "known-bit-activity-v2",
+            "begin_tick": 5000,
+            "bin_edges": [
+              1025,
+              1025,
+              1025,
+              1025,
+              1025,
+              1025,
+              1025,
+              1025
+            ],
+            "clock": "mesh_temporal.clk",
+            "clock_edges": 8200,
+            "end_tick": 82000000,
+            "exclusions": [
+              "clock",
+              "parameters"
+            ],
+            "fidelity": "activity",
+            "initialized_bits_in_observation": 38726,
+            "period_ticks": 10000,
+            "remaining_unknown_bits": 0,
+            "scope": "mesh_temporal.dut",
+            "selected_bits": 38726,
+            "timescale": "1ps",
+            "units": "known bit transitions per rising clock edge; not watts",
+            "useful_work": 1682,
+            "window": "full trace including reset",
+            "window_rates": [
+              276.85853658536587,
+              467.2956097560976,
+              66.46439024390244,
+              69.0019512195122,
+              488.84292682926827,
+              251.63024390243902,
+              83.04682926829268,
+              474.57268292682926
+            ]
+          },
+          "program": {
+            "phases": [
+              {
+                "duration": 800,
+                "packets": 260,
+                "pattern": "counter",
+                "route": "self",
+                "sources": [
+                  0,
+                  1,
+                  2,
+                  3
+                ],
+                "start": 100
+              },
+              {
+                "duration": 400,
+                "packets": 255,
+                "pattern": "counter",
+                "route": "neighbor",
+                "sources": [
+                  1,
+                  2
+                ],
+                "start": 1000
+              },
+              {
+                "duration": 600,
+                "packets": 40,
+                "pattern": "alternating",
+                "route": "neighbor",
+                "sources": [
+                  0
+                ],
+                "start": 2000
+              },
+              {
+                "duration": 250,
+                "packets": 40,
+                "pattern": "counter",
+                "route": "hotspot0",
+                "sources": [
+                  0,
+                  1,
+                  2,
+                  3
+                ],
+                "start": 3300
+              },
+              {
+                "duration": 450,
+                "packets": 265,
+                "pattern": "alternating",
+                "route": "opposite",
+                "sources": [
+                  0,
+                  1,
+                  2,
+                  3
+                ],
+                "start": 4500
+              },
+              {
+                "duration": 900,
+                "packets": 512,
+                "pattern": "zeros",
+                "route": "hotspot0",
+                "sources": [
+                  2,
+                  3
+                ],
+                "start": 5300
+              },
+              {
+                "duration": 520,
+                "packets": 310,
+                "pattern": "counter",
+                "route": "hotspot0",
+                "sources": [
+                  0,
+                  2,
+                  3
+                ],
+                "start": 7100
+              }
+            ],
+            "sink_pause": 0,
+            "sink_period": 8
+          },
+          "rates": [
+            276.85853658536587,
+            467.2956097560976,
+            66.46439024390244,
+            69.0019512195122,
+            488.84292682926827,
+            251.63024390243902,
+            83.04682926829268,
+            474.57268292682926
+          ],
+          "selected_slot": 115,
+          "shards": {
+            "evidence-000.tar.gz": "115711e07b804a2c2902dcb06a4fa49f238e6433c9e7bec0606cfb60d6032683",
+            "evidence-001.tar.gz": "fbdf3e68aec4832d19e556d9c7c1b1600d47271e4399c768919b7298d4d10c8d",
+            "evidence-002.tar.gz": "639923563584df91206be8e0d62848b7bf3045504ec88cb52be4e3d508c1d75e",
+            "evidence-003.tar.gz": "654e931861e1246194f86ace0798d80db7b0770e7b1ed31d0445eb7d15f3daf5",
+            "evidence-004.tar.gz": "5d041978b00b9e814903e3c91a25c6ce687650cee8e635bca6f225f15e2f65b2",
+            "evidence-005.tar.gz": "2eb452eba17a10ee70984a31b7401f1422d6fbac027969efbc25290c69a14fb9",
+            "evidence-006.tar.gz": "b8344e3bc77b3259c39d43ae0b215700c724e5e9fe66985f8ddfc9a0b04603d7"
+          },
+          "source_archive": "results/mesh/flash-lite-matched-v1",
+          "source_member": "panel/confirmation-irregular/9100/flash-lite-medium/batches/115/trials.json",
+          "source_sha256": "c0614e3ba7550a0fe229a4a8522fd98cd6db83a808c1f355931c6a273662b192"
+        },
+        "Gemini 3.8": {
+          "charged_slots": 6,
+          "manifest_sha256": "058a6acf2fef84b43618d05fba34ac93bd306fb020795e8c0509f2ea60453150",
+          "max_bin_error": 0.009521655332518234,
+          "model": "gemini-3.8-flash",
+          "profile": {
+            "activity_contract": "known-bit-activity-v2",
+            "begin_tick": 5000,
+            "bin_edges": [
+              1025,
+              1025,
+              1025,
+              1025,
+              1025,
+              1025,
+              1025,
+              1025
+            ],
+            "clock": "mesh_temporal.clk",
+            "clock_edges": 8200,
+            "end_tick": 82000000,
+            "exclusions": [
+              "clock",
+              "parameters"
+            ],
+            "fidelity": "activity",
+            "initialized_bits_in_observation": 38726,
+            "period_ticks": 10000,
+            "remaining_unknown_bits": 0,
+            "scope": "mesh_temporal.dut",
+            "selected_bits": 38726,
+            "timescale": "1ps",
+            "units": "known bit transitions per rising clock edge; not watts",
+            "useful_work": 2074,
+            "window": "full trace including reset",
+            "window_rates": [
+              268.61951219512196,
+              479.89853658536583,
+              58.543414634146345,
+              57.01951219512195,
+              481.2721951219512,
+              269.34439024390247,
+              55.95609756097561,
+              485.0692682926829
+            ]
+          },
+          "program": {
+            "phases": [
+              {
+                "duration": 700,
+                "packets": 269,
+                "pattern": "counter",
+                "route": "self",
+                "sources": [
+                  0,
+                  1,
+                  2,
+                  3
+                ],
+                "start": 100
+              },
+              {
+                "duration": 700,
+                "packets": 466,
+                "pattern": "counter",
+                "route": "self",
+                "sources": [
+                  0,
+                  1,
+                  2,
+                  3
+                ],
+                "start": 1124
+              },
+              {
+                "duration": 700,
+                "packets": 58,
+                "pattern": "counter",
+                "route": "self",
+                "sources": [
+                  0,
+                  1,
+                  2,
+                  3
+                ],
+                "start": 2148
+              },
+              {
+                "duration": 700,
+                "packets": 57,
+                "pattern": "counter",
+                "route": "self",
+                "sources": [
+                  0,
+                  1,
+                  2,
+                  3
+                ],
+                "start": 3172
+              },
+              {
+                "duration": 700,
+                "packets": 460,
+                "pattern": "counter",
+                "route": "self",
+                "sources": [
+                  0,
+                  1,
+                  2,
+                  3
+                ],
+                "start": 4196
+              },
+              {
+                "duration": 700,
+                "packets": 256,
+                "pattern": "counter",
+                "route": "self",
+                "sources": [
+                  0,
+                  1,
+                  2,
+                  3
+                ],
+                "start": 5220
+              },
+              {
+                "duration": 700,
+                "packets": 56,
+                "pattern": "counter",
+                "route": "self",
+                "sources": [
+                  0,
+                  1,
+                  2,
+                  3
+                ],
+                "start": 6244
+              },
+              {
+                "duration": 700,
+                "packets": 452,
+                "pattern": "counter",
+                "route": "self",
+                "sources": [
+                  0,
+                  1,
+                  2,
+                  3
+                ],
+                "start": 7268
+              }
+            ],
+            "sink_pause": 0,
+            "sink_period": 8
+          },
+          "rates": [
+            268.61951219512196,
+            479.89853658536583,
+            58.543414634146345,
+            57.01951219512195,
+            481.2721951219512,
+            269.34439024390247,
+            55.95609756097561,
+            485.0692682926829
+          ],
+          "selected_slot": 5,
+          "shards": {
+            "evidence-000.tar.gz": "4b7fc19870c07a0803f5f0b58111bb2732f65e89bf6e9f4e5e3e857513ddb485"
+          },
+          "source_archive": "results/mesh/strong-completed-v1",
+          "source_member": "panel/confirmation-irregular/9100/strong-medium-64k/batches/005/trials.json",
+          "source_sha256": "82a16b381b2e95ff0fe58b8adc75a6d6bbd6c50d529543f76c97923de6db1270"
+        },
+        "Phase-GA": {
+          "charged_slots": 128,
+          "manifest_sha256": "3d28a747a7ae1ec9149c923561bed0385cf5b5ca409d416efdc312e97100029a",
+          "max_bin_error": 0.28739148536418446,
+          "model": null,
+          "profile": {
+            "activity_contract": "known-bit-activity-v2",
+            "begin_tick": 5000,
+            "bin_edges": [
+              1025,
+              1025,
+              1025,
+              1025,
+              1025,
+              1025,
+              1025,
+              1025
+            ],
+            "clock": "mesh_temporal.clk",
+            "clock_edges": 8200,
+            "end_tick": 82000000,
+            "exclusions": [
+              "clock",
+              "parameters"
+            ],
+            "fidelity": "activity",
+            "initialized_bits_in_observation": 38726,
+            "period_ticks": 10000,
+            "remaining_unknown_bits": 0,
+            "scope": "mesh_temporal.dut",
+            "selected_bits": 38726,
+            "timescale": "1ps",
+            "units": "known bit transitions per rising clock edge; not watts",
+            "useful_work": 2428,
+            "window": "full trace including reset",
+            "window_rates": [
+              307.81170731707317,
+              543.7004878048781,
+              86.06341463414634,
+              199.2068292682927,
+              518.1609756097561,
+              117.21658536585366,
+              194.41170731707317,
+              499.2
+            ]
+          },
+          "program": {
+            "phases": [
+              {
+                "duration": 2848,
+                "packets": 242,
+                "pattern": "counter",
+                "route": "self",
+                "sources": [
+                  0,
+                  1,
+                  2,
+                  3
+                ],
+                "start": 180
+              },
+              {
+                "duration": 210,
+                "packets": 331,
+                "pattern": "counter",
+                "route": "neighbor",
+                "sources": [
+                  1
+                ],
+                "start": 1278
+              },
+              {
+                "duration": 210,
+                "packets": 331,
+                "pattern": "counter",
+                "route": "neighbor",
+                "sources": [
+                  1
+                ],
+                "start": 1278
+              },
+              {
+                "duration": 742,
+                "packets": 418,
+                "pattern": "zeros",
+                "route": "hotspot0",
+                "sources": [
+                  0,
+                  1,
+                  2
+                ],
+                "start": 5752
+              },
+              {
+                "duration": 691,
+                "packets": 242,
+                "pattern": "counter",
+                "route": "self",
+                "sources": [
+                  0,
+                  1,
+                  2,
+                  3
+                ],
+                "start": 180
+              },
+              {
+                "duration": 166,
+                "packets": 117,
+                "pattern": "counter",
+                "route": "hotspot0",
+                "sources": [
+                  0,
+                  1,
+                  2,
+                  3
+                ],
+                "start": 3595
+              },
+              {
+                "duration": 325,
+                "packets": 274,
+                "pattern": "alternating",
+                "route": "opposite",
+                "sources": [
+                  0,
+                  1,
+                  2,
+                  3
+                ],
+                "start": 4751
+              },
+              {
+                "duration": 742,
+                "packets": 138,
+                "pattern": "zeros",
+                "route": "hotspot0",
+                "sources": [
+                  2
+                ],
+                "start": 5752
+              },
+              {
+                "duration": 595,
+                "packets": 335,
+                "pattern": "counter",
+                "route": "hotspot0",
+                "sources": [
+                  0,
+                  2,
+                  3
+                ],
+                "start": 7079
+              }
+            ],
+            "sink_pause": 0,
+            "sink_period": 8
+          },
+          "rates": [
+            307.81170731707317,
+            543.7004878048781,
+            86.06341463414634,
+            199.2068292682927,
+            518.1609756097561,
+            117.21658536585366,
+            194.41170731707317,
+            499.2
+          ],
+          "selected_slot": 76,
+          "shards": {
+            "evidence-000.tar.gz": "19b7af2711feba1b7c693bc5dec49d576e70e9f52b852f10a0a4dcb3c53e0db7",
+            "evidence-001.tar.gz": "f41f2e31faa7ea7913a05a9b5eeaaa5b5e0acec013415a65176d1b8bec02f440",
+            "evidence-002.tar.gz": "0bf1cf9bce6307ca5463e61b51326d22b55d5b10e5ed0c9e27f52b3f631bd550",
+            "evidence-003.tar.gz": "fca4ab91e87d5ac4a7bd22e5b90d925826d0c5f7d11a812516c7edb8e2c10359",
+            "evidence-004.tar.gz": "521439f2efd6dfe0cd4fb776cf5d3514c45cddb739f3b4deb5d402672e6de3bc",
+            "evidence-005.tar.gz": "bbb4675f2f2811ab0c4199f4e3804a021c0d96a2500d6d41f2e3712499660d73",
+            "evidence-006.tar.gz": "f20778ed815ccdc38482d0929eacca06a10ec3636c98758b8af0b2ad7c99d6de",
+            "evidence-007.tar.gz": "9c410f88e23b31101f0d555f0e128cab132161c6caf5d2961a7f0a854e9eac17",
+            "evidence-008.tar.gz": "08b14652d3dc5754b1e5b44e371fc03844985d0bd7fc4c6f39adf48392c5cc91",
+            "evidence-009.tar.gz": "4d7917ee2f4776669e7e25bc691aaa63c1f1117ff2d0459861d8921b1d3557d3",
+            "evidence-010.tar.gz": "3f337fd58fcb813405cdae90ab4ec357ceeac1018063b7ea8ec2ff6a2072551d",
+            "evidence-011.tar.gz": "4b7968a9e9a1ced7b7f2df9577dacaf46aeea631e46b8d72a9b0c6cd6fb50f1e"
+          },
+          "source_archive": "results/mesh/baselines-model-v1",
+          "source_member": "panel/confirmation-irregular/9100/phase-ga/batches/075/trials.json",
+          "source_sha256": "fc866da1a0d165acab1a307197a4ff3636a020034e936168512b2a2e83c88f6f"
+        },
+        "Phase-model": {
+          "charged_slots": 128,
+          "manifest_sha256": "3d28a747a7ae1ec9149c923561bed0385cf5b5ca409d416efdc312e97100029a",
+          "max_bin_error": 0.3029894058016484,
+          "model": null,
+          "profile": {
+            "activity_contract": "known-bit-activity-v2",
+            "begin_tick": 5000,
+            "bin_edges": [
+              1025,
+              1025,
+              1025,
+              1025,
+              1025,
+              1025,
+              1025,
+              1025
+            ],
+            "clock": "mesh_temporal.clk",
+            "clock_edges": 8200,
+            "end_tick": 82000000,
+            "exclusions": [
+              "clock",
+              "parameters"
+            ],
+            "fidelity": "activity",
+            "initialized_bits_in_observation": 38726,
+            "period_ticks": 10000,
+            "remaining_unknown_bits": 0,
+            "scope": "mesh_temporal.dut",
+            "selected_bits": 38726,
+            "timescale": "1ps",
+            "units": "known bit transitions per rising clock edge; not watts",
+            "useful_work": 2456,
+            "window": "full trace including reset",
+            "window_rates": [
+              133.37658536585366,
+              428.099512195122,
+              137.9131707317073,
+              153.48292682926828,
+              414.3619512195122,
+              151.74048780487806,
+              118.42341463414634,
+              320.1160975609756
+            ]
+          },
+          "program": {
+            "phases": [
+              {
+                "duration": 233,
+                "packets": 239,
+                "pattern": "alternating",
+                "route": "self",
+                "sources": [
+                  0,
+                  2
+                ],
+                "start": 12
+              },
+              {
+                "duration": 2,
+                "packets": 165,
+                "pattern": "zeros",
+                "route": "opposite",
+                "sources": [
+                  2
+                ],
+                "start": 354
+              },
+              {
+                "duration": 243,
+                "packets": 20,
+                "pattern": "counter",
+                "route": "self",
+                "sources": [
+                  1
+                ],
+                "start": 721
+              },
+              {
+                "duration": 208,
+                "packets": 166,
+                "pattern": "counter",
+                "route": "self",
+                "sources": [
+                  1,
+                  2,
+                  3
+                ],
+                "start": 1068
+              },
+              {
+                "duration": 11,
+                "packets": 120,
+                "pattern": "alternating",
+                "route": "opposite",
+                "sources": [
+                  0
+                ],
+                "start": 1444
+              },
+              {
+                "duration": 11,
+                "packets": 63,
+                "pattern": "counter",
+                "route": "hotspot0",
+                "sources": [
+                  1,
+                  2
+                ],
+                "start": 1768
+              },
+              {
+                "duration": 80,
+                "packets": 89,
+                "pattern": "zeros",
+                "route": "hotspot0",
+                "sources": [
+                  0,
+                  1,
+                  2,
+                  3
+                ],
+                "start": 2083
+              },
+              {
+                "duration": 164,
+                "packets": 95,
+                "pattern": "alternating",
+                "route": "self",
+                "sources": [
+                  0,
+                  1,
+                  2,
+                  3
+                ],
+                "start": 2482
+              },
+              {
+                "duration": 32,
+                "packets": 128,
+                "pattern": "alternating",
+                "route": "neighbor",
+                "sources": [
+                  2,
+                  3
+                ],
+                "start": 2785
+              },
+              {
+                "duration": 53,
+                "packets": 151,
+                "pattern": "counter",
+                "route": "neighbor",
+                "sources": [
+                  0,
+                  3
+                ],
+                "start": 3166
+              },
+              {
+                "duration": 243,
+                "packets": 20,
+                "pattern": "counter",
+                "route": "self",
+                "sources": [
+                  1
+                ],
+                "start": 721
+              },
+              {
+                "duration": 224,
+                "packets": 105,
+                "pattern": "counter",
+                "route": "opposite",
+                "sources": [
+                  1,
+                  2,
+                  3
+                ],
+                "start": 4142
+              },
+              {
+                "duration": 5,
+                "packets": 138,
+                "pattern": "zeros",
+                "route": "opposite",
+                "sources": [
+                  1,
+                  2
+                ],
+                "start": 3810
+              },
+              {
+                "duration": 224,
+                "packets": 105,
+                "pattern": "counter",
+                "route": "opposite",
+                "sources": [
+                  1,
+                  2,
+                  3
+                ],
+                "start": 4142
+              },
+              {
+                "duration": 208,
+                "packets": 166,
+                "pattern": "counter",
+                "route": "self",
+                "sources": [
+                  1,
+                  2,
+                  3
+                ],
+                "start": 1068
+              },
+              {
+                "duration": 180,
+                "packets": 117,
+                "pattern": "alternating",
+                "route": "hotspot0",
+                "sources": [
+                  0,
+                  1,
+                  2,
+                  3
+                ],
+                "start": 4839
+              },
+              {
+                "duration": 23,
+                "packets": 33,
+                "pattern": "zeros",
+                "route": "self",
+                "sources": [
+                  1,
+                  2,
+                  3
+                ],
+                "start": 5239
+              },
+              {
+                "duration": 43,
+                "packets": 97,
+                "pattern": "counter",
+                "route": "self",
+                "sources": [
+                  3
+                ],
+                "start": 5527
+              },
+              {
+                "duration": 200,
+                "packets": 92,
+                "pattern": "counter",
+                "route": "self",
+                "sources": [
+                  0,
+                  1,
+                  2,
+                  3
+                ],
+                "start": 5869
+              },
+              {
+                "duration": 25,
+                "packets": 75,
+                "pattern": "alternating",
+                "route": "self",
+                "sources": [
+                  2,
+                  3
+                ],
+                "start": 6249
+              },
+              {
+                "duration": 246,
+                "packets": 41,
+                "pattern": "counter",
+                "route": "opposite",
+                "sources": [
+                  0,
+                  1,
+                  2,
+                  3
+                ],
+                "start": 6640
+              },
+              {
+                "duration": 80,
+                "packets": 89,
+                "pattern": "zeros",
+                "route": "hotspot0",
+                "sources": [
+                  0,
+                  1,
+                  2,
+                  3
+                ],
+                "start": 2083
+              },
+              {
+                "duration": 204,
+                "packets": 80,
+                "pattern": "alternating",
+                "route": "hotspot0",
+                "sources": [
+                  3
+                ],
+                "start": 7317
+              },
+              {
+                "duration": 94,
+                "packets": 62,
+                "pattern": "counter",
+                "route": "neighbor",
+                "sources": [
+                  0,
+                  1,
+                  2,
+                  3
+                ],
+                "start": 7597
+              }
+            ],
+            "sink_pause": 3,
+            "sink_period": 8
+          },
+          "rates": [
+            133.37658536585366,
+            428.099512195122,
+            137.9131707317073,
+            153.48292682926828,
+            414.3619512195122,
+            151.74048780487806,
+            118.42341463414634,
+            320.1160975609756
+          ],
+          "selected_slot": 126,
+          "shards": {
+            "evidence-000.tar.gz": "19b7af2711feba1b7c693bc5dec49d576e70e9f52b852f10a0a4dcb3c53e0db7",
+            "evidence-001.tar.gz": "f41f2e31faa7ea7913a05a9b5eeaaa5b5e0acec013415a65176d1b8bec02f440",
+            "evidence-002.tar.gz": "0bf1cf9bce6307ca5463e61b51326d22b55d5b10e5ed0c9e27f52b3f631bd550",
+            "evidence-003.tar.gz": "fca4ab91e87d5ac4a7bd22e5b90d925826d0c5f7d11a812516c7edb8e2c10359",
+            "evidence-004.tar.gz": "521439f2efd6dfe0cd4fb776cf5d3514c45cddb739f3b4deb5d402672e6de3bc",
+            "evidence-005.tar.gz": "bbb4675f2f2811ab0c4199f4e3804a021c0d96a2500d6d41f2e3712499660d73",
+            "evidence-006.tar.gz": "f20778ed815ccdc38482d0929eacca06a10ec3636c98758b8af0b2ad7c99d6de",
+            "evidence-007.tar.gz": "9c410f88e23b31101f0d555f0e128cab132161c6caf5d2961a7f0a854e9eac17",
+            "evidence-008.tar.gz": "08b14652d3dc5754b1e5b44e371fc03844985d0bd7fc4c6f39adf48392c5cc91",
+            "evidence-009.tar.gz": "4d7917ee2f4776669e7e25bc691aaa63c1f1117ff2d0459861d8921b1d3557d3",
+            "evidence-010.tar.gz": "3f337fd58fcb813405cdae90ab4ec357ceeac1018063b7ea8ec2ff6a2072551d",
+            "evidence-011.tar.gz": "4b7968a9e9a1ced7b7f2df9577dacaf46aeea631e46b8d72a9b0c6cd6fb50f1e"
+          },
+          "source_archive": "results/mesh/baselines-model-v1",
+          "source_member": "panel/confirmation-irregular/9100/phase-model/batches/125/trials.json",
+          "source_sha256": "258eb1853a862cf9e746a9e6523382e76c3c003b4bd7bfe2d61043fc71f0c2e2"
+        },
+        "Phase-random": {
+          "charged_slots": 128,
+          "manifest_sha256": "3d28a747a7ae1ec9149c923561bed0385cf5b5ca409d416efdc312e97100029a",
+          "max_bin_error": 0.4305499861605864,
+          "model": null,
+          "profile": {
+            "activity_contract": "known-bit-activity-v2",
+            "begin_tick": 5000,
+            "bin_edges": [
+              1025,
+              1025,
+              1025,
+              1025,
+              1025,
+              1025,
+              1025,
+              1025
+            ],
+            "clock": "mesh_temporal.clk",
+            "clock_edges": 8200,
+            "end_tick": 82000000,
+            "exclusions": [
+              "clock",
+              "parameters"
+            ],
+            "fidelity": "activity",
+            "initialized_bits_in_observation": 38726,
+            "period_ticks": 10000,
+            "remaining_unknown_bits": 0,
+            "scope": "mesh_temporal.dut",
+            "selected_bits": 38726,
+            "timescale": "1ps",
+            "units": "known bit transitions per rising clock edge; not watts",
+            "useful_work": 2269,
+            "window": "full trace including reset",
+            "window_rates": [
+              326.10048780487807,
+              327.05853658536586,
+              188.27219512195123,
+              285.03609756097563,
+              688.0731707317074,
+              342.57073170731707,
+              166.14341463414635,
+              331.2673170731707
+            ]
+          },
+          "program": {
+            "phases": [
+              {
+                "duration": 75,
+                "packets": 152,
+                "pattern": "alternating",
+                "route": "opposite",
+                "sources": [
+                  2,
+                  3
+                ],
+                "start": 29
+              },
+              {
+                "duration": 16,
+                "packets": 128,
+                "pattern": "alternating",
+                "route": "neighbor",
+                "sources": [
+                  0,
+                  1,
+                  2
+                ],
+                "start": 339
+              },
+              {
+                "duration": 44,
+                "packets": 129,
+                "pattern": "counter",
+                "route": "neighbor",
+                "sources": [
+                  0,
+                  1
+                ],
+                "start": 707
+              },
+              {
+                "duration": 81,
+                "packets": 46,
+                "pattern": "counter",
+                "route": "opposite",
+                "sources": [
+                  0,
+                  2
+                ],
+                "start": 1018
+              },
+              {
+                "duration": 7,
+                "packets": 145,
+                "pattern": "zeros",
+                "route": "self",
+                "sources": [
+                  2
+                ],
+                "start": 1400
+              },
+              {
+                "duration": 199,
+                "packets": 77,
+                "pattern": "counter",
+                "route": "opposite",
+                "sources": [
+                  2
+                ],
+                "start": 1664
+              },
+              {
+                "duration": 240,
+                "packets": 98,
+                "pattern": "zeros",
+                "route": "self",
+                "sources": [
+                  0,
+                  2,
+                  3
+                ],
+                "start": 2008
+              },
+              {
+                "duration": 85,
+                "packets": 17,
+                "pattern": "zeros",
+                "route": "hotspot0",
+                "sources": [
+                  0,
+                  1,
+                  2,
+                  3
+                ],
+                "start": 2319
+              },
+              {
+                "duration": 197,
+                "packets": 79,
+                "pattern": "zeros",
+                "route": "opposite",
+                "sources": [
+                  2
+                ],
+                "start": 2657
+              },
+              {
+                "duration": 1,
+                "packets": 104,
+                "pattern": "counter",
+                "route": "neighbor",
+                "sources": [
+                  0,
+                  2,
+                  3
+                ],
+                "start": 3007
+              },
+              {
+                "duration": 67,
+                "packets": 36,
+                "pattern": "alternating",
+                "route": "neighbor",
+                "sources": [
+                  2,
+                  3
+                ],
+                "start": 3327
+              },
+              {
+                "duration": 37,
+                "packets": 109,
+                "pattern": "counter",
+                "route": "opposite",
+                "sources": [
+                  1,
+                  2
+                ],
+                "start": 3650
+              },
+              {
+                "duration": 210,
+                "packets": 76,
+                "pattern": "alternating",
+                "route": "opposite",
+                "sources": [
+                  3
+                ],
+                "start": 3977
+              },
+              {
+                "duration": 247,
+                "packets": 158,
+                "pattern": "counter",
+                "route": "neighbor",
+                "sources": [
+                  0,
+                  2
+                ],
+                "start": 4360
+              },
+              {
+                "duration": 236,
+                "packets": 96,
+                "pattern": "counter",
+                "route": "opposite",
+                "sources": [
+                  0,
+                  2,
+                  3
+                ],
+                "start": 4654
+              },
+              {
+                "duration": 108,
+                "packets": 120,
+                "pattern": "zeros",
+                "route": "neighbor",
+                "sources": [
+                  2,
+                  3
+                ],
+                "start": 5020
+              },
+              {
+                "duration": 147,
+                "packets": 30,
+                "pattern": "counter",
+                "route": "neighbor",
+                "sources": [
+                  1,
+                  2,
+                  3
+                ],
+                "start": 5280
+              },
+              {
+                "duration": 179,
+                "packets": 88,
+                "pattern": "counter",
+                "route": "self",
+                "sources": [
+                  0,
+                  1
+                ],
+                "start": 5656
+              },
+              {
+                "duration": 181,
+                "packets": 127,
+                "pattern": "counter",
+                "route": "opposite",
+                "sources": [
+                  1
+                ],
+                "start": 5963
+              },
+              {
+                "duration": 90,
+                "packets": 37,
+                "pattern": "zeros",
+                "route": "opposite",
+                "sources": [
+                  0,
+                  1,
+                  2,
+                  3
+                ],
+                "start": 6288
+              },
+              {
+                "duration": 147,
+                "packets": 53,
+                "pattern": "counter",
+                "route": "hotspot0",
+                "sources": [
+                  0,
+                  2
+                ],
+                "start": 6644
+              },
+              {
+                "duration": 60,
+                "packets": 62,
+                "pattern": "alternating",
+                "route": "self",
+                "sources": [
+                  0,
+                  1,
+                  2,
+                  3
+                ],
+                "start": 6965
+              },
+              {
+                "duration": 49,
+                "packets": 154,
+                "pattern": "alternating",
+                "route": "opposite",
+                "sources": [
+                  1,
+                  2
+                ],
+                "start": 7262
+              },
+              {
+                "duration": 7,
+                "packets": 148,
+                "pattern": "alternating",
+                "route": "opposite",
+                "sources": [
+                  2
+                ],
+                "start": 7631
+              }
+            ],
+            "sink_pause": 2,
+            "sink_period": 8
+          },
+          "rates": [
+            326.10048780487807,
+            327.05853658536586,
+            188.27219512195123,
+            285.03609756097563,
+            688.0731707317074,
+            342.57073170731707,
+            166.14341463414635,
+            331.2673170731707
+          ],
+          "selected_slot": 69,
+          "shards": {
+            "evidence-000.tar.gz": "19b7af2711feba1b7c693bc5dec49d576e70e9f52b852f10a0a4dcb3c53e0db7",
+            "evidence-001.tar.gz": "f41f2e31faa7ea7913a05a9b5eeaaa5b5e0acec013415a65176d1b8bec02f440",
+            "evidence-002.tar.gz": "0bf1cf9bce6307ca5463e61b51326d22b55d5b10e5ed0c9e27f52b3f631bd550",
+            "evidence-003.tar.gz": "fca4ab91e87d5ac4a7bd22e5b90d925826d0c5f7d11a812516c7edb8e2c10359",
+            "evidence-004.tar.gz": "521439f2efd6dfe0cd4fb776cf5d3514c45cddb739f3b4deb5d402672e6de3bc",
+            "evidence-005.tar.gz": "bbb4675f2f2811ab0c4199f4e3804a021c0d96a2500d6d41f2e3712499660d73",
+            "evidence-006.tar.gz": "f20778ed815ccdc38482d0929eacca06a10ec3636c98758b8af0b2ad7c99d6de",
+            "evidence-007.tar.gz": "9c410f88e23b31101f0d555f0e128cab132161c6caf5d2961a7f0a854e9eac17",
+            "evidence-008.tar.gz": "08b14652d3dc5754b1e5b44e371fc03844985d0bd7fc4c6f39adf48392c5cc91",
+            "evidence-009.tar.gz": "4d7917ee2f4776669e7e25bc691aaa63c1f1117ff2d0459861d8921b1d3557d3",
+            "evidence-010.tar.gz": "3f337fd58fcb813405cdae90ab4ec357ceeac1018063b7ea8ec2ff6a2072551d",
+            "evidence-011.tar.gz": "4b7968a9e9a1ced7b7f2df9577dacaf46aeea631e46b8d72a9b0c6cd6fb50f1e"
+          },
+          "source_archive": "results/mesh/baselines-model-v1",
+          "source_member": "panel/confirmation-irregular/9100/phase-random/batches/069/trials.json",
+          "source_sha256": "0930026bc0a5d32810ae0e647b346752eea997e69a117ddc4f54ccdf4063d1bd"
+        }
+      },
+      "target": "confirmation-irregular",
+      "target_rates": [
+        268.9108536585365,
+        480.04343902439007,
+        57.77826829268291,
+        57.77826829268291,
+        480.04343902439007,
+        268.9108536585365,
+        57.77826829268291,
+        480.04343902439007
+      ]
+    }
+  ],
+  "design": "mesh",
+  "recipe_sha256": "f86fa0ab132606bff9e86d95d0c522a9c809f207dd67d6accaf36e9b9ceec5b4",
+  "scale": 527.831463414634,
+  "scope": "Completed baseline, Flash-Lite and Gemini 3.8 illustrations, not population inference. Alternating and irregular profiles show repeated transitions and uneven levels at fixed seed 9100. This editorial choice is not a preregistered difficulty comparison.",
+  "seed": 9100,
+  "selection": "minimum valid max-bin error, earliest slot breaks ties"
+}
