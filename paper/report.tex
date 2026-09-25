@@ -228,12 +228,13 @@ mean dynamic power. Profiles are neither shifted nor independently rescaled.
 Each reference provides one power realization of the activity target,
 not a unique conversion of that target into watts.
 
-The clock does not establish timing closure. Zero-delay replay omits routed
-parasitics and delay-induced glitches. For Ibex and RedMulE, OpenSTA caps switching rates
-based on modeled transition times. Applying this cap to individual intervals
-can give a different result from applying it to the full trace. We verify that
-this cap explains each reconstruction discrepancy without changing the power estimates.
-Correct replay, alignment, finite power and annotation remain required.
+Gate-level replay uses zero delay and omits routed parasitics and delay-induced
+glitches. Since OpenSTA limits switching rates based on modeled signal transition
+times, short bursts can exceed its limit even when the whole-run average does not.
+Interval-level power estimates can therefore differ from the whole-run estimate.
+For Ibex and RedMulE, we verify that clipping explains each discrepancy without
+changing the reported power. Functional replay, alignment, finite power and
+annotation checks remain required.
 
 \section{Evaluation Design}
 Each design has eight time-varying (nonflat) targets and a near-flat control.
