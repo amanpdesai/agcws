@@ -38,10 +38,10 @@ specified switching-activity profiles while completing required work.
 Synthesizing these workloads is difficult because operation latency,
 contention, and persistent state couple activity across time. We present an
 agentic approach to goal-conditioned workload synthesis that combines hardware
-interface descriptions with interval-level simulation feedback. An LLM
+interface descriptions with interval-level simulation feedback. A large language model (LLM)
 proposes and revises complete workloads, while a fixed evaluator checks
 functional correctness, work completion, deadlines, and activity tolerance in
-every interval. Search uses RTL switching activity; selected workloads undergo
+every interval. Search uses register-transfer-level (RTL) switching activity; selected workloads undergo
 separate mapped-gate power assessment. Across five designs, Gemini 3.8 Flash
 satisfies the activity specification in 387 of 400 runs on time-varying targets
 (96.8\%) within 128 proposals per run. Across the four non-Mesh designs, it
@@ -283,7 +283,7 @@ tolerance. Its 900-cycle release phases need not align with measurement bins.
 
 Only Gemini 3.8 solves nonflat RedMulE requests. Across all designs, controls
 yield 50/50 Gemini matches and 23/50 Flash-Lite matches, separate from nonflat totals.
-We replay the selected Mesh workloads using the baselines' sink settings,
+We replay the Mesh workloads using the baselines' sink settings,
 with period 8 and pauses capped at 3. All 80 Gemini and 20 Flash-Lite nonflat
 matches remain within tolerance, while one Flash-Lite control no longer matches.
 Mean reference-power error changes by less than 0.001 percentage point for
@@ -296,8 +296,7 @@ error against reference workloads' estimated power on every design
 Each design's power comparison includes all 80 nonflat runs per policy.
 Power agreement is a comparison with those workloads,
 not a separate power-target success rate.
-
-Of 400 nonflat Gemini profiles, 399 beat the reference's best constant approximation,
+Of 400 nonflat Gemini profiles, 399 beat the reference's constant approximation,
 its eight-bin mean. Nearly flat references can have small errors without close
 temporal tracking. DMA's peak-to-trough variation is 3.0\% to 4.3\% of mean power.
 
